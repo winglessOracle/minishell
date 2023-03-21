@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/21 16:09:16 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/21 16:26:50 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ void	lstclear(t_node **lst, void (*del)(void *));
 
 /*error handeling:
 1.
-
+20.	malloc error lexer
 */
