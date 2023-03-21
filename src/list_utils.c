@@ -6,13 +6,13 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/21 13:58:12 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/21 15:29:08 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_node	*new_node(int type, char content)
+t_node	*new_node(int type, void *content)
 {
 	t_node	*new_node;
 
@@ -39,7 +39,7 @@ void	lstadd_back(t_node **lst, t_node *new)
 
 	if (new)
 	{
-		temp = ft_lstlast(*lst);
+		temp = lstlast(*lst);
 		if (temp)
 		{
 			temp->next = new;
