@@ -6,13 +6,14 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/21 16:05:51 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/21 16:17:55 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEXER_H
 # define LEXER_H
-# include "minisell.h"
+
+# include "minishell.h"
 
 typedef enum e_lextype
 {
