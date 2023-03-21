@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/21 12:46:20 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/21 13:44:39 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@ typedef struct s_node
 	struct s_node	*prev;
 	struct s_node	*next;
 }	t_node;
-
-typedef enum e_commandtype
-{
-	STD = 0,
-	BUILT_IN,
-}	t_commandtype;
 
 typedef enum e_lextype
 {
