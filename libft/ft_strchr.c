@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minishell.c                                        :+:    :+:            */
+/*   ft_strchr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/22 12:09:31 by carlo         ########   odam.nl         */
+/*   Created: 2022/10/10 09:27:28 by cwesseli      #+#    #+#                 */
+/*   Updated: 2023/03/22 09:27:25 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strchr(const char *s, int c)
 {
-	(void)argc;
-	(void)argv;
-	
-	t_node **tokens;
-	tokens = malloc(sizeof(t_node **));
-	if (!tokens)
-		exit_error(21);
-	*tokens = NULL;
-	
-	char *str = "Hello word! how are $YOU?";
-	*tokens = ft_lexer(tokens, str);
-	
-	while (*tokens)
-	{
-		printf("content=%s\n", (char *)(*tokens)->content);
-		*tokens = (*tokens)->next;
-	}
-	
-	exit(EXIT_SUCCESS);
+	char	*checker;
+	char	to_check;
+
+	if (s == NULL)
+		return (NULL);
+	checker = (char *)s;
+	to_check = (char)c;
+	while (*checker != to_check && *checker != '\0')
+		checker++;
+	if (*checker != to_check)
+		return (NULL);
+	return (checker);
 }

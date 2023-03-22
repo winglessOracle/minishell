@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/03/21 09:58:09 by cwesseli      ########   odam.nl          #
+#    Updated: 2023/03/22 09:23:27 by carlo         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ CC			= clang
 AR			= ar -rsc
 RM			= rm -rf
 CFLAGS		= -Wall -Wextra -Werror
-OBJ_FILES	=		$(addprefix obj/, ft_free.o ft_free_array.o)
+OBJ_FILES	=		$(addprefix obj/, ft_free.o ft_free_array.o ft_strchr.o ft_strdup.o\
+						ft_strlen.o)
 
 all: $(NAME)
 
@@ -39,8 +40,6 @@ clean:
 fclean: clean
 	@$(RM) $(NAME)
 
-re:
-	@fclean
-	@all
+re: fclean all
 
 .PHONY:	all clean fclean re

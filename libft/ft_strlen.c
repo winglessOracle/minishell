@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minishell.c                                        :+:    :+:            */
+/*   ft_strlen.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/22 12:09:31 by carlo         ########   odam.nl         */
+/*   Created: 2022/10/10 09:27:49 by cwesseli      #+#    #+#                 */
+/*   Updated: 2023/03/22 09:06:40 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlen(const char *s)
 {
-	(void)argc;
-	(void)argv;
-	
-	t_node **tokens;
-	tokens = malloc(sizeof(t_node **));
-	if (!tokens)
-		exit_error(21);
-	*tokens = NULL;
-	
-	char *str = "Hello word! how are $YOU?";
-	*tokens = ft_lexer(tokens, str);
-	
-	while (*tokens)
-	{
-		printf("content=%s\n", (char *)(*tokens)->content);
-		*tokens = (*tokens)->next;
-	}
-	
-	exit(EXIT_SUCCESS);
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }

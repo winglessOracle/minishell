@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/21 16:17:55 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/22 14:18:07 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,18 @@ typedef enum e_lextype
 	L_LESS,
 	PIPE,
 	VAR,
-	OPERATOR,
-	ASSIGN,
+	//OPERATOR,
+	//ASSIGN,
 	D_QUOTE,
 	S_QUOTE,
 	WILD_CARD,
 	AND_AND,
 	OR_OR,
+	SPACE,
 }	t_lextype;
 
+void	ft_lexer(t_node **list, char *str);
+char	*ft_strtok(char *str, char *delim);
 
 #endif
 
