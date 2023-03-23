@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/23 18:33:44 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/23 18:53:28 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,17 @@ void	ft_lexer(t_node **list, char *str)
 	char	*input_line;
 	char	*deliminators;
 	
-	deliminators = "| ";
+	deliminators = ">| ";
 	input_line = ft_strdup(str);
-	printf("input_line = %s\n", input_line);
 	token = ft_strtok(input_line, deliminators, list);
 	while (token != NULL) 	// convert to lower case?
 	{
-		printf("\ttoken= %s\n", token);
-	 	if (token[0] != '\0')
+	 	if (token[0] != '\0' && token)
 			lstadd_secondback(list, new_node(0, ft_strdup(token)));
-	 	token = ft_strtok(NULL, deliminators, list);
+		token = ft_strtok(NULL, deliminators, list);
 	}
 	free (input_line);
-	lstswapt_last(list);//swap last nodes?
+	lstswapt_last(list);
 }
 
 int	getlexerenum(char token)

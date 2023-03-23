@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/23 14:05:21 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/23 18:41:57 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	lstswapt_last(t_node **lst)
 	t_node *last;
 	t_node *second_last;
 
-	if (lst && *lst)
+	if (lst && *lst && (*lst)->next)
 	{
 		last = lstlast(*lst);
 		second_last = last->prev;
