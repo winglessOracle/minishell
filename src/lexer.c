@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/23 13:26:05 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/23 18:33:44 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ char	*ft_strtok(char *str, char *delim, t_node **list)
 		{
 			*last_pos = '\0';
 			last_pos++;
-			lstadd_back(list, new_node(getlexerenum(d), NULL));
-			return (token_start);
+			lstadd_back(list, new_node(getlexerenum(*d), NULL));
+			if (token_start != last_pos)
+				return (token_start);
 		}
 		last_pos++;
 	}
@@ -49,45 +50,45 @@ void	ft_lexer(t_node **list, char *str)
 	char	*input_line;
 	char	*deliminators;
 	
-	deliminators = " ";
+	deliminators = "| ";
 	input_line = ft_strdup(str);
 	printf("input_line = %s\n", input_line);
 	token = ft_strtok(input_line, deliminators, list);
 	while (token != NULL) 	// convert to lower case?
 	{
 		printf("\ttoken= %s\n", token);
-	 	lstadd_secondback(list, new_node(0, (char *)token));
+	 	if (token[0] != '\0')
+			lstadd_secondback(list, new_node(0, ft_strdup(token)));
 	 	token = ft_strtok(NULL, deliminators, list);
 	}
-	//swap last nodes?
 	free (input_line);
+	lstswapt_last(list);//swap last nodes?
 }
 
-int	getlexerenum(char *token)
+int	getlexerenum(char token)
 {
 	
-	if (ft_strcmp(token, " ") == 0 )
+	if (token == ' ')
 		return (SPACE);
-	else if (ft_strcmp(token, ">") == 0 )
+	else if (token == '>')
  		return (GREAT);
- 	else if (ft_strcmp(token, "<") == 0 )
+ 	else if (token == '<')
 		return (LESS);
+	else if (token == '|')
+		return (PIPE);
+	else if (token == '$')
+		return (VAR);
+	else if (token == '\"')
+		return (D_QUOTE);
+	else if (token == '\'')
+		return (S_QUOTE);
+	else if (token == '*')
+		return (WILD_CARD);
+	
 	// else if (ft_strcmp(token, ">>") == 0 )
 	// 	return (G_GREAT);
 	// else if (ft_strcmp(token, "<<") == 0 )
 	// 	return (L_LESS);
-	else if (ft_strcmp(token, "|") == 0 )
-		return (PIPE);
-	else if (ft_strcmp(token, "$") == 0 )
-		return (VAR);
-	else if (ft_strcmp(token, " ") == 0 )
-		return (SPACE);
-	else if (ft_strcmp(token, "\"") == 0 )
-		return (D_QUOTE);
-	else if (ft_strcmp(token, "\'") == 0 )
-		return (S_QUOTE);
-	else if (ft_strcmp(token, "*") == 0 )
-		return (WILD_CARD);
 	// else if (ft_strcmp(token, "&&") == 0 )
 	// 	return (AND_AND);
 	// else if (ft_strcmp(token, "||") == 0 )

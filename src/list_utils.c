@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/23 13:21:07 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/23 14:05:21 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,22 @@ void	lstclear(t_node **lst, void (*del)(void *))
 			lstdelone(*lst, del);
 			*lst = temp;
 		}
+	}
+}
+
+void	lstswapt_last(t_node **lst)
+{
+	t_node *last;
+	t_node *second_last;
+
+	if (lst && *lst)
+	{
+		last = lstlast(*lst);
+		second_last = last->prev;
+		last->prev = second_last->prev;
+		last->next = second_last;
+		second_last->prev->next = last;
+		second_last->prev = last;
+		second_last->next = NULL;		
 	}
 }
