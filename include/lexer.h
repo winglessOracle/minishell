@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/22 14:18:07 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/23 12:49:15 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 typedef enum e_lextype
 {
 	WORD = 0,
+	SPACE,
 	GREAT,
 	LESS,
 	G_GREAT,
@@ -31,11 +32,12 @@ typedef enum e_lextype
 	WILD_CARD,
 	AND_AND,
 	OR_OR,
-	SPACE,
+
+	
 }	t_lextype;
 
-void	ft_lexer(t_node **list, char *str);
-char	*ft_strtok(char *str, char *delim);
+// char	*ft_strtok(char *str, char *delim);
+// void	ft_lexer(t_node **list, char *str);
 
 #endif
 

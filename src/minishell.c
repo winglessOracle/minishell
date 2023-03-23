@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/22 12:09:31 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/23 12:52:30 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,13 @@ int	main(int argc, char **argv)
 	if (!tokens)
 		exit_error(21);
 	*tokens = NULL;
-	
-	char *str = "Hello word! how are $YOU?";
-	*tokens = ft_lexer(tokens, str);
+	char *str = "Hello world>How| are$YOU?> today?";
+	ft_lexer(tokens, str);
 	
 	while (*tokens)
 	{
-		printf("content=%s\n", (char *)(*tokens)->content);
+		printf("type=%d\tcontent=%s\n", (*tokens)->type, (char *)(*tokens)->content);
 		*tokens = (*tokens)->next;
 	}
-	
 	exit(EXIT_SUCCESS);
 }

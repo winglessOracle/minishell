@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.42.fr>                  +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 09:28:59 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/22 09:28:29 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/22 21:50:14 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 # include <stdarg.h>
 # include <limits.h>
 
-char	*ft_strchr(const char *s1, int c);
+char	*ft_strchr(char *s1, int c);
 char	*ft_strdup(const char *s);
 int		ft_isspace(int c);
 void	ft_free(void *param);
 void	ft_free_array(char **arr);
 size_t	ft_strlen(const char *s);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+int		ft_strcmp(const char *s1, const char *s2);
 
 
 // # define COLOR_RED "\x1b[0;31m"

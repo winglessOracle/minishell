@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/03/22 09:23:27 by carlo         ########   odam.nl          #
+#    Updated: 2023/03/22 21:49:51 by carlo         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ AR			= ar -rsc
 RM			= rm -rf
 CFLAGS		= -Wall -Wextra -Werror
 OBJ_FILES	=		$(addprefix obj/, ft_free.o ft_free_array.o ft_strchr.o ft_strdup.o\
-						ft_strlen.o)
+						ft_strlen.o ft_strlcpy.o ft_strcmp.o)
 
 all: $(NAME)
 

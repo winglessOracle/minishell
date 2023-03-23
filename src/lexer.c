@@ -6,96 +6,92 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/22 14:17:50 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/23 13:26:05 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 
-
-char	*ft_strtok(char *str, char *delim)
+char	*ft_strtok(char *str, char *delim, t_node **list)
 {
-	static char	*index;
-	char		*start;
+	static char	*last_pos = NULL;
+	char		*token_start;
+	char		*d;
 
 	if (str != NULL)
-		index = str;
-	else if (index == NULL)
+		last_pos = str;
+	else if (last_pos == NULL)
 		return (NULL);
-	start = index;
-	while (*index)
+	token_start = last_pos;
+	//find start of next token
+	while (*last_pos != '\0')
 	{
-		if (ft_strchr(*index, delim))
+		d = ft_strchr(delim, *last_pos);
+		if (d != NULL)
 		{
-			*index = '\0';
-			index++;
-			if (start != index - 1)
-				return (start);
-			else
-			{
-				start = index;
-				break ;
-			}
+			*last_pos = '\0';
+			last_pos++;
+			lstadd_back(list, new_node(getlexerenum(d), NULL));
+			return (token_start);
 		}
-		index++;		
-	}	
+		last_pos++;
+	}
+	//no more tokens
+	if (token_start == last_pos)
+		return (NULL);
+	else
+		return (token_start);
 }
 
 void	ft_lexer(t_node **list, char *str)
 {
-//	enum	e_lextype;
-	char	*tok;
-
-	//mmm = strdup(line); //do we need to maintain original str?
-	tok = ft_strtok(str, ' ');
-	while (tok != NULL) 	// convert to lower case?
+	char	*token;
+	char	*input_line;
+	char	*deliminators;
+	
+	deliminators = " ";
+	input_line = ft_strdup(str);
+	printf("input_line = %s\n", input_line);
+	token = ft_strtok(input_line, deliminators, list);
+	while (token != NULL) 	// convert to lower case?
 	{
-		//if (strcmp(token, ))
-		lstadd_back(list, new_node(99, tok));
-		tok = ft_strtok(NULL, ' ');
+		printf("\ttoken= %s\n", token);
+	 	lstadd_secondback(list, new_node(0, (char *)token));
+	 	token = ft_strtok(NULL, deliminators, list);
 	}
+	//swap last nodes?
+	free (input_line);
 }
 
-
+int	getlexerenum(char *token)
+{
 	
-	//  switch(getlexerenum(word)) {
-			// case WORD1;
-				//addnodetolist
-				// break;
-			//default:
-				///donothing
-				// break;
-		// }
-		
-// int	getlexerenum(char *token)
-// {
-// 	if (strcmp(token, ">" == 0 ))
-//  		return (GREAT);
-//  	else if (strcmp(token, "<" == 0 ))
-// 		return (LESS);
-// 	else if (strcmp(token, ">>" == 0 ))
-// 		return (G_GREAT);
-// 	else if (strcmp(token, "<<" == 0 ))
-// 		return (L_LESS);
-// 	else if (strcmp(token, "|" == 0 ))
-// 		return (PIPE);
-// 	else if (strcmp(token, "$" == 0 ))
-// 		return (VAR);
-// 	else if (strcmp(token, " " == 0 ))
-// 		return (SPACE);
-// 	else if (strcmp(token, "\"" == 0 ))
-// 		return (D_QUOTE);
-// 	else if (strcmp(token, "\'" == 0 ))
-// 		return (S_QUOTE);
-// 	else if (strcmp(token, "*" == 0 ))
-// 		return (WILD_CARD);
-// 	else if (strcmp(token, "&&" == 0 ))
-// 		return (AND_AND);
-// 	else if (strcmp(token, "||" == 0 ))
-// 		return (OR_OR);
-// 	else if (strcmp(token, " " == 0 ))
-// 		return (SPACE);
-// 	else
-// 		return (WORD);
-// }
-
+	if (ft_strcmp(token, " ") == 0 )
+		return (SPACE);
+	else if (ft_strcmp(token, ">") == 0 )
+ 		return (GREAT);
+ 	else if (ft_strcmp(token, "<") == 0 )
+		return (LESS);
+	// else if (ft_strcmp(token, ">>") == 0 )
+	// 	return (G_GREAT);
+	// else if (ft_strcmp(token, "<<") == 0 )
+	// 	return (L_LESS);
+	else if (ft_strcmp(token, "|") == 0 )
+		return (PIPE);
+	else if (ft_strcmp(token, "$") == 0 )
+		return (VAR);
+	else if (ft_strcmp(token, " ") == 0 )
+		return (SPACE);
+	else if (ft_strcmp(token, "\"") == 0 )
+		return (D_QUOTE);
+	else if (ft_strcmp(token, "\'") == 0 )
+		return (S_QUOTE);
+	else if (ft_strcmp(token, "*") == 0 )
+		return (WILD_CARD);
+	// else if (ft_strcmp(token, "&&") == 0 )
+	// 	return (AND_AND);
+	// else if (ft_strcmp(token, "||") == 0 )
+	// 	return (OR_OR);
+	else
+		return (WORD);
+}

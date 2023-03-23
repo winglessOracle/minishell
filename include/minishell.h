@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/22 14:18:42 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/23 13:02:15 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 
 # include "libft.h"
 # include "lexer.h"
+# include <string.h>
 # include <stdio.h>
 # include <errno.h>
+# include <stdlib.h>
 // # include <stdbool.h>
 // # include <limits.h>
 
@@ -45,6 +47,13 @@ t_node	*lstlast(t_node *lst);
 void	lstadd_back(t_node **lst, t_node *new);
 void	lstdelone(t_node *lst, void (*del)(void *));
 void	lstclear(t_node **lst, void (*del)(void *));
+void	lstadd_secondback(t_node **lst, t_node *new);
+
+//temp location lexer syuffas in lexer.h they do not recognize t_node
+char	*ft_strtok(char *str, char *delim, t_node **list);
+void	ft_lexer(t_node **list, char *str);
+int		getlexerenum(char *token);
+
 
 #endif
 
