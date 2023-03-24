@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/24 11:51:24 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/24 12:11:37 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,18 @@ char	*ft_strtok(char *str, char *delim, t_node **list)
 		return (token_start);
 }
 
-void	lexer(t_node **list, char *str)
+void	lexer(t_node **list, char *str, char *delim)
 {
 	char	*token;
 	char	*input_line;
-	char	*deliminators;
 	
-	deliminators = ">| ";
 	input_line = ft_strdup(str);
-	token = ft_strtok(input_line, deliminators, list);
+	token = ft_strtok(input_line, delim, list);
 	while (token != NULL) 	// convert to lower case?
 	{
 	 	if (token[0] != '\0' && token)
 			lstadd_secondback(list, new_node(0, ft_strdup(token)));
-		token = ft_strtok(NULL, deliminators, list);
+		token = ft_strtok(NULL, delim, list);
 	}
 	free (input_line);
 	lstswapt_last(list);
@@ -65,7 +63,6 @@ void	lexer(t_node **list, char *str)
 
 int	getlexerenum(char token)
 {
-	
 	if (token == ' ')
 		return (SPACE);
 	else if (token == '>')
@@ -74,23 +71,16 @@ int	getlexerenum(char token)
 		return (LESS);
 	else if (token == '|')
 		return (PIPE);
-	else if (token == '$')
-		return (VAR);
-	else if (token == '\"')
-		return (D_QUOTE);
-	else if (token == '\'')
-		return (S_QUOTE);
-	else if (token == '*')
-		return (WILD_CARD);
-	
-	// else if (ft_strcmp(token, ">>") == 0 )
-	// 	return (G_GREAT);
-	// else if (ft_strcmp(token, "<<") == 0 )
-	// 	return (L_LESS);
-	// else if (ft_strcmp(token, "&&") == 0 )
-	// 	return (AND_AND);
-	// else if (ft_strcmp(token, "||") == 0 )
-	// 	return (OR_OR);
+	else if (token == '\t')
+ 		return (TAB);
+ 	else if (token == ';')
+		return (SEMI);
+	else if (token == '&')
+		return (AND);
+ 	else if (token == '(')
+		return (BRACE_O);
+	else if (token == ')')
+		return (BRACE_C);
 	else
 		return (WORD);
 }

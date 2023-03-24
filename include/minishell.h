@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/24 11:53:26 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/24 12:11:51 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	lstswapt_last(t_node **lst);
 
 //temp location lexer syuffas in lexer.h they do not recognize t_node
 char	*ft_strtok(char *str, char *delim, t_node **list);
-void	lexer(t_node **list, char *str);
+void	lexer(t_node **list, char *str, char *delim);
 int		getlexerenum(char token);
 
 // environment

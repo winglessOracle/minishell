@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/24 11:54:04 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/24 12:15:39 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,12 @@ int	main(int argc, char **argv, char **envp)
 		exit_error(21);
 	*tokens = NULL;
 	char *str = "Hello world>>How| are$YOU|> to||day?";
-	lexer(tokens, str);
-	
-		
+	lexer(tokens, str, "|&;()<> \t");
+			
 	//test print
 	printf("\nprinting output list of lexer:\n\n");
 	printf("tested string:\t\t%s\n", str);
-	printf("tested deliminators:\t'>|'\n\n");
+	printf("tested deliminators:\t'|&;()<> '\n");
 	
 	int i = 1;
 	while (*tokens)
