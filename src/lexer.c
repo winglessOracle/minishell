@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/23 18:53:28 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/24 11:51:24 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_strtok(char *str, char *delim, t_node **list)
 		return (token_start);
 }
 
-void	ft_lexer(t_node **list, char *str)
+void	lexer(t_node **list, char *str)
 {
 	char	*token;
 	char	*input_line;

@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/24 10:19:17 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/24 11:54:04 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,21 @@ int	main(int argc, char **argv, char **envp)
 		exit_error(21);
 	*tokens = NULL;
 	char *str = "Hello world>>How| are$YOU|> to||day?";
-	ft_lexer(tokens, str);
+	lexer(tokens, str);
 	
 		
 	//test print
-	// printf("\nprinting output list of lexer:\n\n");
-	// printf("tested string:\t\t%s\n", str);
-	// printf("tested deliminators:\t'>|'\n\n");
+	printf("\nprinting output list of lexer:\n\n");
+	printf("tested string:\t\t%s\n", str);
+	printf("tested deliminators:\t'>|'\n\n");
 	
-	// int i = 1;
-	// while (*tokens)
-	// {
-	// 	printf("--node [%d]--\ntype\t<%d>\ncontent\t'%s'\n\n", i, (*tokens)->type, (char *)(*tokens)->content);
-	// 	*tokens = (*tokens)->next;
-	// 	i++;
-	// }
+	int i = 1;
+	while (*tokens)
+	{
+		printf("--node [%d]--\ntype\t<%d>\ncontent\t'%s'\n\n", i, (*tokens)->type, (char *)(*tokens)->content);
+		*tokens = (*tokens)->next;
+		i++;
+	}
 	
 	//test env, move init to init master_struct
 	t_node 	**env_list;
