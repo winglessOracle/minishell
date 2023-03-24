@@ -6,13 +6,13 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/23 18:55:43 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/24 10:19:17 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **envp)
 {
 	(void)argc;
 	(void)argv;
@@ -27,16 +27,26 @@ int	main(int argc, char **argv)
 	
 		
 	//test print
-	printf("\nprinting output list of lexer:\n\n");
-	printf("tested string:\t\t%s\n", str);
-	printf("tested deliminators:\t'>|'\n\n");
+	// printf("\nprinting output list of lexer:\n\n");
+	// printf("tested string:\t\t%s\n", str);
+	// printf("tested deliminators:\t'>|'\n\n");
 	
-	int i = 1;
-	while (*tokens)
-	{
-		printf("--node [%d]--\ntype\t<%d>\ncontent\t'%s'\n\n", i, (*tokens)->type, (char *)(*tokens)->content);
-		*tokens = (*tokens)->next;
-		i++;
-	}
+	// int i = 1;
+	// while (*tokens)
+	// {
+	// 	printf("--node [%d]--\ntype\t<%d>\ncontent\t'%s'\n\n", i, (*tokens)->type, (char *)(*tokens)->content);
+	// 	*tokens = (*tokens)->next;
+	// 	i++;
+	// }
+	
+	//test env, move init to init master_struct
+	t_node 	**env_list;
+	env_list = malloc(sizeof(t_node **));
+	if (!env_list)
+		exit_error(errno);
+	*env_list = NULL;
+	env_to_list(envp, env_list);
+	print_env(env_list);
+	
 	exit(EXIT_SUCCESS);
 }

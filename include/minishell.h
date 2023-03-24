@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/23 14:37:01 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/24 10:22:12 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 // # include <stdbool.h>
 // # include <limits.h>
 
+extern char **environ;
+
 typedef struct s_node
 {
 	int				type;
@@ -36,7 +38,7 @@ typedef struct s_master
 	char	*infile;
 	char	*outfile;
 	char	*errorfile;
-	char	**local_vars;
+	t_node	**env_list;
 	t_node	**commands;
 	
 }	t_master;
@@ -56,6 +58,9 @@ char	*ft_strtok(char *str, char *delim, t_node **list);
 void	ft_lexer(t_node **list, char *str);
 int		getlexerenum(char token);
 
+// environment
+void	print_env(t_node **env_list);
+void	env_to_list(char **envp, t_node **env_list);
 
 #endif
 
