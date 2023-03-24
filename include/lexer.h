@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   minishell.h                                        :+:    :+:            */
+/*   lexer.h                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/24 09:35:48 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/21 16:05:51 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINISHELL_H
-# define MINISHELL_H
-
-# include "libft.h"
-# include <errno.h>
-// # include <stdbool.h>
-// # include <limits.h>
-# include <stdio.h>
-
-typedef struct s_node
-{
-	int				type;
-	void			*content;
-	struct s_node	*prev;
-	struct s_node	*next;
-}	t_node;
+#ifndef LEXER_H
+# define LEXER_H
+# include "minisell.h"
 
 typedef enum e_lextype
 {
@@ -45,22 +32,7 @@ typedef enum e_lextype
 	OR_OR,
 }	t_lextype;
 
-typedef struct s_master
-{
-	char	*infile;
-	char	*outfile;
-	char	*errorfile;
-	char	**local_vars;
-	t_node	**commands;
-	
-}	t_master;
 
-void	exit_error(int num);
-t_node	*new_node(int type, void *content);
-t_node	*lstlast(t_node *lst);
-void	lstadd_back(t_node **lst, t_node *new);
-void	lstdelone(t_node *lst, void (*del)(void *));
-void	lstclear(t_node **lst, void (*del)(void *));
 #endif
 
 /*error handeling:

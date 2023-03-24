@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/24 09:23:33 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/24 09:36:05 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_node	*new_node(int type, void *content)
 
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
-		exit(errno);						//create exit error function?
+		exit_error(errno);						//create exit error function?
 	new_node->type = type;
 	new_node->content = content;
 	new_node->next = NULL;
