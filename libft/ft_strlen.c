@@ -1,47 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lexer.h                                            :+:    :+:            */
+/*   ft_strlen.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/23 12:49:15 by carlo         ########   odam.nl         */
+/*   Created: 2022/10/10 09:27:49 by cwesseli      #+#    #+#                 */
+/*   Updated: 2023/03/22 09:06:40 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
+#include "libft.h"
 
-# include "minishell.h"
-
-typedef enum e_lextype
+size_t	ft_strlen(const char *s)
 {
-	WORD = 0,
-	SPACE,
-	GREAT,
-	LESS,
-	G_GREAT,
-	L_LESS,
-	PIPE,
-	VAR,
-	//OPERATOR,
-	//ASSIGN,
-	D_QUOTE,
-	S_QUOTE,
-	WILD_CARD,
-	AND_AND,
-	OR_OR,
+	int	i;
 
-	
-}	t_lextype;
-
-// char	*ft_strtok(char *str, char *delim);
-// void	ft_lexer(t_node **list, char *str);
-
-#endif
-
-/*error handeling:
-1.
-
-*/
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}

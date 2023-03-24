@@ -1,47 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lexer.h                                            :+:    :+:            */
+/*   ft_strcmp.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/23 12:49:15 by carlo         ########   odam.nl         */
+/*   Created: 2022/10/10 09:27:54 by cwesseli      #+#    #+#                 */
+/*   Updated: 2023/03/22 09:12:40 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
+#include "libft.h"
 
-# include "minishell.h"
-
-typedef enum e_lextype
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	WORD = 0,
-	SPACE,
-	GREAT,
-	LESS,
-	G_GREAT,
-	L_LESS,
-	PIPE,
-	VAR,
-	//OPERATOR,
-	//ASSIGN,
-	D_QUOTE,
-	S_QUOTE,
-	WILD_CARD,
-	AND_AND,
-	OR_OR,
+	size_t	i;
 
-	
-}	t_lextype;
+	if (!s1 || !s2)
+		return (-1);
+	i = 0;
+	while ((s1[i] || s2[i]))
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return (0);
+}
 
-// char	*ft_strtok(char *str, char *delim);
-// void	ft_lexer(t_node **list, char *str);
-
-#endif
-
-/*error handeling:
-1.
-
-*/
