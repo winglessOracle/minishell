@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/24 10:17:28 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/24 10:22:12 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ typedef struct s_master
 	char	*infile;
 	char	*outfile;
 	char	*errorfile;
-	t_node	**env;
-	t_node	**local_env;
+	t_node	**env_list;
 	t_node	**commands;
 	
 }	t_master;
