@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/24 14:05:31 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/24 14:07:33 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,8 @@ void	test_lexer(char *str, t_node **tokens)
 	
 }
 
-void	test_env(t_node **env_list)
-{
-	print_env(env_list);
-}
-
 void	run_tests(char *str, t_node **tokens, t_master *master)
 {
 	test_lexer(str, tokens);
-	test_env(master->env_list);
+	print_env(master->env_list);
 }

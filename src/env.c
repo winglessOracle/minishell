@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/24 13:43:08 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/24 14:10:46 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	print_env(t_node **env_list)
 	temp = *env_list;
 	while (temp)
 	{
-		if (temp->type == 1)
+		if (temp->type == 1)  // also prevent printing when var=NULL
 			printf("%s\n", (char *)temp->content);
 		temp = temp->next;
 	}
