@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/21 15:29:35 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/24 09:24:22 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ t_node	*new_node(int type, void *content);
 t_node	*lstlast(t_node *lst);
 void	lstadd_back(t_node **lst, t_node *new);
 void	lstdelone(t_node *lst, void (*del)(void *));
+void	lstclear(t_node **lst, void (*del)(void *));
 #endif
 
 /*error handeling:
