@@ -6,27 +6,35 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/24 17:26:38 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/26 22:18:03 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp) //remove arguments and return type?
 {
-	(void)argc; //waarom is dit?
+	(void)argc;
 	(void)argv;
+	char	*command_buff;
 	t_node **tokens;
 	t_master *master;
 
-	char *str = "'Hello' world>>How| are$YOU|> to||day?";
-	tokens = lexer(str, "|&;()<> \t");
 	master = init_master_struct();
-	master->env_list = env_to_list(envp);
 	// master->commands =
+	master->env_list = env_to_list(envp);
+	while (1)
+	{
+		command_buff = readline("CC_PROMPT:$> ");
+		if (!ft_strcmp(command_buff, "exit"))
+			break ;
+		if (ft_strlen(command_buff) > 0)
+			add_history(command_buff);
+		tokens = lexer(command_buff, "|&;()<> \t");
+	}
 
 	//tests
-	run_tests(str, tokens, master);
+	run_tests(command_buff, tokens, master);
 	
-	exit(EXIT_SUCCESS);
+		exit(EXIT_SUCCESS);
 }

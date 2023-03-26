@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/03/24 17:29:11 by ccaljouw      ########   odam.nl          #
+#    Updated: 2023/03/26 22:23:07 by carlo         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RESET	:= \033[0m
 #//= Variables = //#
 NAME		= minishell
 CC			= clang
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -lreadline
 
 #//= Locations =//#
 INCLUDE		= ./include

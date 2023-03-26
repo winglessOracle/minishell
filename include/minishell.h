@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/24 17:25:35 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/26 22:16:46 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <stdio.h>
 # include <errno.h>
 # include <stdlib.h>
+# include <readline/readline.h>
+# include <readline/history.h>
+
 // # include <stdbool.h>
 // # include <limits.h>
 
