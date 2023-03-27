@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/26 22:18:03 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/27 14:30:48 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,29 @@
 
 int	main(int argc, char **argv, char **envp) //remove arguments and return type?
 {
-	(void)argc;
-	(void)argv;
-	char	*command_buff;
-	t_node **tokens;
-	t_master *master;
+	char		*line_read;
+	t_node		**tokens;
+	t_master	*master;
 
 	master = init_master_struct();
-	// master->commands =
 	master->env_list = env_to_list(envp);
+	//master->commands =
+	line_read = NULL;	
 	while (1)
 	{
-		command_buff = readline("CC_PROMPT:$> ");
-		if (!ft_strcmp(command_buff, "exit"))
+		if (line_read)
+		{
+		  	free(line_read);
+		  	line_read = NULL;
+		}
+		line_read = readline("CC_PROMPT:$> ");
+		if (!ft_strcmp(line_read, "exit"))
 			break ;
-		if (ft_strlen(command_buff) > 0)
-			add_history(command_buff);
-		tokens = lexer(command_buff, "|&;()<> \t");
+		if (line_read && *line_read)
+		 	add_history(line_read);
+		tokens = lexer(line_read, "|&;()<> \t");
 	}
-
-	//tests
-	run_tests(command_buff, tokens, master);
-	
-		exit(EXIT_SUCCESS);
+	run_tests(tokens, master);
+	clear_history();
+	exit(EXIT_SUCCESS);
 }
