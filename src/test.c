@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/26 22:06:02 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/27 15:09:00 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,17 @@
 void	test_lexer(char *str, t_node **tokens)
 {
 	int i = 1;
+	t_node	*temp;
 	
 	printf("\nprinting output list of lexer:\n\n");
 	printf("tested string:\t\t%s\n", str);
 	printf("tested deliminators:\t'|<> '\n"); // &;() skipped for now
-
-	while (*tokens)
+	temp = *tokens;
+	while (temp)
 	{
-		printf("--node [%d]--\ntype\t<%d>\ncontent\t'%s'\n\n", i, (*tokens)->type, (char *)(*tokens)->content);
+		printf("--node [%d]--\ntype\t<%d>\ncontent\t'%s'\n\n", i, temp->type, (char *)temp->content);
 		// printf("token: %s, type: %d\n", (char *)(*tokens)->content, (*tokens)->type);
-		*tokens = (*tokens)->next;
+		temp = temp->next;
 		i++;
 	}
 	

@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/27 10:03:34 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/27 14:59:56 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ typedef struct s_master
 	char	*errfile;
 	char	*here_end;
 	int		last_exit;  // is dit hier handig?
-	t_node	**env_list;
-	t_node	**commands;
+	t_node	*env_list;
+	t_node	*commands;
 	
 }	t_master;
 
@@ -66,11 +66,12 @@ t_node		**lexer(char *str, char *delim);
 int			getlexerenum(char token);
 
 // environment
-void		print_env(t_node **env_list);
-t_node		**env_to_list(char **envp);
+void		print_env(t_node *env_list);
+t_node		*env_to_list(char **envp);
 
 
 //tests
+void	leaks(void);
 void	run_tests(char *str, t_node **tokens, t_master *master);
 
 #endif

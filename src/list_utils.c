@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/27 10:24:58 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/27 15:09:38 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	delete_content(void *content)
 	char	*temp;
 	
 	temp = (char *)content;
+	// printf("delete: %s\n", temp);
 	free(temp);
 }
 

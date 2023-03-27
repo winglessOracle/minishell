@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/27 10:21:35 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/27 15:10:56 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,14 +85,14 @@ void	ft_strtok(char *str, char *delim, t_node **tokens)
 			temp = ft_substr(d, 0, 1);
 			str[i] = '\0';
 			if (j != i)
-				lstadd_back(tokens, new_node(getlexerenum(str[j]), &str[j]));
+				lstadd_back(tokens, new_node(getlexerenum(str[j]), ft_strdup(&str[j])));
 			lstadd_back(tokens, new_node(getlexerenum(*d), temp));
 			j = i + 1;
 		}
 		i++;
 	}
 	if (j != i)
-			lstadd_back(tokens, new_node(getlexerenum(str[j]), &str[j]));
+			lstadd_back(tokens, new_node(getlexerenum(str[j]), ft_strdup(&str[j])));
 }
 
 void	merge_tokens(t_node **token, int type)
@@ -100,17 +100,12 @@ void	merge_tokens(t_node **token, int type)
 	char	*content;
 	t_node	*temp;
 
-	content = ft_strjoin((char *)(*token)->content, (char *)(*token)->next->content);
-	printf("merge: %s to: %s\n", (char* )(*token)->content, content);
 	temp = lst_pop(token);
-	printf("pop: %s, head: %s\n", (char *)temp->content, (char *)(*token)->content);
-	temp = lst_pop(token);
-	printf("pop2: %s, head: %s\n", (char *)temp->content, (char *)(*token)->content);
-	// free nodes from pop?
-	temp = new_node(type, content);
-	printf("new: %s, head: %s\n", (char *)temp->content, (char *)(*token)->content);
-	lst_insert(token, new_node(type, temp));
-	printf("head: %s, next: %s\n", (char *)(*token)->content, (char *)(*token)->next->content);
+	content = ft_strjoin((char *)(*token)->content, temp->content);
+	free((char *)(*token)->content);
+	(*token)->content = content;
+	(*token)->type = type;
+	lstdelone(temp, delete_content);
 }
 
 void	check_split_tokens(t_node **tokens)
@@ -131,6 +126,7 @@ void	check_split_tokens(t_node **tokens)
 			merge_tokens(&temp, DGREAT);
 		else
 			temp = temp->next;
+		printf("head in check_split_tokens: %s\n", (char *)temp->content);
 	}
 }
 
@@ -139,14 +135,14 @@ t_node	**lexer(char *str, char *delim)
 	t_node	**tokens;
 	char	*input_line;
 	
-	tokens = malloc(sizeof(t_node **)); 
+	tokens = malloc(sizeof(t_node *)); 
 	if (!tokens)
 		exit_error(21);
 	input_line = ft_strdup(str);
 	ft_strtok(input_line, delim, tokens);
 	free (input_line);
 	check_split_tokens(tokens);
-	printf("head in lexer: %s\n", (char *)(*tokens)->content);
+	printf("head tokens: %s\n", (char *)(*tokens)->content);
 	return (tokens);
 }
 
