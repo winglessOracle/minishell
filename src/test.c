@@ -6,13 +6,13 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/27 12:38:07 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/27 18:22:05 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 	
-void	test_lexer(t_node **tokens)
+void	test_lexer(t_node **tokens) //error with empty string
 {
 	int i = 1;
 	
@@ -25,11 +25,11 @@ void	test_lexer(t_node **tokens)
 		*tokens = (*tokens)->next;
 		i++;
 	}
-	
 }
 
 void	run_tests(t_node **tokens, t_master *master)
 {
 	test_lexer(tokens);
-	print_env(master->env_list);
+	print_env(&master->env_list, 2);
+	printf("test=%s", get_var(&master->env_list, "PAGER"));
 }

@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.42.fr>                  +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 09:28:59 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/22 21:50:14 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/27 17:58:36 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@ void	ft_free_array(char **arr);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 
 // # define COLOR_RED "\x1b[0;31m"
