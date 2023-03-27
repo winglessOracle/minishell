@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   init.c                                             :+:    :+:            */
+/*   ft_bzero.c                                         :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/24 13:05:51 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/26 14:42:09 by cariencaljo   ########   odam.nl         */
+/*   Created: 2022/10/12 09:19:37 by ccaljouw      #+#    #+#                 */
+/*   Updated: 2022/10/17 13:45:07 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-t_master	*init_master_struct(void)
+void	ft_bzero(void *s, size_t n)
 {
-	t_master *master;
-	
-	master = malloc(sizeof(t_master));
-	if (!master)
-		exit_error(errno);
-	master->infile = NULL;
-	master->outfile = NULL;
-	master->errfile = NULL;
-	master->here_end = NULL;
-	master->last_exit = 0;
-	master->env_list = NULL;
-	master->commands = NULL;
-	return (master);
+	ft_memset(s, '\0', n);
 }
+
+// NAME
+//      bzero -- write zeroes to a byte string
+
+// LIBRARY
+//      Standard C Library (libc, -lc)
+
+// SYNOPSIS
+//      #include <strings.h>
+//      void	bzero(void *s, size_t n);
+
+// DESCRIPTION
+//      The bzero() function writes n zeroed bytes to the string s.  
+// 		If n is zero, bzero() does nothing.

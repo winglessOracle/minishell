@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/24 17:26:38 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/26 14:54:06 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char **argv, char **envp)
 	t_master *master;
 
 	char *str = "'Hello' world>>How| are$YOU|> to||day?";
-	tokens = lexer(str, "|&;()<> \t");
+	tokens = lexer(str, "|<> \t\n"); //&;() ignored for now
 	master = init_master_struct();
 	master->env_list = env_to_list(envp);
 	// master->commands =

@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.42.fr>                  +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 09:28:59 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/22 21:50:14 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/26 21:54:41 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ void	ft_free_array(char **arr);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	*ft_calloc(size_t count, size_t size);
+void	ft_bzero(void *s, size_t n);
+void	*ft_memset(void *b, int c, size_t len);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 
 // # define COLOR_RED "\x1b[0;31m"
