@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/27 15:09:38 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/27 15:37:11 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	delete_content(void *content)
 	char	*temp;
 	
 	temp = (char *)content;
-	// printf("delete: %s\n", temp);
+	printf("delete: %s\n", temp);
 	free(temp);
 }
 
@@ -91,21 +91,6 @@ t_node	*lst_pop(t_node **lst)
 		(*lst)->next->prev = (*lst)->prev;
 	*lst = (*lst)->next;
 	return (temp);
-}
-
-void	lst_insert(t_node **lst, t_node *new)
-{
-	t_node	**temp;
-
-	if (new)
-	{
-		temp = lst;
-		new->next = *temp;
-		new->prev = (*temp)->prev;
-		if ((*temp)->next)
-			(*temp)->next->prev = new;
-		*lst = new;
-	}
 }
 
 void	lstclear(t_node **lst, void (*del)(void *))

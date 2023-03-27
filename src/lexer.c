@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/27 15:10:56 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/27 15:36:46 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,22 +111,36 @@ void	merge_tokens(t_node **token, int type)
 void	check_split_tokens(t_node **tokens)
 {
 	t_node	*temp;
-	// char	quote;
-	// int		quoted;
-
-	// quoted = 0;
+	char	*str;
+	int		state;
+	
 	temp = *tokens;
-	while (temp && temp->next)
+	state = 0;
+	while (temp)
 	{
+		str = (char *)temp->content;
+		// printf("str: %s\n", str);
 		// check comment
+		while (*str)
+		{
+			if (*str == '#')
+				state = COMMENT;
+			str++;
+		}
+		while (temp && state != 0)
+		{
+			if (temp->type == NEW_LINE)
+				state = 0;
+			merge_tokens(&temp, WORD);
+			temp = temp->next;
+		}
 		// check single or double quotes;
-		if (temp->type == LESS && temp->next->type == LESS)
+		if (temp->next && temp->type == LESS && temp->next->type == LESS)
 			merge_tokens(&temp, DLESS);
-		else if (temp->type == GREAT && temp->next->type == GREAT)
+		else if (temp->next && temp->type == GREAT && temp->next->type == GREAT)
 			merge_tokens(&temp, DGREAT);
 		else
 			temp = temp->next;
-		printf("head in check_split_tokens: %s\n", (char *)temp->content);
 	}
 }
 
