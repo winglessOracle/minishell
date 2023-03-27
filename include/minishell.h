@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/27 18:02:27 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/27 19:10:12 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int		getlexerenum(char token);
 void	print_env(t_node **env_list, int flag);
 t_node	*env_to_list(char **envp);
 void	add_variable(t_node *env_list, char *content, int type);
-char	*get_var(t_node **env_list, char *name);
+char	*get_variable(t_node **env_list, char *name);
 
 //tests
 void	run_tests(t_node **tokens, t_master *master);

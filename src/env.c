@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/27 18:24:36 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/27 19:27:17 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ t_node	*env_to_list(char **envp)
 }
 
 //flag defaults to 1 (local)
+//2 = external
+//3 = all
 void	print_env(t_node **env_list, int flag)
 {
 	t_node	*temp;
@@ -67,27 +69,29 @@ void	add_variable(t_node *env_list, char *content, int type)
 		lstadd_back(&env_list, new_node(type, content));
 }
 
-char	*get_var(t_node **env_list, char *name)
+char	*get_variable(t_node **env_list, char *name)
 {
 	t_node	*temp;
 	char	*ret;
 	
-	if (!*env_list || !name) //check with carien
+	if (!*env_list || !name)
 		return NULL;
 	temp = *env_list;
 	ret = NULL;
 	while (temp)
 	{
-		printf("tet");
-		//printf("%s\n", (char *)temp->content);
-		// if (ft_strncmp((char *)temp->content, name, ft_strlen(name)) == 0)
-		// 	printf("found");
-		// 	// ret = ft_substr(temp->content, ft_strlen(name) + 1, 
+		//printf("p-");
+		printf("content=%s", (char *)temp->content);
+		//if (ft_strncmp((char *)temp->content, name, ft_strlen(name)) == 0)
+		//	printf("found");
+		// // 	// ret = ft_substr(temp->content, ft_strlen(name) + 1, 
 		// 	// 	ft_strlen(temp->content) - (ft_strlen(name) + 1));
 		// 	// if (!ret)
 		// 	// 	exit_error(errno);
 		// }
 		temp = temp->next;
 	}
-	return (ret);
+	if (ret)
+		return (ret);
+	return ("carlo");
 }
