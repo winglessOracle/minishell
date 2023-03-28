@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/28 15:10:46 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/28 19:08:18 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 t_node	*env_to_list(char **envp)
 {
 	t_node	*env_list;
-	char	*str;
 	int		i;
 	
 	i = 0;
 	while (envp[i])
 	{
-		str = ft_strdup(envp[i]);
-		lstadd_back(&env_list, new_node(2,str));
+		lstadd_back(&env_list, new_node(2,ft_strdup(envp[i])));
 		i++;
 	}
 	return (env_list);
