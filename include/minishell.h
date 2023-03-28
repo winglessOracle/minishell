@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/27 23:41:22 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/28 17:16:27 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <stdio.h>
 # include <errno.h>
 # include <stdlib.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 // # include <stdbool.h>
 // # include <limits.h>
 
@@ -27,7 +29,7 @@ extern char **environ;
 typedef struct s_node
 {
 	int				type;
-	void			*content;
+	char			*content;
 	struct s_node	*prev;
 	struct s_node	*next;
 	
@@ -47,7 +49,7 @@ typedef struct s_master
 
 t_master	*init_master_struct(void);
 void		exit_error(int num);
-t_node		*new_node(int type, void *content);
+t_node		*new_node(int type, char *content);
 t_node		*lstlast(t_node *lst);
 void		lstadd_back(t_node **lst, t_node *new);
 void		lstadd_front(t_node **lst, t_node *new);
@@ -60,19 +62,21 @@ void		delete_content(void *content);
 
 //lexer
 // char		*ft_strtok(char *str, char *delim, t_node **list);
-t_node		**lexer(char *str, char *delim);
+t_node		*lexer(char *str, char *delim);
 
 // environment
-void		print_env(t_node *env_list);
 t_node		*env_to_list(char **envp);
+void		add_variable(t_node *env_list, char *content, int type);
+char		*get_variable(t_node *env_list, char *name);
+void		print_env(t_node *env_list, int flag);
 
 //parser
 int			get_state(char *str);
 
 //tests
 void		leaks(void);
-void		run_tests(char *str, t_node **tokens, t_master *master);
-void		test_lexer(char *str, t_node **tokens);
+void		run_tests(char *str, t_node *tokens, t_master *master);
+void		test_lexer(char *str, t_node *tokens);
 
 #endif
 

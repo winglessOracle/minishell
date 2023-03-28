@@ -6,46 +6,47 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/28 10:27:21 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/28 17:23:57 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 
-void	merge_tokens(t_node **token, int type)
+void	merge_tokens(t_node *token, int type)
 {
+	// Leaks!!
 	char	*content;
 
-	if ((*token)->next)
+	if (token->next)
 	{
-		content = ft_strjoin((char *)(*token)->content, (char *)(*token)->next->content);
-		free((char *)(*token)->content);
-		(*token)->content = content;
-		(*token)->type = type;
-		lstdelone(lst_pop(&(*token)->next), delete_content);
+		content = ft_strjoin(token->content, token->next->content);
+		free(token->content);
+		token->content = content;
+		token->type = type;
+		lstdelone(lst_pop(&token->next), delete_content);
 	}
 }
 
-int	check_split_tokens(t_node **tokens)
+int	check_split_tokens(t_node *tokens)
 {
 	t_node	*temp;
 	int		state;
 	
-	temp = *tokens;
+	temp = tokens;
 	state = 0;
 	while (temp)
 	{
 		if (temp && ((temp->type == NEW_LINE && state == 1) || state > 1))
 			state = 0;
-		state = get_state((char *)temp->content);
+		state = get_state(temp->content);
 		if (state == EXPAND || state == ASSIGN)
 			temp->type = state;
 		if (temp->next && state > 0 && state < 4)
-			merge_tokens(&temp, state);
+			merge_tokens(temp, state);
 		else if (temp->next && temp->type == LESS && temp->next->type == LESS)
-			merge_tokens(&temp, DLESS);
+			merge_tokens(temp, DLESS);
 		else if (temp->next && temp->type == GREAT && temp->next->type == GREAT)
-			merge_tokens(&temp, DGREAT);
+			merge_tokens(temp, DGREAT);
 		else
 			temp = temp->next;
 	}
@@ -82,8 +83,8 @@ int	getlexerenum(char token)
 
 void	ft_strtok(char *str, char *delim, t_node **tokens)
 {
-	char	*d;
-	char	*temp;
+	char	*token;
+	char	*meta;
 	int		i;
 	int		j;
 
@@ -91,38 +92,36 @@ void	ft_strtok(char *str, char *delim, t_node **tokens)
 	j = 0;
 	while (str && str[i] != '\0')
 	{
-		d = ft_strchr(delim, str[i]);
-		if (d)
+		if (ft_strchr(delim, str[i]))
 		{
-			temp = ft_substr(d, 0, 1);
-			str[i] = '\0';
+			meta = ft_substr(str, j, i - j);
 			if (j != i)
-				lstadd_back(tokens, new_node(getlexerenum(str[j]), ft_strdup(&str[j])));
-			lstadd_back(tokens, new_node(getlexerenum(*d), temp));
+				lstadd_back(tokens, new_node(WORD, meta));
+			token = ft_substr(str, i, 1);
+			lstadd_back(tokens, new_node(getlexerenum(str[i]), token));
+			if (!meta || !token)
+				exit_error(errno);
 			j = i + 1;
 		}
 		i++;
 	}
+	token = ft_substr(str, j, i - j);
+	if (!token)
+		exit_error(errno);
 	if (j != i)
-			lstadd_back(tokens, new_node(getlexerenum(str[j]), ft_strdup(&str[j])));
+		lstadd_back(tokens, new_node(WORD, token));
 }
 
-t_node	**lexer(char *str, char *delim)
+t_node	*lexer(char *input_line, char *delim)
 {
-	t_node	**tokens;
-	char	*input_line;
-	
-	tokens = malloc(sizeof(t_node *)); 
-	if (!tokens)
-		exit_error(errno);
-	input_line = ft_strdup(str);
-	ft_strtok(input_line, delim, tokens);
-	free (input_line);
+	t_node	*tokens;
+
+	tokens = NULL;
+	ft_strtok(input_line, delim, &tokens);
 	if (check_split_tokens(tokens))
 	{
 		write(2, "Error, unclosed quotes\n", 23);
-		lstclear(tokens, delete_content);
-		free(tokens);
+		lstclear(&tokens, delete_content);
 		return (NULL);
 	}
 	return (tokens);
