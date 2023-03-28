@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/27 19:25:13 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/28 09:07:13 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	test_lexer(t_node **tokens) //error with empty string //error with double m
 
 void	run_tests(t_node **tokens, t_master *master)
 {
-	//test_lexer(tokens);
-	//print_env(&master->env_list, 3);
-	printf("\ntest=%s", get_variable(&master->env_list, "PS1"));
+	test_lexer(tokens);
+	print_env(&master->env_list, 3);
+	//printf("\nget var USER test=%s", get_variable(&master->env_list, "USER"));
 }
