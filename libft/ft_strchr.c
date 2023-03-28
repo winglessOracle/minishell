@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 09:27:28 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/22 14:36:19 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/26 20:33:13 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strchr(char *s, int c)
 
 	if (s == NULL)
 		return (NULL);
-	checker = (char *)s;
+	checker = s;
 	to_check = (char)c;
 	while (*checker != to_check && *checker != '\0')
 		checker++;

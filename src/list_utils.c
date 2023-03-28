@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/27 13:59:01 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/28 09:35:07 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,31 +50,25 @@ void	lstadd_back(t_node **lst, t_node *new)
 	}
 }
 
-void	lstadd_secondback(t_node **lst, t_node *new)
+void	lstadd_front(t_node **lst, t_node *new)
 {
-	t_node	*temp;
+	t_node	**temp;
 
 	if (new)
 	{
-		if (*lst == NULL)
-			*lst = new;
-		else if ((*lst)->next == NULL)
-		{
-			(*lst)->prev = new;
-			new->next = *lst;
-			*lst = new;
-		}
-		else
-		{
-			temp = *lst;
-			while (temp->next->next != NULL)
-				temp = temp->next;
-			new->next = temp->next;
-			temp->next->prev = new;
-			temp->next = new;
-			new->prev = temp;
-		}
+		temp = lst;
+		new->next = *temp;
+		*lst = new;
 	}
+}
+
+void	delete_content(void *content)
+{
+	char	*temp;
+	
+	temp = (char *)content;
+	// printf("delete: %s\n", temp);
+	free(temp);
 }
 
 void	lstdelone(t_node *lst, void (*del)(void *))
@@ -84,6 +78,21 @@ void	lstdelone(t_node *lst, void (*del)(void *))
 		del((void *)lst->content);
 		free(lst);
 	}
+}
+
+t_node	*lst_pop(t_node **lst)
+{
+	t_node	*temp;
+
+	temp = *lst;
+	*lst = (*lst)->next;
+	if (temp->prev)
+		temp->prev->next = temp->next;
+	if (temp->next)
+		temp->next->prev = temp->prev;
+	temp->prev = NULL;
+	temp->next = NULL;
+	return (temp);
 }
 
 void	lstclear(t_node **lst, void (*del)(void *))
@@ -101,19 +110,46 @@ void	lstclear(t_node **lst, void (*del)(void *))
 	}
 }
 
-void	lstswapt_last(t_node **lst)
-{
-	t_node *last;
-	t_node *second_last;
+// void	lstswapt_last(t_node **lst)
+// {
+// 	t_node *last;
+// 	t_node *second_last;
 
-	if (lst && *lst && (*lst)->next)
-	{
-		last = lstlast(*lst);
-		second_last = last->prev;
-		last->prev = second_last->prev;
-		last->next = second_last;
-		second_last->prev->next = last;
-		second_last->prev = last;
-		second_last->next = NULL;		
-	}
-}
+// 	if (lst && *lst && (*lst)->next)
+// 	{
+// 		last = lstlast(*lst);
+// 		second_last = last->prev;
+// 		last->prev = second_last->prev;
+// 		last->next = second_last;
+// 		second_last->prev->next = last;
+// 		second_last->prev = last;
+// 		second_last->next = NULL;		
+// 	}
+// }
+
+// void	lstadd_secondback(t_node **lst, t_node *new)
+// {
+// 	t_node	*temp;
+
+// 	if (new)
+// 	{
+// 		if (*lst == NULL)
+// 			*lst = new;
+// 		else if ((*lst)->next == NULL)
+// 		{
+// 			(*lst)->prev = new;
+// 			new->next = *lst;
+// 			*lst = new;
+// 		}
+// 		else
+// 		{
+// 			temp = *lst;
+// 			while (temp->next->next != NULL)
+// 				temp = temp->next;
+// 			new->next = temp->next;
+// 			temp->next->prev = new;
+// 			temp->next = new;
+// 			new->prev = temp;
+// 		}
+// 	}
+// }

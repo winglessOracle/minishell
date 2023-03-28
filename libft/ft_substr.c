@@ -3,10 +3,10 @@
 /*                                                        ::::::::            */
 /*   ft_substr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
+/*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/12 15:51:21 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/27 17:50:32 by cwesseli      ########   odam.nl         */
+/*   Created: 2022/10/12 15:02:31 by ccaljouw      #+#    #+#                 */
+/*   Updated: 2023/03/28 09:32:03 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,30 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char			*ptr;
-	unsigned int	ls;
+	char	*ptr;
+	size_t	strlen;
 
-	ls = ft_strlen((char *) s);
-	if (ls - start < len)
-		len = ls - start;
-	if (!s || ls < start)
-	{
-		ptr = malloc(sizeof(char) * 1);
-		if (!ptr)
-			return (NULL);
-		ptr[0] = '\0';
-		return (ptr);
-	}
-	ptr = malloc(sizeof(char) * (len + 1));
-	if (!ptr)
+	strlen = ft_strlen(s);
+	if (!s || strlen <= start)
+		return (ptr = ft_calloc(1, sizeof(char)));
+	if (len > strlen - start)
+		len = strlen - start;
+	ptr = ft_calloc((len + 1), sizeof(char));
+	if (ptr == 0)
 		return (NULL);
 	ft_strlcpy(ptr, s + start, len + 1);
 	return (ptr);
 }
 
-/*Returns the substring of the given string at 
-the given start position with the given length 
-(or smaller if the length of the original string
-is less than start + length, or length is bigger
-than MAXSTRINGLEN).
-*/
+// Parameters 
+// 		s: The string from which to create the substring.
+// 		start: The start index of the substring in the string ’s’.
+// 		len: The maximum length of the substring.
+// Return value		
+// 		The substring.
+// 		NULL if the allocation fails.
+// External functs. malloc
+//
+// Description Allocates (with malloc(3)) and returns a substring from the 
+// string ’s’. The substring begins at index ’start’ and is of maximum size 
+// ’len’.

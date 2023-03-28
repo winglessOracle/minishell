@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/28 08:50:04 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/28 09:33:33 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,26 +39,30 @@ typedef struct s_master
 {
 	char	*infile;
 	char	*outfile;
-	char	*errorfile;
+	char	*errfile;
+	char	*here_end;
+	int		last_exit;  // is dit hier handig?
 	t_node	*env_list;
 	t_node	*commands;
 	
 }	t_master;
 
 t_master	*init_master_struct(void);
-void	exit_error(int num);
-t_node	*new_node(int type, void *content);
-t_node	*lstlast(t_node *lst);
-void	lstadd_back(t_node **lst, t_node *new);
-void	lstdelone(t_node *lst, void (*del)(void *));
-void	lstclear(t_node **lst, void (*del)(void *));
-void	lstadd_secondback(t_node **lst, t_node *new);
-void	lstswapt_last(t_node **lst);
+void		exit_error(int num);
+t_node		*new_node(int type, void *content);
+t_node		*lstlast(t_node *lst);
+void		lstadd_back(t_node **lst, t_node *new);
+void		lstadd_front(t_node **lst, t_node *new);
+void		lstdelone(t_node *lst, void (*del)(void *));
+t_node		*lst_pop(t_node **lst);
+void		lstclear(t_node **lst, void (*del)(void *));
+void		delete_content(void *content);
+// void		lstadd_secondback(t_node **lst, t_node *new);
+// void		lstswapt_last(t_node **lst);
 
-//temp location lexer syuffas in lexer.h they do not recognize t_node
-char	*ft_strtok(char *str, char *delim, t_node **list);
-t_node	**lexer(char *str, char *delim);
-int		getlexerenum(char token);
+//lexer
+// char		*ft_strtok(char *str, char *delim, t_node **list);
+t_node		**lexer(char *str, char *delim);
 
 // environment
 void	print_env(t_node **env_list, int flag);
@@ -67,7 +71,9 @@ void	add_variable(t_node *env_list, char *content, int type);
 char	*get_variable(t_node **env_list, char *name);
 
 //tests
-void	run_tests(t_node **tokens, t_master *master);
+void		leaks(void);
+void		run_tests(char *str, t_node **tokens, t_master *master);
+void		test_lexer(char *str, t_node **tokens);
 
 #endif
 

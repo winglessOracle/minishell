@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/03/27 20:12:24 by cwesseli      ########   odam.nl          #
+#    Updated: 2023/03/28 09:30:51 by cwesseli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,9 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 	@$(MAKE) -C $(LIBFT) fclean
+
+debug: CFLAGS = -Wall -Wextra
+debug: all
 
 re:
 	@$(MAKE) fclean

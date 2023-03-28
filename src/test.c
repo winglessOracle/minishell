@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/28 09:07:13 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/28 09:27:51 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 void	test_lexer(t_node **tokens) //error with empty string //error with double meta
 {
 	int i = 1;
+	t_node	*temp;
 	
 	printf("\nprinting output list of lexer:\n\n");
-	printf("tested deliminators:\t'|&;()<> '\n");
-
-	while (*tokens)
+	printf("tested string:\t\t%s\n", str);
+	printf("tested deliminators:\t'|<> '\n"); // &;() skipped for now
+	temp = *tokens;
+	while (temp)
 	{
-		printf("--node [%d]--\ntype\t<%d>\ncontent\t'%s'\n\n", i, (*tokens)->type, (char *)(*tokens)->content);
-		*tokens = (*tokens)->next;
+		printf("--node [%d]--\ntype\t<%d>\ncontent\t_%s_\n\n", i, temp->type, (char *)temp->content);
+		// printf("token: %s, type: %d\n", (char *)(*tokens)->content, (*tokens)->type);
+		temp = temp->next;
 		i++;
 	}
 }

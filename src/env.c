@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/28 09:09:03 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/28 09:29:25 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_node	*env_to_list(char **envp)
 		exit_error(errno);
 	while (envp[i])
 	{
-		lstadd_back(&env_list, new_node(2, envp[i]));
+		lstadd_back(&env_list, new_node(1, envp[i]));
 		i++;
 	}
 	return (env_list);
@@ -35,12 +35,8 @@ t_node	*env_to_list(char **envp)
 void	print_env(t_node **env_list, int flag)
 {
 	t_node	*temp;
-	
-	temp = *env_list;
-	if (!*env_list)
-		return ;
-	if (!flag)
-		flag = 1;
+
+	temp = env_list;
 	while (temp)
 	{
 		if (flag == 1)
