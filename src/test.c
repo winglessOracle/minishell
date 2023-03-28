@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/28 16:02:45 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/28 17:31:43 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ void	test_lexer(char *str, t_node *tokens)
 	
 	printf("\nprinting output list of lexer:\n\n");
 	printf("tested string:\t\t%s\n", str);
-	printf("tested deliminators:\t'|<> '\n"); // &;() skipped for now
+	printf("tested deliminators:\t'|<> '\n\n"); // &;() skipped for now
 	while (tokens)
 	{
-		printf("--node [%d]--\ntype\t<%d>\ncontent\t_%s_\n\n", i, tokens->type, tokens->content);
-		// printf("token: %s, type: %d\n", (char *)(*tokens)->content, (*tokens)->type);
+		// printf("--node [%d]--\ntype\t<%d>\ncontent\t_%s_\n\n", i, tokens->type, tokens->content);
+		printf("token:\t%s\ntype:\t%d\n\n", tokens->content, tokens->type);
 		tokens = tokens->next;
 		i++;
 	}
@@ -33,5 +33,5 @@ void	run_tests(char *str, t_node *tokens, t_master *master)
 {
 	if (tokens)
 		test_lexer(str, tokens);
-	print_env(master->env_list, 3);
+	// print_env(master->env_list, 3);
 }

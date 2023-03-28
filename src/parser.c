@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/28 10:07:28 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/28 17:33:03 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	get_state(char *str)
 			state = 0;
 		else if (*str == 36 && state != S_QUOTE)
 			state = EXPAND;
-		else if (*str == 61 && state != S_QUOTE && state != D_QUOTE)
+		else if (*str == 61 && state == 0)
 			state = ASSIGN;
 		str++;
 	}

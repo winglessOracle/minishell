@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/28 17:23:57 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/28 18:16:03 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ int	getlexerenum(char token)
 void	ft_strtok(char *str, char *delim, t_node **tokens)
 {
 	char	*token;
-	char	*meta;
 	int		i;
 	int		j;
 
@@ -94,22 +93,28 @@ void	ft_strtok(char *str, char *delim, t_node **tokens)
 	{
 		if (ft_strchr(delim, str[i]))
 		{
-			meta = ft_substr(str, j, i - j);
 			if (j != i)
-				lstadd_back(tokens, new_node(WORD, meta));
+			{
+				token = ft_substr(str, j, i - j);
+				if (!token)
+					exit_error(errno);
+				lstadd_back(tokens, new_node(WORD, token));
+			}
 			token = ft_substr(str, i, 1);
 			lstadd_back(tokens, new_node(getlexerenum(str[i]), token));
-			if (!meta || !token)
-				exit_error(errno);
 			j = i + 1;
+			if (!token)
+				exit_error(errno);
 		}
 		i++;
 	}
-	token = ft_substr(str, j, i - j);
-	if (!token)
-		exit_error(errno);
 	if (j != i)
+	{		
+		token = ft_substr(str, j, i - j);
+		if (!token)
+			exit_error(errno);
 		lstadd_back(tokens, new_node(WORD, token));
+	}
 }
 
 t_node	*lexer(char *input_line, char *delim)
