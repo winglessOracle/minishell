@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/28 19:18:27 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/28 19:29:32 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,9 @@ void	ft_strtok(char *str, char *delim, t_node **tokens)
 		lstadd_back(tokens, new_node(WORD, ft_substr(str, j, i - j)));
 }
 
+// meta:
+// |, <, >, ' ', '\t, '\n'
+// ignore  &, ;, (, ) for now
 t_node	*lexer(char *input_line, char *delim)
 {
 	t_node	*tokens;
