@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/28 09:16:36 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/28 10:07:35 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,22 @@ void	check_split_tokens(t_node **tokens)
 	state = 0;
 	while (temp)
 	{
-		if (temp && ((temp->type == NEW_LINE && state == 1) || state > 1))
+		if (temp && ((temp->type == NEW_LINE && state == 1)|| state > 1))
 			state = 0;
-		state = get_state((char *)temp->content); //gaat fout als in eerste token state != 0
-		if (temp->next && state != 0)
-			merge_tokens(&temp, WORD); //maybe add states to lexer types?
+		state = get_state((char *)temp->content);
+		if (state == EXPAND || state == ASSIGN)
+			temp->type = state;
+		if (temp->next && state > 0 && state < 4)
+			merge_tokens(&temp, state);
 		else if (temp->next && temp->type == LESS && temp->next->type == LESS)
 			merge_tokens(&temp, DLESS);
 		else if (temp->next && temp->type == GREAT && temp->next->type == GREAT)
 			merge_tokens(&temp, DGREAT);
 		else
 			temp = temp->next;
+		if (temp)
+			printf("content: %s, state:%d\n", (char *)temp->content, state);
 	}
-	
 }
 
 int	getlexerenum(char token)

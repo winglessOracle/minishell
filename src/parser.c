@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/28 08:50:39 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/28 10:07:28 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int	get_state(char *str)
 			state = 0;
 		else if (*str == 39 && state == S_QUOTE)
 			state = 0;
+		else if (*str == 36 && state != S_QUOTE)
+			state = EXPAND;
+		else if (*str == 61 && state != S_QUOTE && state != D_QUOTE)
+			state = ASSIGN;
 		str++;
 	}
 	return (state);
@@ -44,11 +48,11 @@ int	get_state(char *str)
 // else -> skip
 
 //  other:
-// if # (at start of token) -> replace # with '\0' and remove all next tokens until (but excluding) next '\n' 
-// if " -> find closing " 
-// if ' -> find closing '
+// done: if # (at start of token) -> replace # with '\0' and remove all next tokens until (but excluding) next '\n' 
+// done: if " -> find closing " 
+// done: if ' -> find closing '
 // if $ -> expand to (env)value
-// if ?	-> expand to last exit status
+// if $?	-> expand to last exit status
 
 
 // t_node	*get_next_cmd(t_node *tokens)
