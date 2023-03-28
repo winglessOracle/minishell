@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/28 09:34:58 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/28 12:34:30 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,9 @@ t_node	**lexer(char *str, char *delim)
 	t_node	**tokens;
 	char	*input_line;
 	
-	tokens = malloc(sizeof(t_node *)); 
+	tokens = malloc(sizeof(t_node *));
 	if (!tokens)
-		exit_error(21);
+		exit_error(errno);
 	input_line = ft_strdup(str);
 	ft_strtok(input_line, delim, tokens);
 	free (input_line);

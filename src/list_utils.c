@@ -6,13 +6,13 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/28 09:35:07 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/28 12:38:07 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_node	*new_node(int type, void *content)
+t_node	*new_node(int type, char *content)
 {
 	t_node	*new_node;
 
@@ -50,17 +50,17 @@ void	lstadd_back(t_node **lst, t_node *new)
 	}
 }
 
-void	lstadd_front(t_node **lst, t_node *new)
-{
-	t_node	**temp;
+// void	lstadd_front(t_node **lst, t_node *new)
+// {
+// 	t_node	**temp;
 
-	if (new)
-	{
-		temp = lst;
-		new->next = *temp;
-		*lst = new;
-	}
-}
+// 	if (new)
+// 	{
+// 		temp = lst;
+// 		new->next = *temp;
+// 		*lst = new;
+// 	}
+// }
 
 void	delete_content(void *content)
 {

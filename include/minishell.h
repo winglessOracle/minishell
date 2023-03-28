@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/28 09:41:06 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/28 12:43:04 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 typedef struct s_node
 {
 	int				type;
-	void			*content;
+	char			*content;
 	struct s_node	*prev;
 	struct s_node	*next;
 	
@@ -49,7 +49,7 @@ typedef struct s_master
 
 t_master	*init_master_struct(void);
 void		exit_error(int num);
-t_node		*new_node(int type, void *content);
+t_node		*new_node(int type, char *content);
 t_node		*lstlast(t_node *lst);
 void		lstadd_back(t_node **lst, t_node *new);
 void		lstadd_front(t_node **lst, t_node *new);
@@ -57,8 +57,8 @@ void		lstdelone(t_node *lst, void (*del)(void *));
 t_node		*lst_pop(t_node **lst);
 void		lstclear(t_node **lst, void (*del)(void *));
 void		delete_content(void *content);
-// void		lstadd_secondback(t_node **lst, t_node *new);
-// void		lstswapt_last(t_node **lst);
+void		lstadd_secondback(t_node **lst, t_node *new);
+void		lstswapt_last(t_node **lst);
 
 //lexer
 // char		*ft_strtok(char *str, char *delim, t_node **list);
