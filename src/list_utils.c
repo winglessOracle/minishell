@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/28 12:38:07 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/28 23:05:38 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ t_node	*new_node(int type, char *content)
 {
 	t_node	*new_node;
 
+	if (!content)
+		exit_error(errno);
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
 		exit_error(errno);
@@ -67,7 +69,6 @@ void	delete_content(void *content)
 	char	*temp;
 	
 	temp = (char *)content;
-	// printf("delete: %s\n", temp);
 	free(temp);
 }
 

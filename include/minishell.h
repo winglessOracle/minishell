@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/28 12:43:04 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/28 23:03:39 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,18 +62,21 @@ void		lstswapt_last(t_node **lst);
 
 //lexer
 // char		*ft_strtok(char *str, char *delim, t_node **list);
-t_node		**lexer(char *str, char *delim);
+t_node		*lexer(char *str, char *delim);
 
 // environment
-void		print_env(t_node **env_list, int flag);
 t_node		*env_to_list(char **envp);
 void		add_variable(t_node *env_list, char *content, int type);
-char		*get_variable(t_node **env_list, char *name);
+char		*get_variable(t_node *env_list, char *name);
+void		print_env(t_node *env_list, int flag);
+
+//parser
+int			get_state(char *str);
 
 //tests
 void		leaks(void);
-void		run_tests(t_node **tokens, t_master *master);
-void		test_lexer(t_node **tokens);
+void		run_tests(char *str, t_node *tokens, t_master *master);
+void		test_lexer(char *str, t_node *tokens);
 
 #endif
 

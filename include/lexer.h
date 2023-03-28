@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/28 18:18:22 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/28 23:03:57 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,12 @@
 typedef enum e_lextype
 {
 	WORD = 0,
-	//SPACE,
+	COMMENT,
+	D_QUOTE,
+	S_QUOTE,
+	EXPAND,
+	ASSIGN,
+	SPACE,
 	GREAT,
 	LESS,
 	DLESS,
@@ -32,12 +37,6 @@ typedef enum e_lextype
 	BRACE_C,	
 }	t_lextype;
 
-typedef enum e_state
-{
-	COMMENT = 1,
-	D_QUOTE,
-	S_QUOTE,
-}	t_state;
 
 // char	*ft_strtok(char *str, char *delim);
 // void	ft_lexer(t_node **list, char *str);
