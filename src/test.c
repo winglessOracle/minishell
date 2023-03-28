@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/28 09:27:51 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/28 09:48:25 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	test_lexer(t_node **tokens) //error with empty string //error with double m
 	t_node	*temp;
 	
 	printf("\nprinting output list of lexer:\n\n");
-	printf("tested string:\t\t%s\n", str);
-	printf("tested deliminators:\t'|<> '\n"); // &;() skipped for now
+	printf("tested deliminators:\t'|<> '\n"); // &;() skipped for now (tab?)
 	temp = *tokens;
 	while (temp)
 	{

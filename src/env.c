@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/28 09:29:25 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/28 09:43:40 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ t_node	*env_to_list(char **envp)
 	return (env_list);
 }
 
-//flag defaults to 1 (local)
+//flags;
+//1 = local (default)
 //2 = external
 //3 = all
 void	print_env(t_node **env_list, int flag)
