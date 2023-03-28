@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/27 15:30:07 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/28 18:18:22 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 typedef enum e_lextype
 {
 	WORD = 0,
-	SPACE,
+	//SPACE,
 	GREAT,
 	LESS,
 	DLESS,
 	DGREAT,
 	PIPE,
-	TAB,
+	//TAB,
 	NEW_LINE,
 	SEMI,
 	AND,
