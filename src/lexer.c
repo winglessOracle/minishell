@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/28 10:07:35 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/28 10:18:49 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	check_split_tokens(t_node **tokens)
 	state = 0;
 	while (temp)
 	{
-		if (temp && ((temp->type == NEW_LINE && state == 1)|| state > 1))
+		if (temp && ((temp->type == NEW_LINE && state == 1) || state > 1))
 			state = 0;
 		state = get_state((char *)temp->content);
 		if (state == EXPAND || state == ASSIGN)
@@ -48,9 +48,9 @@ void	check_split_tokens(t_node **tokens)
 			merge_tokens(&temp, DGREAT);
 		else
 			temp = temp->next;
-		if (temp)
-			printf("content: %s, state:%d\n", (char *)temp->content, state);
 	}
+	if (state == S_QUOTE || state == D_QUOTE)
+		write(2, "Error, unclosed quotes\n", 23); // and then what?
 }
 
 int	getlexerenum(char token)
