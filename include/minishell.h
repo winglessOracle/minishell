@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/27 14:59:56 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/27 23:41:22 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,26 +53,26 @@ void		lstadd_back(t_node **lst, t_node *new);
 void		lstadd_front(t_node **lst, t_node *new);
 void		lstdelone(t_node *lst, void (*del)(void *));
 t_node		*lst_pop(t_node **lst);
-void		lst_insert(t_node **lst, t_node *node);
 void		lstclear(t_node **lst, void (*del)(void *));
 void		delete_content(void *content);
-void		lstadd_secondback(t_node **lst, t_node *new);
-void		lstswapt_last(t_node **lst);
+// void		lstadd_secondback(t_node **lst, t_node *new);
+// void		lstswapt_last(t_node **lst);
 
-//temp location lexer syuffas in lexer.h they do not recognize t_node
+//lexer
 // char		*ft_strtok(char *str, char *delim, t_node **list);
-void		ft_strtok(char *str, char *delim, t_node **tokens);
 t_node		**lexer(char *str, char *delim);
-int			getlexerenum(char token);
 
 // environment
 void		print_env(t_node *env_list);
 t_node		*env_to_list(char **envp);
 
+//parser
+int			get_state(char *str);
 
 //tests
-void	leaks(void);
-void	run_tests(char *str, t_node **tokens, t_master *master);
+void		leaks(void);
+void		run_tests(char *str, t_node **tokens, t_master *master);
+void		test_lexer(char *str, t_node **tokens);
 
 #endif
 
