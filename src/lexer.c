@@ -6,81 +6,47 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/28 19:29:32 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 09:36:54 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 
-void	merge_tokens(t_node *token, int type)
-{
-	char	*content;
-
-	if (token->next)
-	{
-		content = ft_strjoin(token->content, token->next->content);
-		free(token->content);
-		token->content = content;
-		token->type = type;
-		lstdelone(lst_pop(&token->next), delete_content);
-	}
-}
-
+// Checks for states where token should not have been split om metacharacters 
+// and merges these nodes back to one token
 int	check_split_tokens(t_node *tokens)
 {
-	t_node	*temp;
+	t_node	*t;
 	int		state;
 
-	temp = tokens;
+	t = tokens;
 	state = 0;
-	while (temp)
+	while (t)
 	{
-		if (temp && ((temp->type == NEW_LINE && state == 1) || state > 1))
+		if ((t->type == NEW_LINE && state == COMMENT) \
+									|| (state == DQUOTE || state == SQUOTE))
 			state = 0;
-		state = get_state(temp->content);
+		state = get_state(t->content);
 		if (state == EXPAND || state == ASSIGN)
-			temp->type = state;
-		if (temp->next && state > 0 && state < 4)
-			merge_tokens(temp, state);
-		else if (temp->next && temp->type == LESS && temp->next->type == LESS)
-			merge_tokens(temp, DLESS);
-		else if (temp->next && temp->type == GREAT && temp->next->type == GREAT)
-			merge_tokens(temp, DGREAT);
+			t->type = state;
+		if (t->next && (state == COMMENT || state == DQUOTE || state == SQUOTE))
+			merge_tokens(t, state);
+		else if (t->next && t->type == LESS && t->next->type == LESS)
+			merge_tokens(t, DLESS);
+		else if (t->next && t->type == GREAT && t->next->type == GREAT)
+			merge_tokens(t, DGREAT);
 		else
-			temp = temp->next;
+			t = t->next;
 	}
-	if (state == S_QUOTE || state == D_QUOTE)
+	if (state == SQUOTE || state == DQUOTE)
 		return (1);
 	return (0);
 }
 
-int	getlexerenum(char token)
-{
-	if (token == ' ')
-		return (SPACE);
-	else if (token == '>')
-		return (GREAT);
-	else if (token == '<')
-		return (LESS);
-	else if (token == '|')
-		return (PIPE);
-	else if (token == '\t')
-		return (TAB);
-	else if (token == '\n')
-		return (NEW_LINE);
-	else if (token == ';')
-		return (SEMI);
-	else if (token == '&')
-		return (AND);
-	else if (token == '(')
-		return (BRACE_O);
-	else if (token == ')')
-		return (BRACE_C);
-	else
-		return (WORD);
-}
-
-void	ft_strtok(char *str, char *delim, t_node **tokens)
+// Creates token list by splitting input line on metacharacters.
+// metacharacters: |, <, >, ' ', '\t, '\n'.
+// ignores  metacharacters: &, ;, (, ) (not part of the project scope)
+void	split_to_list(char *str, char *delim, t_node **tokens)
 {
 	int		i;
 	int		j;
@@ -103,18 +69,16 @@ void	ft_strtok(char *str, char *delim, t_node **tokens)
 		lstadd_back(tokens, new_node(WORD, ft_substr(str, j, i - j)));
 }
 
-// meta:
-// |, <, >, ' ', '\t, '\n'
-// ignore  &, ;, (, ) for now
+// creates tokens for ther parser that have a token content and type
 t_node	*lexer(char *input_line, char *delim)
 {
 	t_node	*tokens;
 
 	tokens = NULL;
-	ft_strtok(input_line, delim, &tokens);
+	split_to_list(input_line, delim, &tokens);
 	if (check_split_tokens(tokens))
 	{
-		write(2, "Error, unclosed quotes\n", 23);
+		write(2, "Error: input: unclosed quotes\n", 30);
 		lstclear(&tokens, delete_content);
 		return (NULL);
 	}

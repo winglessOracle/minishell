@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/28 10:10:32 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 09:03:57 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@
 typedef enum e_lextype
 {
 	WORD = 0,
-	COMMENT,
-	D_QUOTE,
-	S_QUOTE,
+	DQUOTE,
+	SQUOTE,
 	EXPAND,
 	ASSIGN,
-	SPACE,
 	GREAT,
 	LESS,
 	DLESS,
 	DGREAT,
 	PIPE,
-	TAB,
 	NEW_LINE,
+	COMMENT,
+	SPACE,
+	TAB,
 	SEMI,
 	AND,
 	BRACE_O,
