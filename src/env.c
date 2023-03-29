@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/28 23:06:37 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/29 10:56:21 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ void	print_env(t_node *env_list, int flag)
 	{
 		if (flag == 1)
 		{
-			if (env_list->type == 1)
+			if (env_list->type == 1 && check_env_content(env_list->content))
 				printf("%s\n", env_list->content);
 		}
 		if (flag == 2)
 		{
-			if (env_list->type == 2)  // also prevent printing when var=NULL
+			if (env_list->type == 2 && check_env_content(env_list->content))
 				printf("%s\n", env_list->content);
 		}
 		if (flag == 3)
-		 	if (env_list->type == 1 || env_list->type == 2)
+			if ((env_list->type == 1 || env_list->type == 2) && check_env_content(env_list->content))
 				printf("%s\n", env_list->content);		
 		env_list = env_list->next;
 	}
@@ -53,6 +53,11 @@ void	add_variable(t_node *env_list, char *content, int type)
 {
 	if (!type)
 		type = 1;
+	if (type < 1 || type > 2)
+	{
+		printf("Invalid type. Use type 1=local type 2=external\n");
+		return ;
+	}
 	if (env_list && content)
 		lstadd_back(&env_list, new_node(type, content));
 }
@@ -60,20 +65,36 @@ void	add_variable(t_node *env_list, char *content, int type)
 char	*get_variable(t_node *env_list, char *name)
 {
 	char	*ret;
-	
-	ret = NULL;
+	char	*temp;
+		
 	while (env_list && name)
 	{
 		if (ft_strncmp(env_list->content, name, ft_strlen(name)) == 0)
 		{
-			ret = ft_substr(env_list->content, ft_strlen(name) + 1, 
+			temp = ft_substr(env_list->content, ft_strlen(name) + 1, 
 			 	ft_strlen(env_list->content) - (ft_strlen(name) + 1));
-			if (!ret)
+			if (!temp)
 			 	exit_error(errno);
 		}
 		env_list = env_list->next;
 	}
-	if (ret)
+	if (temp)
+	{
+		ret = temp;
+		free (temp);
 		return (ret);
+	}
 	return (NULL);
+}
+
+int	check_env_content(char *str)
+{
+	int	i;
+	
+	i = 0;
+	while (str[i] != '=' && str[i])
+		i++;
+	if (str[i] && str[i + 1])
+		return (1);
+	return (0);
 }

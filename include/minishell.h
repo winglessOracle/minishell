@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/28 23:03:39 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/29 10:52:24 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ t_node		*env_to_list(char **envp);
 void		add_variable(t_node *env_list, char *content, int type);
 char		*get_variable(t_node *env_list, char *name);
 void		print_env(t_node *env_list, int flag);
+int			check_env_content(char *str);
 
 //parser
 int			get_state(char *str);
