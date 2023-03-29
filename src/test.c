@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 21:09:44 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 22:31:01 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,11 @@ void	test_lexer(char *str, t_node *tokens)
 
 void	print_cmd(t_smpl_cmd *cmd)
 {
-	printf("%d args in cmd_argv\n", cmd->cmd_argc);
+	printf("\n----------------------\ncmd: %s,\t%d args\n----------------------\n", cmd->cmd_argv->content, cmd->cmd_argc);
 	while (cmd->cmd_argv)
 	{
 		printf("%s\n", cmd->cmd_argv->content);
 		cmd->cmd_argv = cmd->cmd_argv->next;
 	}
+	printf("----------------------\n");
 }

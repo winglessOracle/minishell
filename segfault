@@ -1,5 +1,5 @@
 // works:
-hello world 'does this work?' hello=10 $var #comment gone
+hello world 'does | this work?' hello=10 $var word | word #comment gone
 
 
 

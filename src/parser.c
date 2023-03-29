@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 21:47:16 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 22:19:29 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,26 @@ int		todo(t_node **token)
 	return (0);
 }
 
+int	set_type_word(t_node **token)
+{
+	(*token)->type = WORD;
+	return (0);
+}
+
+int	set_cmd_end(t_node **token)
+{
+	lstdelone(*token, delete_content);
+	return (1);
+}
+
 t_smpl_cmd	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 {	
 	int	state;
-	// while (token->type > REDIRECT)
-		//redirect
-	// while (token->type > ASSIGN)
-		//assign
-	while (tokens)
+	
+	state = 0;
+	while (tokens && state == 0)
 	{
-		if (tokens->type == SQUOTE || tokens->type == DQUOTE)
-			tokens->type = WORD;
-		else if (tokens->type < 3)
+		if (tokens->type == WORD)
 		{
 			lstadd_back(&cmd->cmd_argv, lstpop(&tokens));
 			cmd->cmd_argc++;
@@ -40,8 +48,6 @@ t_smpl_cmd	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 			state = parse[tokens->type](&tokens);
 		if (state == -1)
 			return (NULL);
-		if (state == 1)
-			break;
 	}
 	return (cmd);
 }
