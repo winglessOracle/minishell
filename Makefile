@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/03/29 14:39:27 by cariencaljo   ########   odam.nl          #
+#    Updated: 2023/03/29 20:47:28 by cariencaljo   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ INCLUDE		= ./include
 LIBFT		= ./libft
 LIBS		= $(LIBFT)/libft.a 
 HEADERS		= -I $(LIBFT) -I$(INCLUDE)
-OBJ_FILES	= $(addprefix obj/, minishell.o utils/list_utils.o parser.o utils/utils.o lexer.o env.o init.o test.o \
-				utils/lexer_utils.o utils/node_utils.o)
+OBJ_FILES	= $(addprefix obj/, minishell.o utils/list_utils.o parser.o utils/utils.o utils/pipe_utils.o \
+				lexer.o env.o init.o test.o utils/lexer_utils.o utils/node_utils.o utils/parser_utils.o)
 
 #//= Modifiable =//#
 all: libft $(NAME)

@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 15:57:25 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 21:09:44 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	test_lexer(char *str, t_node *tokens)
 	
 }
 
-void	run_tests(t_smpl_cmd *cmd, t_node *env_list)
+void	print_cmd(t_smpl_cmd *cmd)
 {
-	while (cmd->cmd_var)
+	printf("%d args in cmd_argv\n", cmd->cmd_argc);
+	while (cmd->cmd_argv)
 	{
-		printf("%s\n", cmd->cmd_var->content);
-		cmd->cmd_var = cmd->cmd_var->next;
+		printf("%s\n", cmd->cmd_argv->content);
+		cmd->cmd_argv = cmd->cmd_argv->next;
 	}
-	// print_env(env_list, 3);
 }

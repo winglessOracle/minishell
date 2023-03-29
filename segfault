@@ -1,0 +1,8 @@
+// works:
+hello world 'does this work?' hello=10 $var #comment gone
+
+
+
+
+// segfaults:
+printf("%d args in cmd_argv\n", cmd->cmd_argc);

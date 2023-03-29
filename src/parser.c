@@ -6,44 +6,65 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 16:10:21 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 21:47:16 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
 
-
-// t_node	*less(t_node **token)
-// t_node	*great(t_node **token);
-// t_node	*dless(t_node **token);
-// t_node	*dgreat(t_node **token);
-// t_node	*pipe(t_node **token);
-// t_node	*new_line(t_node **token);
-// t_node	*expand(t_node **token);
-// t_node	*assign(t_node **token);
-
-void	todo(t_node **token)
+int		todo(t_node **token)
 {
 	printf("not handeled yet: type: %d, content: %s\n", (*token)->type, (*token)->content);
 	(*token) = (*token)->next;
+	return (0);
 }
 
-t_smpl_cmd	*parse_simple_command(t_node *token, t_smpl_cmd *cmd)
+t_smpl_cmd	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 {	
-	if (!token)
-		return (cmd);
-	if (token)
+	int	state;
+	// while (token->type > REDIRECT)
+		//redirect
+	// while (token->type > ASSIGN)
+		//assign
+	while (tokens)
 	{
-		if (token->type == WORD || token->type == SQUOTE || token->type == DQUOTE)
-			lstadd_back(&cmd->cmd_var, lstpop(&token));
+		if (tokens->type == SQUOTE || tokens->type == DQUOTE)
+			tokens->type = WORD;
+		else if (tokens->type < 3)
+		{
+			lstadd_back(&cmd->cmd_argv, lstpop(&tokens));
+			cmd->cmd_argc++;
+		} 
 		else
-			parse[token->type](&token);
+			state = parse[tokens->type](&tokens);
+		if (state == -1)
+			return (NULL);
+		if (state == 1)
+			break;
 	}
-	cmd = parse_simple_command(token, cmd);
 	return (cmd);
 }
 
+t_pipe	*parse_pipeline(t_node *tokens, t_node *env_list)
+{	
+	t_smpl_cmd	*cmd;
+	t_pipe		*pipeline;
+	
+	if (!tokens)
+		return (NULL);
+	pipeline = init_pipeline();
+	if (tokens) //should be while when all tokens are parsed correctly
+	{
+		cmd = parse_smpl_cmd(tokens, init_smpl_cmd(env_list));
+		if (!cmd)
+			return (NULL);
+		print_cmd(cmd);		// test
+		lstadd_back_pipe(&pipeline->pipe_argv, cmd);
+		pipeline->pipe_argc++;
+	}
+	return (pipeline);
+}
 
 // if COMMENT || SPACE || TAB -> remove?
 // if LESS -> check next and set input 
