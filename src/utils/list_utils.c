@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 12:15:22 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 15:12:12 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,14 @@ t_node	*lstpop(t_node **lst)
 {
 	t_node	*temp;
 
+	if (!*lst)
+		return (NULL);
 	temp = *lst;
+	if ((*lst)->prev)
+		(*lst)->prev->next = (*lst)->next;
+	if ((*lst)->next)
+		(*lst)->next->prev = (*lst)->prev;
 	*lst = (*lst)->next;
-	if (temp->prev)
-		temp->prev->next = temp->next;
-	if (temp->next)
-		temp->next->prev = temp->prev;
 	temp->prev = NULL;
 	temp->next = NULL;
 	return (temp);

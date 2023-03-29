@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/29 12:03:56 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 15:57:40 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,18 @@ typedef struct s_node
 	
 }	t_node;
 
-typedef struct s_master
-{
-	char	*infile;
-	char	*outfile;
-	char	*errfile;
-	char	*here_end;
-	int		last_exit;  // is dit hier handig?
-	t_node	*env_list;
-	t_node	*commands;
+// typedef struct s_master
+// {
+// 	char	*infile;
+// 	char	*outfile;
+// 	char	*errfile;
+// 	char	*here_end;
+// 	int		last_exit;  // is dit hier handig?
+// 	t_node	*env_list;
+// 	t_node	*commands;
 	
-}	t_master;
+// }	t_master;
 
-t_master	*init_master_struct(void);
 void		exit_error(int num);
 t_node		*new_node(int type, char *content);
 t_node		*lstlast(t_node *lst);
@@ -61,18 +60,29 @@ int			getlexerenum(char token);
 int			get_state(char *str);
 void		merge_tokens(t_node **token, int type);
 
+// parser
+typedef struct s_smpl_cmd
+{
+	char	*infile;
+	char	*outfile;
+	char	*errfile;
+	char	*here_end;
+	t_node	*env_list;
+	t_node	*cmd_var;
+	
+}	t_smpl_cmd;
+t_smpl_cmd	*init_smpl_cmd();
+t_smpl_cmd	*parse_simple_command(t_node *token, t_smpl_cmd *cmd);
+
 // environment
 t_node		*env_to_list(char **envp);
 void		add_variable(t_node *env_list, char *content, int type);
 char		*get_variable(t_node *env_list, char *name);
 void		print_env(t_node *env_list, int flag);
 
-//parser
-t_node		*parse_simple_command(t_node *tokens);
-
 //tests
 void		leaks(void);
-void		run_tests(char *str, t_node *tokens, t_master *master);
+void		run_tests(t_smpl_cmd *cmd, t_node *env_list);
 void		test_lexer(char *str, t_node *tokens);
 
 #endif

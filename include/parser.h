@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 12:25:04 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 16:08:59 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,21 @@
 
 # include "minishell.h"
 
-t_node	*remove_node(t_node **token);
+void	remove_node(t_node **token);
+void	todo(t_node **token);  //remove
 
-t_node *(*parse[14])(t_node **) = {
+void (*parse[14])(t_node **) = {
 	NULL, //word
 	NULL, //dquote
 	NULL, //squote
-	NULL, //expand
-	NULL, //assign
-	NULL, //great
-	NULL, //less
-	NULL, //dless
-	NULL, //dgreat
-	NULL, //pipe
-	NULL, //new_line
+	todo, //expand
+	todo, //assign
+	todo, //great
+	todo, //less
+	todo, //dless
+	todo, //dgreat
+	todo, //pipe
+	todo, //new_line
 	remove_node, //comment
 	remove_node, //space
 	remove_node, //tab

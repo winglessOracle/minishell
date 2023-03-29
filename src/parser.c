@@ -6,21 +6,13 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 12:24:57 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 16:10:21 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
 
-t_node	*remove_node(t_node **token)
-{	
-	t_node	*temp;
-	
-	temp = lstpop(token);
-	lstdelone(temp, delete_content);
-	return (NULL);
-}
 
 // t_node	*less(t_node **token)
 // t_node	*great(t_node **token);
@@ -31,18 +23,25 @@ t_node	*remove_node(t_node **token)
 // t_node	*expand(t_node **token);
 // t_node	*assign(t_node **token);
 
-t_node	*parse_simple_command(t_node *token)
+void	todo(t_node **token)
 {
+	printf("not handeled yet: type: %d, content: %s\n", (*token)->type, (*token)->content);
+	(*token) = (*token)->next;
+}
+
+t_smpl_cmd	*parse_simple_command(t_node *token, t_smpl_cmd *cmd)
+{	
 	if (!token)
-		return (NULL);
-	while (token)
+		return (cmd);
+	if (token)
 	{
-		if (token->type == 11 || token->type == 12 || token->type == 13)
-			parse[token->type](&token);
+		if (token->type == WORD || token->type == SQUOTE || token->type == DQUOTE)
+			lstadd_back(&cmd->cmd_var, lstpop(&token));
 		else
-			token = token->next;
+			parse[token->type](&token);
 	}
-	return (NULL);
+	cmd = parse_simple_command(token, cmd);
+	return (cmd);
 }
 
 
