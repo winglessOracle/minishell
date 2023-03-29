@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/29 11:08:29 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/29 11:29:16 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	main(int argc, char **argv, char **envp) //remove arguments and return type?
 		  	free(line_read);
 		  	line_read = NULL;
 		}
-		line_read = readline(get_variable(master->env_list, "PS1"));
+		rl_prompt = get_variable(master->env_list, "PS1");
+		line_read = readline(rl_prompt);
 		if (!ft_strcmp(line_read, "exit"))
 			break ;
 		if (line_read && *line_read)
@@ -46,5 +47,7 @@ int	main(int argc, char **argv, char **envp) //remove arguments and return type?
 		if (tokens)
 			lstclear(&tokens, delete_content);
 	}
+	//clear_history(); should be rl_clear_history() but that is not found?.
+
 	exit(EXIT_SUCCESS);
 }
