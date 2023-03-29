@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 09:48:41 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 12:15:22 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	lstdelone(t_node *lst, void (*del)(void *))
 	}
 }
 
-t_node	*lst_pop(t_node **lst)
+t_node	*lstpop(t_node **lst)
 {
 	t_node	*temp;
 

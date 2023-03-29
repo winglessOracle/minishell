@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/29 09:41:55 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 12:08:27 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv, char **envp)
 	line_read = NULL;
 	master = init_master_struct();
 	master->env_list = env_to_list(envp);
-	add_variable(master->env_list, "PS1=CC_PROMPT:> ", 1);
+	add_variable(master->env_list, "PS1=CC_PROMPT:$> ", 1);
 	while (1)
 	{
 		if (line_read)
@@ -36,6 +36,7 @@ int	main(int argc, char **argv, char **envp)
 		if (line_read && *line_read)
 		 	add_history(line_read);
 		tokens = lexer(line_read, "|<> \t\n");
+		parse_simple_command(tokens);
 		// tests
 		if (tokens)
 		{

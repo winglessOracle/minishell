@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/29 09:47:11 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 12:03:56 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@
 # include <readline/history.h>
 // # include <stdbool.h>
 // # include <limits.h>
-
-extern char **environ;
 
 typedef struct s_node
 {
@@ -53,7 +51,7 @@ t_node		*new_node(int type, char *content);
 t_node		*lstlast(t_node *lst);
 void		lstadd_back(t_node **lst, t_node *new);
 void		lstdelone(t_node *lst, void (*del)(void *));
-t_node		*lst_pop(t_node **lst);
+t_node		*lstpop(t_node **lst);
 void		lstclear(t_node **lst, void (*del)(void *));
 void		delete_content(void *content);
 
@@ -61,7 +59,7 @@ void		delete_content(void *content);
 t_node		*lexer(char *str, char *delim);
 int			getlexerenum(char token);
 int			get_state(char *str);
-void		merge_tokens(t_node *token, int type);
+void		merge_tokens(t_node **token, int type);
 
 // environment
 t_node		*env_to_list(char **envp);
@@ -70,6 +68,7 @@ char		*get_variable(t_node *env_list, char *name);
 void		print_env(t_node *env_list, int flag);
 
 //parser
+t_node		*parse_simple_command(t_node *tokens);
 
 //tests
 void		leaks(void);
@@ -77,8 +76,3 @@ void		run_tests(char *str, t_node *tokens, t_master *master);
 void		test_lexer(char *str, t_node *tokens);
 
 #endif
-
-/*error handeling:
-1.
-20.	malloc error lexer
-*/

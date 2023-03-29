@@ -6,12 +6,17 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 09:44:16 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 09:52:07 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-	
+
+void	leaks(void)
+{
+	system("leaks minishell -q");	
+}
+
 void	test_lexer(char *str, t_node *tokens)
 {
 	int i = 1;

@@ -6,16 +6,11 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:05:51 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/27 15:00:03 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/29 09:51:46 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	leaks(void)
-{
-	system("leaks minishell -q");	
-}
 
 t_master	*init_master_struct(void)
 {

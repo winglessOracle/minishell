@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/29 09:36:54 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 10:09:33 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,11 @@ int	check_split_tokens(t_node *tokens)
 		if (state == EXPAND || state == ASSIGN)
 			t->type = state;
 		if (t->next && (state == COMMENT || state == DQUOTE || state == SQUOTE))
-			merge_tokens(t, state);
+			merge_tokens(&t, state);
 		else if (t->next && t->type == LESS && t->next->type == LESS)
-			merge_tokens(t, DLESS);
+			merge_tokens(&t, DLESS);
 		else if (t->next && t->type == GREAT && t->next->type == GREAT)
-			merge_tokens(t, DGREAT);
+			merge_tokens(&t, DGREAT);
 		else
 			t = t->next;
 	}

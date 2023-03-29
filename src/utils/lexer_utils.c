@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 09:23:02 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/29 09:31:38 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/29 10:10:50 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 #include "lexer.h"
 
 // merges provided node with the next node and set provided type for merged node
-void	merge_tokens(t_node *token, int type)
+void	merge_tokens(t_node **token, int type)
 {
 	char	*content;
 
-	if (token->next)
+	if ((*token)->next)
 	{
-		content = ft_strjoin(token->content, token->next->content);
-		free(token->content);
-		token->content = content;
-		token->type = type;
-		lstdelone(lst_pop(&token->next), delete_content);
+		content = ft_strjoin((*token)->content, (*token)->next->content);
+		lstdelone(lstpop(token), delete_content);
+		free((*token)->content);
+		(*token)->content = content;
+		(*token)->type = type;
 	}
 }
 

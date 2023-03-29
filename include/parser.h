@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/24 16:59:54 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/29 12:25:04 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,25 @@
 # define PARSER_H
 
 # include "minishell.h"
+
+t_node	*remove_node(t_node **token);
+
+t_node *(*parse[14])(t_node **) = {
+	NULL, //word
+	NULL, //dquote
+	NULL, //squote
+	NULL, //expand
+	NULL, //assign
+	NULL, //great
+	NULL, //less
+	NULL, //dless
+	NULL, //dgreat
+	NULL, //pipe
+	NULL, //new_line
+	remove_node, //comment
+	remove_node, //space
+	remove_node, //tab
+};
 
 /* -------------------------------------------------------
    The grammar symbols
