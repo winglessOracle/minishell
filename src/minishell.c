@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/30 10:50:20 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/30 10:58:13 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv, char **envp) //remove arguments and return type?
 		  	free(line_read);
 		  	line_read = NULL;
 		}
-		rl_prompt = get_variable(master->env_list, "PS1");
+		rl_prompt = get_variable(env_list, "PS1");
 		line_read = readline(rl_prompt);
 		if (!ft_strcmp(line_read, "exit"))
 			break ;
@@ -39,15 +39,13 @@ int	main(int argc, char **argv, char **envp) //remove arguments and return type?
 		 	add_history(line_read);
 		tokens = lexer(line_read, "|<> \t\n");
 
-		// tests
-		run_tests(line_read, tokens, master);
-	
+		//tests
 		if (tokens)
 		{
 			run_tests(line_read, tokens, env_list);
 			lstclear(&tokens, delete_content);
+		}
 	}
 	//clear_history(); should be rl_clear_history() but that is not found?.
-
 	exit(EXIT_SUCCESS);
 }
