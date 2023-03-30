@@ -4,7 +4,7 @@ hello world 'does | this work?' hello=10 $var word | word "#comment gone" | with
 command | another $command |
 | followed by command
 |
-
+< input for command 1 | << here for heredoc > out | >> append the last
 
 
 /* Segfaults */
