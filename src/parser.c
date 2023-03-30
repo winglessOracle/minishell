@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 22:19:29 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 09:39:07 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		todo(t_node **token)
 {
 	printf("not handeled yet: type: %d, content: %s\n", (*token)->type, (*token)->content);
 	(*token) = (*token)->next;
+	remove_node(token);
 	return (0);
 }
 
@@ -35,9 +36,25 @@ int	set_cmd_end(t_node **token)
 t_smpl_cmd	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 {	
 	int	state;
+	static function  *parse[14] = {
+		NULL, //word
+		set_type_word, //dquote
+		set_type_word, //squote
+		todo, //expand
+		todo, //assign
+		todo, //great
+		todo, //less
+		todo, //dless
+		todo, //dgreat
+		set_cmd_end, //pipe
+		set_cmd_end, //new_line should this do more?
+		remove_node, //comment
+		remove_node, //space
+		remove_node, //tab
+	};
 	
 	state = 0;
-	while (tokens && state == 0)
+	while (tokens && !state)
 	{
 		if (tokens->type == WORD)
 		{
@@ -46,9 +63,9 @@ t_smpl_cmd	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 		} 
 		else
 			state = parse[tokens->type](&tokens);
-		if (state == -1)
-			return (NULL);
 	}
+	if (state == -1)
+		return (NULL);
 	return (cmd);
 }
 
@@ -68,6 +85,7 @@ t_pipe	*parse_pipeline(t_node *tokens, t_node *env_list)
 		print_cmd(cmd);		// test
 		lstadd_back_pipe(&pipeline->pipe_argv, cmd);
 		pipeline->pipe_argc++;
+		print_tokens(tokens);
 	}
 	return (pipeline);
 }
