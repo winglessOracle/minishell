@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/29 10:52:24 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/30 10:50:59 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ int			get_state(char *str);
 
 //tests
 void		leaks(void);
-void		run_tests(char *str, t_node *tokens, t_master *master);
+void		run_tests(char *str, t_node *tokens, t_node *env_list);
 void		test_lexer(char *str, t_node *tokens);
 
 #endif
