@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/30 16:39:22 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 18:12:03 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ t_node		*new_node(int type, char *content);
 void		delete_content(void *content);
 
 // pipe_utils
-int			check_cmd(t_node *token, t_smpl_cmd *cmd);
+int			check_pipe(t_node *token, t_smpl_cmd *cmd);
 t_smpl_cmd	*lstlast_pipe(t_smpl_cmd *lst);
 void		lstadd_back_pipe(t_smpl_cmd **lst, t_smpl_cmd *new);
 // void		lstdelone_pipe(t_smpl_cmd *lst, void (*del)(void *));

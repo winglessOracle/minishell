@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 17:14:31 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 18:22:35 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int	set_cmd_end(t_node **token, t_smpl_cmd *cmd)
 {
 	int check;
 
-	check = check_cmd(*token, cmd);
+	check = check_pipe(*token, cmd);
 	remove_node(token, cmd);
 	return (check);
 }
 
-t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
+t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	**cmd)
 {	
 	int	state;
 	static function  *parse[MAX_TYPE] = {
@@ -61,7 +61,7 @@ t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 		todo, //expand
 		todo, //assign
 		todo, //great
-		todo, //less
+		redirect_input, //less
 		todo, //dless
 		todo, //dgreat
 		set_cmd_end, //pipe
@@ -75,15 +75,16 @@ t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 	state = 0;
 	while (tokens && !state)
 	{
-		state = parse[tokens->type](&tokens, cmd);
-		if (tokens && (tokens->type == WORD || tokens->type == NAME))
+		if (!(tokens->type == WORD || tokens->type == NAME))
+			state = parse[tokens->type](&tokens, *cmd);
+		else
 		{
-			lstadd_back(&cmd->cmd_argv, lstpop(&tokens));
-			cmd->cmd_argc++;
+			lstadd_back(&(*cmd)->cmd_argv, lstpop(&tokens));
+			(*cmd)->cmd_argc++;
 		}
 	}
 	if (state == -1)
-		return (NULL);
+		*cmd = NULL;
 	return (tokens);
 }
 
@@ -98,8 +99,8 @@ t_pipe	*parse_pipeline(t_node *tokens, t_node *env_list)
 	while (tokens)
 	{
 		cmd = init_smpl_cmd(env_list);
-		tokens = parse_smpl_cmd(tokens, cmd);
-		if (!tokens)
+		tokens = parse_smpl_cmd(tokens, &cmd);
+		if (!cmd)
 			return (NULL);
 		lstadd_back_pipe(&pipeline->pipe_argv, cmd);
 		pipeline->pipe_argc++;
