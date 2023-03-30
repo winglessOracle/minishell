@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/30 17:30:41 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 19:44:30 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 int	redirect_input(t_node **token, t_smpl_cmd *cmd)
 {
-	while ((*token)->type == _SPACE || (*token)->type == _TAB ||\
+	remove_node(token, cmd);
+	while ((*token)->type == _SPACE || (*token)->type == _TAB || \
 		(*token)->type == COMMENT)
 		remove_node(token, cmd);
 	if (access((*token)->content, R_OK) == -1)
@@ -26,4 +27,34 @@ int	redirect_input(t_node **token, t_smpl_cmd *cmd)
 	}
 	cmd->infile = (*token)->content;
 	return (0);
+}
+
+int	redirect_output(t_node **token, t_smpl_cmd *cmd)
+{
+	// also check or create file here?
+	remove_node(token, cmd);
+	while ((*token)->type == _SPACE || (*token)->type == _TAB || \
+		(*token)->type == COMMENT)
+		remove_node(token, cmd);
+	cmd->outfile = (*token)->content;
+	return (0);
+}
+
+int	set_here_end(t_node **token, t_smpl_cmd *cmd)
+{
+	remove_node(token, cmd);
+	while ((*token)->type == _SPACE || (*token)->type == _TAB || \
+		(*token)->type == COMMENT)
+		remove_node(token, cmd);
+	cmd->here_end = (*token)->content;
+	return (0);
+}
+
+int	set_append(t_node **token, t_smpl_cmd *cmd)
+{
+	int	check;
+	
+	check = redirect_output(token, cmd);
+	cmd->append = 1;
+	return (check);
 }

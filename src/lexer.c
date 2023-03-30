@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/30 15:37:28 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 18:47:53 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_node	*check_split_tokens(t_node *tokens)
 		if ((t->type == NEW_LINE && state == COMMENT) \
 									|| (state == DQUOTE || state == SQUOTE))
 			state = 0;
-		state = get_state(t->content);
+		state = check_token_content(t->content);
 		if (state == EXPAND || state == ASSIGN)
 			t->type = state;
 		if (t->next && (state == COMMENT || state == DQUOTE || state == SQUOTE))
@@ -89,7 +89,7 @@ t_node	*lexer(char *input_line, char *delim)
 	split_to_list(input_line, delim, &tokens);
 	free(input_line);
 	printf("CREATED TOKENS\n");
-	print_tokens(tokens);
+	// print_tokens(tokens);
 	tokens = check_split_tokens(tokens);
 	return (tokens);
 }

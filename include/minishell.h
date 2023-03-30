@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/30 18:12:03 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 19:17:47 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct s_smpl_cmd
 	char				*outfile;
 	char				*errfile;
 	char				*here_end;
+	int					append;
 	int					cmd_argc;
 	t_node				*cmd_argv;
 	struct s_smpl_cmd	*next;
@@ -89,7 +90,7 @@ void		lstadd_back_pipe(t_smpl_cmd **lst, t_smpl_cmd *new);
 //lexer
 t_node		*lexer(char *str, char *delim);
 int			getlexerenum(char token);
-int			get_state(char *str);
+int			check_token_content(char *str);
 void		merge_tokens(t_node *token, int type);
 
 // parser

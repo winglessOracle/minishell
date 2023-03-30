@@ -1,8 +1,12 @@
-// works:
+/* Working correctly */
+
 hello world 'does | this work?' hello=10 $var word | word "#comment gone" | with $var and #comment that will be gone
+command | another $command |
+| followed by command
+|
 
 
 
+/* Segfaults */
 
-// segfaults: (when merging first argument)
-printf("%d args in cmd_argv\n", cmd->cmd_argc);
+#only one node that is not going to be processed

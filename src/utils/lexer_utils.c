@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 09:23:02 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/30 15:26:23 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 18:47:22 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	merge_tokens(t_node *token, int type)
 	}
 }
 
-int	get_state(char *str)
+int	check_token_content(char *str)
 {
 	int		state;
 

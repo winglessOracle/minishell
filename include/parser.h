@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 17:23:49 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 19:19:55 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,11 @@ int	set_type_word(t_node **token, t_smpl_cmd *cmd);
 int	set_cmd_end(t_node **token, t_smpl_cmd *cmd);
 int remove_node(t_node **token, t_smpl_cmd *cmd);
 int	redirect_input(t_node **token, t_smpl_cmd *cmd);
+int	redirect_output(t_node **token, t_smpl_cmd *cmd);
+int	set_here_end(t_node **token, t_smpl_cmd *cmd);
+int	set_append(t_node **token, t_smpl_cmd *cmd);
 
 typedef int function(t_node **, t_smpl_cmd *);
-
-// function  *parse[14] = {
-// 	NULL, //word
-// 	set_type_word, //dquote
-// 	set_type_word, //squote
-// 	todo, //expand
-// 	todo, //assign
-// 	todo, //great
-// 	todo, //less
-// 	todo, //dless
-// 	todo, //dgreat
-// 	set_cmd_end, //pipe
-// 	set_cmd_end, //new_line should this do more?
-// 	remove_node, //comment
-// 	remove_node, //space
-// 	remove_node, //tab
-// };
 
 /* -------------------------------------------------------
    The grammar symbols

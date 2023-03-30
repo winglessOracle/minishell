@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 18:22:35 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 19:20:36 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	**cmd)
 		set_type_word, //squote
 		todo, //expand
 		todo, //assign
-		todo, //great
+		redirect_output, //great
 		redirect_input, //less
-		todo, //dless
-		todo, //dgreat
+		set_here_end, //dless
+		set_append, //dgreat
 		set_cmd_end, //pipe
 		set_cmd_end, //new_line
 		remove_node, //comment
@@ -108,13 +108,13 @@ t_pipe	*parse_pipeline(t_node *tokens, t_node *env_list)
 	return (pipeline);
 }
 
-// if COMMENT || SPACE || TAB -> remove?
+// done if COMMENT || SPACE || TAB -> remove?
 // if LESS -> check next and set input 
 // if GREAT -> check next and set output TRUNC
 // if DLESS -> io_here (set value next node in master_struct?)
 // if DGREAT -> check next set output append
-// if PIPE -> end simple command
-// if NEW_LINE -> end simple command and pipeline
+// done if PIPE -> end simple command
+// done if NEW_LINE -> end simple command and pipeline
 // if EXPAND -> expand to (env)value
 	// if $? -> expand to last exit status
 // if ASSIGN -> assign variable
