@@ -6,30 +6,41 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 14:04:40 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 16:12:30 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
 
-int		todo(t_node **token)
+int		todo(t_node **token, t_smpl_cmd *cmd)
 {
 	printf("not handeled yet: type: %d, content: %s\n", (*token)->type, (*token)->content);
 	(*token) = (*token)->next;
-	remove_node(token);
+	remove_node(token, cmd);
 	return (0);
 }
 
-int	set_type_word(t_node **token)
+int remove_node(t_node **token, t_smpl_cmd *cmd)
+{	
+	t_node	*temp;
+	
+	if (!*token)
+		return (-1);
+	temp = lstpop(token);
+	lstdelone(temp, delete_content);
+	return (0);
+}
+
+int	set_type_word(t_node **token, t_smpl_cmd *cmd)
 {
 	(*token)->type = WORD;
 	return (0);
 }
 
-int	set_cmd_end(t_node **token)
+int	set_cmd_end(t_node **token, t_smpl_cmd *cmd)
 {
-	remove_node(token);
+	remove_node(token, cmd);
 	return (1);
 }
 
@@ -62,7 +73,7 @@ t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 			cmd->cmd_argc++;
 		} 
 		else
-			state = parse[tokens->type](&tokens);
+			state = parse[tokens->type](&tokens, cmd);
 	}
 	if (state == -1)
 		return (NULL);

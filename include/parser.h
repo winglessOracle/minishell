@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 01:58:48 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 16:11:25 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include "minishell.h"
 
-int	todo(t_node **token);  //remove
-int	remove_node(t_node **token);
-int	set_type_word(t_node **token);
-int	set_cmd_end(t_node **token);
+int	todo(t_node **token, t_smpl_cmd *cmd);  //remove
+int	set_type_word(t_node **token, t_smpl_cmd *cmd);
+int	set_cmd_end(t_node **token, t_smpl_cmd *cmd);
+int remove_node(t_node **token, t_smpl_cmd *cmd);
 
-typedef int function(t_node **);
+typedef int function(t_node **, t_smpl_cmd *);
 
 // function  *parse[14] = {
 // 	NULL, //word

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 13:37:11 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/29 21:44:10 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 16:10:09 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,6 @@ t_node	*new_node(int type, char *content)
 	new_node->next = NULL;
 	new_node->prev = NULL;
 	return (new_node);
-}
-
-int remove_node(t_node **token)
-{	
-	t_node	*temp;
-	
-	if (!*token)
-		return (-1);
-	temp = lstpop(token);
-	lstdelone(temp, delete_content);
-	return (0);
 }
 
 void	delete_content(void *content)
