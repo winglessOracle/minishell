@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/28 17:18:47 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/03/30 10:29:16 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,13 @@
 int	main(int argc, char **argv, char **envp)
 {
 	t_node		*tokens;
-	t_master	*master;
+	t_node		*env_list;
 	char		*line_read;
 
 	atexit(leaks);
 	line_read = NULL;
-	master = init_master_struct();
-	master->env_list = env_to_list(envp);
-	add_variable(master->env_list, "PS1=CC_PROMPT:> ", 1);
+	env_list = env_to_list(envp);
+	add_variable(env_list, "PS1=CC_PROMPT:> ", 1);
 	while (1)
 	{
 		if (line_read)
@@ -39,7 +38,7 @@ int	main(int argc, char **argv, char **envp)
 		// tests
 		if (tokens)
 		{
-			run_tests(line_read, tokens, master);
+			run_tests(line_read, tokens, env_list);
 			lstclear(&tokens, delete_content);
 		}
 	}
