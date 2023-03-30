@@ -6,15 +6,25 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/30 14:14:43 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 15:12:53 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lexer.h"
 
+t_node	*check_quotes(int state, t_node *tokens)
+{
+	if (state == SQUOTE || state == DQUOTE)
+	{
+		write(2, "Error: input: unclosed quotes\n", 30);
+		lstclear(&tokens, delete_content);
+		tokens = NULL;;
+	}
+	return (tokens);
+}
 // Checks for states where token should not have been split om metacharacters 
 // and merges these nodes back to one token
-int	check_split_tokens(t_node *tokens)
+t_node	*check_split_tokens(t_node *tokens)
 {
 	t_node	*t;
 	int		state;
@@ -38,9 +48,8 @@ int	check_split_tokens(t_node *tokens)
 		else
 			t = t->next;
 	}
-	if (state == SQUOTE || state == DQUOTE)
-		return (1);
-	return (0);
+	tokens = check_quotes(state, tokens);
+	return (tokens);
 }
 
 // Creates token list by splitting input line on metacharacters.
@@ -80,11 +89,6 @@ t_node	*lexer(char *input_line, char *delim)
 	split_to_list(input_line, delim, &tokens);
 	printf("CREATED TOKENS\n");
 	print_tokens(tokens);
-	if (check_split_tokens(tokens))
-	{
-		write(2, "Error: input: unclosed quotes\n", 30);
-		lstclear(&tokens, delete_content);
-		return (NULL);
-	}
+	tokens = check_split_tokens(tokens);
 	return (tokens);
 }

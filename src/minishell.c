@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/30 14:14:19 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 15:14:21 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(void)
 	while (1)
 	{
 		if (line_read)
-		{
+		{ 
 		  	free(line_read);
 		  	line_read = NULL;
 		}

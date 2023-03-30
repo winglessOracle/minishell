@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 13:46:21 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 15:14:59 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	print_tokens(t_node *tokens)
 void	print_cmd(t_smpl_cmd *cmd)
 {
 	printf("--------------------------------\n\tCMD : %s\n\tARGS: %d\n--------------------------------\n", cmd->cmd_argv->content, cmd->cmd_argc);
-	while (cmd->cmd_argv)
+	while (cmd && cmd->cmd_argv)
 	{
 		printf("%s\n", cmd->cmd_argv->content);
 		cmd->cmd_argv = cmd->cmd_argv->next;
@@ -39,7 +39,7 @@ void	print_cmd(t_smpl_cmd *cmd)
 
 void	print_pipeline(t_pipe *pipe)
 {
-	while (pipe->pipe_argv)
+	while (pipe && pipe->pipe_argv)
 	{
 		printf("--------------------------------\n\tCMD : %s\n\tARGS: %d\n--------------------------------\n", pipe->pipe_argv->cmd_argv->content, pipe->pipe_argv->cmd_argc);
 		while (pipe->pipe_argv->cmd_argv)
