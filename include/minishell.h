@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/21 16:09:16 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/28 17:16:27 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,56 +14,73 @@
 # define MINISHELL_H
 
 # include "libft.h"
+# include "lexer.h"
+# include <string.h>
+# include <stdio.h>
 # include <errno.h>
+# include <stdlib.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 // # include <stdbool.h>
 // # include <limits.h>
-# include <stdio.h>
+
+extern char **environ;
 
 typedef struct s_node
 {
 	int				type;
-	void			*content;
+	char			*content;
 	struct s_node	*prev;
 	struct s_node	*next;
+	
 }	t_node;
-
-typedef enum e_lextype
-{
-	WORD = 0,
-	GREAT,
-	LESS,
-	G_GREAT,
-	L_LESS,
-	PIPE,
-	VAR,
-	OPERATOR,
-	ASSIGN,
-	D_QUOTE,
-	S_QUOTE,
-	WILD_CARD,
-	AND_AND,
-	OR_OR,
-}	t_lextype;
 
 typedef struct s_master
 {
 	char	*infile;
 	char	*outfile;
-	char	*errorfile;
-	char	**local_vars;
-	t_node	**commands;
+	char	*errfile;
+	char	*here_end;
+	int		last_exit;  // is dit hier handig?
+	t_node	*env_list;
+	t_node	*commands;
 	
 }	t_master;
 
-void	exit_error(int num);
-t_node	*new_node(int type, void *content);
-t_node	*lstlast(t_node *lst);
-void	lstadd_back(t_node **lst, t_node *new);
-void	lstdelone(t_node *lst, void (*del)(void *));
-void	lstclear(t_node **lst, void (*del)(void *));
+t_master	*init_master_struct(void);
+void		exit_error(int num);
+t_node		*new_node(int type, char *content);
+t_node		*lstlast(t_node *lst);
+void		lstadd_back(t_node **lst, t_node *new);
+void		lstadd_front(t_node **lst, t_node *new);
+void		lstdelone(t_node *lst, void (*del)(void *));
+t_node		*lst_pop(t_node **lst);
+void		lstclear(t_node **lst, void (*del)(void *));
+void		delete_content(void *content);
+// void		lstadd_secondback(t_node **lst, t_node *new);
+// void		lstswapt_last(t_node **lst);
+
+//lexer
+// char		*ft_strtok(char *str, char *delim, t_node **list);
+t_node		*lexer(char *str, char *delim);
+
+// environment
+t_node		*env_to_list(char **envp);
+void		add_variable(t_node *env_list, char *content, int type);
+char		*get_variable(t_node *env_list, char *name);
+void		print_env(t_node *env_list, int flag);
+
+//parser
+int			get_state(char *str);
+
+//tests
+void		leaks(void);
+void		run_tests(char *str, t_node *tokens, t_master *master);
+void		test_lexer(char *str, t_node *tokens);
+
 #endif
 
 /*error handeling:
 1.
-
+20.	malloc error lexer
 */

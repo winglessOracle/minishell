@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/03/21 16:09:28 by carlo         ########   odam.nl          #
+#    Updated: 2023/03/28 15:16:40 by ccaljouw      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ INCLUDE		= ./include
 LIBFT		= ./libft
 LIBS		= $(LIBFT)/libft.a 
 HEADERS		= -I $(LIBFT) -I$(INCLUDE)
-OBJ_FILES	= $(addprefix obj/, minishell.o list_utils.o utilis.o)
+OBJ_FILES	= $(addprefix obj/, minishell.o list_utils.o parser.o utils.o lexer.o env.o init.o test.o)
 
 #//= Modifiable =//#
 all: libft $(NAME)
@@ -35,7 +35,7 @@ libft:
 	@$(MAKE) -C $(LIBFT)
 	
 $(NAME): $(OBJ_FILES)
-	@$(CC) $(OBJ_FILES) $(LIBS) $(HEADERS) -o $(NAME) $(CFLAGS)
+	@$(CC) $(OBJ_FILES) $(LIBS) $(HEADERS) -o $(NAME) $(CFLAGS) -lreadline
 
 $(OBJ_FILES): obj/%.o: src/%.c 
 	@mkdir -p $(dir $@)
@@ -51,8 +51,11 @@ fclean: clean
 	@rm -rf $(NAME)
 	@$(MAKE) -C $(LIBFT) fclean
 
+debug: CFLAGS = -Wall -Wextra
+debug: all
+
 re:
 	@$(MAKE) fclean
 	@$(MAKE) all
-
-.PHONY:	all clean fclean re libft
+	
+.PHONY:	all clean fclean re libft debug

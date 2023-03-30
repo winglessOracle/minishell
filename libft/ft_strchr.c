@@ -1,49 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lexer.h                                            :+:    :+:            */
+/*   ft_strchr.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/28 10:10:32 by cariencaljo   ########   odam.nl         */
+/*   Created: 2022/10/10 09:27:28 by cwesseli      #+#    #+#                 */
+/*   Updated: 2023/03/26 20:33:13 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
+#include "libft.h"
 
-# include "minishell.h"
-
-typedef enum e_lextype
+char	*ft_strchr(char *s, int c)
 {
-	WORD = 0,
-	COMMENT,
-	D_QUOTE,
-	S_QUOTE,
-	EXPAND,
-	ASSIGN,
-	SPACE,
-	GREAT,
-	LESS,
-	DLESS,
-	DGREAT,
-	PIPE,
-	TAB,
-	NEW_LINE,
-	SEMI,
-	AND,
-	BRACE_O,
-	BRACE_C,	
-}	t_lextype;
+	char	*checker;
+	char	to_check;
 
-
-// char	*ft_strtok(char *str, char *delim);
-// void	ft_lexer(t_node **list, char *str);
-
-#endif
-
-/*error handeling:
-1.
-
-*/
+	if (s == NULL)
+		return (NULL);
+	checker = s;
+	to_check = (char)c;
+	while (*checker != to_check && *checker != '\0')
+		checker++;
+	if (*checker != to_check)
+		return (NULL);
+	return (checker);
+}
