@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/29 20:11:44 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 14:14:43 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ t_node	*lexer(char *input_line, char *delim)
 	if (!input_line)
 		return (NULL);
 	split_to_list(input_line, delim, &tokens);
+	printf("CREATED TOKENS\n");
+	print_tokens(tokens);
 	if (check_split_tokens(tokens))
 	{
 		write(2, "Error: input: unclosed quotes\n", 30);

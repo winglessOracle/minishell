@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/30 14:05:49 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 14:14:19 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(void)
 		 	add_history(line_read);
 	printf("READ INPUT\n");
 		tokens = lexer(line_read, "|<> \t\n");
-	printf("CREATED TOKENS\n");
+	printf("MERGED TOKENS\n");
 	print_tokens(tokens);
 		pipeline = parse_pipeline(tokens, env_list);
 	printf("CREATED PIPLINE\n");

@@ -1,8 +1,0 @@
-// works:
-hello world 'does | this work?' hello=10 $var word | word "#comment gone" | with $var and #comment that will be gone
-
-
-
-
-// segfaults:
-printf("%d args in cmd_argv\n", cmd->cmd_argc);
