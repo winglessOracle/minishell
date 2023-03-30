@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 09:39:07 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 11:56:44 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int	set_type_word(t_node **token)
 
 int	set_cmd_end(t_node **token)
 {
-	lstdelone(*token, delete_content);
+	remove_node(token);
 	return (1);
 }
 
-t_smpl_cmd	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
+t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 {	
 	int	state;
 	static function  *parse[14] = {
@@ -66,7 +66,7 @@ t_smpl_cmd	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 	}
 	if (state == -1)
 		return (NULL);
-	return (cmd);
+	return (tokens);
 }
 
 t_pipe	*parse_pipeline(t_node *tokens, t_node *env_list)
@@ -77,16 +77,18 @@ t_pipe	*parse_pipeline(t_node *tokens, t_node *env_list)
 	if (!tokens)
 		return (NULL);
 	pipeline = init_pipeline();
-	if (tokens) //should be while when all tokens are parsed correctly
+	while (tokens)
 	{
-		cmd = parse_smpl_cmd(tokens, init_smpl_cmd(env_list));
+		cmd = init_smpl_cmd(env_list);
+		tokens = parse_smpl_cmd(tokens, cmd);
 		if (!cmd)
 			return (NULL);
-		print_cmd(cmd);		// test
 		lstadd_back_pipe(&pipeline->pipe_argv, cmd);
 		pipeline->pipe_argc++;
-		print_tokens(tokens);
 	}
+	// test
+	print_pipeline(pipeline);
+	print_tokens(tokens);
 	return (pipeline);
 }
 

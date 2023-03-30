@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 09:23:02 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/29 10:10:50 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 11:34:58 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	get_state(char *str)
 int	getlexerenum(char token)
 {
 	if (token == ' ')
-		return (SPACE);
+		return (_SPACE);
 	else if (token == '>')
 		return (GREAT);
 	else if (token == '<')
@@ -65,7 +65,7 @@ int	getlexerenum(char token)
 	else if (token == '|')
 		return (PIPE);
 	else if (token == '\t')
-		return (TAB);
+		return (_TAB);
 	else if (token == '\n')
 		return (NEW_LINE);
 	else if (token == ';')

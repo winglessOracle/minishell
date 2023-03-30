@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/30 09:38:07 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 11:54:36 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,6 @@ void		leaks(void);
 void		print_env(t_node *env_list, int flag);
 void		print_tokens(t_node *tokens);
 void		print_cmd(t_smpl_cmd *cmd);
+void		print_pipeline(t_pipe *pipe);
 
 #endif
