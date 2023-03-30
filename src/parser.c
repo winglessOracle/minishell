@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 16:12:30 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 16:26:06 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		todo(t_node **token, t_smpl_cmd *cmd)
 
 int remove_node(t_node **token, t_smpl_cmd *cmd)
 {	
+	(void)cmd;
 	t_node	*temp;
 	
 	if (!*token)
@@ -34,7 +35,10 @@ int remove_node(t_node **token, t_smpl_cmd *cmd)
 
 int	set_type_word(t_node **token, t_smpl_cmd *cmd)
 {
-	(*token)->type = WORD;
+	if (cmd->cmd_argc == 0)
+		(*token)->type = NAME;
+	else
+		(*token)->type = WORD;
 	return (0);
 }
 
@@ -48,7 +52,7 @@ t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 {	
 	int	state;
 	static function  *parse[MAX_TYPE] = {
-		NULL, //word
+		set_type_word, //word
 		set_type_word, //dquote
 		set_type_word, //squote
 		todo, //expand
@@ -62,18 +66,18 @@ t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 		remove_node, //comment
 		remove_node, //space
 		remove_node, //tab
+		NULL, //name
 	};
 	
 	state = 0;
 	while (tokens && !state)
 	{
-		if (tokens->type == WORD)
+		state = parse[tokens->type](&tokens, cmd);
+		if (tokens->type == WORD || tokens->type == NAME)
 		{
 			lstadd_back(&cmd->cmd_argv, lstpop(&tokens));
 			cmd->cmd_argc++;
-		} 
-		else
-			state = parse[tokens->type](&tokens, cmd);
+		}
 	}
 	if (state == -1)
 		return (NULL);
