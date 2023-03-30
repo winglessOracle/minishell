@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 16:26:06 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 17:14:31 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,11 @@ int	set_type_word(t_node **token, t_smpl_cmd *cmd)
 
 int	set_cmd_end(t_node **token, t_smpl_cmd *cmd)
 {
+	int check;
+
+	check = check_cmd(*token, cmd);
 	remove_node(token, cmd);
-	return (1);
+	return (check);
 }
 
 t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
@@ -62,7 +65,7 @@ t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 		todo, //dless
 		todo, //dgreat
 		set_cmd_end, //pipe
-		set_cmd_end, //new_line should this do more?
+		set_cmd_end, //new_line
 		remove_node, //comment
 		remove_node, //space
 		remove_node, //tab
@@ -73,7 +76,7 @@ t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 	while (tokens && !state)
 	{
 		state = parse[tokens->type](&tokens, cmd);
-		if (tokens->type == WORD || tokens->type == NAME)
+		if (tokens && (tokens->type == WORD || tokens->type == NAME))
 		{
 			lstadd_back(&cmd->cmd_argv, lstpop(&tokens));
 			cmd->cmd_argc++;
@@ -96,7 +99,7 @@ t_pipe	*parse_pipeline(t_node *tokens, t_node *env_list)
 	{
 		cmd = init_smpl_cmd(env_list);
 		tokens = parse_smpl_cmd(tokens, cmd);
-		if (!cmd)
+		if (!tokens)
 			return (NULL);
 		lstadd_back_pipe(&pipeline->pipe_argv, cmd);
 		pipeline->pipe_argc++;
