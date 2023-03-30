@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/30 13:56:03 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 15:22:58 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void		lstadd_back_pipe(t_smpl_cmd **lst, t_smpl_cmd *new);
 t_node		*lexer(char *str, char *delim);
 int			getlexerenum(char token);
 int			get_state(char *str);
-void		merge_tokens(t_node **token, int type);
+void		merge_tokens(t_node *token, int type);
 
 // parser
 t_node		*init_env(void);
