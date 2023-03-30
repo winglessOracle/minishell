@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/28 19:07:47 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 10:29:37 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	test_lexer(char *str, t_node *tokens)
 	
 }
 
-void	run_tests(char *str, t_node *tokens, t_master *master)
+void	run_tests(char *str, t_node *tokens, t_node *env_list)
 {
 	if (tokens)
 		test_lexer(str, tokens);
-	print_env(master->env_list, 3);
+	print_env(env_list, 3);
 }
