@@ -6,13 +6,18 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/29 21:09:52 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 14:05:49 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(int argc, char **argv, char **envp)
+void	leaks(void)
+{
+	system("leaks minishell -q");	
+}
+
+int	main(void)
 {
 	t_node		*tokens;
 	t_node		*env_list;
@@ -21,8 +26,7 @@ int	main(int argc, char **argv, char **envp)
 
 	atexit(leaks);
 	line_read = NULL;
-	env_list = env_to_list(envp);
-	add_variable(env_list, "PS1=CC_PROMPT:$> ", 1);
+	env_list = init_env();
 	while (1)
 	{
 		if (line_read)
@@ -35,8 +39,13 @@ int	main(int argc, char **argv, char **envp)
 			break ;
 		if (line_read)
 		 	add_history(line_read);
+	printf("READ INPUT\n");
 		tokens = lexer(line_read, "|<> \t\n");
+	printf("CREATED TOKENS\n");
+	print_tokens(tokens);
 		pipeline = parse_pipeline(tokens, env_list);
+	printf("CREATED PIPLINE\n");
+	print_pipeline(pipeline);
 	}
 	exit(EXIT_SUCCESS);
 }

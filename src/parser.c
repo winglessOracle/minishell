@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 11:56:44 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 14:04:40 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	set_cmd_end(t_node **token)
 t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
 {	
 	int	state;
-	static function  *parse[14] = {
+	static function  *parse[MAX_TYPE] = {
 		NULL, //word
 		set_type_word, //dquote
 		set_type_word, //squote
@@ -86,9 +86,6 @@ t_pipe	*parse_pipeline(t_node *tokens, t_node *env_list)
 		lstadd_back_pipe(&pipeline->pipe_argv, cmd);
 		pipeline->pipe_argc++;
 	}
-	// test
-	print_pipeline(pipeline);
-	print_tokens(tokens);
 	return (pipeline);
 }
 

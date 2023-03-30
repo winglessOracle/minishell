@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 09:23:02 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/30 11:34:58 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 13:49:42 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,14 @@ int	getlexerenum(char token)
 		return (_TAB);
 	else if (token == '\n')
 		return (NEW_LINE);
-	else if (token == ';')
-		return (SEMI);
-	else if (token == '&')
-		return (AND);
-	else if (token == '(')
-		return (BRACE_O);
-	else if (token == ')')
-		return (BRACE_C);
+	// else if (token == ';')
+	// 	return (SEMI);
+	// else if (token == '&')
+	// 	return (AND);
+	// else if (token == '(')
+	// 	return (BRACE_O);
+	// else if (token == ')')
+	// 	return (BRACE_C);
 	else
 		return (WORD);
 }

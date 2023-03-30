@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/30 10:22:13 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 13:46:51 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,11 @@ typedef enum e_lextype
 	COMMENT,
 	_SPACE,
 	_TAB,
-	SEMI,
-	AND,
-	BRACE_O,
-	BRACE_C,	
+	MAX_TYPE,
+	// SEMI,
+	// AND,
+	// BRACE_O,
+	// BRACE_C,	
 }	t_lextype;
 
 

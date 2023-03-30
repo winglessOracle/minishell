@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/30 11:54:36 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 13:56:03 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,12 +92,13 @@ int			get_state(char *str);
 void		merge_tokens(t_node **token, int type);
 
 // parser
+t_node		*init_env(void);
 t_smpl_cmd	*init_smpl_cmd(t_node *env_list);
 t_pipe		*init_pipeline(void);
 t_pipe		*parse_pipeline(t_node *tokens, t_node *env_list);
 
 // environment
-t_node		*env_to_list(char **envp);
+t_node		*environ_to_list();
 void		add_variable(t_node *env_list, char *content, int type);
 char		*get_variable(t_node *env_list, char *name);
 // void		print_env(t_node *env_list, int flag);

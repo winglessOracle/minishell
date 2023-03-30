@@ -6,46 +6,26 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/28 19:08:18 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 14:03:03 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_node	*env_to_list(char **envp)
+t_node	*environ_to_list()
 {
+	extern char **environ;
 	t_node	*env_list;
 	int		i;
 	
 	i = 0;
-	while (envp[i])
+	env_list = NULL;
+	while (environ[i])
 	{
-		lstadd_back(&env_list, new_node(2,ft_strdup(envp[i])));
+		lstadd_back(&env_list, new_node(2,ft_strdup(environ[i])));
 		i++;
 	}
 	return (env_list);
-}
-
-//flags: 1 = local (default) 2 = external 3 = all
-void	print_env(t_node *env_list, int flag)
-{
-	while (env_list)
-	{
-		if (flag == 1)
-		{
-			if (env_list->type == 1)
-				printf("%s\n", env_list->content);
-		}
-		if (flag == 2)
-		{
-			if (env_list->type == 2)  // also prevent printing when var=NULL
-				printf("%s\n", env_list->content);
-		}
-		if (flag == 3)
-		 	if (env_list->type == 1 || env_list->type == 2)
-				printf("%s\n", env_list->content);		
-		env_list = env_list->next;
-	}
 }
 
 //type default = 1 (local)

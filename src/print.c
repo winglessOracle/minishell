@@ -1,21 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   test_carien.c                                      :+:    :+:            */
+/*   print.c                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 11:54:11 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 13:46:21 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	leaks(void)
-{
-	system("leaks minishell -q");	
-}
 
 void	print_tokens(t_node *tokens)
 {
@@ -54,5 +49,27 @@ void	print_pipeline(t_pipe *pipe)
 		}
 		printf("--------------------------------\n\n");
 		pipe->pipe_argv = pipe->pipe_argv->next;
+	}
+}
+
+//flags: 1 = local (default) 2 = external 3 = all
+void	print_env(t_node *env_list, int flag)
+{
+	while (env_list)
+	{
+		if (flag == 1)
+		{
+			if (env_list->type == 1)
+				printf("%s\n", env_list->content);
+		}
+		if (flag == 2)
+		{
+			if (env_list->type == 2)  // also prevent printing when var=NULL
+				printf("%s\n", env_list->content);
+		}
+		if (flag == 3)
+		 	if (env_list->type == 1 || env_list->type == 2)
+				printf("%s\n", env_list->content);		
+		env_list = env_list->next;
 	}
 }
