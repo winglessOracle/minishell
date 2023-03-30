@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 09:23:02 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/30 15:23:39 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 15:26:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	merge_tokens(t_node *token, int type)
 		free(token->content);
 		token->content = content;
 		token->type = type;
-		lstdelone(lstpop(&token->next), delete_content);
+		token = token->next;
+		lstdelone(lstpop(&token), delete_content);
 	}
 }
 
