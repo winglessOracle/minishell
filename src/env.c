@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/31 10:51:45 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/31 19:10:48 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ t_node	*env_to_list(char **envp)
 {
 	t_node	*env_list;
 	int		i;
-	
+
+	env_list = NULL;
 	i = 0;
 	while (envp[i])
 	{
@@ -46,6 +47,18 @@ void	print_env(t_node *env_list, int flag)
 				printf("%s\n", env_list->content);		
 		env_list = env_list->next;
 	}
+}
+
+int	check_env_content(char *str)
+{
+	int	i;
+	
+	i = 0;
+	while (str[i] != '=' && str[i])
+		i++;
+	if (str[i] && str[i + 1])
+		return (1);
+	return (0);
 }
 
 //type default = 1 (local)
@@ -85,22 +98,4 @@ char	*get_variable(t_node *env_list, char *name)
 		return (ret);
 	}
 	return (NULL);
-}
-
-int	check_env_content(char *str)
-{
-	int	i;
-	
-	i = 0;
-	while (str[i] != '=' && str[i])
-		i++;
-	if (str[i] && str[i + 1])
-		return (1);
-	return (0);
-}
-
-void	init_variables(t_node *env_list)
-{
-	add_variable(env_list, "PS1=CC_PROMPT:>", 1);
-	add_variable(env_list, "PS2=", 1);
 }
