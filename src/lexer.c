@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/30 08:51:24 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/31 10:29:40 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	check_split_tokens(t_node *tokens)
 int	getlexerenum(char token)
 {
 	if (token == ' ')
-		return (SPACE);
+		return (_SPACE);
 	else if (token == '>')
 		return (GREAT);
 	else if (token == '<')
@@ -65,7 +65,7 @@ int	getlexerenum(char token)
 	else if (token == '|')
 		return (PIPE);
 	else if (token == '\t')
-		return (TAB);
+		return (_TAB);
 	else if (token == '\n')
 		return (NEW_LINE);
 	else if (token == ';')
