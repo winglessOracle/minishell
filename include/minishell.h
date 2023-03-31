@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/31 10:32:33 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/31 12:40:12 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 
 // # include <stdbool.h>
 // # include <limits.h>
-
 typedef struct s_node
 {
 	int				type;
