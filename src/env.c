@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/29 10:56:21 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/03/31 10:51:45 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char	*get_variable(t_node *env_list, char *name)
 		if (ft_strncmp(env_list->content, name, ft_strlen(name)) == 0)
 		{
 			temp = ft_substr(env_list->content, ft_strlen(name) + 1, 
-			 	ft_strlen(env_list->content) - (ft_strlen(name) + 1));
+			 	ft_strlen(env_list->content) - (ft_strlen(name) + 2));
 			if (!temp)
 			 	exit_error(errno);
 		}
@@ -97,4 +97,10 @@ int	check_env_content(char *str)
 	if (str[i] && str[i + 1])
 		return (1);
 	return (0);
+}
+
+void	init_variables(t_node *env_list)
+{
+	add_variable(env_list, "PS1=CC_PROMPT:>", 1);
+	add_variable(env_list, "PS2=", 1);
 }

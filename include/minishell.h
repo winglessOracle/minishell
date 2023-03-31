@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/30 10:50:59 by carlo         ########   odam.nl         */
+/*   Updated: 2023/03/31 12:40:12 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 
 // # include <stdbool.h>
 // # include <limits.h>
-
 typedef struct s_node
 {
 	int				type;
@@ -66,6 +65,7 @@ t_node		*lexer(char *str, char *delim);
 
 // environment
 t_node		*env_to_list(char **envp);
+void		init_variables(t_node *env_list);
 void		add_variable(t_node *env_list, char *content, int type);
 char		*get_variable(t_node *env_list, char *name);
 void		print_env(t_node *env_list, int flag);
