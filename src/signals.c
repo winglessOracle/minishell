@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/01 21:39:20 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/01 22:11:46 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	set_sig_term()
 	set_termios();
 	set_signals();
 }
-
 void	handle_sigcont()
 {
 	set_termios();
@@ -51,12 +50,9 @@ void	set_termios()
 	new_termios = old_termios;
 	new_termios.c_cc[VEOF] = old_termios.c_cc[VINTR];
 	new_termios.c_cc[VINTR] = old_termios.c_cc[VEOF];
-	// new_termios.c_cc[VEOF] = old_termios.c_cc[VEOF];
-	// new_termios.c_cc[VINTR] = old_termios.c_cc[VINTR];
 	if (tcsetattr(STDIN_FILENO, 0, &new_termios) == -1)
 		exit(errno);
 	signal(SIGCONT, handle_sigcont);
-
 	if (atexit(restore_terminos) != 0)
 		exit(errno);
 }
