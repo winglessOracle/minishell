@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/31 12:40:12 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/01 21:52:45 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <stdio.h>
 # include <errno.h>
 # include <stdlib.h>
-# include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 
@@ -79,7 +78,10 @@ void		leaks(void);
 void		run_tests(char *str, t_node *tokens, t_node *env_list);
 void		test_lexer(char *str, t_node *tokens);
 
+//colors
+
 #endif
+
 
 /*error handeling:
 1.

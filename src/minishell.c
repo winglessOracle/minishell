@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/31 19:09:32 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/01 21:43:56 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ int	main(int argc, char **argv, char **envp) //remove arguments and return type?
 	line_read = NULL;
 	env_list = env_to_list(envp);
 	init_variables(env_list);
-
+	set_sig_term();
+	
 	while (1)
 	{
 		// add siganal initializer add flag restart for certain strings
-		set_signals();
 		if (line_read)
 		{
 		  	free(line_read);
@@ -42,7 +42,7 @@ int	main(int argc, char **argv, char **envp) //remove arguments and return type?
 		tokens = lexer(line_read, "|<> \t\n");
 
 		// tests
-		run_tests(line_read, tokens, env_list);
+	//	run_tests(line_read, tokens, env_list);
 		if (tokens)
 			lstclear(&tokens, delete_content);
 	}

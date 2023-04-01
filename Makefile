@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/03/31 12:32:11 by cwesseli      ########   odam.nl          #
+#    Updated: 2023/04/01 17:20:16 by carlo         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,15 +19,15 @@ RESET	:= \033[0m
 #//= Variables = //#
 NAME		= minishell
 CC			= clang
-CFLAGS		= -Wall -Wextra -Werror -g -lreadline
+CFLAGS		= -Wall -Wextra -Werror -lreadline
 
 #//= Locations =//#
 INCLUDE		= ./include
 LIBFT		= ./libft
 LIBS		= $(LIBFT)/libft.a 
 HEADERS		= -I $(LIBFT) -I$(INCLUDE)
-OBJ_FILES	= $(addprefix obj/, minishell.o list_utils.o parser.o utils.o lexer.o env.o init.o test.o\
-				signals.o)
+OBJ_FILES	= $(addprefix obj/, minishell.o list_utils.o parser.o utils.o lexer.o env.o\
+					init.o test.o signals.o)
 
 #//= Modifiable =//#
 all: libft $(NAME)
