@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/02 16:23:26 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/02 16:25:51 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	main(int argc, char **argv, char **envp) //remove arguments and return type?
 		if (tokens)
 			lstclear(&tokens, delete_content);
 	}
-	//clear_history(); should be rl_clear_history() but that is not found?.
+	rl_clear_history();
 	exit(EXIT_SUCCESS);
 }
-
