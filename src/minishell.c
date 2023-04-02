@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/01 21:43:56 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/02 16:23:26 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int	main(int argc, char **argv, char **envp) //remove arguments and return type?
 	env_list = env_to_list(envp);
 	init_variables(env_list);
 	set_sig_term();
-	
 	while (1)
 	{
 		// add siganal initializer add flag restart for certain strings
@@ -39,9 +38,9 @@ int	main(int argc, char **argv, char **envp) //remove arguments and return type?
 			break ;
 		if (line_read && *line_read)
 		 	add_history(line_read);
-		tokens = lexer(line_read, "|<> \t\n");
 
-		// tests
+
+	// tests
 	//	run_tests(line_read, tokens, env_list);
 		if (tokens)
 			lstclear(&tokens, delete_content);
@@ -49,3 +48,4 @@ int	main(int argc, char **argv, char **envp) //remove arguments and return type?
 	//clear_history(); should be rl_clear_history() but that is not found?.
 	exit(EXIT_SUCCESS);
 }
+
