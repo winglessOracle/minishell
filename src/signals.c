@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/03 16:40:42 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/03 16:50:37 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ void	handle_sigquit(int signal_number)
 {
 	(void) signal_number;
 	printf("\n");
-	rl_replace_line("", 0);
-	rl_on_new_line(); //not working as expected
+	rl_on_new_line();
 	rl_redisplay();
 }
 
