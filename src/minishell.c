@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/03 13:56:09 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/03 15:23:58 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv, char **envp) //remove arguments and return type?
 	env_list = env_to_list(envp);
 	init_variables(env_list);
 	set_sig_term();
-	read_history("log/history_log");
+	read_history("log/history_log"); //remove?
 	while (1)
 	{
 		if (line_read)
@@ -39,14 +39,13 @@ int	main(int argc, char **argv, char **envp) //remove arguments and return type?
 			
 		if (line_read && *line_read)
 		 	add_history(line_read);
-
 	// tests
 	//	run_tests(line_read, tokens, env_list);
 		if (tokens)
 			lstclear(&tokens, delete_content);
 	}
-	write_history("log/history_log");
-	rl_clear_history();
+	write_history("log/history_log"); //remove?
+	rl_clear_history(); //not working as expected
 	exit(EXIT_SUCCESS);
 }
 
