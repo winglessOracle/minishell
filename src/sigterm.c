@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   signals.c                                          :+:    :+:            */
+/*   sigterm.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/02 16:17:04 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/03 13:49:23 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 
 //global variable for now
-struct termios	old_termios;
+// struct termios	old_termios;
 
 void	set_sig_term()
 {
@@ -70,10 +70,10 @@ void	set_signals()
     // VSUSP: Suspend character (usually ^Z). (handeled in return)
 
 //handle eof eof to create new line (char -1?) to create newline if buffer is filled of flusch buffer
-
 void	set_termios()
 {
 	struct	termios	new_termios;
+	struct termios	old_termios;
 	
 	if (tcgetattr(STDIN_FILENO, &old_termios) == -1)
 		exit(errno);
@@ -82,12 +82,12 @@ void	set_termios()
 	new_termios.c_cc[VINTR] = old_termios.c_cc[VEOF];
  	if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &new_termios) == -1)
 		exit(errno);
-	if (atexit(restore_terminos) != 0)
-		exit(errno);
+	// if (atexit(restore_terminos) != 0)
+	// 	exit(errno);
 }
 
-void	restore_terminos()
-{
-	if (tcsetattr(STDERR_FILENO, TCSAFLUSH, &old_termios) == -1)
-		exit(errno);
-}
+// void	restore_terminos()
+// {
+// 	if (tcsetattr(STDERR_FILENO, TCSAFLUSH, &old_termios) == -1)
+// 		exit(errno);
+// }

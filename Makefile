@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/01 17:20:16 by carlo         ########   odam.nl          #
+#    Updated: 2023/04/03 13:30:44 by cwesseli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,15 +19,18 @@ RESET	:= \033[0m
 #//= Variables = //#
 NAME		= minishell
 CC			= clang
-CFLAGS		= -Wall -Wextra -Werror -lreadline
+CFLAGS		= -Wall -Wextra -Werror
+
+RL_INC		= /Users/$(USER)/.brew/opt/readline/include
+RL_LIB		= -L /Users/$(USER)/.brew/opt/readline/lib
 
 #//= Locations =//#
 INCLUDE		= ./include
 LIBFT		= ./libft
-LIBS		= $(LIBFT)/libft.a 
-HEADERS		= -I $(LIBFT) -I$(INCLUDE)
+LIBS		= $(LIBFT)/libft.a $(RL_LIB)
+HEADERS		= -I $(LIBFT) -I$(INCLUDE) -I$(RL_INC)
 OBJ_FILES	= $(addprefix obj/, minishell.o list_utils.o parser.o utils.o lexer.o env.o\
-					init.o test.o signals.o)
+					init.o test.o sigterm.o)
 
 #//= Modifiable =//#
 all: libft $(NAME)
