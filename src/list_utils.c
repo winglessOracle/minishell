@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 10:59:08 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/03 16:22:21 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	lstadd_back(t_node **lst, t_node *new)
 void	delete_content(void *content)
 {
 	char	*temp;
-	
+
 	temp = (char *)content;
 	free(temp);
 }
