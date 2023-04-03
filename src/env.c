@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/31 23:08:43 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/03 15:41:29 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_node	*env_to_list(char **envp)
 	i = 0;
 	while (envp[i])
 	{
-		lstadd_back(&env_list, new_node(2,ft_strdup(envp[i])));
+		lstadd_back(&env_list, new_node(2, ft_strdup(envp[i])));
 		i++;
 	}
 	return (env_list);
@@ -43,8 +43,9 @@ void	print_env(t_node *env_list, int flag)
 				printf("%s\n", env_list->content);
 		}
 		if (flag == 3)
-			if ((env_list->type == 1 || env_list->type == 2) && check_env_content(env_list->content))
-				printf("%s\n", env_list->content);		
+			if ((env_list->type == 1 || env_list->type == 2)
+				&& check_env_content(env_list->content))
+				printf("%s\n", env_list->content);
 		env_list = env_list->next;
 	}
 }
@@ -52,7 +53,7 @@ void	print_env(t_node *env_list, int flag)
 int	check_env_content(char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	while (str[i] != '=' && str[i])
 		i++;
@@ -84,10 +85,10 @@ char	*get_variable(t_node *env_list, char *name)
 	{
 		if (ft_strncmp(env_list->content, name, ft_strlen(name)) == 0)
 		{
-			ret = ft_substr(env_list->content, ft_strlen(name) + 1, 
-			 	ft_strlen(env_list->content) - (ft_strlen(name) + 1));
+			ret = ft_substr(env_list->content, ft_strlen(name) + 1,
+					ft_strlen(env_list->content) - (ft_strlen(name) + 1));
 			if (!ret)
-			 	exit_error(errno);
+				exit_error(errno);
 		}
 		env_list = env_list->next;
 	}

@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/03 13:28:37 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/03 15:35:31 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_node
 	char			*content;
 	struct s_node	*prev;
 	struct s_node	*next;
-	
 }	t_node;
 
 typedef struct s_master
@@ -40,10 +39,9 @@ typedef struct s_master
 	char	*outfile;
 	char	*errfile;
 	char	*here_end;
-	int		last_exit;  // is dit hier handig?
+	int		last_exit;// is dit hier handig?
 	t_node	*env_list;
 	t_node	*commands;
-	
 }	t_master;
 
 t_master	*init_master_struct(void);
@@ -79,10 +77,7 @@ void		leaks(void);
 void		run_tests(char *str, t_node *tokens, t_node *env_list);
 void		test_lexer(char *str, t_node *tokens);
 
-
-
 #endif
-
 
 /*error handeling:
 1.

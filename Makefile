@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/03 13:30:44 by cwesseli      ########   odam.nl          #
+#    Updated: 2023/04/03 15:52:53 by cwesseli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ LIBFT		= ./libft
 LIBS		= $(LIBFT)/libft.a $(RL_LIB)
 HEADERS		= -I $(LIBFT) -I$(INCLUDE) -I$(RL_INC)
 OBJ_FILES	= $(addprefix obj/, minishell.o list_utils.o parser.o utils.o lexer.o env.o\
-					init.o test.o sigterm.o)
+					init.o test.o signals.o termios.o)
 
 #//= Modifiable =//#
 all: libft $(NAME)
