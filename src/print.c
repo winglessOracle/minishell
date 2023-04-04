@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 19:41:15 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/04 09:54:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,11 @@ void	print_pipeline(t_pipe *pipe)
 	{
 		while (pipe->pipe_argv)
 		{
-			printf("-------------------------------------\n\tCMD %i:\t%s\n\tARGS:\t%d\n-------------------------------------\n", i, pipe->pipe_argv->cmd_argv->content, pipe->pipe_argv->cmd_argc);
+			printf("-------------------------------------\n\tCMD %i:", i);
+			if (pipe->pipe_argv->cmd_argv)
+				printf("\t%s\n\tARGS:\t%d\n-------------------------------------\n",pipe->pipe_argv->cmd_argv->content, pipe->pipe_argv->cmd_argc);
+			else
+				printf("\n");
 			print_cmd(pipe->pipe_argv);
 			pipe->pipe_argv = pipe->pipe_argv->next;
 			i++;
