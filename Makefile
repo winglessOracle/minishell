@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/03/30 17:26:04 by cariencaljo   ########   odam.nl          #
+#    Updated: 2023/04/04 12:43:42 by ccaljouw      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ RESET	:= \033[0m
 #//= Variables = //#
 NAME		= minishell
 CC			= clang
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
 
 #//= Locations =//#
 INCLUDE		= ./include
@@ -43,6 +43,9 @@ $(OBJ_FILES): obj/%.o: src/%.c
 	@mkdir -p $(dir $@)
 	@echo "$(GREEN)$(BOLD)Compiling minishell:$(RESET) $(notdir $<)"
 	@$(CC) -c $(CFLAGS) $(HEADERS) -o $@ $< 
+
+debug: CFLAGS = -Wall -Wextra
+debug: all
 
 clean:
 	@echo "$(BLUE)Cleaning minishell$(RESET)"
