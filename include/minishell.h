@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/04 12:50:42 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/04 12:57:32 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,16 @@
 
 # include "libft.h"
 # include "lexer.h"
+# include "sigterm.h"
 # include <string.h>
 # include <stdio.h>
 # include <errno.h>
 # include <stdlib.h>
-# include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 
 // # include <stdbool.h>
 // # include <limits.h>
-
 typedef struct s_node
 {
 	int				type;
@@ -105,7 +104,11 @@ t_pipe		*parse_pipeline(t_node *tokens, t_node *env_list);
 t_node		*environ_to_list();
 void		add_variable(t_node *env_list, char *content, int type);
 char		*get_variable(t_node *env_list, char *name);
-// void		print_env(t_node *env_list, int flag);
+int			check_env_content(char *str);
+void		print_env(t_node *env_list, int flag);
+
+//parser
+int			get_state(char *str);
 
 //tests
 void		leaks(void);

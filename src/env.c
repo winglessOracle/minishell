@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/04 12:51:17 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/04 13:06:46 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ t_node	*environ_to_list()
 	extern char **environ;
 	t_node	*env_list;
 	int		i;
-	
+
+	env_list = NULL;
 	i = 0;
 	env_list = NULL;
 	while (environ[i])
@@ -28,28 +29,46 @@ t_node	*environ_to_list()
 	return (env_list);
 }
 
+int	check_env_content(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] != '=' && str[i])
+		i++;
+	if (str[i] && str[i + 1])
+		return (1);
+	return (0);
+}
+
 //type default = 1 (local)
 void	add_variable(t_node *env_list, char *content, int type)
 {
 	if (!type)
 		type = 1;
+	if (type < 1 || type > 2)
+	{
+		printf("Invalid type. Use type 1=local type 2=external\n");
+		return ;
+	}
 	if (env_list && content)
 		lstadd_back(&env_list, new_node(type, content));
+		//add a check if variable exists (get_variable0)
 }
 
 char	*get_variable(t_node *env_list, char *name)
 {
 	char	*ret;
-	
+
 	ret = NULL;
 	while (env_list && name)
 	{
 		if (ft_strncmp(env_list->content, name, ft_strlen(name)) == 0)
 		{
-			ret = ft_substr(env_list->content, ft_strlen(name) + 1, 
-			 	ft_strlen(env_list->content) - (ft_strlen(name) + 1));
+			ret = ft_substr(env_list->content, ft_strlen(name) + 1,
+					ft_strlen(env_list->content) - (ft_strlen(name) + 1));
 			if (!ret)
-			 	exit_error(errno);
+				exit_error(errno);
 		}
 		env_list = env_list->next;
 	}
@@ -57,4 +76,3 @@ char	*get_variable(t_node *env_list, char *name)
 		return (ret);
 	return (NULL);
 }
-

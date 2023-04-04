@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/04 09:54:23 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/04 13:06:28 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,18 @@ void	print_env(t_node *env_list, int flag)
 	{
 		if (flag == 1)
 		{
-			if (env_list->type == 1)
+			if (env_list->type == 1 && check_env_content(env_list->content))
 				printf("%s\n", env_list->content);
 		}
 		if (flag == 2)
 		{
-			if (env_list->type == 2)  // also prevent printing when var=NULL
+			if (env_list->type == 2 && check_env_content(env_list->content))
 				printf("%s\n", env_list->content);
 		}
 		if (flag == 3)
-		 	if (env_list->type == 1 || env_list->type == 2)
-				printf("%s\n", env_list->content);		
+			if ((env_list->type == 1 || env_list->type == 2)
+				&& check_env_content(env_list->content))
+				printf("%s\n", env_list->content);
 		env_list = env_list->next;
 	}
 }

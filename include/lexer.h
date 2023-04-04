@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/30 16:15:18 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/04 12:55:14 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ typedef enum e_lextype
 	// BRACE_O,
 	// BRACE_C,	
 }	t_lextype;
-
 
 // char	*ft_strtok(char *str, char *delim);
 // void	ft_lexer(t_node **list, char *str);
