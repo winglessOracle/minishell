@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/04 10:19:32 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/04 14:26:37 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ typedef int function(t_node **, t_smpl_cmd *);
 int	todo(t_node **token, t_smpl_cmd *cmd);  //remove
 int	set_type_word(t_node **token, t_smpl_cmd *cmd);
 int	set_cmd_end(t_node **token, t_smpl_cmd *cmd);
-int remove_node(t_node **token, t_smpl_cmd *cmd);
+int   remove_node(t_node **token, t_smpl_cmd *cmd);
+int	expand_var(t_node **token, t_smpl_cmd *cmd);
 
 // redirect_utils
 int	redirect_input(t_node **token, t_smpl_cmd *cmd);

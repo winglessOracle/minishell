@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/04 13:06:46 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/04 15:21:25 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	add_variable(t_node *env_list, char *content, int type)
 		//add a check if variable exists (get_variable0)
 }
 
-char	*get_variable(t_node *env_list, char *name)
+char	*get_variable(t_node *env_list, char *name) // test met name = '\0'
 {
 	char	*ret;
 

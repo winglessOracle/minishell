@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/04 12:57:32 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/04 15:35:45 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,6 @@ typedef struct s_pipe
 	t_smpl_cmd		*pipe_argv;
 	struct s_pipe	*next;
 }	t_pipe;
-
-// typedef struct s_master
-// {
-// 	char	*infile;
-// 	char	*outfile;
-// 	char	*errfile;
-// 	char	*here_end;
-// 	int		last_exit;  // is dit hier handig?
-// 	t_node	*env_list;
-// 	t_node	*commands;
-	
-// }	t_master;
 
 // utils
 void		exit_error(int num);
