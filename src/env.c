@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/03 15:41:29 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/04 11:34:24 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	add_variable(t_node *env_list, char *content, int type)
 	}
 	if (env_list && content)
 		lstadd_back(&env_list, new_node(type, content));
+		//add a check if variable exists (get_variable0)
 }
 
 char	*get_variable(t_node *env_list, char *name)

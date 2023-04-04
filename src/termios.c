@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 15:52:32 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/03 16:48:56 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/04 11:17:36 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ struct termios	g_old_termios;
 // VERASE: Erase character (usually ^H).
 // VINTR: Interrupt character (usually ^C).
 // VKILL: Kill line character (usually ^U).
-// VSUSP: Suspend character (usually ^Z). (handeled in return)
+// VSUSP: Suspend character (usually ^Z). (ignored)
 
 void	set_termios(void)
 {
