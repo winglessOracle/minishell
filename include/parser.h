@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 19:19:55 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/03/30 20:42:44 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,7 @@ typedef int function(t_node **, t_smpl_cmd *);
 // %token  ASSIGNMENT_WORD
 // %token  NAME
 // %token  NEWLINE
-
-/* The following are the operators mentioned above. */
-
 // %token  DLESS  DGREAT
-// /*      '<<'   '>>' */
 
 /* -------------------------------------------------------
    The Grammar
