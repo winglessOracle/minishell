@@ -6,50 +6,12 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/04 09:48:07 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/04 10:19:48 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
-
-int		todo(t_node **token, t_smpl_cmd *cmd)
-{
-	printf("not handeled yet: type: %d, content: %s\n", (*token)->type, (*token)->content);
-	(*token) = (*token)->next;
-	remove_node(token, cmd);
-	return (0);
-}
-
-int remove_node(t_node **token, t_smpl_cmd *cmd)
-{	
-	(void)cmd;
-	t_node	*temp;
-	
-	if (!*token)
-		return (-1);
-	temp = lstpop(token);
-	lstdelone(temp, delete_content);
-	return (0);
-}
-
-int	set_type_word(t_node **token, t_smpl_cmd *cmd)
-{
-	if (cmd->cmd_argc == 0)
-		(*token)->type = NAME;
-	else
-		(*token)->type = WORD;
-	return (0);
-}
-
-int	set_cmd_end(t_node **token, t_smpl_cmd *cmd)
-{
-	int check;
-
-	check = check_pipe(*token, cmd);
-	remove_node(token, cmd);
-	return (check);
-}
 
 t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	**cmd)
 {	
