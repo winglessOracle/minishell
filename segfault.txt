@@ -8,5 +8,3 @@ command | another $command |
 
 
 /* Segfaults */
-
-#only one node that is not going to be processed
