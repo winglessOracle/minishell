@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/04 13:01:15 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/04 17:35:42 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,11 @@ t_node	*check_split_tokens(t_node *tokens)
 		else if (t->next && t->type == GREAT && t->next->type == GREAT)
 			merge_tokens(t, DGREAT);
 		else
+		{
+			if (state == COMMENT)
+				t->type = COMMENT;
 			t = t->next;
+		}
 	}
 	tokens = check_quotes(state, tokens);
 	return (tokens);

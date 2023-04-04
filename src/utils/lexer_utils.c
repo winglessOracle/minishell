@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 09:23:02 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/04 14:41:41 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/04 17:32:00 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ int	check_token_content(char *str)
 
 	state = 0;
 	if (*str == '#')
+	{
+		printf("COMMENT\n");
 		return (COMMENT);
+	}
 	while (*str)
 	{
 		if (*str == 34 && state == 0)

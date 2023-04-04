@@ -1,22 +1,10 @@
-ddd
-ddd
-zdrf
-make fclean
-hello world 'does | this work?' hello=10 $var word | word "#comment gone" | with $var and #comment that will be gone
-< input for command 1 | << here for heredoc > out | >> append the last
-dkg lsg l ;
-$PS1
-< input for command 1 | << here for heredoc > out | >> append the last
-hello world 'does | this work?' hello=10 '$var' word | word "#comment gone" | with '$var' and #comment that will be gone
-$PS1
-$PS1
-$?
-hello world 'does | this work?' hello=10 $var word | word "#comment gone" | with $var and #comment that will be gone
-"kdjsgh sg gj gk fhpg p
-$PS1
-$PS1
-eixt
-$PS1
-$PS1
-$PS1
-hello world 'does | this work?' hello=10 $var word | word "#comment gone" | with $var and #comment that will be gone
+_HiStOrY_V2_
+"hello\040there"\040and\040#comment
+"hello world" #comment
+"hello world" #comment
+"hello world" #comment
+"hello world" #comment
+"hello world" #comment
+"hello world" #comment
+"hello world" #comment
+"hello world" #comment
