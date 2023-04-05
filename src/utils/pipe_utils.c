@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/05 12:53:34 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/05 18:20:28 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,20 @@
 
 int	check_pipe(t_node *token, t_smpl_cmd *cmd)
 {
-	int	check;
-	
-	if (token->type == PIPE && !token->next)
+	if (token->type == PIPE && (!token->next || token->next->type == NEW_LINE))
 	{
 		write(2, "Error: no command after '|'\n", 28); //include ft_fprintf for better error messages and create seperate funtion that writes the error
-		check = -1;
+		lstclear(&cmd->cmd_argv, delete_content);
+		cmd->cmd_argv = NULL;
+		cmd = NULL;
+		return (-1);
 	}
 	else if (cmd->cmd_argv == 0 && cmd->redirect == NULL)
 	{
-		
-		write(2, "Error: '|' at start of line\n", 28); //include ft_fprintf for better error messages and create seperate funtion that writes the error		
-		check = -1;
+		write(2, "Error: no command arguments\n", 28); //include ft_fprintf for better error messages and create seperate funtion that writes the error		
+		return (-1);
 	}
-	else
-		check = 1;
-	return (check);
+	return (1);
 }
 
 t_smpl_cmd	*lstlast_pipe(t_smpl_cmd *lst)
