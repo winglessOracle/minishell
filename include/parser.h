@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/05 16:33:27 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/05 19:59:05 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef enum e_parsetype
 
 typedef enum e_redirect
 {
-	INPUT = 0,
+	INPUT = 6,
 	OUTPUT,
 	HEREDOC,
 	APPEND,

@@ -1,4 +1,5 @@
 /* Working correctly */
+
 hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
 | followed by command
 |
@@ -8,4 +9,5 @@ hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | 
 
 
 /* Segfaults or incorrect behaviour */
+
 command | another $command |

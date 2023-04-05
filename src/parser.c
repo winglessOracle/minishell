@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/05 18:17:28 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/05 18:30:01 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	check_token_content(t_node *token, int type)
 int	check_token(t_node **token, t_smpl_cmd *cmd)
 {
 	int	state;
-	static function  *parse[7];
+	static function  *parse[6];
 
 	parse[WORD] = add_word_to_cmd;
 	parse[COMMENT] = remove_comment;

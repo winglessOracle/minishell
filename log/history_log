@@ -278,14 +278,31 @@ command | another $command |
 		if (pipeline)
 command | another $command |
 hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
-
 hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
 command | another $command |
-
 hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
 command | another $command |
-
 | followed by command
 |
 #comment
+< input for command 1 | << here for heredoc > out | >> append the last
+hello world
+< input for command 1 | << here for heredoc > out | >> append the last
+<input
+<input for
+<input for
+<input for
+<input for
+<input for
+<input for
+<input for
+ecit
+<input for
+<input for
+<input for
+< input for command 1 | << here for heredoc > out | >> append the last
+< input for command 1 | << here for heredoc > out | >> append the last
+<
+<
+< input for command 1 | << here for heredoc > out | >> append the last
 < input for command 1 | << here for heredoc > out | >> append the last
