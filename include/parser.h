@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/05 13:01:30 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/05 16:33:27 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ typedef enum e_parsetype
 	DQUOTE,
 	EXPAND,
 	ASSIGN,
-	// SEMI,
-	// AND,
 	// BRACE_O,
 	// BRACE_C,	
 }	t_parsetype;
@@ -41,21 +39,18 @@ typedef enum e_redirect
 typedef int function(t_node **, t_smpl_cmd *);
 
 // parser_utils
+int	add_word_to_cmd(t_node **token, t_smpl_cmd *cmd);
 int	set_cmd_end(t_node **token, t_smpl_cmd *cmd);
-int remove_node(t_node **token, t_smpl_cmd *cmd);
-int	check_token_content(t_node *token, int type);
+int	remove_comment(t_node **token, t_smpl_cmd *cmd);
+int assign(t_node **token, t_smpl_cmd *cmd);
+int	expand(t_node **token, t_smpl_cmd *cmd);
 
 // content_utils
-int	add_word_to_cmd(t_node **token, t_smpl_cmd *cmd);
-int	remove_comment(t_node **token, t_smpl_cmd *cmd);
 int	remove_squotes(t_node **token, t_smpl_cmd *cmd);
 int	remove_dquotes(t_node **token, t_smpl_cmd *cmd);
 
 // redirect_utils
-int	redirect_input(t_node **token, t_smpl_cmd *cmd);
-int	redirect_output(t_node **token, t_smpl_cmd *cmd);
-int	set_here_end(t_node **token, t_smpl_cmd *cmd);
-int	set_append(t_node **token, t_smpl_cmd *cmd);
+int	redirect(t_node **tokens, t_smpl_cmd *cmd);
 
 
 /* -------------------------------------------------------

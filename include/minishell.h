@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/05 12:32:18 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/05 14:23:56 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void		lstclear(t_node **lst, void (*del)(void *));
 
 // node_utils
 t_node		*new_node(int type, char *content);
+int			remove_node(t_node **token, t_smpl_cmd *cmd);
 void		delete_content(void *content);
 
 // pipe_utils
@@ -83,12 +84,14 @@ t_node		*init_env(void);
 t_smpl_cmd	*init_smpl_cmd(t_node *env_list);
 t_pipe		*init_pipeline(void);
 t_pipe		*parse_pipeline(t_node *tokens, t_node *env_list);
+int			check_token_content(t_node *token, int type);
 
 
 // environment
 t_node		*environ_to_list();
 void		add_variable(t_node *env_list, char *content, int type);
 char		*get_variable(t_node *env_list, char *name);
+int			update_variable(t_node *env_list, char *name, char *content, int type);
 int			check_env_content(char *str);
 void		print_env(t_node *env_list, int flag);
 

@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/05 11:16:10 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/05 16:33:20 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,9 @@ typedef enum e_lextype
 	BLANK,
 	REDIRECT,
 	PIPE,
-	NEW_LINE,
-	// COMMENT,
-	// DQUOTE,
-	// SQUOTE,
-	// EXPAND,
-	// ASSIGN,
-	// NAME,
-	// DLESS,
-	// DGREAT,
+	NEW_LINE, //what should newline do?
 	// SEMI,
 	// AND,
-	// BRACE_O,
-	// BRACE_C,	
 }	t_lextype;
 
 // char	*ft_strtok(char *str, char *delim);

@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/04 12:58:06 by ccaljouw      ########   odam.nl          #
+#    Updated: 2023/04/05 14:28:24 by cariencaljo   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ RM			= rm -rf
 CFLAGS		= -Wall -Wextra -Werror
 OBJ_FILES	=		$(addprefix obj/, ft_free.o ft_free_array.o ft_strchr.o ft_strdup.o\
 						ft_strlen.o ft_strlcpy.o ft_strcmp.o ft_substr.o ft_calloc.o ft_bzero.o \
-						ft_memset.o ft_strjoin.o ft_strncmp.o)
+						ft_memset.o ft_strjoin.o ft_strncmp.o ft_strjoin_free_s1.o)
 
 all: $(NAME)
 

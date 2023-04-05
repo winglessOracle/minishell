@@ -1,6 +1,6 @@
 /* Working correctly */
 
-hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
 command | another $command |
 | followed by command
 |

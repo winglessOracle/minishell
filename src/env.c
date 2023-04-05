@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/04 15:21:25 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/05 13:34:24 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,26 @@ int	check_env_content(char *str)
 //type default = 1 (local)
 void	add_variable(t_node *env_list, char *content, int type)
 {
+	int		len;
+	char	*name;
+	
 	if (!type)
-		type = 1;
+		type = 1; //is this okay?
 	if (type < 1 || type > 2)
 	{
 		printf("Invalid type. Use type 1=local type 2=external\n");
 		return ;
 	}
-	if (env_list && content)
+	len = 0;
+	while (content[len] != '=')
+		len++;
+	name = ft_substr(content, 0, len);
+	if (!update_variable(env_list, name, content, type) && env_list && content)
 		lstadd_back(&env_list, new_node(type, content));
-		//add a check if variable exists (get_variable0)
+	free(name);
 }
 
-char	*get_variable(t_node *env_list, char *name) // test met name = '\0'
+char	*get_variable(t_node *env_list, char *name)
 {
 	char	*ret;
 
@@ -76,3 +83,20 @@ char	*get_variable(t_node *env_list, char *name) // test met name = '\0'
 		return (ret);
 	return (NULL);
 }
+
+
+int	update_variable(t_node *env_list, char *name, char *content, int type)
+{
+	while (env_list)
+	{
+		if (ft_strncmp(env_list->content, name, ft_strlen(name)) == 0)
+		{
+			env_list->content = content;
+			env_list->type = type;
+			return (1);
+		}
+		env_list = env_list->next;
+	}
+	return (0);
+}
+

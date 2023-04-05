@@ -119,3 +119,115 @@ hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | 
 "hello world"
 "hello $world"
 "hello =world"
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+"hello world"
+'hello world'
+"'hello world'"
+'"hello world"'
+"hello"
+'hello'
+'"hello"'
+"'hello'"
+""hello""
+"hello"
+'hello'
+"hello"
+'hello'
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+"hello"
+hello
+$PS1
+$PWD
+$PWD
+$PS1
+$PS1
+$PS1
+$PS1 test
+"$PS1 test"
+"$PS1 test"
+"$PS1 test"
+test$PS1
+test$PS1
+"test$PS1 "
+"test$PS1 test"
+"test$PS1 test"
+$PS1
+$PS1
+"hello world"
+'hello world'
+"hello world"
+"hello world"
+"hello $PS1 world"
+"hello $PWD world"
+"hello $PWD world"
+'hello $PWD world'
+hello world how are yout
+'hello $PWD world'
+'hello $PWD world'
+hello world 'does | this work?'
+hello=10 $var word
+hello=10 $var word | word "#comment not gone"
+ hello=10 $var word | word 
+ word "#comment not gone"
+ word "#comment not gone"
+ word "#comment not gone"
+EXIT
+ word "#comment not gone"
+ word "#comment not gone"
+ word "#comment not gone"
+ word "#comment not gone"
+ word "#comment $not gone"
+ word "comment $not gone"
+ word "comment $not gone"
+ word "comment not gone"
+ "$PWD"
+ "test$PWD"
+ "test $PWD"
+ "$PWD$PWD"
+ $ PWD
+ $ PWD
+EXIT
+ $ PWD
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gonPWD| with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gonPWD| with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gonPWD| with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comme" not gonPWD| with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comme" not gonPWD| with $var and #comment that will be gone
+ word "#comment not gone" | with $PWD and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $PWD and #comment that will be gone
+$PS1
+$PS1
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $PWD and #comment that will be gone
+CC|$HELL
+CC|$HELL
+$aap
+CC|$HELL
+"CC|$HELL"
+"CC|$HELL"
+"CC|$HELL"
+$PS1
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $PWD and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $PS1 and #comment that will be gone
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+command | another $command |
+| followed by command
+|
+#comment
+< input for command 1 | << here for heredoc > out | >> append the last
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+command | another $command |
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+command | another $command |
+command | another $command |
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+command | another $command |
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+	// BRACE_O,
+	// BRACE_C,	
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone

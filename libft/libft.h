@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.42.fr>                  +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 09:28:59 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/04 12:57:59 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/05 14:28:09 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strjoin_free_s1(char *s1, char *s2);
 
 // # define COLOR_RED "\x1b[0;31m"
 // # define COLOR_GREEN "\x1b[0;32m"
