@@ -1,10 +1,121 @@
 _HiStOrY_V2_
+"hello\040'world\040out\040there"
+"hello\040'world\040"out"\040there"
+hello\040world\040'does\040|\040this\040work?'\040hello=10\040$var\040word\040|\040word\040"#comment\040gone"\040|\040with\040$var\040and\040#comment\040that\040will\040be\040gone
+<\040input\040for\040command\0401\040|\040<<\040here\040for\040heredoc\040>\040out\040|\040>>\040append\040the\040last
+<\040input\040for\040command\0401\040|\040<<\040here\040for\040heredoc\040>\040out\040|\040>>\040append\040the\040last
+<\040input\040for\040command\0401\040|\040<<\040here\040for\040heredoc\040>\040out\040|\040>>\040append\040t
 "hello\040there"\040and\040#comment
+<\040input\040for\040command\0401\040|\040<<\040here\040for\040heredoc\040>\040out\040|\040>>\040append\04"
+<\040input\040for\040command\0401\040|\040<<\040here\040for\040heredoc\040>\040out\040|\040>>\040append\04"
+<\040input\040for\040command\0401\040|\040<<\040here\040for\040heredoc\040>\040out\040|\040>>\040append\04"
 "hello world" #comment
-"hello world" #comment
-"hello world" #comment
-"hello world" #comment
-"hello world" #comment
-"hello world" #comment
-"hello world" #comment
-"hello world" #comment
+<\040input\040for\040command\0401\040|\040<<\040here\040for\040heredoc\040>\040out\040|\040>>\040append\04"
+<\040input\040for\040command\0401\040|\040<<\040here\040for\040heredoc\040>\040out\040|\040>>\040append\04"
+"hello world"
+"hello world"
+#comment
+#comment
+< input for command 1 | << here for heredoc > out | >> append the last
+"hello world"
+#comment
+< input for command 1 | << here for heredoc > out | >> append the last
+"hello world"
+"hello world"
+"hello world"
+"hello world"
+"hello world"
+"hello "there"world"
+"hello "there"world"
+hello world 'does | this work?' hello=10 $var word | word "#comment gone" | with $var and #comment that will be gone
+	// printf("delete: %s\n", temp);
+hello world 'does | this work?' hello=10 $var word | word "#comment gone" | with $var and #comment that will be gone
+	// printf("delete: %s\n", temp);
+hello world 'does | this work?' hello=10 $var word | word "#comment gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment gone" | with $var and #comment
+hello world 'does | this work?' hello=10 $var word | word "#comment gone" | with $var and #comment
+#
+#comment
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+exi
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+exi
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+		if (!(tokens->type == WORD || tokens->type == NAME))
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+eit
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+int	redirect(t_node **tokens, t_smpl_cmd *cmd)
+{
+	printf("REDIRECT\n");
+}
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that wi< inputll be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+>input
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+>input
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+		tokens = tokens->next;
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+set_cmd_end
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hellow || h osgh aogp
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello
+""
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+	MAX_LEXTYPE,
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+hello 'and quote'
+hello 'and quote'
+hello 'and quote'
+hello 'and quote'
+hello 'and quote'
+hello 'and quote'
+hello 'and quote'
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+lkjg lsgj 'losgj sgj 
+lkjg lsgj 'losgj sgj 
+lkjg lsgj 'losgj sgj 
+exjt
+lkjg lsgj 'losgj sgj 
+'hello world'
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+'ihg wiogh og 
+hello world 'does | this work?' hello=10 $var word | word "#comment not gone" | with $var and #comment that will be gone
+"hello world"
+"hello world"
+"hello $world"
+"hello =world"

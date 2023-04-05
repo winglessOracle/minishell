@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 13:37:11 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/03/30 16:10:09 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/05 10:56:15 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,34 @@ void	delete_content(void *content)
 
 	temp = (char *)content;
 	free(temp);
+}
+
+// merges provided node with the next node and set provided type for merged node
+void	merge_tokens(t_node *token, int type)
+{
+	char	*content;
+
+	if (token->next)
+	{
+		content = ft_strjoin(token->content, token->next->content);
+		free(token->content);
+		token->content = content;
+		token->type = type;
+		token = token->next;
+		lstdelone(lstpop(&token), delete_content);
+	}
+}
+
+
+int remove_node(t_node **token, t_smpl_cmd *cmd)
+{	
+	(void)cmd;
+	t_node	*temp;
+	
+	if (!*token)
+		return (-1);
+	printf("*REMOVE NODE* %s\n", (*token)->content);
+	temp = lstpop(token);
+	lstdelone(temp, delete_content);
+	return (0);
 }

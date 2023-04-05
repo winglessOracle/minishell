@@ -6,45 +6,65 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/04 15:19:45 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/05 13:01:13 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
+// #include "lexer.h"
+
+int	check_content(t_node **token, t_smpl_cmd *cmd)
+{
+	int	state;
+	static function  *parse[7];
+
+	parse[WORD] = add_word_to_cmd;
+	parse[COMMENT] = remove_comment;
+	parse[SQUOTE] = remove_squotes;
+	parse[DQUOTE] = remove_dquotes;
+	parse[EXPAND] = add_word_to_cmd;
+	parse[ASSIGN] = add_word_to_cmd;
+	printf("*CHECK CONTENT* %s\n", (*token)->content);
+	while (*token && (*token)->type == WORD)
+	{
+		state = check_token_content(*token, (*token)->type);
+		printf("state: %d\n", state);
+		state = parse[state](token, cmd);
+	}
+	return(state);
+}
+
+int	redirect(t_node **tokens, t_smpl_cmd *cmd)
+{
+	printf("*REDIRECT* %s\n", (*tokens)->content);
+	remove_node(tokens, cmd);
+	return (0);
+}
+
+int	set_cmd_end(t_node **token, t_smpl_cmd *cmd)
+{
+	int check;
+
+	printf("*CMD END* %s\n", (*token)->content);
+	check = check_pipe(*token, cmd);
+	remove_node(token, cmd);
+	return (check);
+}
 
 t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	**cmd)
 {	
 	int	state;
-	static function  *parse[MAX_TYPE] = {
-		set_type_word, //word
-		set_type_word, //dquote
-		set_type_word, //squote
-		todo, //expand
-		todo, //assign
-		redirect_output, //great
-		redirect_input, //less
-		set_here_end, //dless
-		set_append, //dgreat
-		set_cmd_end, //pipe
-		set_cmd_end, //new_line
-		remove_node, //comment
-		remove_node, //space
-		remove_node, //tab
-		NULL, //name
-	};
+	static function  *parse[5];
 	
+	parse[WORD] = check_content;
+	parse[BLANK] = remove_node;
+	parse[REDIRECT] = redirect;
+	parse[PIPE] = set_cmd_end;
+	parse[NEW_LINE] = set_cmd_end;
 	state = 0;
 	while (tokens && !state)
-	{
-		if (!(tokens->type == WORD || tokens->type == NAME))
-			state = parse[tokens->type](&tokens, *cmd);
-		else
-		{
-			lstadd_back(&(*cmd)->cmd_argv, lstpop(&tokens));
-			(*cmd)->cmd_argc++;
-		}
-	}
+		state = parse[tokens->type](&tokens, *cmd);
 	if (state == -1)
 		*cmd = NULL;
 	return (tokens);

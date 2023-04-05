@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/04 15:35:45 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/05 12:32:18 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,7 @@ typedef struct s_node
 typedef struct s_smpl_cmd
 {
 	t_node				*env_list;
-	char				*infile;
-	char				*outfile;
-	char				*errfile;
-	char				*here_end;
-	int					append;
+	t_node				*redirect;
 	int					cmd_argc;
 	t_node				*cmd_argv;
 	struct s_smpl_cmd	*next;
@@ -78,8 +74,8 @@ void		lstadd_back_pipe(t_smpl_cmd **lst, t_smpl_cmd *new);
 
 //lexer
 t_node		*lexer(char *str, char *delim);
+t_node		*split_to_list(char *str, char *delim);
 int			getlexerenum(char token);
-int			check_token_content(char *str);
 void		merge_tokens(t_node *token, int type);
 
 // parser
@@ -87,6 +83,7 @@ t_node		*init_env(void);
 t_smpl_cmd	*init_smpl_cmd(t_node *env_list);
 t_pipe		*init_pipeline(void);
 t_pipe		*parse_pipeline(t_node *tokens, t_node *env_list);
+
 
 // environment
 t_node		*environ_to_list();

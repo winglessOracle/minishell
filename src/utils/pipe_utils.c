@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/30 19:30:01 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/05 12:53:34 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ int	check_pipe(t_node *token, t_smpl_cmd *cmd)
 		write(2, "Error: no command after '|'\n", 28); //include ft_fprintf for better error messages and create seperate funtion that writes the error
 		check = -1;
 	}
-	else if (cmd->cmd_argv == 0 && cmd->errfile == 0 && cmd->infile == 0 \
-		&& cmd->outfile == 0 && cmd->here_end == 0)
+	else if (cmd->cmd_argv == 0 && cmd->redirect == NULL)
 	{
 		
 		write(2, "Error: '|' at start of line\n", 28); //include ft_fprintf for better error messages and create seperate funtion that writes the error		

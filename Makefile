@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/04 17:26:06 by cariencaljo   ########   odam.nl          #
+#    Updated: 2023/04/05 11:06:00 by cariencaljo   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ HEADERS		= -I $(LIBFT) -I$(INCLUDE) -I$(RL_INC)
 OBJ_FILES	= $(addprefix obj/, minishell.o utils/list_utils.o parser.o utils/utils.o utils/pipe_utils.o \
 				lexer.o env.o\
 					init.o print.o utils/lexer_utils.o utils/node_utils.o utils/parser_utils.o \
-				utils/redirect_utils.o signals.o termios.o)
+				utils/redirect_utils.o utils/content_utils.o signals.o termios.o)
 
 #//= Modifiable =//#
 all: libft $(NAME)

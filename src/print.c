@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/04 13:06:28 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/05 12:54:15 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	print_tokens(t_node *tokens)
 
 void	print_cmd(t_smpl_cmd *cmd)
 {
-	printf("IN: %s, OUT: %s, ERR: %s\n", cmd->infile, cmd->outfile, cmd->errfile);
-	printf("Here_end: %s\tAppend: %d\n-------------------------------------\n", cmd->here_end, cmd->append);
+	// printf("IN: %s, OUT: %s, ERR: %s\n", cmd->infile, cmd->outfile, cmd->errfile);
+	// printf("Here_end: %s\tAppend: %d\n-------------------------------------\n", cmd->here_end, cmd->append);
 	while (cmd && cmd->cmd_argv)
 	{
 		printf("type: %d, \tcontent: %s\n", cmd->cmd_argv->type, cmd->cmd_argv->content);
