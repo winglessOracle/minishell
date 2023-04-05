@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/05 21:32:16 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/05 21:43:13 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,17 @@ int	remove_squotes(t_node **token, t_smpl_cmd *cmd)
 	return (check_quotes(nr_quotes));
 }
 
+int	check_result_remove_quotes(t_node **token, t_smpl_cmd *cmd, char *content)
+{
+	free((*token)->content);
+	(*token)->content = content;
+	(*token)->type = check_token_content((*token), DQUOTE);
+	if ((*token)->type == EXPAND)
+		return (expand(token, cmd));
+	else
+		return (add_word_to_cmd(token, cmd));
+}
+
 int	remove_dquotes(t_node **token, t_smpl_cmd *cmd)
 {
 	int		nr_quotes;
@@ -78,11 +89,5 @@ int	remove_dquotes(t_node **token, t_smpl_cmd *cmd)
 	}
 	if (check_quotes(nr_quotes) == -1)
 		return (-1);
-	free((*token)->content);
-	(*token)->content = content;
-	(*token)->type = check_token_content((*token), DQUOTE);
-	if ((*token)->type == EXPAND)
-		return (expand(token, cmd));
-	else
-		return (add_word_to_cmd(token, cmd));
+	return (check_result_remove_quotes(token, cmd, content));
 }
