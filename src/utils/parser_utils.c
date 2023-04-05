@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/05 16:35:13 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/05 21:29:16 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,47 @@ int	remove_comment(t_node **token, t_smpl_cmd *cmd)
 	return (0);
 }
 
-int assign(t_node **token, t_smpl_cmd *cmd)
+int	assign(t_node **token, t_smpl_cmd *cmd)
 {
+	if (cmd->cmd_argc != 0)
+		return (add_word_to_cmd(token, cmd));
 	add_variable(cmd->env_list, (*token)->content, 1);
 	remove_node(token, cmd);
 	return (0);
+}
+
+char	*expand_word(int var, t_node **words, t_smpl_cmd *cmd, char *content)
+{
+	char	*temp;
+
+	if ((*words)->content[0] == '$')
+	{
+		remove_node(words, cmd);
+		if (*words && (*words)->content[0] != ' ')
+			var = 1;
+	}
+	if (*words && (*words)->content[0] == ' ')
+		remove_node(words, cmd);
+	if (*words)
+	{
+		if (var == 1)
+			temp = get_variable(cmd->env_list, (*words)->content);
+		else
+			temp = ft_strdup((*words)->content);
+		remove_node(words, cmd);
+		if (temp)
+		{
+			content = ft_strjoin_free_s1(content, temp);
+			free (temp);
+		}
+	}
+	return (content);
 }
 
 int	expand(t_node **token, t_smpl_cmd *cmd)  //should we handle special characters in a variable?
 {
 	t_node	*words;
 	int		var;
-	char	*temp;
 	char	*content;
 
 	var = 0;
@@ -46,27 +75,7 @@ int	expand(t_node **token, t_smpl_cmd *cmd)  //should we handle special characte
 	content = NULL;
 	while (words)
 	{
-		if (words->content[0] == '$')
-		{
-			remove_node(&words, cmd);
-			if (words && words->content[0] != ' ')
-				var = 1;
-		}
-		if (words && words->content[0] == ' ')
-			remove_node(&words, cmd);
-		if (words)
-		{
-			if (var == 1)
-				temp = get_variable(cmd->env_list, words->content);
-			else
-				temp = ft_strdup(words->content);
-			remove_node(&words, cmd);
-			if (temp)
-			{
-				content = ft_strjoin_free_s1(content, temp);
-				free (temp);
-			}
-		}
+		content = expand_word(var, &words, cmd, content);
 		var = 0;
 	}
 	if (content)

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 13:37:11 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/05 20:27:54 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/05 21:30:59 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,11 @@ void	merge_tokens(t_node *token, int type)
 	}
 }
 
-
-int remove_node(t_node **token, t_smpl_cmd *cmd)
+int	remove_node(t_node **token, t_smpl_cmd *cmd)
 {	
-	(void)cmd;
 	t_node	*temp;
-	
+
+	(void)cmd;
 	if (!*token)
 		return (-1);
 	// printf("*REMOVE NODE* %s\n", (*token)->content);

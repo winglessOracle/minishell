@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/05 18:30:01 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/05 21:36:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	set_cmd_end(t_node **token, t_smpl_cmd *cmd)
 {
-	int check;
+	int	check;
 
 	check = check_pipe(*token, cmd);
 	if ((*token)->type == PIPE)
@@ -35,7 +35,7 @@ int	check_token_content(t_node *token, int type)
 		return (COMMENT);
 	while (str[i])
 	{
-		if (str[i]== '\"' && type != SQUOTE)
+		if (str[i] == '\"' && type != SQUOTE)
 			return (DQUOTE);
 		else if (str[i] == '\'' && type != DQUOTE)
 			return (SQUOTE);
@@ -50,8 +50,8 @@ int	check_token_content(t_node *token, int type)
 
 int	check_token(t_node **token, t_smpl_cmd *cmd)
 {
-	int	state;
-	static function  *parse[6];
+	int				state;
+	static function	*parse[6];
 
 	parse[WORD] = add_word_to_cmd;
 	parse[COMMENT] = remove_comment;
@@ -66,14 +66,14 @@ int	check_token(t_node **token, t_smpl_cmd *cmd)
 		// printf("state: %d\n", state);
 		state = parse[state](token, cmd);
 	}
-	return(state);
+	return (state);
 }
 
 t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	**cmd)
 {	
-	int	state;
-	static function  *parse[5];
-	
+	int				state;
+	static function	*parse[5];
+
 	parse[WORD] = check_token;
 	parse[BLANK] = remove_node;
 	parse[REDIRECT] = redirect;
@@ -94,7 +94,7 @@ t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	**cmd)
 t_node	*parse_pipeline(t_node *tokens, t_node *env_list, t_pipe **pipeline)
 {	
 	t_smpl_cmd	*cmd;
-	
+
 	if (!tokens)
 		return (NULL);
 	while (tokens)
@@ -118,4 +118,3 @@ t_node	*parse_pipeline(t_node *tokens, t_node *env_list, t_pipe **pipeline)
 	}
 	return (tokens);
 }
-

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/05 20:27:48 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/05 21:32:58 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 {
 	int	type;
-	
+
 	type = 0;
 	if (*tokens && (*tokens)->content[0] == '<')
 		type = INPUT;
@@ -45,7 +45,7 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 int	redirect(t_node **tokens, t_smpl_cmd *cmd)
 {
 	int	type;
-	
+
 	// printf("*REDIRECT* %s\n", (*tokens)->content);
 	type = get_redirect_type(tokens, cmd);
 	if (*tokens && type != -1)

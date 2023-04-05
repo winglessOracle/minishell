@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/05 15:28:10 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/05 21:32:16 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	remove_squotes(t_node **token, t_smpl_cmd *cmd)
 	int		nr_quotes;
 	char	*content;
 	t_node	*words;
-	
+
 	nr_quotes = 0;
 	content = NULL;
 	while (*token)
@@ -44,7 +44,7 @@ int	remove_squotes(t_node **token, t_smpl_cmd *cmd)
 			remove_node(&words, cmd);
 		}
 		if ((nr_quotes % 2) == 0)
-			break;
+			break ;
 		remove_node(token, cmd);
 	}
 	free((*token)->content);
@@ -58,7 +58,7 @@ int	remove_dquotes(t_node **token, t_smpl_cmd *cmd)
 	int		nr_quotes;
 	char	*content;
 	t_node	*words;
-	
+
 	nr_quotes = 0;
 	content = NULL;
 	while (*token)
@@ -73,7 +73,7 @@ int	remove_dquotes(t_node **token, t_smpl_cmd *cmd)
 			remove_node(&words, cmd);
 		}
 		if ((nr_quotes % 2) == 0)
-			break;
+			break ;
 		remove_node(token, cmd);
 	}
 	if (check_quotes(nr_quotes) == -1)
