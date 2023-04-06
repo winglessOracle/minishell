@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/06 12:40:56 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/06 14:57:21 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,6 @@ char	*expand_word(int var, t_node **words, t_smpl_cmd *cmd, char *content) // ra
 		if (*words && (*words)->content[0] != ' ')
 			var = 1;
 	}
-	if (*words && (*words)->content[0] == ' ')
-		remove_node(words, cmd);
 	if (*words)
 	{
 		if (var == 1)
@@ -64,7 +62,7 @@ char	*expand_word(int var, t_node **words, t_smpl_cmd *cmd, char *content) // ra
 	return (content);
 }
 
-int	expand(t_node **token, t_smpl_cmd *cmd)  //should we handle special characters in a variable?
+int	expand(t_node **token, t_smpl_cmd *cmd)
 {
 	t_node	*words;
 	int		var;

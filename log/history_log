@@ -413,3 +413,7 @@ hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | 
 #comment
 < input for command 1 | << here for heredoc > out | >> append the last
 < "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+"hello expand this $PS1"
+"hello expand this $PS1"
+"hello expand this $PS1"
+"hello expand this $ PS1"
