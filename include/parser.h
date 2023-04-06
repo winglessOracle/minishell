@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/05 19:59:05 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/06 10:05:17 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,14 @@ typedef enum e_parsetype
 	DQUOTE,
 	EXPAND,
 	ASSIGN,
-	// BRACE_O,
-	// BRACE_C,	
-}	t_parsetype;
-
-typedef enum e_redirect
-{
-	INPUT = 6,
+	INPUT,
 	OUTPUT,
 	HEREDOC,
 	APPEND,
-	ERR,
-}	t_redirect;
+	// ERR,
+	// BRACE_O,
+	// BRACE_C,	
+}	t_parsetype;
 
 // parser.c
 typedef int function(t_node **, t_smpl_cmd *);
@@ -42,7 +38,7 @@ typedef int function(t_node **, t_smpl_cmd *);
 int	add_word_to_cmd(t_node **token, t_smpl_cmd *cmd);
 int	set_cmd_end(t_node **token, t_smpl_cmd *cmd);
 int	remove_comment(t_node **token, t_smpl_cmd *cmd);
-int assign(t_node **token, t_smpl_cmd *cmd);
+int	parser_assign(t_node **token, t_smpl_cmd *cmd);
 int	expand(t_node **token, t_smpl_cmd *cmd);
 
 // content_utils
@@ -51,7 +47,6 @@ int	remove_dquotes(t_node **token, t_smpl_cmd *cmd);
 
 // redirect_utils
 int	redirect(t_node **tokens, t_smpl_cmd *cmd);
-
 
 /* -------------------------------------------------------
    The grammar symbols
@@ -109,11 +104,12 @@ int	redirect(t_node **tokens, t_smpl_cmd *cmd);
 //                  | '>'       filename
 //                  | DGREAT    filename
 //                  ;
-// filename         : WORD                      /* Apply rule 2 */
+// filename         : WORD                      /* Apply rule 2 */ -> perform all other rules
 //                  ;
 // io_here          : DLESS     here_end
 //                  ;
-// here_end         : WORD                      /* Apply rule 3 */
+// here_end         : WORD                      /* Apply rule 3 */ -> only perform quote removal
 //                  ;
+
 
 #endif

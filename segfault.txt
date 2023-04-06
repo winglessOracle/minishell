@@ -6,8 +6,20 @@ hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | 
 #comment
 < input for command 1 | << here for heredoc > out | >> append the last
 
+___________________
+var=aap
+echo $var
+-------------------
+should return 'aap'
+-------------------
 
+________________________
+var=app echo $var
+------------------------
+should return empty line
+------------------------
 
 /* Segfaults or incorrect behaviour */
+command | another $command |  (incorrect when followed by <newline>)
 
-command | another $command |
+

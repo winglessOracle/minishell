@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/05 21:36:23 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/06 10:22:57 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	check_token(t_node **token, t_smpl_cmd *cmd)
 	parse[SQUOTE] = remove_squotes;
 	parse[DQUOTE] = remove_dquotes;
 	parse[EXPAND] = expand;
-	parse[ASSIGN] = assign; // hoe weet je nu welke var dit was als er later export uitgevoerd moet worden.. ? niet hier doen?
+	parse[ASSIGN] = parser_assign; // hoe weet je nu welke var dit was als er later export uitgevoerd moet worden.. ? niet hier doen?
 	// printf("*CHECK CONTENT* %s\n", (*token)->content);
 	while (*token && (*token)->type == WORD)
 	{

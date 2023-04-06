@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/05 21:32:58 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/06 10:20:41 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,23 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 	while (*tokens && (*tokens)->type == BLANK)
 		remove_node(tokens, cmd);
 	return (type);
+}
+
+int	expand_redirect(t_node **tokens, t_smpl_cmd *cmd)
+{
+	int				type;
+	int				state;
+	static function	*parse[6];
+	
+	type = (*tokens)->type;
+	parse[COMMENT] = remove_comment;
+	parse[SQUOTE] = remove_squotes;
+	parse[DQUOTE] = remove_dquotes;
+	if (type == HEREDOC)
+		parse[EXPAND] = NULL;
+	else
+		parse[EXPAND] = expand;
+	
 }
 
 int	redirect(t_node **tokens, t_smpl_cmd *cmd)
