@@ -353,3 +353,63 @@ hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | 
 < "input with var $PS1" for command 1
 < "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
 < "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< $var << $var < "$var" < '$var' << "$var" << '$var'
+< $var < "$var" < '$var' << $var << "$var" << '$var'
+< $var
+< "$var"
+< '$var'
+<< $var
+<< "$var"
+<< "$var"
+<< "$var"
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+ << "here with var $PWD"
+ << "$PWD"
+ << "here with var $PWD"
+ << "$PWD"
+ << "here with var $PWD"
+ < "here with var $PWD"
+ << "$PWD"
+ << "$PWD"
+ < "here with var $PWD"
+ << "$PWD"
+ < "here with var $PWD"
+ << "$PWD"
+ < "here with var $PWD"
+ < "here with var $PWD"
+ < "here with var $PWD"
+ < "here with var $PWD"
+ < "here with var $PWD"
+ << "$PWD"
+ << "$PWD"
+ < "here with var $PWD"
+ < "here with var $PWD"
+ << "here with var $PWD"
+ << "$PWD"
+ << $PWD
+< $var < "$var" < '$var' << $var << "$var" << '$var'
+< $var
+< "$var"
+< '$var'
+<< $var
+<< "$var"
+<< '$var'
+<>
+<>
+<>
+<>
+" hks sg dkgh k
+" hks sg dkgh k
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+| followed by command
+|
+#comment
+< input for command 1 | << here for heredoc > out | >> append the last
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+| followed by command
+|
+#comment
+< input for command 1 | << here for heredoc > out | >> append the last
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last

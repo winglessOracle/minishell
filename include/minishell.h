@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/06 10:23:20 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/06 13:55:13 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct s_pipe
 
 // utils
 void		exit_error(int num);
-int			syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg);
+int			syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err);
 int 		assign(t_node **token, t_smpl_cmd *cmd); // can be moved to executer
 
 // list_utils

@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/06 09:43:22 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/06 14:12:26 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,9 @@
 int	check_pipe(t_node *token, t_smpl_cmd *cmd)
 {
 	if (token->type == PIPE && (!token->next || token->next->type == NEW_LINE))
-	{
-		write(2, "Error: no command after '|'\n", 28); //include ft_fprintf for better error messages and create seperate funtion that writes the error
-		lstclear(&cmd->cmd_argv, delete_content);
-		cmd->cmd_argv = NULL;
-		cmd = NULL;
-		return (-1);
-	}
+		return (syntax_error(&token, cmd, "no command after '|'", -1));
 	else if (cmd->cmd_argv == 0 && cmd->redirect == NULL)
-	{
-		write(2, "Error: no command arguments\n", 28); //include ft_fprintf for better error messages and create seperate funtion that writes the error		
-		return (-1);
-	}
+		return (syntax_error(&token, cmd, "no command arguments\n", -1));
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/06 13:24:40 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/06 14:02:34 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 		remove_node(tokens, cmd);
 	}
 	else if ((*tokens)->type == REDIRECT)
+	{
 		type = -1;
+		remove_node(tokens, cmd);
+	}
 	while (*tokens && (*tokens)->type == BLANK)
 		remove_node(tokens, cmd);
 	return (type);
@@ -50,11 +53,14 @@ int	expand_redirect(t_node **tokens, t_smpl_cmd *cmd, int type)
 	state = 0;
 	parse[COMMENT] = remove_comment;
 	parse[SQUOTE] = remove_squotes;
-	parse[DQUOTE] = remove_dquotes;
+	if (type == HEREDOC)
+		parse[DQUOTE] = remove_dquotes_heredoc;
+	else
+		parse[DQUOTE] = remove_dquotes;
 	parse[EXPAND] = expand;
 	while (*tokens)
 	{
-		state = check_token_content(*tokens, (*tokens)->type);
+		state = check_token_content(*tokens, type);
 		if (state == WORD || state == ASSIGN || (state == EXPAND && type == HEREDOC))
 			break;
 		state = parse[state](tokens, cmd);
@@ -62,7 +68,7 @@ int	expand_redirect(t_node **tokens, t_smpl_cmd *cmd, int type)
 	if (*tokens)
 		(*tokens)->type = type;
 	else
-		state = syntax_error(tokens, cmd, "Redirect error\n");
+		state = -1;
 	return (state);
 }
 
@@ -72,9 +78,11 @@ int	get_redirect(t_node **tokens, t_smpl_cmd *cmd)
 
 	// printf("*REDIRECT* %s\n", (*tokens)->content);
 	type = get_redirect_type(tokens, cmd);
+	if (type == -1)
+		return (syntax_error(tokens, cmd, "Redirect error\n", -1));
 	type = expand_redirect(tokens, cmd, type);
 	if (type == -1)
-		type = syntax_error(tokens, cmd, "Redirect error\n");
+		return (syntax_error(tokens, cmd, "Redirect error\n", -1));
 	else
 		lstadd_back(&cmd->redirect, lstpop(tokens));
 	print_tokens(cmd->redirect);
