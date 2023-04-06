@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/05 21:43:13 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/06 13:24:47 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	remove_dquotes(t_node **token, t_smpl_cmd *cmd)
 
 	nr_quotes = 0;
 	content = NULL;
+	// printf("*QUOTES* %s\n", (*token)->content);
 	while (*token)
 	{
 		words = split_to_list((*token)->content, "\"");

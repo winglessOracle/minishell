@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/06 10:22:57 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/06 12:37:00 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	check_token_content(t_node *token, int type)
 	return (WORD);
 }
 
-int	check_token(t_node **token, t_smpl_cmd *cmd)
+int	expand_token(t_node **token, t_smpl_cmd *cmd)
 {
 	int				state;
 	static function	*parse[6];
@@ -74,9 +74,9 @@ t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	**cmd)
 	int				state;
 	static function	*parse[5];
 
-	parse[WORD] = check_token;
+	parse[WORD] = expand_token;
 	parse[BLANK] = remove_node;
-	parse[REDIRECT] = redirect;
+	parse[REDIRECT] = get_redirect;
 	parse[PIPE] = set_cmd_end;
 	parse[NEW_LINE] = set_cmd_end;
 	state = 0;

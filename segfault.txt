@@ -1,11 +1,21 @@
 /* Working correctly */
 
-hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
 | followed by command
 |
 #comment
 < input for command 1 | << here for heredoc > out | >> append the last
 
+
+/* Segfaults or incorrect behaviour */
+command | another $command |  (incorrect when followed by <newline>)
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+
+
+
+/* comments */
+
+these are shell variables so technically not part of the scope:
 ___________________
 var=aap
 echo $var
@@ -19,7 +29,6 @@ var=app echo $var
 should return empty line
 ------------------------
 
-/* Segfaults or incorrect behaviour */
-command | another $command |  (incorrect when followed by <newline>)
 
-
+ls
+| cat 

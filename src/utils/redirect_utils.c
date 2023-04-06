@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/06 10:20:41 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/06 13:24:40 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,40 +42,41 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 	return (type);
 }
 
-int	expand_redirect(t_node **tokens, t_smpl_cmd *cmd)
+int	expand_redirect(t_node **tokens, t_smpl_cmd *cmd, int type)
 {
-	int				type;
 	int				state;
 	static function	*parse[6];
 	
-	type = (*tokens)->type;
+	state = 0;
 	parse[COMMENT] = remove_comment;
 	parse[SQUOTE] = remove_squotes;
 	parse[DQUOTE] = remove_dquotes;
-	if (type == HEREDOC)
-		parse[EXPAND] = NULL;
+	parse[EXPAND] = expand;
+	while (*tokens)
+	{
+		state = check_token_content(*tokens, (*tokens)->type);
+		if (state == WORD || state == ASSIGN || (state == EXPAND && type == HEREDOC))
+			break;
+		state = parse[state](tokens, cmd);
+	}
+	if (*tokens)
+		(*tokens)->type = type;
 	else
-		parse[EXPAND] = expand;
-	
+		state = syntax_error(tokens, cmd, "Redirect error\n");
+	return (state);
 }
 
-int	redirect(t_node **tokens, t_smpl_cmd *cmd)
+int	get_redirect(t_node **tokens, t_smpl_cmd *cmd)
 {
 	int	type;
 
 	// printf("*REDIRECT* %s\n", (*tokens)->content);
 	type = get_redirect_type(tokens, cmd);
-	if (*tokens && type != -1)
-	{
-		(*tokens)->type = type;
-		lstadd_back(&cmd->redirect, lstpop(tokens));
-		type = 0;
-	}
+	type = expand_redirect(tokens, cmd, type);
+	if (type == -1)
+		type = syntax_error(tokens, cmd, "Redirect error\n");
 	else
-	{
-		write(2, "Redirect error\n", 15);
-		type = -1;
-	}
+		lstadd_back(&cmd->redirect, lstpop(tokens));
 	print_tokens(cmd->redirect);
 	return (type);
 }

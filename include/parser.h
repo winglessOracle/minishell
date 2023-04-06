@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/06 10:05:17 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/06 12:36:04 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	remove_squotes(t_node **token, t_smpl_cmd *cmd);
 int	remove_dquotes(t_node **token, t_smpl_cmd *cmd);
 
 // redirect_utils
-int	redirect(t_node **tokens, t_smpl_cmd *cmd);
+int	get_redirect(t_node **tokens, t_smpl_cmd *cmd);
 
 /* -------------------------------------------------------
    The grammar symbols

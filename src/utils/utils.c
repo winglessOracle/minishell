@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/06 10:25:21 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/06 11:45:42 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@ int assign(t_node **token, t_smpl_cmd *cmd)
 
 int	syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg)
 {
+	(void)token;
+	(void)cmd;
 	write(2, msg, ft_strlen(msg));
 	// clear tokens up to next newline or ;
 	// clear current command and previous commands in pipeline
-	return (0);
+	return (-1);
 }
