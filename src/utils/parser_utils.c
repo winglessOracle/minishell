@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/06 14:57:21 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/06 14:58:38 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ int	parser_assign(t_node **token, t_smpl_cmd *cmd)
 	return (0);
 }
 
-char	*expand_word(int var, t_node **words, t_smpl_cmd *cmd, char *content) // raakt spaties kwijt?
+char	*expand_word(int var, t_node **words, t_smpl_cmd *cmd, char *content)
 {
 	char	*temp;
-	
+
 	if ((*words)->content[0] == '$')
 	{
 		remove_node(words, cmd);

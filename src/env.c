@@ -6,24 +6,24 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/05 13:34:24 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/06 15:05:26 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_node	*environ_to_list()
+t_node	*environ_to_list(void)
 {
-	extern char **environ;
-	t_node	*env_list;
-	int		i;
+	extern char	**environ;
+	t_node		*env_list;
+	int			i;
 
 	env_list = NULL;
 	i = 0;
 	env_list = NULL;
 	while (environ[i])
 	{
-		lstadd_back(&env_list, new_node(2,ft_strdup(environ[i])));
+		lstadd_back(&env_list, new_node(2, ft_strdup(environ[i])));
 		i++;
 	}
 	return (env_list);
@@ -46,7 +46,7 @@ void	add_variable(t_node *env_list, char *content, int type)
 {
 	int		len;
 	char	*name;
-	
+
 	if (!type)
 		type = 1; //is this okay?
 	if (type < 1 || type > 2)
@@ -84,7 +84,6 @@ char	*get_variable(t_node *env_list, char *name)
 	return (NULL);
 }
 
-
 int	update_variable(t_node *env_list, char *name, char *content, int type)
 {
 	while (env_list)
@@ -99,4 +98,3 @@ int	update_variable(t_node *env_list, char *name, char *content, int type)
 	}
 	return (0);
 }
-

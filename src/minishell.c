@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/05 18:18:08 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/06 15:06:12 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	leaks(void)
 {
-	system("leaks minishell -q");	
+	system("leaks minishell -q");
 }
 
 int	main(void)
@@ -37,7 +37,7 @@ int	main(void)
 		if (!ft_strcmp(line_read, "exit"))
 			break ;
 		if (line_read)
-		 	add_history(line_read);
+			add_history(line_read);
 	printf("READ INPUT\n");
 		tokens = lexer(line_read, "|<> \t\n");
 	while (tokens)

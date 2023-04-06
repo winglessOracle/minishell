@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/06 13:55:13 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/06 15:01:47 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_pipe
 // utils
 void		exit_error(int num);
 int			syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err);
-int 		assign(t_node **token, t_smpl_cmd *cmd); // can be moved to executer
+int			assign(t_node **token, t_smpl_cmd *cmd); // can be moved to executer
 
 // list_utils
 t_node		*lstlast(t_node *lst);
@@ -86,15 +86,14 @@ void		merge_tokens(t_node *token, int type);
 t_node		*init_env(void);
 t_smpl_cmd	*init_smpl_cmd(t_node *env_list);
 t_pipe		*init_pipeline(void);
-t_node		*parse_pipeline(t_node *tokens, t_node *env_list, t_pipe **pipeline);
+t_node		*parse_pipeline(t_node *tokens, t_node *env_list, t_pipe **pipe);
 int			check_token_content(t_node *token, int type);
 
-
 // environment
-t_node		*environ_to_list();
+t_node		*environ_to_list(void);
 void		add_variable(t_node *env_list, char *content, int type);
 char		*get_variable(t_node *env_list, char *name);
-int			update_variable(t_node *env_list, char *name, char *content, int type);
+int			update_variable(t_node *env_list, char *name, char *cont, int type);
 int			check_env_content(char *str);
 void		print_env(t_node *env_list, int flag);
 

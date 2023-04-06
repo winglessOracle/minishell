@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/06 13:43:31 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/06 15:08:30 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef enum e_parsetype
 }	t_parsetype;
 
 // parser.c
-typedef int function(t_node **, t_smpl_cmd *);
+typedef int	t_function(t_node **, t_smpl_cmd *);
 
 // parser_utils
 int	add_word_to_cmd(t_node **token, t_smpl_cmd *cmd);
@@ -81,9 +81,11 @@ int	get_redirect(t_node **tokens, t_smpl_cmd *cmd);
 //                  | cmd_name cmd_suffix
 //                  | cmd_name
 //                  ;
-// cmd_name         : WORD                   /* Apply rule 7a */
+// cmd_name         : WORD                   
+//* Apply rule 7a */
 //                  ;
-// cmd_word         : WORD                   /* Apply rule 7b */
+// cmd_word         : WORD                   
+//* Apply rule 7b */
 //                  ;
 // cmd_prefix       :            io_redirect
 //                  | cmd_prefix io_redirect
@@ -105,12 +107,13 @@ int	get_redirect(t_node **tokens, t_smpl_cmd *cmd);
 //                  | '>'       filename
 //                  | DGREAT    filename
 //                  ;
-// filename         : WORD                      /* Apply rule 2 */ -> perform all other rules
+// filename         : WORD                      
+//* Apply rule 2 */ -> perform all other rules
 //                  ;
 // io_here          : DLESS     here_end
 //                  ;
-// here_end         : WORD                      /* Apply rule 3 */ -> only perform quote removal
+// here_end         : WORD                      
+//* Apply rule 3 */ -> only perform quote removal
 //                  ;
-
 
 #endif

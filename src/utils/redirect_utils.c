@@ -6,14 +6,14 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/06 14:02:34 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/06 15:10:55 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
 
-int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
+int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd) // function too long make function to set type and remove node;
 {
 	int	type;
 
@@ -47,9 +47,9 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 
 int	expand_redirect(t_node **tokens, t_smpl_cmd *cmd, int type)
 {
-	int				state;
-	static function	*parse[6];
-	
+	int					state;
+	static t_function	*parse[6];
+
 	state = 0;
 	parse[COMMENT] = remove_comment;
 	parse[SQUOTE] = remove_squotes;
@@ -61,8 +61,9 @@ int	expand_redirect(t_node **tokens, t_smpl_cmd *cmd, int type)
 	while (*tokens)
 	{
 		state = check_token_content(*tokens, type);
-		if (state == WORD || state == ASSIGN || (state == EXPAND && type == HEREDOC))
-			break;
+		if (state == WORD || state == ASSIGN || \
+			(state == EXPAND && type == HEREDOC))
+			break ;
 		state = parse[state](tokens, cmd);
 	}
 	if (*tokens)

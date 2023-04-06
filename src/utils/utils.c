@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/06 13:55:36 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/06 15:11:22 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	exit_error(int num)
 }
 
 // to be used in executer
-int assign(t_node **token, t_smpl_cmd *cmd)
+int	assign(t_node **token, t_smpl_cmd *cmd)
 {
 	// in fork when commands has arguments. else in current env
 	add_variable(cmd->env_list, (*token)->content, 1);

@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/05 12:54:15 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/06 15:09:10 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 void	print_tokens(t_node *tokens)
 {
-	int i = 1;
-	
+	int	i;
+
+	i = 1;
 	printf("--------------------------------\n\t     TOKENS\n--------------------------------\n");
 	while (tokens)
 	{

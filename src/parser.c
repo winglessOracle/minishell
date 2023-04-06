@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/06 12:37:00 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/06 15:07:27 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,15 +50,15 @@ int	check_token_content(t_node *token, int type)
 
 int	expand_token(t_node **token, t_smpl_cmd *cmd)
 {
-	int				state;
-	static function	*parse[6];
+	int					state;
+	static t_function	*parse[6];
 
 	parse[WORD] = add_word_to_cmd;
 	parse[COMMENT] = remove_comment;
 	parse[SQUOTE] = remove_squotes;
 	parse[DQUOTE] = remove_dquotes;
 	parse[EXPAND] = expand;
-	parse[ASSIGN] = parser_assign; // hoe weet je nu welke var dit was als er later export uitgevoerd moet worden.. ? niet hier doen?
+	parse[ASSIGN] = parser_assign; // nu in linked list for later processing (is shell variable so technically out of scope?)
 	// printf("*CHECK CONTENT* %s\n", (*token)->content);
 	while (*token && (*token)->type == WORD)
 	{
@@ -71,8 +71,8 @@ int	expand_token(t_node **token, t_smpl_cmd *cmd)
 
 t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	**cmd)
 {	
-	int				state;
-	static function	*parse[5];
+	int					state;
+	static t_function	*parse[5];
 
 	parse[WORD] = expand_token;
 	parse[BLANK] = remove_node;
