@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/07 09:14:00 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/07 10:06:52 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ typedef struct s_node
 
 typedef struct s_smpl_cmd
 {
-	t_node				*env_list;
+	t_node				*env_list; // not cleared in delete content should only be cleared after fork
 	t_node				*redirect;
 	t_node				*assign;
 	int					cmd_argc;
 	t_node				*cmd_argv;
-	struct s_smpl_cmd	*next;
 	struct s_smpl_cmd	*prev;
+	struct s_smpl_cmd	*next;
 }	t_smpl_cmd;
 
 typedef struct s_pipe
@@ -55,7 +55,7 @@ typedef struct s_pipe
 // utils
 void		exit_error(int num);
 int			syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err);
-int			assign(t_node **token, t_smpl_cmd *cmd); // can be moved to executer
+int			assign(t_node **token, t_smpl_cmd *cmd); // can be moved to executer?
 
 // list_utils
 t_node		*lstlast(t_node *lst);
@@ -73,9 +73,9 @@ void		delete_content(void *content);
 int			check_pipe(t_node *token, t_smpl_cmd *cmd);
 t_smpl_cmd	*lstlast_pipe(t_smpl_cmd *lst);
 void		lstadd_back_pipe(t_smpl_cmd **lst, t_smpl_cmd *new);
-// void		lstdelone_pipe(t_smpl_cmd *lst, void (*del)(void *));
-// void		lstclear_pipe(t_smpl_cmd **lst, void (*del)(void *));
-// void		delete_pipe(void *smpl_cmd);
+void		lstdelone_pipe(t_smpl_cmd *lst, void (*del)(void *));
+void		lstclear_pipe(t_smpl_cmd **lst, void (*del)(void *));
+void		delete_cmd(void *smpl_cmd);
 
 //lexer
 t_node		*lexer(char *str, char *delim);
@@ -97,9 +97,6 @@ char		*get_variable(t_node *env_list, char *name);
 int			update_variable(t_node *env_list, char *name, char *cont, int type);
 int			check_env_content(char *str);
 void		print_env(t_node *env_list, int flag);
-
-//parser
-int			get_state(char *str);
 
 //tests
 void		leaks(void);

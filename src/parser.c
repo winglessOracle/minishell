@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/06 22:25:56 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/07 10:25:57 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	check_token_content(t_node *token, int type)
 int	expand_token(t_node **token, t_smpl_cmd *cmd)
 {
 	int					state;
-	static t_function	*parse[6];
+	static t_function	*parse[10];
 
 	parse[WORD] = add_word_to_cmd;
 	parse[COMMENT] = remove_comment;
@@ -83,11 +83,7 @@ t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	**cmd)
 	while (tokens && !state)
 		state = parse[tokens->type](&tokens, *cmd);
 	if (state == -1)
-	{
-		while (tokens && tokens->type != NEW_LINE)
-			remove_node(&tokens, *cmd);
-		*cmd = NULL;
-	}
+		printf("error msg?\n");
 	return (tokens);
 }
 
@@ -106,15 +102,13 @@ t_node	*parse_pipeline(t_node *tokens, t_node *env_list, t_pipe **pipeline)
 			remove_node(&tokens, cmd);
 			return (tokens);
 		}
-		if (!cmd)
+		if (cmd)
 		{
-			*pipeline = NULL;
-			if (tokens && tokens->type == NEW_LINE)
-				remove_node(&tokens, cmd);
-			return (tokens);
+			lstadd_back_pipe(&(*pipeline)->pipe_argv, cmd);
+			(*pipeline)->pipe_argc++;
 		}
-		lstadd_back_pipe(&(*pipeline)->pipe_argv, cmd);
-		(*pipeline)->pipe_argc++;
+		else
+			return (tokens);
 	}
 	return (tokens);
 }

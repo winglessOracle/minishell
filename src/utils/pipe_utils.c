@@ -6,11 +6,21 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/06 15:09:31 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/07 10:07:04 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	delete_cmd(void *smpl_cmd)
+{
+	t_smpl_cmd	*cmd;
+
+	cmd = (t_smpl_cmd *)smpl_cmd;
+	lstclear(&cmd->redirect, delete_content);
+	lstclear(&cmd->assign, delete_content);
+	lstclear(&cmd->cmd_argv, delete_content);
+}
 
 int	check_pipe(t_node *token, t_smpl_cmd *cmd)
 {
@@ -20,6 +30,7 @@ int	check_pipe(t_node *token, t_smpl_cmd *cmd)
 		return (syntax_error(&token, cmd, "no command arguments\n", -1));
 	return (1);
 }
+
 
 t_smpl_cmd	*lstlast_pipe(t_smpl_cmd *lst)
 {
@@ -42,34 +53,26 @@ void	lstadd_back_pipe(t_smpl_cmd **lst, t_smpl_cmd *new)
 	}
 }
 
-// void	delete_cmd(void *smpl_cmd)
-// {
-// 	t_smpl_cmd	*temp;
+void	lstdelone_pipe(t_smpl_cmd *lst, void (*del)(void *))
+{
+	if (lst && del)
+	{
+		del((void *)lst);
+		free(lst);
+	}
+}
 
-// 	temp = (t_smpl_cmd *)smpl_cmd;
-// 	lstclear(temp, delete_content);
-// }
+void	lstclear_pipe(t_smpl_cmd **lst, void (*del)(void *))
+{
+	t_smpl_cmd	*temp;
 
-// void	lstdelone_pipe(t_smpl_cmd *lst, void (*del)(void *))
-// {
-// 	if (lst && del)
-// 	{
-// 		del((void *)lst->pipe_argv);
-// 		free(lst);
-// 	}
-// }
-
-// void	lstclear_pipe(t_smpl_cmd **lst, void (*del)(void *))
-// {
-// 	t_smpl_cmd	*temp;
-
-// 	if (del && lst)
-// 	{
-// 		while (lst && *lst)
-// 		{
-// 			temp = (*lst)->next;
-// 			lstdelone_pipe(*lst, del);
-// 			*lst = temp;
-// 		}
-// 	}
-// }
+	if (del && lst)
+	{
+		while (lst && *lst)
+		{
+			temp = (*lst)->next;
+			lstdelone_pipe(*lst, del);
+			*lst = temp;
+		}
+	}
+}

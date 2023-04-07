@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/06 15:10:55 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/07 09:48:02 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd) // function too long mak
 int	expand_redirect(t_node **tokens, t_smpl_cmd *cmd, int type)
 {
 	int					state;
-	static t_function	*parse[6];
+	static t_function	*parse[9];
 
 	state = 0;
 	parse[COMMENT] = remove_comment;

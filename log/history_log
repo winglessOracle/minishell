@@ -455,8 +455,24 @@ $var
 hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
 hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
 | followed by command
-
 | followed by command
 |
 #comment
 < input for command 1 | << here for heredoc > out | >> append the last
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+| followed by command
+			*pipeline = NULL;
+| followed by command
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+| followed by command
+|
+#comment
+< input for command 1 | << here for heredoc > out | >> append the last
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+| followed by command
+|
