@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/07 10:07:04 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/07 22:00:31 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,6 @@ void	delete_cmd(void *smpl_cmd)
 	lstclear(&cmd->assign, delete_content);
 	lstclear(&cmd->cmd_argv, delete_content);
 }
-
-int	check_pipe(t_node *token, t_smpl_cmd *cmd)
-{
-	if (token->type == PIPE && (!token->next || token->next->type == NEW_LINE))
-		return (syntax_error(&token, cmd, "no command after '|'", -1));
-	else if (cmd->cmd_argv == 0 && cmd->redirect == NULL)
-		return (syntax_error(&token, cmd, "no command arguments\n", -1));
-	return (1);
-}
-
 
 t_smpl_cmd	*lstlast_pipe(t_smpl_cmd *lst)
 {

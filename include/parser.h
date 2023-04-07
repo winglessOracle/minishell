@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/07 09:46:17 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/07 21:58:41 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,13 @@ typedef enum e_parsetype
 typedef int	t_function(t_node **, t_smpl_cmd *);
 
 // parser_utils
+int	check_pipe(t_node *token, t_smpl_cmd *cmd);
 int	add_word_to_cmd(t_node **token, t_smpl_cmd *cmd);
 int	set_cmd_end(t_node **token, t_smpl_cmd *cmd);
 int	remove_comment(t_node **token, t_smpl_cmd *cmd);
 int	parser_assign(t_node **token, t_smpl_cmd *cmd);
+
+// expand_utils
 int	expand(t_node **token, t_smpl_cmd *cmd);
 
 // content_utils

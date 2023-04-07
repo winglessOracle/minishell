@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/06 22:39:43 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/07 21:57:58 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,54 +36,11 @@ int	parser_assign(t_node **token, t_smpl_cmd *cmd)
 	return (0);
 }
 
-char	*expand_word(int var, t_node **words, t_smpl_cmd *cmd, char *content)
+int	check_pipe(t_node *token, t_smpl_cmd *cmd)
 {
-	char	*temp;
-
-	if ((*words)->content[0] == '$')
-	{
-		remove_node(words, cmd);
-		if (*words && (*words)->content[0] != ' ')
-			var = 1;
-	}
-	if (*words)
-	{
-		if (var == 1)
-			temp = get_variable(cmd->env_list, (*words)->content);
-		else
-			temp = ft_strdup((*words)->content);
-		remove_node(words, cmd);
-		if (temp)
-		{
-			content = ft_strjoin_free_s1(content, temp);
-			free (temp);
-		}
-	}
-	return (content);
-}
-
-int	expand(t_node **token, t_smpl_cmd *cmd)
-{
-	t_node	*words;
-	int		var;
-	char	*content;
-
-	var = 0;
-	words = split_to_list((*token)->content, "$ ");
-	content = NULL;
-	while (words)
-	{
-		content = expand_word(var, &words, cmd, content);
-		// if content == ? -> last exit status
-		var = 0;
-	}
-	if (content)
-	{
-		free((*token)->content);
-		(*token)->content = content;
-		(*token)->type = WORD;
-	}
-	else
-		remove_node(token, cmd);
-	return (0);
+	if (token->type == PIPE && (!token->next || token->next->type == NEW_LINE))
+		return (syntax_error(&token, cmd, "no command after '|'", -1));
+	else if (cmd->cmd_argv == 0 && cmd->redirect == NULL)
+		return (syntax_error(&token, cmd, "no command arguments\n", -1));
+	return (1);
 }

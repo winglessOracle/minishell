@@ -485,4 +485,68 @@ hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | 
 < input for command 1 | << here for heredoc > out | >> append the last
 < "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
 hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
-
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+$PWD
+$PWD
+$PWD
+"$PWD and something"
+"$PWD and something"
+"$aap and something"
+"$PWD and something"
+"$aap and something"
+"$PWD and something"
+"$aap and something"
+"$PWD and something"
+$PWD
+$VAR
+$VAR
+$VAR
+$VAR
+$VAR
+$VAR
+$VAR
+$ANOTHER
+$VAR
+$VAR
+make
+$VAR
+$VAR
+$VAR
+$VAR
+$VAR
+$VAR
+$VAR
+$VAR
+$VAR
+$VAR
+$2VAR
+$VAR
+$VAR
+$2VAR
+$VAR
+$VAR aap
+$VAR
+$VAR
+$VAR aap
+$VAR aap
+$VAR
+$VAR aap
+$VAR
+$VAR aap
+$VAR
+$VAR aap
+$VAR
+$2VAR
+$2VAR
+$VAR
+$VAR aap
+$VAR
+$2VAR
+$VAR aap
+$VAR aap
+$VAR aap
+$2VAR
+$VAR
+$VAR
+$VAR aap
+$2VAR aap

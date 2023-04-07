@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 13:37:11 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/07 14:29:43 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/07 21:56:26 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,21 @@ int	remove_node(t_node **token, t_smpl_cmd *cmd)
 	lstdelone(temp, delete_content);
 	print_tokens(*token);
 	return (0);
+}
+
+t_node	*lstpop(t_node **lst)
+{
+	t_node	*temp;
+
+	if (!*lst)
+		return (NULL);
+	temp = *lst;
+	if ((*lst)->prev)
+		(*lst)->prev->next = (*lst)->next;
+	if ((*lst)->next)
+		(*lst)->next->prev = (*lst)->prev;
+	*lst = (*lst)->next;
+	temp->prev = NULL;
+	temp->next = NULL;
+	return (temp);
 }

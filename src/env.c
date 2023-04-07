@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/06 15:05:26 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/07 21:15:16 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	update_variable(t_node *env_list, char *name, char *content, int type)
 {
 	while (env_list)
 	{
-		if (ft_strncmp(env_list->content, name, ft_strlen(name)) == 0)
+		if (ft_strncmp(env_list->content, name, ft_strlen(name) + 1) == 0)
 		{
 			env_list->content = content;
 			env_list->type = type;

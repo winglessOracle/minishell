@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/07 14:28:42 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/07 21:56:20 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,19 @@ t_node	*lstlast(t_node *lst)
 	while (lst && lst->next != NULL)
 		lst = lst->next;
 	return (lst);
+}
+
+int	lstlen(t_node *lst)
+{
+	int	i;
+	
+	i = 0;
+	while (lst && lst->next != NULL)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
 
 void	lstadd_back(t_node **lst, t_node *new)
@@ -43,23 +56,6 @@ void	lstdelone(t_node *lst, void (*del)(void *))
 		del((void *)lst->content);
 		free(lst);
 	}
-}
-
-t_node	*lstpop(t_node **lst)
-{
-	t_node	*temp;
-
-	if (!*lst)
-		return (NULL);
-	temp = *lst;
-	if ((*lst)->prev)
-		(*lst)->prev->next = (*lst)->next;
-	if ((*lst)->next)
-		(*lst)->next->prev = (*lst)->prev;
-	*lst = (*lst)->next;
-	temp->prev = NULL;
-	temp->next = NULL;
-	return (temp);
 }
 
 void	lstclear(t_node **lst, void (*del)(void *))
