@@ -35,4 +35,3 @@ should return empty line
 single quotes with redirect
 cleanup at error
 check on empty command if only #comment tokens
-split after expand
