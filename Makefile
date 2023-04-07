@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/06 11:45:05 by ccaljouw      ########   odam.nl          #
+#    Updated: 2023/04/06 22:09:28 by cariencaljo   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ NAME		= minishell
 CC			= clang
 CFLAGS		= -Wall -Wextra -Werror
 
-RL_INC		= /Users/$(USER)/.brew/opt/readline/include
-RL_LIB		= /Users/$(USER)/.brew/opt/readline/lib
-# RL_INC			= /opt/homebrew/opt/readline/include
-# RL_LIB			= /opt/homebrew/opt/readline/lib
+# RL_INC		= /Users/$(USER)/.brew/opt/readline/include
+# RL_LIB		= /Users/$(USER)/.brew/opt/readline/lib
+RL_INC			= /opt/homebrew/opt/readline/include
+RL_LIB			= /opt/homebrew/opt/readline/lib
 
 #//= Locations =//#
 INCLUDE		= ./include

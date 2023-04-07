@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/06 15:07:27 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/06 22:25:56 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	check_token_content(t_node *token, int type)
 			return (DQUOTE);
 		else if (str[i] == '\'' && type != DQUOTE)
 			return (SQUOTE);
-		else if (str[i] == '$' && type != SQUOTE)
+		else if (str[i] == '$' && str[i + 1] != ' ' &&  \
+					str[i + 1] != '\0' && type != SQUOTE)
 			return (EXPAND);
 		else if (str[i] == '=' && type != DQUOTE && type != SQUOTE)
 			return (ASSIGN);
@@ -63,7 +64,6 @@ int	expand_token(t_node **token, t_smpl_cmd *cmd)
 	while (*token && (*token)->type == WORD)
 	{
 		state = check_token_content(*token, (*token)->type);
-		// printf("state: %d\n", state);
 		state = parse[state](token, cmd);
 	}
 	return (state);

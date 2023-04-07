@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/06 14:58:38 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/06 22:39:43 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 	while (words)
 	{
 		content = expand_word(var, &words, cmd, content);
+		// if content == ? -> last exit status
 		var = 0;
 	}
 	if (content)

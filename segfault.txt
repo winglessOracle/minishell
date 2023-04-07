@@ -8,7 +8,8 @@ hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | 
 < "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
 
 
-/* Segfaults or incorrect behaviour */
+/* Segfaults or incorrect behaviour */ 
+
 command | another $command |  (incorrect when followed by <newline>)
 < $var < "$var" < '$var' << $var << "$var" << '$var' --> should be '' '' '' $var $var $var
 
@@ -29,6 +30,9 @@ var=app echo $var
 should return empty line
 ------------------------
 
+/* todo */
 
-ls
-| cat 
+single quotes with redirect
+cleanup at error
+check on empty command if only #comment tokens
+newline
