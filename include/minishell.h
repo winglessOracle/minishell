@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/07 10:06:52 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/07 12:54:04 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ typedef struct s_smpl_cmd
 typedef struct s_pipe
 {
 	int				type;
-	int				pipe_argc;
 	t_smpl_cmd		*pipe_argv;
 	struct s_pipe	*next;
 }	t_pipe;

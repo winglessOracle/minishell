@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/07 10:25:57 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/07 14:33:08 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	expand_token(t_node **token, t_smpl_cmd *cmd)
 	parse[EXPAND] = expand;
 	parse[ASSIGN] = parser_assign; // nu in linked list for later processing (is shell variable so technically out of scope?)
 	// printf("*CHECK CONTENT* %s\n", (*token)->content);
+					printf("here token: %s, type: %d, adress: %p\n", ((*token)->content), (*token)->type, *token);
 	while (*token && (*token)->type == WORD)
 	{
 		state = check_token_content(*token, (*token)->type);
@@ -83,7 +84,7 @@ t_node	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	**cmd)
 	while (tokens && !state)
 		state = parse[tokens->type](&tokens, *cmd);
 	if (state == -1)
-		printf("error msg?\n");
+		*cmd = NULL;
 	return (tokens);
 }
 
@@ -103,10 +104,7 @@ t_node	*parse_pipeline(t_node *tokens, t_node *env_list, t_pipe **pipeline)
 			return (tokens);
 		}
 		if (cmd)
-		{
 			lstadd_back_pipe(&(*pipeline)->pipe_argv, cmd);
-			(*pipeline)->pipe_argc++;
-		}
 		else
 			return (tokens);
 	}
