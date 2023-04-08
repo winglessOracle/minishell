@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:05:51 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/07 21:48:30 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/08 08:23:55 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_node	*init_env(void)
 	add_variable(env_list, prompt, 1);
 	add_variable(env_list, "PS2=''", 1);
 	add_variable(env_list, "?=0", 1);
-	add_variable(env_list, "IFS=' 	'", 1);
+	add_variable(env_list, "IFS=' \t\n'", 1);
 	add_variable (env_list, "VAR=s	-l", 1);  //test
 	add_variable (env_list, "2VAR='s -l'", 1);  //test
 	// test 

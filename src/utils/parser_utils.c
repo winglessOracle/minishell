@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/07 21:57:58 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/08 09:38:15 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,12 @@ int	parser_assign(t_node **token, t_smpl_cmd *cmd)
 	return (0);
 }
 
-int	check_pipe(t_node *token, t_smpl_cmd *cmd)
+int	set_cmd_end(t_node **token, t_smpl_cmd *cmd)
 {
-	if (token->type == PIPE && (!token->next || token->next->type == NEW_LINE))
-		return (syntax_error(&token, cmd, "no command after '|'", -1));
-	else if (cmd->cmd_argv == 0 && cmd->redirect == NULL)
-		return (syntax_error(&token, cmd, "no command arguments\n", -1));
-	return (1);
+	int	check;
+
+	check = check_pipe(*token, cmd);
+	if ((*token)->type == PIPE)
+		remove_node(token, cmd);
+	return (check);
 }

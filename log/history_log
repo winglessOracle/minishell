@@ -550,3 +550,127 @@ $VAR
 $VAR
 $VAR aap
 $2VAR aap
+#comment
+<< 'hello $PS1 world'
+< 'hello $PS1 world'
+< "hello $PS1 world"
+<< "hello $PS1 world"
+$
+"$ app"
+l$VAR
+hello world 'does | this work?' hello=10 word | word "#comment not gone" | with and #comment that will be gone
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+$ PWD 
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone
+$ PWD 
+$ PWD 
+$PWD 
+$PWD 
+$PWD 
+$PWD 
+$PWD 
+$PWD
+$PWD
+$VAR
+$VAR
+$VAR test
+$VAR test
+$VAR
+$VAR test
+$VAR test
+$VAR test
+$VAR test
+test$VAR test
+test$VAR test
+$VAR test
+"$VAR test"
+test"$VAR test"
+$VAR test
+test$VAR test
+test$VAR test
+test$VAR test
+test$VAR test
+$VAR test
+$VAR test
+test$VAR test
+test$VAR test
+test$VARtest
+test$VARtest
+$PWD
+$PWD
+$PWD
+$PWD
+$PWD
+$PWD
+$PWD
+$PWD
+$PWD
+$PWD
+$PWD$PWD
+$PWD$PWD
+$VAR
+$VAR$VAR
+$VAR$VAR
+$VAR$VAR test
+$VAR$VAR test
+$VAR$VAR test
+$VAR$VAR test
+$VAR$VAR test
+$PWD$PWD
+$PWD$PWD
+exi
+exi
+$PWD$PWD
+$PWD$PWD
+$PWD$PWD
+$PWD$PWD
+$PWD$PWD test
+test$PWD$PWD test
+$PWD$PWD test
+test$PWD$PWD test
+test$PWD$PWD test
+$PWD$PWD test
+$PWD$PWD test
+$PWD$PWD test
+test$PWD$PWD test
+test$PWD$PWD test
+$PWD$PWD test
+$PWD$PWD test
+$PWD$PWD test
+$PWD$PWD test
+$PWD$PWD test
+$PWD$PWD test
+$PWD$PWD test
+$PWD$PWD test
+$PWD
+$PWD$
+$PWD$PWD
+$PWD$PWD
+$PWD$PWD
+$PWD$PWD
+test$PWD$PWD
+test$PWD$PWD
+test$PWD$PWD
+test$PWD$PWD
+test$PWD$PWD
+test$PWD
+test$PWD$PWD
+test$PWD$PWD
+test$PWD$PWD
+test$PWD$PWD
+test$PWD$PWD
+test$PWD$PWD
+test$PWD$PWD
+test$PWD$PWD
+test$PWD$PWD
+test$PWD$PWD
+test$PWD$PWD
+test$PWD$PWD test
+aap test$PWD$PWD test
+$PS1
+eixt

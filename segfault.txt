@@ -13,21 +13,6 @@ hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | 
 command | another $command |  (incorrect when followed by <newline>)
 < $var < "$var" < '$var' << $var << "$var" << '$var' --> should be '' '' '' $var $var $var
 
-
-/* comments */
-
-these are shell variables so technically not part of the scope:
-___________________
-var=aap
-echo $var
--------------------
-should return 'aap'
--------------------
-
-________________________
-var=app echo $var
-------------------------
-should return empty line
 ------------------------
 
 /* todo */

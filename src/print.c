@@ -6,21 +6,21 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/06 15:09:10 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/08 14:15:49 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	print_tokens(t_node *tokens)
+void	print_tokens(t_node *tokens, char *str)
 {
 	int	i;
 
 	i = 1;
-	printf("--------------------------------\n\t     TOKENS\n--------------------------------\n");
+	printf("--------------------------------\n\t     %s\n--------------------------------\n", str);
 	while (tokens)
 	{
-		printf("type: %d \tcontent: %s\n", tokens->type, tokens->content);
+		printf("type: %2d\tnext: %11p\tcontent: %s\n", tokens->type, tokens->next, tokens->content);
 		tokens = tokens->next;
 		i++;
 	}
