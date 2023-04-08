@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 13:37:11 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/08 15:21:21 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/08 20:51:42 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,12 @@ void	merge_tokens(t_node *token, int type)
 
 	if (token->next)
 	{
-		print_tokens(token, "MERGE");
 		content = ft_strjoin(token->content, token->next->content);
 		free(token->content);
 		token->content = content;
 		token->type = type;
-		print_tokens(token, "MERGE 2");
-		remove_node(&token->next, NULL);
-		print_tokens(token, "MERGE END");
+		token = token->next;
+		lstdelone(lstpop(&token), delete_content);
 	}
 }
 
@@ -73,9 +71,12 @@ t_node	*lstpop(t_node **lst)
 	if (!*lst)
 		return (NULL);
 	temp = *lst;
+	if ((*lst)->prev)
+		(*lst)->prev->next = (*lst)->next;
+	if ((*lst)->next)
+		(*lst)->next->prev = (*lst)->prev;
 	*lst = (*lst)->next;
 	temp->prev = NULL;
 	temp->next = NULL;
-	// print_tokens(*lst, "POP END");
 	return (temp);
 }

@@ -5,11 +5,10 @@ hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | 
 |
 #comment
 < input for command 1 | << here for heredoc > out | >> append the last
+
+
+/* Segfaults or incorrect behaviour */
 < "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
-
-
-/* Segfaults or incorrect behaviour */ 
-
 command | another $command |  (incorrect when followed by <newline>)
 < $var < "$var" < '$var' << $var << "$var" << '$var' --> should be '' '' '' $var $var $var
 
@@ -17,7 +16,7 @@ command | another $command |  (incorrect when followed by <newline>)
 
 /* todo */
 
-single quotes with redirect
+spatie na expanded command met spaties moet wel weg
 cleanup at error
 check on empty command if only #comment tokens
 check getting vars with overlapping name for example VAR and VAR2

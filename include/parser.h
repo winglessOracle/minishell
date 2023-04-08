@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/08 10:33:28 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/08 20:37:00 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,8 @@ int	expander(t_node **token, t_smpl_cmd *cmd);
 int	expand(t_node **token, t_smpl_cmd *cmd);
 
 // content_utils
-int	remove_squotes(t_node **token, t_smpl_cmd *cmd);
-int	remove_dquotes(t_node **token, t_smpl_cmd *cmd);
-int	remove_dquotes_heredoc(t_node **token, t_smpl_cmd *cmd);
+int	remove_quotes(t_node **token, t_smpl_cmd *cmd);
+int	remove_quotes_redirect(t_node **token, t_smpl_cmd *cmd);
 
 // redirect_utils
 int	get_redirect(t_node **tokens, t_smpl_cmd *cmd);

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/08 14:16:12 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/08 20:37:33 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,8 @@ int	expand_redirect(t_node **tokens, t_smpl_cmd *cmd, int type)
 
 	state = 0;
 	parse[COMMENT] = remove_comment;
-	parse[SQUOTE] = remove_squotes;
-	if (type == HEREDOC)
-		parse[DQUOTE] = remove_dquotes_heredoc;
-	else
-		parse[DQUOTE] = remove_dquotes;
+	parse[SQUOTE] = remove_quotes_redirect;
+	parse[DQUOTE] = remove_quotes_redirect;
 	parse[EXPAND] = expand;
 	while (*tokens)
 	{
@@ -64,6 +61,7 @@ int	expand_redirect(t_node **tokens, t_smpl_cmd *cmd, int type)
 		if (state == WORD || state == ASSIGN || \
 			(state == EXPAND && type == HEREDOC))
 			break ;
+		(*tokens)->type = type; //added not checked
 		state = parse[state](tokens, cmd);
 	}
 	if (*tokens)

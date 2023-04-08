@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/08 14:39:56 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/08 19:27:57 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,7 @@ t_node	*parse_cmd(t_node *tokens, t_smpl_cmd	**cmd)
 	parse[NEW_LINE] = set_cmd_end;
 	state = 0;
 	while (tokens && !state)
-	{
 		state = parse[tokens->type](&tokens, *cmd);
-		print_tokens(tokens, "PARSER");
-	}
 	if (state == -1)
 		*cmd = NULL;
 	return (tokens);
