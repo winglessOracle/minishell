@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/08 14:15:55 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/09 11:53:24 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,11 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 
-// # include <stdbool.h>
-// # include <limits.h>
 typedef struct s_node
 {
 	int				type;
 	char			*content;
-	struct s_node	*prev;
+	struct s_node	*prev; //not used?
 	struct s_node	*next;
 }	t_node;
 
@@ -54,11 +52,9 @@ typedef struct s_pipe
 // utils
 void		exit_error(int num);
 int			syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err);
-int			assign(t_node **token, t_smpl_cmd *cmd); // can be moved to executer?
 
 // list_utils
 t_node		*lstlast(t_node *lst);
-int			lstlen(t_node *lst);
 void		lstadd_back(t_node **lst, t_node *new);
 void		lstinsert_lst(t_node **at, t_node *lst);
 void		lstdelone(t_node *lst, void (*del)(void *));

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 13:37:11 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/08 20:51:42 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/09 11:52:10 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,16 @@ void	delete_content(void *content)
 	free(temp);
 }
 
+void	delete_cmd(void *smpl_cmd)
+{
+	t_smpl_cmd	*cmd;
+
+	cmd = (t_smpl_cmd *)smpl_cmd;
+	lstclear(&cmd->redirect, delete_content);
+	lstclear(&cmd->assign, delete_content);
+	lstclear(&cmd->cmd_argv, delete_content);
+}
+
 // merges provided node with the next node and set provided type for merged node
 void	merge_tokens(t_node *token, int type)
 {
@@ -50,18 +60,6 @@ void	merge_tokens(t_node *token, int type)
 		token = token->next;
 		lstdelone(lstpop(&token), delete_content);
 	}
-}
-
-int	remove_node(t_node **token, t_smpl_cmd *cmd)
-{	
-	t_node	*temp;
-
-	(void)cmd;
-	if (!*token)
-		return (-1);
-	temp = lstpop(token);
-	lstdelone(temp, delete_content);
-	return (0);
 }
 
 t_node	*lstpop(t_node **lst)

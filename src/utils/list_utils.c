@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/08 12:39:50 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/09 11:38:26 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,18 @@ t_node	*lstlast(t_node *lst)
 	return (lst);
 }
 
-int	lstlen(t_node *lst)
-{
-	int	i;
+// int	lstlen(t_node *lst)
+// {
+// 	int	i;
 	
-	i = 0;
-	while (lst && lst->next != NULL)
-	{
-		lst = lst->next;
-		i++;
-	}
-	return (i);
-}
+// 	i = 0;
+// 	while (lst && lst->next != NULL)
+// 	{
+// 		lst = lst->next;
+// 		i++;
+// 	}
+// 	return (i);
+// }
 
 void	lstadd_back(t_node **lst, t_node *new)
 {

@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/08 20:43:24 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/09 13:12:26 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	main(void)
 		pipeline = init_pipeline();
 		printf("CREATED PIPLINE\n");
 		tokens = parse_pipeline(tokens, env_list, &pipeline);
-		printf("after pipeline\n");
 		print_pipeline(pipeline);
 	}
 	free(prompt);

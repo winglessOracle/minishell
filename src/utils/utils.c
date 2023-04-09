@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/07 14:32:31 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/09 11:36:45 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,6 @@ void	exit_error(int num)
 {
 	write(1, "Error\n", 7);
 	exit(num);
-}
-
-// to be used in executer
-int	assign(t_node **token, t_smpl_cmd *cmd)
-{
-	// in fork when commands has arguments. else in current env
-	add_variable(cmd->env_list, (*token)->content, 1);
-	remove_node(token, cmd);
-	return (0);
 }
 
 // prints error message and returns -1 if err != 0;

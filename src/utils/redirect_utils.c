@@ -6,14 +6,20 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/08 20:37:33 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/09 17:17:05 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
 
-int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd) // function too long make function to set type and remove node;
+int	type_current_remove_next(int type, t_node **tokens, t_smpl_cmd *cmd)
+{
+	remove_node(tokens, cmd);
+	return (type);
+}
+
+int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 {
 	int	type;
 
@@ -26,49 +32,16 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd) // function too long mak
 	if (!*tokens)
 		return (-1);
 	if (type == INPUT && (*tokens)->content[0] == '<')
-	{
-		type = HEREDOC;
-		remove_node(tokens, cmd);
-	}
+		type = type_current_remove_next(HEREDOC, tokens, cmd);
 	else if (type == OUTPUT && (*tokens)->content[0] == '>')
-	{
-		type = APPEND;
-		remove_node(tokens, cmd);
-	}
-	else if ((*tokens)->type == REDIRECT)
-	{
-		type = -1;
-		remove_node(tokens, cmd);
-	}
+		type = type_current_remove_next(APPEND, tokens, cmd);
 	while (*tokens && (*tokens)->type == BLANK)
 		remove_node(tokens, cmd);
+	if (*tokens && (*tokens)->type == REDIRECT)
+		type = type_current_remove_next(-1, tokens, cmd);
+	else if (!*tokens)
+		type = -1;
 	return (type);
-}
-
-int	expand_redirect(t_node **tokens, t_smpl_cmd *cmd, int type)
-{
-	int					state;
-	static t_function	*parse[9];
-
-	state = 0;
-	parse[COMMENT] = remove_comment;
-	parse[SQUOTE] = remove_quotes_redirect;
-	parse[DQUOTE] = remove_quotes_redirect;
-	parse[EXPAND] = expand;
-	while (*tokens)
-	{
-		state = check_token_content(*tokens, type);
-		if (state == WORD || state == ASSIGN || \
-			(state == EXPAND && type == HEREDOC))
-			break ;
-		(*tokens)->type = type; //added not checked
-		state = parse[state](tokens, cmd);
-	}
-	if (*tokens)
-		(*tokens)->type = type;
-	else
-		state = -1;
-	return (state);
 }
 
 int	get_redirect(t_node **tokens, t_smpl_cmd *cmd)
@@ -80,10 +53,8 @@ int	get_redirect(t_node **tokens, t_smpl_cmd *cmd)
 	if (type == -1)
 		return (syntax_error(tokens, cmd, "Redirect error\n", -1));
 	type = expand_redirect(tokens, cmd, type);
-	if (type == -1)
-		return (syntax_error(tokens, cmd, "Redirect error\n", -1));
-	else
-		lstadd_back(&cmd->redirect, lstpop(tokens));
 	print_tokens(cmd->redirect, "REDIRECT");
-	return (type);
+	if (type != -1)
+		type = 0;
+	return (syntax_error(tokens, cmd, "Redirect error\n", type));
 }

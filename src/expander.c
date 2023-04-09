@@ -6,14 +6,14 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/08 18:52:09 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/09 20:33:33 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
 
-t_node	*expand_word(t_node *token, t_smpl_cmd *cmd)
+t_node	*expand_var(t_node *token, t_smpl_cmd *cmd)
 {
 	char	*str;
 	
@@ -39,17 +39,48 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 	if (words && words->next)
 	{
 		if (words->content[0] == '$')
-			words = expand_word(words, cmd);
+			words = expand_var(words, cmd);
 		else if (words->next->content[0] == '$')
-			words->next = expand_word(words->next, cmd);
-		while (words->next)
-			merge_tokens(words, WORD);
+			words->next = expand_var(words->next, cmd);
+			while (words && words->next)
+				merge_tokens(words, WORD);
 	}
-	temp = words;
-	words = split_to_list(temp->content, get_variable(cmd->env_list, "IFS"));
-	remove_node(&temp, cmd);
-	lstinsert_lst(token, words);
+	if (words)
+	{
+		temp = words;
+		words = split_to_list(temp->content, \
+				get_variable(cmd->env_list, "IFS"));
+		remove_node(&temp, cmd);
+		lstinsert_lst(token, words);
+	}
 	return (0);
+}
+
+int	expand_redirect(t_node **tokens, t_smpl_cmd *cmd, int type)
+{
+	int					state;
+	static t_function	*parse[9];
+
+	state = 0;
+	parse[COMMENT] = remove_comment;
+	parse[SQUOTE] = remove_quotes;
+	parse[DQUOTE] = remove_quotes;
+	parse[EXPAND] = expand;
+	while (*tokens)
+	{
+		state = check_token_content(*tokens, type);
+		if (state == WORD || state == ASSIGN || \
+			(state == EXPAND && type == HEREDOC))
+		{
+			lstadd_back(&cmd->redirect, lstpop(tokens));
+			return (0);
+		}
+		if (state == COMMENT || !*tokens)
+			return (-1);
+		(*tokens)->type = type;
+		state = parse[state](tokens, cmd);
+	}
+	return (state);
 }
 
 int	expander(t_node **token, t_smpl_cmd *cmd)
