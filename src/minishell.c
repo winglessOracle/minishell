@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/09 13:12:26 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/09 21:26:49 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	main(void)
 	t_node		*env_list;
 	t_pipe		*pipeline;
 	char		*line_read;
-	char		*prompt;
+	char		*prompt; // kan dit weggewerkt?
+	int			state; // move to parser
 
 	// atexit(leaks);
 	line_read = NULL;
@@ -44,9 +45,11 @@ int	main(void)
 	while (tokens)
 	{
 		pipeline = init_pipeline();
-		printf("CREATED PIPLINE\n");
-		tokens = parse_pipeline(tokens, env_list, &pipeline);
+		state = parse_pipeline(&tokens, env_list, &pipeline);
+		if (state == -1)
+			lstclear_pipe(&pipeline->pipe_argv, delete_cmd);
 		print_pipeline(pipeline);
+		printf("CREATED PIPLINE\n");
 	}
 	free(prompt);
 	}

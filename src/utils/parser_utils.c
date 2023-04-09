@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/09 13:16:20 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/09 20:56:20 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	set_cmd_end(t_node **token, t_smpl_cmd *cmd)
 	if ((*token)->type == PIPE)
 	{
 		if (!(*token)->next || (*token)->next->type == NEW_LINE)
-			return (syntax_error(token, cmd, "no command after '|'", -1));
+			return (syntax_error(token, cmd, "no command after '|'\n", -1));
 		if (cmd->cmd_argv == NULL && cmd->redirect == NULL)
 			return (syntax_error(token, cmd, "no command arguments\n", -1));
 		remove_node(token, cmd);

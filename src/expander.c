@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/09 20:33:33 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/09 20:41:02 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,33 +54,6 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 		lstinsert_lst(token, words);
 	}
 	return (0);
-}
-
-int	expand_redirect(t_node **tokens, t_smpl_cmd *cmd, int type)
-{
-	int					state;
-	static t_function	*parse[9];
-
-	state = 0;
-	parse[COMMENT] = remove_comment;
-	parse[SQUOTE] = remove_quotes;
-	parse[DQUOTE] = remove_quotes;
-	parse[EXPAND] = expand;
-	while (*tokens)
-	{
-		state = check_token_content(*tokens, type);
-		if (state == WORD || state == ASSIGN || \
-			(state == EXPAND && type == HEREDOC))
-		{
-			lstadd_back(&cmd->redirect, lstpop(tokens));
-			return (0);
-		}
-		if (state == COMMENT || !*tokens)
-			return (-1);
-		(*tokens)->type = type;
-		state = parse[state](tokens, cmd);
-	}
-	return (state);
 }
 
 int	expander(t_node **token, t_smpl_cmd *cmd)

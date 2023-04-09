@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/09 13:15:26 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/09 20:42:58 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,12 @@ int	parser_assign(t_node **token, t_smpl_cmd *cmd);
 // expand_utils
 int	expander(t_node **token, t_smpl_cmd *cmd);
 int	expand(t_node **token, t_smpl_cmd *cmd);
-int	expand_redirect(t_node **tokens, t_smpl_cmd *cmd, int type);
 
 // content_utils
 int	remove_quotes(t_node **token, t_smpl_cmd *cmd);
-int	remove_quotes_redirect(t_node **token, t_smpl_cmd *cmd);
 
 // redirect_utils
-int	get_redirect(t_node **tokens, t_smpl_cmd *cmd);
+int	redirect(t_node **tokens, t_smpl_cmd *cmd);
 
 /* -------------------------------------------------------
    The grammar symbols
