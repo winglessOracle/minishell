@@ -1619,3 +1619,186 @@ command | another $command |
 < "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
 < "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
 <"in" >out
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+| followed by command
+|
+command | another $command |
+#comment
+< input for command 1 | << here for heredoc > out | >> append the last
+< $var 
+< "$var" 
+< '$var' 
+<< $var 
+<< "$var" 
+<< '$var'
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "in" > "out"
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "in" > "out"
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+| followed by command
+|
+command | another $command |
+#comment
+< input for command 1 | << here for heredoc > out | >> append the last
+< $var 
+< "$var" 
+< '$var' 
+<< $var 
+<< "$var" 
+<< '$var'
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "in" > "out"
+command | another $command |
+#comment
+command | another $command |
+#comment
+command | another $command |
+#comment
+command | another $command |
+#comment
+command | another $command |
+#comment
+command | another $command |
+#comment
+			// printf("here3\n");
+command | another $command |
+#comment
+command | another $command |
+#comment
+#comment
+	pipe->pipe_argv = NULL;
+command | another $command |
+#comment
+command | another $command |
+#comment
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+| followed by command
+|
+command | another $command |
+#comment
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+| followed by command
+|
+command | another $command |
+#comment
+< input for command 1 | << here for heredoc > out | >> append the last
+< $var 
+< "$var" 
+< '$var' 
+<< $var 
+<< "$var" 
+<< '$var'
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "in" > "out"
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "in" > "out"
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+| followed by command
+|
+command | another $command |
+#comment
+< input for command 1 | << here for heredoc > out | >> append the last
+< $var 
+< "$var" 
+< '$var' 
+<< $var 
+<< "$var" 
+<< '$var'
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "in" > "out"
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "in" > "out"
+<< '$var'
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "in" > "out"
+<< "$var" 
+<< '$var'
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "in" > "out"
+< $var 
+< "$var" 
+< '$var' 
+<< $var 
+<< "$var" 
+<< '$var'
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "in" > "out"
+< '$var' 
+<< $var 
+<< "$var" 
+<< '$var'
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "in" > "out"
+< "$var" 
+< '$var' 
+<< $var 
+<< "$var" 
+<< '$var'
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "in" > "out"
+< "$var" 
+< '$var' 
+< "$var" 
+< '$var' 
+<< "$var" 
+< "$var" 
+< "$var" 
+< "$var" 
+< "$var" 
+< "$var" 
+< "$var" 
+< "$var" 
+< "$var" 
+< "$var" 
+< "$var" 
+< "$var" 
+< "$var" 
+< "$var" 
+< "$var" 
+< "$var" 
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+| followed by command
+|
+command | another $command |
+#comment
+< input for command 1 | << here for heredoc > out | >> append the last
+< $var 
+< "$var" 
+< '$var' 
+<< $var 
+<< "$var" 
+<< '$var'
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "in" > "out"
+< "in" > "out"
+$var
+"$var"
+< $var
+< "$var"
+< "$var"
+"$var"
+< "$var"
+< "$var"
+< "$var"
+"$var"
+"$var"
+"$var"
+exjt
+"$var"
+"$var"
+< "$var"
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+| followed by command
+|
+command | another $command |
+#comment
+< input for command 1 | << here for heredoc > out | >> append the last
+< $var 
+< "$var" 
+< '$var' 
+<< $var 
+<< "$var" 
+<< '$var'
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+< "in" > "out"

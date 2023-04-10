@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/10 11:50:37 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/10 13:32:51 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ t_list	*parse_list(t_node *tokens, t_node *env_list)
 		pipeline = init_pipeline();
 		state = parse_pipeline(&tokens, env_list, &pipeline);
 		if (state == -1)
-			printf("dont add to list?\n");
+			free(pipeline);
 	}
 	return (lst);
 }

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/10 11:57:40 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/10 14:04:43 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,18 @@ int	remove_quotes(t_node **token, t_smpl_cmd *cmd)
 	if (type == -1)
 		return (-1);
 	if (state == INPUT || state == OUTPUT || state == APPEND || state == HEREDOC)
-		return (type);
+	{
+		if (*token && (*token)->content == NULL)
+			return (syntax_error(token, cmd, "No such file or directory\n", -1));
+		else
+			return (type);
+	}
 	else
-		add_word_to_cmd(token, cmd);
+	{
+		if (*token && (*token)->content == NULL)
+			remove_node(token, cmd);
+		else
+			add_word_to_cmd(token, cmd);
+	}
 	return (type);
 }
