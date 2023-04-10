@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/09 20:43:28 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/10 11:58:41 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int	redirect(t_node **tokens, t_smpl_cmd *cmd)
 		return (syntax_error(tokens, cmd, "Redirect error\n", -1));
 	type = get_redirect(tokens, cmd, type);
 	print_tokens(cmd->redirect, "REDIRECT");
-	if (type != -1)
-		type = 0;
-	return (syntax_error(tokens, cmd, "Redirect error\n", type));
+	if (type == -1)
+		return (syntax_error(tokens, cmd, "Redirect error\n", type));
+	else
+		return (type);
 }

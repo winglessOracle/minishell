@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/09 20:34:51 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/10 11:57:40 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	remove_quotes(t_node **token, t_smpl_cmd *cmd)
 	if (type == -1)
 		return (-1);
 	if (state == INPUT || state == OUTPUT || state == APPEND || state == HEREDOC)
-		lstadd_back(&cmd->redirect, lstpop(token));
+		return (type);
 	else
 		add_word_to_cmd(token, cmd);
 	return (type);

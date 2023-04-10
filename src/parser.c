@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/10 11:02:06 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/10 11:50:37 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd)
 	state = 0;
 	while (*tokens && !state)
 		state = parse[(*tokens)->type](tokens, *cmd);
+	state = set_cmd_end(tokens, *cmd);
 	return (state);
 }
 
@@ -64,12 +65,15 @@ int	parse_pipeline(t_node **tokens, t_node *env_list, t_pipe **pipeline)
 	{
 		cmd = init_smpl_cmd(env_list);
 		state = parse_cmd(tokens, &cmd);
-		if (*tokens && (*tokens)->type == NEW_LINE)
-			state = remove_node(tokens, NULL);
 		if (cmd)
 			lstadd_back_pipe(&(*pipeline)->pipe_argv, cmd);
 		if (state == -1)
 			lstclear_pipe(*pipeline);
+		if (*tokens && (*tokens)->type == NEW_LINE)
+		{
+			state = remove_node(tokens, NULL);
+			break ;	
+		}
 	}
 	printf("CREATED PIPLINE\n");
 	print_pipeline(*pipeline);

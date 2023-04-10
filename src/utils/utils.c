@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/09 20:48:19 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/10 11:14:45 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err)
 		write(2, msg, ft_strlen(msg));
 		while (*token && (*token)->type != NEW_LINE) // add ;
 			remove_node(token, cmd);
-		cmd = NULL;
+		lstclear(&cmd->cmd_argv, delete_content);
+		cmd->cmd_argc = 0;
 		return (-1);
 	}
 	else
