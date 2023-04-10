@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/09 21:24:35 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/10 10:18:05 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,16 @@ typedef struct s_node
 {
 	int				type;
 	char			*content;
-	struct s_node	*prev; //not used?
 	struct s_node	*next;
 }	t_node;
 
 typedef struct s_smpl_cmd
 {
-	t_node				*env_list; // not cleared in delete content should only be cleared after fork
+	t_node				*env_list;
 	t_node				*redirect;
 	t_node				*assign;
 	int					cmd_argc;
 	t_node				*cmd_argv;
-	struct s_smpl_cmd	*prev;
 	struct s_smpl_cmd	*next;
 }	t_smpl_cmd;
 
@@ -48,6 +46,12 @@ typedef struct s_pipe
 	t_smpl_cmd		*pipe_argv;
 	struct s_pipe	*next;
 }	t_pipe;
+
+typedef struct s_list
+{
+	t_pipe			*lst_argv;
+	struct s_pipe	*next;
+}	t_list;
 
 // utils
 void		exit_error(int num);
@@ -69,8 +73,9 @@ void		delete_content(void *content);
 // pipe_utils
 t_smpl_cmd	*lstlast_pipe(t_smpl_cmd *lst);
 void		lstadd_back_pipe(t_smpl_cmd **lst, t_smpl_cmd *new);
-void		lstdelone_pipe(t_smpl_cmd *lst, void (*del)(void *));
-void		lstclear_pipe(t_smpl_cmd **lst, void (*del)(void *));
+void		lstclear_pipe(t_pipe *pipe);
+void		lstclear_cmdlst(t_smpl_cmd **lst, void (*del)(void *));
+void		lstdelone_cmd(t_smpl_cmd *lst, void (*del)(void *));
 void		delete_cmd(void *smpl_cmd);
 
 //lexer
@@ -83,7 +88,7 @@ void		merge_tokens(t_node *token, int type);
 t_node		*init_env(void);
 t_smpl_cmd	*init_smpl_cmd(t_node *env_list);
 t_pipe		*init_pipeline(void);
-int			parse_pipeline(t_node **tokens, t_node *env_list, t_pipe **pipeline);
+t_list		*parse_list(t_node *tokens, t_node *env_list);
 int			check_token_content(t_node *token, int type);
 
 // environment

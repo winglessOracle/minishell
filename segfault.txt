@@ -15,16 +15,17 @@ command | another $command |
 
 
 /* Segfaults or incorrect behaviour */
-$PS1
 < "in" > "out"
+$PS1
 < "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
 
 ------------------------
 
 /* todo */
+cleanup pipe whem | at end of line
 blank in redirect after quotes sequence (same as space after expanded command with space?)
-cleanup at error (check on empty command if only #comment tokens)
-check getting vars with overlapping name for example VAR and VAR2
 spatie na expanded command met spaties moet wel weg?? eerst testen met executer
+cleanup empty command or does the executer check that?
+check getting vars with overlapping name for example VAR and VAR2
 remove prev uit token nodes?
 make bash script for testing?

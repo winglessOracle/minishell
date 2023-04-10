@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/09 21:07:36 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/09 22:19:14 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	lstadd_back_pipe(t_smpl_cmd **lst, t_smpl_cmd *new)
 	}
 }
 
-void	lstdelone_pipe(t_smpl_cmd *lst, void (*del)(void *))
+void	lstdelone_cmd(t_smpl_cmd *lst, void (*del)(void *))
 {
 	if (lst && del)
 	{
@@ -42,7 +42,7 @@ void	lstdelone_pipe(t_smpl_cmd *lst, void (*del)(void *))
 	}
 }
 
-void	lstclear_pipe(t_smpl_cmd **lst, void (*del)(void *))
+void	lstclear_cmdlst(t_smpl_cmd **lst, void (*del)(void *))
 {
 	t_smpl_cmd	*temp;
 
@@ -51,8 +51,16 @@ void	lstclear_pipe(t_smpl_cmd **lst, void (*del)(void *))
 		while (lst && *lst)
 		{
 			temp = (*lst)->next;
-			lstdelone_pipe(*lst, del);
+			lstdelone_cmd(*lst, del);
 			*lst = temp;
 		}
 	}
+}
+
+void	lstclear_pipe(t_pipe *pipe)
+{
+	if (!pipe)
+		return;
+	lstclear_cmdlst(&pipe->pipe_argv, delete_cmd);
+	free(pipe);
 }

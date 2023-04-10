@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/09 20:56:20 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/09 22:05:03 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,15 @@ int	set_cmd_end(t_node **token, t_smpl_cmd *cmd)
 int	remove_node(t_node **token, t_smpl_cmd *cmd)
 {	
 	t_node	*temp;
+	int		state;
 
 	(void)cmd;
+	state = 0;
 	if (!*token)
 		return (-1);
+	if ((*token)->type == NEW_LINE)
+		state = 1;
 	temp = lstpop(token);
 	lstdelone(temp, delete_content);
-	return (0);
+	return (state);
 }

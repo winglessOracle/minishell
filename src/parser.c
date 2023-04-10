@@ -6,13 +6,12 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/09 21:24:53 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/10 11:02:06 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
-// #include "lexer.h"
 
 int	check_token_content(t_node *token, int type)
 {
@@ -39,7 +38,7 @@ int	check_token_content(t_node *token, int type)
 	return (WORD);
 }
 
-int	parse_cmd(t_node **tokens, t_smpl_cmd	**cmd)
+int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd)
 {	
 	int					state;
 	static t_function	*parse[5];
@@ -61,18 +60,37 @@ int	parse_pipeline(t_node **tokens, t_node *env_list, t_pipe **pipeline)
 	int			state;
 
 	state = 0;
-	while (*tokens && !state)
+	while (*tokens && state != -1)
 	{
 		cmd = init_smpl_cmd(env_list);
 		state = parse_cmd(tokens, &cmd);
-		lstadd_back_pipe(&(*pipeline)->pipe_argv, cmd);
 		if (*tokens && (*tokens)->type == NEW_LINE)
-		{
-			remove_node(tokens, cmd);
-			return (state);
-		}
-		else
-			return (state);
+			state = remove_node(tokens, NULL);
+		if (cmd)
+			lstadd_back_pipe(&(*pipeline)->pipe_argv, cmd);
+		if (state == -1)
+			lstclear_pipe(*pipeline);
 	}
+	printf("CREATED PIPLINE\n");
+	print_pipeline(*pipeline);
 	return (state);
+}
+
+t_list	*parse_list(t_node *tokens, t_node *env_list)
+{
+	// add check and set pipeline type?
+	t_list	*lst;
+	t_pipe	*pipeline;
+	int		state;
+	
+	lst = NULL;
+	while (tokens)
+	{
+		state = 0;
+		pipeline = init_pipeline();
+		state = parse_pipeline(&tokens, env_list, &pipeline);
+		if (state == -1)
+			printf("dont add to list?\n");
+	}
+	return (lst);
 }

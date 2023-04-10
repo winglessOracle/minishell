@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:05:51 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/08 21:16:06 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/10 10:37:26 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 t_node	*init_env(void)
 {
 	t_node	*env_list;
-	char	*prompt;
+	// char	*prompt;
 
 	env_list = environ_to_list();
-	prompt = "PS1=\x1b[0;36mCC|$HELL \033[0m";
-	add_variable(env_list, prompt, 1);
+	// prompt = "PS1=\x1b[0;36mCC|$HELL \033[0m";
+	add_variable(env_list, "PS1=\x1b[0;36mCC|$HELL \033[0m", 1);
 	add_variable(env_list, "PS2=''", 1);
 	add_variable(env_list, "?=0", 1);
 	add_variable(env_list, "IFS=' \t\n'", 1);
+	// test 
 	add_variable (env_list, "VAR=s	-l", 1);  //test
 	add_variable (env_list, "2VAR='s -l'", 1);  //test
-	// test 
 	// print_env(env_list, 3);
 	return (env_list);
 }
