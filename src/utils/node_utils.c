@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 13:37:11 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/09 22:26:16 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/10 14:28:42 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,14 @@ void	delete_cmd(void *smpl_cmd)
 	lstclear(&cmd->redirect, delete_content);
 	lstclear(&cmd->assign, delete_content);
 	lstclear(&cmd->cmd_argv, delete_content);
+}
+
+void	delete_pipe(void *pipe)
+{
+	t_pipe	*pipeline;
+
+	pipeline = (t_pipe *)pipe;
+	lstclear_cmdlst(&pipeline->pipe_argv, delete_cmd);
 }
 
 // merges provided node with the next node and set provided type for merged node

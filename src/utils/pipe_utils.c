@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/10 13:32:06 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/10 14:22:36 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,4 @@ void	lstclear_cmdlst(t_smpl_cmd **lst, void (*del)(void *))
 			*lst = temp;
 		}
 	}
-}
-
-void	lstclear_pipe(t_pipe *pipe)
-{
-	if (!pipe)
-		return;
-	lstclear_cmdlst(&pipe->pipe_argv, delete_cmd);
 }

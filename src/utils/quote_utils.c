@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/10 14:04:43 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/10 14:51:32 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,8 @@ int	remove_quotes(t_node **token, t_smpl_cmd *cmd)
 	if (state == INPUT || state == OUTPUT || state == APPEND || state == HEREDOC)
 	{
 		if (*token && (*token)->content == NULL)
-			return (syntax_error(token, cmd, "No such file or directory\n", -1));
-		else
-			return (type);
+			((*token)->content) = ft_strdup("");
+		return (type);
 	}
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/10 11:13:30 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/10 15:04:27 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,17 @@ typedef struct s_pipe
 	struct s_pipe	*next;
 }	t_pipe;
 
-typedef struct s_list
-{
-	t_pipe			*lst_argv;
-	struct s_pipe	*next;
-}	t_list;
-
 // utils
 void		exit_error(int num);
 int			syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err);
+
+// node_utils
+t_node		*lstpop(t_node **lst);
+t_node		*new_node(int type, char *content);
+int			remove_node(t_node **token, t_smpl_cmd *cmd);
+void		delete_content(void *content);
+void		delete_cmd(void *smpl_cmd);
+void		delete_pipe(void *pipe);
 
 // list_utils
 t_node		*lstlast(t_node *lst);
@@ -64,19 +66,11 @@ void		lstinsert_lst(t_node **at, t_node *lst);
 void		lstdelone(t_node *lst, void (*del)(void *));
 void		lstclear(t_node **lst, void (*del)(void *));
 
-// node_utils
-t_node		*lstpop(t_node **lst);
-t_node		*new_node(int type, char *content);
-int			remove_node(t_node **token, t_smpl_cmd *cmd);
-void		delete_content(void *content);
-
 // pipe_utils
 t_smpl_cmd	*lstlast_pipe(t_smpl_cmd *lst);
 void		lstadd_back_pipe(t_smpl_cmd **lst, t_smpl_cmd *new);
-void		lstclear_pipe(t_pipe *pipe);
 void		lstclear_cmdlst(t_smpl_cmd **lst, void (*del)(void *));
 void		lstdelone_cmd(t_smpl_cmd *lst, void (*del)(void *));
-void		delete_cmd(void *smpl_cmd);
 
 //lexer
 t_node		*lexer(char *str, char *delim);
@@ -84,11 +78,13 @@ t_node		*split_to_list(char *str, char *delim);
 int			getlexerenum(char token);
 void		merge_tokens(t_node *token, int type);
 
-// parser
+// init
 t_node		*init_env(void);
 t_smpl_cmd	*init_smpl_cmd(t_node *env_list);
 t_pipe		*init_pipeline(void);
-t_list		*parse_list(t_node *tokens, t_node *env_list);
+
+// parser
+t_pipe		*parse_pipeline(t_node **tokens, t_node *env_list);
 int			check_token_content(t_node *token, int type);
 
 // environment

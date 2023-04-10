@@ -17,10 +17,11 @@ command | another $command |
 
 
 /* Segfaults or incorrect behaviour */
-
+empty var
 ------------------------
 
 /* todo */
+redirect can have empty filenames or should expander flag error?
 spatie na expanded command met spaties moet wel weg?? eerst testen met executer (bijvoorbeeld $PS1)
 check getting vars with overlapping name for example VAR and VAR2
 remove prev uit token nodes?
