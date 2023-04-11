@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 13:37:11 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/10 14:28:42 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 10:54:05 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ t_node	*new_node(int type, char *content)
 	new_node->type = type;
 	new_node->content = content;
 	new_node->next = NULL;
-	// new_node->prev = NULL;
 	return (new_node);
 }
 
@@ -77,12 +76,7 @@ t_node	*lstpop(t_node **lst)
 	if (!*lst)
 		return (NULL);
 	temp = *lst;
-	// if ((*lst)->prev)
-	// 	(*lst)->prev->next = (*lst)->next;
-	// if ((*lst)->next)
-	// 	(*lst)->next->prev = (*lst)->prev;
 	*lst = (*lst)->next;
-	// temp->prev = NULL;
 	temp->next = NULL;
 	return (temp);
 }

@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/10 15:06:55 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 10:56:53 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,29 +24,30 @@ int	main(void)
 	t_node		*tokens;
 	t_pipe		*pipeline;
 
-	// atexit(leaks);
-	line_read = NULL;
+	atexit(leaks);
 	env_list = init_env();
 	set_sig_term();
 	read_history("log/history_log"); //remove?
 	while (1)
 	{
-		line_read = readline(get_variable(env_list, "PS1"));
-		if (!ft_strcmp(line_read, "exit"))  // is built in so can be removed after that works
-			break ;
-		if (line_read)
-			add_history(line_read);
-	printf("READ INPUT\n");
+		line_read = get_input(env_list, "PS1");
 		write_history("log/history_log"); //remove?
+	// is exit built-in so can be removed after that works
+		if (!ft_strcmp(line_read, "exit"))  
+			break ;
+	printf("READ INPUT\n");
 		tokens = lexer(line_read, "|<> \t\n");
 	printf("CREATED TOKENS\n");
+	// print_tokens(tokens, "CREATED TOKENS\n");
 	while (tokens)
 	{
 		pipeline = parse_pipeline(&tokens, env_list);
+	printf("CREATED PIPLINE\n");
+	// print_pipeline(pipeline);
 		(void)pipeline; // execute pipeline
 	}
 	printf("END OF INPUT\n");
 	}
 	rl_clear_history();
-	exit(EXIT_SUCCESS);
+	exit(get_exit(env_list));
 }

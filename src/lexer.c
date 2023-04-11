@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/08 10:53:34 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 10:55:54 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,5 @@ t_node	*lexer(char *input_line, char *delim)
 		return (NULL);
 	tokens = split_to_list(input_line, delim);
 	free(input_line);
-	// printf("CREATED TOKENS\n");
-	// print_tokens(tokens);
 	return (tokens);
 }

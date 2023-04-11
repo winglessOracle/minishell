@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/09 20:41:02 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 10:55:33 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	expander(t_node **token, t_smpl_cmd *cmd)
 	parse[DQUOTE] = remove_quotes;
 	parse[EXPAND] = expand;
 	parse[ASSIGN] = parser_assign;
-	// printf("*CHECK CONTENT* %s\n", (*token)->content);
 	while (*token && (*token)->type == WORD)
 	{
 		state = check_token_content(*token, (*token)->type);

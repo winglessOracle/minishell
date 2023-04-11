@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/10 15:05:54 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 10:56:41 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,5 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list)
 			break ;	
 		}
 	}
-	printf("CREATED PIPLINE\n");
-	print_pipeline(pipeline);
 	return (pipeline);
 }

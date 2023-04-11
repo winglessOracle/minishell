@@ -17,12 +17,22 @@ command | another $command |
 
 
 /* Segfaults or incorrect behaviour */
-empty var
+empty quotes should produce empty string in node
 ------------------------
 
-/* todo */
-redirect can have empty filenames or should expander flag error?
-spatie na expanded command met spaties moet wel weg?? eerst testen met executer (bijvoorbeeld $PS1)
-check getting vars with overlapping name for example VAR and VAR2
+/* check Carien */
+leaks
 remove prev uit token nodes?
 make bash script for testing?
+spatie na expanded command met spaties moet wel weg?? eerst testen met executer (bijvoorbeeld $PS1)
+check "expr $? + $?"
+
+/* checks Carlo */
+redirect can have empty filenames or should expander flag error?
+check gettingAR and VAR2
+ctrl-C should display a new line with a new prompt (check that previous text does not get executed)
+ctrl-D in prompt with text should do nothing.
+ctrl-/ does nothing
+try ctrls with blocking command (eg cat with no arguments) (ctrl-C prints ^C on a new line and exits child, 
+ctrl-D exits child and prints nothing, ctrl-/ does nothing)
+PATH directories should be checked from left to right.
