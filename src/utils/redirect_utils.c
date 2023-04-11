@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/10 14:44:37 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 19:14:35 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,45 +44,29 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 	return (type);
 }
 
-int	get_redirect(t_node **tokens, t_smpl_cmd *cmd, int type)
+int	redirect(t_node **tokens, t_smpl_cmd *cmd)
 {
 	int					state;
-	static t_function	*parse[9];
+	int					type;
+	static t_function	*parse[10];
 
-	state = 0;
 	parse[COMMENT] = remove_comment;
 	parse[SQUOTE] = remove_quotes;
 	parse[DQUOTE] = remove_quotes;
 	parse[EXPAND] = expand;
-	while (*tokens)
-	{
-		state = check_token_content(*tokens, type);
-		if (state == WORD || state == ASSIGN || \
-			(state == EXPAND && type == HEREDOC))
-		{
-			lstadd_back(&cmd->redirect, lstpop(tokens));
-			return (0);
-		}
-		if (state == COMMENT || !*tokens)
-			return (-1);
-		(*tokens)->type = type;
-		state = parse[state](tokens, cmd);
-	}
-	return (state);
-}
-
-int	redirect(t_node **tokens, t_smpl_cmd *cmd)
-{
-	int	type;
-
-	// printf("*REDIRECT* %s\n", (*tokens)->content);
-	type = get_redirect_type(tokens, cmd);
-	if (type == -1)
-		return (syntax_error(tokens, cmd, "Redirect error\n", -1));
-	type = get_redirect(tokens, cmd, type);
-	print_tokens(cmd->redirect, "REDIRECT");
-	if (type == -1)
-		return (syntax_error(tokens, cmd, "Redirect error\n", type));
-	else
-		return (type);
+	state = get_redirect_type(tokens, cmd);
+	if (state == -1)
+		return (syntax_error(tokens, cmd, "Redirect\n", -1));
+	type = check_token_content(*tokens, WORD);
+	if (type == COMMENT)
+		type = parse[type](tokens, cmd);
+	if (!*tokens || (*tokens)->type == NEW_LINE)
+		return (syntax_error(tokens, cmd, "Redirect\n", -1));
+	type = check_token_content(*tokens, WORD);
+	(*tokens)->type = state;
+	if (type != WORD && type != ASSIGN)
+		type = parse[type](tokens, cmd);
+	lstadd_back(&cmd->redirect, lstpop(tokens));
+print_tokens(cmd->redirect, "REDIRECT");
+	return (syntax_error(tokens, cmd, "Redirect\n", type));
 }

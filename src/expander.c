@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/11 14:47:42 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 21:38:06 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,33 @@ int	expand_var(t_node **token, t_smpl_cmd *cmd)
 
 	remove_node(token, cmd);
 	str = get_variable(cmd->env_list, (*token)->content);
-	if (!str)
-		remove_node(token, cmd);
-	else
-	{
 		free((*token)->content);
 		(*token)->content = str;
-	}
 	return (0);
+}
+
+t_node	*split_expanded(t_node *words, t_smpl_cmd *cmd)
+{
+	t_node	*temp;
+	char	*str;
+
+	temp = NULL;
+	if (words)
+	{
+		temp = words;
+		str = get_variable(cmd->env_list, "IFS");
+		words = split_to_list(temp->content, str);
+		remove_node(&temp, cmd);
+		free(str);
+		lstinsert_lst(&temp, words);
+	}
+	return (temp);
 }
 
 int	expand(t_node **token, t_smpl_cmd *cmd)
 {
 	t_node	*words;
 	t_node	*temp;
-	char	*str;
 
 	words = split_to_list((*token)->content, "$");
 	remove_node(token, cmd);
@@ -43,18 +55,16 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 			expand_var(&words, cmd);
 		else if (words->next->content[0] == '$')
 			expand_var(&words->next, cmd);
-		if (words && words->next)
+		else if (words && words->next)
 			merge_tokens(words, WORD);
 	}
-	if (words)
+	if (words && words->content)
 	{
-		temp = words;
-		str = get_variable(cmd->env_list, "IFS");
-		words = split_to_list(temp->content, str);
-		remove_node(&temp, cmd);
-		free(str);
+		temp = split_expanded(words, cmd);
+		lstinsert_lst(token, temp);
 	}
-	lstinsert_lst(token, words);
+	else
+		lstinsert_lst(token, words);
 	return (0);
 }
 

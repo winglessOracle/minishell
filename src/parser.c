@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/11 15:10:39 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 16:22:09 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	check_token_content(t_node *token, int type)
 	int		i;
 
 	i = 0;
+	if (!token->content)
+		return (WORD);
 	str = token->content;
 	if (str[0] == '#' && type != DQUOTE && type != SQUOTE)
 		return (COMMENT);

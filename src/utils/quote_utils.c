@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/11 15:15:04 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 21:30:22 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,15 @@ int	split_quoted_exp(int nr_q, t_node *token, char **content, t_smpl_cmd *cmd)
 							&& token->type != HEREDOC)
 		{
 			expand(&words, cmd);
-			state = check_token_content(words, WORD);
+			if (words->content)
+				state = check_token_content(words, WORD);
+			else
+				state = WORD;
 		}
-		if (state != SQUOTE && state != DQUOTE)
-			*content = ft_strjoin_free_s1(*content, words->content);
-		else
+		if (state == SQUOTE || state == DQUOTE)
 			nr_q += 1;
+		else if (words->content)
+			*content = ft_strjoin_free_s1(*content, words->content);
 		remove_node(&words, cmd);
 	}
 	return (nr_q);
@@ -107,17 +110,8 @@ int	remove_quotes(t_node **token, t_smpl_cmd *cmd)
 		return (-1);
 	if (state == INPUT || state == OUTPUT \
 				|| state == APPEND || state == HEREDOC)
-	{
-		if (*token && (*token)->content == NULL)
-			((*token)->content) = ft_strdup("");
 		return (type);
-	}
 	else
-	{
-		if (*token && (*token)->content == NULL)
-			remove_node(token, cmd);
-		else
-			add_word_to_cmd(token, cmd);
-	}
+		add_word_to_cmd(token, cmd);
 	return (type);
 }

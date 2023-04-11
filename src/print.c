@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/11 14:50:32 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 17:31:21 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_cmd(t_smpl_cmd *cmd)
 		return ;
 	while (temp)
 	{
-		printf("type: %d, \tcontent: %s\n", temp->type, temp->content);
+		printf("type: %d, \tcontent: --%s--\n", temp->type, temp->content);
 		temp = temp->next;
 	}
 }
