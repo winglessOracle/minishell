@@ -6,26 +6,26 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/10 14:22:36 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 15:11:41 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_smpl_cmd	*lstlast_pipe(t_smpl_cmd *lst)
+t_smpl_cmd	*lstlast_cmd(t_smpl_cmd *lst)
 {
 	while (lst && lst->next != NULL)
 		lst = lst->next;
 	return (lst);
 }
 
-void	lstadd_back_pipe(t_smpl_cmd **lst, t_smpl_cmd *new)
+void	lstadd_back_cmd(t_smpl_cmd **lst, t_smpl_cmd *new)
 {
 	t_smpl_cmd	*temp;
 
 	if (new)
 	{
-		temp = lstlast_pipe(*lst);
+		temp = lstlast_cmd(*lst);
 		if (temp)
 			temp->next = new;
 		else

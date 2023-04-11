@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/11 13:20:13 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 14:50:32 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ void	print_tokens(t_node *tokens, char *str)
 	int		i;
 
 	i = 1;
-	printf("--------------------------------\n\t     %s\n--------------------------------\n", str);
+	printf("--------------------------------\n\
+			\t     %s\n--------------------------------\n", str);
 	while (tokens)
 	{
-		printf("type: %2d\tnext: %11p\tcontent: %s\n", tokens->type, tokens->next, tokens->content);
+		printf("type: %2d\tnext: %11p\tcontent: --%s--\n", \
+					tokens->type, tokens->next, tokens->content);
 		tokens = tokens->next;
 		i++;
 	}
@@ -30,8 +32,7 @@ void	print_tokens(t_node *tokens, char *str)
 void	print_cmd(t_smpl_cmd *cmd)
 {
 	t_node	*temp;
-	// printf("IN: %s, OUT: %s, ERR: %s\n", cmd->infile, cmd->outfile, cmd->errfile);
-	// printf("Here_end: %s\tAppend: %d\n-------------------------------------\n", cmd->here_end, cmd->append);
+
 	if (cmd)
 		temp = cmd->cmd_argv;
 	else
@@ -59,7 +60,8 @@ void	print_pipeline(t_pipe *pipe)
 		{
 			printf("-------------------------------------\n\tCMD %i:", i);
 			if (temp->cmd_argv)
-				printf("\t%s\n\tARGS:\t%d\n-------------------------------------\n",temp->cmd_argv->content, temp->cmd_argc);
+				printf("\t%s\n\tARGS:\t%d\n-------------------------------------\
+					\n", temp->cmd_argv->content, temp->cmd_argc);
 			else
 				printf("\n");
 			print_cmd(temp);

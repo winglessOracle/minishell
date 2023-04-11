@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/11 10:53:16 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 14:48:29 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LEXER_H
 
 # include "minishell.h"
+
 typedef enum e_lextype
 {
 	WORD = 0,
@@ -26,4 +27,3 @@ typedef enum e_lextype
 }	t_lextype;
 
 #endif
-

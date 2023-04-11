@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/10 14:51:32 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 15:15:04 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 char	get_quote_char(int type)
 {
 	char	quote;
-	
+
 	if (type == DQUOTE)
 		quote = '\"';
 	else
@@ -24,18 +24,19 @@ char	get_quote_char(int type)
 	return (quote);
 }
 
-int	split_quoted_expand(int nr_quotes, t_node *token, char **content, t_smpl_cmd *cmd)
+int	split_quoted_exp(int nr_q, t_node *token, char **content, t_smpl_cmd *cmd)
 {
 	int		state;
 	char	quote;
 	t_node	*words;
-	
+
 	quote = get_quote_char(token->type);
 	words = split_to_list(token->content, &quote);
 	while (words)
 	{
 		state = check_token_content(words, WORD);
-		while (state == EXPAND && token->type != SQUOTE && token->type != HEREDOC)
+		while (state == EXPAND && token->type != SQUOTE \
+							&& token->type != HEREDOC)
 		{
 			expand(&words, cmd);
 			state = check_token_content(words, WORD);
@@ -43,10 +44,10 @@ int	split_quoted_expand(int nr_quotes, t_node *token, char **content, t_smpl_cmd
 		if (state != SQUOTE && state != DQUOTE)
 			*content = ft_strjoin_free_s1(*content, words->content);
 		else
-			nr_quotes += 1;
+			nr_q += 1;
 		remove_node(&words, cmd);
 	}
-	return (nr_quotes);
+	return (nr_q);
 }
 
 int	split_quoted(int nr_quotes, t_node *token, char **content, t_smpl_cmd *cmd)
@@ -54,7 +55,7 @@ int	split_quoted(int nr_quotes, t_node *token, char **content, t_smpl_cmd *cmd)
 	int		type;
 	char	quote;
 	t_node	*words;
-	
+
 	quote = get_quote_char(token->type);
 	words = split_to_list(token->content, &quote);
 	while (words)
@@ -82,7 +83,7 @@ int	get_content(t_node **token, t_smpl_cmd *cmd, int type, int state)
 		if (state == HEREDOC)
 			nr_quotes = split_quoted(nr_quotes, *token, &content, cmd);
 		else
-			nr_quotes = split_quoted_expand(nr_quotes, *token, &content, cmd);
+			nr_quotes = split_quoted_exp(nr_quotes, *token, &content, cmd);
 		if ((nr_quotes % 2) == 0)
 			break ;
 		remove_node(token, cmd);
@@ -104,7 +105,8 @@ int	remove_quotes(t_node **token, t_smpl_cmd *cmd)
 	type = get_content(token, cmd, type, state);
 	if (type == -1)
 		return (-1);
-	if (state == INPUT || state == OUTPUT || state == APPEND || state == HEREDOC)
+	if (state == INPUT || state == OUTPUT \
+				|| state == APPEND || state == HEREDOC)
 	{
 		if (*token && (*token)->content == NULL)
 			((*token)->content) = ft_strdup("");

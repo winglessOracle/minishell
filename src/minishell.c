@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/11 13:16:21 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 13:31:08 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,17 @@ int	main(void)
 		line_read = get_input(env_list, "PS1");
 		write_history("log/history_log"); //remove?
 	// is exit built-in so can be removed after that works
-		if (!ft_strcmp(line_read, "exit"))  
-			break ;
-	printf("READ INPUT\n");
+	if (!ft_strcmp(line_read, "exit"))  
+		break ;
 		tokens = lexer(line_read, "|<> \t\n");
-	printf("CREATED TOKENS\n");
 	// print_tokens(tokens, "CREATED TOKENS\n");
-	while (tokens)
-	{
-		pipeline = parse_pipeline(&tokens, env_list);
+		while (tokens)
+		{
+			pipeline = parse_pipeline(&tokens, env_list);
 	printf("CREATED PIPLINE\n");
 	print_pipeline(pipeline);
-		delete_pipe(pipeline);
-	}
-	printf("END OF INPUT\n");
+	delete_pipe(pipeline);
+		}
 	}
 	rl_clear_history();
 	exit(get_exit(env_list));

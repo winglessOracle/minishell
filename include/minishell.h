@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/11 09:13:22 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 15:02:48 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int			syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err);
 t_node		*lstpop(t_node **lst);
 t_node		*new_node(int type, char *content);
 int			remove_node(t_node **token, t_smpl_cmd *cmd);
+
+// delete_utils
 void		delete_content(void *content);
 void		delete_cmd(void *smpl_cmd);
 void		delete_pipe(void *pipe);
@@ -68,9 +70,9 @@ void		lstinsert_lst(t_node **at, t_node *lst);
 void		lstdelone(t_node *lst, void (*del)(void *));
 void		lstclear(t_node **lst, void (*del)(void *));
 
-// pipe_utils
-t_smpl_cmd	*lstlast_pipe(t_smpl_cmd *lst);
-void		lstadd_back_pipe(t_smpl_cmd **lst, t_smpl_cmd *new);
+// cmdlist_utils
+t_smpl_cmd	*lstlast_cmd(t_smpl_cmd *lst);
+void		lstadd_back_cmd(t_smpl_cmd **lst, t_smpl_cmd *new);
 void		lstclear_cmdlst(t_smpl_cmd **lst, void (*del)(void *));
 void		lstdelone_cmd(t_smpl_cmd *lst, void (*del)(void *));
 

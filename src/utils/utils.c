@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/11 10:54:57 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 15:12:47 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	get_exit(t_node *env_list)
 {
 	int		exit_val;
 	char	*str;
-	
+
 	str = get_variable(env_list, "?");
 	exit_val = str[0] - '0';
 	free(str);
@@ -49,7 +49,7 @@ char	*get_input(t_node *env_list, char *var)
 {
 	char		*prompt;
 	char		*line_read;
-	
+
 	line_read = NULL;
 	prompt = get_variable(env_list, var);
 	line_read = readline(prompt);

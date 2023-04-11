@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/11 10:53:52 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 15:12:28 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	lstinsert_lst(t_node **at, t_node *lst)
 {
 	t_node	*temp;
 	t_node	*last;
-	
+
 	if (!lst)
 		return ;
 	if (*at == NULL)

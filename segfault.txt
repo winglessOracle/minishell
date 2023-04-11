@@ -21,12 +21,12 @@ test$PWD
 ------------------------
 
 /* check Carien */
-$PS1 training blank check when executer ready
-leaks new pipe
 make bash script for testing?
 check "expr $? + $?"
+use PS1 for testing as it has wierd characters...
 
 /* checks Carlo */
+readline keeps first characters
 redirect can have empty filenames or should expander flag error?
 check gettingAR and VAR2
 ctrl-C should display a new line with a new prompt (check that previous text does not get executed)

@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/11 10:56:41 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 15:10:39 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_token_content(t_node *token, int type)
 			return (DQUOTE);
 		else if (str[i] == '\'' && type != DQUOTE)
 			return (SQUOTE);
-		else if (str[i] == '$' && str[i + 1] != ' ' &&  \
+		else if (str[i] == '$' && str[i + 1] != ' ' && \
 					str[i + 1] != '\0' && type != SQUOTE && type != DQUOTE)
 			return (EXPAND);
 		else if (str[i] == '=' && type != DQUOTE && type != SQUOTE)
@@ -68,13 +68,13 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list)
 		cmd = init_smpl_cmd(env_list);
 		state = parse_cmd(tokens, &cmd);
 		if (cmd)
-			lstadd_back_pipe(&pipeline->pipe_argv, cmd);
+			lstadd_back_cmd(&pipeline->pipe_argv, cmd);
 		if (state == -1)
 			lstclear_cmdlst(&pipeline->pipe_argv, delete_cmd);
 		if (*tokens && (*tokens)->type == NEW_LINE)
 		{
 			state = remove_node(tokens, NULL);
-			break ;	
+			break ;
 		}
 	}
 	return (pipeline);
