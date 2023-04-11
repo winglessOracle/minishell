@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 13:37:11 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/11 12:56:25 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 13:23:53 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	delete_pipe(void *pipe)
 
 	pipeline = (t_pipe *)pipe;
 	lstclear_cmdlst(&pipeline->pipe_argv, delete_cmd);
+	free(pipe);
 }
 
 // merges provided node with the next node and set provided type for merged node

@@ -17,14 +17,12 @@ command | another $command |
 $PWDtest
 test$PWD
 
-
 /* Segfaults or incorrect behaviour */
 ------------------------
 
 /* check Carien */
-$VAR with connected word
-leaks expand
-remove prev uit token nodes?
+$PS1 training blank check when executer ready
+leaks new pipe
 make bash script for testing?
 check "expr $? + $?"
 
