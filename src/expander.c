@@ -6,53 +6,55 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/11 10:55:33 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 12:58:40 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
 
-t_node	*expand_var(t_node *token, t_smpl_cmd *cmd)
+int	expand_var(t_node **token, t_smpl_cmd *cmd)
 {
 	char	*str;
 	
-	remove_node(&token, cmd);
-	str = get_variable(cmd->env_list, (token)->content);
+	remove_node(token, cmd);
+	str = get_variable(cmd->env_list, (*token)->content);
 	if (!str)
-		remove_node(&token, cmd);
+		remove_node(token, cmd);
 	else
 	{
-		free((token)->content);
-		(token)->content = str;
+		free((*token)->content);
+		(*token)->content = str;
 	}
-	return (token);
+	return (0);
 }
 
 int	expand(t_node **token, t_smpl_cmd *cmd)
 {
 	t_node	*words;
 	t_node	*temp;
+	char	*str;
 	
 	words = split_to_list((*token)->content, "$");
 	remove_node(token, cmd);
 	if (words && words->next)
 	{
 		if (words->content[0] == '$')
-			words = expand_var(words, cmd);
+			expand_var(&words, cmd);
 		else if (words->next->content[0] == '$')
-			words->next = expand_var(words->next, cmd);
-			while (words && words->next)
-				merge_tokens(words, WORD);
+			expand_var(&words->next, cmd);
+		if (words && words->next)
+			merge_tokens(words, WORD);
 	}
 	if (words)
 	{
 		temp = words;
-		words = split_to_list(temp->content, \
-				get_variable(cmd->env_list, "IFS"));
+		str = get_variable(cmd->env_list, "IFS");
+		words = split_to_list(temp->content, str);
+		free(str);
 		remove_node(&temp, cmd);
-		lstinsert_lst(token, words);
 	}
+	lstinsert_lst(token, words);
 	return (0);
 }
 

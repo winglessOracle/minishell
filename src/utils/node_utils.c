@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 13:37:11 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/11 10:54:05 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 12:56:25 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,11 @@ void	delete_pipe(void *pipe)
 // merges provided node with the next node and set provided type for merged node
 void	merge_tokens(t_node *token, int type)
 {
-	char	*content;
-
 	if (token->next)
 	{
-		content = ft_strjoin(token->content, token->next->content);
-		free(token->content);
-		token->content = content;
+		token->content = ft_strjoin_free_s1(token->content, token->next->content);
 		token->type = type;
-		token = token->next;
-		lstdelone(lstpop(&token), delete_content);
+		lstdelone(lstpop(&token->next), delete_content);
 	}
 }
 

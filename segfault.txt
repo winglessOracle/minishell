@@ -14,17 +14,18 @@ command | another $command |
 << '$var'
 < "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
 < "in" > "out"
+$PWDtest
+test$PWD
 
 
 /* Segfaults or incorrect behaviour */
-empty quotes should produce empty string in node
 ------------------------
 
 /* check Carien */
-leaks
+$VAR with connected word
+leaks expand
 remove prev uit token nodes?
 make bash script for testing?
-spatie na expanded command met spaties moet wel weg?? eerst testen met executer (bijvoorbeeld $PS1)
 check "expr $? + $?"
 
 /* checks Carlo */
