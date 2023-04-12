@@ -16,6 +16,9 @@ command | another $command |
 < "in" > "out"
 $PWDtest
 test$PWD
+~withnoslash
+~
+~/hello
 
 /* Segfaults or incorrect behaviour */
 ------------------------
@@ -25,7 +28,6 @@ here
 
 
 /* check Carien */
-~ expanssion
 should none existing var be NULL or ""? Now NULL but this wil stop the cmd execution at that point?
 NULL should be skipped in cmd vector? --> echo $var -n aap
 make bash script for testing?
