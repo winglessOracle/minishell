@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/11 15:21:16 by cariencaljo   ########   odam.nl          #
+#    Updated: 2023/04/12 07:56:30 by cariencaljo   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,16 +36,23 @@ OBJ_FILES	= $(addprefix obj/, minishell.o lst_utils/t_node.o parser.o utils/util
 				utils/redirect_utils.o utils/quote_utils.o expander.o signals.o termios.o \
 				lst_utils/delete.o)
 
+OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o)
+
 #//= Modifiable =//#
 all: libft $(NAME)
 
 libft:
 	@$(MAKE) -C $(LIBFT)
 	
-$(NAME): $(OBJ_FILES)
+$(NAME): $(OBJ_FILES) $(OBJ_BUILTIN)
 	@$(CC) $(OBJ_FILES) $(LIBS) $(HEADERS) -o $(NAME) $(CFLAGS) -lreadline
 
 $(OBJ_FILES): obj/%.o: src/%.c 
+	@mkdir -p $(dir $@)
+	@echo "$(GREEN)$(BOLD)Compiling minishell builtins:$(RESET) $(notdir $<)"
+	@$(CC) -c $(CFLAGS) $(HEADERS) -o $@ $< 
+
+$(OBJ_BUILTIN): obj_buitin/%.o: builtin/%.c 
 	@mkdir -p $(dir $@)
 	@echo "$(GREEN)$(BOLD)Compiling minishell:$(RESET) $(notdir $<)"
 	@$(CC) -c $(CFLAGS) $(HEADERS) -o $@ $< 
@@ -56,6 +63,7 @@ debug: all
 clean:
 	@echo "$(BLUE)Cleaning minishell$(RESET)"
 	@rm -rf obj/
+	@rm -rf obj_buitin/
 	@$(MAKE) -C $(LIBFT) clean
 	
 fclean: clean

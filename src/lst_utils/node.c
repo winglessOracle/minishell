@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   node_utils.c                                       :+:    :+:            */
+/*   node.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 13:37:11 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/11 14:59:01 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/12 11:06:30 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,20 @@ t_node	*lstpop(t_node **lst)
 	*lst = (*lst)->next;
 	temp->next = NULL;
 	return (temp);
+}
+
+int	remove_node(t_node **token, t_smpl_cmd *cmd)
+{	
+	t_node	*temp;
+	int		state;
+
+	(void)cmd;
+	state = 0;
+	if (!*token)
+		return (-1);
+	if ((*token)->type == NEW_LINE)
+		state = 1;
+	temp = lstpop(token);
+	lstdelone(temp, delete_content);
+	return (state);
 }

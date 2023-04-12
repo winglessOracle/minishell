@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/11 21:38:06 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/12 11:10:00 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 int	expander(t_node **token, t_smpl_cmd *cmd)
 {
 	int					state;
-	static t_function	*parse[10];
+	static t_function	*parse[11];
 
 	parse[WORD] = add_word_to_cmd;
 	parse[COMMENT] = remove_comment;
@@ -79,6 +79,7 @@ int	expander(t_node **token, t_smpl_cmd *cmd)
 	parse[DQUOTE] = remove_quotes;
 	parse[EXPAND] = expand;
 	parse[ASSIGN] = parser_assign;
+	parse[TILDE] = expand_tilde;  //make
 	while (*token && (*token)->type == WORD)
 	{
 		state = check_token_content(*token, (*token)->type);

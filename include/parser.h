@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/09 20:42:58 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/12 11:08:31 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef enum e_parsetype
 	DQUOTE,
 	EXPAND,
 	ASSIGN,
+	TILDE,
 	INPUT,
 	OUTPUT,
 	HEREDOC,
@@ -39,6 +40,7 @@ int	add_word_to_cmd(t_node **token, t_smpl_cmd *cmd);
 int	set_cmd_end(t_node **token, t_smpl_cmd *cmd);
 int	remove_comment(t_node **token, t_smpl_cmd *cmd);
 int	parser_assign(t_node **token, t_smpl_cmd *cmd);
+int	expand_tilde(t_node **token, t_smpl_cmd *cmd);
 
 // expand_utils
 int	expander(t_node **token, t_smpl_cmd *cmd);

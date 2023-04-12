@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/11 19:14:35 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/12 11:10:11 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,13 @@ int	redirect(t_node **tokens, t_smpl_cmd *cmd)
 {
 	int					state;
 	int					type;
-	static t_function	*parse[10];
+	static t_function	*parse[11];
 
 	parse[COMMENT] = remove_comment;
 	parse[SQUOTE] = remove_quotes;
 	parse[DQUOTE] = remove_quotes;
 	parse[EXPAND] = expand;
+	parse[TILDE] = expand_tilde; //make
 	state = get_redirect_type(tokens, cmd);
 	if (state == -1)
 		return (syntax_error(tokens, cmd, "Redirect\n", -1));

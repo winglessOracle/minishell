@@ -19,8 +19,15 @@ test$PWD
 
 /* Segfaults or incorrect behaviour */
 ------------------------
+<< here cat > out | < out cat
+echo "$var en aap"
+here
+
 
 /* check Carien */
+~ expanssion
+should none existing var be NULL or ""? Now NULL but this wil stop the cmd execution at that point?
+NULL should be skipped in cmd vector? --> echo $var -n aap
 make bash script for testing?
 check "expr $? + $?"
 use PS1 for testing as it has wierd characters...

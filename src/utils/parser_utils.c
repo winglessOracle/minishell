@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/11 12:22:15 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/12 11:26:47 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,19 @@ int	set_cmd_end(t_node **token, t_smpl_cmd *cmd)
 	return (1);
 }
 
-int	remove_node(t_node **token, t_smpl_cmd *cmd)
-{	
-	t_node	*temp;
-	int		state;
+int	expand_tilde(t_node **token, t_smpl_cmd *cmd)
+{
+	char	*temp;
+	char	*home;
 
 	(void)cmd;
-	state = 0;
-	if (!*token)
-		return (-1);
-	if ((*token)->type == NEW_LINE)
-		state = 1;
-	temp = lstpop(token);
-	lstdelone(temp, delete_content);
-	return (state);
+	temp = (*token)->content;
+	home = get_variable(cmd->env_list, "PWD"); // -->change to home when get_variable function is fixed
+	if (ft_strlen(temp) == 1)
+		(*token)->content = ft_strdup(home);
+	else
+		(*token)->content = ft_strjoin(home, &temp[1]);
+	free(temp);
+	free(home);
+	return (0);
 }
