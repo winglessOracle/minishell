@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 13:37:11 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/12 11:06:30 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/12 16:23:08 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ void	merge_tokens(t_node *token, int type)
 {
 	if (token->next)
 	{
-		token->content = ft_strjoin_free_s1(token->content, \
+		if (!token->content)
+			token->content = token->next->content;
+		else if (token->next->content)
+			token->content = ft_strjoin_free_s1(token->content, \
 										token->next->content);
 		token->type = type;
 		lstdelone(lstpop(&token->next), delete_content);

@@ -9,7 +9,7 @@ command | another $command |
 < $var 
 < "$var" 
 < '$var' 
-<< $var 
+<< $var
 << "$var" 
 << '$var'
 < "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
