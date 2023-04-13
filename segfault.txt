@@ -22,6 +22,7 @@ test$PWD
 
 /* Segfaults or incorrect behaviour */
 ------------------------
+"  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas"
 
 / *test cases to compare with bash: */
 ---------------------------------------

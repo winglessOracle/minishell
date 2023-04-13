@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 21:43:08 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/12 21:30:44 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/13 13:54:01 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,21 @@ int check_newline(char *str)
 	return (i);
 }
 
-int	echo(char **cmd_vector)
+int	execute_echo(char **cmd_vector)
 {
+	// take array or cmd list?
 	int	i;
 	int	n;
 
 	i = 1;
 	n = 0;
-	while (!check_newline(cmd_vector[i]))
+	while (cmd_vector[i] && check_newline(cmd_vector[i]))
 	{
-		n += 1;
+		printf("return newline: %d\n", check_newline(cmd_vector[i]));
+		n = 1;
 		i++;
 	}
+	printf("i: %d, arg: %s\n", i, cmd_vector[i]);
 	while (cmd_vector[i])
 	{
 		printf("%s", cmd_vector[i]);
@@ -52,6 +55,6 @@ int	echo(char **cmd_vector)
 	}
 	if (!n)
 		printf("\n");
-	// free input?
-	exit(0);
+	// 
+	return(0);
 }

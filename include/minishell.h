@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/13 10:05:47 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/13 13:34:50 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,9 +99,6 @@ char		*get_variable(t_node *env_list, char *name);
 int			update_variable(t_node *env_list, char *name, char *cont, int type);
 int			check_env_content(char *str);
 void		print_env(t_node *env_list, int flag);
-
-//builtins
-int	execute_cd(char **cmd_vector, t_node *env_list);
 
 //tests
 void		leaks(void);
