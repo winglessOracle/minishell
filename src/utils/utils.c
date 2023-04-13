@@ -6,15 +6,15 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/11 15:12:47 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/12 21:23:12 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	exit_error(int num)
+void	exit_error(char	*str, int num)
 {
-	write(1, "Error\n", 7);
+	perror(str);
 	exit(num);
 }
 

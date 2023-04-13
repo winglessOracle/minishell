@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 21:43:08 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/12 08:06:04 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/12 21:30:44 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ int	echo(char **cmd_vector)
 	}
 	if (!n)
 		printf("\n");
-	return (0);
+	// free input?
+	exit(0);
 }

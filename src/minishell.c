@@ -6,11 +6,12 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/11 13:31:08 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/13 10:14:37 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "builtin.h" //test
 
 void	leaks(void)
 {
@@ -24,27 +25,28 @@ int	main(void)
 	t_node		*tokens;
 	t_pipe		*pipeline;
 
-	atexit(leaks);
+	// atexit(leaks);
 	env_list = init_env();
-	set_sig_term();
-	read_history("log/history_log"); //remove?
-	while (1)
-	{
-		line_read = get_input(env_list, "PS1");
-		write_history("log/history_log"); //remove?
-	// is exit built-in so can be removed after that works
-	if (!ft_strcmp(line_read, "exit"))  
-		break ;
-		tokens = lexer(line_read, "|<> \t\n");
-	// print_tokens(tokens, "CREATED TOKENS\n");
-		while (tokens)
-		{
-			pipeline = parse_pipeline(&tokens, env_list);
-	printf("CREATED PIPLINE\n");
-	print_pipeline(pipeline);
-	delete_pipe(pipeline);
-		}
-	}
-	rl_clear_history();
+	// set_sig_term();
+	// read_history("log/history_log"); //remove?
+	// while (1)
+	// {
+	// 	line_read = get_input(env_list, "PS1");
+	// 	write_history("log/history_log"); //remove?
+	// // is exit built-in so can be removed after that works
+	// if (!ft_strcmp(line_read, "exit"))  
+	// 	break ;
+	// 	tokens = lexer(line_read, "|<> \t\n");
+	// // print_tokens(tokens, "CREATED TOKENS\n");
+	// 	while (tokens)
+	// 	{
+	// 		pipeline = parse_pipeline(&tokens, env_list);
+	// printf("CREATED PIPLINE\n");
+	// print_pipeline(pipeline);
+	// delete_pipe(pipeline);
+	// 	}
+	// }
+	// rl_clear_history();
+	test_cd(env_list);
 	exit(get_exit(env_list));
 }

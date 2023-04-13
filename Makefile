@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/12 07:56:30 by cariencaljo   ########   odam.nl          #
+#    Updated: 2023/04/13 09:49:44 by cariencaljo   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,9 +34,9 @@ HEADERS		= -I $(LIBFT) -I$(INCLUDE) -I$(RL_INC)
 OBJ_FILES	= $(addprefix obj/, minishell.o lst_utils/t_node.o parser.o utils/utils.o lst_utils/t_smpl_cmd.o \
 				lexer.o env.o init.o print.o lst_utils/node.o utils/parser_utils.o \
 				utils/redirect_utils.o utils/quote_utils.o expander.o signals.o termios.o \
-				lst_utils/delete.o)
+				lst_utils/delete.o test.o)
 
-OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o)
+OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o cd.o)
 
 #//= Modifiable =//#
 all: libft $(NAME)
@@ -45,7 +45,7 @@ libft:
 	@$(MAKE) -C $(LIBFT)
 	
 $(NAME): $(OBJ_FILES) $(OBJ_BUILTIN)
-	@$(CC) $(OBJ_FILES) $(LIBS) $(HEADERS) -o $(NAME) $(CFLAGS) -lreadline
+	@$(CC) $(OBJ_FILES) $(OBJ_BUILTIN) $(LIBS) $(HEADERS) -o $(NAME) $(CFLAGS) -lreadline
 
 $(OBJ_FILES): obj/%.o: src/%.c 
 	@mkdir -p $(dir $@)

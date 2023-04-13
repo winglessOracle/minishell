@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 13:37:11 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/12 16:23:08 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/12 21:27:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ t_node	*new_node(int type, char *content)
 	t_node	*new_node;
 
 	if (!content)
-		exit_error(errno);
+		exit_error("no content for new node", errno);
 	new_node = malloc(sizeof(t_node));
 	if (!new_node)
-		exit_error(errno);
+		exit_error("new_node", errno);
 	new_node->type = type;
 	new_node->content = content;
 	new_node->next = NULL;

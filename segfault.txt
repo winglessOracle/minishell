@@ -22,12 +22,24 @@ test$PWD
 
 /* Segfaults or incorrect behaviour */
 ------------------------
+
+/ *test cases to compare with bash: */
+---------------------------------------
 << here cat > out | < out cat
 echo "$var en aap"
 here
 
+--
+
+mkdir test
+cd test
+rmdir ../test
+$PWD
+
+--
 
 /* check Carien */
+check var name for assignment
 should none existing var be NULL or ""? Now NULL but this wil stop the cmd execution at that point?
 NULL should be skipped in cmd vector? --> echo $var -n aap
 make bash script for testing?

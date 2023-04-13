@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/11 10:55:17 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/12 21:25:03 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ char	*get_variable(t_node *env_list, char *name)
 			ret = ft_substr(env_list->content, ft_strlen(name) + 1,
 					ft_strlen(env_list->content) - (ft_strlen(name) + 1));
 			if (!ret)
-				exit_error(errno);
+				exit_error("error in get_variable", errno);
 		}
 		env_list = env_list->next;
 	}

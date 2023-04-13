@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/11 15:02:48 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/13 10:05:47 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <stdlib.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+# include <errno.h>
 
 typedef struct s_node
 {
@@ -48,7 +49,7 @@ typedef struct s_pipe
 }	t_pipe;
 
 // utils
-void		exit_error(int num);
+void		exit_error(char	*str, int num);
 int			get_exit(t_node *env_list);
 char		*get_input(t_node *env_list, char *var);
 int			syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err);
@@ -98,6 +99,9 @@ char		*get_variable(t_node *env_list, char *name);
 int			update_variable(t_node *env_list, char *name, char *cont, int type);
 int			check_env_content(char *str);
 void		print_env(t_node *env_list, int flag);
+
+//builtins
+int	execute_cd(char **cmd_vector, t_node *env_list);
 
 //tests
 void		leaks(void);
