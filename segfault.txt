@@ -40,6 +40,7 @@ $PWD
 --
 
 /* check Carien */
+think about here content
 check var name for assignment
 should none existing var be NULL or ""? Now NULL but this wil stop the cmd execution at that point?
 NULL should be skipped in cmd vector? --> echo $var -n aap

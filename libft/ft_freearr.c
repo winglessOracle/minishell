@@ -1,23 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   builtin.h                                          :+:    :+:            */
+/*   ft_freearr.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/13 09:29:13 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/13 14:05:35 by ccaljouw      ########   odam.nl         */
+/*   Created: 2023/02/15 07:20:23 by cariencaljo   #+#    #+#                 */
+/*   Updated: 2023/02/16 10:17:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include <limits.h>
+#include "libft.h"
 
-int		execute_echo(char **cmd_vector);
-int		execute_cd(char **cmd_vector, t_node *env_list);
-void	execute_pwd(void);
-
-// tests
-int		test_cd(t_node *env_list);
-int		test_echo(void);
-int		test_pwd(void);
+char	**ft_freearr(char **arr, int j)
+{
+	if (j == 0)
+	{
+		while (arr[j])
+		{
+			free(arr[j]);
+			j++;
+		}
+	}
+	else
+	{
+		while (j >= 0)
+		{
+			free(arr[j]);
+			j--;
+		}
+	}
+	free(arr);
+	return (0);
+}

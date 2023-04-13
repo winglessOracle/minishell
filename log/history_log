@@ -3079,3 +3079,132 @@ exit
 "  \"hoi\"  xx'd  x  \" dag kaas"
 "  \"hoi\"  xx'd  x  \" dag kaas"
 exit
+jdfjfgj gfgjgj
+echo "hello'hi'lol"
+echo $USER
+ls "                                   -la"
+ls                                    -la"
+ls                                    -la
+ls                                | ls|ls
+ls                                | ls -la|ls
+jfjgjg hello
+ls > fjg
+ls >>>>>> fjg
+ls ?? fjg
+~
+~/pwd
+~/a
+~a
+< $PWD
+<< $PWD
+< $PWD
+<< $PWD
+ls | exit
+efjgfgjggjfg
+jkfgjjegrkg
+exit
+export a=jgjgj 123=jfgjgj c=jgjgkj
+var=a
+exit
+$PS1
+exit
+"hello world"
+"hello ' world"
+exit
+"hello $PWD world"
+'hello $PWD world'
+'hello $PWD ''world'
+exit
+'hello $PWD ''world'
+'hello $PWD ''world'[B
+exit
+"hello ' world"
+exit
+"hello ' world"
+exit
+"hello ' world"
+exit
+"hello ' world"
+exit
+"hello ' world"
+exit
+"hello ' world"
+"hello '$PWD world"
+exit
+"hello $PWD world"
+exit
+"hello $PWD world"
+"hello '$PWD world"
+exit
+"hello '$PWD world"
+exit
+"hello '$PWD world"
+exit
+"hello '$PWD world"
+"hello $PWD world"
+exit
+"hello $PWD world"
+"hello '$PWD world"
+exit
+"hello '$PWD world"
+exit
+"hello '$PWD world"
+"hello $PWD world"
+"hello $PWD world"
+exit
+"hello $PWD world"
+"hello '$PWD world"
+exit
+"hello '$PWD world"
+exit
+"hello '$PWD world"
+exit
+"hello '$PWD world"
+exit
+"hello '$PWD world"
+"'hello $PWD world"
+exit
+"'hello $PWD world"
+"hello '$PWD world"
+exit
+"hello '$PWD world"
+exit
+"hello '$PWD world"
+exit
+"hello '$PWD world"
+exit
+"hello '$PWD world"
+<< $pwd
+<< $PWD
+< $PWD
+< "$PWD"
+< "'$PWD'"
+exit
+< "'$PWD'"
+exit
+< "'$PWD'"
+exit
+< "'$PWD'"
+exit
+< "'$PWD'"
+< $var 
+< "$var" 
+< '$var' 
+exit
+< '$var' 
+exit
+< '$var' 
+exit
+< '$var' 
+< $var 
+< "$var" 
+< '$var' 
+<< $var
+<< "$var" 
+<< '$var'
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+exit
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+exit
+hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
+exit

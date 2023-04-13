@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/11 21:30:22 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/13 17:22:40 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,14 @@ char	get_quote_char(int type)
 int	split_quoted_exp(int nr_q, t_node *token, char **content, t_smpl_cmd *cmd)
 {
 	int		state;
-	char	quote;
 	t_node	*words;
 
-	quote = get_quote_char(token->type);
-	words = split_to_list(token->content, &quote);
+	// printf("split exp\n");
+	words = split_to_list(token->content, "\'\"");
 	while (words)
 	{
 		state = check_token_content(words, WORD);
-		while (state == EXPAND && token->type != SQUOTE \
-							&& token->type != HEREDOC)
+		while (state == EXPAND && token->type != HEREDOC)
 		{
 			expand(&words, cmd);
 			if (words->content)
@@ -44,7 +42,7 @@ int	split_quoted_exp(int nr_q, t_node *token, char **content, t_smpl_cmd *cmd)
 			else
 				state = WORD;
 		}
-		if (state == SQUOTE || state == DQUOTE)
+		if (state == DQUOTE)
 			nr_q += 1;
 		else if (words->content)
 			*content = ft_strjoin_free_s1(*content, words->content);
@@ -59,6 +57,7 @@ int	split_quoted(int nr_quotes, t_node *token, char **content, t_smpl_cmd *cmd)
 	char	quote;
 	t_node	*words;
 
+	// printf("split no exp\n");
 	quote = get_quote_char(token->type);
 	words = split_to_list(token->content, &quote);
 	while (words)
@@ -80,10 +79,11 @@ int	get_content(t_node **token, t_smpl_cmd *cmd, int type, int state)
 
 	nr_quotes = 0;
 	content = NULL;
+	// printf("get content type: %d\n", type);
 	while (*token)
 	{
 		(*token)->type = type;
-		if (state == HEREDOC)
+		if (state == HEREDOC || type == SQUOTE)
 			nr_quotes = split_quoted(nr_quotes, *token, &content, cmd);
 		else
 			nr_quotes = split_quoted_exp(nr_quotes, *token, &content, cmd);

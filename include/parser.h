@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/12 11:08:31 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/13 17:17:59 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef enum e_parsetype
 	INPUT,
 	OUTPUT,
 	HEREDOC,
+	HEREDOCQ,
 	APPEND,
 	// ERR,
 	// BRACE_O,
