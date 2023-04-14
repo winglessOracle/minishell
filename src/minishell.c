@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/13 20:43:45 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/14 13:16:37 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ int	main(void)
 	print_pipeline(pipeline);
 			exitstatus = executor(pipeline);
 
-	printf("PASSED EXECUTOR\n");
-	printf("exitstatus=%d\n", exitstatus);
+	// printf("PASSED EXECUTOR\n");
+	// printf("exitstatus=%d\n", exitstatus);
 		}
 	}
 	rl_clear_history();

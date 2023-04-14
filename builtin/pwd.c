@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/13 14:01:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/13 15:18:25 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/14 10:33:02 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	execute_pwd(void)
 	char	buf[PATH_MAX];
 	char	*pwd;
 
+// test remove dir
 	pwd = getcwd(buf, PATH_MAX);
 	if (!pwd)
 		exit_error("getcwd", 1);

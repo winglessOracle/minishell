@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/13 21:06:28 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/14 13:43:23 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_smpl_cmd
 	t_node				*redirect;
 	t_node				*assign;
 	int					cmd_argc;
+	int					*fd_pipe;
 	t_node				*cmd_argv;
 	struct s_smpl_cmd	*next;
 }	t_smpl_cmd;
@@ -44,8 +45,6 @@ typedef struct s_smpl_cmd
 typedef struct s_pipe
 {
 	int				type;
-	int				fd_keep;
-	int				fd_pipe[2];
 	t_smpl_cmd		*pipe_argv;
 	struct s_pipe	*next;
 }	t_pipe;
@@ -104,8 +103,6 @@ void		print_env(t_node *env_list, int flag);
 
 //executor
 void		assignments(t_smpl_cmd *pipe_argv, pid_t pid, t_node *env_list);
-int			set_fd(t_pipe *pipe, t_smpl_cmd *smpl_cmd);
-void		redirect(t_pipe *pipeline, pid_t pid);
 int			executor(t_pipe *pipeline);
 int			get_exit_st(t_smpl_cmd *smpl_cmd, pid_t pid);
 char		**build_cmd_args(t_node *argv, int argc);

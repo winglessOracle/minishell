@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/13 20:53:30 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/14 14:02:15 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,20 @@ char	**build_cmd_args(t_node *argv, int argc)
 	// if (!argv || !argc)
 	// 	return (NULL);
 	cmd_args = malloc(sizeof(char *) * (argc + 1));
-	while (i < argc) 
+	while (i < argc)
 	{
 		cmd_args[i] = ft_strdup(argv->content);
 		remove_node(&argv, NULL);
 		i++;
 	}
 	cmd_args[i] = NULL;
+	// i = 0;
+	// while (cmd_args[i])
+	// {
+	// 	write(2, cmd_args[i], ft_strlen(cmd_args[i]));
+	// 	write(2, "\n", 1);
+	// 	i++;
+	// }
 	return (cmd_args);
 }
 

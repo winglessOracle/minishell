@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 21:43:08 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/13 13:54:01 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/14 10:37:39 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	execute_echo(char **cmd_vector)
 		n = 1;
 		i++;
 	}
-	printf("i: %d, arg: %s\n", i, cmd_vector[i]);
 	while (cmd_vector[i])
 	{
 		printf("%s", cmd_vector[i]);

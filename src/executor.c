@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/13 22:00:50 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/14 15:15:26 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 
 	i = 0;
 	cmd_args = build_cmd_args(pipe_argv->cmd_argv, pipe_argv->cmd_argc);
-	printf("cmd_arg[0]=%s\n", cmd_args[0]); //remove
 	if (!cmd_args)
 		exit(EXIT_FAILURE);
 	path = get_variable(pipe_argv->env_list, "PATH");
@@ -46,107 +45,115 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 	exit(EXIT_FAILURE);
 }
 
-void	assignments(t_smpl_cmd *pipe_argv, pid_t pid, t_node *env_list)
-{
-	if (pipe_argv->next)
-	{
-		if (pid == 0)
-		{
-			while (pipe_argv->assign)
-			{
-				add_variable(pipe_argv->env_list, pipe_argv->assign->content, 1);
-			//	lstdelone(lstpop(&pipe_argv->assign), delete_content);
-				pipe_argv->assign = pipe_argv->assign->next;
-			}
-		}
-	}
-	else
-	{
-		if (pid != 0)
-		{
-			while (pipe_argv->assign)
-			{
-				add_variable(env_list, pipe_argv->assign->content, 1);
-			//	lstdelone(lstpop(&pipe_argv->assign), delete_content);
-				pipe_argv->assign = pipe_argv->assign->next;
-			}
-		}	
-	}
-	//clearlist?
-}
+// void	assignments(t_smpl_cmd *pipe_argv, pid_t pid, t_node *env_list)
+// {
+// 	if (pipe_argv->next)
+// 	{
+// 		if (pid == 0)
+// 		{
+// 			while (pipe_argv->assign)
+// 			{
+// 				add_variable(pipe_argv->env_list, pipe_argv->assign->content, 1);
+// 			//	lstdelone(lstpop(&pipe_argv->assign), delete_content);
+// 				pipe_argv->assign = pipe_argv->assign->next;
+// 			}
+// 		}
+// 	}
+// 	else
+// 	{
+// 		if (pid != 0)
+// 		{
+// 			while (pipe_argv->assign)
+// 			{
+// 				add_variable(env_list, pipe_argv->assign->content, 1);
+// 			//	lstdelone(lstpop(&pipe_argv->assign), delete_content);
+// 				pipe_argv->assign = pipe_argv->assign->next;
+// 			}
+// 		}	
+// 	}
+// 	//clearlist?
+// }
 
-int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd)
+int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int fd_keep)
 {
-	while(smpl_cmd->redirect)
-	{
-		if (smpl_cmd->redirect->type == INPUT)
-			pipeline->fd_pipe[0] = open(smpl_cmd->redirect->content, O_RDONLY);
-		else if (smpl_cmd->redirect->type == OUTPUT)
-			pipeline->fd_pipe[1] = open(smpl_cmd->redirect->content, O_WRONLY);
-		else if (smpl_cmd->redirect->type == APPEND)
-			pipeline->fd_pipe[1] = open(pipeline->pipe_argv->redirect->content, O_APPEND);
-//		else if (pipe->redirect->type == HEREDOC)
-		if (pipeline->fd_pipe[0] == -1 || pipeline->fd_pipe[1] == -1)
-			return (-1);
-		remove_node(&smpl_cmd->redirect, NULL);
-	}
+// 	while(smpl_cmd->redirect)
+// 	{
+// 		if (smpl_cmd->redirect->type == INPUT)
+// 			pipeline->pipe_argv->fd_pipe[0] = open(smpl_cmd->redirect->content, O_RDONLY);
+// 		else if (smpl_cmd->redirect->type == OUTPUT)
+// 			pipeline->pipe_argv->fd_pipe[1] = open(smpl_cmd->redirect->content, O_WRONLY);
+// 		else if (smpl_cmd->redirect->type == APPEND)
+// 			pipeline->pipe_argv->fd_pipe[1] = open(pipeline->pipe_argv->redirect->content, O_APPEND);
+// //		else if (pipe->redirect->type == HEREDOC)
+// 		if (pipeline->pipe_argv->fd_pipe[0] == -1 || pipeline->pipe_argv->fd_pipe[1] == -1)
+// 			return (-1);
+// 		remove_node(&smpl_cmd->redirect, NULL);
+// 	}
 	return (0);
 }
 
-void	redirect(t_pipe *pipeline, pid_t pid)
+void	redirect(t_pipe *pipeline, pid_t pid, int fd_keep, int *fd_pipe)
 {
 	if (pid == 0)
 	{
-		close(pipeline->fd_pipe[0]);
-		// if (set_fd(pipeline, pipeline->pipe_argv) != 0)
+		close(fd_pipe[0]);
+		dup2(fd_keep, STDIN_FILENO);
+		if (!fd_keep)
+			exit_error("dup fail", 1);
+		if (pipeline->pipe_argv->next)
+			dup2(fd_pipe[1], STDOUT_FILENO);
+		if (!fd_pipe[1])
+			exit_error("dup fail", 1);
+		// printf("cmd: %s, in: %d, out: %d\n", pipeline->pipe_argv->cmd_argv->content, fd_keep, fd_pipe[1]);
+		// if (set_fd(pipeline, pipeline->pipe_argv, fd_keep) != 0)
 		// 	perror("No such file or directory\n");
-		dup2(pipeline->fd_pipe[1], STDOUT_FILENO);
-		dup2(pipeline->fd_keep, STDIN_FILENO);
-
-		printf("\n\tTEST in child\n");
-	}
-	else
-	{
-		close(pipeline->fd_keep);
-		pipeline->fd_keep = dup(pipeline->fd_pipe[0]);
-		close(pipeline->fd_pipe[0]);
-		close(pipeline->fd_pipe[1]);
-	
-		printf("\n\tTEST in parent\n");
 	}
 }
 
 int		executor(t_pipe *pipeline)
 {
 	int			exitstatus;
+	int			keep;
+	int			fd_pipe[2];
  	pid_t		pid;
 	char		**env;
 
 	exitstatus = 0;
+	keep = dup(STDIN_FILENO);
+	if (!keep)
+		exit_error("dup fail", 1);
  	while (pipeline && pipeline->pipe_argv)
 	{
-	 	if (pipe(pipeline->fd_pipe) == -1)
+	 	if (pipe(fd_pipe) == -1)
 	 		exit_error("pipe fail", errno);
+		// printf("keep: %d, pipe, [0]: %d, [1]: %d\n", keep, fd_pipe[0], fd_pipe[1]);
 	 	env = get_env(pipeline->pipe_argv->env_list);
 		pid = fork();
 	 	if (pid == -1)
 			exit_error("fork fail", errno);
-		// redirect(pipeline, pid);
-		//assignments(pipeline->pipe_argv, pid, env_list);
+		// assignments(pipeline->pipe_argv, pid, env_list);
 		if (pid == 0)
 		{
-			// printf("in child\n");
+			redirect(pipeline, pid, keep, fd_pipe);
 		 	exec_cmd(pipeline->pipe_argv, env);
 		}
-		// //lstclear(&pipeline->pipe_argv->env_list, delete_content);
-	 	// else
+	 	else
+		{	
+			// printf("keep: %d, pipe[0]: %d\n", keep, fd_pipe[0]);
+			close(keep);
+			if (pipeline->pipe_argv->next)
+				keep = dup(fd_pipe[0]);
+			// printf("redirected keep: %d\n", keep);
+			close(fd_pipe[0]);
+			close(fd_pipe[1]);
+		}
+		wait(NULL);
 		pipeline->pipe_argv = pipeline->pipe_argv->next;
 	// 	free (env);
 	}
 	// exitstatus = get_exit_st(pipeline->pipe_argv, pid);
 	return (exitstatus);
 	// clean lists 
-	// close pipes
 }
 
 // eerst oplossen exec en assig en dan redfirect lezen std in en out

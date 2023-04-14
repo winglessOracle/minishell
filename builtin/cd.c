@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/13 16:30:05 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/14 13:10:50 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	**get_path_arr(char *cmd_arg, char *pwd, t_node *env_list)
 	
 	cd_path = get_variable(env_list, "CDPATH");
 	if (!cd_path)
-		cd_path = get_variable(env_list, "PWD");
+		cd_path = get_variable(env_list, pwd);
 	path_arr = ft_split(cd_path, ':');
 	if (*path_arr)
 	{
@@ -53,11 +53,11 @@ char	**get_path_arr(char *cmd_arg, char *pwd, t_node *env_list)
 			dir = ft_strjoin(*path_arr, "/");
 		if (cmd_arg[0] == '/')
 			dir = ft_strdup(cmd_arg);
-		else if (cmd_arg[0] == '.' && cmd_arg[1] == '.')
+		else if (cmd_arg[0] == '.' && cmd_arg[1] == '.') //check '/' of
 			dir = ft_strjoin_free_s1(get_back(pwd), &cmd_arg[2]);
 		else if (cmd_arg[0] == '-' && cmd_arg[1] == '\0')
-			dir = get_variable(env_list, "OLDPWD");
-		else if (cmd_arg[0] == '.')
+			dir = get_variable(env_list, "OLDPWD"); // what if no OLDPWD
+		else if (cmd_arg[0] == '.') //check '/'
 			dir = ft_strjoin(*path_arr, &cmd_arg[2]);
 		else
 			dir = ft_strjoin(*path_arr, cmd_arg);
@@ -83,7 +83,7 @@ int	execute_cd(char **cmd_vector, t_node *env_list)
 	pwd = getcwd(buf, PATH_MAX);
 	if (!pwd)
 		exit_error("getcwd", 1);
-	add_variable(env_list, ft_strjoin("PWD=", pwd), 2); // 1 or 2?
+	// add_variable(env_list, ft_strjoin("PWD=", pwd), 2); // 1 or 2?
 	path_arr = get_path_arr(cmd_vector[1], pwd, env_list);
 	while (*path_arr)
 	{
@@ -97,7 +97,10 @@ int	execute_cd(char **cmd_vector, t_node *env_list)
 		}
 	}
 	if (i == -1)
-		exit_error("chdir: dir", 1); //make dynamic
+	{
+		// add current working dir
+		exit_error("chdir: dir", 1); //make dynamic	
+	}
 	add_variable(env_list, ft_strjoin("OLDPWD=", pwd), 2);
 	add_variable(env_list, ft_strjoin("PWD=", *path_arr), 2);
 	return(0); //change to exit after testing?
