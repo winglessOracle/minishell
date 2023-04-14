@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/12 21:23:12 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/14 10:22:08 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	get_exit(t_node *env_list)
 	char	*str;
 
 	str = get_variable(env_list, "?");
-	exit_val = str[0] - '0';
+	exit_val = str[0] - '0'; // atio
 	free(str);
 	return (exit_val);
 }

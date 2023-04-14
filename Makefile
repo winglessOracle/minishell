@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/13 14:00:53 by ccaljouw      ########   odam.nl          #
+#    Updated: 2023/04/13 20:27:53 by cariencaljo   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ NAME		= minishell
 CC			= clang
 CFLAGS		= -Wall -Wextra -Werror
 
-RL_INC		= /Users/$(USER)/.brew/opt/readline/include
-RL_LIB		= /Users/$(USER)/.brew/opt/readline/lib
-# RL_INC			= /opt/homebrew/opt/readline/include
-# RL_LIB			= /opt/homebrew/opt/readline/lib
+# RL_INC		= /Users/$(USER)/.brew/opt/readline/include
+# RL_LIB		= /Users/$(USER)/.brew/opt/readline/lib
+RL_INC			= /opt/homebrew/opt/readline/include
+RL_LIB			= /opt/homebrew/opt/readline/lib
 
 #//= Locations =//#
 INCLUDE		= ./include
@@ -34,7 +34,7 @@ HEADERS		= -I $(LIBFT) -I$(INCLUDE) -I$(RL_INC)
 OBJ_FILES	= $(addprefix obj/, minishell.o lst_utils/t_node.o parser.o utils/utils.o lst_utils/t_smpl_cmd.o \
 				lexer.o env.o init.o print.o lst_utils/node.o utils/parser_utils.o \
 				utils/redirect_utils.o utils/quote_utils.o expander.o signals.o termios.o \
-				lst_utils/delete.o test.o)
+				lst_utils/delete.o executor.o utils/executor_utils.o test.o)
 
 OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o cd.o pwd.o)
 

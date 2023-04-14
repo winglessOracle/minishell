@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/12 16:27:02 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/13 20:40:06 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 	return (type);
 }
 
-int	redirect(t_node **tokens, t_smpl_cmd *cmd)
+int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd)
 {
 	int					state;
 	int					type;

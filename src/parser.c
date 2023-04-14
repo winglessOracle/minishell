@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/13 17:35:26 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/13 20:39:46 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd)
 
 	parse[WORD] = expander;
 	parse[BLANK] = remove_node;
-	parse[REDIRECT] = redirect; 
+	parse[REDIRECT] = redirect_tokens; 
 	parse[PIPE] = set_cmd_end;
 	parse[NEW_LINE] = set_cmd_end;
 	state = 0;

@@ -6,9 +6,13 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/13 09:29:13 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/13 14:05:35 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/13 20:23:15 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
+
+
+#ifndef BUILTIN_H
+# define BUILTIN_H
 
 #include "minishell.h"
 #include <limits.h>
@@ -21,3 +25,5 @@ void	execute_pwd(void);
 int		test_cd(t_node *env_list);
 int		test_echo(void);
 int		test_pwd(void);
+
+#endif
