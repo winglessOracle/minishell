@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/12 21:25:03 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/14 17:00:31 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,60 +41,66 @@ int	check_env_content(char *str)
 	return (0);
 }
 
-//type default = 1 (local)
-void	add_variable(t_node *env_list, char *content, int type)
+t_node	*change_var(t_node *env_list, char *name, int i)
 {
-	int		len;
-	char	*name;
+	t_node	*temp;
 
-	if (!type)
-		type = 1; //is this okay?
-	if (type < 1 || type > 2)
+	temp = env_list;
+	while (temp)
 	{
-		printf("Invalid type. Use type 1=local type 2=external\n");
-		return ;
+		if (ft_strncmp(temp->content, name, i) == 0 \
+							&& temp->content[i + 1] == '=')
+			return (temp);
+		temp = temp->next;
 	}
-	len = 0;
-	while (content[len] != '=')
-		len++;
-	name = ft_substr(content, 0, len);
-	if (!update_variable(env_list, name, content, type) && env_list && content)
-		lstadd_back(&env_list, new_node(type, content));
+	return (NULL);
+}
+
+void	add_variable(t_node *env_list, char *var, int type)
+{
+	int		i;
+	char	*name;
+	t_node	*temp;
+
+	i = 0;
+	while (var[i] != '=')
+		i++;
+	name = ft_substr(var, 0, i);
+	if (!name)
+		exit_error("add_variable", 1);
+	temp = change_var(env_list, name, i);
+	if (temp)
+	{
+		free(temp->content);
+		temp->content = var;
+		temp->type = type;
+	}
+	else
+		lstadd_back(&env_list, new_node(type, var));
 	free(name);
 }
 
 char	*get_variable(t_node *env_list, char *name)
 {
-	char	*ret;
+	char	*value;
+	int		len;
+	t_node	*temp;
 
-	ret = NULL;
-	while (env_list && name)
+	value = NULL;
+	len = ft_strlen(name);
+	temp = env_list;
+	while (temp && name)
 	{
-		if (ft_strncmp(env_list->content, name, ft_strlen(name)) == 0)
+		if (ft_strncmp(temp->content, name, len) == 0 \
+							&& temp->content[len] == '=')
 		{
-			ret = ft_substr(env_list->content, ft_strlen(name) + 1,
-					ft_strlen(env_list->content) - (ft_strlen(name) + 1));
-			if (!ret)
-				exit_error("error in get_variable", errno);
+			value = ft_substr(temp->content, (len + 1),
+					(ft_strlen(temp->content) - len - 1));
+			if (!value)
+				exit_error("get_variable", 1);
 		}
-		env_list = env_list->next;
+		temp = temp->next;
 	}
-	if (ret)
-		return (ret);
-	return (NULL);
+	return (value);
 }
 
-int	update_variable(t_node *env_list, char *name, char *content, int type)
-{
-	while (env_list)
-	{
-		if (ft_strncmp(env_list->content, name, ft_strlen(name) + 1) == 0)
-		{
-			env_list->content = content;
-			env_list->type = type;
-			return (1);
-		}
-		env_list = env_list->next;
-	}
-	return (0);
-}

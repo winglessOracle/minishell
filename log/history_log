@@ -5709,3 +5709,86 @@ cat segfault.txt | head
 exit
 cat segfault.txt | head
 <segfault.txt cat | head
+ls
+ls | grep Make
+<input cat
+random_cmd
+exit
+random_cmd
+./segfault.txt
+cat bla
+cat | cat | ls
+cat
+cat
+cd src
+pwd
+cd src
+pwd
+echo hello
+exit
+echo hello
+exit
+echo hello
+echo
+echo -n
+echo $aap
+echo $PATH
+echo ~
+exit
+echo "hello $PWD here"
+echo $PWD
+echo "$PWD"
+echo "'$PWD"
+echo "'$PWD'"
+echo '$PWD'
+echo "'$PWD' there $PS1"
+exit
+echo $HOME
+echo $PWS
+echo $PWD
+echo $OLDPWD
+exit
+echo "test|test; alsotest>|<"
+echo $?
+echo $?$PWD$?$var$?test$PWD
+echo $USER$PWD
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+$VAR
+$2VAR
+exit
+$PWD
+$HOME
+exit
+exit
+exit
+exit
+$HOME
+exit
+$HOME
+$CDPATH
+exit
+$PWD
+$VAR
+exit
+$PWD
+$HOME
+$OLDPWD
+exit
+$PWD
+$PS!
+$PS1
+exit
+$PWD
+$HOME
+exit
+$PWD
+exit
+$PWD
+$HOME
+exit

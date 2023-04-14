@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/14 10:22:08 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/14 16:32:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char	*get_input(t_node *env_list, char *var)
 	line_read = NULL;
 	prompt = get_variable(env_list, var);
 	line_read = readline(prompt);
+	// printf("here\n");
 	if (line_read)
 		add_history(line_read);
 	free(prompt);

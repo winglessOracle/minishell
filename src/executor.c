@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/14 15:32:53 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/14 16:09:54 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 		i++;
 	}
 	ft_free(my_directories);
+	exit_error("cmd not found", 1);
 //	execve(cmd_args[0], cmd_args, env); //kan weg denk ik
-	exit(EXIT_FAILURE);
+	// exit(EXIT_FAILURE);
 }
 
 // void	assignments(t_smpl_cmd *pipe_argv, pid_t pid, t_node *env_list)
@@ -74,12 +75,12 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 // 	//clearlist?
 // }
 
-int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int fd_keep, int *fd_pipe)
+int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *fd_keep, int *fd_pipe)
 {
 	while(smpl_cmd->redirect)
 	{
 		if (smpl_cmd->redirect->type == INPUT)
-			fd_pipe[0] = open(smpl_cmd->redirect->content, O_RDONLY);
+			*fd_keep = open(smpl_cmd->redirect->content, O_RDONLY);
 		else if (smpl_cmd->redirect->type == OUTPUT)
 			fd_pipe[1] = open(smpl_cmd->redirect->content, O_WRONLY);
 		else if (smpl_cmd->redirect->type == APPEND)
@@ -105,7 +106,7 @@ void	redirect(t_pipe *pipeline, pid_t pid, int fd_keep, int *fd_pipe)
 		if (!fd_pipe[1])
 			exit_error("dup fail", 1);
 		// printf("cmd: %s, in: %d, out: %d\n", pipeline->pipe_argv->cmd_argv->content, fd_keep, fd_pipe[1]);
-		// if (set_fd(pipeline, pipeline->pipe_argv, fd_keep, fd_pipe) != 0)
+		// if (set_fd(pipeline, pipeline->pipe_argv, &fd_keep, fd_pipe) != 0)
 		// 	perror("No such file or directory\n");
 	}
 	else
