@@ -1,77 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   list_utils.c                                       :+:    :+:            */
+/*   pipe_utils.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 15:12:12 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 15:11:41 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_node	*lstlast(t_node *lst)
+t_smpl_cmd	*lstlast_cmd(t_smpl_cmd *lst)
 {
 	while (lst && lst->next != NULL)
 		lst = lst->next;
 	return (lst);
 }
 
-void	lstadd_back(t_node **lst, t_node *new)
+void	lstadd_back_cmd(t_smpl_cmd **lst, t_smpl_cmd *new)
 {
-	t_node	*temp;
+	t_smpl_cmd	*temp;
 
 	if (new)
 	{
-		temp = lstlast(*lst);
+		temp = lstlast_cmd(*lst);
 		if (temp)
-		{
 			temp->next = new;
-			new->prev = temp;
-		}
 		else
 			*lst = new;
 	}
 }
 
-void	lstdelone(t_node *lst, void (*del)(void *))
+void	lstdelone_cmd(t_smpl_cmd *lst, void (*del)(void *))
 {
 	if (lst && del)
 	{
-		del((void *)lst->content);
+		del((void *)lst);
 		free(lst);
 	}
 }
 
-t_node	*lstpop(t_node **lst)
+void	lstclear_cmdlst(t_smpl_cmd **lst, void (*del)(void *))
 {
-	t_node	*temp;
-
-	if (!*lst)
-		return (NULL);
-	temp = *lst;
-	if ((*lst)->prev)
-		(*lst)->prev->next = (*lst)->next;
-	if ((*lst)->next)
-		(*lst)->next->prev = (*lst)->prev;
-	*lst = (*lst)->next;
-	temp->prev = NULL;
-	temp->next = NULL;
-	return (temp);
-}
-
-void	lstclear(t_node **lst, void (*del)(void *))
-{
-	t_node	*temp;
+	t_smpl_cmd	*temp;
 
 	if (del && lst)
 	{
 		while (lst && *lst)
 		{
 			temp = (*lst)->next;
-			lstdelone(*lst, del);
+			lstdelone_cmd(*lst, del);
 			*lst = temp;
 		}
 	}

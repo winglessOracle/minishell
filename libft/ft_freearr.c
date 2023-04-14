@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lexer.h                                            :+:    :+:            */
+/*   ft_freearr.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
+/*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/11 14:48:29 by cariencaljo   ########   odam.nl         */
+/*   Created: 2023/02/15 07:20:23 by cariencaljo   #+#    #+#                 */
+/*   Updated: 2023/02/16 10:17:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
+#include "libft.h"
 
-# include "minishell.h"
-
-typedef enum e_lextype
+char	**ft_freearr(char **arr, int j)
 {
-	WORD = 0,
-	BLANK,
-	REDIRECT,
-	PIPE,
-	NEW_LINE,
-	// SEMI,
-	// AND,
-}	t_lextype;
-
-#endif
+	if (j == 0)
+	{
+		while (arr[j])
+		{
+			free(arr[j]);
+			j++;
+		}
+	}
+	else
+	{
+		while (j >= 0)
+		{
+			free(arr[j]);
+			j--;
+		}
+	}
+	free(arr);
+	return (0);
+}

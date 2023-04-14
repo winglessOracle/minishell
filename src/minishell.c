@@ -6,37 +6,53 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/29 21:09:52 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/14 17:03:18 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "builtin.h" //test
 
-int	main(int argc, char **argv, char **envp)
+void	leaks(void)
 {
-	t_node		*tokens;
-	t_node		*env_list;
-	t_pipe		*pipeline;
-	char		*line_read;
+	system("leaks minishell -q");
+}
 
-	atexit(leaks);
-	line_read = NULL;
-	env_list = env_to_list(envp);
-	add_variable(env_list, "PS1=CC_PROMPT:$> ", 1);
+int	main(void)
+{
+	char		*line_read;
+	t_node		*env_list;
+	t_node		*tokens;
+	t_pipe		*pipeline;
+	int			exitstatus;
+
+	// atexit(leaks);
+	env_list = init_env();
+	set_sig_term();
+	read_history("log/history_log"); //remove?
 	while (1)
 	{
-		if (line_read)
-		{
-		  	free(line_read);
-		  	line_read = NULL;
-		}
-		line_read = readline("CC_PROMPT:$> ");
-		if (!ft_strcmp(line_read, "exit"))
-			break ;
-		if (line_read)
-		 	add_history(line_read);
+		line_read = get_input(env_list, "PS1");
+		write_history("log/history_log"); //remove?
+	// is exit built-in so can be removed after that works
+	if (!ft_strcmp(line_read, "exit"))  
+		break ;
 		tokens = lexer(line_read, "|<> \t\n");
-		pipeline = parse_pipeline(tokens, env_list);
+	// print_tokens(tokens, "CREATED TOKENS\n");
+		while (tokens)
+		{
+			pipeline = parse_pipeline(&tokens, env_list);
+			exitstatus = executor(pipeline);
+			// (void)exitstatus;
+	// printf("CREATED PIPLINE\n");
+	print_pipeline(pipeline);
+
+	// printf("PASSED EXECUTOR\n");
+	// printf("exitstatus=%d\n", exitstatus);
+		}
 	}
-	exit(EXIT_SUCCESS);
+	rl_clear_history();
+	// test_cd(env_list);
+	// test_echo();
+	exit(get_exit(env_list));
 }

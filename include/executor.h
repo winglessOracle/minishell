@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lexer.h                                            :+:    :+:            */
+/*   executor.h                                         :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
+/*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/11 14:48:29 by cariencaljo   ########   odam.nl         */
+/*   Created: 2023/04/06 15:16:31 by carlo         #+#    #+#                 */
+/*   Updated: 2023/04/13 20:15:20 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
+#ifndef EXECUTOR_H
+# define EXECUTOR_H
 
 # include "minishell.h"
-
-typedef enum e_lextype
-{
-	WORD = 0,
-	BLANK,
-	REDIRECT,
-	PIPE,
-	NEW_LINE,
-	// SEMI,
-	// AND,
-}	t_lextype;
+# include <sys/types.h>
+# include <sys/wait.h>
+# include <unistd.h>
+# include <fcntl.h>
 
 #endif

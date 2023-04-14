@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   pipe_utils.c                                       :+:    :+:            */
+/*   list_utils.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 20:46:15 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/11 15:12:28 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-t_smpl_cmd	*lstlast_pipe(t_smpl_cmd *lst)
+t_node	*lstlast(t_node *lst)
 {
 	while (lst && lst->next != NULL)
 		lst = lst->next;
 	return (lst);
 }
 
-void	lstadd_back_pipe(t_smpl_cmd **lst, t_smpl_cmd *new)
+void	lstadd_back(t_node **lst, t_node *new)
 {
-	t_smpl_cmd	*temp;
+	t_node	*temp;
 
 	if (new)
 	{
-		temp = lstlast_pipe(*lst);
+		temp = lstlast(*lst);
 		if (temp)
 			temp->next = new;
 		else
@@ -33,34 +33,44 @@ void	lstadd_back_pipe(t_smpl_cmd **lst, t_smpl_cmd *new)
 	}
 }
 
-// void	delete_cmd(void *smpl_cmd)
-// {
-// 	t_smpl_cmd	*temp;
+void	lstdelone(t_node *lst, void (*del)(void *))
+{
+	if (lst && del)
+	{
+		del((void *)lst->content);
+		free(lst);
+	}
+}
 
-// 	temp = (t_smpl_cmd *)smpl_cmd;
-// 	lstclear(temp, delete_content);
-// }
+void	lstclear(t_node **lst, void (*del)(void *))
+{
+	t_node	*temp;
 
-// void	lstdelone_pipe(t_smpl_cmd *lst, void (*del)(void *))
-// {
-// 	if (lst && del)
-// 	{
-// 		del((void *)lst->pipe_argv);
-// 		free(lst);
-// 	}
-// }
+	if (del && lst)
+	{
+		while (lst && *lst)
+		{
+			temp = (*lst)->next;
+			lstdelone(*lst, del);
+			*lst = temp;
+		}
+	}
+}
 
-// void	lstclear_pipe(t_smpl_cmd **lst, void (*del)(void *))
-// {
-// 	t_smpl_cmd	*temp;
+void	lstinsert_lst(t_node **at, t_node *lst)
+{
+	t_node	*temp;
+	t_node	*last;
 
-// 	if (del && lst)
-// 	{
-// 		while (lst && *lst)
-// 		{
-// 			temp = (*lst)->next;
-// 			lstdelone_pipe(*lst, del);
-// 			*lst = temp;
-// 		}
-// 	}
-// }
+	if (!lst)
+		return ;
+	if (*at == NULL)
+		*at = lst;
+	else
+	{
+		temp = *at;
+		last = lstlast(lst);
+		last->next = temp;
+		*at = lst;
+	}
+}

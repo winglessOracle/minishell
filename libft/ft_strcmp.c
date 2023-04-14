@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 09:27:54 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/22 09:12:40 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/03 15:37:29 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,3 @@ int	ft_strcmp(const char *s1, const char *s2)
 	}
 	return (0);
 }
-

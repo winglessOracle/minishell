@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lexer.h                                            :+:    :+:            */
+/*   ft_strnstr.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/11 14:48:29 by cariencaljo   ########   odam.nl         */
+/*   Created: 2022/10/10 09:27:59 by cwesseli      #+#    #+#                 */
+/*   Updated: 2023/03/27 17:41:05 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
+#include "libft.h"
 
-# include "minishell.h"
-
-typedef enum e_lextype
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	WORD = 0,
-	BLANK,
-	REDIRECT,
-	PIPE,
-	NEW_LINE,
-	// SEMI,
-	// AND,
-}	t_lextype;
+	size_t	len_n;
 
-#endif
+	len_n = ft_strlen(needle);
+	if (len_n == 0)
+		return ((char *)haystack);
+	while (*haystack && len-- >= len_n)
+	{
+		if (!(ft_strncmp((char *)haystack, (char *)needle, len_n)))
+			return ((char *)haystack);
+		haystack++;
+	}
+	return (NULL);
+}

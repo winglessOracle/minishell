@@ -6,79 +6,81 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 22:19:29 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/13 20:39:46 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
 
-int		todo(t_node **token)
+int	check_token_content(t_node *token, int type)
 {
-	printf("not handeled yet: type: %d, content: %s\n", (*token)->type, (*token)->content);
-	(*token) = (*token)->next;
-	return (0);
-}
+	char	*str;
+	int		i;
 
-int	set_type_word(t_node **token)
-{
-	(*token)->type = WORD;
-	return (0);
-}
-
-int	set_cmd_end(t_node **token)
-{
-	lstdelone(*token, delete_content);
-	return (1);
-}
-
-t_smpl_cmd	*parse_smpl_cmd(t_node *tokens, t_smpl_cmd	*cmd)
-{	
-	int	state;
-	
-	state = 0;
-	while (tokens && state == 0)
+	i = 0;
+	if (!token->content)
+		return (WORD);
+	str = token->content;
+	if (str[0] == '#' && type != DQUOTE && type != SQUOTE)
+		return (COMMENT);
+	if (str[0] == '~' && (str[1] == '/' || str[1] == '\0') \
+								&& type != DQUOTE && type != SQUOTE)
+		return (TILDE);
+	while (str[i])
 	{
-		if (tokens->type == WORD)
-		{
-			lstadd_back(&cmd->cmd_argv, lstpop(&tokens));
-			cmd->cmd_argc++;
-		} 
-		else
-			state = parse[tokens->type](&tokens);
-		if (state == -1)
-			return (NULL);
+		if (str[i] == '\"' && type != SQUOTE)
+			return (DQUOTE);
+		else if (str[i] == '\'' && type != DQUOTE)
+			return (SQUOTE);
+		else if (str[i] == '$' && str[i + 1] != ' ' && \
+					str[i + 1] != '\0' && type != SQUOTE && type != DQUOTE)
+			return (EXPAND);
+		else if (str[i] == '=' && type != DQUOTE && type != SQUOTE)
+			return (ASSIGN);
+		i++;
 	}
-	return (cmd);
+	return (WORD);
 }
 
-t_pipe	*parse_pipeline(t_node *tokens, t_node *env_list)
+int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd)
 {	
-	t_smpl_cmd	*cmd;
+	int					state;
+	static t_function	*parse[5];
+
+	parse[WORD] = expander;
+	parse[BLANK] = remove_node;
+	parse[REDIRECT] = redirect_tokens; 
+	parse[PIPE] = set_cmd_end;
+	parse[NEW_LINE] = set_cmd_end;
+	state = 0;
+	while (*tokens && !state)
+		state = parse[(*tokens)->type](tokens, *cmd);
+	state = set_cmd_end(tokens, *cmd);
+	return (state);
+}
+
+t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list)
+{	
 	t_pipe		*pipeline;
-	
-	if (!tokens)
-		return (NULL);
+	t_smpl_cmd	*cmd;
+	int			state;
+
+	state = 0;
 	pipeline = init_pipeline();
-	if (tokens) //should be while when all tokens are parsed correctly
+	while (*tokens && state != -1)
 	{
-		cmd = parse_smpl_cmd(tokens, init_smpl_cmd(env_list));
-		if (!cmd)
-			return (NULL);
-		print_cmd(cmd);		// test
-		lstadd_back_pipe(&pipeline->pipe_argv, cmd);
-		pipeline->pipe_argc++;
+		cmd = init_smpl_cmd(env_list);
+		state = parse_cmd(tokens, &cmd);
+		if (cmd)
+			lstadd_back_cmd(&pipeline->pipe_argv, cmd);
+		if (state == -1)
+			lstclear_cmdlst(&pipeline->pipe_argv, delete_cmd);
+		if (*tokens && (*tokens)->type == NEW_LINE)
+		{
+			state = remove_node(tokens, NULL);
+			break ;
+		}
 	}
 	return (pipeline);
 }
-
-// if COMMENT || SPACE || TAB -> remove?
-// if LESS -> check next and set input 
-// if GREAT -> check next and set output TRUNC
-// if DLESS -> io_here (set value next node in master_struct?)
-// if DGREAT -> check next set output append
-// if PIPE -> end simple command
-// if NEW_LINE -> end simple command and pipeline
-// if EXPAND -> expand to (env)value
-	// if $? -> expand to last exit status
-// if ASSIGN -> assign variable

@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 22:14:50 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/13 20:39:20 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,43 @@
 
 # include "minishell.h"
 
-int	todo(t_node **token);  //remove
-int	remove_node(t_node **token);
-int	set_type_word(t_node **token);
-int	set_cmd_end(t_node **token);
+typedef enum e_parsetype
+{
+	COMMENT = 5,
+	SQUOTE,
+	DQUOTE,
+	EXPAND,
+	ASSIGN,
+	TILDE,
+	INPUT,
+	OUTPUT,
+	HEREDOC,
+	HEREDOCQ,
+	APPEND,
+	// ERR,
+	// BRACE_O,
+	// BRACE_C,	
+}	t_parsetype;
 
-int (*parse[14])(t_node **) = {
-	NULL, //word
-	set_type_word, //dquote
-	set_type_word, //squote
-	todo, //expand
-	todo, //assign
-	todo, //great
-	todo, //less
-	todo, //dless
-	todo, //dgreat
-	set_cmd_end, //pipe
-	set_cmd_end, //new_line should this do more?
-	remove_node, //comment
-	remove_node, //space
-	remove_node, //tab
-};
+// parser.c
+typedef int	t_function(t_node **, t_smpl_cmd *);
+
+// parser_utils
+int	add_word_to_cmd(t_node **token, t_smpl_cmd *cmd);
+int	set_cmd_end(t_node **token, t_smpl_cmd *cmd);
+int	remove_comment(t_node **token, t_smpl_cmd *cmd);
+int	parser_assign(t_node **token, t_smpl_cmd *cmd);
+int	expand_tilde(t_node **token, t_smpl_cmd *cmd);
+
+// expand_utils
+int	expander(t_node **token, t_smpl_cmd *cmd);
+int	expand(t_node **token, t_smpl_cmd *cmd);
+
+// content_utils
+int	remove_quotes(t_node **token, t_smpl_cmd *cmd);
+
+// redirect_utils
+int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd);
 
 /* -------------------------------------------------------
    The grammar symbols
@@ -45,11 +61,7 @@ int (*parse[14])(t_node **) = {
 // %token  ASSIGNMENT_WORD
 // %token  NAME
 // %token  NEWLINE
-
-/* The following are the operators mentioned above. */
-
 // %token  DLESS  DGREAT
-// /*      '<<'   '>>' */
 
 /* -------------------------------------------------------
    The Grammar
@@ -73,9 +85,11 @@ int (*parse[14])(t_node **) = {
 //                  | cmd_name cmd_suffix
 //                  | cmd_name
 //                  ;
-// cmd_name         : WORD                   /* Apply rule 7a */
+// cmd_name         : WORD                   
+//* Apply rule 7a */
 //                  ;
-// cmd_word         : WORD                   /* Apply rule 7b */
+// cmd_word         : WORD                   
+//* Apply rule 7b */
 //                  ;
 // cmd_prefix       :            io_redirect
 //                  | cmd_prefix io_redirect
@@ -97,11 +111,13 @@ int (*parse[14])(t_node **) = {
 //                  | '>'       filename
 //                  | DGREAT    filename
 //                  ;
-// filename         : WORD                      /* Apply rule 2 */
+// filename         : WORD                      
+//* Apply rule 2 */ -> perform all other rules
 //                  ;
 // io_here          : DLESS     here_end
 //                  ;
-// here_end         : WORD                      /* Apply rule 3 */
+// here_end         : WORD                      
+//* Apply rule 3 */ -> only perform quote removal
 //                  ;
 
 #endif

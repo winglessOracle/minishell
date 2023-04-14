@@ -3,44 +3,35 @@
 /*                                                        ::::::::            */
 /*   test.c                                             :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
+/*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/24 13:08:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/29 22:31:01 by cariencaljo   ########   odam.nl         */
+/*   Created: 2023/04/13 09:31:02 by cariencaljo   #+#    #+#                 */
+/*   Updated: 2023/04/13 16:18:15 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "builtin.h" //test
 
-void	leaks(void)
-{
-	system("leaks minishell -q");	
-}
-
-void	test_lexer(char *str, t_node *tokens)
-{
-	int i = 1;
+static char	*cmd_vector[] = {"cd", "../minishell/src"};
 	
-	printf("\nprinting output list of lexer:\n\n");
-	printf("tested string:\t\t%s\n", str);
-	printf("tested deliminators:\t'|<> '\n\n"); // &;() skipped for now
-	while (tokens)
-	{
-		// printf("--node [%d]--\ntype\t<%d>\ncontent\t_%s_\n\n", i, tokens->type, tokens->content);
-		printf("token:\t%s\ntype:\t%d\n\n", tokens->content, tokens->type);
-		tokens = tokens->next;
-		i++;
-	}
-	
-}
-
-void	print_cmd(t_smpl_cmd *cmd)
+int	test_cd(t_node *env_list)
 {
-	printf("\n----------------------\ncmd: %s,\t%d args\n----------------------\n", cmd->cmd_argv->content, cmd->cmd_argc);
-	while (cmd->cmd_argv)
-	{
-		printf("%s\n", cmd->cmd_argv->content);
-		cmd->cmd_argv = cmd->cmd_argv->next;
-	}
-	printf("----------------------\n");
+	char	*buf;
+
+	buf = NULL;
+	printf("\ncurrent dir:\t%s\n", getwd(buf));
+	printf("current PWD:\t%s\n", get_variable(env_list, "PWD"));
+	printf("current OLDPWD:\t%s\n\n", get_variable(env_list, "OLDPWD"));
+	execute_cd(cmd_vector, env_list);
+	// printf("\nnew dir:\t%s\n", getwd(buf));
+	printf("\nnew PWD:\t%s\n", get_variable(env_list, "PWD"));
+	printf("new OLDPWD:\t%s\n", get_variable(env_list, "OLDPWD"));
+	free(buf);
+	return (0);
+}
+int	test_echo()
+{
+	execute_echo(cmd_vector);
+	return (0);
 }
