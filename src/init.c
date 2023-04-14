@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:05:51 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/14 13:14:06 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/14 15:26:28 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,12 @@ t_node	*init_env(void)
 t_smpl_cmd	*init_smpl_cmd(t_node *env_list)
 {
 	t_smpl_cmd	*cmd;
-	int			pipe[2];
 
 	cmd = malloc(sizeof(t_smpl_cmd));
 	if (!cmd)
 		exit_error("init_smpl_cmd", errno);
 	ft_memset(cmd, 0, sizeof(t_smpl_cmd));
 	cmd->env_list = env_list;
-	cmd->fd_pipe = pipe;
 	return (cmd);
 }
 

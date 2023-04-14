@@ -5683,3 +5683,29 @@ ls
 ls -la
 ls | grep Make
 exit
+ls | ls | ls | ls
+ls | grep Make
+ls | wc
+ls | wc -l
+exit
+ls | wc -l
+exit
+ls | wc -l
+exit
+ls | wc -l
+exit
+ls | wc -l
+exit
+ls | wc -l
+exit
+ls | wc -l
+ls | wc -l | grep 12
+exit
+ls | wc -l | grep 12
+cat | wc -l
+ls | head
+cat segfault | head
+cat segfault.txt | head
+exit
+cat segfault.txt | head
+<segfault.txt cat | head

@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/14 15:15:26 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/14 15:32:53 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,21 +74,21 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 // 	//clearlist?
 // }
 
-int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int fd_keep)
+int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int fd_keep, int *fd_pipe)
 {
-// 	while(smpl_cmd->redirect)
-// 	{
-// 		if (smpl_cmd->redirect->type == INPUT)
-// 			pipeline->pipe_argv->fd_pipe[0] = open(smpl_cmd->redirect->content, O_RDONLY);
-// 		else if (smpl_cmd->redirect->type == OUTPUT)
-// 			pipeline->pipe_argv->fd_pipe[1] = open(smpl_cmd->redirect->content, O_WRONLY);
-// 		else if (smpl_cmd->redirect->type == APPEND)
-// 			pipeline->pipe_argv->fd_pipe[1] = open(pipeline->pipe_argv->redirect->content, O_APPEND);
-// //		else if (pipe->redirect->type == HEREDOC)
-// 		if (pipeline->pipe_argv->fd_pipe[0] == -1 || pipeline->pipe_argv->fd_pipe[1] == -1)
-// 			return (-1);
-// 		remove_node(&smpl_cmd->redirect, NULL);
-// 	}
+	while(smpl_cmd->redirect)
+	{
+		if (smpl_cmd->redirect->type == INPUT)
+			fd_pipe[0] = open(smpl_cmd->redirect->content, O_RDONLY);
+		else if (smpl_cmd->redirect->type == OUTPUT)
+			fd_pipe[1] = open(smpl_cmd->redirect->content, O_WRONLY);
+		else if (smpl_cmd->redirect->type == APPEND)
+			fd_pipe[1] = open(pipeline->pipe_argv->redirect->content, O_APPEND);
+//		else if (pipe->redirect->type == HEREDOC)
+		if (fd_pipe[0] == -1 || fd_pipe[1] == -1)
+			return (-1);
+		remove_node(&smpl_cmd->redirect, NULL);
+	}
 	return (0);
 }
 
@@ -105,8 +105,18 @@ void	redirect(t_pipe *pipeline, pid_t pid, int fd_keep, int *fd_pipe)
 		if (!fd_pipe[1])
 			exit_error("dup fail", 1);
 		// printf("cmd: %s, in: %d, out: %d\n", pipeline->pipe_argv->cmd_argv->content, fd_keep, fd_pipe[1]);
-		// if (set_fd(pipeline, pipeline->pipe_argv, fd_keep) != 0)
+		// if (set_fd(pipeline, pipeline->pipe_argv, fd_keep, fd_pipe) != 0)
 		// 	perror("No such file or directory\n");
+	}
+	else
+	{	
+		// printf("keep: %d, pipe[0]: %d\n", keep, fd_pipe[0]);
+		close(fd_keep);
+		if (pipeline->pipe_argv->next)
+			fd_keep = dup(fd_pipe[0]);
+		// printf("redirected keep: %d\n", keep);
+		close(fd_pipe[0]);
+		close(fd_pipe[1]);
 	}
 }
 
@@ -132,27 +142,18 @@ int		executor(t_pipe *pipeline)
 	 	if (pid == -1)
 			exit_error("fork fail", errno);
 		// assignments(pipeline->pipe_argv, pid, env_list);
+		redirect(pipeline, pid, keep, fd_pipe);
 		if (pid == 0)
 		{
-			redirect(pipeline, pid, keep, fd_pipe);
 		 	exec_cmd(pipeline->pipe_argv, env);
 		}
-	 	else
-		{	
-			// printf("keep: %d, pipe[0]: %d\n", keep, fd_pipe[0]);
-			close(keep);
-			if (pipeline->pipe_argv->next)
-				keep = dup(fd_pipe[0]);
-			// printf("redirected keep: %d\n", keep);
-			close(fd_pipe[0]);
-			close(fd_pipe[1]);
-		}
+		else
+			pipeline->pipe_argv = pipeline->pipe_argv->next;
 		wait(NULL);
-		pipeline->pipe_argv = pipeline->pipe_argv->next;
-	// 	free (env);
 	}
-	// exitstatus = get_exit_st(pipeline->pipe_argv, pid);
+	exitstatus = get_exit_st(pipeline->pipe_argv, pid);
 	return (exitstatus);
+	// 	free (env);
 	// clean lists 
 }
 
