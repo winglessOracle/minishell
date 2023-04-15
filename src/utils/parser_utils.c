@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/12 11:26:47 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/15 16:21:45 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	expand_tilde(t_node **token, t_smpl_cmd *cmd)
 
 	(void)cmd;
 	temp = (*token)->content;
-	home = get_variable(cmd->env_list, "PWD"); // -->change to home when get_variable function is fixed
+	home = get_variable(cmd->env_list, "HOME");
 	if (ft_strlen(temp) == 1)
 		(*token)->content = ft_strdup(home);
 	else

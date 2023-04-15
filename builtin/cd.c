@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/14 13:10:50 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/15 16:30:48 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,17 @@ char	**get_path_arr(char *cmd_arg, char *pwd, t_node *env_list)
 	char	*dir;
 	char	*cd_path;
 	char	**path_arr;
+	int		i;
 
-	
+	i = 0;
 	cd_path = get_variable(env_list, "CDPATH");
 	if (!cd_path)
-		cd_path = get_variable(env_list, pwd);
+		cd_path = pwd;
 	path_arr = ft_split(cd_path, ':');
-	if (*path_arr)
+	if (path_arr[i])
 	{
-		if (*path_arr[ft_strlen(*path_arr) - 1] != '/')
-			dir = ft_strjoin(*path_arr, "/");
+		if (path_arr[i][ft_strlen(*path_arr) - 1] != '/')
+			dir = ft_strjoin(path_arr[i], "/");
 		if (cmd_arg[0] == '/')
 			dir = ft_strdup(cmd_arg);
 		else if (cmd_arg[0] == '.' && cmd_arg[1] == '.') //check '/' of
@@ -58,22 +59,23 @@ char	**get_path_arr(char *cmd_arg, char *pwd, t_node *env_list)
 		else if (cmd_arg[0] == '-' && cmd_arg[1] == '\0')
 			dir = get_variable(env_list, "OLDPWD"); // what if no OLDPWD
 		else if (cmd_arg[0] == '.') //check '/'
-			dir = ft_strjoin(*path_arr, &cmd_arg[2]);
+			dir = ft_strjoin_free_s1(dir, &cmd_arg[2]);
 		else
-			dir = ft_strjoin(*path_arr, cmd_arg);
-		free(*path_arr);
-		*path_arr = dir;
+			dir = ft_strjoin_free_s1(dir, cmd_arg);
+		free(path_arr[i]);
+		path_arr[i] = dir;
+		i++;
 	}
 	return (path_arr);
 }
 
 int	execute_cd(char **cmd_vector, t_node *env_list)
 {
-	// take array or cmd list?
 	int		i;
 	char	buf[PATH_MAX];
 	char	*pwd;
 	char	**path_arr;
+	char	*temp;
 
 	i = 0;
 	while (cmd_vector[i])
@@ -83,8 +85,10 @@ int	execute_cd(char **cmd_vector, t_node *env_list)
 	pwd = getcwd(buf, PATH_MAX);
 	if (!pwd)
 		exit_error("getcwd", 1);
-	// add_variable(env_list, ft_strjoin("PWD=", pwd), 2); // 1 or 2?
-	path_arr = get_path_arr(cmd_vector[1], pwd, env_list);
+	if (i == 1)
+		path_arr = get_path_arr(get_variable(env_list, "HOME"), pwd, env_list);
+	else
+		path_arr = get_path_arr(cmd_vector[1], pwd, env_list);
 	while (*path_arr)
 	{
 		i = chdir(*path_arr);
@@ -96,13 +100,12 @@ int	execute_cd(char **cmd_vector, t_node *env_list)
 			break ;	
 		}
 	}
-	if (i == -1)
-	{
-		// add current working dir
-		exit_error("chdir: dir", 1); //make dynamic	
-	}
-	add_variable(env_list, ft_strjoin("OLDPWD=", pwd), 2);
+	if (i == -1) //should not exit but return?
+		exit_error("chdir: dir", 1); //make dynamic	 with current working directory
+	temp = get_variable(env_list, "PWD");
+	add_variable(env_list, ft_strjoin("OLDPWD=", temp), 2);
 	add_variable(env_list, ft_strjoin("PWD=", *path_arr), 2);
+	free(temp);
 	return(0); //change to exit after testing?
 }
 
