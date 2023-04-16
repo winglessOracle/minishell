@@ -6,11 +6,17 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/14 16:32:23 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/15 22:41:47 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	 return_error(char *str, int err)
+{
+	perror(str);
+	return (err);
+}
 
 void	exit_error(char	*str, int num)
 {

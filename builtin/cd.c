@@ -6,67 +6,77 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/15 16:30:48 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/16 11:13:21 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "builtin.h"
 #include <unistd.h>
 
 // cd []
 // Change the current directory to dir. The variable HOME is the default dir. 
-// The variable CDPATH defines the search path for the directory containing dir. 
+// The variable CDPATH defines the search path for the directory containing dir
 // Alternative directory names in CDPATH are separated by a colon (:). 
-// A null directory name in CDPATH is the same as the current directory, i.e., ''.''. 
-// An argument of - is equivalent to $OLDPWD. 
-// If a non-empty directory name from CDPATH is used, or if - is the first argument, 
-// and the directory change is successful, the absolute pathname of the new working 
-// directory is written to the standard output. 
-// The return value is true if the directory was successfully changed; false otherwise.
-
-char	*get_back(char *cd_path)
+// A null directory name in CDPATH is the same as the current directory, 
+// i.e., ''.''. 
+// If a non-empty directory name from CDPATH is used, or if - is the first 
+// argument, and the directory change is successful, the absolute pathname of 
+// the new working directory is written to the standard output. 
+// An argument of - is equivalent to $OLDPWD.
+// The return value is true if the directory was successfully changed; 
+// false otherwise.
+int	change_dir(char	*str, char *arg, int print)
 {
-	int		i;
-	char	*back;
-	
-	i = ft_strlen(cd_path) - 2;
-	while(cd_path[i] != '/' && i > 0)
-		i--;
-	back = ft_substr(cd_path, 0, (i));
-	return (back);
+	int	ret;
+
+	if (str[ft_strlen(str) - 1] != '/')
+		str = ft_strjoin_free_s1(str, "/");
+	str = ft_strjoin_free_s1(str, arg);
+	ret = chdir(str);
+	if (!ret && print == 1)
+		printf("%s\n", str);
+	free(str);
+	return (ret);
 }
 
-char	**get_path_arr(char *cmd_arg, char *pwd, t_node *env_list)
+int	cd_absolute(char *arg)
 {
-	char	*dir;
-	char	*cd_path;
-	char	**path_arr;
+	if (arg[0] == '/' || arg[0] == '-')
+	{
+		if (arg[0] == '-' && arg[0] != '\0')
+			return_error("minishell: cd: invalid option", 1);
+		if (chdir(arg) == -1)
+			return_error("minishell: cd", 1);
+		else
+			return (0);
+	}
+	return (1);
+}
+
+int	cd_relative(t_node *env_list, char *pwd, char *arg, char *buf)
+{
 	int		i;
+	char	**path_arr;
+	char	*path;
 
 	i = 0;
-	cd_path = get_variable(env_list, "CDPATH");
-	if (!cd_path)
-		cd_path = pwd;
-	path_arr = ft_split(cd_path, ':');
-	if (path_arr[i])
+	path_arr = get_path_arr(i, env_list, pwd);
+	while (path_arr[i])
 	{
-		if (path_arr[i][ft_strlen(*path_arr) - 1] != '/')
-			dir = ft_strjoin(path_arr[i], "/");
-		if (cmd_arg[0] == '/')
-			dir = ft_strdup(cmd_arg);
-		else if (cmd_arg[0] == '.' && cmd_arg[1] == '.') //check '/' of
-			dir = ft_strjoin_free_s1(get_back(pwd), &cmd_arg[2]);
-		else if (cmd_arg[0] == '-' && cmd_arg[1] == '\0')
-			dir = get_variable(env_list, "OLDPWD"); // what if no OLDPWD
-		else if (cmd_arg[0] == '.') //check '/'
-			dir = ft_strjoin_free_s1(dir, &cmd_arg[2]);
+		if (change_dir(path_arr[i], arg, 1) == -1)
+			i++;
 		else
-			dir = ft_strjoin_free_s1(dir, cmd_arg);
-		free(path_arr[i]);
-		path_arr[i] = dir;
-		i++;
+			return (0);
 	}
-	return (path_arr);
+	if (!path_arr[i])
+	{
+		path = getcwd(buf, PATH_MAX);
+		if (change_dir(ft_strdup(path), arg, 0) == -1)
+			return_error("minishell: cd", 1);
+	}
+	free(path_arr);
+	return (0);
 }
 
 int	execute_cd(char **cmd_vector, t_node *env_list)
@@ -74,38 +84,26 @@ int	execute_cd(char **cmd_vector, t_node *env_list)
 	int		i;
 	char	buf[PATH_MAX];
 	char	*pwd;
-	char	**path_arr;
-	char	*temp;
+	char	*arg;
 
 	i = 0;
 	while (cmd_vector[i])
 		i++;
 	if (i > 2)
-		exit_error("CC|$HELL : cd: too many arguments", 1);  // make dynamic string?
+		return_error("minishell: cd: too many arguments", 1);
 	pwd = getcwd(buf, PATH_MAX);
 	if (!pwd)
-		exit_error("getcwd", 1);
-	if (i == 1)
-		path_arr = get_path_arr(get_variable(env_list, "HOME"), pwd, env_list);
-	else
-		path_arr = get_path_arr(cmd_vector[1], pwd, env_list);
-	while (*path_arr)
-	{
-		i = chdir(*path_arr);
-		if ( i == -1)
-			path_arr++;
-		else
-		{
-			printf("%s\n", *path_arr);			
-			break ;	
-		}
-	}
-	if (i == -1) //should not exit but return?
-		exit_error("chdir: dir", 1); //make dynamic	 with current working directory
-	temp = get_variable(env_list, "PWD");
-	add_variable(env_list, ft_strjoin("OLDPWD=", temp), 2);
-	add_variable(env_list, ft_strjoin("PWD=", *path_arr), 2);
-	free(temp);
-	return(0); //change to exit after testing?
+		return_error("minishell: cd: getcwd", 1);
+	arg = get_arg(cmd_vector[i - 1], pwd, env_list);
+	if (!arg)
+		return_error("minishell: cd: OLDPWD unset", 1);
+	if (cd_absolute(arg))
+		if (cd_relative(env_list, pwd, arg, buf))
+			return (1);
+	free(arg);
+	pwd = get_variable(env_list, "PWD");
+	add_variable(env_list, ft_strjoin("OLDPWD=", pwd), 2);
+	add_variable(env_list, ft_strjoin("PWD=", getcwd(buf, PATH_MAX)), 2);
+	free(pwd);
+	return (0);
 }
-
