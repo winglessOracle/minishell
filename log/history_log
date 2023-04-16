@@ -5792,3 +5792,626 @@ exit
 $PWD
 $HOME
 exit
+ls
+ls | ls
+ls | cat | wc -l
+ls | cat segfault.txt | wc -l
+exit
+ls | cat segfault.txt | wc -l
+exit
+ls | cat segfault.txt | wc -l
+exit
+ls | cat segfault.txt | wc -l
+ls | cat segfault.txt | wc -l
+ls | cat segfault.txt | wc -l
+ls | cat segfault.txt | wc -l
+exit
+ls | cat segfault.txt | wc -l
+ls | cat segfault.txt | wc -l
+ls | cat segfault.txt | wc -l
+ls | cat segfault.txt | wc -l
+ls | cat segfault.txt | wc -l
+ls | cat segfault.txt | wc -l
+ls | cat segfault.txt | wc -l
+ls | cat segfault.txt | wc -l
+ls | cat segfault.txt | wc -l
+ls | cat segfault.txt | wc -l
+exit
+cd
+exit
+cd ..
+exit
+ls
+ls | ls
+echo aap
+pwd
+pwd
+pwd
+exit
+cd
+pwd
+exit
+echo
+echo
+echo
+exit
+echo aap
+echo $PWD
+echo $HOME
+echo "$HOME and $PWD"
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd ..
+exit
+cd ..
+cd minishell
+cd
+cd
+cd
+cd
+cd Documents
+cd ./codamcore
+cd minishell
+exit
+echo app
+echo -n app
+exit
+echo aap
+echo -n
+echo -n aap
+exit
+echo 
+echo aap
+echo -n aap
+echo -n -n -n aap
+echo -n -n -nnnnnnnnnnnnnnnnnnn aap
+echo -n -n -nnnnnnnnnnnnnnnnnnm aap
+exit
+echo -n -n -nnnnnnnnnnnnnnnnnnm aap
+echo aap
+cd -
+cd src
+cd src
+cd src
+cd
+cd
+cd
+cd
+cd
+cd
+cd
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd codamcore
+cd src
+cd codamcore
+ls
+exit
+ls
+exit
+ls
+echo aap
+exit
+echo aap
+exit
+echo aap
+ls
+exit
+ls
+ls
+ls
+echo aap
+echo aap
+echo aap
+echo aap
+echo aap
+echo aap
+ls
+exit
+echo aap
+cd
+cd src
+pwd
+exit
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+exit
+cd src
+exit
+cd src
+exit
+cd src
+exit
+cd src
+exit
+cd -
+cd -
+cd -
+cd -
+pwd
+$OLDPWD
+echo $OLDPWD
+exit
+cd -
+cd src
+exit
+exit
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+exit
+echo $CDPATH
+echo $PWD
+exit
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+pwd
+exit
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+exit
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd -
+pwd
+cd src
+pwd
+cd -
+pwd
+exit
+cd src
+cd src
+cd src
+exit
+cd src
+exit
+cd src
+cd src
+cd src
+cd src
+cd src
+cd codamcore
+exit
+cd codamcore
+cd src
+pwd
+cd minishell
+exit
+cd src
+cd codamcore
+cd minishell
+pwd
+exit
+cd minishell
+exit
+cd minishell
+exit
+cd minishell
+exit
+cd minishell
+exit
+cd minishell
+cd src
+cd minishell
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+exit
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd ..
+cd src
+cd src
+cd src
+cd src
+cd ..
+cd src
+cd ..
+exit
+cd src
+cd ..
+cd src
+cd ..
+cd src
+cd ..
+exit
+cd ..
+cd src
+cd src
+cd ..
+exit
+cd ..
+cd minishell
+cd codamcore
+cd minishell
+cd src
+cd src
+cd src
+cd src
+cd ..
+exit
+cd src
+cd ..
+exit
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd src
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+pwd
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd codamcore
+cd -
+exit
+cd codamcore
+cd -
+echo OLDPWDDD
+echo $OLDPWD
+exit
+echo $OLDPWD
+cd -
+exit
+cd -
+exit
+cd -
+exit
+cd -
+exit
+cd -
+exit
+cd -
+exit
+cd -
+exit
+cd -
+pwd
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd minishell
+pwd
+exit
+cd src
+pwd
+echo $OLDPWD
+cd ..
+pwd
+echo $OLDPWD
+cd codamcore
+cd src
+cd src
+cd ..
+cd ./minishell
+pwd
+cd ./src
+echo "  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas"
+echo "  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas
+echo "  "hoi\" "  \"hoi\"  xx'd  x  \" dag kaas
+echo "  "hoi" "  "hoi"  xx'd  x  " dag kaas
+exit
+echo "hello 'there world"
+echo 'hello "there world'
+exit
+cd src
+cd aap
+exit
+cd aap
+cd aap
+cd aap
+exit
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+exit
+cd src
+cd src
+exit
+src
+aap
+cd src
+cd aap
+exit
+cd src
+pwd
+exit
+cd src
+exit
+cd src
+exit
+cd src
+exit
+cd src
+exit
+cd src
+exit
+src
+pwd
+cd src
+cd src
+cd ..
+pwd
+exit
+cd app
+exit
+cd app
+exit
+cd app
+cd aap
+cd aap
+cd src
+cd aap
+exit
+cd aap
+cd aap
+cd aap
+exit
+cd aap
+cd src
+cd aap
+exit
+cd aap
+cd src
+cd src
+cd src
+cd src
+cd src
+cd
+exit
+cd src
+cd ..
+cd aap
+cd 
+cd
+exit
+cd src
+cd ..
+pwd
+cd aap
+e
+cd
+exit
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd ..
+cd aap
+exit
+cd src
+cd codamcore
+cd codamcore
+cd src
+cd src
+cd
+cd 
+exit
+cd 
+exit
+cd
+EXIT
+exit
+cd
+cd
+cd src
+cd ..
+cd
+src
+..
+cd src
+cd ..
+cd
+cd src
+cd ..
+cd 
+cd aap
+exit
+cd aap
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+pwd
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd
+cd
+cd src
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+exit
+cd aap
+cd
+cd src
+cd src
+cd src
+cd src
+cd ..
+cd codamcore
+cd codamcore
+cd codamcore
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+cd ..
+cd codamcore
+cd src
+cd ..
+cd
+cd src
+pwd
+cd ..
+pwd
+cd
+cd src
+pwd
+cd ..
+pwd
+cd ./src

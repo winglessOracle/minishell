@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/16 11:13:21 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/16 13:25:34 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,55 +28,73 @@
 // false otherwise.
 int	change_dir(char	*str, char *arg, int print)
 {
-	int	ret;
+	int		ret;
+	char	buf[PATH_MAX];
 
+	if (print)
+		print = ft_strcmp(str,  getcwd(buf, PATH_MAX));
 	if (str[ft_strlen(str) - 1] != '/')
 		str = ft_strjoin_free_s1(str, "/");
-	str = ft_strjoin_free_s1(str, arg);
+	if (arg)
+		str = ft_strjoin_free_s1(str, arg);
 	ret = chdir(str);
-	if (!ret && print == 1)
+	if (!ret && print)
 		printf("%s\n", str);
 	free(str);
 	return (ret);
 }
 
-int	cd_absolute(char *arg)
+int	cd_absolute(int i, char *arg, t_node *env_list)
 {
+	if (i == 1)
+	{
+		if (change_dir(get_variable(env_list, "HOME"), NULL, 0) == -1)
+			return(return_error("minishell: cd", 1));
+		else
+		{
+			free(arg);
+			return (0);
+		}
+	}
 	if (arg[0] == '/' || arg[0] == '-')
 	{
 		if (arg[0] == '-' && arg[0] != '\0')
-			return_error("minishell: cd: invalid option", 1);
-		if (chdir(arg) == -1)
-			return_error("minishell: cd", 1);
+			perror("minishell: cd: invalid option");
+		else if (chdir(arg) == -1)
+			perror("minishell: cd");
 		else
+		{
+			free(arg);
 			return (0);
+		}
 	}
 	return (1);
 }
 
-int	cd_relative(t_node *env_list, char *pwd, char *arg, char *buf)
+int	cd_relative(t_node *env_list, char *arg)
 {
-	int		i;
 	char	**path_arr;
-	char	*path;
+	char	buf[PATH_MAX];
+	char	*pwd;
+	int		i;
 
+	pwd =  getcwd(buf, PATH_MAX);
+	path_arr = get_path_arr(env_list, pwd);
+	if (!path_arr)
+		exit_error("cd", 1);
 	i = 0;
-	path_arr = get_path_arr(i, env_list, pwd);
 	while (path_arr[i])
 	{
-		if (change_dir(path_arr[i], arg, 1) == -1)
+		if (change_dir(ft_strdup(path_arr[i]), arg, 1) == -1)
 			i++;
 		else
+		{
+			ft_free_array(path_arr);
 			return (0);
+		}
 	}
-	if (!path_arr[i])
-	{
-		path = getcwd(buf, PATH_MAX);
-		if (change_dir(ft_strdup(path), arg, 0) == -1)
-			return_error("minishell: cd", 1);
-	}
-	free(path_arr);
-	return (0);
+	ft_free_array(path_arr);
+	return(return_error("minishell: cd", 1));
 }
 
 int	execute_cd(char **cmd_vector, t_node *env_list)
@@ -91,16 +109,14 @@ int	execute_cd(char **cmd_vector, t_node *env_list)
 		i++;
 	if (i > 2)
 		return_error("minishell: cd: too many arguments", 1);
-	pwd = getcwd(buf, PATH_MAX);
-	if (!pwd)
-		return_error("minishell: cd: getcwd", 1);
-	arg = get_arg(cmd_vector[i - 1], pwd, env_list);
+	arg = get_arg(cmd_vector[i - 1], env_list);
 	if (!arg)
-		return_error("minishell: cd: OLDPWD unset", 1);
-	if (cd_absolute(arg))
-		if (cd_relative(env_list, pwd, arg, buf))
+		return (1);
+	if (cd_absolute(i, arg, env_list))
+	{
+		if (cd_relative(env_list, arg))
 			return (1);
-	free(arg);
+	}
 	pwd = get_variable(env_list, "PWD");
 	add_variable(env_list, ft_strjoin("OLDPWD=", pwd), 2);
 	add_variable(env_list, ft_strjoin("PWD=", getcwd(buf, PATH_MAX)), 2);
