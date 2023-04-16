@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/13 14:01:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/14 10:33:02 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/16 11:10:45 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,17 @@
 // pwd []
 // Print the absolute pathname of the current working directory. 
 // mo options are handled or checked
-void	execute_pwd(void)
+int	execute_pwd(char **cmd_vector, t_node *env_list)
 {
 	char	buf[PATH_MAX];
 	char	*pwd;
 
-// test remove dir
-	pwd = getcwd(buf, PATH_MAX);
+	// test remove dir
+	(void)cmd_vector;
+	(void)env_list;
+	pwd = getcwd(buf, PATH_MAX); // test bash with rmdir
 	if (!pwd)
 		exit_error("getcwd", 1);
 	printf("%s\n", pwd);
-	exit (0);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/14 15:26:02 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/15 21:02:43 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_pipe
 }	t_pipe;
 
 // utils
+int			return_error(char *str, int err);
 void		exit_error(char	*str, int num);
 int			get_exit(t_node *env_list);
 char		*get_input(t_node *env_list, char *var);

@@ -22,7 +22,10 @@ test$PWD
 
 /* Segfaults or incorrect behaviour */
 ------------------------
-"  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas"
+cd without arg
+"  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas -> removes single quote
+ 'hello "there world'                       -> removes double quote
+check var name for assignment 				-> var can only start with alphabetic chars
 
 / *test cases to compare with bash: */
 ---------------------------------------
@@ -41,7 +44,6 @@ $PWD
 
 /* check Carien */
 think about here content
-check var name for assignment
 should none existing var be NULL or ""? Now NULL but this wil stop the cmd execution at that point?
 NULL should be skipped in cmd vector? --> echo $var -n aap
 make bash script for testing?
@@ -51,7 +53,6 @@ use PS1 for testing as it has wierd characters...
 /* checks Carlo */
 readline keeps first characters
 redirect can have empty filenames or should expander flag error?
-check gettingAR and VAR2
 ctrl-C should display a new line with a new prompt (check that previous text does not get executed)
 ctrl-D in prompt with text should do nothing.
 ctrl-/ does nothing
