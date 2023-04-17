@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/17 18:32:03 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/17 19:59:07 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@
 
 int	check_built(t_smpl_cmd *cmd)
 {
-	char	*builtings[7] =	{"echo", "cd", "pwd", "export",	"unset", "env",	"exit"};
+	char	*builtings[6] =	{"echo", "cd", "pwd", "export",	"unset", "env"};
 	int		i;
-	t_built	*built[7];
+	t_built	*built[6];
 	char	**cmd_args;
 
 	built[0] = execute_echo;
@@ -34,10 +34,14 @@ int	check_built(t_smpl_cmd *cmd)
 	built[3] = execute_export;
 	built[4] = execute_unset;
 	// built[5] = execute_env;
-	// built[6] = execute_exit;	2
 	i = 0;
 	while (i < 7 && cmd->cmd_argc > 0)
 	{
+		if (ft_strcmp(cmd->cmd_argv->content, "exit") == 0)
+		{
+			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);
+			execute_exit(cmd_args);
+		}
 		if (ft_strcmp(cmd->cmd_argv->content, builtings[i]) == 0)
 		{
 			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);
@@ -59,7 +63,6 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 
 	i = 0;
 	cmd_args = build_cmd_args(pipe_argv->cmd_argv, pipe_argv->cmd_argc);
-
 	if (!cmd_args)
 		exit_error("building commands", 1);
 	path = get_variable(pipe_argv->env_list, "PATH");
@@ -93,6 +96,21 @@ void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
 	}
 }
 
+void	here_doc(t_pipe *pipeline, int *keep)
+{
+	char	*line_read;
+
+	close(*keep);
+	*keep = open("temp_here", O_RDWR | O_CREAT | O_TRUNC, 0644);
+	while (1)
+	{
+		line_read = readline("here_doc ");
+		if (!ft_strcmp(line_read, pipeline->pipe_argv->redirect->content))
+			break ;
+		ft_putstr_fd(line_read, *keep);
+	}
+}
+
 int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 {
 	int	count;
@@ -114,11 +132,12 @@ int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 		}
 		else if (smpl_cmd->redirect->type == APPEND)
 		{
-			printf("here\n");
+			close(fd_pipe[1]);
 			fd_pipe[1] = open(pipeline->pipe_argv->redirect->content, O_CREAT | O_WRONLY | O_APPEND, 0644);
 			count = 1;
 		}
-//		else if (pipe->redirect->type == HEREDOC)
+		else if (smpl_cmd->redirect->type == HEREDOC)
+			here_doc(pipeline, keep);
 		if (*keep == -1 || fd_pipe[0] == -1 || fd_pipe[1] == -1)
 			return (-1);
 		remove_node(&smpl_cmd->redirect, NULL);
@@ -178,8 +197,8 @@ int		executor(t_pipe *pipeline)
 			if (pipeline->pipe_argv->cmd_argc == 0)
 			{
 				assignments(pipeline->pipe_argv, 0);
+				set_fd(pipeline, pipeline->pipe_argv, &keep, fd_pipe);
 				return (0);
-				//redirects and return (set_fd)
 			}
 		}
 		if (pipe(fd_pipe) == -1)

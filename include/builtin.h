@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/13 09:29:13 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/17 11:43:25 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/17 19:56:35 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int		execute_cd(char **cmd_vector, t_node *env_list);
 int		execute_pwd(char **cmd_vector, t_node *env_list);
 int		execute_unset(char **cmd_vector, t_node *env_list);
 int		execute_export(char **cmd_vector, t_node *env_list);
+void	execute_exit(char **cmd_vector);
 
 // cd_utils
 char	*get_back(char *pwd);
 char	*get_arg(char *cmd_arg, t_node *env_list);
 char	**get_path_arr(t_node *env_list, char *pwd);
-
 
 #endif

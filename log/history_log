@@ -6856,3 +6856,60 @@ exit
 ls >> out
  >> outgg
  >>outgg
+ls
+ls | ls
+ls grep log
+ls | grep log
+ls | grep log > out2
+<out cat | grep e > out2
+<out cat | grep e > out3
+>out4
+>>out5
+>>out5
+>>out5
+>>out5 echo cool
+echo cool >> echo cool
+echo cool >> out5
+echo cool >>out5
+echo "cool" >>out5
+echo cool >>out5
+echo cool >>out6
+>>out6 echo cool
+>>out7 echo cool
+<inputstuff
+<inputstuff echo
+<inputstuff cat
+<inputstuff
+<<input
+<<input
+>>out5
+echo cool >>out5
+cat segfault.txt >>out5
+echo txt >>out5
+echo txt >>out5
+>>out5
+>>out6
+<minishell cat | grep a > out7
+<minishell cat | grep a >> out88
+<minishell cat | grep a >> out88
+<minishell >>out99 cat | grep a
+>>out999 <Makefile | grep a
+ls
+ls | ls
+<<del cat | grep 1
+<<del cat | grep 1
+<< del
+ls
+ls \ ls
+ls | ls
+<< del cat | grep 01
+<< del cat | grep 01
+<< del cat | grep 01
+<< del cat | grep 01 >out1
+<< del cat | grep 01 >out1
+<< del cat | grep 01 >out2
+ls
+ls | ls
+exit
+exit
+exit

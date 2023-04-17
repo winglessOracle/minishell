@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/17 16:23:33 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/17 20:07:21 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,6 @@ int	main(void)
 	{
 		line_read = get_input(env_list, "PS1");
 		write_history("log/history_log"); //remove?
-	// is exit built-in so can be removed after that works
-	if (!ft_strcmp(line_read, "exit"))  
-		break ;
 		tokens = lexer(line_read, "|<> \t\n");
 	// print_tokens(tokens, "CREATED TOKENS\n");
 		while (tokens)

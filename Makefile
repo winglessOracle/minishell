@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/17 11:50:50 by ccaljouw      ########   odam.nl          #
+#    Updated: 2023/04/17 19:41:21 by cwesseli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJ_FILES	= $(addprefix obj/, minishell.o lst_utils/t_node.o parser.o utils/util
 				utils/redirect_utils.o utils/quote_utils.o expander.o signals.o termios.o \
 				lst_utils/delete.o executor.o utils/executor_utils.o)
 
-OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o cd.o cd_utils.o pwd.o unset.o export.o)
+OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o cd.o cd_utils.o pwd.o unset.o export.o exit.o)
 
 #//= Modifiable =//#
 all: libft $(NAME)
