@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/17 16:39:29 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/17 16:50:32 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_node	*change_var(t_node *env_list, char *name, int i)
 	while (temp)
 	{
 		if (ft_strncmp(temp->content, name, i) == 0 \
-							&& temp->content[i + 1] == '=')
+			&& (temp->content[i + 1] == '=' || temp->content[i + 1] == '\0'))
 			return (temp);
 		temp = temp->next;
 	}
@@ -63,7 +63,7 @@ void	add_variable(t_node *env_list, char *var, int type)
 	t_node	*temp;
 
 	i = 0;		
-	while (var[i] != '=')
+	while (var[i] && var[i] != '=')
 		i++;
 	name = ft_substr(var, 0, i);
 	if (!name)

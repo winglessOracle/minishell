@@ -41,7 +41,6 @@ $PWD
 --
 
 /* check Carien */
-var name should start with alphabetic char?
 var name can be folowed by '\0' as well as '='
 think about here content
 should none existing var be NULL or ""? Now NULL but this wil stop the cmd execution at that point?

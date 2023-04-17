@@ -6822,3 +6822,13 @@ var=123
 exit
 ?=1
 exit
+export aap
+export aap=
+$aap
+echo $aap
+export
+exit
+export aap
+export aap
+export
+exit
