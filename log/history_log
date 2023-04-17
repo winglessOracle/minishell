@@ -6913,3 +6913,13 @@ ls | ls
 exit
 exit
 exit
+ls
+ls | ls
+<< del cat | grep 01
+<< del cat | grep 01
+<< del cat | grep 01
+<< del cat | grep 01
+<< del cat | grep 01 >out1
+exit
+<< del cat | grep 01 >out1
+<< del cat | grep 01 >out1

@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/17 19:59:07 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/17 20:21:23 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,16 +98,25 @@ void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
 
 void	here_doc(t_pipe *pipeline, int *keep)
 {
+
+	//t_node	*env_list;
+	//t_node	*tokens;
 	char	*line_read;
 
+	//env_list = init_env();
 	close(*keep);
-	*keep = open("temp_here", O_RDWR | O_CREAT | O_TRUNC, 0644);
 	while (1)
 	{
 		line_read = readline("here_doc ");
 		if (!ft_strcmp(line_read, pipeline->pipe_argv->redirect->content))
 			break ;
-		ft_putstr_fd(line_read, *keep);
+		//tokens = lexer(line_read, "|<> \t\n");
+		//while (tokens)
+		//{
+		//	pipeline = parse_pipeline(&tokens, env_list);
+			*keep = open("temp_here", O_RDWR | O_CREAT | O_TRUNC, 0644);
+			ft_putstr_fd(line_read, *keep);
+		//}
 	}
 }
 
