@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/17 15:57:54 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/17 18:32:03 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	check_built(t_smpl_cmd *cmd)
 	built[4] = execute_unset;
 	// built[5] = execute_env;
 	// built[6] = execute_exit;	2
-	//printf("in check built\n");
 	i = 0;
 	while (i < 7 && cmd->cmd_argc > 0)
 	{
@@ -77,7 +76,6 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 		i++;
 	}
 	ft_free_array(my_directories);
-//	execve(cmd_args[0], cmd_args, env); //kan weg denk ik
 	exit_error("unknown command", 127);
 }
 
@@ -88,7 +86,6 @@ void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
 		{
 			while (pipe_argv->assign)
 			{
-				// printf("content=%s\n", pipe_argv->assign->content);
 				add_variable(pipe_argv->env_list, ft_strdup(pipe_argv->assign->content), 1);
 				remove_node(&pipe_argv->assign, NULL);
 			}
@@ -96,44 +93,64 @@ void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
 	}
 }
 
-int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *fd_keep, int *fd_pipe)
+int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 {
+	int	count;
+
+	count = 0;
 	while(smpl_cmd->redirect)
 	{
-		if (smpl_cmd->redirect->type == INPUT)
-			*fd_keep = open(smpl_cmd->redirect->content, O_RDONLY);
-		else if (smpl_cmd->redirect->type == OUTPUT)
-			fd_pipe[1] = open(smpl_cmd->redirect->content, O_WRONLY);
+		if (smpl_cmd->redirect->type == OUTPUT)
+		{
+			if (access(smpl_cmd->redirect->content, F_OK) == 0)
+				return (-2);
+			fd_pipe[1] = open(smpl_cmd->redirect->content, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+			count = 1;
+		}
+		else if (smpl_cmd->redirect->type == INPUT)
+		{
+			close(*keep);
+			*keep = open(smpl_cmd->redirect->content, O_RDONLY);
+		}
 		else if (smpl_cmd->redirect->type == APPEND)
-			fd_pipe[1] = open(pipeline->pipe_argv->redirect->content, O_APPEND);
+		{
+			printf("here\n");
+			fd_pipe[1] = open(pipeline->pipe_argv->redirect->content, O_CREAT | O_WRONLY | O_APPEND, 0644);
+			count = 1;
+		}
 //		else if (pipe->redirect->type == HEREDOC)
-		if (fd_pipe[0] == -1 || fd_pipe[1] == -1)
+		if (*keep == -1 || fd_pipe[0] == -1 || fd_pipe[1] == -1)
 			return (-1);
 		remove_node(&smpl_cmd->redirect, NULL);
 	}
-	return (0);
+	return (count);
 }
 
-void	redirect(t_pipe *pipeline, pid_t pid, int fd_keep, int *fd_pipe)
+void	redirect(t_pipe *pipeline, pid_t pid, int keep, int *fd_pipe)
 {
+	int	set_out;
+
 	if (pid == 0)
 	{
 		close(fd_pipe[0]);
-		dup2(fd_keep, STDIN_FILENO);
-		if (!fd_keep)
+		set_out = set_fd(pipeline, pipeline->pipe_argv, &keep, fd_pipe);
+		if (set_out == -2)
+			exit_error("cannot overwrite existing file", 1);
+		if (set_out == -1)
+			exit_error("No such file or directory", 1); //in case of no arguments this should return too
+		dup2(keep, STDIN_FILENO);
+		if (!keep)
 			exit_error("dup fail", 1);
-		if (pipeline->pipe_argv->next)
+		if (!(!pipeline->pipe_argv->next && !set_out))
 			dup2(fd_pipe[1], STDOUT_FILENO);
 		if (!fd_pipe[1])
 			exit_error("dup fail", 1);
-	//	if (set_fd(pipeline, pipeline->pipe_argv, &fd_keep, fd_pipe) != 0) //input rediret causes par and child to coexist
-	//		perror("No such file or directory\n");
 	}
 	else
 	{	
-		close(fd_keep);
+		close(keep);
 		if (pipeline->pipe_argv->next)
-			fd_keep = dup(fd_pipe[0]);
+			keep = dup(fd_pipe[0]);
 		close(fd_pipe[0]);
 		close(fd_pipe[1]);
 	}
@@ -141,20 +158,18 @@ void	redirect(t_pipe *pipeline, pid_t pid, int fd_keep, int *fd_pipe)
 
 int		executor(t_pipe *pipeline)
 {
-	int		exitstatus;
 	int		keep;
 	int		fd_pipe[2];
 	pid_t	pid;
 	char	**env;
 	int		ret;
 
-	exitstatus = 0;
+	ret = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);
 	while (pipeline && pipeline->pipe_argv)
 	{
-			// printf("here argc: %d\n", pipeline->pipe_argv->cmd_argc);
 		if (pipeline->pipe_argc == 1)
 		{
 			ret = check_built(pipeline->pipe_argv);
@@ -179,12 +194,12 @@ int		executor(t_pipe *pipeline)
 		{
 			if (pid == 0)
 				exec_cmd(pipeline->pipe_argv, env);
-			exitstatus = get_exit_st(pid);
+			ret = get_exit_st(pid);
 		}
 		else if (pid == 0)
 			exit(0);
 		pipeline->pipe_argv = pipeline->pipe_argv->next;
 	}
-	return (exitstatus);
+	return (ret);
 	// clean lists 
 }

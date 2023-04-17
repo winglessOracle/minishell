@@ -6720,3 +6720,139 @@ ehco var
 ehco var
 ehco var
 ehco var
+var=123
+echo $var
+ls | ls
+<input cat | cat
+>out
+>out
+exit
+>out
+>out
+>out
+echo 42
+echo 42 | <input | cat
+echo 42 | <input | cat
+<out
+ls
+<input cat
+<input cat
+<input cat
+<input cat
+<input cat
+<input cat
+<input cat
+<input cat
+<input cat
+>out
+>out
+>out
+<in
+<input
+>output
+<input
+<input cat
+<input
+>output cat
+<infilesz cat
+<input cat
+>output cat
+>output
+>output
+<input
+<input grep a
+<input grep a
+ls | ls
+ls | cat
+ls | grep log
+ls | grep log
+ls | grep log
+<input grep a
+<input grep a
+<input grep a
+<input grep a
+<input grep a
+<out grep a
+<out grep a
+<out grep a
+<out grep a
+<in grep a
+>out
+<in grep a
+<in grep a
+<in grep a
+<out grep a
+>out 
+>out ooooo
+>out ls
+>out | ls
+>out ls | grep a
+>out ls | grep a
+>cccc ls | grep a
+>cccc ls | grep a
+>cccc ls | grep a
+<segfault.txt | grep a
+>segfault.txt grep a
+<segfault.txt grep a
+<segfault.txt grep a
+<segfault.txt grep a >out
+<segfault.txt grep a
+>out
+>out ls | grep a 
+>out ls | grep a 
+>out ls
+>out ls
+>out ls
+>out ls
+>out ls
+>outlll ls
+>outlll ls
+>outlll ls
+>outlll ls
+>outlll ls
+>outlll ls
+>outlll ls
+>outlll ls
+>outllhl ls
+ls
+<outlll cat | grep ccc
+<outlll cat | grep ccc >newout
+<outlll cat | grep ccc >newout
+<outlll cat | grep ccc >newoutt
+<outlll cat | grep ccc >newoutt
+<outlll cat | grep ccc >newoutt
+<outlll cat | grep ccc >newoutt
+<outlll cat | grep ccc >newoutt
+<outlll cat | grep ccc >newoutt
+<outlll cat | grep ccc >newoutt
+<outlll cat | grep ccc >newoutt
+<outlll cat | grep ccc >newoutt
+ls -l
+bash
+exit
+<outlll cat | grep ccc >newoutt
+<segfault.txt cat | grep a >newout
+<segfault.txt cat | grep a >newout
+<newout cat | grep a >outt
+<infile
+<infile cat
+<infile cat
+<infile
+./minishell
+ls
+bash
+exit
+bash
+exit
+exit
+<newout cat | grep a >outt
+<newout cat | grep a >outt
+echo "great" >> out
+exit
+>> outt echo "great"
+>> outt echo "great"
+>> outt echo "great"
+>> outt echo great
+ls >> out
+ >> outgg
+ >>outgg

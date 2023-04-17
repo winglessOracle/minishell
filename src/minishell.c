@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/16 21:47:06 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/17 16:23:33 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,16 +42,14 @@ int	main(void)
 		while (tokens)
 		{
 			pipeline = parse_pipeline(&tokens, env_list);
+	//print_pipeline(pipeline);
 			exitstatus = executor(pipeline);
 	// printf("CREATED PIPLINE\n");
 	// (void)exitstatus;
-	// print_pipeline(pipeline);
 	// printf("PASSED EXECUTOR\n");
 	// printf("exitstatus=%d\n", exitstatus);
 		}
 	}
 	rl_clear_history();
-	// test_cd(pipeline->pipe_argv, env_list);
-	// test_echo();
 	exit(get_exit(env_list));
 }
