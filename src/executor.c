@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/17 14:54:47 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/17 15:57:54 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 #include "executor.h"
 #include "builtin.h"
 /*
-0. add builtings
+0. add exit
 1. add redirects
 3. get right exitstatus
+4. fix readline
 */
 
 int	check_built(t_smpl_cmd *cmd)
@@ -59,7 +60,6 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 
 	i = 0;
 	cmd_args = build_cmd_args(pipe_argv->cmd_argv, pipe_argv->cmd_argc);
-	printf("cmd:%s\n", cmd_args[0]);
 
 	if (!cmd_args)
 		exit_error("building commands", 1);
@@ -68,15 +68,16 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 		execve(cmd_args[0], cmd_args, env);
 	my_directories = ft_split(path, ':');
 	ft_free(path);
-	while (my_directories[i++])
+	while (my_directories[i])
 	{
 		path = ft_strjoin(my_directories[i], "/");
 		path = ft_strjoin_free_s1(path, cmd_args[0]);
 		execve(path, cmd_args, env);
 		ft_free(path);
+		i++;
 	}
-	ft_free(my_directories);
-	execve(cmd_args[0], cmd_args, env); //kan weg denk ik
+	ft_free_array(my_directories);
+//	execve(cmd_args[0], cmd_args, env); //kan weg denk ik
 	exit_error("unknown command", 127);
 }
 
@@ -159,7 +160,12 @@ int		executor(t_pipe *pipeline)
 			ret = check_built(pipeline->pipe_argv);
 			if (ret != -1)
 				return (ret);
-			assignments(pipeline->pipe_argv, 0);
+			if (pipeline->pipe_argv->cmd_argc == 0)
+			{
+				assignments(pipeline->pipe_argv, 0);
+				return (0);
+				//redirects and return (set_fd)
+			}
 		}
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
@@ -178,7 +184,6 @@ int		executor(t_pipe *pipeline)
 		else if (pid == 0)
 			exit(0);
 		pipeline->pipe_argv = pipeline->pipe_argv->next;
-		// ft_free_array(env);
 	}
 	return (exitstatus);
 	// clean lists 

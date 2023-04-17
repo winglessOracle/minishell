@@ -6677,3 +6677,46 @@ echo $var
 var=42
 echo $var
 exit
+var=123
+ehco var
+echo $var
+ehco var
+ehco var
+echo $var
+var=123
+echo $var
+ls
+ls | ls
+cat input
+echo $var
+ehco var
+ehco var
+ehco var
+ehco var
+ehco var
+ehco var
+ehco var
+ehco var
+ehco var
+var=123
+echo $var
+unset var
+echo $var
+var=123
+var=123
+var=125
+echo $var
+unset var
+echo $var
+exit
+ehco var
+ehco var
+ehco var
+ehco var
+ehco var
+ehco var
+ehco var
+ehco var
+ehco var
+ehco var
+ehco var
