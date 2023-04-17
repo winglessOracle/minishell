@@ -6814,3 +6814,11 @@ gkgh
 exit
 gkgh
 exit
+exi
+exit
+echo
+var=123
+1var=123
+exit
+?=1
+exit

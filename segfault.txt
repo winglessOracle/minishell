@@ -24,7 +24,6 @@ test$PWD
 ------------------------
 "  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas -> removes single quote
  'hello "there world'                       -> removes double quote
-check var name for assignment 				-> var can only start with alphabetic chars
 
 / *test cases to compare with bash: */
 ---------------------------------------
