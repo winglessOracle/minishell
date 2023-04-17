@@ -6610,3 +6610,70 @@ echo $PS2
 unset PS2
 exit
 cd src
+cd src
+cd src
+cd -
+pwd
+echo $PWD
+echo $aap
+echo $aap hello
+exit
+export
+exit
+export
+exit
+cd src
+export hello
+export
+exit
+export
+export aap=test
+export
+exit
+export
+exit
+export
+exit
+export
+export
+export
+export
+export
+exit
+export
+exit
+export
+ls
+cd src
+ls
+cd src
+ls
+pwd
+exit
+ls
+pwd
+exit
+ls
+exit
+ls
+exit
+ls
+exit
+ls
+exit
+ls
+exit
+ls
+ls
+ls
+exit
+ls
+exit
+cd src
+pwd
+cd -
+pwd
+echo $var
+var=42
+echo $var
+exit

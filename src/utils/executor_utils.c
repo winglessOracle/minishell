@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/16 20:46:42 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/17 14:38:29 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@ char	**build_cmd_args(t_node *argv, int argc)
 	int		i;
 
 	i = 0;
-	// if (!argv || !argc)
-	// 	return (NULL);
+	if (!argv || !argc)
+		return (NULL);
 	cmd_args = malloc(sizeof(char *) * (argc + 1));
-	while (i < argc)
+	//printf("cmd:%s\n", cmd_args[0]);
+	while (i < argc) 
 	{
-		if (argv->content)
-			cmd_args[i] = ft_strdup(argv->content);
-		else
-			cmd_args[i] = ft_strdup("");
+		cmd_args[i] = ft_strdup(argv->content);
 		remove_node(&argv, NULL);
 		i++;
 	}
@@ -34,16 +32,16 @@ char	**build_cmd_args(t_node *argv, int argc)
 	return (cmd_args);
 }
 
-int	get_exit_st(t_smpl_cmd *smpl_cmd, pid_t pid)
+int	get_exit_st(pid_t pid)
 {
 	int	waitstatus;
 
 	waitstatus = 0;
-	while (smpl_cmd)
-	{
-		waitpid(pid, &waitstatus, 0);
-		smpl_cmd = smpl_cmd->next;
-	}
+	//while (smpl_cmd)
+	//{
+	waitpid(pid, &waitstatus, 0);
+	//	smpl_cmd = smpl_cmd->next;
+	//}
 	return (WEXITSTATUS(waitstatus));
 }
 

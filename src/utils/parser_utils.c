@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/15 16:21:45 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/17 11:37:27 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,13 @@
 
 int	add_word_to_cmd(t_node **token, t_smpl_cmd *cmd)
 {
-	lstadd_back(&cmd->cmd_argv, lstpop(token));
-	cmd->cmd_argc++;
+	if ((*token)->content)
+	{
+		lstadd_back(&cmd->cmd_argv, lstpop(token));
+		cmd->cmd_argc++;
+	}
+	else
+		remove_node(token, cmd);
 	return (0);
 }
 

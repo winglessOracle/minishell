@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/17 09:44:52 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/17 14:42:29 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_smpl_cmd
 typedef struct s_pipe
 {
 	int				type;
+	int				pipe_argc;
 	t_smpl_cmd		*pipe_argv;
 	struct s_pipe	*next;
 }	t_pipe;
@@ -102,11 +103,10 @@ int			check_env_content(char *str);
 void		print_env(t_node *env_list, int flag);
 
 //executor
-void		assignments(t_smpl_cmd *pipe_argv, pid_t pid, t_node *env_list);
+void		assignments(t_smpl_cmd *pipe_argv, pid_t pid);
 int			executor(t_pipe *pipeline);
-int			get_exit_st(t_smpl_cmd *smpl_cmd, pid_t pid);
 char		**build_cmd_args(t_node *argv, int argc);
-int			get_exit_st(t_smpl_cmd *smpl_cmd, pid_t pid);
+int			get_exit_st(pid_t pid);
 char		**get_env(t_node *env_list);
 
 //builtins

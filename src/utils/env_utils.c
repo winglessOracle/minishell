@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   env.c                                              :+:    :+:            */
+/*   env_utils.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/14 17:00:31 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/17 11:56:56 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	check_env_content(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] != '=' && str[i])
+	while (str[i] && str[i] != '=')
 		i++;
 	if (str[i] && str[i + 1])
 		return (1);

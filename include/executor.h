@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:31 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/13 20:15:20 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/17 14:41:01 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,7 @@
 # include <sys/wait.h>
 # include <unistd.h>
 # include <fcntl.h>
+
+typedef int t_built(char **, t_node *);
 
 #endif

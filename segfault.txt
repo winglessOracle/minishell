@@ -42,6 +42,8 @@ $PWD
 --
 
 /* check Carien */
+var name should start with alphabetic char?
+var name can be folowed by '\0' as well as '='
 think about here content
 should none existing var be NULL or ""? Now NULL but this wil stop the cmd execution at that point?
 NULL should be skipped in cmd vector? --> echo $var -n aap
@@ -50,6 +52,7 @@ check "expr $? + $?"
 use PS1 for testing as it has wierd characters...
 
 /* checks Carlo */
+env should only include env variables with correct export status?
 readline keeps first characters
 redirect can have empty filenames or should expander flag error?
 ctrl-C should display a new line with a new prompt (check that previous text does not get executed)
