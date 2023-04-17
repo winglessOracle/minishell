@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/17 16:32:21 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/17 18:58:05 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 		ft_free(path);
 		i++;
 	}
+	execve(cmd_args[0], cmd_args, env);
 	ft_free(my_directories);
 	exit_error("unknown command", 127);
 }

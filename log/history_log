@@ -6832,3 +6832,54 @@ export aap
 export aap
 export
 exit
+echo $PATH
+unset PATH
+echo $PATH
+minishell
+exit
+unset PATG
+unset PATH
+minishell
+exit
+ls | grep make
+ls
+minishell
+exit
+minishell
+minishell
+minishell
+VAR="CC$ "
+VAR="CC "
+exit
+echo "hello world"
+echo "helloworld"
+exit
+"hello world"
+echo "hello world"
+echo "hello 'world"
+"  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas
+echo "  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas
+ 'hello "there world' 
+echo  'hello "there world' 
+exit
+'hello "word'
+"hello 'word"
+echo "hello 'word"
+echo "hello 'world"
+exit
+echo "hello 'world"
+echo 'hello "world'
+exit
+echo 'hello "world'
+<< "hello 'world"
+<< $var
+<< "$var" 
+<< '$var'
+< $var 
+< "$var" 
+< '$var' 
+< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
+"  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas
+echo "  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas
+echo "  \"hoi\" "  \"hoi\  xx'd"  x  \" dag kaas"
+exit
