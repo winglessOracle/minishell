@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/17 09:54:38 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/17 19:32:10 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,30 @@ int	change_dir(char	*str, char *arg, int print)
 	return (ret);
 }
 
+int	go_home(t_node *env_list, char *arg)
+{
+	char	*home;
+	
+	home = get_variable(env_list, "HOME");
+	if (!home)
+	{
+		write(2, "minishell: cd: HOME not set\n", 28);
+		return (1);
+	}
+	if (change_dir(home, NULL, 0) == -1)
+		return (return_error("minishell: cd", 1));
+	else
+	{
+		free(arg);
+		return (0);
+	}
+}
+
 int	cd_absolute(int i, char *arg, t_node *env_list)
 {
+
 	if (i == 1)
-	{
-		if (change_dir(get_variable(env_list, "HOME"), NULL, 0) == -1)
-			return (return_error("minishell: cd", 1));
-		else
-		{
-			free(arg);
-			return (0);
-		}
-	}
+		return(go_home(env_list, arg));
 	if (arg[0] == '/' || arg[0] == '-')
 	{
 		if (arg[0] == '-' && arg[0] != '\0')
@@ -68,7 +80,7 @@ int	cd_absolute(int i, char *arg, t_node *env_list)
 			return (0);
 		}
 	}
-	return (1);
+	return (2);
 }
 
 int	cd_relative(t_node *env_list, char *arg)
@@ -112,7 +124,7 @@ int	execute_cd(char **cmd_vector, t_node *env_list)
 	arg = get_arg(cmd_vector[i - 1], env_list);
 	if (!arg)
 		return (1);
-	if (cd_absolute(i, arg, env_list))
+	if (cd_absolute(i, arg, env_list) == 2)
 	{
 		if (cd_relative(env_list, arg))
 			return (1);

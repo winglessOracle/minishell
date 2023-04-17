@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 11:03:39 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/16 13:16:18 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/17 19:26:12 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*get_arg(char *cmd_arg, t_node *env_list)
 	{
 		arg = get_variable(env_list, "OLDPWD");
 		if (!arg)
-			perror("minishell: cd: OLDPWD unset");
+			write(2, "minishell: cd: OLDPWD not set\n", 30);
 	}
 	else if (cmd_arg[0] == '.')
 		arg = ft_strdup(&cmd_arg[2]);
