@@ -6604,3 +6604,9 @@ cd src
 unset PWD
 echo $PWD
 exit
+cd src
+pwd
+echo $PS2
+unset PS2
+exit
+cd src

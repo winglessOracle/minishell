@@ -6,12 +6,13 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/14 16:09:54 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/16 21:43:36 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "executor.h"
 #include "parser.h"
+#include "builtin.h"
 
 void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 {
@@ -128,6 +129,7 @@ int		executor(t_pipe *pipeline)
 	int			fd_pipe[2];
  	pid_t		pid;
 	char		**env;
+	char		**cmd_args;
 
 	exitstatus = 0;
 	keep = dup(STDIN_FILENO);
@@ -138,21 +140,47 @@ int		executor(t_pipe *pipeline)
 	 	if (pipe(fd_pipe) == -1)
 	 		exit_error("pipe fail", errno);
 		// printf("keep: %d, pipe, [0]: %d, [1]: %d\n", keep, fd_pipe[0], fd_pipe[1]);
+		cmd_args = build_cmd_args(pipeline->pipe_argv->cmd_argv, pipeline->pipe_argv->cmd_argc);
 	 	env = get_env(pipeline->pipe_argv->env_list);
-		pid = fork();
-	 	if (pid == -1)
-			exit_error("fork fail", errno);
-		// assignments(pipeline->pipe_argv, pid, env_list);
-		redirect(pipeline, pid, keep, fd_pipe);
-		if (pid == 0)
+		if (!cmd_args)
+			exit_error("build_cmd_args", 1);
+		if (!ft_strcmp(cmd_args[0], "cd"))
 		{
-		 	exec_cmd(pipeline->pipe_argv, env);
+			execute_cd(cmd_args, pipeline->pipe_argv->env_list);
+			pipeline->pipe_argv = pipeline->pipe_argv->next;
+		}
+		else if (!ft_strcmp(cmd_args[0], "echo"))
+		{
+			execute_echo(cmd_args, pipeline->pipe_argv->env_list);
+			pipeline->pipe_argv = pipeline->pipe_argv->next;
+		}
+		else if (!ft_strcmp(cmd_args[0], "pwd"))
+		{
+			execute_pwd(cmd_args, pipeline->pipe_argv->env_list);
+			pipeline->pipe_argv = pipeline->pipe_argv->next;
+		}
+		else if (!ft_strcmp(cmd_args[0], "unset"))
+		{
+			execute_unset(cmd_args, pipeline->pipe_argv->env_list);
+			pipeline->pipe_argv = pipeline->pipe_argv->next;
 		}
 		else
-			pipeline->pipe_argv = pipeline->pipe_argv->next;
-		wait(NULL);
+		{
+			// pid = fork();
+			// if (pid == -1)
+			// 	exit_error("fork fail", errno);
+			// // assignments(pipeline->pipe_argv, pid, env_list);
+			// redirect(pipeline, pid, keep, fd_pipe);
+			// if (pid == 0)
+			// {
+			// 	exec_cmd(pipeline->pipe_argv, env);
+			// }
+			// else
+				pipeline->pipe_argv = pipeline->pipe_argv->next;
+		}
+		// wait(NULL);
 	}
-	exitstatus = get_exit_st(pipeline->pipe_argv, pid);
+	// exitstatus = get_exit_st(pipeline->pipe_argv, pid);
 	return (exitstatus);
 	// 	free (env);
 	// clean lists 

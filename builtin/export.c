@@ -6,11 +6,11 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/17 10:19:21 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/17 11:32:33 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minshell.h"
+#include "minishell.h"
 
 //  Export[]
 //  The supplied names are marked for automatic export to the environment of 
