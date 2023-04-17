@@ -6677,3 +6677,140 @@ echo $var
 var=42
 echo $var
 exit
+echo var
+echo %var
+echo $var
+var=123
+echo $var
+exit
+./minishell 
+exit
+var=123
+echo $var
+exit
+var=123
+echo $var
+echo aap
+echo aap $var
+exit
+echo $var
+var=123
+echo $var
+exit
+echo $var
+var=123
+echo $var
+var=123
+jkh k
+jkh k
+klgjslkj
+var=123
+var=123
+exit
+var=123
+var=123
+echo $var
+exit
+var=123 ls
+echo $var
+exit
+var=123
+echo $var
+var=444 echo $var
+echo $var
+exit
+ehco aap
+exit
+exit
+var=123
+echo $var
+exit
+echo
+echo  'hello "there world' 
+exit
+"  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas
+echo "  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas
+exit
+export
+export
+exit
+export
+exit
+export
+export
+exit
+export
+export
+echo
+exit
+echo
+exit
+echo
+export
+echo
+export
+export
+echo
+export
+export aap
+export PWD
+export
+exit
+export
+export
+export
+gja gkjw ejh
+gkl ls
+lhj o
+echo
+exit
+echo
+exit
+export
+export
+export
+exit
+export
+exit
+export
+exit
+export
+export
+exit
+export
+exit
+export
+exit
+export
+exit
+export
+exit
+export
+exit
+export
+exit
+export
+exit
+export
+exit
+export
+exit
+export
+exit
+export
+exit
+export
+exit
+export
+xit
+exit
+export
+export
+export
+exit
+ha
+exit
+gkgh
+exit
+gkgh
+exit

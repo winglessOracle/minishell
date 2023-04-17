@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/17 14:54:47 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/17 16:32:21 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 
 	i = 0;
 	cmd_args = build_cmd_args(pipe_argv->cmd_argv, pipe_argv->cmd_argc);
-	printf("cmd:%s\n", cmd_args[0]);
-
 	if (!cmd_args)
 		exit_error("building commands", 1);
 	path = get_variable(pipe_argv->env_list, "PATH");
@@ -68,29 +66,26 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 		execve(cmd_args[0], cmd_args, env);
 	my_directories = ft_split(path, ':');
 	ft_free(path);
-	while (my_directories[i++])
+	while (my_directories[i])
 	{
 		path = ft_strjoin(my_directories[i], "/");
 		path = ft_strjoin_free_s1(path, cmd_args[0]);
 		execve(path, cmd_args, env);
 		ft_free(path);
+		i++;
 	}
 	ft_free(my_directories);
-	execve(cmd_args[0], cmd_args, env); //kan weg denk ik
 	exit_error("unknown command", 127);
 }
 
 void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
 {
+	if (pid == 0)
 	{
-		if (pid == 0)
+		while (pipe_argv->assign)
 		{
-			while (pipe_argv->assign)
-			{
-				// printf("content=%s\n", pipe_argv->assign->content);
-				add_variable(pipe_argv->env_list, ft_strdup(pipe_argv->assign->content), 1);
-				remove_node(&pipe_argv->assign, NULL);
-			}
+			add_variable(pipe_argv->env_list, ft_strdup(pipe_argv->assign->content), 1);
+			remove_node(&pipe_argv->assign, NULL);
 		}
 	}
 }
@@ -159,7 +154,11 @@ int		executor(t_pipe *pipeline)
 			ret = check_built(pipeline->pipe_argv);
 			if (ret != -1)
 				return (ret);
-			assignments(pipeline->pipe_argv, 0);
+			if (pipeline->pipe_argv->cmd_argc == 0)
+			{
+				assignments(pipeline->pipe_argv, 0);
+				return (0);
+			}
 		}
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
