@@ -6415,3 +6415,192 @@ pwd
 cd ..
 pwd
 cd ./src
+ls
+exit
+ls
+ls
+ls
+cd src
+cd src
+cd src
+cd src
+cd src
+ls
+echo hello
+exit
+ls | ls
+exit
+ls | ls
+cd src
+cd 
+cd src
+cd src
+echo $PS2
+unst PS2
+echo $PS2
+exit
+unset PS2
+echo $USER
+exit
+unset PS2
+unset PS2
+unset PS2
+unset PS2
+unset PS2
+unset PS2
+unset PS2
+unset PS2
+unset PS2
+exit
+unset PS2
+unset PS2
+unset PS2
+unset PS2
+unset PS2
+echo $PS2
+echo $AAP
+echo $PWD
+exit
+$PS2
+echo $PWD
+echo $PS2
+exit
+echo $AAP
+echo $AAP
+echo $AAP
+echo $AAP
+echo $AAP
+cd 
+cd 
+echo $AAP
+unset $PS2
+unset $PS2
+echo PS2
+echo $PS2
+exit
+unset PS2
+unset AAP
+unset AAP
+exit
+unset AAP
+exit
+exit
+unset AAP
+unset AAP
+unset AAP
+unset PS2
+echo $AAP
+echo $PS2
+exit
+echo $PS2
+unset PS2
+echo $PS2
+exit
+exit
+echo $PS2
+exit
+echo $PS2
+unset PS2
+echo $PS2
+unset PS2
+echo $PS2
+echo $PS2
+unset PS2
+echo $PS2
+exit
+echo $PS2
+echo $PS2
+echo $PS2
+exit
+echo $PS2
+unset PS2
+echo $PS2
+echo $PS2
+unset PS2
+exit
+unset PS2
+echo $PS2
+unset PS2
+echo $PS2
+echo $PS2
+unset PS2
+echo $PS2
+echo $PS2
+unset PS2
+echo $PS2
+exit
+echo $PS2
+unset PS2
+unset PS2
+echo $PS2
+exit
+unset PWD
+echo $PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+exit
+unset PWD
+cd
+unset $PWF
+unset $PWD
+echo $PWD
+unset $PWD
+echo $PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+unset PWD
+cd src
+cd src
+cd src
+cd src
+unset PWD
+echo $PWD
+echo $PWD
+cd src
+echo $PWD
+echo $PS1
+echo hello
+echo $PS1
+echo $PS1
+echo $PS1
+echo $PS1
+exit
+echo $PS1
+exit
+echo $PS1
+exit
+echo $PS1
+echo $PS1
+echo $PS1
+echo $PS1
+echo $PS1
+echo $PS1
+exit
+echo $PS1
+exit
+echo $PS1
+exit
+echo $PS1
+unset PWD
+unset PWD
+exit
+cd src
+unset PWD
+echo $PWD
+exit

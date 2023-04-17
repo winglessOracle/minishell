@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 21:43:08 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/16 11:14:33 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/16 20:45:24 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_newline(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] == '-')
+	if (str[i] && str[i] == '-')
 	{
 		i++;
 		while (str[i] == 'n')

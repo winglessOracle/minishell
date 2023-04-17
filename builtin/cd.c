@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/16 13:25:34 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/17 09:54:38 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	change_dir(char	*str, char *arg, int print)
 	char	buf[PATH_MAX];
 
 	if (print)
-		print = ft_strcmp(str,  getcwd(buf, PATH_MAX));
+		print = ft_strcmp(str, getcwd(buf, PATH_MAX));
 	if (str[ft_strlen(str) - 1] != '/')
 		str = ft_strjoin_free_s1(str, "/");
 	if (arg)
@@ -49,7 +49,7 @@ int	cd_absolute(int i, char *arg, t_node *env_list)
 	if (i == 1)
 	{
 		if (change_dir(get_variable(env_list, "HOME"), NULL, 0) == -1)
-			return(return_error("minishell: cd", 1));
+			return (return_error("minishell: cd", 1));
 		else
 		{
 			free(arg);
@@ -78,7 +78,7 @@ int	cd_relative(t_node *env_list, char *arg)
 	char	*pwd;
 	int		i;
 
-	pwd =  getcwd(buf, PATH_MAX);
+	pwd = getcwd(buf, PATH_MAX);
 	path_arr = get_path_arr(env_list, pwd);
 	if (!path_arr)
 		exit_error("cd", 1);
@@ -94,7 +94,7 @@ int	cd_relative(t_node *env_list, char *arg)
 		}
 	}
 	ft_free_array(path_arr);
-	return(return_error("minishell: cd", 1));
+	return (return_error("minishell: cd", 1));
 }
 
 int	execute_cd(char **cmd_vector, t_node *env_list)

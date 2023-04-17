@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/16 11:07:18 by cariencaljo   ########   odam.nl          #
+#    Updated: 2023/04/17 09:26:35 by cariencaljo   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ OBJ_FILES	= $(addprefix obj/, minishell.o lst_utils/t_node.o parser.o utils/util
 				utils/redirect_utils.o utils/quote_utils.o expander.o signals.o termios.o \
 				lst_utils/delete.o executor.o utils/executor_utils.o)
 
-OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o cd.o cd_utils.o pwd.o)
+OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o cd.o cd_utils.o pwd.o unset.o)
 
 #//= Modifiable =//#
 all: libft $(NAME)
@@ -49,12 +49,12 @@ $(NAME): $(OBJ_FILES) $(OBJ_BUILTIN)
 
 $(OBJ_FILES): obj/%.o: src/%.c 
 	@mkdir -p $(dir $@)
-	@echo "$(GREEN)$(BOLD)Compiling minishell builtins:$(RESET) $(notdir $<)"
+	@echo "$(GREEN)$(BOLD)Compiling minishell:$(RESET) $(notdir $<)"
 	@$(CC) -c $(CFLAGS) $(HEADERS) -o $@ $< 
 
 $(OBJ_BUILTIN): obj_buitin/%.o: builtin/%.c 
 	@mkdir -p $(dir $@)
-	@echo "$(GREEN)$(BOLD)Compiling minishell:$(RESET) $(notdir $<)"
+	@echo "$(GREEN)$(BOLD)Compiling minishell builtins:$(RESET) $(notdir $<)"
 	@$(CC) -c $(CFLAGS) $(HEADERS) -o $@ $< 
 
 debug: CFLAGS = -Wall -Wextra
