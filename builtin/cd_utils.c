@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 11:03:39 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/17 19:26:12 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/17 19:52:42 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*get_back(char *pwd)
 	return (back);
 }
 
-char	*get_arg(char *cmd_arg, t_node *env_list)
+char	*get_arg(char *cmd_arg)
 {
 	char	*arg;
 	char	*pwd;
@@ -41,11 +41,7 @@ char	*get_arg(char *cmd_arg, t_node *env_list)
 	else if (cmd_arg[0] == '.' && cmd_arg[1] == '.')
 		arg = ft_strjoin_free_s1(get_back(pwd), &cmd_arg[2]);
 	else if (cmd_arg[0] == '-' && cmd_arg[1] == '\0')
-	{
-		arg = get_variable(env_list, "OLDPWD");
-		if (!arg)
-			write(2, "minishell: cd: OLDPWD not set\n", 30);
-	}
+		arg = ft_strdup("-");
 	else if (cmd_arg[0] == '.')
 		arg = ft_strdup(&cmd_arg[2]);
 	else

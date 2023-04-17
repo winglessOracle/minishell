@@ -6898,3 +6898,20 @@ cd
 cd
 cd
 cd
+export HOME=/Users/ccaljouw
+pwd
+cd
+exit
+cd .. blablabla
+exit
+cd .. blabla
+exit
+echo $OLDPWD
+cd src
+cd ..
+echo $OLDPWD
+cd .
+cd -
+exit
+cd ~
+cd ~

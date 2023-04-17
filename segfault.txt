@@ -22,8 +22,10 @@ test$PWD
 
 /* Segfaults or incorrect behaviour */
 ------------------------
-"  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas -> removes single quote
- 'hello "there world'                       -> removes double quote
+cd . 											->uses cdpath should use current dir
+cd -											-> should print new dir
+"  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas 	-> removes single quote
+ 'hello "there world'                       	-> removes double quote
 
 / *test cases to compare with bash: */
 ---------------------------------------
