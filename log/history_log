@@ -6923,3 +6923,36 @@ ls | ls
 exit
 << del cat | grep 01 >out1
 << del cat | grep 01 >out1
+<< del cat | grep 1
+f
+<< del cat | grep 1
+<< del cat | grep 1 >out1
+<< del cat | grep 1 >out1
+exit
+<< del cat | grep 1 >out1
+<< del cat | grep 1 >out1
+<< del cat | grep 1 >out2
+<< del cat | grep 1 >out3
+<< del cat | grep 1 >out3
+<< ff > out2
+<< ff cat > out2
+<< ff cat | cat > out2
+<< ff cat | cat > out2
+<< ff cat | cat > out
+<< ff cat | grep 1 > out
+<< ff cat | grep 1 > out2
+<< ff cat | grep 1 > out2
+erf
+aerf
+<< ff cat | grep 1 > out2
+<< ff cat | grep 1 > out2
+<< ff cat | grep 1 > out3
+<< ff cat | grep 1 > out3
+<< ff cat | grep 1 > out4
+<< ff cat | grep 1 > out4
+<< ff cat | grep 1 > out4
+<< ff cat | grep 1 > out5
+<< ff cat | grep 1 > out5
+ls | ls | cat | grep a
+ls | ls | cat | grep a > out11
+<< ff | cat >oo

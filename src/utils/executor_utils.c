@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/17 14:38:29 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/18 09:26:55 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,18 @@ char	**build_cmd_args(t_node *argv, int argc)
 	return (cmd_args);
 }
 
-int	get_exit_st(pid_t pid)
+int	get_exit_st(int argc, pid_t pid)
 {
 	int	waitstatus;
+	int	i;
 
+	i = 0;
 	waitstatus = 0;
-	//while (smpl_cmd)
-	//{
-	waitpid(pid, &waitstatus, 0);
-	//	smpl_cmd = smpl_cmd->next;
-	//}
+	while (i < argc)
+	{
+		waitpid(pid, &waitstatus, 0);
+		i++;
+	}
 	return (WEXITSTATUS(waitstatus));
 }
 

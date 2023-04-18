@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/17 20:21:23 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/18 09:25:07 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,15 @@
 #include "minishell.h"
 #include "executor.h"
 #include "builtin.h"
+
+#define TMP_FILE "log/here_doc_tmp"
 /*
 0. add exit
 1. add redirects
 3. get right exitstatus
 4. fix readline
 */
+
 
 int	check_built(t_smpl_cmd *cmd)
 {
@@ -35,7 +38,7 @@ int	check_built(t_smpl_cmd *cmd)
 	built[4] = execute_unset;
 	// built[5] = execute_env;
 	i = 0;
-	while (i < 7 && cmd->cmd_argc > 0)
+	while (i < 6 && cmd->cmd_argc > 0)
 	{
 		if (ft_strcmp(cmd->cmd_argv->content, "exit") == 0)
 		{
@@ -98,26 +101,31 @@ void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
 
 void	here_doc(t_pipe *pipeline, int *keep)
 {
-
-	//t_node	*env_list;
-	//t_node	*tokens;
+	t_node	*tokens;
 	char	*line_read;
 
-	//env_list = init_env();
 	close(*keep);
+	*keep = open(TMP_FILE, O_RDWR | O_CREAT | O_TRUNC, 0644);
+	if (*keep < 0)
+		exit_error("opening tmp file", 1);
 	while (1)
 	{
 		line_read = readline("here_doc ");
 		if (!ft_strcmp(line_read, pipeline->pipe_argv->redirect->content))
-			break ;
-		//tokens = lexer(line_read, "|<> \t\n");
-		//while (tokens)
-		//{
-		//	pipeline = parse_pipeline(&tokens, env_list);
-			*keep = open("temp_here", O_RDWR | O_CREAT | O_TRUNC, 0644);
-			ft_putstr_fd(line_read, *keep);
-		//}
+		{
+			unlink(TMP_FILE);
+			exit(0) ;
+		}
+		ft_putstr_fd(line_read, *keep);
+		free(line_read);
 	}
+	//	tokens = lexer(line_read, "|<> \t\n");
+	//	while (tokens)
+	//	{
+	//		ft_putstr_fd(tokens->content, *keep);
+	//		printf("token=%s\n", tokens->content);
+	//		remove_node(&tokens, NULL);
+	//	}
 }
 
 int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
@@ -131,18 +139,26 @@ int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 		{
 			if (access(smpl_cmd->redirect->content, F_OK) == 0)
 				return (-2);
-			fd_pipe[1] = open(smpl_cmd->redirect->content, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+			fd_pipe[1] = open(smpl_cmd->redirect->content, \
+								O_CREAT | O_WRONLY | O_TRUNC, 0644);
+			if (fd_pipe[1] < 0)
+				exit_error("opening outfile", 1);
 			count = 1;
 		}
 		else if (smpl_cmd->redirect->type == INPUT)
 		{
 			close(*keep);
 			*keep = open(smpl_cmd->redirect->content, O_RDONLY);
+			if (*keep < 0)
+				exit_error("opening keep", 1);
 		}
 		else if (smpl_cmd->redirect->type == APPEND)
 		{
 			close(fd_pipe[1]);
-			fd_pipe[1] = open(pipeline->pipe_argv->redirect->content, O_CREAT | O_WRONLY | O_APPEND, 0644);
+			fd_pipe[1] = open(pipeline->pipe_argv->redirect->content, \
+						O_CREAT | O_WRONLY | O_APPEND, 0644);
+			if (fd_pipe[1] < 0)
+				exit_error("opening outfile", 1);
 			count = 1;
 		}
 		else if (smpl_cmd->redirect->type == HEREDOC)
@@ -222,7 +238,7 @@ int		executor(t_pipe *pipeline)
 		{
 			if (pid == 0)
 				exec_cmd(pipeline->pipe_argv, env);
-			ret = get_exit_st(pid);
+			ret = get_exit_st(pipeline->pipe_argc, pid);
 		}
 		else if (pid == 0)
 			exit(0);

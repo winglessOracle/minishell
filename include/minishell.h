@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/17 14:42:29 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/18 09:26:14 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void		print_env(t_node *env_list, int flag);
 void		assignments(t_smpl_cmd *pipe_argv, pid_t pid);
 int			executor(t_pipe *pipeline);
 char		**build_cmd_args(t_node *argv, int argc);
-int			get_exit_st(pid_t pid);
+int			get_exit_st(int argc, pid_t pid);
 char		**get_env(t_node *env_list);
 
 //builtins
