@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/18 09:42:53 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/18 11:41:15 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 		i++;
 	}
 	ft_free_array(my_directories);
+	execve(cmd_args[0], cmd_args, env);
 	exit_error("unknown command", 127);
 }
 
@@ -57,11 +58,11 @@ int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 		if (smpl_cmd->redirect->type == OUTPUT)
 		{
 			if (access(smpl_cmd->redirect->content, F_OK) == 0)
-				return (-2);
+				return (return_error("not allowed to overwrite file", 1));
 			fd_pipe[1] = open(smpl_cmd->redirect->content, \
 								O_CREAT | O_WRONLY | O_TRUNC, 0644);
 			if (fd_pipe[1] < 0)
-				exit_error("opening outfile", 1);
+				return (return_error("opening outfile", 1));
 			count = 1;
 		}
 		else if (smpl_cmd->redirect->type == INPUT)
@@ -69,7 +70,7 @@ int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 			close(*keep);
 			*keep = open(smpl_cmd->redirect->content, O_RDONLY);
 			if (*keep < 0)
-				exit_error("opening keep", 1);
+				return (return_error("opening keep", 1));
 		}
 		else if (smpl_cmd->redirect->type == APPEND)
 		{
@@ -77,13 +78,13 @@ int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 			fd_pipe[1] = open(pipeline->pipe_argv->redirect->content, \
 						O_CREAT | O_WRONLY | O_APPEND, 0644);
 			if (fd_pipe[1] < 0)
-				exit_error("opening outfile", 1);
+				return (return_error("opening outfile", 1));
 			count = 1;
 		}
 		else if (smpl_cmd->redirect->type == HEREDOC)
 			here_doc(pipeline, keep);
 		if (*keep == -1 || fd_pipe[0] == -1 || fd_pipe[1] == -1)
-			return (-1);
+			return (return_error("fd:", 1));
 		remove_node(&smpl_cmd->redirect, NULL);
 	}
 	return (count);
@@ -111,10 +112,8 @@ void	redirect(t_pipe *pipeline, pid_t pid, int keep, int *fd_pipe)
 	{
 		close(fd_pipe[0]);
 		set_out = set_fd(pipeline, pipeline->pipe_argv, &keep, fd_pipe);
-		if (set_out == -2)
-			exit_error("cannot overwrite existing file", 1);
-		if (set_out == -1)
-			exit_error("No such file or directory", 1); //in case of no arguments this should return too
+		if (set_out == 1)
+			exit(1);
 		dup2(keep, STDIN_FILENO);
 		if (!keep)
 			exit_error("dup fail", 1);

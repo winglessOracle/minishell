@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/18 09:32:35 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/18 10:54:25 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(void)
 	t_pipe		*pipeline;
 	int			exitstatus;
 
+	//add max buffer?
 	// atexit(leaks);
 	env_list = init_env();
 	set_sig_term();

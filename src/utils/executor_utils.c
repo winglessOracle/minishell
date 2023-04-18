@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/18 09:53:26 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/18 12:08:06 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,10 @@
 void	here_doc(t_pipe *pipeline, int *keep)
 {
 	char	*line_read;
-	//t_node	*tokens;
+	char	*line;
+	t_node	*tokens;
 
+	line = NULL;
 	close(*keep);
 	*keep = open(TMP_FILE, O_RDWR | O_CREAT | O_TRUNC, 0666);
 	if (*keep < 0)
@@ -32,15 +34,12 @@ void	here_doc(t_pipe *pipeline, int *keep)
 			exit(0);
 		}
 		ft_putstr_fd(line_read, *keep);
+		tokens = lexer(line_read, " \n");
+		//line = parse_here(tokens, pipeline->pipe_argv->redirect->type);
+		ft_putstr_fd(line, *keep);
+		free(line);
 		free(line_read);
 	}
-	//	tokens = lexer(line_read, "|<> \t\n");
-	//	while (tokens)
-	//	{
-	//		ft_putstr_fd(tokens->content, *keep);
-	//		printf("token=%s\n", tokens->content);
-	//		remove_node(&tokens, NULL);
-	//	}
 }
 
 char	**build_cmd_args(t_node *argv, int argc)
@@ -107,7 +106,7 @@ char	**get_env(t_node *env_list)
 
 int	check_built(t_smpl_cmd *cmd)
 {
-	char	*builtings[6] =	{"echo", "cd", "pwd", "export",	"unset", "env"};
+	char	*builtings[7] =	{"echo", "cd", "pwd", "export",	"unset", "exit", "env"};
 	int		i;
 	t_built	*built[6];
 	char	**cmd_args;
@@ -117,15 +116,11 @@ int	check_built(t_smpl_cmd *cmd)
 	built[2] = execute_pwd;
 	built[3] = execute_export;
 	built[4] = execute_unset;
-	// built[5] = execute_env;
+	built[5] = execute_exit;
+	// built[6] = execute_env;
 	i = 0;
 	while (i < 6 && cmd->cmd_argc > 0)
 	{
-		if (ft_strcmp(cmd->cmd_argv->content, "exit") == 0)
-		{
-			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);
-			execute_exit(cmd_args);
-		}
 		if (ft_strcmp(cmd->cmd_argv->content, builtings[i]) == 0)
 		{
 			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);

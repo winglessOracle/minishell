@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/18 09:39:52 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/18 11:17:47 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,8 @@ char		**get_env(t_node *env_list);
 int			check_built(t_smpl_cmd *cmd);
 void		here_doc(t_pipe *pipeline, int *keep);
 
-
 //builtins
-int	execute_cd(char **cmd_vector, t_node *env_list);
+int			execute_cd(char **cmd_vector, t_node *env_list);
 
 //tests
 void		leaks(void);
