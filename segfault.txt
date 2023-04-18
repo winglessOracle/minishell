@@ -23,8 +23,6 @@ test$PWD
 /* Segfaults or incorrect behaviour */
 ------------------------
 var starting with $
-add_variable adds already existing vars in stead of changing them
-var name can be folowed by '\0' as well as '='
 parse "" as empty string
 -
 double vars:
