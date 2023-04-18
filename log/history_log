@@ -438,3 +438,26 @@ exit
 export ls="ls -l"
 $ls
 exit
+echo ""
+echo "" test
+exit
+echo "" test
+echo '' test
+exit
+echo ""
+echo "" test
+exit
+echo "" test
+exit
+echo "" test
+exit
+echo "" test
+exit
+echo "" test
+exit
+echo "" test
+echo ''  test
+exit
+echo ''  test
+echo ""  test
+exit

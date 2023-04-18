@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 16:59:12 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 22:43:34 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,18 +105,24 @@ int	remove_quotes(t_node **token, t_smpl_cmd *cmd)
 	int					type;
 
 	state = (*token)->type;
+	if (!ft_strcmp((*token)->content, "\"\"") || \
+					!ft_strcmp((*token)->content, "\'\'"))
+	{
+		free((*token)->content);
+		(*token)->content = ft_strdup("");
+		add_word_to_cmd(token, cmd);
+		return (0);
+	}
 	type = check_token_content(*token, state);
 	type = get_content(token, cmd, type, state);
-	if (type == -1)
-		return (-1);
-	if (state == INPUT || state == OUTPUT \
-				|| state == APPEND || state == HEREDOC)
+	if (type != -1 && (state == INPUT || state == OUTPUT \
+				|| state == APPEND || state == HEREDOC))
 	{
 		if (state == HEREDOC)
 			(*token)->type = HEREDOCQ;
 		return (type);
 	}
-	else
+	else if (type != -1)
 		add_word_to_cmd(token, cmd);
 	return (type);
 }
