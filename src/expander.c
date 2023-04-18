@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/12 21:08:34 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 16:44:06 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	expander(t_node **token, t_smpl_cmd *cmd)
 	parse[DQUOTE] = remove_quotes;
 	parse[EXPAND] = expand;
 	parse[ASSIGN] = parser_assign;
-	parse[TILDE] = expand_tilde;  //make
+	parse[TILDE] = expand_tilde;
 	while (*token && (*token)->type == WORD)
 	{
 		state = check_token_content(*token, (*token)->type);

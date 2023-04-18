@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/18 15:20:48 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/18 16:46:08 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ void	here_doc(t_pipe *pipeline, int *keep)
 		}
 		ft_putstr_fd(line_read, *keep);
 		tokens = lexer(line_read, " \n");
-		line = parse_heredoc(tokens, pipeline->pipe_argv->redirect->type);
+		line = parse_heredoc(tokens, pipeline->pipe_argv);
 		ft_putstr_fd(line, *keep);
 		free(line);
-		free(line_read);
+		printf("in executer: %s\n", line);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/18 15:20:11 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/18 16:48:17 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ t_pipe		*init_pipeline(void);
 
 // parser
 t_pipe		*parse_pipeline(t_node **tokens, t_node *env_list);
-char		*parse_heredoc(t_node *tokens, int type);
+char		*parse_heredoc(t_node *token, t_smpl_cmd *cmd);
 int			check_token_content(t_node *token, int type);
 
 // environment

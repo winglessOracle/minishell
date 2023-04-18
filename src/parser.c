@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/18 15:24:27 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/18 18:25:35 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,26 +88,27 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list)
 	return (pipeline);
 }
 
-char	*parse_heredoc(t_node *token, int type)
+char	*parse_heredoc(t_node *token, t_smpl_cmd *cmd)
 {
-	static t_function	*parse[11];
+	int					type;
 	int					state;
 	char				*input;
 	
-	input = NULL;
-
-	parse[WORD] = add_word_to_cmd;
-	parse[COMMENT] = remove_comment;
-	parse[SQUOTE] = remove_quotes;
-	parse[DQUOTE] = remove_quotes;
-	parse[EXPAND] = expand;
-	parse[ASSIGN] = parser_assign;
-	parse[TILDE] = expand_tilde;  //make
-	while (token && token->type == WORD)
+	type = cmd->redirect->type;
+	input = ft_strdup("");
+	while (token)
 	{
+		token->type = type;
 		state = check_token_content(token, token->type);
-		state = parse[state](&token, NULL);
+		if (state == SQUOTE || state == DQUOTE)
+			state = remove_quotes(&token, cmd);
+		else if (state == EXPAND && type == HEREDOC)
+			state = expand(&token, cmd);
+		state = check_token_content(token, token->type);
+		if (token->content)
+			input = ft_strjoin_free_s1(input, token->content);
+		remove_node(&token, NULL);
 	}
-(void)type;
+	input = ft_strjoin_free_s1(input, "\n");
 	return (input);
 }

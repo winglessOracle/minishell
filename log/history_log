@@ -16,3 +16,95 @@ env
 exit
 env
 exit
+var=aap
+echo var
+echo $var
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here cat
+exit
+<< here
+<< here
+<< here
+<< here
+var= aap
+var=aap
+export
+<< here
+<< here
+<< here cat
+exit
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+exit
+<< here
+<< here
+<< here
+var=aap
+<< here
+var=aap
+<< here
+var=aap
+<< here
+var=aap
+<< "here"
+<< "here"
+var=aap
+var2=koe
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+var=aap
+<< here
+var=aap
+<< here
+echo "hello world"
+var=aap
+echo $var
+echo "hello $var"
+exit
+<< here
+<< here
+<< here
+<< here
+$var
+exit
+<< here
+var=aap
+<< here
+<< here
+<< here
+var=aap
+<< here
+var=aap
+<< here
+<< "here"

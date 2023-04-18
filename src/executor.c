@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/18 15:05:52 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/18 16:19:59 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 				return (return_perror("opening outfile", 1));
 			count = 1;
 		}
-		else if (smpl_cmd->redirect->type == HEREDOC)
+		else if (smpl_cmd->redirect->type == HEREDOC || smpl_cmd->redirect->type == HEREDOCQ)
 			here_doc(pipeline, keep);
 		if (*keep == -1 || fd_pipe[0] == -1 || fd_pipe[1] == -1)
 			return (return_perror("fd:", 1));
