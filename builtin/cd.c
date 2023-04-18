@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 09:48:17 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 09:57:07 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ int	cd_absolute(int i, char *arg, t_node *env_list)
 	if (arg[0] == '/' || arg[0] == '-')
 	{
 		if (arg[0] == '-' && arg[0] != '\0')
-			perror("minishell: cd: invalid option");
+			return(return_perror("minishell: cd: invalid option", 1));
 		else if (chdir(arg) == -1)
-			perror("minishell: cd");
+			return(return_perror("minishell: cd", 1));
 		else
 		{
 			free(arg);

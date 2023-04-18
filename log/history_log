@@ -6967,3 +6967,10 @@ cd ~
 cd 
 cd _
 cd -
+cd ../../../../../..
+unset HOME
+export HOME=/Users/user42
+cd ~
+exit
+cd ~
+cd ../../../../..
