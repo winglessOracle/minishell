@@ -1,43 +1,12 @@
-/* Working correctly */
-
-hello world 'does | this work?' hello=10 $PWD word | word "#comment not gone" | with $PS1 and #comment that will be gone 
-| followed by command
-|
-command | another $command |
-#comment
-< input for command 1 | << here for heredoc > out | >> append the last
-< $var 
-< "$var" 
-< '$var' 
-<< $var
-<< "$var" 
-<< '$var'
-< "input with var $PS1" for command 1 | << "here with var $PWD" for heredoc > out | >> append the last
-< "in" > "out"
-$PWDtest
-test$PWD
-~withnoslash
-~
-~/hello
-
 /* Segfaults or incorrect behaviour */
 ------------------------
 var starting with $
-parse "" as empty string
--
-double vars:
-var=a
-export var
-export var=test
 -
 expand $ in assig when
 export var=a
 export $var=test
 -
-check on valid identifier in export
-export ls="ls -l" 						->unclosed quotes
 
-make heredoc parser
 
 / *test cases to compare with bash: */
 ---------------------------------------
@@ -55,14 +24,12 @@ $PWD
 --
 
 /* check Carien */
-should none existing var be NULL or ""? Now NULL but this wil stop the cmd execution at that point?
-NULL should be skipped in cmd vector? --> echo $var -n aap
 make bash script for testing?
 check "expr $? + $?"
 use PS1 for testing as it has wierd characters...
 
 /* checks Carlo */
-env should only include env variables with correct export status?
+env_array should only include type 2
 readline keeps first characters
 redirect can have empty filenames or should expander flag error?
 ctrl-C should display a new line with a new prompt (check that previous text does not get executed)
@@ -70,4 +37,3 @@ ctrl-D in prompt with text should do nothing.
 ctrl-/ does nothing
 try ctrls with blocking command (eg cat with no arguments) (ctrl-C prints ^C on a new line and exits child, 
 ctrl-D exits child and prints nothing, ctrl-/ does nothing)
-PATH directories should be checked from left to right.
