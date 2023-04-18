@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/17 14:53:18 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/18 15:24:27 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,28 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list)
 		}
 	}
 	return (pipeline);
+}
+
+char	*parse_heredoc(t_node *token, int type)
+{
+	static t_function	*parse[11];
+	int					state;
+	char				*input;
+	
+	input = NULL;
+
+	parse[WORD] = add_word_to_cmd;
+	parse[COMMENT] = remove_comment;
+	parse[SQUOTE] = remove_quotes;
+	parse[DQUOTE] = remove_quotes;
+	parse[EXPAND] = expand;
+	parse[ASSIGN] = parser_assign;
+	parse[TILDE] = expand_tilde;  //make
+	while (token && token->type == WORD)
+	{
+		state = check_token_content(token, token->type);
+		state = parse[state](&token, NULL);
+	}
+(void)type;
+	return (input);
 }

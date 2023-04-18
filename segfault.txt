@@ -37,6 +37,8 @@ export $var=test
 check on valid identifier in export
 export ls="ls -l" 						->unclosed quotes
 
+make heredoc parser
+
 / *test cases to compare with bash: */
 ---------------------------------------
 << here cat > out | < out cat

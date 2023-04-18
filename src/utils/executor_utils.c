@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/18 12:08:06 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/18 15:20:48 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	here_doc(t_pipe *pipeline, int *keep)
 		}
 		ft_putstr_fd(line_read, *keep);
 		tokens = lexer(line_read, " \n");
-		//line = parse_here(tokens, pipeline->pipe_argv->redirect->type);
+		line = parse_heredoc(tokens, pipeline->pipe_argv->redirect->type);
 		ft_putstr_fd(line, *keep);
 		free(line);
 		free(line_read);
@@ -108,7 +108,7 @@ int	check_built(t_smpl_cmd *cmd)
 {
 	char	*builtings[7] =	{"echo", "cd", "pwd", "export",	"unset", "exit", "env"};
 	int		i;
-	t_built	*built[6];
+	t_built	*built[7];
 	char	**cmd_args;
 
 	built[0] = execute_echo;
@@ -117,9 +117,9 @@ int	check_built(t_smpl_cmd *cmd)
 	built[3] = execute_export;
 	built[4] = execute_unset;
 	built[5] = execute_exit;
-	// built[6] = execute_env;
+	built[6] = execute_env;
 	i = 0;
-	while (i < 6 && cmd->cmd_argc > 0)
+	while (i < 7 && cmd->cmd_argc > 0)
 	{
 		if (ft_strcmp(cmd->cmd_argv->content, builtings[i]) == 0)
 		{
