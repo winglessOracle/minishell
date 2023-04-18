@@ -6,12 +6,26 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/18 19:52:24 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 20:17:08 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
+
+int	check_assign(char *str, int type)
+{
+	int	i;
+	
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '=' && type != DQUOTE && type != SQUOTE)
+			return (ASSIGN);
+		i++;
+	}
+	return (WORD);
+}
 
 int	check_token_content(t_node *token, int type)
 {
@@ -38,14 +52,7 @@ int	check_token_content(t_node *token, int type)
 			return (EXPAND);
 		i++;
 	}
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '=' && type != DQUOTE && type != SQUOTE)
-			return (ASSIGN);
-		i++;
-	}
-	return (WORD);
+	return (check_assign(str, type));
 }
 
 int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd)

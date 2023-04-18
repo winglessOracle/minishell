@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 09:57:07 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 21:39:17 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	go_oldpwd(t_node *env_list, char *arg)
 	oldpwd = get_variable(env_list, "OLDPWD");
 	if (!oldpwd)
 		return(return_error("minishell: cd: OLDPWD not set\n", 1));
-	if (change_dir(oldpwd, NULL, 1) == -1)
+	if (change_dir(oldpwd, NULL, 2) == -1)
 		return (return_perror("minishell: cd", 1));
 	else
 	{

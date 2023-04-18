@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 19:56:26 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 21:02:28 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	expand_var(t_node **token, t_smpl_cmd *cmd)
 	str = get_variable(cmd->env_list, (*token)->content);
 	free((*token)->content);
 	(*token)->content = str;
+	if (!(*token)->content)
+		remove_node(token, cmd);
 	return (0);
 }
 

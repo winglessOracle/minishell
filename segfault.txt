@@ -22,8 +22,10 @@ test$PWD
 
 /* Segfaults or incorrect behaviour */
 ------------------------
+var starting with $
+add_variable adds already existing vars in stead of changing them
+var name can be folowed by '\0' as well as '='
 parse "" as empty string
-parsing multiple $var$var$var
 -
 double vars:
 var=a
@@ -55,8 +57,6 @@ $PWD
 --
 
 /* check Carien */
-var name can be folowed by '\0' as well as '='
-think about here content
 should none existing var be NULL or ""? Now NULL but this wil stop the cmd execution at that point?
 NULL should be skipped in cmd vector? --> echo $var -n aap
 make bash script for testing?

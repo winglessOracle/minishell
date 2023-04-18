@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 11:03:39 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 09:48:10 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 20:37:49 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	change_dir(char	*str, char *arg, int print)
 	int		ret;
 	char	buf[PATH_MAX];
 
-	if (print)
+	if (print == 1)
 		print = ft_strcmp(str, getcwd(buf, PATH_MAX));
 	if (str[ft_strlen(str) - 1] != '/')
 		str = ft_strjoin_free_s1(str, "/");

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/17 16:50:32 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/18 22:12:38 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,16 @@ int	check_env_content(char *str)
 	return (0);
 }
 
-t_node	*change_var(t_node *env_list, char *name, int i)
+t_node	*search_var(t_node *env_list, char *name)
 {
 	t_node	*temp;
 
 	temp = env_list;
 	while (temp)
 	{
-		if (ft_strncmp(temp->content, name, i) == 0 \
-			&& (temp->content[i + 1] == '=' || temp->content[i + 1] == '\0'))
+		if (!ft_strncmp(temp->content, name, ft_strlen(name)) \
+			&& (temp->content[ft_strlen(name)] == '=' \
+			|| temp->content[ft_strlen(name)] == '\0'))
 			return (temp);
 		temp = temp->next;
 	}
@@ -68,12 +69,15 @@ void	add_variable(t_node *env_list, char *var, int type)
 	name = ft_substr(var, 0, i);
 	if (!name)
 		exit_error("add_variable", 1);
-	temp = change_var(env_list, name, i);
+	temp = search_var(env_list, name);
 	if (temp)
 	{
 		free(temp->content);
 		temp->content = var;
-		temp->type = type;
+		if (temp->content[ft_strlen(name)] == '\0')
+			temp->type = 1;
+		else
+			temp->type = type;
 	}
 	else
 		lstadd_back(&env_list, new_node(type, var));
