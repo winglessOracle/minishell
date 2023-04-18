@@ -7021,3 +7021,9 @@ $
 echo '"abc"'
 echo "" bonjour
 exit
+env
+exit
+env
+env aap
+
+exit

@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/17 18:58:05 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 12:43:01 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_built(t_smpl_cmd *cmd)
 	built[2] = execute_pwd;
 	built[3] = execute_export;
 	built[4] = execute_unset;
-	// built[5] = execute_env;
+	built[5] = execute_env;
 	// built[6] = execute_exit;	2
 	//printf("in check built\n");
 	i = 0;
