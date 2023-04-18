@@ -48,3 +48,32 @@ ls >outtt
 exit
 << ff cat | grep1 > out1
 exit
+ls | grep make | echo aap | pwd | ls | pwd 
+var=1
+echo car
+echo $var
+echo $var
+exit
+env
+env
+env aap
+unset path
+unset PATH
+env
+env aap
+jfjfj
+er;
+aerf
+aerf
+aerf
+env
+unset PATH
+env
+env
+unset PATH
+env
+env
+unst PATH
+unset PATH
+env
+exit

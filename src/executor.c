@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/18 11:41:15 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/18 12:47:27 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 		exit_error("building commands", 1);
 	path = get_variable(pipe_argv->env_list, "PATH");
 	if (!path)
-		execve(cmd_args[0], cmd_args, env);
+		path = ft_strdup(cmd_args[0]);
 	my_directories = ft_split(path, ':');
 	ft_free(path);
 	while (my_directories[i])
