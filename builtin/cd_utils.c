@@ -6,11 +6,29 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 11:03:39 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/17 19:52:42 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 09:48:10 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	change_dir(char	*str, char *arg, int print)
+{
+	int		ret;
+	char	buf[PATH_MAX];
+
+	if (print)
+		print = ft_strcmp(str, getcwd(buf, PATH_MAX));
+	if (str[ft_strlen(str) - 1] != '/')
+		str = ft_strjoin_free_s1(str, "/");
+	if (arg)
+		str = ft_strjoin_free_s1(str, arg);
+	ret = chdir(str);
+	if (!ret && print)
+		printf("%s\n", str);
+	free(str);
+	return (ret);
+}
 
 char	*get_back(char *pwd)
 {
@@ -30,6 +48,8 @@ char	*get_arg(char *cmd_arg)
 	char	*pwd;
 	char	buf[PATH_MAX];
 
+	if (!cmd_arg)
+		return (NULL);
 	pwd = getcwd(buf, PATH_MAX);
 	if (!pwd)
 	{

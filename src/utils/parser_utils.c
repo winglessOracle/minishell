@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/17 16:43:58 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/18 09:42:53 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,15 @@ int	expand_tilde(t_node **token, t_smpl_cmd *cmd)
 	temp = (*token)->content;
 	home = get_variable(cmd->env_list, "HOME");
 	if (ft_strlen(temp) == 1)
-		(*token)->content = ft_strdup(home);
+	{
+		if (home)
+			(*token)->content = ft_strdup(home);
+		else
+		{
+			return_error("minishell: HOME not set\n", 1);
+			(*token)->content = NULL;
+		}
+	}
 	else
 		(*token)->content = ft_strjoin(home, &temp[1]);
 	free(temp);

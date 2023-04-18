@@ -6915,3 +6915,55 @@ cd -
 exit
 cd ~
 cd ~
+cd -
+unset OLDPWD
+cd -
+cd -
+unset OLDPWD
+cd -
+exit
+cd src
+cd
+cd ~
+cd ~
+cd ~
+cs ~
+cd ~
+cd ~
+cd ~
+cd ~
+cd ~
+cd ~
+cd ~
+cd
+eixt
+exit
+cd
+unset HOME
+cs ~
+cd
+cd
+cd ~
+cd ~
+cd ~
+unset HOME
+cd ~
+cd ~
+cd $aap
+exit
+cd ~
+cd ~
+cd ~
+cd ~
+cd ~
+unset HOME
+~
+exit
+~
+unset HOME
+~
+exit
+cd ~
+cd 
+cd _
+cd -
