@@ -428,3 +428,13 @@ exit
 var=a
 echo $var
 exit
+var=a
+export
+export var
+export
+export var=test
+export
+exit
+export ls="ls -l"
+$ls
+exit

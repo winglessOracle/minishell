@@ -23,23 +23,13 @@ test$PWD
 /* Segfaults or incorrect behaviour */
 ------------------------
 var starting with $
-add_variable adds already existing vars in stead of changing them
-var name can be folowed by '\0' as well as '='
 parse "" as empty string
--
-double vars:
-var=a
-export var
-export var=test
 -
 expand $ in assig when
 export var=a
 export $var=test
 -
-check on valid identifier in export
-export ls="ls -l" 						->unclosed quotes
 
-make heredoc parser
 
 / *test cases to compare with bash: */
 ---------------------------------------
