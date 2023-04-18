@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:05:51 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/16 20:39:58 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 18:45:19 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ t_node	*init_env(void)
 	add_variable(env_list,  ft_strdup("PS2=> "), 1);
 	add_variable(env_list,  ft_strdup("?=0"), 1);
 	add_variable(env_list,  ft_strdup("IFS=' \t\n'"), 1);
-	// test 
-	add_variable (env_list, ft_strdup( "VAR=s	-l"), 1);  //test
-	add_variable (env_list,  ft_strdup("2VAR='s -l'"), 1);  //test
-	add_variable(env_list,  ft_strdup("CDPATH=/Users/cariencaljouw/Documents"), 1); //test
-	// print_env(env_list, 3);
 	return (env_list);
 }
 

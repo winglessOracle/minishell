@@ -108,3 +108,58 @@ var=aap
 var=aap
 << here
 << "here"
+<< here
+<segfault.txt
+>out
+exit
+var=aap
+var1=koe
+echo $var
+echo $var1
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var1
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+echo $var$var2
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
