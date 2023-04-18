@@ -6974,3 +6974,50 @@ cd ~
 exit
 cd ~
 cd ../../../../..
+echo
+echo -n
+echo $aap
+echo $PATH
+echo ~
+echo -n -n -nnn -nnnnnm
+echo -n -nnn hello -n
+echo ~
+export
+export var=a
+export $var=test
+exit
+export var=a
+export $var=test
+export var1=a var2=b var3=c
+export
+export test1
+export
+export test2=
+export
+export var
+export var=test
+export
+exit
+export var=a
+export var
+export
+export var=test
+export
+exit
+export "" test=a
+export
+exit
+export 1var
+export ls="ls -l"
+export ls='ls -l'
+exit
+""
+exit
+echo "test | test ; alsotest>|<"
+exit
+export var=1 test=2
+echo $USER$var$user$user$usertest$user
+$
+echo '"abc"'
+echo "" bonjour
+exit

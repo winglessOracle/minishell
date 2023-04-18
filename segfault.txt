@@ -22,10 +22,20 @@ test$PWD
 
 /* Segfaults or incorrect behaviour */
 ------------------------
-cd . 											->uses cdpath should use current dir
-cd -											-> should print new dir
-"  \"hoi\" "  \"hoi\"  xx'd  x  \" dag kaas 	-> removes single quote
- 'hello "there world'                       	-> removes double quote
+parse "" as empty string
+parsing multiple $var$var$var
+-
+double vars:
+var=a
+export var
+export var=test
+-
+expand $ in assig when
+export var=a
+export $var=test
+-
+check on valid identifier in export
+export ls="ls -l" 						->unclosed quotes
 
 / *test cases to compare with bash: */
 ---------------------------------------
