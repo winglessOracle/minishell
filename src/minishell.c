@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/18 10:15:51 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 15:02:26 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,15 @@ int	main(void)
 	t_pipe		*pipeline;
 	int			exitstatus;
 
+	//add max buffer?
 	// atexit(leaks);
 	env_list = init_env();
 	set_sig_term();
-	read_history("log/history_log"); //remove?
+	read_history("log/history_log"); //remove
 	while (1)
 	{
 		line_read = get_input(env_list, "PS1");
-		write_history("log/history_log"); //remove?
-	// is exit built-in so can be removed after that works
-	if (!ft_strcmp(line_read, "exit"))  
-		break ;
+		write_history("log/history_log"); //remove
 		tokens = lexer(line_read, "|<> \t\n");
 	// print_tokens(tokens, "CREATED TOKENS\n");
 		while (tokens)
@@ -44,6 +42,7 @@ int	main(void)
 			pipeline = parse_pipeline(&tokens, env_list);
 			// print_pipeline(pipeline);
 			exitstatus = executor(pipeline);
+			
 	// printf("CREATED PIPLINE\n");
 	(void)exitstatus;
 	// printf("PASSED EXECUTOR\n");
@@ -51,7 +50,5 @@ int	main(void)
 		}
 	}
 	rl_clear_history();
-	// test_cd(pipeline->pipe_argv, env_list);
-	// test_echo();
-	exit(get_exit(env_list));
+	execute_exit(NULL, env_list);
 }

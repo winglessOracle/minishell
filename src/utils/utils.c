@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/18 09:16:26 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 15:05:01 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,17 +46,6 @@ int	syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err)
 		return (0);
 }
 
-int	get_exit(t_node *env_list)
-{
-	int		exit_val;
-	char	*str;
-
-	str = get_variable(env_list, "?");
-	exit_val = str[0] - '0'; // atio
-	free(str);
-	return (exit_val);
-}
-
 char	*get_input(t_node *env_list, char *var)
 {
 	char		*prompt;
@@ -65,7 +54,6 @@ char	*get_input(t_node *env_list, char *var)
 	line_read = NULL;
 	prompt = get_variable(env_list, var);
 	line_read = readline(prompt);
-	// printf("here\n");
 	if (line_read)
 		add_history(line_read);
 	free(prompt);

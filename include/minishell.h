@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/18 09:19:34 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 14:59:42 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ typedef struct s_pipe
 int			return_perror(char *str, int err);
 int	 		return_error(const char *str, int err);
 void		exit_error(char	*str, int num);
-int			get_exit(t_node *env_list);
 char		*get_input(t_node *env_list, char *var);
 int			syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err);
 
@@ -107,11 +106,10 @@ void		print_env(t_node *env_list, int flag);
 void		assignments(t_smpl_cmd *pipe_argv, pid_t pid);
 int			executor(t_pipe *pipeline);
 char		**build_cmd_args(t_node *argv, int argc);
-int			get_exit_st(pid_t pid);
+int			get_exit_st(int argc, pid_t pid);
 char		**get_env(t_node *env_list);
-
-//builtins
-int	execute_cd(char **cmd_vector, t_node *env_list);
+int			check_built(t_smpl_cmd *cmd);
+void		here_doc(t_pipe *pipeline, int *keep);
 
 //tests
 void		leaks(void);
