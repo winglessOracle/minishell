@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/18 18:25:35 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 19:52:24 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,12 @@ int	check_token_content(t_node *token, int type)
 		else if (str[i] == '$' && str[i + 1] != ' ' && \
 					str[i + 1] != '\0' && type != SQUOTE && type != DQUOTE)
 			return (EXPAND);
-		else if (str[i] == '=' && type != DQUOTE && type != SQUOTE)
+		i++;
+	}
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '=' && type != DQUOTE && type != SQUOTE)
 			return (ASSIGN);
 		i++;
 	}

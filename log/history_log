@@ -163,3 +163,33 @@ var=aap
 var2=koe
 echo $var$var2
 exit
+export 1var=aap
+export
+exit
+echo var=aap
+echo var=$aap
+exit
+echo var=$aap
+exit
+var=aap
+var=aap
+echo $var
+exit
+var=aap
+echo var
+echo $var
+var2=$var
+echo $var2
+exit
+var=aap
+var2=koe
+echo $var$var2$var
+echo var=$var2$var
+echo $var$var2$var
+echo $var$var2
+<< $var
+var=aap
+var2=koe
+echo $var$var2
+echo $var$var2$var
+exit
