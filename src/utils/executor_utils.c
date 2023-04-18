@@ -6,20 +6,21 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/18 09:41:19 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/18 09:53:26 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "executor.h"
 
+// <<del unknow comd does not
 void	here_doc(t_pipe *pipeline, int *keep)
 {
 	char	*line_read;
 	//t_node	*tokens;
 
 	close(*keep);
-	*keep = open(TMP_FILE, O_RDWR | O_CREAT | O_TRUNC, 0644);
+	*keep = open(TMP_FILE, O_RDWR | O_CREAT | O_TRUNC, 0666);
 	if (*keep < 0)
 		exit_error("opening tmp file", 1);
 	while (1)
@@ -28,7 +29,7 @@ void	here_doc(t_pipe *pipeline, int *keep)
 		if (!ft_strcmp(line_read, pipeline->pipe_argv->redirect->content))
 		{
 			unlink(TMP_FILE);
-			exit(0) ;
+			exit(0);
 		}
 		ft_putstr_fd(line_read, *keep);
 		free(line_read);
@@ -51,8 +52,7 @@ char	**build_cmd_args(t_node *argv, int argc)
 	if (!argv || !argc)
 		return (NULL);
 	cmd_args = malloc(sizeof(char *) * (argc + 1));
-	//printf("cmd:%s\n", cmd_args[0]);
-	while (i < argc) 
+	while (i < argc)
 	{
 		cmd_args[i] = ft_strdup(argv->content);
 		remove_node(&argv, NULL);

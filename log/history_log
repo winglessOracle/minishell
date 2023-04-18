@@ -4,3 +4,12 @@ ls | ls
 ls | cat | grep built > outf
 <Makefile cat | grep OBJ > jack
 <Makefile cat | grep OBJ > jack
+<< ff | cat | grep 1 > outt
+1111
+<< ff | cat | grep 1 > outt
+<< ff | cat | grep 1 > outtt
+<< ff | cat | grep 1 > outtt
+<< ff | cat | grep 1 > outtt
+cd log/
+<< ff goto
+exit
