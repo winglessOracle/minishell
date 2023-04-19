@@ -461,3 +461,64 @@ exit
 echo ''  test
 echo ""  test
 exit
+expre $? + $?
+expr $? + $?
+exit
+expr $? + $?
+exit
+>$var
+>in
+exit
+var=a
+$var=test
+exit
+var=a
+var=a
+$var=test
+exit
+$var=test
+exit
+$var=test
+var=a
+$var=test
+exit
+var=a
+$var=test
+echo $var
+exit
+var=a
+$var=test
+exit
+var=a
+$var=test
+exit
+$var=test
+exit
+var=a
+$var=test
+exit
+var=a
+$var=test
+exit
+exit
+var=a
+$var=test
+exit
+exit
+exit
+var=a
+$var=test
+exit
+var=a
+$var=test
+exit
+var=a
+$var=test
+exit
+var=a
+$var=test
+exit
+var=a
+$var=test
+echo $var $a
+exit

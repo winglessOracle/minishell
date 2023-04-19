@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 22:12:38 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/19 09:01:46 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,11 @@ char	*get_variable(t_node *env_list, char *name)
 	char	*value;
 	int		len;
 	t_node	*temp;
-
+	
 	value = NULL;
-	len = ft_strlen(name);
+	len = 0;
+	while (name[len] && name[len] != '=')
+		len++;
 	temp = env_list;
 	while (temp && name)
 	{

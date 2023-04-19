@@ -1,12 +1,5 @@
 /* Segfaults or incorrect behaviour */
 ------------------------
-var starting with $
--
-expand $ in assig when
-export var=a
-export $var=test
--
-
 
 / *test cases to compare with bash: */
 ---------------------------------------
@@ -24,9 +17,7 @@ $PWD
 --
 
 /* check Carien */
-make bash script for testing?
-check "expr $? + $?"
-use PS1 for testing as it has wierd characters...
+
 
 /* checks Carlo */
 env_array should only include type 2

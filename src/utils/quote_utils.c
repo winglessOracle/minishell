@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 22:43:34 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 22:54:14 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ int	split_quoted(int nr_quotes, t_node *token, char **content, t_smpl_cmd *cmd)
 	char	quote;
 	t_node	*words;
 
-	// printf("split no exp\n");
 	quote = get_quote_char(token->type);
 	words = split_to_list(token->content, "\'\"");
 	while (words)
