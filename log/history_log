@@ -488,3 +488,14 @@ exit
 exit
 << gg grep 1 | cat >out
 exit
+< cat
+< README.md cat
+< README.md cat > outt
+< README.md cat >> outt
+< README.md cat >> outt
+< README.md cat >> outt
+<< ff grep 1 > docccc
+exit
+<< ff grep 1 > docccc
+<< ff grep 1 > doccccc
+exit
