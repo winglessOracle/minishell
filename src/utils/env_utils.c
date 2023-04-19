@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/19 09:01:46 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/19 20:59:47 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	add_variable(t_node *env_list, char *var, int type)
 	if (temp)
 	{
 		free(temp->content);
-		temp->content = var;
+		temp->content = ft_strdup(var);
 		if (temp->content[ft_strlen(name)] == '\0')
 			temp->type = 1;
 		else

@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/18 18:50:58 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/19 20:17:24 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	redirect(t_pipe *pipeline, pid_t pid, int keep, int *fd_pipe)
 	{
 		close(fd_pipe[0]);
 		set_out = set_fd(pipeline, pipeline->pipe_argv, &keep, fd_pipe);
-		if (set_out == 1)
+		if (set_out == -1)
 			exit(1);
 		dup2(keep, STDIN_FILENO);
 		if (!keep)

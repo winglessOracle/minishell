@@ -3,20 +3,10 @@
 
 / *test cases to compare with bash: */
 ---------------------------------------
-<< here cat > out | < out cat
-echo "$var en aap"
-here
-
---
-
-mkdir test
-cd test
-rmdir ../test
-$PWD
-
---
 
 /* check Carien */
+add_variable check where input is / can be freed
+redo functions cd for normimette
 
 
 /* checks Carlo */

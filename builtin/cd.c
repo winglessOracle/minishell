@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 21:39:17 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/19 21:35:20 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,6 @@
 // An argument of - is equivalent to $OLDPWD.
 // The return value is true if the directory was successfully changed; 
 // false otherwise.
-int	go_home(t_node *env_list, char *arg)
-{
-	char	*home;
-	
-	home = get_variable(env_list, "HOME");
-	if (!home)
-		return(return_error("minishell: cd: HOME not set\n", 1));
-	if (change_dir(home, NULL, 0) == -1)
-		return (return_perror("minishell: cd", 1));
-	else
-	{
-		free(arg);
-		return (0);
-	}
-}
-
 int	go_oldpwd(t_node *env_list, char *arg)
 {
 	char	*oldpwd;
@@ -58,10 +42,8 @@ int	go_oldpwd(t_node *env_list, char *arg)
 	}
 }
 
-int	cd_absolute(int i, char *arg, t_node *env_list)
+int	cd_absolute(char *arg, t_node *env_list)
 {
-	if (i == 1)
-		return (go_home(env_list, arg));
 	if (!ft_strcmp(arg, "-"))
 		return (go_oldpwd(env_list, arg));
 	if (arg[0] == '/' || arg[0] == '-')
@@ -113,15 +95,14 @@ int	execute_cd(char **cmd_vector, t_node *env_list)
 	char	*arg;
 
 	i = 0;
-	// printf("arg: %s\n", cmd_vector[i - 1]);
 	while (cmd_vector[i])
 		i++;
 	if (i > 2)
 		return(return_error("minishell: cd: too many arguments\n", 1));
-	arg = get_arg(cmd_vector[i - 1]);
+	arg = get_arg(i - 1, cmd_vector[i - 1], env_list);
 	if (!arg)
 		return (1);
-	if (cd_absolute(i, arg, env_list) == 2)
+	if (cd_absolute(arg, env_list) == 2)
 	{
 		if (cd_relative(env_list, arg))
 			return (1);

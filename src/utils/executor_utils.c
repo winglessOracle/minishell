@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/18 18:51:24 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/19 20:26:16 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,22 @@ void	here_doc(t_pipe *pipeline, int *keep)
 
 	line = NULL;
 	close(*keep);
-	*keep = open(TMP_FILE, O_RDWR | O_CREAT | O_TRUNC, 0666);
+	*keep = open(TMP_FILE, O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	if (*keep < 0)
 		exit_error("opening tmp file", 1);
 	while (1)
 	{
 		line_read = get_input(pipeline->pipe_argv->env_list, "PS2", 0);
 		if (!ft_strcmp(line_read, pipeline->pipe_argv->redirect->content))
-		{
-			unlink(TMP_FILE);
-			exit(0);
-		}
-		ft_putstr_fd(line_read, *keep);
+			break ;
 		tokens = lexer(line_read, " \n");
 		line = parse_heredoc(tokens, pipeline->pipe_argv);
 		ft_putstr_fd(line, *keep);
-printf("in here_doc (executer): %s\n", line);
 		free(line);
 	}
+	close(*keep);
+	*keep = open(TMP_FILE, O_RDONLY);
+	unlink(TMP_FILE);
 }
 
 char	**build_cmd_args(t_node *argv, int argc)

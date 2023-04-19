@@ -545,3 +545,126 @@ var=aap
 << "here"
 var=aap
 << "here"
+<< here cat > out
+<< here cat > out
+exit
+<< here cat > out
+<< here cat > out
+<< here cat
+<< here cat
+exit\
+exit
+<< here cat
+<< here cat
+exit
+<< here cat
+exit
+<< here cat
+<< here cat
+var=koe
+<< here cat
+exit
+echo $var en aap
+echo "$var en aap"
+echo "$var en aap"
+echo "$var en aap"
+echo "$var en aap"
+var=koe
+echo "$var en aap"
+<< here cat
+<< "here" cat
+$var=test
+echo $aap
+echo $var
+echo $koe
+exit
+$var=5
+$var=5
+=5
+exit
+$var=5
+$var=5
+$var=5
+$var=5
+exit
+$var=5
+=5
+exit
+pwd
+cd src
+cd src
+cd src
+cd src
+cd src
+cd src
+unset pwd
+cd .
+cd ..
+pwd
+unset PWD
+cd src
+cd src
+cd src
+cd src
+cd src
+unset AAP
+unset PWD
+exit
+cd src
+cd src
+cd src
+cd src
+mkdir test
+cd test
+pwd
+mkdir test
+cd test
+mkdir test
+cd test
+mkdir test
+cd test
+cd .
+pwd
+cd src
+cd src
+mkdir test
+cd test
+mkdir test
+cd test
+rmdir ../test
+pwd
+cd .
+pwd
+exit
+mkdir test
+cd test
+cd src
+cd .
+pwd
+cd ..
+pwd
+cd -
+cd
+pwd
+cd Documents/codamcore/minishell/
+mkdir test
+cd test
+rmdir ../test
+pwd
+cd .
+cd ..
+pwd
+mkdir test
+cd test
+mkdir test
+cd test
+mkdir test
+cd test
+mkdir test
+cd test
+cd ~
+cd ..
+pwd
+cd minishell/
+mkdir test
+cd test

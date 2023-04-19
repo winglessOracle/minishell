@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/12 15:23:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2022/10/20 11:34:46 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/19 20:48:05 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*ptr;
 
 	i = 0;
+	if (!s2)
+		return (ft_strdup(s1));
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
 	ptr = malloc((len1 + len2 + 1) * sizeof(char));

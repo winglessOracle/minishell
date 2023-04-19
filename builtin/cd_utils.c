@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 11:03:39 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 20:37:49 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/19 21:55:34 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,21 @@ char	*get_back(char *pwd)
 	return (back);
 }
 
-char	*get_arg(char *cmd_arg)
+char	*get_home(t_node *env_list)
+{
+	char	*home;
+	
+	home = get_variable(env_list, "HOME");
+	if (!home)
+	{
+		return_error("minishell: cd: HOME not set\n", 1);
+		return(NULL);
+	}
+	else
+		return (home);
+}
+
+char	*get_arg(int i, char *cmd_arg, t_node *env_list)
 {
 	char	*arg;
 	char	*pwd;
@@ -50,20 +64,30 @@ char	*get_arg(char *cmd_arg)
 
 	if (!cmd_arg)
 		return (NULL);
+	if (i == 0)
+		return(get_home(env_list));
+	if (cmd_arg[0] == '/')
+		return (ft_strdup(cmd_arg));
 	pwd = getcwd(buf, PATH_MAX);
 	if (!pwd)
 	{
-		perror("minishell: cd: getcwd");
-		return (NULL);
+		if (!ft_strcmp(cmd_arg, ".."))
+		{
+			pwd = get_variable(env_list, "PWD");
+			arg = get_back(pwd);
+			free(pwd);
+		}
+		else if (!ft_strcmp(cmd_arg, "."))
+		{
+			return_error("minishell: cd: error retrieving current directory", 1);
+			return (NULL);
+		}
+		else
+		{
+			return_error("minishell: cd: no such file of directory\n", 1);
+			return (NULL);
+		}
 	}
-	if (cmd_arg[0] == '/')
-		arg = ft_strdup(cmd_arg);
-	else if (cmd_arg[0] == '.' && cmd_arg[1] == '.')
-		arg = ft_strjoin_free_s1(get_back(pwd), &cmd_arg[2]);
-	else if (cmd_arg[0] == '-' && cmd_arg[1] == '\0')
-		arg = ft_strdup("-");
-	else if (cmd_arg[0] == '.')
-		arg = ft_strdup(&cmd_arg[2]);
 	else
 		arg = ft_strdup(cmd_arg);
 	return (arg);
