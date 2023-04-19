@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/19 20:08:27 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/19 20:43:29 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 #include "executor.h"
 
 /*
-1. add redirects
-3. get right exitstatus
+get right exits and status
+make tester
 */
 
 void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
@@ -170,7 +170,7 @@ int		executor(t_pipe *pipeline)
 		{
 			if (pid == 0)
 				exec_cmd(pipeline->pipe_argv, env);
-			ret = get_exit_st(pipeline->pipe_argc, pid);
+			ret = get_exit_st(pipeline->pipe_argc, pid); //verplaatsen naar uit loop
 		}
 		else if (pid == 0)
 			exit(0);

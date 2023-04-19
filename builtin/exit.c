@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 19:37:37 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/19 20:15:00 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/19 20:39:32 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@ int	execute_exit(char **cmd_vector, t_node *env_list)
 		free(var);
 	}
 	printf("exiting\n"); //remove
-	//unlink(TMP_FILE);
+	//unlink(TMP_FILE); (in case of exit during heredoc)
 	exit(exit_code);
 }

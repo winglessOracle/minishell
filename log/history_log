@@ -499,3 +499,46 @@ exit
 << ff grep 1 > docccc
 << ff grep 1 > doccccc
 exit
+<< ff grep 1 > doccccc
+<< ff cat > out
+exit
+<< ff cat 
+exit
+<< ff cat 
+<< ff cat > out
+<< ff cat > outt
+exit
+<< ff cat > outtt
+exit
+<< ff cat
+exit
+<< ff grep1 > out
+<< ff grep 1 > out
+exit
+<< ff grep 1 > out
+<< ff cat 
+exit
+<< ff cat 
+<< ff grep 1 > out
+1 > doccccc
+exit
+<< ff grep 1 > out
+bash
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+exit
