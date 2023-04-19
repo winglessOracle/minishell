@@ -461,3 +461,10 @@ exit
 echo ''  test
 echo ""  test
 exit
+<<ff | grep 1 >out
+ar
+rf
+f<<
+sdfc
+ls
+ls | ls
