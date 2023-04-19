@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/18 18:41:09 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/19 09:20:43 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <errno.h>
+
+#define TMP_FILE "log/here_doc_tmp"
 
 typedef struct s_node
 {

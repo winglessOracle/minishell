@@ -468,3 +468,23 @@ f<<
 sdfc
 ls
 ls | ls
+<<gg cat >out
+<<gg cat | cat >out
+<<gg cat | grep 1 >out
+<<gg cat | grep 1 >out
+<<gg cat | grep 1 >ouh
+exit
+exit
+exit
+exit
+<< gg ls | cat
+exit
+<< gg ls | cat
+<< gg ls | cat >outtt
+exit
+<<gg cat | cat >outh
+exit
+<<gg cat | cat >outh
+exit
+<< gg grep 1 | cat >out
+exit
