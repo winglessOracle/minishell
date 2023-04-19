@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/17 12:10:55 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/18 19:46:37 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,40 @@
 //  If a variable name is followed by =word, the value of the variable is set 
 //  to word. Export returns an exit status of 0 unless an invalid option is 
 //  encountered, one of the names is not a valid shell variable name.
+int		check_sorted(t_node *env_list)
+{
+	t_node	*temp;
+
+	temp = env_list;
+	while (temp && temp->next)
+	{
+		if (ft_strcmp(temp->content, temp->next->content) > 0)
+			return (0);
+		temp = temp->next;
+	}
+	print_env(env_list, 3);
+	return (1);
+}
+
 t_node *sort_env(t_node *env_list)
 {
 	t_node	*temp;
 	char	*temp_content;
 	
 	temp = env_list;
-	while (temp && temp->next)
+	while(!check_sorted(env_list))
 	{
-		if (ft_strcmp(temp->content, temp->next->content) > 0)
+		while (temp && temp->next)
 		{
-			printf("temp: %s, next: %s\n", temp->content, temp->next->content);
-			temp_content = temp->content;
-			temp->next->content = temp->content;
-			temp->content = temp_content;
-			printf("temp: %s, next: %s\n", temp->content, temp->next->content);
+			if (ft_strcmp(temp->content, temp->next->content) > 0)
+			{
+				temp_content = temp->content;
+				temp->content = temp->next->content;
+				temp->next->content = temp_content;
+			}
+			temp = temp->next;	
 		}
-		temp = temp->next;
+		temp = env_list;
 	}
 	return (temp);
 }
@@ -60,12 +77,15 @@ int	execute_export(char **cmd_vector, t_node *env_list)
 	if (!cmd_vector[i])
 	{
 		sort_env(env_list);
-		// print_export(env_list);
+		print_export(env_list);
 	}
 	else
 	{
 		while (cmd_vector[i])
 		{
+			if (!ft_isalpha(cmd_vector[i][0]) && cmd_vector[i][0] != '_')
+				return (return_error("minishell: export: \
+											not a valid identifier\n", 1));
 			add_variable(env_list, cmd_vector[i], 3);
 			i++;
 		}

@@ -6,11 +6,29 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 11:03:39 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/16 13:16:18 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 20:37:49 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+int	change_dir(char	*str, char *arg, int print)
+{
+	int		ret;
+	char	buf[PATH_MAX];
+
+	if (print == 1)
+		print = ft_strcmp(str, getcwd(buf, PATH_MAX));
+	if (str[ft_strlen(str) - 1] != '/')
+		str = ft_strjoin_free_s1(str, "/");
+	if (arg)
+		str = ft_strjoin_free_s1(str, arg);
+	ret = chdir(str);
+	if (!ret && print)
+		printf("%s\n", str);
+	free(str);
+	return (ret);
+}
 
 char	*get_back(char *pwd)
 {
@@ -24,12 +42,14 @@ char	*get_back(char *pwd)
 	return (back);
 }
 
-char	*get_arg(char *cmd_arg, t_node *env_list)
+char	*get_arg(char *cmd_arg)
 {
 	char	*arg;
 	char	*pwd;
 	char	buf[PATH_MAX];
 
+	if (!cmd_arg)
+		return (NULL);
 	pwd = getcwd(buf, PATH_MAX);
 	if (!pwd)
 	{
@@ -41,11 +61,7 @@ char	*get_arg(char *cmd_arg, t_node *env_list)
 	else if (cmd_arg[0] == '.' && cmd_arg[1] == '.')
 		arg = ft_strjoin_free_s1(get_back(pwd), &cmd_arg[2]);
 	else if (cmd_arg[0] == '-' && cmd_arg[1] == '\0')
-	{
-		arg = get_variable(env_list, "OLDPWD");
-		if (!arg)
-			perror("minishell: cd: OLDPWD unset");
-	}
+		arg = ft_strdup("-");
 	else if (cmd_arg[0] == '.')
 		arg = ft_strdup(&cmd_arg[2]);
 	else

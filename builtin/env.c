@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ft_putstr_fd.c                                     :+:    :+:            */
+/*   env.c                                              :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
+/*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2022/10/17 10:46:00 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/18 18:33:37 by cariencaljo   ########   odam.nl         */
+/*   Created: 2023/04/18 12:30:26 by ccaljouw      #+#    #+#                 */
+/*   Updated: 2023/04/18 12:49:00 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "minishell.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	execute_env(char **cmd_vector, t_node	*env_list)
 {
-	while (*s)
-		write(fd, &(*s++), 1);
+	int	i;
+
+	i = 0;
+	while (cmd_vector[i])
+		i++;
+	if (i > 1)
+		return (return_error("env: No such file or directory\n", 127));
+	print_env(env_list, 2);
+	return (0);
 }

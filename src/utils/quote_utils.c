@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/13 17:36:55 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/18 22:43:34 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ char	get_quote_char(int type)
 int	split_quoted_exp(int nr_q, t_node *token, char **content, t_smpl_cmd *cmd)
 {
 	int		state;
+	char	quote;
 	t_node	*words;
 
 	// printf("split exp\n");
+	quote = get_quote_char(token->type);
 	words = split_to_list(token->content, "\'\"");
 	while (words)
 	{
@@ -42,7 +44,7 @@ int	split_quoted_exp(int nr_q, t_node *token, char **content, t_smpl_cmd *cmd)
 			else
 				state = WORD;
 		}
-		if (state == DQUOTE)
+		if (state == DQUOTE && get_quote_char(token->type) == quote)
 			nr_q += 1;
 		else if (words->content)
 			*content = ft_strjoin_free_s1(*content, words->content);
@@ -59,10 +61,10 @@ int	split_quoted(int nr_quotes, t_node *token, char **content, t_smpl_cmd *cmd)
 
 	// printf("split no exp\n");
 	quote = get_quote_char(token->type);
-	words = split_to_list(token->content, &quote);
+	words = split_to_list(token->content, "\'\"");
 	while (words)
 	{
-		type = check_token_content(words, WORD);
+		type = check_token_content(words, token->type);
 		if (type != SQUOTE && type != DQUOTE)
 			*content = ft_strjoin_free_s1(*content, words->content);
 		else if (get_quote_char(token->type) == quote)
@@ -79,7 +81,6 @@ int	get_content(t_node **token, t_smpl_cmd *cmd, int type, int state)
 
 	nr_quotes = 0;
 	content = NULL;
-	// printf("get content type: %d\n", type);
 	while (*token)
 	{
 		(*token)->type = type;
@@ -104,18 +105,24 @@ int	remove_quotes(t_node **token, t_smpl_cmd *cmd)
 	int					type;
 
 	state = (*token)->type;
+	if (!ft_strcmp((*token)->content, "\"\"") || \
+					!ft_strcmp((*token)->content, "\'\'"))
+	{
+		free((*token)->content);
+		(*token)->content = ft_strdup("");
+		add_word_to_cmd(token, cmd);
+		return (0);
+	}
 	type = check_token_content(*token, state);
 	type = get_content(token, cmd, type, state);
-	if (type == -1)
-		return (-1);
-	if (state == INPUT || state == OUTPUT \
-				|| state == APPEND || state == HEREDOC)
+	if (type != -1 && (state == INPUT || state == OUTPUT \
+				|| state == APPEND || state == HEREDOC))
 	{
 		if (state == HEREDOC)
 			(*token)->type = HEREDOCQ;
 		return (type);
 	}
-	else
+	else if (type != -1)
 		add_word_to_cmd(token, cmd);
 	return (type);
 }

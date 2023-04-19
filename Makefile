@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/17 19:41:21 by cwesseli      ########   odam.nl          #
+#    Updated: 2023/04/18 16:01:05 by cariencaljo   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ NAME		= minishell
 CC			= clang
 CFLAGS		= -Wall -Wextra -Werror
 
-RL_INC		= /Users/$(USER)/.brew/opt/readline/include
-RL_LIB		= /Users/$(USER)/.brew/opt/readline/lib
-# RL_INC			= /opt/homebrew/opt/readline/include
-# RL_LIB			= /opt/homebrew/opt/readline/lib
+# RL_INC		= /Users/$(USER)/.brew/opt/readline/include
+# RL_LIB		= /Users/$(USER)/.brew/opt/readline/lib
+RL_INC			= /opt/homebrew/opt/readline/include
+RL_LIB			= /opt/homebrew/opt/readline/lib
 
 #//= Locations =//#
 INCLUDE		= ./include
@@ -36,7 +36,7 @@ OBJ_FILES	= $(addprefix obj/, minishell.o lst_utils/t_node.o parser.o utils/util
 				utils/redirect_utils.o utils/quote_utils.o expander.o signals.o termios.o \
 				lst_utils/delete.o executor.o utils/executor_utils.o)
 
-OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o cd.o cd_utils.o pwd.o unset.o export.o exit.o)
+OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o cd.o cd_utils.o pwd.o unset.o export.o env.o exit.o)
 
 #//= Modifiable =//#
 all: libft $(NAME)

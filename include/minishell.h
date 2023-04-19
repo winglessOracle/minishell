@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/18 12:37:55 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/18 18:41:09 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,10 @@ typedef struct s_pipe
 }	t_pipe;
 
 // utils
-int			return_error(char *str, int err);
+int			return_perror(char *str, int err);
+int	 		return_error(const char *str, int err);
 void		exit_error(char	*str, int num);
-char		*get_input(t_node *env_list, char *var);
+char		*get_input(t_node *env_list, char *var, int history);
 int			syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err);
 
 // node_utils
@@ -91,6 +92,7 @@ t_pipe		*init_pipeline(void);
 
 // parser
 t_pipe		*parse_pipeline(t_node **tokens, t_node *env_list);
+char		*parse_heredoc(t_node *token, t_smpl_cmd *cmd);
 int			check_token_content(t_node *token, int type);
 
 // environment
@@ -109,9 +111,6 @@ int			get_exit_st(int argc, pid_t pid);
 char		**get_env(t_node *env_list);
 int			check_built(t_smpl_cmd *cmd);
 void		here_doc(t_pipe *pipeline, int *keep);
-
-//builtins
-int			execute_cd(char **cmd_vector, t_node *env_list);
 
 //tests
 void		leaks(void);

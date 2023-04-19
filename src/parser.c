@@ -6,12 +6,26 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/17 14:53:18 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/18 20:17:08 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
+
+int	check_assign(char *str, int type)
+{
+	int	i;
+	
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '=' && type != DQUOTE && type != SQUOTE)
+			return (ASSIGN);
+		i++;
+	}
+	return (WORD);
+}
 
 int	check_token_content(t_node *token, int type)
 {
@@ -36,11 +50,9 @@ int	check_token_content(t_node *token, int type)
 		else if (str[i] == '$' && str[i + 1] != ' ' && \
 					str[i + 1] != '\0' && type != SQUOTE && type != DQUOTE)
 			return (EXPAND);
-		else if (str[i] == '=' && type != DQUOTE && type != SQUOTE)
-			return (ASSIGN);
 		i++;
 	}
-	return (WORD);
+	return (check_assign(str, type));
 }
 
 int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd)
@@ -86,4 +98,29 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list)
 		}
 	}
 	return (pipeline);
+}
+
+char	*parse_heredoc(t_node *token, t_smpl_cmd *cmd)
+{
+	int					type;
+	int					state;
+	char				*input;
+	
+	type = cmd->redirect->type;
+	input = ft_strdup("");
+	while (token)
+	{
+		token->type = type;
+		state = check_token_content(token, token->type);
+		if (state == SQUOTE || state == DQUOTE)
+			state = remove_quotes(&token, cmd);
+		else if (state == EXPAND && type == HEREDOC)
+			state = expand(&token, cmd);
+		state = check_token_content(token, token->type);
+		if (token->content)
+			input = ft_strjoin_free_s1(input, token->content);
+		remove_node(&token, NULL);
+	}
+	input = ft_strjoin_free_s1(input, "\n");
+	return (input);
 }

@@ -1,79 +1,463 @@
-<< ff cat | grep 1 > oo
-ls
-ls | ls
-ls | cat | grep built > outf
-<Makefile cat | grep OBJ > jack
-<Makefile cat | grep OBJ > jack
-<< ff | cat | grep 1 > outt
-1111
-<< ff | cat | grep 1 > outt
-<< ff | cat | grep 1 > outtt
-<< ff | cat | grep 1 > outtt
-<< ff | cat | grep 1 > outtt
-cd log/
-<< ff goto
+cd src
+minishel
+minishell
 exit
-ls 
-aerf
-erf
-aer
-adf
-awer
-aerf
-aerf
+exit
+exit
 exit
 exit
 env
 exit
 exit
+env
 exit
+env
+env
 exit
-cd log
+env
 exit
+var=aap
+echo var
+echo $var
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here cat
 exit
+<< here
+<< here
+<< here
+<< here
+var= aap
+var=aap
+export
+<< here
+<< here
+<< here cat
 exit
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
 exit
+<< here
+<< here
+<< here
+var=aap
+<< here
+var=aap
+<< here
+var=aap
+<< here
+var=aap
+<< "here"
+<< "here"
+var=aap
+var2=koe
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+<< here
+var=aap
+<< here
+var=aap
+<< here
+echo "hello world"
+var=aap
+echo $var
+echo "hello $var"
 exit
+<< here
+<< here
+<< here
+<< here
+$var
 exit
-<inputhhh
-<inputhhh
->outtt
->outtt
-<inpueer
-<inpueer
-ls >outtt
-<inputtttt
-./bash
-./minishell
+<< here
+var=aap
+<< here
+<< here
+<< here
+var=aap
+<< here
+var=aap
+<< here
+<< "here"
+<< here
+<segfault.txt
+>out
 exit
-<< ff cat | grep1 > out1
+var=aap
+var1=koe
+echo $var
+echo $var1
+echo $var$var2
 exit
-ls | grep make | echo aap | pwd | ls | pwd 
+var=aap
+var2=koe
+echo $var$var1
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+echo $var$var2
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+var=aap
+var2=koe
+echo $var$var2
+exit
+export 1var=aap
+export
+exit
+echo var=aap
+echo var=$aap
+exit
+echo var=$aap
+exit
+var=aap
+var=aap
+echo $var
+exit
+var=aap
+echo var
+echo $var
+var2=$var
+echo $var2
+exit
+var=aap
+var2=koe
+echo $var$var2$var
+echo var=$var2$var
+echo $var$var2$var
+echo $var$var2
+<< $var
+var=aap
+var2=koe
+echo $var$var2
+echo $var$var2$var
+exit
+echo "hello 'world"
+echo "hello 'world"
+var=aap
+echo "hello 'world $aap"
+echo "hello 'world $var"
+exit
+<< here
+var=aap
+<< here
+var=aap
+<< "here"
+var=aap
+<< 'here'
+echo "$var en aap"
+exit
+var=aap
+echo test$var
+echo test"$var is geen koe"
+exit
+var=aap
+echo var2=$var
+exit
+echo $PWDtest
+echo test$PWD
+echo ~withnoslash
+echo ~
+echo ~/hello
+exit
+cd ../../../../../..
+cd ~
+echo "hello ~ world"
+echo ~
+unset HOME
+echo ~
+exit
+unset HOME
+echo ~
+exit
+cd ~
+export HOME=/Users/uers42
+cd ~
+cd .. blaba
+exit
+cd blabla
+cd -
+pwd
+pwd
+cd
+cd -
+cd -
+cd -
+cd -
+exit
+echo
+echo -n
+cd $var
+export var=a
+export $var=test
+export $var=test
+echo $var
+eport $var=test
+exit
+export var=1 test=2
+echo $USER$var$USER$USER$USERtest$USER
+export var=a test=2
+echo $USER$var$USER$USER$USERtest$USER
+$
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+$var%var2
+echo $var$var2
+$var$var2
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+echo $LESS$VAR
+exit
+export var=1 test=2
+echo $USER$var$U$USER$var$USER$USER$USERtest$USER
+echo $USER$var$USER$USER$USERtest$USER
+$
+exit
+var=1 test=2
+echo $USER
+echo $USER$var
+echo $USER$var$USER$USER
+echo $USER$var$USER$USERtest
+echo $USER$var$USER$USERtest
 var=1
-echo car
-echo $var
+echo $USER$var$USER$USERtest
+var=1 test=2
+echo $USER
+echo $USER$var
+echo $USER$var$USER
+echo $USER$var$USER$USERtest
+echo $USER$var$USER$USERtest$var
+$
+..
+echo "abc"
+echo $USER$var$USER$USER$USERtest$USER
+var=a
+$var=test
+echo a
+echo $a
+export
+$var=test
+export
+exit
+$PWDtest
+echo $PWDtest
+echo test$PWD
+echo ~withnoslash
+echo ~
+echo ~/hello
+exit
+./minishell 
+exit
+echo ~
+unset HOME
+echo ~
+exit
+echo ~
+echo ~/test
+unset HOME
+echo ~
+echo ~/test
+echo ~
+unset HOME
+echo ~
+echo ~
+exit
+cd ~
+cd ~
+echo ~
+unset HOME
+echo ~
+exit
+echo ~
+echo ~aap
+echo ~/aap
+unset HOME
+echo ~
+echo ~aap
+echo ~/aap
+echo ~
+echo ~aap
+echo ~/aap
+unset HOME
+echo ~
+echo ~/aap
+echo ~
+echo ~/aap
+echo ~aap
+unset HOME
+echo ~
+echo ~
+echo ~aap
+echo ~/aap
+unset HOME
+echo ~
+echo ~aap
+echo ~/aap
+echo ~
+echo ~aap
+echo ~/aap
+unset HOME
+echo ~
+echo ~aap
+echo ~/aap
+unset HOME
+echo ~/aap
+cd ~
+cd ~
+cd ~
+cd ~
+echo ~
+echo ~aap
+echo ~/aap
+unset HOME
+echo ~
+echo ~aap
+echo ~/aap
+unset ~
+echo ~
+echo ~aap
+echo ~
+exit
+echo $HOME
+unset ~
+echo $HOME
+echo ~
+unset "~"
+echo ~
+exit
+echo $HOME
+unset HOME
+echo $HOME
+echo $~
+unset "~"
+echo $~
+exit
+export
+exit
+cd
+cd
+cd
+var=a
+export
+var=a
+exit
+var=a
+var=a
+export
+var=a
+exit
+var=a
+var=a
+exit
+var=a
+var=a
+export
+exit
+var=a
+var=a
+exit
+var=a
+var=a
+export
+exit
+./minishell 
+exit
+var=a
 echo $var
 exit
-env
-env
-env aap
-unset path
-unset PATH
-env
-env aap
-jfjfj
-er;
-aerf
-aerf
-aerf
-env
-unset PATH
-env
-env
-unset PATH
-env
-env
-unst PATH
-unset PATH
-env
+var=a
+export
+export var
+export
+export var=test
+export
+exit
+export ls="ls -l"
+$ls
+exit
+echo ""
+echo "" test
+exit
+echo "" test
+echo '' test
+exit
+echo ""
+echo "" test
+exit
+echo "" test
+exit
+echo "" test
+exit
+echo "" test
+exit
+echo "" test
+exit
+echo "" test
+echo ''  test
+exit
+echo ''  test
+echo ""  test
 exit
