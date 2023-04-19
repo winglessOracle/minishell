@@ -522,3 +522,20 @@ var=a
 $var=test
 echo $var $a
 exit
+var=a
+<< here cat >out | <out cat
+exit
+<< here
+<< here
+var=aap
+<< here
+var=aap
+<< here
+var=aap
+<< here
+var=aap
+<< "here"
+var=aap
+<< here
+var=aap
+<< "here"
