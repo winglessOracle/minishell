@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/19 09:40:15 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/19 20:05:05 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	here_doc(t_pipe *pipeline, int *keep)
 		if (!ft_strcmp(line_read, pipeline->pipe_argv->redirect->content))
 		{
 			unlink(TMP_FILE);
-			exit(0);
+			break;
 		}
 		ft_putstr_fd(line_read, *keep);
 		tokens = lexer(line_read, " \n");
