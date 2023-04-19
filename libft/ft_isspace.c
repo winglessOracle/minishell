@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lexer.h                                            :+:    :+:            */
+/*   ft_isspace.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/11 14:48:29 by cariencaljo   ########   odam.nl         */
+/*   Created: 2022/10/12 10:50:24 by cwesseli      #+#    #+#                 */
+/*   Updated: 2022/10/12 11:57:43 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
-
-# include "minishell.h"
-
-typedef enum e_lextype
+int	ft_isspace(int c)
 {
-	WORD = 0,
-	BLANK,
-	REDIRECT,
-	PIPE,
-	NEW_LINE,
-	// SEMI,
-	// AND,
-}	t_lextype;
-
-#endif
+	if (c == ' ' || c == '\n' || c == '\t'
+		|| c == '\v' || c == '\f' || c == '\r')
+		return (1);
+	return (0);
+}

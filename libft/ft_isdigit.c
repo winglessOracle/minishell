@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lexer.h                                            :+:    :+:            */
+/*   ft_isdigit.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/11 14:48:29 by cariencaljo   ########   odam.nl         */
+/*   Created: 2022/10/10 09:26:52 by cwesseli      #+#    #+#                 */
+/*   Updated: 2022/10/12 11:51:37 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
-
-# include "minishell.h"
-
-typedef enum e_lextype
+int	ft_isdigit(int c)
 {
-	WORD = 0,
-	BLANK,
-	REDIRECT,
-	PIPE,
-	NEW_LINE,
-	// SEMI,
-	// AND,
-}	t_lextype;
-
-#endif
+	if (c >= '0' && c <= '9')
+		return (1);
+	return (0);
+}

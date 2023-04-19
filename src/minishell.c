@@ -6,41 +6,49 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/30 10:29:16 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 18:41:16 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "builtin.h" //test
 
-int	main(int argc, char **argv, char **envp)
+void	leaks(void)
 {
-	t_node		*tokens;
-	t_node		*env_list;
-	char		*line_read;
+	system("leaks minishell -q");
+}
 
-	atexit(leaks);
-	line_read = NULL;
-	env_list = env_to_list(envp);
-	add_variable(env_list, "PS1=CC_PROMPT:> ", 1);
+int	main(void)
+{
+	char		*line_read;
+	t_node		*env_list;
+	t_node		*tokens;
+	t_pipe		*pipeline;
+	int			exitstatus;
+
+	//add max buffer?
+	// atexit(leaks);
+	env_list = init_env();
+	set_sig_term();
+	read_history("log/history_log"); //remove
 	while (1)
 	{
-		if (line_read)
-		{
-		  	free(line_read);
-		  	line_read = NULL;
-		}
-		line_read = readline("CC_PROMPT:$> ");
-		if (!ft_strcmp(line_read, "exit"))
-			break ;
-		if (line_read && *line_read)
-		 	add_history(line_read);
+		line_read = get_input(env_list, "PS1", 1);
+		write_history("log/history_log"); //remove
 		tokens = lexer(line_read, "|<> \t\n");
-		// tests
-		if (tokens)
+	// print_tokens(tokens, "CREATED TOKENS\n");
+		while (tokens)
 		{
-			run_tests(line_read, tokens, env_list);
-			lstclear(&tokens, delete_content);
+			pipeline = parse_pipeline(&tokens, env_list);
+			// print_pipeline(pipeline);
+			exitstatus = executor(pipeline);
+			
+	// printf("CREATED PIPLINE\n");
+	(void)exitstatus;
+	// printf("PASSED EXECUTOR\n");
+	// printf("exitstatus=%d\n", exitstatus);
 		}
 	}
-	exit(EXIT_SUCCESS);
+	rl_clear_history();
+	execute_exit(NULL, env_list);
 }

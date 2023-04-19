@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lexer.h                                            :+:    :+:            */
+/*   ft_putstr_fd.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/11 14:48:29 by cariencaljo   ########   odam.nl         */
+/*   Created: 2022/10/17 10:46:00 by cwesseli      #+#    #+#                 */
+/*   Updated: 2023/04/18 18:33:37 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
+#include "libft.h"
 
-# include "minishell.h"
-
-typedef enum e_lextype
+void	ft_putstr_fd(char *s, int fd)
 {
-	WORD = 0,
-	BLANK,
-	REDIRECT,
-	PIPE,
-	NEW_LINE,
-	// SEMI,
-	// AND,
-}	t_lextype;
-
-#endif
+	while (*s)
+		write(fd, &(*s++), 1);
+}

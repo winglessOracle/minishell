@@ -1,19 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utils.c                                            :+:    :+:            */
+/*   ft_freearr.c                                       :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: carlo <carlo@student.codam.nl>               +#+                     */
+/*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/03/21 16:07:57 by carlo         ########   odam.nl         */
+/*   Created: 2023/02/15 07:20:23 by cariencaljo   #+#    #+#                 */
+/*   Updated: 2023/02/16 10:17:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-void	exit_error(int num)
+char	**ft_freearr(char **arr, int j)
 {
-	write(1, "Error\n", 7);
-	exit(num);
+	if (j == 0)
+	{
+		while (arr[j])
+		{
+			free(arr[j]);
+			j++;
+		}
+	}
+	else
+	{
+		while (j >= 0)
+		{
+			free(arr[j]);
+			j--;
+		}
+	}
+	free(arr);
+	return (0);
 }

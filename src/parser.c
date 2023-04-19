@@ -6,46 +6,121 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/03/28 19:29:53 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/18 20:17:08 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
 
-// if LESS || GREAT -> check next and set redirect
-// if PIPE or NEW_LINE -> end simple command?
-// else -> skip
-
-// other:
-//  done: if # (at start of token) -> replace # with '\0' and remove all next tokens until (but excluding) next '\n' 
-//  done: if " -> find closing " 
-//  done: if ' -> find closing '
-// if $ -> expand to (env)value
-// if $?	-> expand to last exit status
-
-int	get_state(char *str)
+int	check_assign(char *str, int type)
 {
-	int		state;
+	int	i;
+	
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '=' && type != DQUOTE && type != SQUOTE)
+			return (ASSIGN);
+		i++;
+	}
+	return (WORD);
+}
+
+int	check_token_content(t_node *token, int type)
+{
+	char	*str;
+	int		i;
+
+	i = 0;
+	if (!token->content)
+		return (WORD);
+	str = token->content;
+	if (str[0] == '#' && type != DQUOTE && type != SQUOTE)
+		return (COMMENT);
+	if (str[0] == '~' && (str[1] == '/' || str[1] == '\0') \
+								&& type != DQUOTE && type != SQUOTE)
+		return (TILDE);
+	while (str[i])
+	{
+		if (str[i] == '\"' && type != SQUOTE)
+			return (DQUOTE);
+		else if (str[i] == '\'' && type != DQUOTE)
+			return (SQUOTE);
+		else if (str[i] == '$' && str[i + 1] != ' ' && \
+					str[i + 1] != '\0' && type != SQUOTE && type != DQUOTE)
+			return (EXPAND);
+		i++;
+	}
+	return (check_assign(str, type));
+}
+
+int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd)
+{	
+	int					state;
+	static t_function	*parse[5];
+
+	parse[WORD] = expander;
+	parse[BLANK] = remove_node;
+	parse[REDIRECT] = redirect_tokens; 
+	parse[PIPE] = set_cmd_end;
+	parse[NEW_LINE] = set_cmd_end;
+	state = 0;
+	while (*tokens && !state)
+		state = parse[(*tokens)->type](tokens, *cmd);
+	state = set_cmd_end(tokens, *cmd);
+	return (state);
+}
+
+t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list)
+{	
+	t_pipe		*pipeline;
+	t_smpl_cmd	*cmd;
+	int			state;
 
 	state = 0;
-	if (*str == '#')
-		return (COMMENT);
-	while (*str)
+	pipeline = init_pipeline();
+	while (*tokens && state != -1)
 	{
-		if (*str == 34 && state == 0)
-			state = D_QUOTE;
-		else if (*str == 39 && state == 0)
-			state = S_QUOTE;
-		else if (*str == 34 && state == D_QUOTE)
-			state = 0;
-		else if (*str == 39 && state == S_QUOTE)
-			state = 0;
-		else if (*str == 36 && state != S_QUOTE)
-			state = EXPAND;
-		else if (*str == 61 && state == 0)
-			state = ASSIGN;
-		str++;
+		cmd = init_smpl_cmd(env_list);
+		state = parse_cmd(tokens, &cmd);
+		if (cmd)
+		{
+			lstadd_back_cmd(&pipeline->pipe_argv, cmd);
+			pipeline->pipe_argc++;
+		}
+		if (state == -1)
+			lstclear_cmdlst(&pipeline->pipe_argv, delete_cmd);
+		if (*tokens && (*tokens)->type == NEW_LINE)
+		{
+			state = remove_node(tokens, NULL);
+			break ;
+		}
 	}
-	return (state);
+	return (pipeline);
+}
+
+char	*parse_heredoc(t_node *token, t_smpl_cmd *cmd)
+{
+	int					type;
+	int					state;
+	char				*input;
+	
+	type = cmd->redirect->type;
+	input = ft_strdup("");
+	while (token)
+	{
+		token->type = type;
+		state = check_token_content(token, token->type);
+		if (state == SQUOTE || state == DQUOTE)
+			state = remove_quotes(&token, cmd);
+		else if (state == EXPAND && type == HEREDOC)
+			state = expand(&token, cmd);
+		state = check_token_content(token, token->type);
+		if (token->content)
+			input = ft_strjoin_free_s1(input, token->content);
+		remove_node(&token, NULL);
+	}
+	input = ft_strjoin_free_s1(input, "\n");
+	return (input);
 }

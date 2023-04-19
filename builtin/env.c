@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lexer.h                                            :+:    :+:            */
+/*   env.c                                              :+:    :+:            */
 /*                                                     +:+                    */
-/*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
+/*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/11 14:48:29 by cariencaljo   ########   odam.nl         */
+/*   Created: 2023/04/18 12:30:26 by ccaljouw      #+#    #+#                 */
+/*   Updated: 2023/04/18 12:49:00 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
+#include "minishell.h"
 
-# include "minishell.h"
-
-typedef enum e_lextype
+int	execute_env(char **cmd_vector, t_node	*env_list)
 {
-	WORD = 0,
-	BLANK,
-	REDIRECT,
-	PIPE,
-	NEW_LINE,
-	// SEMI,
-	// AND,
-}	t_lextype;
+	int	i;
 
-#endif
+	i = 0;
+	while (cmd_vector[i])
+		i++;
+	if (i > 1)
+		return (return_error("env: No such file or directory\n", 127));
+	print_env(env_list, 2);
+	return (0);
+}

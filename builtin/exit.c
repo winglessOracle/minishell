@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   lexer.h                                            :+:    :+:            */
+/*   exit.c                                             :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/11 14:48:29 by cariencaljo   ########   odam.nl         */
+/*   Created: 2023/04/17 19:37:37 by cwesseli      #+#    #+#                 */
+/*   Updated: 2023/04/18 11:22:57 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LEXER_H
-# define LEXER_H
+#include "minishell.h"
 
-# include "minishell.h"
-
-typedef enum e_lextype
+int	execute_exit(char **cmd_vector, t_node *env_list)
 {
-	WORD = 0,
-	BLANK,
-	REDIRECT,
-	PIPE,
-	NEW_LINE,
-	// SEMI,
-	// AND,
-}	t_lextype;
+	char	*var;
+	int		exit_code;
 
-#endif
+	exit_code = 0;
+	(void)env_list;
+	if (cmd_vector[1] != NULL)
+		exit_code = ft_atoi_long(cmd_vector[1]);
+	else
+	{
+		var = get_variable(env_list, "?");
+		exit_code = ft_atoi_long(var);
+		free(var);
+	}
+	exit(exit_code);
+}
