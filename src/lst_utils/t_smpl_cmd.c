@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/20 16:45:53 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/20 17:11:50 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,5 @@ int	remove_cmd_node(t_smpl_cmd **cmds)
 	*cmds = (*cmds)->next;
 	temp->next = NULL;
 	lstdelone_cmd(temp, delete_cmd);
-	printf("removed cmd_node\n");
 	return (0);
 }
