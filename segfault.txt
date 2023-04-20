@@ -10,6 +10,7 @@ redo functions cd for normimette
 
 
 /* checks Carlo */
+empty redirect nodes should result in error
 env_array should only include type 2
 readline keeps first characters
 redirect can have empty filenames or should expander flag error?

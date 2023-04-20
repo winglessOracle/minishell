@@ -6,28 +6,68 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 11:03:39 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/19 21:55:34 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 10:08:42 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	change_dir(char	*str, char *arg, int print)
+
+void	update_env(t_node *env_list, char *cmd_arg)
+{
+	char	buf[PATH_MAX];
+	char	*cur_dir;
+	char	*pwd;
+	
+	pwd = get_variable(env_list, "PWD");
+	add_variable(env_list, ft_strjoin("OLDPWD=", pwd), 2);
+	cur_dir =  getcwd(buf, PATH_MAX);
+	if (cur_dir)
+		add_variable(env_list, ft_strjoin("PWD=", cur_dir), 2);
+	else
+	{
+		if (pwd[ft_strlen(pwd) - 1] != '/')
+			pwd = ft_strjoin_free_s1(pwd, "/");
+		cur_dir = ft_strjoin(pwd, cmd_arg);
+		add_variable(env_list, ft_strjoin("PWD=", cur_dir), 2);
+		free(cur_dir);
+	}
+	free(pwd);
+}
+
+int	change_dir(char	*str, char *arg)
 {
 	int		ret;
-	char	buf[PATH_MAX];
 
-	if (print == 1)
-		print = ft_strcmp(str, getcwd(buf, PATH_MAX));
 	if (str[ft_strlen(str) - 1] != '/')
 		str = ft_strjoin_free_s1(str, "/");
 	if (arg)
 		str = ft_strjoin_free_s1(str, arg);
 	ret = chdir(str);
-	if (!ret && print)
-		printf("%s\n", str);
 	free(str);
 	return (ret);
+}
+
+char	*get_curr_dir(char *cmd_arg, t_node *env_list)
+{
+	char	*cur_dir;
+	char	buf[PATH_MAX];
+	
+	cur_dir = getcwd(buf, PATH_MAX);
+	if (!cur_dir)
+	{
+		if (!ft_strcmp(cmd_arg, ".."))
+			cur_dir = get_variable(env_list, "PWD");
+		if (!ft_strcmp(cmd_arg, "."))
+		{
+			ft_putstr_fd("minishell: cd: error retrieving current directory\n", 2);
+			update_env(env_list, cmd_arg);
+			return (NULL);
+		}
+	}
+	else
+		cur_dir = ft_strdup(cur_dir);
+	return (cur_dir);
 }
 
 char	*get_back(char *pwd)
@@ -39,58 +79,8 @@ char	*get_back(char *pwd)
 	while (pwd[i] != '/' && i > 0)
 		i--;
 	back = ft_substr(pwd, 0, i);
+	free(pwd);
 	return (back);
-}
-
-char	*get_home(t_node *env_list)
-{
-	char	*home;
-	
-	home = get_variable(env_list, "HOME");
-	if (!home)
-	{
-		return_error("minishell: cd: HOME not set\n", 1);
-		return(NULL);
-	}
-	else
-		return (home);
-}
-
-char	*get_arg(int i, char *cmd_arg, t_node *env_list)
-{
-	char	*arg;
-	char	*pwd;
-	char	buf[PATH_MAX];
-
-	if (!cmd_arg)
-		return (NULL);
-	if (i == 0)
-		return(get_home(env_list));
-	if (cmd_arg[0] == '/')
-		return (ft_strdup(cmd_arg));
-	pwd = getcwd(buf, PATH_MAX);
-	if (!pwd)
-	{
-		if (!ft_strcmp(cmd_arg, ".."))
-		{
-			pwd = get_variable(env_list, "PWD");
-			arg = get_back(pwd);
-			free(pwd);
-		}
-		else if (!ft_strcmp(cmd_arg, "."))
-		{
-			return_error("minishell: cd: error retrieving current directory", 1);
-			return (NULL);
-		}
-		else
-		{
-			return_error("minishell: cd: no such file of directory\n", 1);
-			return (NULL);
-		}
-	}
-	else
-		arg = ft_strdup(cmd_arg);
-	return (arg);
 }
 
 char	**get_path_arr(t_node *env_list, char *pwd)

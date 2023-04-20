@@ -668,3 +668,103 @@ pwd
 cd minishell/
 mkdir test
 cd test
+echo hello >$var
+exit
+echo hello >$var
+exit
+cd
+pwd
+cd Documents
+exit
+cd src
+pwd
+cd
+pwd
+exit
+cd
+exit
+cd
+exit
+cd
+exit
+cd
+exit
+cd
+cd /Users/cariencaljouw/Documents/codamcore/minishell/
+exit
+cd .
+pwd
+cd ..
+pwd
+exit
+cd ..
+pwd
+exit
+pwd
+cd ..
+cd
+cd
+cd
+cd
+pwd
+cd Documents/
+cd codamcore/minishell/
+exit
+pwd
+cd
+cd
+cd
+cd
+cd
+pwd
+cd Documents/
+pwd
+cd .
+pwd
+cd ..
+pwd
+cd Documents/codamcore/minishell/
+pwd
+mkdir test
+cd test
+mkdir test
+cd test/
+mkdir test
+cd test
+mkdir test
+cd test
+mkdir test
+cd test
+remdir ../test
+rmdir ../test
+pwd
+cd /Users/ccaljouw
+pwd
+cd ..
+pwd
+exit
+cd /Users/ccaljouw
+exit
+mkdir test
+cd test
+cd ~
+cd -
+cd -
+cd
+cd Documents/codamcore/minishell/
+pwd
+cd
+cd _
+cd -
+cd Documents/codamcore/minishell/
+cd
+cd -
+cd Documents/codamcore/minishell/
+pwd
+cd
+cd
+cd Documents/codamcore/minishell/
+unset HOME
+echo $HOME
+cd
+exit

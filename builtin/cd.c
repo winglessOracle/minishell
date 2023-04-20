@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/19 21:35:20 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 10:27:03 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,90 +26,124 @@
 // An argument of - is equivalent to $OLDPWD.
 // The return value is true if the directory was successfully changed; 
 // false otherwise.
-int	go_oldpwd(t_node *env_list, char *arg)
+int	go_to_var(t_node *env_list, char *arg, char *var)
 {
-	char	*oldpwd;
+	char	*value;
+	char	*str;
 	
-	oldpwd = get_variable(env_list, "OLDPWD");
-	if (!oldpwd)
-		return(return_error("minishell: cd: OLDPWD not set\n", 1));
-	if (change_dir(oldpwd, NULL, 2) == -1)
-		return (return_perror("minishell: cd", 1));
-	else
+	if (arg[0] == '-' && ft_strcmp(arg, "-"))
 	{
-		free(arg);
+		ft_putstr_fd("minishell: cd: invalid option\n", 2);
+		return(1);
+	}
+	value = get_variable(env_list, var);
+	if (!value)
+	{
+		str = ft_strjoin(var, " not set\n");
+		ft_putstr_fd(ft_strjoin("minishell: cd: ", str), 2);
+		free(str);
+		return(1);
+	}
+	if (!chdir(value))
+	{
+		if  (!ft_strcmp(var, "OLDPWD"))
+			printf("%s\n", value);
 		return (0);
 	}
+	return (1);
 }
 
-int	cd_absolute(char *arg, t_node *env_list)
+int	cd_absolute(int i, char *cmd_arg, t_node *env_list)
 {
-	if (!ft_strcmp(arg, "-"))
-		return (go_oldpwd(env_list, arg));
-	if (arg[0] == '/' || arg[0] == '-')
-	{
-		if (arg[0] == '-' && arg[0] != '\0')
-			return(return_perror("minishell: cd: invalid option", 1));
-		else if (chdir(arg) == -1)
-			return(return_perror("minishell: cd", 1));
-		else
-		{
-			free(arg);
-			return (0);
-		}
-	}
-	return (2);
+	if (!cmd_arg)
+		return (0);
+	if (i == 1)
+		return(go_to_var(env_list, cmd_arg, "HOME"));
+	if (cmd_arg[0] == '-')
+		return (go_to_var(env_list, cmd_arg, "OLDPWD"));
+	if (cmd_arg[0] == '/')
+		return (chdir(cmd_arg));
+	return(2);
 }
 
-int	cd_relative(t_node *env_list, char *arg)
+int	relative_curr_dir(char *cmd_arg, t_node *env_list)
+{
+	char	*cur_dir;
+	char	*new_dir;
+
+	cur_dir = get_curr_dir(cmd_arg, env_list);
+	if (!cur_dir)
+		return (1);
+	if (!ft_strcmp(cmd_arg, ".."))
+		new_dir = get_back(cur_dir);
+	else if (cmd_arg[0] == '.')
+	{
+		if (ft_strlen(cmd_arg) > 1)
+			new_dir = ft_strjoin_free_s1(cur_dir, &cmd_arg[1]);
+		else
+			new_dir = cur_dir;
+	}
+	else
+	{
+		if (cur_dir[ft_strlen(cur_dir) - 1] != '/')
+			cur_dir = ft_strjoin_free_s1(cur_dir, "/");
+		new_dir = ft_strjoin_free_s1(cur_dir, cmd_arg);
+	}
+	if (!cur_dir)
+		exit_error("cd: strjoin", 1);
+	return(chdir(new_dir));
+}
+
+int	cd_relative_cdpath(t_node *env_list, char *cmd_arg)
 {
 	char	**path_arr;
-	char	buf[PATH_MAX];
 	char	*pwd;
 	int		i;
 
-	pwd = getcwd(buf, PATH_MAX);
+	pwd = get_curr_dir(cmd_arg, env_list);
 	path_arr = get_path_arr(env_list, pwd);
 	if (!path_arr)
 		exit_error("cd", 1);
 	i = 0;
 	while (path_arr[i])
 	{
-		if (change_dir(ft_strdup(path_arr[i]), arg, 1) == -1)
+		if (change_dir(ft_strdup(path_arr[i]), cmd_arg) == -1)
 			i++;
 		else
 		{
 			ft_free_array(path_arr);
+			free(pwd);
 			return (0);
 		}
 	}
 	ft_free_array(path_arr);
+	free(pwd);
 	return (return_perror("minishell: cd", 1));
 }
 
 int	execute_cd(char **cmd_vector, t_node *env_list)
 {
 	int		i;
-	char	buf[PATH_MAX];
-	char	*pwd;
-	char	*arg;
 
 	i = 0;
 	while (cmd_vector[i])
 		i++;
 	if (i > 2)
 		return(return_error("minishell: cd: too many arguments\n", 1));
-	arg = get_arg(i - 1, cmd_vector[i - 1], env_list);
-	if (!arg)
-		return (1);
-	if (cd_absolute(arg, env_list) == 2)
-	{
-		if (cd_relative(env_list, arg))
-			return (1);
-	}
-	pwd = get_variable(env_list, "PWD");
-	add_variable(env_list, ft_strjoin("OLDPWD=", pwd), 2);
-	add_variable(env_list, ft_strjoin("PWD=", getcwd(buf, PATH_MAX)), 2);
-	free(pwd);
-	return (0);
+	i = cd_absolute(i, cmd_vector[i - 1], env_list);
+	if (i == 0)
+		update_env(env_list, cmd_vector[i - 1]);
+	if (i == -1)
+		return (return_perror("minishell: cd", 1));
+	if (i < 2)
+		return (i);
+	i = relative_curr_dir(cmd_vector[1], env_list);
+	if (i == 0)
+		update_env(env_list, cmd_vector[1]);
+	if (!(i == -1 && cmd_vector[1][0] != '.'))
+		return (i);
+	i = cd_relative_cdpath(env_list, cmd_vector[1]);
+	if (i == 0)
+		update_env(env_list, cmd_vector[1]);
+	return (i);
 }
