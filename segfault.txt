@@ -5,8 +5,8 @@
 ---------------------------------------
 
 /* check Carien */
-export sort
 check cd with CDPATH
+env followd by other cmd;
 
 /* checks Carlo */
 check nmbr of args exit

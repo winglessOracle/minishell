@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/13 09:29:13 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 10:07:48 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 16:30:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,8 @@ char	*get_curr_dir(char *cmd_arg, t_node *env_list);
 char	*get_back(char *pwd);
 char	**get_path_arr(t_node *env_list, char *pwd);
 void	update_env(t_node *env_list, char *cmd_arg);
+
+// env
+void	check_env(t_smpl_cmd *cmd);
 
 #endif

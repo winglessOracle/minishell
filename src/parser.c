@@ -6,12 +6,13 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/19 09:30:18 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 16:30:18 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
+#include "builtin.h"
 
 int	check_assign(char *str, int type)
 {
@@ -69,6 +70,7 @@ int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd)
 	while (*tokens && !state)
 		state = parse[(*tokens)->type](tokens, *cmd);
 	state = set_cmd_end(tokens, *cmd);
+	check_env(*cmd);
 	return (state);
 }
 

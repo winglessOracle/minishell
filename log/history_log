@@ -163,3 +163,14 @@ export
 var=aap
 export
 exit
+env
+env ls
+exit
+env
+ls
+env ls
+exit
+env ls
+exit
+env ls
+exit
