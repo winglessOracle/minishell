@@ -195,3 +195,52 @@ exit
 env -a ls
 bash
 exit
+bash
+bash
+exit
+bash
+export PS1="my bash"
+exit
+export PS1="my bash"
+exit
+bash
+PS1="my prompt> "
+PS1="my prompt> "
+export PS1="My prompt"
+export PS1="My prompt> "
+bash
+exit
+export PS1="my bash"
+exit
+PS1="My prompt"
+var=aap
+exit
+PS1="My prompt"
+exit
+PS1="My prompt"
+PS1="My prompt"
+exit
+PS1="My prompt"
+exit
+PS1="My prompt"
+exit
+PS1="My prompt"
+PS1="My prompt"
+PS1="My prompt"
+PS1="My prompt"
+PS1="My prompt"
+PS1="My prompt"
+exit
+<< here
+<< here > out
+exit
+PS1="My prompt"
+exit
+<< here cat >out
+make
+PS1="My prompt"
+exit
+exit
+var="hello world"
+echo $var
+exit

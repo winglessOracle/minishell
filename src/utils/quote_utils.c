@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 22:54:14 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 18:04:48 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,6 @@ int	remove_quotes(t_node **token, t_smpl_cmd *cmd)
 			(*token)->type = HEREDOCQ;
 		return (type);
 	}
-	else if (type != -1)
-		add_word_to_cmd(token, cmd);
+	(*token)->type = type;		
 	return (type);
 }

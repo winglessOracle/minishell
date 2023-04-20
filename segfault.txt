@@ -1,12 +1,13 @@
 /* Segfaults or incorrect behaviour */
 ------------------------
+PS1="My prompt"
 
 / *test cases to compare with bash: */
 ---------------------------------------
 
 /* check Carien */
-check cd with CDPATH
 env followd by other cmd;
+check cd with CDPATH
 
 /* checks Carlo */
 check nmbr of args exit
