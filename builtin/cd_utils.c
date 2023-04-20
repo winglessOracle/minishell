@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 11:03:39 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 10:08:42 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 14:33:56 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,17 @@ void	update_env(t_node *env_list, char *cmd_arg)
 	
 	pwd = get_variable(env_list, "PWD");
 	add_variable(env_list, ft_strjoin("OLDPWD=", pwd), 2);
-	cur_dir =  getcwd(buf, PATH_MAX);
-	if (cur_dir)
-		add_variable(env_list, ft_strjoin("PWD=", cur_dir), 2);
-	else
+	cur_dir = ft_strdup(getcwd(buf, PATH_MAX));
+	if (!cur_dir)
 	{
 		if (pwd[ft_strlen(pwd) - 1] != '/')
 			pwd = ft_strjoin_free_s1(pwd, "/");
 		cur_dir = ft_strjoin(pwd, cmd_arg);
-		add_variable(env_list, ft_strjoin("PWD=", cur_dir), 2);
-		free(cur_dir);
 	}
-	free(pwd);
+	add_variable(env_list, ft_strjoin("PWD=", cur_dir), 2);
+	free(cur_dir);
+	if (pwd)
+		free(pwd);
 }
 
 int	change_dir(char	*str, char *arg)

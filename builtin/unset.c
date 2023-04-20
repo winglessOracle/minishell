@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 20:02:30 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 21:53:08 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 14:33:28 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,10 @@ int	execute_unset(char **cmd_vector, t_node *env_list)
 			if (!ft_isalpha(name[0]) && name[0] != '_')
 				return(0);
 			if (!ft_strcmp(cmd_vector[i], name))
+			{
 				remove_var(temp, prev);
+				break ;	
+			}
 			else
 				move_to_next(&temp, &prev);
 			free(name);

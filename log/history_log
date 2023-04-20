@@ -2,3 +2,27 @@ echo $?
 exit
 echo $?
 exit
+cd src
+cd ..
+cd ..
+cd src
+cd ..
+cd ..
+cd ..
+cd ..
+echo $OLDPWD
+unset OLDPWD
+unset PWD
+pwd
+echo $PWD
+exit
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+cd ..
+exit
+exit 5

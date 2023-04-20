@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/19 20:59:47 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 14:29:19 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,9 @@ void	add_variable(t_node *env_list, char *var, int type)
 			temp->type = type;
 	}
 	else
-		lstadd_back(&env_list, new_node(type, var));
+		lstadd_back(&env_list, new_node(type, ft_strdup(var)));
 	free(name);
+	free(var);
 }
 
 char	*get_variable(t_node *env_list, char *name)
