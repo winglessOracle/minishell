@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/19 20:38:33 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/20 12:52:04 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,25 @@ char	**build_cmd_args(t_node *argv, int argc)
 	return (cmd_args);
 }
 
-int	get_exit_st(int argc, pid_t pid)
+
+/*
+waitpid: wait for the child process with the specified PID to complete.
+WIFEXITED macro: check if the child process exited normally
+WEXITSTATUS macro: get the exit status of the child process.
+*/
+void	set_exit_st(int argc, pid_t *pid)
 {
 	int	waitstatus;
 	int	i;
 
 	i = 0;
-	waitstatus = 0;
 	while (i < argc)
 	{
-		waitpid(pid, &waitstatus, 0);
+		waitpid(pid[i], &waitstatus, 0);
+		if (WIFEXITED(waitstatus))
+			g_exit_status = WEXITSTATUS(waitstatus);
 		i++;
 	}
-	return (WEXITSTATUS(waitstatus));
 }
 
 char	**get_env(t_node *env_list)
@@ -103,12 +109,12 @@ char	**get_env(t_node *env_list)
 	return (str);
 }
 
-int	check_built(t_smpl_cmd *cmd)
+void	check_built(t_smpl_cmd *cmd)
 {
-	char	*builtings[7] =	{"echo", "cd", "pwd", "export",	"unset", "exit", "env"};
-	int		i;
 	t_built	*built[7];
 	char	**cmd_args;
+	char	*builtings[7] =	{"echo", "cd", "pwd", "export",	"unset", "exit", "env"};
+	int		i;
 
 	built[0] = execute_echo;
 	built[1] = execute_cd;
@@ -125,9 +131,9 @@ int	check_built(t_smpl_cmd *cmd)
 			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);
 			if (!cmd_args)
 				exit_error("building commands", 1);
-			return (built[i](cmd_args, cmd->env_list));
+			g_exit_status = (built[i](cmd_args, cmd->env_list));
 		}
 		i++;
 	}
-	return (-1);
+	g_exit_status = 1;
 }

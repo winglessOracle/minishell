@@ -542,3 +542,98 @@ bash
 ./tester.sh 
 ./tester.sh 
 exit
+<< ff cat | grep 1 | gg cat grep 2 > out
+<< ff cat | grep 1 | << gg cat grep 2 > out
+<< ff cat | grep 1 | << gg cat grep 2 > out
+<< ff grep 1 | << gg grep 2 > out
+<< ff grep 1 | << gg grep 2 > outt
+exit
+make fclean
+make
+make debnus
+make debug
+pwd
+./tester.sh 
+exit
+ls
+ls | ls
+exit
+exit
+< Makefile | grep debug
+< Makefile cat | grep debug
+< Makefile cat | grep debug > out
+< Makefile cat | grep debug > out
+< Makefle cat | grep debug > out
+exit
+exit
+< Makefle cat | grep debug > out
+bash
+ls
+ls | le
+echo %?
+ls | le
+echo $?
+env
+export
+env
+export
+exit
+exit
+ls
+ls | ls
+echo $?
+echo $?
+exit
+exit
+ls | ls
+echo $?
+ls | la
+echo $?
+exit
+echo $?
+ls | la
+echo $?
+ls | la
+exit
+ls | la
+exit
+ls | la
+exit
+exit
+exit
+echo $?
+ls | la
+echo $?
+echo $?
+echo $?
+echo $?
+echo $?
+echo $?
+echo $?
+echo $?
+exit
+echo $?
+echo $?
+echo $?
+echo $?
+sleep 5 | ls
+exit
+exit
+echo $?
+exit
+ls | la
+exit
+exit
+ls | la
+exit
+ls | ls | cat
+ls | ls 
+exit
+ls | ls 
+ls | ls | cat
+exit
+ls | la
+echo $?
+echo $?
+ls | la
+exit

@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/19 09:20:43 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/20 12:51:05 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include "lexer.h"
+# include "sigterm.h"
 # include "sigterm.h"
 # include <string.h>
 # include <stdio.h>
@@ -25,6 +26,8 @@
 # include <errno.h>
 
 #define TMP_FILE "log/here_doc_tmp"
+
+extern int	g_exit_status;
 
 typedef struct s_node
 {
@@ -107,11 +110,11 @@ void		print_env(t_node *env_list, int flag);
 
 //executor
 void		assignments(t_smpl_cmd *pipe_argv, pid_t pid);
-int			executor(t_pipe *pipeline);
+void		executor(t_pipe *pipeline);
 char		**build_cmd_args(t_node *argv, int argc);
-int			get_exit_st(int argc, pid_t pid);
+void		set_exit_st(int argc, pid_t *pid);
 char		**get_env(t_node *env_list);
-int			check_built(t_smpl_cmd *cmd);
+void		check_built(t_smpl_cmd *cmd);
 void		here_doc(t_pipe *pipeline, int *keep);
 
 //tests

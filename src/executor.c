@@ -6,17 +6,12 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/19 20:43:29 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/20 12:53:29 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "executor.h"
-
-/*
-get right exits and status
-make tester
-*/
 
 void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 {
@@ -132,15 +127,14 @@ void	redirect(t_pipe *pipeline, pid_t pid, int keep, int *fd_pipe)
 	}
 }
 
-int		executor(t_pipe *pipeline)
+void		executor(t_pipe *pipeline)
 {
-	int		keep;
-	int		fd_pipe[2];
-	pid_t	pid;
 	char	**env;
-	int		ret;
+	pid_t	pid[pipeline->pipe_argc];
+	int		fd_pipe[2];
+	int		keep;
+	int		i;
 
-	ret = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);
@@ -148,34 +142,36 @@ int		executor(t_pipe *pipeline)
 	{
 		if (pipeline->pipe_argc == 1)
 		{
-			ret = check_built(pipeline->pipe_argv);
-			if (ret != -1)
-				return (ret);
+			check_built(pipeline->pipe_argv);
 			if (pipeline->pipe_argv->cmd_argc == 0)
 			{
 				assignments(pipeline->pipe_argv, 0);
 				set_fd(pipeline, pipeline->pipe_argv, &keep, fd_pipe);
-				return (0);
+				return ;
 			}
 		}
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
 		env = get_env(pipeline->pipe_argv->env_list);
-		pid = fork();
-		if (pid == -1)
+		i = 0;
+		pid[i] = fork();
+		if (pid[i] == -1)
 			exit_error("fork fail", errno);
-		redirect(pipeline, pid, keep, fd_pipe);
-		assignments(pipeline->pipe_argv, pid);
+		redirect(pipeline, pid[i], keep, fd_pipe);
+		assignments(pipeline->pipe_argv, pid[i]);
 		if (pipeline->pipe_argv->cmd_argc > 0)
 		{
-			if (pid == 0)
+			if (pid[i] == 0)
 				exec_cmd(pipeline->pipe_argv, env);
-			ret = get_exit_st(pipeline->pipe_argc, pid); //verplaatsen naar uit loop
 		}
-		else if (pid == 0)
-			exit(0);
+		else
+		{
+		 	if (pid[i] == 0)
+				execute_exit(NULL, pipeline->pipe_argv->env_list);
+		}
 		pipeline->pipe_argv = pipeline->pipe_argv->next;
+		i++;
 	}
-	return (ret);
-	// clean lists 
+	set_exit_st(pipeline->pipe_argc, pid);
+	// clean lists
 }
