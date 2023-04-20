@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 15:54:47 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 16:01:28 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		check_sorted(t_node *env_list)
 	temp = env_list;
 	while (temp && temp->next)
 	{
-		if (ft_strcmp_uc(temp->content, temp->next->content) > 0)
+		if (ft_strcmp_case(temp->content, temp->next->content, toupper) > 0)
 			return (0);
 		temp = temp->next;
 	}
@@ -43,7 +43,7 @@ t_node *sort_env(t_node *env_list)
 	{
 		while (temp && temp->next)
 		{
-			if (ft_strcmp_uc(temp->content, temp->next->content) > 0)
+			if (ft_strcmp_case(temp->content, temp->next->content, toupper) > 0)
 			{
 				temp_content = temp->content;
 				temp->content = temp->next->content;

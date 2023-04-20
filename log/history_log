@@ -159,3 +159,7 @@ export
 var=aap
 export
 exit
+export
+var=aap
+export
+exit

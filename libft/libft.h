@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.42.fr>                  +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 09:28:59 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/20 15:44:51 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 16:05:14 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_free_array(char **arr);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_strcmp(const char *s1, const char *s2);
-int		ft_strcmp_uc(const char *s1, const char *s2);
+int		ft_strcmp_case(const char *s1, const char *s2, int (setcase)(int));
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
