@@ -174,3 +174,24 @@ env ls
 exit
 env ls
 exit
+unset PWD OLDPWD
+echo $PWD
+echo $OLDPWD
+exit
+cd ..
+cd minishell/
+cd src
+env -a
+exit
+env -a
+env ls
+exit
+env -a
+exit
+env -a
+exit
+env -a
+exit
+env -a ls
+bash
+exit

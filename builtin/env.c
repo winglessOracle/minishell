@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 12:30:26 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/20 16:31:37 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 16:50:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	check_env(t_smpl_cmd *cmd)
 {
-	if (cmd->cmd_argc > 1 && !ft_strcmp(cmd->cmd_argv->content, "env"))
+	if (cmd->cmd_argc > 1 && !ft_strcmp(cmd->cmd_argv->content, "env") \
+		&& cmd->cmd_argv->next->content[0] != '-')
 	{
 		remove_node(&cmd->cmd_argv, cmd);
 		cmd->cmd_argc -= 1;
@@ -29,7 +30,7 @@ int	execute_env(char **cmd_vector, t_node	*env_list)
 	while (cmd_vector[i])
 		i++;
 	if (i > 1)
-		return (return_error("env: has arguments: not handled\n", 1));
+		return (return_error("minishell: env: no options are handled\n", 1));
 	print_env(env_list, 2);
 	return (0);
 }
