@@ -637,3 +637,20 @@ echo $?
 echo $?
 ls | la
 exit
+ff
+echo $?
+exit
+exit 2
+exit 2 3
+exit
+exit
+exit
+exit 2
+exit 2
+exit 2
+exit\
+exit
+exit 42
+<< ff cat | grep 1 > out
+echo $?
+exit

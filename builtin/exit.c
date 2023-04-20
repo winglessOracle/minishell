@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 19:37:37 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/20 10:22:04 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/20 14:14:10 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 int	execute_exit(char **cmd_vector, t_node *env_list)
 {
-	char	*var;
 	int		exit_code;
-
+	int		i;
+	
+	(void)env_list;
+	i = 0;
 	exit_code = 0;
-	if (cmd_vector[1] != NULL)
+	while (cmd_vector[i])
+		i++;
+	if (i > 2)
+		exit_error("ccs: too many arguments\n", 1);
+	if (cmd_vector[1])
 		exit_code = ft_atoi_long(cmd_vector[1]);
 	else
-	{
-		var = get_variable(env_list, "?");
-		exit_code = ft_atoi_long(var);
-		free(var);
-	}
+		exit_code = g_exit_status;
 	printf("exiting\n"); //remove
 	//unlink(TMP_FILE); (in case of exit during heredoc)
 	exit(exit_code);

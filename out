@@ -1,5 +1,0 @@
-debug: CFLAGS = -Wall -Wextra
-debug: all
-debug: CFLAGS = -Wall -Wextra
-debug: all
-.PHONY:	all clean fclean re libft debug

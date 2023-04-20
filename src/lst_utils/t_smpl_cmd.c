@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   pipe_utils.c                                       :+:    :+:            */
+/*   t_smpl_cmd.c                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/11 15:11:41 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 14:02:26 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,3 +56,5 @@ void	lstclear_cmdlst(t_smpl_cmd **lst, void (*del)(void *))
 		}
 	}
 }
+
+//void	remove_cmd_node()
