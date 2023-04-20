@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 19:37:37 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/20 14:14:10 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/20 14:43:09 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,5 @@ int	execute_exit(char **cmd_vector, t_node *env_list)
 		exit_code = ft_atoi_long(cmd_vector[1]);
 	else
 		exit_code = g_exit_status;
-	printf("exiting\n"); //remove
-	//unlink(TMP_FILE); (in case of exit during heredoc)
 	exit(exit_code);
 }
