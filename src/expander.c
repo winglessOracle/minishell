@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 17:59:52 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 18:47:41 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,17 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 	return (0);
 }
 
+int	temp_assign(t_node **token, t_smpl_cmd *cmd)
+{
+	(void)cmd;
+	(*token)->type = ASSIGN_T;
+	return (0);
+}
+
 int	expander(t_node **token, t_smpl_cmd *cmd)
 {
 	int					state;
-	static t_function	*parse[11];
+	static t_function	*parse[12];
 
 	parse[WORD] = add_word_to_cmd;
 	parse[COMMENT] = remove_comment;
@@ -86,11 +93,14 @@ int	expander(t_node **token, t_smpl_cmd *cmd)
 	parse[DQUOTE] = remove_quotes;
 	parse[EXPAND] = expand;
 	parse[ASSIGN] = parser_assign;
+	parse[ASSIGN_T] = temp_assign;
 	parse[TILDE] = expand_tilde;
-	while (*token && (*token)->type == WORD)
+	while (*token && ((*token)->type == WORD || (*token)->type == ASSIGN_T))
 	{
 		state = check_token_content(*token, (*token)->type);
 		state = parse[state](token, cmd);
+		if (state == -1)
+			break ;
 	}
 	return (state);
 }

@@ -244,3 +244,56 @@ exit
 var="hello world"
 echo $var
 exit
+echo "hello 'quotes in quotes'" 
+echo 'hello "quotes in quotes"' 
+exit
+echo 'hello "quotes in quotes"' 
+var="hello world"
+echo 'hello "quotes in quotes"' 
+PS1="My prompt"
+PS1="My prompt"
+exit
+PS1="My prompt"
+exit
+PS1="My prompt"
+PS1="My prompt"
+exit
+echo "hello world"
+echo "'hello world'"
+echo '"hello world"'
+exit
+'"hello $PWD world"'
+echo '"hello $PWD world"'
+echo "'hello $PWD world'"
+exit
+PS1="My prompt"
+echo PS1="My prompt"
+exit
+echo PS1="My prompt"
+PS1="My prompt"
+exit
+PS1="My prompt"
+PS1="My prompt"
+exit
+PS1="My prompt"
+exit
+PS1="My prompt"
+exit
+PS1="My prompt"
+exit
+PS1="My prompt"
+exit
+PS1="My prompt"
+PS1="My prompt"
+PS1="My prompt"
+PS1="My prompt"
+PS1="My prompt"
+PS1="My prompt"
+exit
+echo "hello 'quotes' in "
+echo 'hello "quotes" in'
+echo "hello 'quotes with $PWD' in"
+var=a
+$var=test
+echo $var $a
+exit
