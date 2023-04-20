@@ -671,3 +671,12 @@ exit
 << ff cat 
 exit
 << ff cat 
+ls
+ls
+exit
+exit
+ls
+ls | ls
+<< ff cat 
+< Makefile cat | grep debug | cat > out
+exit

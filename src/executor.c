@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/20 14:38:20 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/20 17:08:23 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,8 +169,8 @@ void		executor(t_pipe *pipeline)
 		 	if (pid[i] == 0)
 				execute_exit(NULL, pipeline->pipe_argv->env_list);
 		}
-		pipeline->pipe_argv = pipeline->pipe_argv->next; //should we remove node?
 		i++;
+		remove_cmd_node(&pipeline->pipe_argv);
 	}
 	set_exit_st(pipeline->pipe_argc, pid);
 	// clean lists

@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/20 12:51:05 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/20 16:42:31 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ t_smpl_cmd	*lstlast_cmd(t_smpl_cmd *lst);
 void		lstadd_back_cmd(t_smpl_cmd **lst, t_smpl_cmd *new);
 void		lstclear_cmdlst(t_smpl_cmd **lst, void (*del)(void *));
 void		lstdelone_cmd(t_smpl_cmd *lst, void (*del)(void *));
+int			remove_cmd_node(t_smpl_cmd **cmds);
+
 
 //lexer
 t_node		*lexer(char *str, char *delim);
