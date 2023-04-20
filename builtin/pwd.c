@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/13 14:01:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/20 16:33:52 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 19:22:04 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	execute_pwd(char **cmd_vector, t_node *env_list)
 	if (!pwd)
 	{
 		getcwd(buf, PATH_MAX);
-		pwd = ft_strdup(buf);	
+		pwd = ft_strdup(buf);
 	}
 	if (!pwd)
 		return (return_perror("getcwd", 1));

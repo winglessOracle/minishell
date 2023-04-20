@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 13:37:11 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 20:51:09 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 19:13:18 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	remove_node(t_node **token, t_smpl_cmd *cmd)
 {	
 	t_node	*temp;
 	int		state;
-	
+
 	(void)cmd;
 	state = 0;
 	if (!*token)

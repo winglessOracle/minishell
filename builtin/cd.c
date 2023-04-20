@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 10:36:51 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 19:25:26 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ int	go_to_var(t_node *env_list, char *arg, char *var)
 {
 	char	*value;
 	char	*str;
-	
+
 	if (arg[0] == '-' && ft_strcmp(arg, "-"))
 	{
 		ft_putstr_fd("minishell: cd: invalid option\n", 2);
-		return(1);
+		return (1);
 	}
 	value = get_variable(env_list, var);
 	if (!value)
@@ -40,11 +40,11 @@ int	go_to_var(t_node *env_list, char *arg, char *var)
 		str = ft_strjoin(var, " not set\n");
 		ft_putstr_fd(ft_strjoin("minishell: cd: ", str), 2);
 		free(str);
-		return(1);
+		return (1);
 	}
 	if (!chdir(value))
 	{
-		if  (!ft_strcmp(var, "OLDPWD"))
+		if (!ft_strcmp(var, "OLDPWD"))
 			printf("%s\n", value);
 		return (0);
 	}
@@ -56,12 +56,12 @@ int	cd_absolute(int i, char *cmd_arg, t_node *env_list)
 	if (!cmd_arg)
 		return (0);
 	if (i == 1)
-		return(go_to_var(env_list, cmd_arg, "HOME"));
+		return (go_to_var(env_list, cmd_arg, "HOME"));
 	if (cmd_arg[0] == '-')
 		return (go_to_var(env_list, cmd_arg, "OLDPWD"));
 	if (cmd_arg[0] == '/')
 		return (chdir(cmd_arg));
-	return(2);
+	return (2);
 }
 
 int	relative_curr_dir(char *cmd_arg, t_node *env_list)
@@ -89,7 +89,7 @@ int	relative_curr_dir(char *cmd_arg, t_node *env_list)
 	}
 	if (!cur_dir)
 		exit_error("cd: strjoin", 1);
-	return(chdir(new_dir));
+	return (chdir(new_dir));
 }
 
 int	cd_relative_cdpath(t_node *env_list, char *cmd_arg)
@@ -127,7 +127,7 @@ int	execute_cd(char **cmd_vector, t_node *env_list)
 	while (cmd_vector[i])
 		i++;
 	if (i > 2)
-		return(return_error("minishell: cd: too many arguments\n", 1));
+		return (return_error("minishell: cd: too many arguments\n", 1));
 	i = cd_absolute(i, cmd_vector[i - 1], env_list);
 	if (i == 0)
 		update_env(env_list, cmd_vector[i - 1]);

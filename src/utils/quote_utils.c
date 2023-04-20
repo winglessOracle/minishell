@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 18:46:14 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 19:10:51 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int	split_quoted_exp(int nr_q, t_node *token, char **content, t_smpl_cmd *cmd)
 	char	quote;
 	t_node	*words;
 
-	// printf("split exp\n");
 	quote = get_quote_char(token->type);
 	words = split_to_list(token->content, "\'\"");
 	while (words)
@@ -109,8 +108,7 @@ int	remove_quotes(t_node **token, t_smpl_cmd *cmd)
 	{
 		free((*token)->content);
 		(*token)->content = ft_strdup("");
-		add_word_to_cmd(token, cmd);
-		return (0);
+		return (add_word_to_cmd(token, cmd));
 	}
 	type = check_token_content(*token, state);
 	type = get_content(token, cmd, type, state);
@@ -123,7 +121,7 @@ int	remove_quotes(t_node **token, t_smpl_cmd *cmd)
 	}
 	else if (type != -1 && state != ASSIGN_T)
 		add_word_to_cmd(token, cmd);
-	else 
+	else
 		(*token)->type = ASSIGN_T;
 	return (type);
 }

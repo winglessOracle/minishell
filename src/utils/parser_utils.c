@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 18:47:26 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 19:09:55 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	parser_assign(t_node **token, t_smpl_cmd *cmd)
 {
 	if (!(*token)->content)
 		remove_node(token, cmd);
-	if ((*token && !ft_isalpha((*token)->content[0]) 
+	if ((*token && !ft_isalpha((*token)->content[0]) \
 		&& (*token)->content[0] != '_') || cmd->cmd_argc != 0)
 		return (add_word_to_cmd(token, cmd));
 	lstadd_back(&cmd->assign, lstpop(token));
@@ -68,7 +68,7 @@ int	expand_tilde(t_node **token, t_smpl_cmd *cmd)
 	if (!home)
 	{
 		remove_node(token, cmd);
-		return(return_error("minishell: expand tilde: '~' not set", 1));
+		return (return_error("minishell: expand tilde: '~' not set", 1));
 	}
 	if (ft_strlen(temp) == 1)
 		(*token)->content = ft_strdup(home);

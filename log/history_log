@@ -297,3 +297,18 @@ var=a
 $var=test
 echo $var $a
 exit
+echo ""
+echo "" test
+exit
+unset PWD
+var=aap
+unset var
+echo $var
+exit
+echo $var
+var=aap
+echo $var
+echo var
+unset var
+echo $var
+exit

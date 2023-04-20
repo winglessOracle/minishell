@@ -1,12 +1,11 @@
 /* Segfaults or incorrect behaviour */
 ------------------------
-PS1="My prompt"
 
 / *test cases to compare with bash: */
 ---------------------------------------
 
 /* check Carien */
-env followd by other cmd;
+unset
 check cd with CDPATH
 
 /* checks Carlo */

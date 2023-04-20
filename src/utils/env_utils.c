@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 14:29:19 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 19:11:51 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	add_variable(t_node *env_list, char *var, int type)
 	char	*name;
 	t_node	*temp;
 
-	i = 0;		
+	i = 0;
 	while (var[i] && var[i] != '=')
 		i++;
 	name = ft_substr(var, 0, i);
@@ -90,7 +90,7 @@ char	*get_variable(t_node *env_list, char *name)
 	char	*value;
 	int		len;
 	t_node	*temp;
-	
+
 	value = NULL;
 	len = 0;
 	while (name[len] && name[len] != '=')
@@ -110,4 +110,3 @@ char	*get_variable(t_node *env_list, char *name)
 	}
 	return (value);
 }
-

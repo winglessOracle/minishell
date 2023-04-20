@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/20 18:30:44 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 19:27:50 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int	check_assign(char *str, int type)
 {
 	int	i;
-	
+
 	i = 0;
 	while (str[i])
 	{
@@ -51,7 +51,8 @@ int	check_token_content(t_node *token, int type)
 		else if (str[i] == '$' && str[i + 1] != ' ' && \
 					str[i + 1] != '\0' && type != SQUOTE && type != DQUOTE)
 			return (EXPAND);
-		if (str[i] == '=' && type != DQUOTE && type != SQUOTE && token->type != ASSIGN_T)
+		if (str[i] == '=' && type != DQUOTE && type != SQUOTE \
+												&& token->type != ASSIGN_T)
 			return (ASSIGN_T);
 		i++;
 	}
@@ -65,7 +66,7 @@ int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd)
 
 	parse[WORD] = expander;
 	parse[BLANK] = remove_node;
-	parse[REDIRECT] = redirect_tokens; 
+	parse[REDIRECT] = redirect_tokens;
 	parse[PIPE] = set_cmd_end;
 	parse[NEW_LINE] = set_cmd_end;
 	state = 0;
@@ -109,7 +110,7 @@ char	*parse_heredoc(t_node *token, t_smpl_cmd *cmd)
 	int					type;
 	int					state;
 	char				*input;
-	
+
 	type = cmd->redirect->type;
 	if (type == HEREDOC)
 		type = INPUT;

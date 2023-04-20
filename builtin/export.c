@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 16:53:02 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 19:23:10 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 //  If a variable name is followed by =word, the value of the variable is set 
 //  to word. Export returns an exit status of 0 unless an invalid option is 
 //  encountered, one of the names is not a valid shell variable name.
-int		check_sorted(t_node *env_list)
+int	check_sorted(t_node *env_list)
 {
 	t_node	*temp;
 
@@ -33,13 +33,13 @@ int		check_sorted(t_node *env_list)
 	return (1);
 }
 
-t_node *sort_env(t_node *env_list)
+t_node	*sort_env(t_node *env_list)
 {
 	t_node	*temp;
 	char	*temp_content;
-	
+
 	temp = env_list;
-	while(!check_sorted(temp))
+	while (!check_sorted(temp))
 	{
 		while (temp && temp->next)
 		{
@@ -73,7 +73,7 @@ void	print_export(t_node *env_list)
 int	execute_export(char **cmd_vector, t_node *env_list)
 {
 	int	i;
-	
+
 	i = 1;
 	if (!cmd_vector[i])
 	{

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/19 22:03:53 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 19:03:39 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd)
 {
 	int					state;
 	int					type;
-	static t_function	*parse[11];
+	static t_function	*parse[12];
 
 	parse[COMMENT] = remove_comment;
 	parse[SQUOTE] = remove_quotes;
