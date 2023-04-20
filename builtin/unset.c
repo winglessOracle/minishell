@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 20:02:30 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 19:21:14 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 20:05:40 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,16 @@ int	execute_unset(char **cmd_vector, t_node *env_list)
 		while (temp && temp->content)
 		{
 			name = get_name(temp->content);
-			if (!ft_isalpha(name[0]) && name[0] != '_')
-				return (0);
 			if (!ft_strcmp(cmd_vector[i], name))
-				remove_var(temp, prev);
+			{
+				if (ft_isalpha(name[0]) || name[0] == '_')
+					remove_var(temp, prev);
+				break ;
+			}
 			else
 				move_to_next(&temp, &prev);
-			free(name);
 		}
+		free(name);
 		i++;
 	}
 	return (0);
