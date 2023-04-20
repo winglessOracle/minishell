@@ -5,10 +5,11 @@
 ---------------------------------------
 
 /* check Carien */
-add_variable check where input is / can be freed
+export sort
 check cd with CDPATH
 
 /* checks Carlo */
+check nmbr of args exit
 empty redirect nodes should result in error
 env_array should only include type 2
 readline keeps first characters

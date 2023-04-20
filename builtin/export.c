@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 14:34:44 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 15:54:47 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		check_sorted(t_node *env_list)
 	temp = env_list;
 	while (temp && temp->next)
 	{
-		if (ft_strcmp(temp->content, temp->next->content) > 0)
+		if (ft_strcmp_uc(temp->content, temp->next->content) > 0)
 			return (0);
 		temp = temp->next;
 	}
@@ -39,17 +39,18 @@ t_node *sort_env(t_node *env_list)
 	char	*temp_content;
 	
 	temp = env_list;
-	while(!check_sorted(env_list))
+	while(!check_sorted(temp))
 	{
 		while (temp && temp->next)
 		{
-			if (ft_strcmp(temp->content, temp->next->content) > 0)
+			if (ft_strcmp_uc(temp->content, temp->next->content) > 0)
 			{
 				temp_content = temp->content;
 				temp->content = temp->next->content;
 				temp->next->content = temp_content;
 			}
-			temp = temp->next;	
+			else
+				temp = temp->next;
 		}
 		temp = env_list;
 	}
