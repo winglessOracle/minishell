@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 19:37:37 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/18 11:22:57 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/20 12:14:00 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	execute_exit(char **cmd_vector, t_node *env_list)
 	else
 	{
 		var = get_variable(env_list, "?");
-		exit_code = ft_atoi_long(var);
+		exit_code = g_exit_status;
 		free(var);
 	}
 	exit(exit_code);

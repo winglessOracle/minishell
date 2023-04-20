@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/18 18:41:16 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 12:12:25 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	main(void)
 	t_node		*env_list;
 	t_node		*tokens;
 	t_pipe		*pipeline;
-	int			exitstatus;
 
 	//add max buffer?
 	// atexit(leaks);
@@ -40,11 +39,9 @@ int	main(void)
 		while (tokens)
 		{
 			pipeline = parse_pipeline(&tokens, env_list);
-			// print_pipeline(pipeline);
-			exitstatus = executor(pipeline);
-			
 	// printf("CREATED PIPLINE\n");
-	(void)exitstatus;
+	// print_pipeline(pipeline);
+			executor(pipeline);
 	// printf("PASSED EXECUTOR\n");
 	// printf("exitstatus=%d\n", exitstatus);
 		}

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/19 20:43:12 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 12:05:49 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ int	expand_var(t_node **token, t_smpl_cmd *cmd)
 	char	*str;
 
 	remove_node(token, cmd);
-	str = get_variable(cmd->env_list, (*token)->content);
+	if ((*token)->content[0] == '?')
+		str = ft_itoa(g_exit_status);
+	else	
+		str = get_variable(cmd->env_list, (*token)->content);
 	free((*token)->content);
 	(*token)->content = str;
 	return (0);
@@ -49,7 +52,7 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 	t_node	*words;
 	t_node	*temp;
 
-	words = split_to_list((*token)->content, "$=");
+	words = split_to_list((*token)->content, "$=?");
 	remove_node(token, cmd);
 	while (words && words->next)
 	{

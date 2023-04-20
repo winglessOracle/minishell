@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 10:27:03 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 10:36:51 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@
 // argument, and the directory change is successful, the absolute pathname of 
 // the new working directory is written to the standard output. 
 // An argument of - is equivalent to $OLDPWD.
-// The return value is true if the directory was successfully changed; 
-// false otherwise.
 int	go_to_var(t_node *env_list, char *arg, char *var)
 {
 	char	*value;

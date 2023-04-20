@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/18 18:41:09 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 12:12:30 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <readline/readline.h>
 # include <readline/history.h>
 # include <errno.h>
+
+int	g_exit_status;
 
 typedef struct s_node
 {

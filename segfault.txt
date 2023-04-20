@@ -6,8 +6,7 @@
 
 /* check Carien */
 add_variable check where input is / can be freed
-redo functions cd for normimette
-
+check cd with CDPATH
 
 /* checks Carlo */
 empty redirect nodes should result in error

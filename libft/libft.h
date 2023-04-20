@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.42.fr>                  +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 09:28:59 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/18 15:04:14 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/20 12:04:30 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,7 @@ void	ft_putstr_fd(char *s, int fd);
 long	ft_atoi_long(const char *str);
 int		ft_isdigit(int c);
 int		ft_isspace(int c);
+char	*ft_itoa(int n);
+
 
 #endif
