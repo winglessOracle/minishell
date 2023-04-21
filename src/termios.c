@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 15:52:32 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 10:43:12 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/21 15:08:31 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	set_termios(void)
 	new_termios = g_old_termios;
 	new_termios.c_cc[VQUIT] = g_old_termios.c_cc[VINTR];
 	new_termios.c_cc[VINTR] = g_old_termios.c_cc[VEOF];
+	new_termios.c_lflag &= ~ECHOK;
 	if (tcsetattr(STDIN_FILENO, TCSAFLUSH, &new_termios) == -1)
 		exit(errno);
 	if (atexit(restore_terminos) != 0)

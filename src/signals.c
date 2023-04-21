@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 11:14:58 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/21 15:10:11 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	set_sig_term(void)
 	set_termios();
 	set_signals();
 }
-//turn off echo of
+//turn off echo of for ctrl
 void	handle_sigquit(int signal_number)
 {
 	(void) signal_number;
@@ -30,8 +30,6 @@ void	handle_sigquit(int signal_number)
 void	handle_sigint(int signal_number)
 {
 	(void) signal_number;
-	// if (*rl_line_buffer)
-	// 	return ;
 	rl_on_new_line();
 	rl_redisplay();
 	printf("exit\n");

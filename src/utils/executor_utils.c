@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/21 11:23:43 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/21 11:33:51 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	set_exit_st(int argc, pid_t *pid)
 	}
 }
 
-char	**get_env(t_node *env_list)
+char	**get_env(t_node *env_list) //alleen type 2
 {
 	t_node	*curr;
 	char	**str;
@@ -93,17 +93,20 @@ char	**get_env(t_node *env_list)
 		return (NULL);
 	while (curr)
 	{
+		if (curr->type == 2)
+			i++;
 		curr = curr->next;
-		i++;
 	}
 	str = malloc(sizeof(char *) * i);
 	i = 0;
 	curr = env_list;
 	while (curr)
 	{
-		str[i] = ft_strdup(curr->content);
+		if (curr->type == 2)
+			str[i] = ft_strdup(curr->content);
+		if (curr->type == 2)
+			i++;
 		curr = curr->next;
-		i++;
 	}
 	str[i] = NULL;
 	return (str);

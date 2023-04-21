@@ -114,3 +114,5 @@ echo $?
 echo $? | ls
 sleep 5 | ls
 exit
+ls | la
+echo $?

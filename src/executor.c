@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/21 11:16:20 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/21 11:50:38 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,10 +156,12 @@ void		executor(t_pipe *pipeline)
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
 		env = get_env(pipeline->pipe_argv->env_list);
+
+		// set_fd afhandelen
 		pid[i] = fork();
 		if (pid[i] == -1)
 			exit_error("fork fail", errno);
-		redirect(pipeline, pid[i], keep, fd_pipe);
+		redirect(pipeline, pid[i], keep, fd_pipe); //resultaat set_fd meegeven en pid er uit halen
 		assignments(pipeline->pipe_argv, pid[i]);
 		if (pid[i] == 0)
 		{

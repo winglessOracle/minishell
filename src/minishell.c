@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 11:14:51 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/21 15:05:07 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int	main(void)
 	//add max buffer?
 	// atexit(leaks);
 	env_list = init_env();
-	read_history("log/history_log"); //remove
+	// read_history("log/history_log"); //remove
 	while (1)
 	{
 		set_sig_term();
 		line_read = get_input(env_list, "PS1", 1);
-		write_history("log/history_log"); //remove
+		// write_history("log/history_log"); //remove
 		tokens = lexer(line_read, "|<> \t\n");
 	// print_tokens(tokens, "CREATED TOKENS\n");
 		while (tokens)
