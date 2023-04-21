@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/20 17:08:23 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/21 09:39:59 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 				return (return_perror("opening outfile", 2));
 			count = 1;
 		}
-		else if (smpl_cmd->redirect->type == HEREDOC || smpl_cmd->redirect->type == HEREDOCQ)
+		else if (smpl_cmd->redirect->type == HEREDOC || \
+							smpl_cmd->redirect->type == HEREDOCQ)
 			here_doc(pipeline, keep);
 		if (*keep == -1 || fd_pipe[0] == -1 || fd_pipe[1] == -1)
 			return (return_perror("fd:", 2));
@@ -84,6 +85,7 @@ int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 	}
 	return (count);
 }
+
 void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
 {
 	{
@@ -135,6 +137,7 @@ void		executor(t_pipe *pipeline)
 	int		keep;
 	int		i;
 
+	i = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);
@@ -153,25 +156,20 @@ void		executor(t_pipe *pipeline)
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
 		env = get_env(pipeline->pipe_argv->env_list);
-		i = 0;
 		pid[i] = fork();
 		if (pid[i] == -1)
 			exit_error("fork fail", errno);
 		redirect(pipeline, pid[i], keep, fd_pipe);
 		assignments(pipeline->pipe_argv, pid[i]);
-		if (pipeline->pipe_argv->cmd_argc > 0)
+		if (pid[i] == 0)
 		{
-			if (pid[i] == 0)
+			if (pipeline->pipe_argv->cmd_argc > 0)
 				exec_cmd(pipeline->pipe_argv, env);
-		}
-		else
-		{
-		 	if (pid[i] == 0)
+			else
 				execute_exit(NULL, pipeline->pipe_argv->env_list);
 		}
 		i++;
 		remove_cmd_node(&pipeline->pipe_argv);
 	}
 	set_exit_st(pipeline->pipe_argc, pid);
-	// clean lists
 }

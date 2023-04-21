@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/20 12:52:04 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/21 09:30:42 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,8 @@ void	check_built(t_smpl_cmd *cmd)
 {
 	t_built	*built[7];
 	char	**cmd_args;
-	char	*builtings[7] =	{"echo", "cd", "pwd", "export",	"unset", "exit", "env"};
+	char	*builtings[7] =	{"echo", "cd", "pwd", "export", \
+										"unset", "exit", "env"};
 	int		i;
 
 	built[0] = execute_echo;
