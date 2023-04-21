@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/20 19:10:26 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 09:38:56 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	return_error(const char *str, int err)
 void	exit_error(char	*str, int num)
 {
 	perror(str);
-	exit(num);
+	exit(num); //change for exit
 }
 
 // prints error message and returns -1 if err != 0;

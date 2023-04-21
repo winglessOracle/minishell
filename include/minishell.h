@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/20 16:10:32 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 09:31:48 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@
 # include <readline/history.h>
 # include <errno.h>
 
-int	g_exit_status;
+#define TMP_FILE "log/here_doc_tmp"
+
+extern int	g_exit_status;
 
 typedef struct s_node
 {
@@ -80,6 +82,8 @@ t_smpl_cmd	*lstlast_cmd(t_smpl_cmd *lst);
 void		lstadd_back_cmd(t_smpl_cmd **lst, t_smpl_cmd *new);
 void		lstclear_cmdlst(t_smpl_cmd **lst, void (*del)(void *));
 void		lstdelone_cmd(t_smpl_cmd *lst, void (*del)(void *));
+int			remove_cmd_node(t_smpl_cmd **cmds);
+
 
 //lexer
 t_node		*lexer(char *str, char *delim);
@@ -107,11 +111,11 @@ void		print_env(t_node *env_list, int flag);
 
 //executor
 void		assignments(t_smpl_cmd *pipe_argv, pid_t pid);
-int			executor(t_pipe *pipeline);
+void		executor(t_pipe *pipeline);
 char		**build_cmd_args(t_node *argv, int argc);
-int			get_exit_st(int argc, pid_t pid);
+void		set_exit_st(int argc, pid_t *pid);
 char		**get_env(t_node *env_list);
-int			check_built(t_smpl_cmd *cmd);
+void		check_built(t_smpl_cmd *cmd);
 void		here_doc(t_pipe *pipeline, int *keep);
 
 //tests

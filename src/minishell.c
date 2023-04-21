@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/20 18:06:18 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 09:36:58 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@ void	leaks(void)
 	system("leaks minishell -q");
 }
 
+int g_exit_status;
+
 int	main(void)
 {
 	char		*line_read;
 	t_node		*env_list;
 	t_node		*tokens;
 	t_pipe		*pipeline;
+	int			exitstatus;
 
 	//add max buffer?
 	// atexit(leaks);
@@ -42,6 +45,7 @@ int	main(void)
 	// printf("CREATED PIPLINE\n");
 	// print_pipeline(pipeline);
 			executor(pipeline);
+			printf("g_exit_status main=%d\n", g_exit_status);
 	// printf("PASSED EXECUTOR\n");
 	// printf("exitstatus=%d\n", exitstatus);
 		}
