@@ -225,3 +225,17 @@ env
 env
 ls | env | ls 
 ls | env | cat
+ls | env | cat
+ls | la
+echo $?
+ls | la | ls
+echo $?
+ls > out
+ls | ls > out
+ls | ls > out
+ls | ls > outt
+ls > out
+ls > outtt
+ls > outtt
+ls > outtt
+ls > out
