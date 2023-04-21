@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 14:13:59 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/21 16:06:33 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 #define TMP_FILE "log/here_doc_tmp"
 
 extern int	g_exit_status;
+
+typedef struct termios	t_termios;
 
 typedef struct s_node
 {
