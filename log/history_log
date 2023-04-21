@@ -1,0 +1,16 @@
+echo hello world
+echo "hello 'world"
+exit
+ls | ls | ls
+exit
+exit
+ls | ls | ls
+sleep |ls
+echo hello world
+echo hello world
+ls | ls | ls
+exit
+ls | ls | ls
+ls | ls | exit
+echo hello world
+exit

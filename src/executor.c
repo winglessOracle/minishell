@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/20 14:44:44 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 10:19:25 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,12 +134,13 @@ int		executor(t_pipe *pipeline)
 {
 	int		keep;
 	int		fd_pipe[2];
-	pid_t	pid;
+	pid_t	*pid;
 	char	**env;
 	int		ret;
 
 	ret = 0;
 	keep = dup(STDIN_FILENO);
+	pid = malloc(pipeline->pipe_argc * sizeof(pid_t));
 	if (!keep)
 		exit_error("dup fail", 1);
 	while (pipeline && pipeline->pipe_argv)
@@ -159,21 +160,23 @@ int		executor(t_pipe *pipeline)
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
 		env = get_env(pipeline->pipe_argv->env_list);
-		pid = fork();
-		if (pid == -1)
+		pid[0] = fork();
+		if (pid[0] == -1)
 			exit_error("fork fail", errno);
-		redirect(pipeline, pid, keep, fd_pipe);
-		assignments(pipeline->pipe_argv, pid);
+		redirect(pipeline, *pid, keep, fd_pipe);
+		assignments(pipeline->pipe_argv, *pid);
 		if (pipeline->pipe_argv->cmd_argc > 0)
 		{
-			if (pid == 0)
+			if (pid[0] == 0)
 				exec_cmd(pipeline->pipe_argv, env);
-			ret = get_exit_st(pipeline->pipe_argc, pid);
+			// ret = get_exit_st(pipeline->pipe_argc, pid);
 		}
-		else if (pid == 0)
+		else if (pid[0] == 0)
 			exit(0);
-		pipeline->pipe_argv = pipeline->pipe_argv->next;
+		remove_cmd_node(&pipeline->pipe_argv);
+		// pipeline->pipe_argv = pipeline->pipe_argv->next;
 	}
+	set_exit_st(pipeline->pipe_argc, pid);
 	return (ret);
 	// clean lists 
 }

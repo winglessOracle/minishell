@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/19 20:26:16 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 10:20:18 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,26 @@ int	get_exit_st(int argc, pid_t pid)
 		i++;
 	}
 	return (WEXITSTATUS(waitstatus));
+}
+
+/*
+waitpid: wait for the child process with the specified PID to complete.
+WIFEXITED macro: check if the child process exited normally
+WEXITSTATUS macro: get the exit status of the child process.
+*/
+void	set_exit_st(int argc, pid_t *pid)
+{
+	int	waitstatus;
+	int	i;
+
+	i = 0;
+	while (i < argc)
+	{
+		waitpid(pid[i], &waitstatus, 0);
+		if (WIFEXITED(waitstatus))
+			g_exit_status = WEXITSTATUS(waitstatus);
+		i++;
+	}
 }
 
 char	**get_env(t_node *env_list)
