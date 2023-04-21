@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/21 11:16:20 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/21 15:02:12 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,11 @@ int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 		}
 		else if (smpl_cmd->redirect->type == HEREDOC || \
 							smpl_cmd->redirect->type == HEREDOCQ)
-			here_doc(pipeline, keep);
+		{
+			// printf("here_doc: %d\n", smpl_cmd->here_doc);
+			dup2(smpl_cmd->here_doc, *keep);
+			// printf("fd_pipe: %d, here_doc: %d\n", fd_pipe[1], smpl_cmd->here_doc);
+		}
 		if (*keep == -1 || fd_pipe[0] == -1 || fd_pipe[1] == -1)
 			return (return_perror("fd:", 2));
 		remove_node(&smpl_cmd->redirect, NULL);
@@ -126,6 +130,53 @@ void	redirect(t_pipe *pipeline, pid_t pid, int keep, int *fd_pipe)
 			keep = dup(fd_pipe[0]);
 		close(fd_pipe[0]);
 		close(fd_pipe[1]);
+		if (pipeline->pipe_argv->here_doc)
+			close(pipeline->pipe_argv->here_doc);
+	}
+}
+void	redirect_parent(t_pipe *pipeline, int keep, int *fd_pipe)
+{
+	close(keep);
+	if (pipeline->pipe_argv->next)
+		keep = dup(fd_pipe[0]);
+	close(fd_pipe[0]);
+	close(fd_pipe[1]);
+}
+
+void	redirect_child(t_pipe *pipeline, int set_out, int keep, int *fd_pipe)
+{
+	close(fd_pipe[0]);
+	if (set_out == 2)
+		exit_error("ccs: redirect\n", 12); //change
+	dup2(keep, STDIN_FILENO);
+	if (!keep)
+		exit_error("dup fail", 1); //change
+	if (!(!pipeline->pipe_argv->next && !set_out))
+		dup2(fd_pipe[1], STDOUT_FILENO);
+	if (!fd_pipe[1])
+		exit_error("dup fail", 1);
+}
+
+void	read_heredocs(t_pipe *pipeline)
+{
+	t_smpl_cmd	*tcmd;
+	t_node		*tredirect;
+
+	tcmd = pipeline->pipe_argv;
+	while (tcmd)
+	{
+		tredirect = tcmd->redirect;
+		while (tredirect)
+		{
+			if (tredirect->type == HEREDOC || tredirect->type == HEREDOC)
+			{
+				if (tcmd->here_doc)
+					close(tcmd->here_doc);
+				tcmd->here_doc = here_doc(pipeline, tredirect);
+			}
+			tredirect = tredirect->next;
+		}
+		tcmd = tcmd->next;
 	}
 }
 
@@ -136,11 +187,13 @@ void		executor(t_pipe *pipeline)
 	int		fd_pipe[2];
 	int		keep;
 	int		i;
+	int		set_out;
 
 	i = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);
+	read_heredocs(pipeline);
 	while (pipeline && pipeline->pipe_argv)
 	{
 		if (pipeline->pipe_argc == 1)
@@ -155,6 +208,7 @@ void		executor(t_pipe *pipeline)
 		}
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
+		set_out = set_fd(pipeline, pipeline->pipe_argv, &keep, fd_pipe);
 		env = get_env(pipeline->pipe_argv->env_list);
 		pid[i] = fork();
 		if (pid[i] == -1)

@@ -6,39 +6,45 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/21 11:23:43 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/21 14:30:39 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "executor.h"
 
-void	here_doc(t_pipe *pipeline, int *keep)
+int	here_doc(t_pipe *pipeline, t_node *here_redirect)
 {
+	int		here_pipe[2];
 	char	*line_read;
 	char	*line;
 	t_node	*tokens;
 
 	line = NULL;
-	close(*keep);
-	*keep = open(TMP_FILE, O_WRONLY | O_CREAT | O_TRUNC, 0666);
-	if (*keep < 0)
-		exit_error("opening TMP_FILE", 1); //.error or return
+	if (pipe(here_pipe) == -1)
+		exit_error("here_pipe fail", errno);
+	// *keep = open(TMP_FILE, O_WRONLY | O_CREAT | O_TRUNC, 0666);
+	// if (*keep < 0)
+	// 	exit_error("opening TMP_FILE", 1); //.error or return
 	while (1)
 	{
+		// printf("in heredoc, delim: %s\n", here_redirect->content);
 		line_read = get_input(pipeline->pipe_argv->env_list, "PS2", 0);
-		if (!ft_strcmp(line_read, pipeline->pipe_argv->redirect->content))
+		if (!ft_strcmp(line_read, here_redirect->content))
 			break ;
 		tokens = lexer(line_read, " \n");
-		line = parse_heredoc(tokens, pipeline->pipe_argv);
-		ft_putstr_fd(line, *keep);
+		line = parse_heredoc(tokens, here_redirect);
+		// ft_putstr_fd(line, *keep);
+		ft_putstr_fd(line, here_pipe[1]);
 		free(line);
 	}
-	close(*keep);
-	*keep = open(TMP_FILE, O_RDONLY);
-	if (*keep < 0)
-		exit_error("opening TMP_FILE", 1); //error of return
-	unlink(TMP_FILE);
+	close(here_pipe[1]);
+	return (here_pipe[0]);
+	// close(*keep);
+	// *keep = open(TMP_FILE, O_RDONLY);
+	// if (*keep < 0)
+	// 	exit_error("opening TMP_FILE", 1); //error of return
+	// unlink(TMP_FILE);
 }
 
 char	**build_cmd_args(t_node *argv, int argc)
