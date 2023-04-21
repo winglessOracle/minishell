@@ -6,14 +6,13 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/21 10:20:18 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 11:23:43 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "executor.h"
 
-// <<del unknow comd does not
 void	here_doc(t_pipe *pipeline, int *keep)
 {
 	char	*line_read;
@@ -24,7 +23,7 @@ void	here_doc(t_pipe *pipeline, int *keep)
 	close(*keep);
 	*keep = open(TMP_FILE, O_WRONLY | O_CREAT | O_TRUNC, 0666);
 	if (*keep < 0)
-		exit_error("opening tmp file", 1);
+		exit_error("opening TMP_FILE", 1); //.error or return
 	while (1)
 	{
 		line_read = get_input(pipeline->pipe_argv->env_list, "PS2", 0);
@@ -37,6 +36,8 @@ void	here_doc(t_pipe *pipeline, int *keep)
 	}
 	close(*keep);
 	*keep = open(TMP_FILE, O_RDONLY);
+	if (*keep < 0)
+		exit_error("opening TMP_FILE", 1); //error of return
 	unlink(TMP_FILE);
 }
 
@@ -59,20 +60,6 @@ char	**build_cmd_args(t_node *argv, int argc)
 	return (cmd_args);
 }
 
-int	get_exit_st(int argc, pid_t pid)
-{
-	int	waitstatus;
-	int	i;
-
-	i = 0;
-	waitstatus = 0;
-	while (i < argc)
-	{
-		waitpid(pid, &waitstatus, 0);
-		i++;
-	}
-	return (WEXITSTATUS(waitstatus));
-}
 
 /*
 waitpid: wait for the child process with the specified PID to complete.
@@ -122,12 +109,13 @@ char	**get_env(t_node *env_list)
 	return (str);
 }
 
-int	check_built(t_smpl_cmd *cmd)
+void	check_built(t_smpl_cmd *cmd)
 {
-	char	*builtings[7] =	{"echo", "cd", "pwd", "export",	"unset", "exit", "env"};
-	int		i;
 	t_built	*built[7];
 	char	**cmd_args;
+	char	*builtings[7] =	{"echo", "cd", "pwd", "export", \
+										"unset", "exit", "env"};
+	int		i;
 
 	built[0] = execute_echo;
 	built[1] = execute_cd;
@@ -144,9 +132,10 @@ int	check_built(t_smpl_cmd *cmd)
 			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);
 			if (!cmd_args)
 				exit_error("building commands", 1);
-			return (built[i](cmd_args, cmd->env_list));
+			g_exit_status = (built[i](cmd_args, cmd->env_list));
+			exit (g_exit_status);
 		}
 		i++;
 	}
-	return (-1);
+	g_exit_status = 0;
 }

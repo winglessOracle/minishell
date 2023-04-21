@@ -14,3 +14,103 @@ ls | ls | ls
 ls | ls | exit
 echo hello world
 exit
+var=
+export var
+echo var
+echo $pwd
+var=42
+echo $var
+env
+ls
+ls | ls
+<Makefile cat | grep debug | cat | cat > out
+sleep 5 | ls
+exit
+ls
+ls | ls
+<Makefile cat | grep debug | cat | cat > out
+exit
+<Makefile cat | grep debug | cat | cat > out
+ls | ls
+exit
+wf
+exit
+exit
+exit
+ls
+ls | ls
+exit
+<Makefile cat | grep debug | cat | cat > out
+sleep 5 | ls
+sleep 5 | ls
+exit
+aerfaerf
+aerfaerf
+wef
+ls
+sf
+sdsd
+edexit
+sef
+sef
+aerf
+afr
+efwef
+sef
+serf
+exit
+dfr
+exit
+ed
+arf
+sdef
+ewefwef
+ls
+ls
+jfjf
+exi
+ads
+aerf
+ls
+a
+aerf
+aerf
+sdf
+aerf
+sd
+exit
+aerf
+aerf
+aerf
+aed
+exit
+exit
+vvv
+ddd
+exit
+ex
+df
+sdf
+sdf
+dd
+a
+ls
+ls | ls
+exit
+ls
+dd
+avr=42
+exit
+avr=42
+exit
+ls | la
+echo $?
+echo $?
+echo $PWD
+ls | la
+echo $?
+ls | la
+echo $?
+echo $? | ls
+sleep 5 | ls
+exit
