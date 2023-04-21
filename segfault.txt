@@ -5,7 +5,6 @@
 ---------------------------------------
 
 /* check Carien */
-unset
 check cd with CDPATH
 
 /* checks Carlo */
@@ -13,7 +12,6 @@ check nmbr of args exit
 empty redirect nodes should result in error
 env_array should only include type 2
 readline keeps first characters
-redirect can have empty filenames or should expander flag error?
 ctrl-C should display a new line with a new prompt (check that previous text does not get executed)
 ctrl-D in prompt with text should do nothing.
 ctrl-/ does nothing

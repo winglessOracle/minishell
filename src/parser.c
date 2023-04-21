@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/20 19:27:50 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 21:27:04 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_assign(char *str, int type)
 	return (WORD);
 }
 
-int	check_token_content(t_node *token, int type)
+int	check_token_content(t_node *token, int type) // refactor when tester available
 {
 	char	*str;
 	int		i;
@@ -40,7 +40,7 @@ int	check_token_content(t_node *token, int type)
 	if (str[0] == '#' && type != DQUOTE && type != SQUOTE)
 		return (COMMENT);
 	if (str[0] == '~' && (str[1] == '/' || str[1] == '\0') \
-								&& type != DQUOTE && type != SQUOTE)
+								&& type != DQUOTE && type != SQUOTE) // can remove DQUOTE and SQUOTE?
 		return (TILDE);
 	while (str[i])
 	{
@@ -52,7 +52,7 @@ int	check_token_content(t_node *token, int type)
 					str[i + 1] != '\0' && type != SQUOTE && type != DQUOTE)
 			return (EXPAND);
 		if (str[i] == '=' && type != DQUOTE && type != SQUOTE \
-												&& token->type != ASSIGN_T)
+												&& token->type != ASSIGN_T)  //// can remove DQUOTE and SQUOTE?
 			return (ASSIGN_T);
 		i++;
 	}
