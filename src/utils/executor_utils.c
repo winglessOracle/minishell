@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/21 22:00:35 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 22:17:47 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,20 +138,24 @@ void	check_built(t_smpl_cmd *cmd)
 	}
 }
 
-int	check_cd_exit(t_smpl_cmd *cmd)
+int	check_builtins_curr_env(t_smpl_cmd *cmd)
 {
-	t_built	*built[2];
+	t_built	*built[4];
 	char	**cmd_args;
-	char	*builtins[2] =	{"cd", "exit"};
+	char	*builtins[4] =	{"cd", "exit", "export", "unset"};
 	int		i;
 
 	built[0] = execute_cd;
 	built[1] = execute_exit;
+	built[2] = execute_export;
+	built[3] = execute_unset;
 	i = 0;
-	while (i < 2 && cmd->cmd_argc > 0)
+	while (i < 3 && cmd->cmd_argc > 0)
 	{
 		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0)
 		{
+			if (!ft_strcmp(cmd->cmd_argv->content, "export") && cmd->cmd_argc == 1)
+				return (0);
 			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);
 			if (!cmd_args)
 				exit_error("building commands", 1);

@@ -317,7 +317,15 @@ env
 exit
 ls | env
 ls | ls | cat >>out
-
 exit
 exut
+exit
+export var=aap var2=koe
+export
+exit
+export var=aap var2=koe
+export
+exit
+export var=aap var2=koe
+export > out
 exit

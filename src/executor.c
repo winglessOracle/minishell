@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/21 21:57:06 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 22:18:12 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ void		executor(t_pipe *pipeline)
 		{
 			if (pipeline->pipe_argv->cmd_argc == 0)
 				assignments(pipeline->pipe_argv, 0);
-			if (check_cd_exit(pipeline->pipe_argv))
+			if (check_builtins_curr_env(pipeline->pipe_argv))
 				break ;
 		}
 		if (pipe(fd_pipe) == -1)
