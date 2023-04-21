@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 14:13:59 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/21 21:45:10 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,7 @@ char		**build_cmd_args(t_node *argv, int argc);
 void		set_exit_st(int argc, pid_t *pid);
 char		**get_env(t_node *env_list);
 void		check_built(t_smpl_cmd *cmd);
+int			check_cd_exit(t_smpl_cmd *cmd);
 int			here_doc(t_pipe *pipeline, t_node *here_redirect);
 
 //tests

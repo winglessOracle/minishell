@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 12:30:26 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/20 19:21:52 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 21:03:30 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int	execute_env(char **cmd_vector, t_node	*env_list)
 	if (i > 1)
 		return (return_error("minishell: env: no options are handled\n", 1));
 	print_env(env_list, 2);
+	printf("our env!!!!!\n");
 	return (0);
 }

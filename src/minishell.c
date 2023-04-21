@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 11:14:51 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/21 21:50:03 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,10 @@ int	main(void)
 		line_read = get_input(env_list, "PS1", 1);
 		write_history("log/history_log"); //remove
 		tokens = lexer(line_read, "|<> \t\n");
-	// print_tokens(tokens, "CREATED TOKENS\n");
 		while (tokens)
 		{
 			pipeline = parse_pipeline(&tokens, env_list);
-	// printf("CREATED PIPLINE\n");
-	// print_pipeline(pipeline);
 			executor(pipeline);
-			printf("g_exit_status main=%d\n", g_exit_status);
-	// printf("PASSED EXECUTOR\n");
-	// printf("exitstatus=%d\n", exitstatus);
 		}
 	}
 	rl_clear_history();

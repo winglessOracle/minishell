@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/21 14:30:39 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/21 21:45:02 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,18 @@ int	here_doc(t_pipe *pipeline, t_node *here_redirect)
 	line = NULL;
 	if (pipe(here_pipe) == -1)
 		exit_error("here_pipe fail", errno);
-	// *keep = open(TMP_FILE, O_WRONLY | O_CREAT | O_TRUNC, 0666);
-	// if (*keep < 0)
-	// 	exit_error("opening TMP_FILE", 1); //.error or return
 	while (1)
 	{
-		// printf("in heredoc, delim: %s\n", here_redirect->content);
 		line_read = get_input(pipeline->pipe_argv->env_list, "PS2", 0);
 		if (!ft_strcmp(line_read, here_redirect->content))
 			break ;
 		tokens = lexer(line_read, " \n");
 		line = parse_heredoc(tokens, here_redirect);
-		// ft_putstr_fd(line, *keep);
 		ft_putstr_fd(line, here_pipe[1]);
 		free(line);
 	}
 	close(here_pipe[1]);
 	return (here_pipe[0]);
-	// close(*keep);
-	// *keep = open(TMP_FILE, O_RDONLY);
-	// if (*keep < 0)
-	// 	exit_error("opening TMP_FILE", 1); //error of return
-	// unlink(TMP_FILE);
 }
 
 char	**build_cmd_args(t_node *argv, int argc)
@@ -99,17 +89,20 @@ char	**get_env(t_node *env_list)
 		return (NULL);
 	while (curr)
 	{
+		if (curr->type == 2)
+			i++;
 		curr = curr->next;
-		i++;
 	}
 	str = malloc(sizeof(char *) * i);
 	i = 0;
 	curr = env_list;
 	while (curr)
 	{
-		str[i] = ft_strdup(curr->content);
+		if (curr->type == 2)
+			str[i] = ft_strdup(curr->content);
+		if (curr->type == 2)
+			i++;
 		curr = curr->next;
-		i++;
 	}
 	str[i] = NULL;
 	return (str);
@@ -119,7 +112,7 @@ void	check_built(t_smpl_cmd *cmd)
 {
 	t_built	*built[7];
 	char	**cmd_args;
-	char	*builtings[7] =	{"echo", "cd", "pwd", "export", \
+	char	*builtins[7] =	{"echo", "cd", "pwd", "export", \
 										"unset", "exit", "env"};
 	int		i;
 
@@ -133,7 +126,7 @@ void	check_built(t_smpl_cmd *cmd)
 	i = 0;
 	while (i < 7 && cmd->cmd_argc > 0)
 	{
-		if (ft_strcmp(cmd->cmd_argv->content, builtings[i]) == 0)
+		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0)
 		{
 			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);
 			if (!cmd_args)
@@ -143,5 +136,29 @@ void	check_built(t_smpl_cmd *cmd)
 		}
 		i++;
 	}
-	g_exit_status = 0;
+}
+
+int	check_cd_exit(t_smpl_cmd *cmd)
+{
+	t_built	*built[2];
+	char	**cmd_args;
+	char	*builtins[2] =	{"cd", "exit"};
+	int		i;
+
+	built[0] = execute_cd;
+	built[1] = execute_exit;
+	i = 0;
+	while (i < 2 && cmd->cmd_argc > 0)
+	{
+		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0)
+		{
+			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);
+			if (!cmd_args)
+				exit_error("building commands", 1);
+			g_exit_status = (built[i](cmd_args, cmd->env_list));
+			return (1);
+		}
+		i++;
+	}
+	return (0);
 }
