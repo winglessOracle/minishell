@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/20 21:27:04 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 14:02:31 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,13 +105,13 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list)
 	return (pipeline);
 }
 
-char	*parse_heredoc(t_node *token, t_smpl_cmd *cmd)
+char	*parse_heredoc(t_node *token, t_node *here_redirect)
 {
 	int					type;
 	int					state;
 	char				*input;
 
-	type = cmd->redirect->type;
+	type = here_redirect->type;
 	if (type == HEREDOC)
 		type = INPUT;
 	if (type == HEREDOCQ)
@@ -122,9 +122,9 @@ char	*parse_heredoc(t_node *token, t_smpl_cmd *cmd)
 		token->type = type;
 		state = check_token_content(token, token->type);
 		if ((state == SQUOTE || state == DQUOTE) && type != HEREDOC)
-			state = remove_quotes(&token, cmd);
+			state = remove_quotes(&token, NULL);
 		else if (state == EXPAND && type != HEREDOC)
-			state = expand(&token, cmd);
+			state = expand(&token, NULL);
 		state = check_token_content(token, token->type);
 		if (token->content)
 			input = ft_strjoin_free_s1(input, token->content);

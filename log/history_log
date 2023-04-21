@@ -114,5 +114,72 @@ echo $?
 echo $? | ls
 sleep 5 | ls
 exit
+<<<<<<< HEAD
 ls | la
 echo $?
+=======
+<< here 
+<< here cat
+exit
+<< here cat | << here2 out
+ls | cat | grep make
+exit
+ls | cat
+ls | cat | grep make
+ls | cat | grep Make
+<< here cat
+<< here cat | << here2 cat
+<< here cat | << hello > out
+<< here cat | << hello > out
+<< here cat | << hello > out
+<< here cat | << hello > out
+exit
+<< here cat | << hello > out
+ls | cat | grep Makefile 
+ls | cat
+ls
+exit
+exit
+ls
+exut
+ls
+exit
+ls
+ls
+exit
+ls
+ls
+ls
+make
+make debug
+ls
+exit
+ls
+ls
+ls | cat | grep Make
+exit
+ls | cat | grep Make
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here ls
+<< here ls | << here2 ls
+<< here ls | << here2 cat
+exit
+ls
+<< here cat
+<< here cat
+<< here cat | << here2 cat
+exit
+<<here <<here2 cat
+exit
+>>>>>>> main

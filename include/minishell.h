@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 11:18:09 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/21 14:13:59 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef struct s_smpl_cmd
 	t_node				*env_list;
 	t_node				*redirect;
 	t_node				*assign;
+	int					here_doc;
 	int					cmd_argc;
 	t_node				*cmd_argv;
 	struct s_smpl_cmd	*next;
@@ -98,7 +99,7 @@ t_pipe		*init_pipeline(void);
 
 // parser
 t_pipe		*parse_pipeline(t_node **tokens, t_node *env_list);
-char		*parse_heredoc(t_node *token, t_smpl_cmd *cmd);
+char		*parse_heredoc(t_node *token, t_node *here_redirect);
 int			check_token_content(t_node *token, int type);
 
 // environment
@@ -116,7 +117,7 @@ char		**build_cmd_args(t_node *argv, int argc);
 void		set_exit_st(int argc, pid_t *pid);
 char		**get_env(t_node *env_list);
 void		check_built(t_smpl_cmd *cmd);
-void		here_doc(t_pipe *pipeline, int *keep);
+int			here_doc(t_pipe *pipeline, t_node *here_redirect);
 
 //tests
 void		leaks(void);
