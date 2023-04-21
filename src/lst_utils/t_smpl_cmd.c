@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/20 17:11:50 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/21 20:53:58 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	lstclear_cmdlst(t_smpl_cmd **lst, void (*del)(void *))
 int	remove_cmd_node(t_smpl_cmd **cmds)
 {
 	t_smpl_cmd	*temp;
+
 	if (!*cmds)
 		return (-1); //check
 	temp = *cmds;

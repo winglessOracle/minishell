@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 22:37:10 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 11:21:19 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ int	expand_var(t_node **token, t_smpl_cmd *cmd)
 	char	*str;
 
 	remove_node(token, cmd);
-	str = get_variable(cmd->env_list, (*token)->content);
+	if ((*token)->content[0] == '?')
+		str = ft_itoa(g_exit_status);
+	else
+		str = get_variable(cmd->env_list, (*token)->content);
 	free((*token)->content);
 	(*token)->content = str;
-	if (!(*token)->content)
-		remove_node(token, cmd);
 	return (0);
 }
 
@@ -37,7 +38,7 @@ t_node	*split_expanded(t_node *words, t_smpl_cmd *cmd)
 		temp = words;
 		str = get_variable(cmd->env_list, "IFS");
 		if (!str)
-			str=ft_strdup(" ");
+			str = ft_strdup(" ");
 		words = split_to_list(temp->content, str);
 		remove_node(&temp, cmd);
 		free(str);
@@ -51,10 +52,12 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 	t_node	*words;
 	t_node	*temp;
 
-	words = split_to_list((*token)->content, "$");
+	words = split_to_list((*token)->content, "$=?");
 	remove_node(token, cmd);
 	while (words && words->next)
 	{
+		if (!words->content)
+			remove_node(&words, cmd);
 		if (words->content[0] == '$')
 			expand_var(&words, cmd);
 		else if (words->next->content[0] == '$')
@@ -72,10 +75,17 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 	return (0);
 }
 
+int	temp_assign(t_node **token, t_smpl_cmd *cmd)
+{
+	(void)cmd;
+	(*token)->type = ASSIGN_T;
+	return (0);
+}
+
 int	expander(t_node **token, t_smpl_cmd *cmd)
 {
 	int					state;
-	static t_function	*parse[11];
+	static t_function	*parse[12];
 
 	parse[WORD] = add_word_to_cmd;
 	parse[COMMENT] = remove_comment;
@@ -83,11 +93,14 @@ int	expander(t_node **token, t_smpl_cmd *cmd)
 	parse[DQUOTE] = remove_quotes;
 	parse[EXPAND] = expand;
 	parse[ASSIGN] = parser_assign;
+	parse[ASSIGN_T] = temp_assign;
 	parse[TILDE] = expand_tilde;
-	while (*token && (*token)->type == WORD)
+	while (*token && ((*token)->type == WORD || (*token)->type == ASSIGN_T))
 	{
 		state = check_token_content(*token, (*token)->type);
 		state = parse[state](token, cmd);
+		if (state == -1)
+			break ;
 	}
 	return (state);
 }

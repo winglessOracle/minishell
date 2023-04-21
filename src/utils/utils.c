@@ -6,19 +6,19 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/20 10:28:47 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/21 11:14:08 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	 return_perror(char *str, int err)
+int	return_perror(char *str, int err)
 {
 	perror(str);
 	return (err);
 }
 
-int	 return_error(const char *str, int err)
+int	return_error(const char *str, int err)
 {
 	write(2, str, ft_strlen(str));
 	return (err);
@@ -27,7 +27,7 @@ int	 return_error(const char *str, int err)
 void	exit_error(char	*str, int num)
 {
 	perror(str);
-	exit(num); //change for exit
+	exit(num);
 }
 
 // prints error message and returns -1 if err != 0;

@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   exit.c                                             :+:    :+:            */
+/*   ft_strcmp_case.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/04/17 19:37:37 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 11:13:22 by ccaljouw      ########   odam.nl         */
+/*   Created: 2022/10/10 09:27:54 by cwesseli      #+#    #+#                 */
+/*   Updated: 2023/04/20 16:05:19 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "libft.h"
 
-int	execute_exit(char **cmd_vector, t_node *env_list)
+int	ft_strcmp_case(const char *s1, const char *s2, int (setcase)(int))
 {
-	int		exit_code;
-	int		i;
+	size_t	i;
 
-	(void)env_list;
+	if (!s1 || !s2)
+		return (-1);
 	i = 0;
-	exit_code = 0;
-	while (cmd_vector[i])
+	while ((s1[i] || s2[i]))
+	{
+		if (setcase(s1[i]) != setcase(s2[i]))
+			return (setcase(s1[i]) - setcase(s2[i]));
 		i++;
-	if (i > 2)
-		exit_error("ccs: too many arguments\n", 1);
-	if (cmd_vector[1])
-		exit_code = ft_atoi_long(cmd_vector[1]);
-	else
-		exit_code = g_exit_status;
-	exit(exit_code);
+	}
+	return (0);
 }
