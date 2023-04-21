@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/21 09:30:42 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/21 10:48:10 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,5 +136,5 @@ void	check_built(t_smpl_cmd *cmd)
 		}
 		i++;
 	}
-	g_exit_status = 1;
+	g_exit_status = 0;
 }
