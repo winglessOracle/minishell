@@ -8,12 +8,11 @@
 check cd with CDPATH
 
 /* checks Carlo */
-check nmbr of args exit
-empty redirect nodes should result in error
-env_array should only include type 2
-readline keeps first characters
+empty redirect nodes should result in error 
+readline keeps first characters (solve if persistent history removed)
+double here_doc 
+
 ctrl-C should display a new line with a new prompt (check that previous text does not get executed)
 ctrl-D in prompt with text should do nothing.
-ctrl-/ does nothing
 try ctrls with blocking command (eg cat with no arguments) (ctrl-C prints ^C on a new line and exits child, 
 ctrl-D exits child and prints nothing, ctrl-/ does nothing)

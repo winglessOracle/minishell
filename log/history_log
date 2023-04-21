@@ -114,6 +114,10 @@ echo $?
 echo $? | ls
 sleep 5 | ls
 exit
+<<<<<<< HEAD
+ls | la
+echo $?
+=======
 << here 
 << here cat
 exit
@@ -178,6 +182,7 @@ ls
 exit
 <<here <<here2 cat
 exit
+<<<<<<< HEAD
 ls | ls | ls
 ls | ls | ls >out
 ls > out
@@ -256,4 +261,63 @@ cd ..
 cd src
 << here << here2 cat | here3 cat
 << here << here2 cat | << here3 cat
+exit
+=======
+>>>>>>> main
+exit
+exit
+sde
+f
+
+ss
+sd
+ls
+ls cat
+ls | cat
+var=carlo
+env
+exit
+pwd
+ls
+ls | ls
+ls | ls  | cat
+export
+ls
+ls | ls
+var=carlo
+env
+env
+var=carlo | num=42
+ls | env
+ls | env
+ls
+env
+env
+env
+ls
+env
+ls
+env
+ls
+env | env
+env
+env
+env
+env
+ls | env | ls 
+ls | env | cat
+>>>>>>> main
+ls | env | cat
+ls | env | cat >> out
+ls | env >>out
+ls | ls | cat
+ls | ls | cat >>out
+ls | env
+env
+exit
+ls | env
+ls | ls | cat >>out
+
+exit
+exut
 exit

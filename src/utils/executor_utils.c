@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/21 21:45:02 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 22:00:35 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	set_exit_st(int argc, pid_t *pid)
 	}
 }
 
-char	**get_env(t_node *env_list)
+char	**get_env(t_node *env_list) //alleen type 2
 {
 	t_node	*curr;
 	char	**str;
@@ -132,7 +132,7 @@ void	check_built(t_smpl_cmd *cmd)
 			if (!cmd_args)
 				exit_error("building commands", 1);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
-			exit (g_exit_status);
+			exit(g_exit_status);
 		}
 		i++;
 	}

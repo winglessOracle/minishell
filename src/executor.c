@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/21 21:48:47 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 21:57:06 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,9 +172,6 @@ void		executor(t_pipe *pipeline)
 	read_heredocs(pipeline);
 	while (pipeline && pipeline->pipe_argv)
 	{
-		if (pipe(fd_pipe) == -1)
-			exit_error("pipe fail", errno);
-		env = get_env(pipeline->pipe_argv->env_list);
 		if (pipeline->pipe_argc == 1)
 		{
 			if (pipeline->pipe_argv->cmd_argc == 0)
@@ -182,6 +179,9 @@ void		executor(t_pipe *pipeline)
 			if (check_cd_exit(pipeline->pipe_argv))
 				break ;
 		}
+		if (pipe(fd_pipe) == -1)
+			exit_error("pipe fail", errno);
+		env = get_env(pipeline->pipe_argv->env_list);
 		pid[i] = fork();
 		if (pid[i] == -1)
 			exit_error("fork fail", errno);

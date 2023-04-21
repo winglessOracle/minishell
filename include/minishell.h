@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 21:45:10 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 21:53:32 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include <readline/history.h>
 # include <errno.h>
 
-#define TMP_FILE "log/here_doc_tmp"
+# define TMP_FILE "log/here_doc_tmp"
 
 extern int	g_exit_status;
 
@@ -85,7 +85,6 @@ void		lstclear_cmdlst(t_smpl_cmd **lst, void (*del)(void *));
 void		lstdelone_cmd(t_smpl_cmd *lst, void (*del)(void *));
 int			remove_cmd_node(t_smpl_cmd **cmds);
 
-
 //lexer
 t_node		*lexer(char *str, char *delim);
 t_node		*split_to_list(char *str, char *delim);
@@ -126,5 +125,8 @@ void		print_env(t_node *env_list, int flag);
 void		print_tokens(t_node *tokens, char *str);
 void		print_cmd(t_smpl_cmd *cmd);
 void		print_pipeline(t_pipe *pipe);
+
+//signals
+void		exit_sig(t_node *env_list);
 
 #endif
