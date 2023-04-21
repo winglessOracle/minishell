@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/21 15:49:48 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/21 17:47:43 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,8 +174,8 @@ void		executor(t_pipe *pipeline)
 			{
 				assignments(pipeline->pipe_argv, 0);
 				set_fd(pipeline, pipeline->pipe_argv, &keep, fd_pipe);
-				return ;
 			}
+			return ;
 		}
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);

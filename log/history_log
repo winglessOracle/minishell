@@ -188,7 +188,40 @@ exit
 sde
 f
 
-
-
 ss
 sd
+ls
+ls cat
+ls | cat
+var=carlo
+env
+exit
+pwd
+ls
+ls | ls
+ls | ls  | cat
+export
+ls
+ls | ls
+var=carlo
+env
+env
+var=carlo | num=42
+ls | env
+ls | env
+ls
+env
+env
+env
+ls
+env
+ls
+env
+ls
+env | env
+env
+env
+env
+env
+ls | env | ls 
+ls | env | cat
