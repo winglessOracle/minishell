@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/21 20:55:24 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/22 17:04:01 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 	int		i;
 
 	i = 0;
+	check_built(pipe_argv);
 	cmd_args = build_cmd_args(pipe_argv->cmd_argv, pipe_argv->cmd_argc);
 	if (!cmd_args)
 		exit_error("building commands", 1);
@@ -65,11 +66,11 @@ int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 		if (smpl_cmd->redirect->type == OUTPUT)
 		{
 			if (access(smpl_cmd->redirect->content, F_OK) == 0)
-				return (return_error("not allowed to overwrite file\n", 2));
+				return (return_error("not allowed to overwrite file\n", -1));
 			fd_pipe[1] = open(smpl_cmd->redirect->content, \
 								O_CREAT | O_WRONLY | O_TRUNC, 0644);
 			if (fd_pipe[1] < 0)
-				return (return_perror("opening outfile", 2));
+				return (return_perror("opening outfile", -1));
 			count = 1;
 		}
 		else if (smpl_cmd->redirect->type == INPUT)
@@ -77,7 +78,7 @@ int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 			close(*keep);
 			*keep = open(smpl_cmd->redirect->content, O_RDONLY);
 			if (*keep < 0)
-				return (return_perror("opening keep", 2));
+				return (return_perror("opening keep", -1));
 		}
 		else if (smpl_cmd->redirect->type == APPEND)
 		{
@@ -85,14 +86,18 @@ int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 			fd_pipe[1] = open(pipeline->pipe_argv->redirect->content, \
 						O_CREAT | O_WRONLY | O_APPEND, 0644);
 			if (fd_pipe[1] < 0)
-				return (return_perror("opening outfile", 2));
+				return (return_perror("opening outfile", -1));
 			count = 1;
 		}
 		else if (smpl_cmd->redirect->type == HEREDOC || \
 							smpl_cmd->redirect->type == HEREDOCQ)
+		{
 			dup2(smpl_cmd->here_doc, *keep);
+			if (!smpl_cmd->here_doc)
+				exit_error("dup fail", -1);
+		}
 		if (*keep == -1 || fd_pipe[0] == -1 || fd_pipe[1] == -1)
-			return (return_perror("fd:", 2));
+			return (return_perror("fd:", -1));
 		remove_node(&smpl_cmd->redirect, NULL);
 	}
 	return (count);
@@ -119,7 +124,7 @@ void	redirect(t_pipe *pipeline, pid_t pid, int keep, int *fd_pipe)
 	{
 		close(fd_pipe[0]);
 		set_out = set_fd(pipeline, pipeline->pipe_argv, &keep, fd_pipe);
-		if (set_out == 2)
+		if (set_out == -1)
 			exit_error("ccs: redirect\n", 12); //change
 		dup2(keep, STDIN_FILENO);
 		if (!keep)
@@ -181,12 +186,10 @@ void		executor(t_pipe *pipeline)
 	{
 		if (pipeline->pipe_argc == 1)
 		{
-			check_built(pipeline->pipe_argv);
 			if (pipeline->pipe_argv->cmd_argc == 0)
 				assignments(pipeline->pipe_argv, 0);
-			// if (set_fd(pipeline, pipeline->pipe_argv, &keep, fd_pipe))
-			// 	dup2(fd_pipe[1], STDOUT_FILENO);
-			return ;
+			if (check_builtins_curr_env(pipeline->pipe_argv))
+				break ;
 		}
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
@@ -203,8 +206,8 @@ void		executor(t_pipe *pipeline)
 			else
 				execute_exit(NULL, pipeline->pipe_argv->env_list);
 		}
-		i++;
 		remove_cmd_node(&pipeline->pipe_argv);
+		i++;
 	}
 	set_exit_st(pipeline->pipe_argc, pid);
 }
