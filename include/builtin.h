@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/13 09:29:13 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 14:59:12 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/20 16:30:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,13 @@ int		execute_exit(char **cmd_vector, t_node *env_list);
 int		execute_env(char **cmd_vector, t_node	*env_list);
 
 // cd_utils
-int		change_dir(char	*str, char *arg, int print);
+int		change_dir(char	*str, char *arg);
+char	*get_curr_dir(char *cmd_arg, t_node *env_list);
 char	*get_back(char *pwd);
-char	*get_arg(char *cmd_arg);
 char	**get_path_arr(t_node *env_list, char *pwd);
+void	update_env(t_node *env_list, char *cmd_arg);
+
+// env
+void	check_env(t_smpl_cmd *cmd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/18 22:12:38 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 09:37:54 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,25 +63,26 @@ void	add_variable(t_node *env_list, char *var, int type)
 	char	*name;
 	t_node	*temp;
 
-	i = 0;		
+	i = 0;
 	while (var[i] && var[i] != '=')
 		i++;
 	name = ft_substr(var, 0, i);
 	if (!name)
-		exit_error("add_variable", 1);
+		exit_error("add_variable\n", 1);
 	temp = search_var(env_list, name);
 	if (temp)
 	{
 		free(temp->content);
-		temp->content = var;
+		temp->content = ft_strdup(var);
 		if (temp->content[ft_strlen(name)] == '\0')
 			temp->type = 1;
 		else
 			temp->type = type;
 	}
 	else
-		lstadd_back(&env_list, new_node(type, var));
+		lstadd_back(&env_list, new_node(type, ft_strdup(var)));
 	free(name);
+	free(var);
 }
 
 char	*get_variable(t_node *env_list, char *name)
@@ -91,7 +92,9 @@ char	*get_variable(t_node *env_list, char *name)
 	t_node	*temp;
 
 	value = NULL;
-	len = ft_strlen(name);
+	len = 0;
+	while (name[len] && name[len] != '=')
+		len++;
 	temp = env_list;
 	while (temp && name)
 	{
@@ -107,4 +110,3 @@ char	*get_variable(t_node *env_list, char *name)
 	}
 	return (value);
 }
-

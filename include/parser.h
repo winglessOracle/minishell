@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/13 20:39:20 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/20 18:25:52 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef enum e_parsetype
 	DQUOTE,
 	EXPAND,
 	ASSIGN,
+	ASSIGN_T,
 	TILDE,
 	INPUT,
 	OUTPUT,

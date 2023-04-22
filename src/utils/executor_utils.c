@@ -6,40 +6,35 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/18 18:51:24 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/21 22:17:47 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "executor.h"
 
-// <<del unknow comd does not
-void	here_doc(t_pipe *pipeline, int *keep)
+int	here_doc(t_pipe *pipeline, t_node *here_redirect)
 {
+	int		here_pipe[2];
 	char	*line_read;
 	char	*line;
 	t_node	*tokens;
 
 	line = NULL;
-	close(*keep);
-	*keep = open(TMP_FILE, O_RDWR | O_CREAT | O_TRUNC, 0666);
-	if (*keep < 0)
-		exit_error("opening tmp file", 1);
+	if (pipe(here_pipe) == -1)
+		exit_error("here_pipe fail", errno);
 	while (1)
 	{
 		line_read = get_input(pipeline->pipe_argv->env_list, "PS2", 0);
-		if (!ft_strcmp(line_read, pipeline->pipe_argv->redirect->content))
-		{
-			unlink(TMP_FILE);
-			exit(0);
-		}
-		ft_putstr_fd(line_read, *keep);
+		if (!ft_strcmp(line_read, here_redirect->content))
+			break ;
 		tokens = lexer(line_read, " \n");
-		line = parse_heredoc(tokens, pipeline->pipe_argv);
-		ft_putstr_fd(line, *keep);
-printf("in here_doc (executer): %s\n", line);
+		line = parse_heredoc(tokens, here_redirect);
+		ft_putstr_fd(line, here_pipe[1]);
 		free(line);
 	}
+	close(here_pipe[1]);
+	return (here_pipe[0]);
 }
 
 char	**build_cmd_args(t_node *argv, int argc)
@@ -61,22 +56,28 @@ char	**build_cmd_args(t_node *argv, int argc)
 	return (cmd_args);
 }
 
-int	get_exit_st(int argc, pid_t pid)
+
+/*
+waitpid: wait for the child process with the specified PID to complete.
+WIFEXITED macro: check if the child process exited normally
+WEXITSTATUS macro: get the exit status of the child process.
+*/
+void	set_exit_st(int argc, pid_t *pid)
 {
 	int	waitstatus;
 	int	i;
 
 	i = 0;
-	waitstatus = 0;
 	while (i < argc)
 	{
-		waitpid(pid, &waitstatus, 0);
+		waitpid(pid[i], &waitstatus, 0);
+		if (WIFEXITED(waitstatus))
+			g_exit_status = WEXITSTATUS(waitstatus);
 		i++;
 	}
-	return (WEXITSTATUS(waitstatus));
 }
 
-char	**get_env(t_node *env_list)
+char	**get_env(t_node *env_list) //alleen type 2
 {
 	t_node	*curr;
 	char	**str;
@@ -88,28 +89,32 @@ char	**get_env(t_node *env_list)
 		return (NULL);
 	while (curr)
 	{
+		if (curr->type == 2)
+			i++;
 		curr = curr->next;
-		i++;
 	}
 	str = malloc(sizeof(char *) * i);
 	i = 0;
 	curr = env_list;
 	while (curr)
 	{
-		str[i] = ft_strdup(curr->content);
+		if (curr->type == 2)
+			str[i] = ft_strdup(curr->content);
+		if (curr->type == 2)
+			i++;
 		curr = curr->next;
-		i++;
 	}
 	str[i] = NULL;
 	return (str);
 }
 
-int	check_built(t_smpl_cmd *cmd)
+void	check_built(t_smpl_cmd *cmd)
 {
-	char	*builtings[7] =	{"echo", "cd", "pwd", "export",	"unset", "exit", "env"};
-	int		i;
 	t_built	*built[7];
 	char	**cmd_args;
+	char	*builtins[7] =	{"echo", "cd", "pwd", "export", \
+										"unset", "exit", "env"};
+	int		i;
 
 	built[0] = execute_echo;
 	built[1] = execute_cd;
@@ -121,14 +126,43 @@ int	check_built(t_smpl_cmd *cmd)
 	i = 0;
 	while (i < 7 && cmd->cmd_argc > 0)
 	{
-		if (ft_strcmp(cmd->cmd_argv->content, builtings[i]) == 0)
+		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0)
 		{
 			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);
 			if (!cmd_args)
 				exit_error("building commands", 1);
-			return (built[i](cmd_args, cmd->env_list));
+			g_exit_status = (built[i](cmd_args, cmd->env_list));
+			exit(g_exit_status);
 		}
 		i++;
 	}
-	return (-1);
+}
+
+int	check_builtins_curr_env(t_smpl_cmd *cmd)
+{
+	t_built	*built[4];
+	char	**cmd_args;
+	char	*builtins[4] =	{"cd", "exit", "export", "unset"};
+	int		i;
+
+	built[0] = execute_cd;
+	built[1] = execute_exit;
+	built[2] = execute_export;
+	built[3] = execute_unset;
+	i = 0;
+	while (i < 3 && cmd->cmd_argc > 0)
+	{
+		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0)
+		{
+			if (!ft_strcmp(cmd->cmd_argv->content, "export") && cmd->cmd_argc == 1)
+				return (0);
+			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);
+			if (!cmd_args)
+				exit_error("building commands", 1);
+			g_exit_status = (built[i](cmd_args, cmd->env_list));
+			return (1);
+		}
+		i++;
+	}
+	return (0);
 }

@@ -1,463 +1,331 @@
-cd src
-minishel
-minishell
-exit
-exit
-exit
-exit
-exit
-env
-exit
-exit
-env
-exit
-env
-env
-exit
-env
-exit
-var=aap
-echo var
-echo $var
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here cat
-exit
-<< here
-<< here
-<< here
-<< here
-var= aap
-var=aap
-export
-<< here
-<< here
-<< here cat
-exit
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-exit
-<< here
-<< here
-<< here
-var=aap
-<< here
-var=aap
-<< here
-var=aap
-<< here
-var=aap
-<< "here"
-<< "here"
-var=aap
-var2=koe
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-<< here
-var=aap
-<< here
-var=aap
-<< here
-echo "hello world"
-var=aap
-echo $var
-echo "hello $var"
-exit
-<< here
-<< here
-<< here
-<< here
-$var
-exit
-<< here
-var=aap
-<< here
-<< here
-<< here
-var=aap
-<< here
-var=aap
-<< here
-<< "here"
-<< here
-<segfault.txt
->out
-exit
-var=aap
-var1=koe
-echo $var
-echo $var1
-echo $var$var2
-exit
-var=aap
-var2=koe
-echo $var$var1
-exit
-var=aap
-var2=koe
-echo $var$var2
-exit
-var=aap
-var2=koe
-echo $var$var2
-exit
-var=aap
-var2=koe
-echo $var$var2
-exit
-var=aap
-var2=koe
-echo $var$var2
-exit
-var=aap
-var2=koe
-echo $var$var2
-exit
-var=aap
-var2=koe
-echo $var$var2
-exit
-var=aap
-var2=koe
-echo $var$var2
-exit
-echo $var$var2
-var=aap
-var2=koe
-echo $var$var2
-exit
-var=aap
-var2=koe
-echo $var$var2
-exit
-var=aap
-var2=koe
-echo $var$var2
-exit
-export 1var=aap
-export
-exit
-echo var=aap
-echo var=$aap
-exit
-echo var=$aap
-exit
-var=aap
-var=aap
-echo $var
-exit
-var=aap
-echo var
-echo $var
-var2=$var
-echo $var2
-exit
-var=aap
-var2=koe
-echo $var$var2$var
-echo var=$var2$var
-echo $var$var2$var
-echo $var$var2
-<< $var
-var=aap
-var2=koe
-echo $var$var2
-echo $var$var2$var
-exit
+echo hello world
 echo "hello 'world"
-echo "hello 'world"
-var=aap
-echo "hello 'world $aap"
-echo "hello 'world $var"
 exit
-<< here
-var=aap
-<< here
-var=aap
-<< "here"
-var=aap
-<< 'here'
-echo "$var en aap"
+ls | ls | ls
 exit
-var=aap
-echo test$var
-echo test"$var is geen koe"
 exit
-var=aap
-echo var2=$var
+ls | ls | ls
+sleep |ls
+echo hello world
+echo hello world
+ls | ls | ls
 exit
-echo $PWDtest
-echo test$PWD
-echo ~withnoslash
-echo ~
-echo ~/hello
+ls | ls | ls
+ls | ls | exit
+echo hello world
 exit
-cd ../../../../../..
-cd ~
-echo "hello ~ world"
-echo ~
-unset HOME
-echo ~
-exit
-unset HOME
-echo ~
-exit
-cd ~
-export HOME=/Users/uers42
-cd ~
-cd .. blaba
-exit
-cd blabla
-cd -
-pwd
-pwd
-cd
-cd -
-cd -
-cd -
-cd -
-exit
-echo
-echo -n
-cd $var
-export var=a
-export $var=test
-export $var=test
-echo $var
-eport $var=test
-exit
-export var=1 test=2
-echo $USER$var$USER$USER$USERtest$USER
-export var=a test=2
-echo $USER$var$USER$USER$USERtest$USER
-$
-$LESS$VAR
-$LESS$VAR
-$LESS$VAR
-$var%var2
-echo $var$var2
-$var$var2
-$LESS$VAR
-$LESS$VAR
-$LESS$VAR
-echo $LESS$VAR
-exit
-export var=1 test=2
-echo $USER$var$U$USER$var$USER$USER$USERtest$USER
-echo $USER$var$USER$USER$USERtest$USER
-$
-exit
-var=1 test=2
-echo $USER
-echo $USER$var
-echo $USER$var$USER$USER
-echo $USER$var$USER$USERtest
-echo $USER$var$USER$USERtest
-var=1
-echo $USER$var$USER$USERtest
-var=1 test=2
-echo $USER
-echo $USER$var
-echo $USER$var$USER
-echo $USER$var$USER$USERtest
-echo $USER$var$USER$USERtest$var
-$
-..
-echo "abc"
-echo $USER$var$USER$USER$USERtest$USER
-var=a
-$var=test
-echo a
-echo $a
-export
-$var=test
-export
-exit
-$PWDtest
-echo $PWDtest
-echo test$PWD
-echo ~withnoslash
-echo ~
-echo ~/hello
-exit
-./minishell 
-exit
-echo ~
-unset HOME
-echo ~
-exit
-echo ~
-echo ~/test
-unset HOME
-echo ~
-echo ~/test
-echo ~
-unset HOME
-echo ~
-echo ~
-exit
-cd ~
-cd ~
-echo ~
-unset HOME
-echo ~
-exit
-echo ~
-echo ~aap
-echo ~/aap
-unset HOME
-echo ~
-echo ~aap
-echo ~/aap
-echo ~
-echo ~aap
-echo ~/aap
-unset HOME
-echo ~
-echo ~/aap
-echo ~
-echo ~/aap
-echo ~aap
-unset HOME
-echo ~
-echo ~
-echo ~aap
-echo ~/aap
-unset HOME
-echo ~
-echo ~aap
-echo ~/aap
-echo ~
-echo ~aap
-echo ~/aap
-unset HOME
-echo ~
-echo ~aap
-echo ~/aap
-unset HOME
-echo ~/aap
-cd ~
-cd ~
-cd ~
-cd ~
-echo ~
-echo ~aap
-echo ~/aap
-unset HOME
-echo ~
-echo ~aap
-echo ~/aap
-unset ~
-echo ~
-echo ~aap
-echo ~
-exit
-echo $HOME
-unset ~
-echo $HOME
-echo ~
-unset "~"
-echo ~
-exit
-echo $HOME
-unset HOME
-echo $HOME
-echo $~
-unset "~"
-echo $~
-exit
-export
-exit
-cd
-cd
-cd
-var=a
-export
-var=a
-exit
-var=a
-var=a
-export
-var=a
-exit
-var=a
-var=a
-exit
-var=a
-var=a
-export
-exit
-var=a
-var=a
-exit
-var=a
-var=a
-export
-exit
-./minishell 
-exit
-var=a
-echo $var
-exit
-var=a
-export
+var=
 export var
+echo var
+echo $pwd
+var=42
+echo $var
+env
+ls
+ls | ls
+<Makefile cat | grep debug | cat | cat > out
+sleep 5 | ls
+exit
+ls
+ls | ls
+<Makefile cat | grep debug | cat | cat > out
+exit
+<Makefile cat | grep debug | cat | cat > out
+ls | ls
+exit
+wf
+exit
+exit
+exit
+ls
+ls | ls
+exit
+<Makefile cat | grep debug | cat | cat > out
+sleep 5 | ls
+sleep 5 | ls
+exit
+aerfaerf
+aerfaerf
+wef
+ls
+sf
+sdsd
+edexit
+sef
+sef
+aerf
+afr
+efwef
+sef
+serf
+exit
+dfr
+exit
+ed
+arf
+sdef
+ewefwef
+ls
+ls
+jfjf
+exi
+ads
+aerf
+ls
+a
+aerf
+aerf
+sdf
+aerf
+sd
+exit
+aerf
+aerf
+aerf
+aed
+exit
+exit
+vvv
+ddd
+exit
+ex
+df
+sdf
+sdf
+dd
+a
+ls
+ls | ls
+exit
+ls
+dd
+avr=42
+exit
+avr=42
+exit
+ls | la
+echo $?
+echo $?
+echo $PWD
+ls | la
+echo $?
+ls | la
+echo $?
+echo $? | ls
+sleep 5 | ls
+exit
+<<<<<<< HEAD
+ls | la
+echo $?
+=======
+<< here 
+<< here cat
+exit
+<< here cat | << here2 out
+ls | cat | grep make
+exit
+ls | cat
+ls | cat | grep make
+ls | cat | grep Make
+<< here cat
+<< here cat | << here2 cat
+<< here cat | << hello > out
+<< here cat | << hello > out
+<< here cat | << hello > out
+<< here cat | << hello > out
+exit
+<< here cat | << hello > out
+ls | cat | grep Makefile 
+ls | cat
+ls
+exit
+exit
+ls
+exut
+ls
+exit
+ls
+ls
+exit
+ls
+ls
+ls
+make
+make debug
+ls
+exit
+ls
+ls
+ls | cat | grep Make
+exit
+ls | cat | grep Make
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here cat
+<< here ls
+<< here ls | << here2 ls
+<< here ls | << here2 cat
+exit
+ls
+<< here cat
+<< here cat
+<< here cat | << here2 cat
+exit
+<<here <<here2 cat
+exit
+<<<<<<< HEAD
+ls | ls | ls
+ls | ls | ls >out
+ls > out
+env >out
+ls > out
+ls >> out
+ls >> out
+env >>out
+exit
+ls >> out
+env
+env | cat
+env
+ls | env
+exit
+ls
+env
+ls >> out
+ls >> out
+env >> out
+ls | env
+ls | env >>out
+exit
+ls | env >>out
+ls | ls | env >>out
+ls | ls | ls  >>out
+exit
+ls | ls | ls  >>out
+ls | ls | env  >>out
+env > out
+env >> out
+exit
+make
+exut
+exit
+env >> out
+env >> out
+exit
+make
+echo hello
+exit
+echo hello
+echo hello
+echo hello
+env
+ls | env
+ls | env >>out
+exit
+ls | env >>out
+ls | env >>out
+exit
+make
+exit
+ls | env >>out
+env >>out
+exit
+env >>out
+exit
+env >>out
+ls | env >>out
+exit
+ls | env >>out
+ls | env >>out
+exit
+ls | env >>out
+ls | env >>out
+exit
+ls | env >>out
+exit
+ls | env >>out
+ls | env >>out
+env >>out
+exit
+ls | exit
+cd ..
+cd src
+<< here << here2 cat | here3 cat
+<< here << here2 cat | << here3 cat
+exit
+=======
+>>>>>>> main
+exit
+exit
+sde
+f
+
+ss
+sd
+ls
+ls cat
+ls | cat
+var=carlo
+env
+exit
+pwd
+ls
+ls | ls
+ls | ls  | cat
 export
-export var=test
+ls
+ls | ls
+var=carlo
+env
+env
+var=carlo | num=42
+ls | env
+ls | env
+ls
+env
+env
+env
+ls
+env
+ls
+env
+ls
+env | env
+env
+env
+env
+env
+ls | env | ls 
+ls | env | cat
+>>>>>>> main
+ls | env | cat
+ls | env | cat >> out
+ls | env >>out
+ls | ls | cat
+ls | ls | cat >>out
+ls | env
+env
+exit
+ls | env
+ls | ls | cat >>out
+exit
+exut
+exit
+export var=aap var2=koe
 export
 exit
-export ls="ls -l"
-$ls
+export var=aap var2=koe
+export
 exit
-echo ""
-echo "" test
-exit
-echo "" test
-echo '' test
-exit
-echo ""
-echo "" test
-exit
-echo "" test
-exit
-echo "" test
-exit
-echo "" test
-exit
-echo "" test
-exit
-echo "" test
-echo ''  test
-exit
-echo ''  test
-echo ""  test
+export var=aap var2=koe
+export > out
 exit
