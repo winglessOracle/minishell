@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/21 09:32:38 by cariencaljo   ########   odam.nl          #
+#    Updated: 2023/04/23 17:42:20 by cariencaljo   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ CFLAGS		= -Wall -Wextra -Werror
 OBJ_FILES	=		$(addprefix obj/, ft_free.o ft_free_array.o ft_strchr.o ft_strdup.o\
 						ft_strlen.o ft_strlcpy.o ft_strcmp.o  ft_strcmp_case.o ft_substr.o ft_calloc.o \
 						ft_bzero.o ft_memset.o ft_memcpy.o ft_strjoin.o ft_strncmp.o ft_strjoin_free_s1.o \
-						ft_split.o ft_itoa.o ft_toupper.o \
+						ft_split.o ft_itoa.o ft_toupper.o ft_tolower.o \
 						ft_putstr_fd.o ft_freearr.o ft_isalpha.o ft_atoi_long.o ft_isdigit.o ft_isspace.o)
 
 OBJ_PRINTF = 		$(addprefix obj_printf/, ft_printf.o ft_sprintf.o ft_printf_format.o ft_printf_set.o \

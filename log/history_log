@@ -329,3 +329,252 @@ exit
 export var=aap var2=koe
 export > out
 exit
+ls
+env
+exit
+ls
+exit
+tester.sh 
+exit
+tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+pwd
+exit
+tester.sh 
+tester.sh 
+exit
+ls
+ls -la
+exit
+ls
+exit
+ls
+ls -la
+exit
+ls -la
+exit
+ls -la
+exit
+ls -la
+exit
+ls -la
+echo aap
+cat /*
+cat */
+exit
+cat */
+cat /*
+exit
+cat src/*
+exit
+cat src/*
+exit
+cat src/*
+exit
+cat src/*
+cat *
+exit
+cat *
+exit
+cat *
+exit
+cat *
+exit
+cat *
+exit
+cat *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+eixt
+make
+eixt
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+bash
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exut
+exit
+echo *
+bash
+exit
+echo *
+bash
+make
+exit
+echo *
+bash
+make
+make
+exit
+echo *
+bash
+exit
+echo *
+bash
+exit
+echo *
+exit
+echo *
+bash
+eit
+exit
+echo *kefile
+bash
+exit
+echo *kefile
+echo *
+cat *
+bash
+exit
+*
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exir
+exit
+echo *
+exit
+echo *
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+cat *
+exit
+exit
+exit
+echo *
+cat *
+exit
+echo obj*
+bash
+echo *kefile
+cat obj*
+bash
+exit

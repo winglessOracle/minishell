@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 22:18:01 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/23 19:14:38 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,5 +128,9 @@ void		print_pipeline(t_pipe *pipe);
 
 //signals
 void		exit_sig(t_node *env_list);
+
+// pattern match
+// int			match(char *str, char *pattern);
+int			check_wildcars(t_node **cmd_args);
 
 #endif

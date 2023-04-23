@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/13 09:29:13 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 16:30:23 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/23 17:38:20 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	update_env(t_node *env_list, char *cmd_arg);
 
 // env
 void	check_env(t_smpl_cmd *cmd);
+t_node	*sort_env(t_node *env_list);
 
 #endif

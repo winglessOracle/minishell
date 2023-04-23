@@ -2,8 +2,8 @@
 
 # Run in minishell to test
 
-#make tmp dit and ensure that the temporary directory
-#is always cleaned up.
+# make tmp dir and ensure that the temporary directory
+# is always cleaned up.
 mkdir -p ./test
 trap 'rm -rf ./test' EXIT
 
@@ -41,7 +41,7 @@ exitcode_bash=$?
 
 # # Compare outputs and exit codes
 diff ./test/bash_output.txt ./test/minishell_output.txt
-if [ "$exitcode_minishell" -eq "$exitcode_bash"]; then
+if [ "$exitcode_minishell" -eq "$exitcode_bash" ]; then
      echo "exit_code OK!"
 else
      echo "exit_code KO!"

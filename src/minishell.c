@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 21:56:29 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/23 16:26:07 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,5 @@ int	main(void)
 	}
 	rl_clear_history();
 	execute_exit(NULL, env_list);
+	return (0);
 }
