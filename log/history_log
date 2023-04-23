@@ -622,3 +622,33 @@ tester.sh
 tester.sh
 tester.sh
 exit
+exit
+exit
+tester.sh s
+tester.sh m
+tester.sh a
+tester.sh a
+tester.sh r
+tester.sh b
+tester.sh h
+tester.sh
+make fclean
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+exit
