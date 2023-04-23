@@ -652,3 +652,170 @@ tester.sh
 tester.sh 
 tester.sh 
 exit
+tester.sh 
+exit
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+env
+var=42
+env
+echo $var
+export $var
+echo $var
+env
+export var=33
+env
+env
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh env
+env
+tester.sh env
+enc | tai -n 3
+enc | tail -n 3
+env | tail -n 3
+bash -c env
+bash -c env | tail -n 3
+bash -c export | tail -n 3
+bash -c export | head -n 3
+export abc=123
+bash -c export | head -n 3
+export
+export | head -n 3
+tester.sh env
+tester.sh env
+tester.sh env
+tester.sh exp
+tester.sh exp
+tester.sh exp
+tester.sh exp
+tester.sh exp
+tester.sh env
+tester.sh env
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh env
+tester.sh m
+tester.sh m
+tester.sh m
+tester.sh m
+tester.sh env
+tester.sh s
+tester.sh s
+tester.sh q
+exit
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh
+tester.sh
+tester.sh m
+tester.sh m
+tester.sh env
+tester.sh env
+env
+bash
+env
+tester.sh env
+tester.sh exp
+eport
+export
+export abc=42
+export abc=42
+export
+tester.sh exp
+tester.sh exp
+tester.sh q
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh exp
+tester.sh env
+tester.sh m
+tester.sh s
+tester.sh s
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh a
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh a
+tester.sh a
+tester.sh a
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh exp
+tester.sh env
+tester.sh m
+tester.sh s
+tester.sh s
+tester.sh r
+tester.sh r
+tester.sh r
+tester.sh r
+tester.sh r
+tester.sh here
+tester.sh h
+tester.sh h
+tester.sh h
+tester.sh h
+
+
+
+
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
