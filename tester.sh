@@ -15,17 +15,13 @@
 
 ## make tmp dit and ensure that the temporary directory is always cleaned up.
 mkdir -p ./test
-
->./test/minishell_output.txt #remove
->./test/bash_output.txt #remove
-# trap 'rm -rf ./test' EXIT
+trap 'rm -rf ./test' EXIT
 
 echo -e "\n\033[1m\033[38;5;202mTesting Minishell vs Bash...\033[0m\n"
 
 compare_output() {
 
 ## Compare outputs and exit codes
-
 	echo -e "\t\e[34mComparing output...\e[0m"
 	diff ./test/bash_output.txt ./test/minishell_output.txt > ./test/diff
 	if [ "$?" -eq "0" ]; then
@@ -49,7 +45,6 @@ compare_output() {
 
 single_tests() {
     echo "Running single command tests..."
-
 	## Minishell tests
 	ls > ./test/minishell_output.txt
 
@@ -64,7 +59,6 @@ single_tests() {
 
 multi_tests() {
     echo "Running multi tests..."
-
 	## Minishell tests
 	ls | ls >> ./test/minishell_output.txt
 	ls | cat | grep Make >> ./test/minishell_output.txt
@@ -81,7 +75,6 @@ multi_tests() {
 
 env_tests() {
     echo "Running environment tests..."
-
 	## Minishell tests
 	env | head -n 1 >> ./test/minishell_output.txt
 		
@@ -96,7 +89,6 @@ env_tests() {
 
 exp_tests() {
     echo "Running expansion tests..."
-
 	## Minishell tests
 	export | head -n 3 >> ./test/minishell_output.txt
 	export abc=33
@@ -115,7 +107,6 @@ exp_tests() {
 
 quote_tests() {
     echo "Running quotation tests..."
-
 	## Minishell tests
 	ls >> ./test/minishell_output.txt
 
@@ -130,7 +121,6 @@ quote_tests() {
 
 built_tests() {
     echo "Running built-in tests..."
-
 	## Minishell tests
 	echo hello world >> ./test/minishell_output.txt
 	cd src
@@ -151,7 +141,6 @@ built_tests() {
 
 assign_tests() {
     echo "Running assign tests..."
-
 	## Minishell tests
 	var=42
 	echo $var >> ./test/minishell_output.txt
@@ -167,7 +156,6 @@ assign_tests() {
 
 redirect_tests() {
     echo "Running redirect tests..."
-
 	## Minishell tests
 	>./test/outfile.mini echo 'test'
 	cat ./test/outfile.mini > ./test/minishell_output.txt
@@ -184,7 +172,6 @@ redirect_tests() {
 
 # heredoc_tests() {
 #     echo "Running here_doc tests..."
-
 # 	## Minishell tests
 # 	>> EOF cat | grep 42 >> ./test/minishell_output.txt
 	
@@ -240,7 +227,7 @@ else
 	exp_tests
 	quote_tests
 	# signal_tests
-	# rm -rf ./test
+	rm -rf ./test
 	exit 0
 fi
-# rm -rf ./test
+rm -rf ./test
