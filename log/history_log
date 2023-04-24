@@ -1489,3 +1489,115 @@ exit
 exit
 echo *
 exit
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh s
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh s
+tester/tester.sh m
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+la | ls
+ls | ls
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+exit
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+		bash -c '$line > ./tester/output/bash_output'
+echo $?
+		bash -c '$line > ./tester/output/bash_output'
+bash 
+	n
+aerfij
+tester/tester.sh 
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+[A
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+exit
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
