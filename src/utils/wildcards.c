@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/23 19:16:28 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/23 19:39:32 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ t_node	*expand_wildcard(t_node *token)
 
 	if (!getcwd(buf, PATH_MAX))
 		exit_error("expand wildcard", 1);
-	curr_dir = opendir(buf);
 	pattern = token->content;
 	temp = NULL;
+	curr_dir = opendir(buf);
 	if (curr_dir != NULL)
 	{
 		file = readdir(curr_dir) ;
@@ -101,9 +101,9 @@ t_node	*expand_wildcard(t_node *token)
 				lstadd_back(&temp, new_node(WORD,ft_strdup(file->d_name)));
 			file = readdir(curr_dir) ;
 		}
+		closedir(curr_dir);
+		sort_argv(temp);
 	}
-	closedir(curr_dir);
-	sort_argv(temp);
 	return (temp);
 }
 

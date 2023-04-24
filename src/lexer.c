@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/11 17:32:13 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/24 09:53:13 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,15 @@ int	getlexerenum(char token)
 	else if (token == '>' || token == '<')
 		return (REDIRECT);
 	else if (token == '|')
-		return (PIPE);
+		return (OR);
 	else if (token == '\n')
-		return (NEW_LINE);
-	// else if (token == ';')
-	// 	return (SEMI);
-	// else if (token == '&')
-	// 	return (AND);
-	// else if (token == '(')
-	// 	return (BRACE_O);
-	// else if (token == ')')
-	// 	return (BRACE_C);
+		return (PIPE_END);
+	else if (token == '&')
+		return (AND);
+	else if (token == '(')
+		return (BRACE_O);
+	else if (token == ')')
+		return (BRACE_C);
 	else
 		return (WORD);
 }

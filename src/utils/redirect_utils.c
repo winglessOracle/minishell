@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 19:03:39 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/24 09:45:09 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,13 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 	return (type);
 }
 
-int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd)
+int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
 {
 	int					state;
 	int					type;
-	static t_function	*parse[12];
+	static t_function	*parse[16];
 
+	(void)list;
 	parse[COMMENT] = remove_comment;
 	parse[SQUOTE] = remove_quotes;
 	parse[DQUOTE] = remove_quotes;
@@ -61,7 +62,7 @@ int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd)
 	type = check_token_content(*tokens, WORD);
 	if (type == COMMENT)
 		type = parse[type](tokens, cmd);
-	if (!*tokens || (*tokens)->type == NEW_LINE)
+	if (!*tokens || (*tokens)->type == PIPE_END)
 		return (syntax_error(tokens, cmd, "Redirect\n", -1));
 	type = check_token_content(*tokens, WORD);
 	(*tokens)->type = state;

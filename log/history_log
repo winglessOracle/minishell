@@ -578,3 +578,126 @@ echo *kefile
 cat obj*
 bash
 exit
+ls | ls | ls -la
+exit
+ls | ls | ls -la
+ls | echo *
+exit
+bash
+exit
+exit
+ls | ls | "ls -la"
+ls | ls | ls "-la"
+exit
+ls | ls | ls
+exit
+ls | ls | ls
+(ls | ls) &&  ls
+exit
+(ls | ls) &&  ls
+(ls | ls) &&  ls
+(ls | ls)
+()
+(ls | ls) &&  ls
+(ls | ls
+(ls) | ls | ls
+(ls | ls) | ls
+(ls | ls | ls)
+(ls | ls | ls)
+(ls | ls | ls)
+(ls | ls | ls)
+exit
+(ls | ls | ls)
+exit
+(ls | ls | ls)
+exit
+(ls | ls | ls)
+exit
+(ls | ls | ls)
+exit
+(ls | ls | ls)
+(ls | ls &&  ls)
+(ls | ls &&  ls)
+(ls | ls &&  ls)
+(ls | ls && | ls)
+exit
+(ls | ls && | ls)
+exit
+(ls | ls && ls)
+(ls | ls &&)
+(ls | ls && 
+(ls | ls && ls
+exit
+(ls | ls && ls
+(ls | ls && ls)
+(ls | ls && ls
+(ls | ls && ls)
+(ls | ls && ls
+(ls | ls && ls)
+(ls | ls && ls)
+(ls | ls && ls
+exit
+(ls | ls && ls
+(ls | ls && ls)
+(ls | ls | ls)
+exit
+(ls | ls | ls)
+ls | ls | ls
+exit
+ls | ls | ls
+exit
+ls | ls | ls
+(ls | ls | ls)
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+ls |ls|ls
+(ls |ls&&ls)
+exit
+ls |ls|ls
+exit
+ls |ls|ls
+echo "hello world"
+var=aap
+echo "hello $var world"
+exit
+exit
+(ls | ls | ls)
+exit
+(ls | ls && ls)
+exit
+ls | ls | ls
+exit
+echo #comment && echo aap
+exit
+echo #comment && echo aap
+echo #comment && echo aap
+ls | ls | ls
+exit
+ls | ls | ls
+exit
+ls | ls | ls
+exit
+ls | ls | ls
+exit
+ls | ls | ls
+(ls | ls | ls)
+(ls | ls && ls)
+exit
+(ls | ls && ls)
+exit
+(ls | ls && ls)
+exit
+(ls | ls && ls)
+exit
+ls | ls | ls
+exit
+ls | ls && ls
+exit

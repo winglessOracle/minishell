@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/11 14:48:29 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/24 10:00:54 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,11 @@ typedef enum e_lextype
 	BLANK,
 	REDIRECT,
 	PIPE,
-	NEW_LINE,
-	// SEMI,
-	// AND,
+	AND,
+	OR,
+	BRACE_O,
+	BRACE_C,
+	PIPE_END,
 }	t_lextype;
 
 #endif

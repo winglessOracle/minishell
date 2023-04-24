@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:05:51 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/21 09:35:07 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/24 08:19:56 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,15 @@ t_pipe	*init_pipeline(void)
 		exit_error("init pipeline", errno);
 	ft_memset(pipeline, 0, sizeof(t_pipe));
 	return (pipeline);
+}
+
+t_list	*init_list(void)
+{
+	t_list	*list;
+
+	list = malloc(sizeof(t_list));
+	if (!list)
+		exit_error("init pipeline", errno);
+	ft_memset(list, 0, sizeof(t_list));
+	return (list);
 }

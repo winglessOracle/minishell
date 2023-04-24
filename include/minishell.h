@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/23 19:14:38 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/24 10:24:26 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,15 @@
 # include <readline/history.h>
 # include <errno.h>
 
-# define TMP_FILE "log/here_doc_tmp"
+# ifndef BONUS
+#  define  BONUS 0
+# endif
+
+# if BONUS
+#  define  LEXER_SPLIT "()&|<> \t\n"
+# else
+#	define  LEXER_SPLIT "|<> \t\n"
+# endif
 
 extern int	g_exit_status;
 
@@ -48,11 +56,17 @@ typedef struct s_smpl_cmd
 
 typedef struct s_pipe
 {
-	int				type;
+	int				state;
 	int				pipe_argc;
 	t_smpl_cmd		*pipe_argv;
 	struct s_pipe	*next;
 }	t_pipe;
+
+typedef struct s_list
+{
+	int				type;
+	int				state;
+}	t_list;
 
 // utils
 int			return_perror(char *str, int err);
@@ -65,6 +79,7 @@ int			syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err);
 t_node		*lstpop(t_node **lst);
 t_node		*new_node(int type, char *content);
 int			remove_node(t_node **token, t_smpl_cmd *cmd);
+int			remove_node_parser(t_node **token, t_smpl_cmd *cmd, t_list *list);
 
 // delete_utils
 void		delete_content(void *content);
@@ -95,9 +110,10 @@ void		merge_tokens(t_node *token, int type);
 t_node		*init_env(void);
 t_smpl_cmd	*init_smpl_cmd(t_node *env_list);
 t_pipe		*init_pipeline(void);
+t_list		*init_list(void);
 
 // parser
-t_pipe		*parse_pipeline(t_node **tokens, t_node *env_list);
+t_pipe		*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list);
 char		*parse_heredoc(t_node *token, t_node *here_redirect);
 int			check_token_content(t_node *token, int type);
 
@@ -130,7 +146,6 @@ void		print_pipeline(t_pipe *pipe);
 void		exit_sig(t_node *env_list);
 
 // pattern match
-// int			match(char *str, char *pattern);
 int			check_wildcars(t_node **cmd_args);
 
 #endif

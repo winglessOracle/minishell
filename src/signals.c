@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 17:18:57 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/23 19:52:58 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,13 @@ void	set_sig_term(void)
 
 void	exit_sig(t_node *env_list)
 {
-	printf("%s exit\n", get_variable(env_list, "PS1"));
+	char	*str;
+
+	str = get_variable(env_list, "PS1");
+	if (!str)
+		exit_error("exit_sig", 1);
+	printf("%s exit\n", str);
+	free(str);
 	exit(g_exit_status);
 }
 

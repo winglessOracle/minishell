@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/20 18:25:52 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/24 10:06:06 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef enum e_parsetype
 {
-	COMMENT = 5,
+	COMMENT = 9,
 	SQUOTE,
 	DQUOTE,
 	EXPAND,
@@ -29,30 +29,38 @@ typedef enum e_parsetype
 	HEREDOC,
 	HEREDOCQ,
 	APPEND,
-	// ERR,
+	// NEW_LINE,
 	// BRACE_O,
-	// BRACE_C,	
+	// BRACE_C,
+	// AND,
 }	t_parsetype;
 
 // parser.c
 typedef int	t_function(t_node **, t_smpl_cmd *);
+typedef int	t_parser(t_node **, t_smpl_cmd *, t_list *);
 
 // parser_utils
 int	add_word_to_cmd(t_node **token, t_smpl_cmd *cmd);
-int	set_cmd_end(t_node **token, t_smpl_cmd *cmd);
+int	set_cmd_end(t_node **token, t_smpl_cmd *cmd, t_list *list);
 int	remove_comment(t_node **token, t_smpl_cmd *cmd);
 int	parser_assign(t_node **token, t_smpl_cmd *cmd);
 int	expand_tilde(t_node **token, t_smpl_cmd *cmd);
 
 // expand_utils
-int	expander(t_node **token, t_smpl_cmd *cmd);
+int	expander(t_node **token, t_smpl_cmd *cmd, t_list *list);
 int	expand(t_node **token, t_smpl_cmd *cmd);
 
 // content_utils
 int	remove_quotes(t_node **token, t_smpl_cmd *cmd);
 
 // redirect_utils
-int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd);
+int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list);
+
+// cond_pipe utils
+int	set_brace(t_node **token, t_smpl_cmd *cmd, t_list *list);
+int	check_and(t_node **token, t_smpl_cmd *cmd, t_list *list);
+int	check_or(t_node **token, t_smpl_cmd *cmd, t_list *list);
+int check_list(t_node **tokens, t_list *list);
 
 /* -------------------------------------------------------
    The grammar symbols
