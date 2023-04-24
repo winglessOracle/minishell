@@ -18,10 +18,10 @@
 
 ## make tmp dit and ensure that the temporary directory is always cleaned up.
 mkdir -p ./tester/output
-rm -rf ./trace
-mkdir -p ./trace
+rm -rf ./tester/trace
+mkdir -p ./tester/trace
 
-# trap 'rm -rf .tester/test' EXIT
+trap 'rm -rf .tester/test' EXIT
 
 echo -e "\n\033[1m\033[38;5;202mTesting Minishell vs Bash...\033[0m\n"
 
@@ -29,13 +29,13 @@ compare_output() {
 
 ## Compare outputs and exit codes
 	printf "\t\e[34mComparing output...\e[0m"
-	diff ./tester/output/bash_output ./tester/output/minishell_output >> ./trace/traces
+	diff ./tester/output/bash_output ./tester/output/minishell_output >> ./tester/trace/traces
 	if [ "$?" -eq "0" ]; then
     	printf "\t\e[32mOutput OK!\e[0m\n"
 	else
     	printf "\t\e[31mOutput KO!\e[0m\n"
 		printf "\tDelta:\n" 
-		cat ./trace/traces
+		cat ./tester/trace/traces
 	fi
 
 	## Compare exit codes
@@ -52,10 +52,10 @@ compare_output() {
 run_tests() {
 	
 	printf "\nRunning $file_name...\n"
-    printf "\nRunning $file_name...\n" >> ./trace/traces
+    printf "\nRunning $file_name...\n" >> ./tester/trace/traces
 	## Minishell tests
 
-	while read line;
+	while read -r line;
 	do 
 	eval "$line" > ./tester/output/minishell_output
 	exitcode_minishell=$?
@@ -106,4 +106,4 @@ else
 	file_name="tester/tests/wildcard_tests";	run_tests
 	exit 0
 fi
-# rm -rf ./tester/output
+rm -rf ./tester/output

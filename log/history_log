@@ -1601,3 +1601,19 @@ tester/tester.sh s
 tester/tester.sh p
 tester/tester.sh p
 tester/tester.sh p
+tester/tester.sh 
+tester/tester.sh s
+tester/tester.sh env
+tester/tester.sh env
+tester/tester.sh env
+tester/tester.sh env
+tester/tester.sh env
+tester/tester.sh r
+tester/tester.sh r
+tester/tester.sh r
+tester/tester.sh r
+tester/tester.sh r
+
+tester/tester.sh r
+tester/tester.sh r
+exit

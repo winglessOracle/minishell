@@ -1,1 +1,2 @@
-echo env
+env ls
+env -a ls
