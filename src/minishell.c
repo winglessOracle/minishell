@@ -6,11 +6,12 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/24 08:24:34 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/24 16:35:41 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "parser.h"
 #include "builtin.h" //test
 
 void	leaks(void)
@@ -44,8 +45,9 @@ int	main(void)
 		while (tokens)
 		{
 			pipeline = parse_pipeline(&tokens, env_list, list);
-			// print_pipeline(pipeline);
 			executor(pipeline);
+			if (tokens)
+				check_list(&tokens, list);
 		}
 	}
 	rl_clear_history();

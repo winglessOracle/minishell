@@ -762,3 +762,92 @@ exit
 echo #comment that includes a ; ls
 echo #comment that includes a ; ls
 exit
+echo #comment that includes a ; ls
+exit
+(echo 1 >> out && echo 2 >> out)
+echo 1 >> out && echo 2 >> out
+exit
+echo 1 >> out && echo 2 >> out
+(echo 1 >> out && echo 2 >> out)
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+(echo 1 >> out || echo 2 >> out)
+(echo 1 >> out || echo 2 >> out)
+(echo 1 >> out || echo 2 >> out)
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+(echo 1 >> out || echo 2 >> out)
+(echo 1 >> out || echo 2 >> out)
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+exit
+(echo 1 >> out || echo 2 >> out)
+(echo 1 >> out && echo 2 >> out)
+(gre  >> out && echo 2 >> out)
+(gre  >> out && echo 2 >> out)
+(echo 1  >> out && echo 2 >> out)
+bash
+(echo 1  >> out && echo 2 >> out)
+(echo 1  >> out && echo 2 >> out)
+(echo 1  >> out || echo 2 >> out)
+(gre  >> out || echo 2 >> out)
+(gre  >> out || echo 2 >> out)
+(gre  >> out &&  echo 2 >> out)
+exit
+(gre  >> out &&  echo 2 >> out)
+(gre  >> out ||  echo 2 >> out)
+exit
+(gre  >> out ||  echo 2 >> out)
+(gre  >> out &&  echo 2 >> out)
+exit
+(gre  >> out &&  echo 2 >> out)
+(gre  >> out ||  echo 2 >> out)
+exit
+(gre  >> out ||  echo 2 >> out)
+(gre  >> out ||  echo 2 >> out)
+(gre  >> out ||  echo 2 >> out)
+(gre  >> out ||  echo 2 >> out)
+(gre  >> out ||  echo 2 >> out)
+exit
+(gre  >> out ||  echo 2 >> out)
+exit
