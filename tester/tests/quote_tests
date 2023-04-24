@@ -1,1 +1,6 @@
 echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..

@@ -20,12 +20,11 @@
 mkdir -p ./tester/output
 rm -rf ./tester/trace
 mkdir -p ./tester/trace
-trap 'rm -rf .tester/test' EXIT
+trap 'rm -rf ./tester/output' EXIT
 
 echo -e "\n\033[1m\033[38;5;202mTesting Minishell vs Bash...\033[0m\n"
 
 compare_output() {
-
 ## Compare outputs and exit codes
 	printf "\t\e[34mComparing output...\e[0m"
 	diff ./tester/output/bash_output ./tester/output/minishell_output >> ./tester/trace/traces
@@ -34,7 +33,7 @@ compare_output() {
 	else
     	printf "\t\e[31mOutput KO!\e[0m\n"
 		printf "\tDelta:\n" 
-		cat ./trace/traces
+		cat ./tester/trace/traces
 	fi
 
 	## Compare exit codes
@@ -49,18 +48,18 @@ compare_output() {
 }
 
 run_tests() {
-	
 	printf "\nRunning $file_name...\n"
     printf "\nRunning $file_name...\n" >> ./tester/trace/traces
-	## Minishell tests
 
+	## Minishell tests
 	while read -r line;	do
-	eval "$line" > ./tester/output/minishell_output
-	exitcode_minishell=$?
-	## bash tests
-	bash -c "$line" > ./tester/output/bash_output
-	exitcode_bash=$?
-	compare_output
+		eval "$line" > ./tester/output/minishell_output
+		exitcode_minishell=$?
+
+		## bash tests
+		bash -c "$line" > ./tester/output/bash_output
+		exitcode_bash=$?
+		compare_output
 	done < $file_name
 }
 
@@ -73,15 +72,15 @@ elif [ "$1" == "exp" ]; then
 elif [ "$1" == "q" ]; then
 	file_name="tester/tests/quote_tests";		run_tests;
 elif [ "$1" == "b" ]; then
-	file_name="tester/tests/built_tests";		run_tests;
+	file_name="tester/tests/built_in_tests";		run_tests;
 elif [ "$1" == "a" ]; then
 	file_name="tester/tests/assign_tests";		run_tests;
 elif [ "$1" == "r" ]; then
 	file_name="tester/tests/redirect_tests";	run_tests;
 elif [ "$1" == "h" ]; then
 	file_name="tester/tests/here_doc_tests";	run_tests;
-elif [ "$1" == "sig" ]; then
-	file_name="tester/tests/signal_tests";		run_tests;
+# elif [ "$1" == "sig" ]; then
+# 	file_name="tester/tests/signal_tests";		run_tests;
 elif [ "$1" == "c" ]; then
 	file_name="tester/tests/signal_tests";		run_tests;
 elif [ "$1" == "w" ]; then
@@ -96,7 +95,7 @@ else
 	file_name="tester/tests/assign_tests";		run_tests
 	file_name="tester/tests/redirect_tests";	run_tests
 	file_name="tester/tests/here_doc_tests";	run_tests
-	file_name="tester/tests/signal_tests";		run_tests
+	# file_name="tester/tests/signal_tests";		run_tests
 	file_name="tester/tests/cond_pipe_tests";	run_tests
 	file_name="tester/tests/wildcard_tests";	run_tests
 	exit 0

@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/23 19:52:58 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/24 20:02:56 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	set_signals(void)
 	struct sigaction	sa_int;
 
 	sa_int.sa_handler = handle_sigint;
+	// sa_int.sa_flags = SA_RESTART;
 	sigemptyset(&sa_int.sa_mask);
 	sigaddset(&sa_int.sa_mask, SIGINT);
 	sigaddset(&sa_int.sa_mask, SIGQUIT);

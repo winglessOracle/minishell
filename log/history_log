@@ -1606,3 +1606,154 @@ tester/tester.sh s
 tester/tester.sh
 tester/tester.sh
 exit
+tester/tester.sh b
+tester/tester.sh 
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh p
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh p
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+cd ../../../../
+pwd
+pwd
+cd
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+cd ~
+psd
+pwd
+ls
+cd personal_git
+cd minishell/
+ls
+cd~
+cd ~
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+bash
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+exit
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+exit
+tester/tester.sh b
+exit
+touch test
+chmod 000 test
+ls -l
+cat test
+test
+chmod 777test; rm test
+chmod 777 test; rm test
+touch test; chmod 000 test; cat test; test; chmod 777 test; rm test
+touch test; chmod 000 test; cat test; test; chmod 777 test;
+touch test; chmod 000 test; cat test; test; chmod 777 test;
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh q
+$
+$LESS
+$LESS$VAR
+tester/tester.sh q
+$LESS$VAR
+$LESS$VAR
+tester/tester.sh q
+.
+..
+tester/tester.sh q
+tester/tester.sh q
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh r
+tester/tester.sh sig
+aerf
+aerf
+tester/tester.sh sig
+tester/tester.sh sig
+cat-
+cat -
+cat -
+exit
+cat -
+tester/tester.sh
+exit
+tester/tester.sh
+tester/tester.sh s
+tester/tester.sh p
+tester/tester.sh p
+exit

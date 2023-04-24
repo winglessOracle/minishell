@@ -1,0 +1,37 @@
+# cd ../../../../../; pwd
+# cd ~; pwd
+# cd; pwd
+# unset HOME; cd;
+# export HOME=/Users/user42; cd ~
+# cd ..lalala; pwd
+# cd .; echo $OLDPWD
+# cd -; pwd
+# cd -; pwd
+
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+
+# env | head -n 2
+env lalala
+env | grep OLDPWD
+
+# aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog; env | grep aaa
+export | grep aaa
+export aaaa; export aaaa=hamster; export | grep aaaa; 
+export 1var;
+export "" test1=dog
+export test2=$HOME; echo $test2
+export ls="ls -l"; $ls
+
+# exit 42 lalala
+# exit lalala 42
+# exit 256
+# exit -1
+
