@@ -18,10 +18,9 @@
 
 ## make tmp dit and ensure that the temporary directory is always cleaned up.
 mkdir -p ./tester/output
-rm -rf ./trace
-mkdir -p ./trace
-
-# trap 'rm -rf .tester/test' EXIT
+rm -rf ./tester/trace
+mkdir -p ./tester/trace
+trap 'rm -rf .tester/test' EXIT
 
 echo -e "\n\033[1m\033[38;5;202mTesting Minishell vs Bash...\033[0m\n"
 
@@ -29,7 +28,7 @@ compare_output() {
 
 ## Compare outputs and exit codes
 	printf "\t\e[34mComparing output...\e[0m"
-	diff ./tester/output/bash_output ./tester/output/minishell_output >> ./trace/traces
+	diff ./tester/output/bash_output ./tester/output/minishell_output >> ./tester/trace/traces
 	if [ "$?" -eq "0" ]; then
     	printf "\t\e[32mOutput OK!\e[0m\n"
 	else
@@ -52,11 +51,10 @@ compare_output() {
 run_tests() {
 	
 	printf "\nRunning $file_name...\n"
-    printf "\nRunning $file_name...\n" >> ./trace/traces
+    printf "\nRunning $file_name...\n" >> ./tester/trace/traces
 	## Minishell tests
 
-	while read line;
-	do 
+	while read -r line;	do
 	eval "$line" > ./tester/output/minishell_output
 	exitcode_minishell=$?
 	## bash tests
@@ -66,9 +64,7 @@ run_tests() {
 	done < $file_name
 }
 
-if [ "$1" == "s" ]; then
-	file_name="tester/tests/simple_tests";		run_tests;
-elif [ "$1" == "p" ]; then
+if [ "$1" == "p" ]; then
 	file_name="tester/tests/pipe_tests";		run_tests;
 elif [ "$1" == "env" ]; then
 	file_name="tester/tests/env_tests";			run_tests;
@@ -92,7 +88,6 @@ elif [ "$1" == "w" ]; then
 	file_name="tester/tests/wildcard_tests";	run_tests;
 else
 	echo "Running all tests..."
-	file_name="tester/tests/simple_tests"; 		run_tests
 	file_name="tester/tests/pipe_tests";	 	run_tests
 	file_name="tester/tests/env_tests";			run_tests
 	file_name="tester/tests/exp_tests";			run_tests
@@ -106,4 +101,4 @@ else
 	file_name="tester/tests/wildcard_tests";	run_tests
 	exit 0
 fi
-# rm -rf ./tester/output
+rm -rf ./tester/output

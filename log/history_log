@@ -1601,3 +1601,8 @@ tester/tester.sh s
 tester/tester.sh p
 tester/tester.sh p
 tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh s
+tester/tester.sh
+tester/tester.sh
+exit
