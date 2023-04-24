@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/23 19:39:32 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/24 11:36:40 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	match(char *str, char *pattern)
 		while (str[s_indx] && str[s_indx] == pattern[p_indx])
 		{
 			s_indx++;
-			p_indx++;	
+			p_indx++;
 		}
 		if (pattern[p_indx] == '*')
 		{

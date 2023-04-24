@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/24 08:59:01 by cariencaljo   ########   odam.nl          #
+#    Updated: 2023/04/24 12:25:29 by ccaljouw      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,15 @@ BLUE	:= \033[34;1m
 RESET	:= \033[0m
 
 #//= Variables = //#
-NAME		= minishell
-NAME_BONUS	= minishell_bonus
-CC			= clang
-CFLAGS		= -Wall -Wextra -Werror
+NAME		 = minishell
+NAME_BONUS	 = minishell_bonus
+CC			 = clang
+CFLAGS		 = -Wall -Wextra -Werror
 
-# RL_INC		= /Users/$(USER)/.brew/opt/readline/include
-# RL_LIB		= /Users/$(USER)/.brew/opt/readline/lib
-RL_INC			= /opt/homebrew/opt/readline/include
-RL_LIB			= /opt/homebrew/opt/readline/lib
+RL_INC		= /Users/$(USER)/.brew/opt/readline/include
+RL_LIB		= /Users/$(USER)/.brew/opt/readline/lib
+# RL_INC			= /opt/homebrew/opt/readline/include
+# RL_LIB			= /opt/homebrew/opt/readline/lib
 
 #//= Locations =//#
 INCLUDE		= ./include
@@ -45,8 +45,8 @@ all: libft $(NAME)
 $(NAME): libft $(OBJ_FILES) $(OBJ_BUILTIN)
 	@$(CC) $(OBJ_FILES) $(OBJ_BUILTIN) $(LIBS) $(HEADERS) -o $(NAME) $(CFLAGS) -lreadline
 
-bonus: libft $(OBJ_FILES) $(OBJ_BUILTIN)
-	@$(CC) $(CFLAGS) -D BONUS=1 $(OBJ_FILES) $(OBJ_BUILTIN) $(LIBS) $(HEADERS) -o $(NAME_BONUS) -lreadline
+bonus: CFLAGS = -Wall -Wextra -Werror -DBONUS=1
+bonus: fclean all	
 
 libft:
 	@$(MAKE) -C $(LIBFT)
@@ -61,15 +61,12 @@ $(OBJ_BUILTIN): obj_buitin/%.o: builtin/%.c
 	@echo "$(GREEN)$(BOLD)Compiling minishell builtins:$(RESET) $(notdir $<)"
 	@$(CC) -c $(CFLAGS) $(HEADERS) -o $@ $< 
 
-debug: CFLAGS = -Wall -Wextra
-debug: all
-
 clean:
 	@echo "$(BLUE)Cleaning minishell$(RESET)"
 	@rm -rf obj/
 	@rm -rf obj_buitin/
 	@$(MAKE) -C $(LIBFT) clean
-	
+
 fclean: clean
 	@rm -rf $(NAME)
 	@rm -rf $(NAME_BONUS)
@@ -78,8 +75,6 @@ fclean: clean
 debug: CFLAGS = -Wall -Wextra
 debug: all
 
-re:
-	@$(MAKE) fclean
-	@$(MAKE) all
-	
+re: fclean all
+
 .PHONY:	all bonus clean fclean re libft debug

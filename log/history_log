@@ -701,3 +701,64 @@ ls | ls | ls
 exit
 ls | ls && ls
 exit
+echo *
+echo *kefile
+echo * *kefile
+exit
+echo *Makefile
+exit
+echo #comment && als comment
+echo #comment && als comment
+echo *
+exit
+exit
+echo *
+exit
+echo #comment && als comment
+./minishell 
+exit
+echo #comment && als comment
+echo #comment && als comment
+echo #comment && als comment
+echo #comment && als comment
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo *
+exit
+echo #comment with "content"
+echo #comment with "content" && aap
+exit
+echo #comment with "content" && aap
+exit
+echo #comment with "content" && aap
+echo #comment that includes a ; ls
+exit
+echo #comment that includes a ; ls
+echo #comment that includes a ; ls
+exit

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/23 20:56:59 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/24 10:23:51 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/24 14:54:14 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		set_brace(t_node **token, t_smpl_cmd *cmd, t_list *list)
 		// printf("brace open\n");
 		if (!list->state)
 			list->state = - 1;
-		else
+		else // moet dit aangepast?
 			syntax_error(token, cmd, "set_cond_pipe\n", 1);
 		remove_node(token, cmd);
 		return (0);
@@ -87,17 +87,19 @@ int check_list(t_node **tokens, t_list *list)
 	if (*tokens && (*tokens)->type == PIPE_END)
 	{
 		remove_node(tokens, NULL);
-		return (1);
 	}
 	if (!list->type)
-		printf("continue \n");
-	if (list->type == AND && list->state == -1)
-		printf("only continue if exit status == 1 to see if all arguments in brackets exit with 1 \n");
-	if (list->type == OR  && list->state == -1)
-		printf("only continue if exit status == 0 to see if there is an argument in the brackets that exits 1 \n");
-	if (list->type == AND && list->state == 0)
-		printf("only continue if exit status == 1 \n");
-	if (list->type == OR && list->state == 0)
-		printf("continue\n");	
+	{
+		// printf("continue \n");
+		return (1);
+	}
+	// if (list->type == AND && list->state == -1)
+	// 	printf("only continue if exit status == 1 to see if all arguments in brackets exit with 1 \n");
+	// if (list->type == OR  && list->state == -1)
+	// 	printf("only continue if exit status == 0 to see if there is an argument in the brackets that exits 1 \n");
+	// if (list->type == AND && list->state == 0)
+	// 	printf("only continue if exit status == 1 \n");
+	// if (list->type == OR && list->state == 0)
+	// 	printf("continue\n");	
 	return (0);
 }

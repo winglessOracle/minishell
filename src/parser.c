@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/24 10:06:33 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/24 14:59:22 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,7 @@ int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd, t_list *list)
 	parse[PIPE_END] = set_cmd_end;
 	state = 0;
 	while (*tokens && !state)
-	{
-		if (!state)
-			state = parse[(*tokens)->type](tokens, *cmd, list);
-	}
+		state = parse[(*tokens)->type](tokens, *cmd, list);
 	state = set_cmd_end(tokens, *cmd, list);
 	check_env(*cmd);
 	return (state);

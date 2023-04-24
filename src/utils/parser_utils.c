@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/24 09:55:45 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/24 14:58:56 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	add_word_to_cmd(t_node **token, t_smpl_cmd *cmd)
 
 int	remove_comment(t_node **token, t_smpl_cmd *cmd)
 {
-	while (*token && (*token)->content[0] == '\n')  // test!!
+	while (*token && ft_strcmp((*token)->content, "\n"))
 		remove_node(token, cmd);
 	return (0);
 }
