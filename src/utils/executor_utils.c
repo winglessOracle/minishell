@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/24 08:48:23 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/24 16:40:49 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ void	check_built(t_smpl_cmd *cmd)
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
 			exit(g_exit_status);
 		}
+		else
+			g_exit_status = 0;
 		i++;
 	}
 }

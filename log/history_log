@@ -16,6 +16,152 @@ echo hello world
 exit
 var=
 export var
+<<<<<<< HEAD
+export
+export var=test
+export
+exit
+export ls="ls -l"
+$ls
+exit
+echo ""
+echo "" test
+exit
+echo "" test
+echo '' test
+exit
+echo ""
+echo "" test
+exit
+echo "" test
+exit
+echo "" test
+exit
+echo "" test
+exit
+echo "" test
+exit
+echo "" test
+echo ''  test
+exit
+echo ''  test
+echo ""  test
+exit
+<<ff | grep 1 >out
+ar
+rf
+f<<
+sdfc
+ls
+ls | ls
+<<gg cat >out
+<<gg cat | cat >out
+<<gg cat | grep 1 >out
+<<gg cat | grep 1 >out
+<<gg cat | grep 1 >ouh
+exit
+exit
+exit
+exit
+<< gg ls | cat
+exit
+<< gg ls | cat
+<< gg ls | cat >outtt
+exit
+<<gg cat | cat >outh
+exit
+<<gg cat | cat >outh
+exit
+<< gg grep 1 | cat >out
+exit
+< cat
+< README.md cat
+< README.md cat > outt
+< README.md cat >> outt
+< README.md cat >> outt
+< README.md cat >> outt
+<< ff grep 1 > docccc
+exit
+<< ff grep 1 > docccc
+<< ff grep 1 > doccccc
+exit
+<< ff grep 1 > doccccc
+<< ff cat > out
+exit
+<< ff cat 
+exit
+<< ff cat 
+<< ff cat > out
+<< ff cat > outt
+exit
+<< ff cat > outtt
+exit
+<< ff cat
+exit
+<< ff grep1 > out
+<< ff grep 1 > out
+exit
+<< ff grep 1 > out
+<< ff cat 
+exit
+<< ff cat 
+<< ff grep 1 > out
+1 > doccccc
+exit
+<< ff grep 1 > out
+bash
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+./tester.sh 
+exit
+<< ff cat | grep 1 | gg cat grep 2 > out
+<< ff cat | grep 1 | << gg cat grep 2 > out
+<< ff cat | grep 1 | << gg cat grep 2 > out
+<< ff grep 1 | << gg grep 2 > out
+<< ff grep 1 | << gg grep 2 > outt
+exit
+make fclean
+make
+make debnus
+make debug
+pwd
+./tester.sh 
+exit
+ls
+ls | ls
+exit
+exit
+< Makefile | grep debug
+< Makefile cat | grep debug
+< Makefile cat | grep debug > out
+< Makefile cat | grep debug > out
+< Makefle cat | grep debug > out
+exit
+exit
+< Makefle cat | grep debug > out
+bash
+exit
+echo var
+echo $var
+var=ff
+echo $var
+cat $var
+var $var
+=======
 echo var
 echo $pwd
 var=42
@@ -306,6 +452,23 @@ env
 env
 ls | env | ls 
 ls | env | cat
+<<<<<<< HEAD
+ls | env | cat
+ls | la
+echo $?
+ls | la | ls
+echo $?
+ls > out
+ls | ls > out
+ls | ls > out
+ls | ls > outt
+ls > out
+ls > outtt
+ls > outtt
+ls > outtt
+ls > out
+>>>>>>> 46fc5e76754700b90ee6b4078b25bf28b871487d
+=======
 >>>>>>> main
 ls | env | cat
 ls | env | cat >> out
@@ -329,6 +492,7 @@ exit
 export var=aap var2=koe
 export > out
 exit
+<<<<<<< HEAD
 ls
 env
 exit
@@ -850,4 +1014,478 @@ exit
 (gre  >> out ||  echo 2 >> out)
 exit
 (gre  >> out ||  echo 2 >> out)
+=======
+>>>>>>> main
+ls
+tester.sh 
+tester.sh 
+ls
+cd ..
+tester.sh
+ls
+cd ..
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh single
+tester.sh
+exit
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh s
+tester.sh s
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+sad
+exit
+exit
+exit
+exit
+tester.sh
+ssh
+cut
+grep
+zip Makefile 
+find Makefile 
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+exit
+exit
+exit
+tester.sh s
+tester.sh m
+tester.sh a
+tester.sh a
+tester.sh r
+tester.sh b
+tester.sh h
+tester.sh
+make fclean
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+exit
+tester.sh 
+exit
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+env
+var=42
+env
+echo $var
+export $var
+echo $var
+env
+export var=33
+env
+env
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh 
+tester.sh env
+env
+tester.sh env
+enc | tai -n 3
+enc | tail -n 3
+env | tail -n 3
+bash -c env
+bash -c env | tail -n 3
+bash -c export | tail -n 3
+bash -c export | head -n 3
+export abc=123
+bash -c export | head -n 3
+export
+export | head -n 3
+tester.sh env
+tester.sh env
+tester.sh env
+tester.sh exp
+tester.sh exp
+tester.sh exp
+tester.sh exp
+tester.sh exp
+tester.sh env
+tester.sh env
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh env
+tester.sh m
+tester.sh m
+tester.sh m
+tester.sh m
+tester.sh env
+tester.sh s
+tester.sh s
+tester.sh q
+exit
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh q
+tester.sh
+tester.sh
+tester.sh m
+tester.sh m
+tester.sh env
+tester.sh env
+env
+bash
+env
+tester.sh env
+tester.sh exp
+eport
+export
+export abc=42
+export abc=42
+export
+tester.sh exp
+tester.sh exp
+tester.sh q
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh exp
+tester.sh env
+tester.sh m
+tester.sh s
+tester.sh s
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh a
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh a
+tester.sh a
+tester.sh a
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh b
+tester.sh exp
+tester.sh env
+tester.sh m
+tester.sh s
+tester.sh s
+tester.sh r
+tester.sh r
+tester.sh r
+tester.sh r
+tester.sh r
+tester.sh here
+tester.sh h
+tester.sh h
+tester.sh h
+tester.sh h
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+tester.sh
+exit
+make
+make
+make
+exit
+ff
+aerf
+exit
+tester.sh 
+bash
+exit
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh 
+tester.sh 
+tester.sh s
+tester.sh m
+tester.sh h
+tester.sh r
+tester.sh a
+tester.sh q
+tester.sh h
+tester.sh h
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh m
+tester.sh s
+tester.sh m
+tester.sh m
+tester.sh m
+tester.sh m
+tester.sh m
+tester.sh m
+exit
+ls; ls
+ls; ls | grep make
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+ls
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+pwd
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh
+tester.sh
+tester.sh
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+exit
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester.sh s
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh 
+tester/tester.sh 
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+exit
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh s
+tester/tester.sh s
+tester/tester.sh 
+tester/tester.sh 
+tester/tester.sh s
+exit
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+>>>>>>> carlo2
+exit
+ tester/tester.sh 
+exit
+echo *
 exit
