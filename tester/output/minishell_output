@@ -1,5 +1,32 @@
-Command: ./minishell
-Output: [0;36m 💯 CC[?25h_[0mls | ls | grep Mak 
+Command: ls | ls
+Output:
 Makefile
-[0;36m 💯 CC[?25h_[0m[0;36m 💯 CC[?25h_[0m exit
+README.md
+builtin
+en.subject.pdf
+include
+libft
+log
+minishell
+obj
+obj_buitin
+segfault.txt
+src
+tester
+Exit code: 0
+Command: ls
+Output:
+Makefile
+README.md
+builtin
+en.subject.pdf
+include
+libft
+log
+minishell
+obj
+obj_buitin
+segfault.txt
+src
+tester
 Exit code: 0

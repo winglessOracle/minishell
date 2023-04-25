@@ -1,3 +1,32 @@
-Command: bash
-Output: Makefile
+Command: ls | ls
+Output:
+Makefile
+README.md
+builtin
+en.subject.pdf
+include
+libft
+log
+minishell
+obj
+obj_buitin
+segfault.txt
+src
+tester
+Exit code: 0
+Command: ls
+Output:
+Makefile
+README.md
+builtin
+en.subject.pdf
+include
+libft
+log
+minishell
+obj
+obj_buitin
+segfault.txt
+src
+tester
 Exit code: 0

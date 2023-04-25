@@ -45,9 +45,9 @@ execute_command (){
 EOF
 )
 	exitcode=$?
-	echo "Command: $1" >> ./tester/output/${shell}_output
-	echo "Output: $output" >> ./tester/output/${shell}_output
-	echo "Exit code: $exitcode" >> ./tester/output/${shell}_output
+	printf "Command: $command\n" >> ./tester/output/${shell}_output
+	printf "Output:\n$output\n" >> ./tester/output/${shell}_output
+	printf "Exit code: $exitcode\n" >> ./tester/output/${shell}_output
 }
 
 run_tests() {
@@ -56,13 +56,14 @@ run_tests() {
     printf "\n\n\t\tRunning %s...$test_name" >> ./tester/trace/traces
 
 	## Minishell tests
-	IFS=
 	while read -r line; do
-	if [ -z "$line" ]; then
+	if [ -z "$line" ] || [[ "$line" = "#"* ]]; then
 		continue
 	fi
 	execute_command "./minishell" "$line"
 	execute_command "bash" "$line"
+	sed -i '' '/0;36m/d' ./tester/output/minishell_output
+	sed -i '' '/^$/d' ./tester/output/bash_output
 	compare_output
 	done < $file_name
 }

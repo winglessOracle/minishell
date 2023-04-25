@@ -1,3 +1,2 @@
-ls | ls | grep Mak
-
-
+ls | ls
+ls

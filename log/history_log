@@ -1929,3 +1929,296 @@ ls | ls | grep Mak
 ls | ls | grep Mak 
 ls | ls | grep Mak 
 ls | ls | grep Mak 
+ls | ls | grep Mak 
+ls | ls | grep Mak 
+ls | ls | grep Mak 
+ls | ls | grep Mak 
+ls | ls | grep Mak 
+ls | ls | grep Mak 
+$SHVL 
+echo quote 
+"" 
+echo "test | test ; moretest>!<" 
+$ 
+$LESS$VAR 
+.. 
+# exit > hoi 
+<idonotexist | echo moretext >./tester/output/TMP2 
+<./tester/output/TMP2 | cat 
+echo here_doc 
+echo con_pipe 
+echo wildcard 
+ls | ls | grep Mak 
+aef
+a
+aer
+ls | ls | grep Mak 
+$SHVL 
+echo quote 
+"" 
+echo "test | test ; moretest>!<" 
+$ 
+$LESS$VAR 
+.. 
+# exit > hoi 
+<idonotexist | echo moretext >./tester/output/TMP2 
+<./tester/output/TMP2 | cat 
+echo here_doc 
+echo con_pipe 
+echo wildcard 
+$SHVL 
+echo quote 
+"" 
+echo "test | test ; moretest>!<" 
+$ 
+$LESS$VAR 
+.. 
+# exit > hoi 
+<idonotexist | echo moretext >./tester/output/TMP2 
+<./tester/output/TMP2 | cat 
+echo here_doc 
+echo con_pipe 
+echo wildcard 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls | ls 
+ls 
+ls | ls 
+ls 
+ls | ls 
+ls 
+ls | ls 
+ls 
+$SHVL 
+echo quote 
+"" 
+echo "test | test ; moretest>!<" 
+$ 
+$LESS$VAR 
+.. 
+# exit > hoi 
+<idonotexist | echo moretext >./tester/output/TMP2 
+<./tester/output/TMP2 | cat 
+echo here_doc 
+echo con_pipe 
+echo wildcard 
+# cd ../../../../../; pwd 
+# cd ~; pwd 
+# cd; pwd 
+# unset HOME; cd; 
+# export HOME=/Users/user42; cd ~ 
+# cd ..lalala; pwd 
+# cd .; echo $OLDPWD 
+# cd -; pwd 
+# cd -; pwd 
+# echo 
+# echo -n 
+# echo $IDONOTEXIST 
+# echo $PATH 
+# echo ~ 
+# echo -n-n-nnnn-nnnnnnn 
+# echo -n -nnnn hello world -n 
+# echo "" hello world 
+# env | head -n 2 
+# env lalala 
+# env | grep OLDPWD 
+# aaa111=hello aaa222=world; env |head -2 
+# export aaa1=cat aaa2=dog; env | grep aaa 
+# export | grep aaa 
+# export aaaa; export aaaa=hamster; export | grep aaaa; 
+# export 1var; 
+# export "" test1=dog 
+# export test2=$HOME; echo $test2 
+# export ls="ls -l"; $ls 
+# exit 42 lalala 
+# exit lalala 42 
+# exit 256 
+# exit -1 
+echo hello world 
+# cd ../../../../../; pwd 
+# cd ~; pwd 
+# cd; pwd 
+# unset HOME; cd; 
+# export HOME=/Users/user42; cd ~ 
+# cd ..lalala; pwd 
+# cd .; echo $OLDPWD 
+# cd -; pwd 
+# cd -; pwd 
+# echo 
+# echo -n 
+# echo $IDONOTEXIST 
+# echo $PATH 
+# echo ~ 
+# echo -n-n-nnnn-nnnnnnn 
+# echo -n -nnnn hello world -n 
+# echo "" hello world 
+# env | head -n 2 
+# env lalala 
+# env | grep OLDPWD 
+# aaa111=hello aaa222=world; env |head -2 
+# export aaa1=cat aaa2=dog; env | grep aaa 
+# export | grep aaa 
+# export aaaa; export aaaa=hamster; export | grep aaaa; 
+# export 1var; 
+# export "" test1=dog 
+# export test2=$HOME; echo $test2 
+# export ls="ls -l"; $ls 
+# exit 42 lalala 
+# exit lalala 42 
+# exit 256 
+# exit -1 
+echo hello world 
+ls | ls 
+ls 
+ls 
+# exit > hoi 
+<idonotexist | echo moretext >./tester/output/TMP2 
+<./tester/output/TMP2 | cat 
+# exit > hoi 
+<idonotexist | echo moretext >./tester/output/TMP2 
+<./tester/output/TMP2 | cat 
+# exit > hoi 
+<idonotexist | echo moretext >./tester/output/TMP2 
+<./tester/output/TMP2 | cat 
+tester/terster.sh
+./tester/terster.sh
+pwd
+/tester/tester.sh
+./tester.sh
+/tester/./tester.sh
+./tester/tester.sh
+./tester/tester.sh
+./tester/tester.sh p
+./tester/tester.sh b
+./tester/tester.sh p
+./tester/tester.sh a
+./tester/tester.sh r
+exit > hoi
+# cd ../../../../../; pwd 
+# cd ~; pwd 
+# cd; pwd 
+# unset HOME; cd; 
+# export HOME=/Users/user42; cd ~ 
+# cd ..lalala; pwd 
+# cd .; echo $OLDPWD 
+# cd -; pwd 
+# cd -; pwd 
+# echo 
+# echo -n 
+# echo $IDONOTEXIST 
+# echo $PATH 
+# echo ~ 
+# echo -n-n-nnnn-nnnnnnn 
+# echo -n -nnnn hello world -n 
+# echo "" hello world 
+# env | head -n 2 
+# env lalala 
+# env | grep OLDPWD 
+# aaa111=hello aaa222=world; env |head -2 
+# export aaa1=cat aaa2=dog; env | grep aaa 
+# export | grep aaa 
+# export aaaa; export aaaa=hamster; export | grep aaaa; 
+# export 1var; 
+# export "" test1=dog 
+# export test2=$HOME; echo $test2 
+# export ls="ls -l"; $ls 
+# exit 42 lalala 
+# exit lalala 42 
+# exit 256 
+# exit -1 
+echo hello world 
+# cd ../../../../../; pwd 
+# cd ~; pwd 
+# cd; pwd 
+# unset HOME; cd; 
+# export HOME=/Users/user42; cd ~ 
+# cd ..lalala; pwd 
+# cd .; echo $OLDPWD 
+# cd -; pwd 
+# cd -; pwd 
+# echo 
+# echo -n 
+# echo $IDONOTEXIST 
+# echo $PATH 
+# echo ~ 
+# echo -n-n-nnnn-nnnnnnn 
+# echo -n -nnnn hello world -n 
+# echo "" hello world 
+# env | head -n 2 
+# env lalala 
+# env | grep OLDPWD 
+# aaa111=hello aaa222=world; env |head -2 
+# export aaa1=cat aaa2=dog; env | grep aaa 
+# export | grep aaa 
+# export aaaa; export aaaa=hamster; export | grep aaaa; 
+# export 1var; 
+# export "" test1=dog 
+# export test2=$HOME; echo $test2 
+# export ls="ls -l"; $ls 
+# exit 42 lalala 
+# exit lalala 42 
+# exit 256 
+# exit -1 
+echo hello world 
+ls | ls 
+ls 
+# cd ../../../../../; pwd 
+# cd ~; pwd 
+# cd; pwd 
+# unset HOME; cd; 
+# export HOME=/Users/user42; cd ~ 
+# cd ..lalala; pwd 
+# cd .; echo $OLDPWD 
+# cd -; pwd 
+# cd -; pwd 
+# echo 
+# echo -n 
+# echo $IDONOTEXIST 
+# echo $PATH 
+# echo ~ 
+# echo -n-n-nnnn-nnnnnnn 
+# echo -n -nnnn hello world -n 
+# echo "" hello world 
+# env | head -n 2 
+# env lalala 
+# env | grep OLDPWD 
+# aaa111=hello aaa222=world; env |head -2 
+# export aaa1=cat aaa2=dog; env | grep aaa 
+# export | grep aaa 
+# export aaaa; export aaaa=hamster; export | grep aaaa; 
+# export 1var; 
+# export "" test1=dog 
+# export test2=$HOME; echo $test2 
+# export ls="ls -l"; $ls 
+# exit 42 lalala 
+# exit lalala 42 
+# exit 256 
+# exit -1 
+echo hello world 
+echo hello world 
+echo hello world 
+ls | ls 
+ls 

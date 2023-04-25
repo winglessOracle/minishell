@@ -1,3 +1,6 @@
 # exit > hoi
+
 <idonotexist | echo moretext >./tester/output/TMP2
+
 <./tester/output/TMP2 | cat
+
