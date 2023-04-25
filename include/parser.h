@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/24 10:06:06 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 17:10:45 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,13 @@ int	remove_quotes(t_node **token, t_smpl_cmd *cmd);
 int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list);
 
 // cond_pipe utils
-int	set_brace(t_node **token, t_smpl_cmd *cmd, t_list *list);
-int	check_and(t_node **token, t_smpl_cmd *cmd, t_list *list);
-int	check_or(t_node **token, t_smpl_cmd *cmd, t_list *list);
-int check_list(t_node **tokens, t_list *list);
+int		set_brace(t_node **token, t_smpl_cmd *cmd, t_list *list);
+int		check_and(t_node **token, t_smpl_cmd *cmd, t_list *list);
+int		check_or(t_node **token, t_smpl_cmd *cmd, t_list *list);
+void	check_pipe_type(t_node **tokens, t_pipe *pipeline);
+void	check_execute_pipe(t_pipe *pipe);
+int		count_braces(t_node **tokens);
+int 	check_list(t_node **tokens, t_list *list);
 
 /* -------------------------------------------------------
    The grammar symbols

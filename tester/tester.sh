@@ -58,11 +58,15 @@ compare_output() {
 	if [ "$?" -eq "0" ]; then
     	printf "\t\e[32mOutput OK!\e[0m\n"
 	else
-		printf "\t\e[31mOutput KO!\e[0m\n"
+		printf "\t\e[31mOutput KO! \e[1;36m$command\e[0m\n"
 		if [ "$trace" == true ]; then
 			printf "\tDelta:\n"
-			cat ./tester/trace/traces_$test_name
+			cat ./tester/trace/traces
 		fi
+		if [ "$segfault" = "1" ]; then
+			printf "\t\033[1m\033[31mSegfault!!!\e[0m\n"
+		fi
+
 	fi
 }
 
@@ -76,9 +80,12 @@ execute_command (){
 EOF
 )
 	exitcode=$?
-	printf "Command:\n$command\n" >> ./tester/output/${shell}_output
+	printf "Command: $command\n" >> ./tester/output/${shell}_output
 	printf "Output:\n$output\n" >> ./tester/output/${shell}_output
-	printf "Exit code:$exitcode\n" >> ./tester/output/${shell}_output
+	printf "Exit code: $exitcode\n" >> ./tester/output/${shell}_output
+	if [ "$exitcode" = "139" ]; then
+		segfault=1
+	fi
 }
 
 run_tests() {
@@ -89,21 +96,23 @@ run_tests() {
 	if [ -z "$line" ] || [[ "$line" = "#"* ]]; then
 		continue
 	fi
-
-	execute_command "./minishell" "$line"
-	execute_command "bash" "$line"
+	segfault=0
+	execute_command "./minishell" "$line" >& ./tester/output/error
+	execute_command "bash" "$line" >& ./tester/output/error
 	
 	##MacOs
-	# sed -i '' '/0;36m/d' ./tester/output/minishell_output
-	# # sed -i '' '/^$/d' ./tester/output/minishell_output
-	# sed -i '' '/^$/d' ./tester/output/bash_output
+	sed -i '' '/0;36m/d' ./tester/output/minishell_output
+	sed -i '' '/^$/d' ./tester/output/minishell_output
+	sed -i '' '/^$/d' ./tester/output/bash_output
 	
 	##linux
-	sed -i '/0;36m/d' ./tester/output/minishell_output
+	# sed -i '/0;36m/d' ./tester/output/minishell_output
 	# sed -i '/^$/d' ./tester/output/minishell_output
-	sed -i '/^$/d' ./tester/output/bash_output
+	# sed -i '/^$/d' ./tester/output/bash_output
 	
 	compare_output
+	rm ./tester/output/bash_output
+	rm ./tester/output/minishell_output
 	done < $file_name
 }
 
@@ -113,11 +122,11 @@ if [ $# -eq 0 ]; then
 	file_name="tester/tests/env_tests";			run_tests
 	file_name="tester/tests/exp_tests";			run_tests
 	file_name="tester/tests/quote_tests";		run_tests
-	file_name="tester/tests/built_tests";		run_tests
+	file_name="tester/tests/built_in_tests";	run_tests
 	file_name="tester/tests/assign_tests";		run_tests
 	file_name="tester/tests/redirect_tests";	run_tests
 	file_name="tester/tests/here_doc_tests";	run_tests
-	file_name="tester/tests/signal_tests";		run_tests
+	# file_name="tester/tests/signal_tests";		run_tests
 	file_name="tester/tests/cond_pipe_tests";	run_tests
 	file_name="tester/tests/wildcard_tests";	run_tests
 	exit 0

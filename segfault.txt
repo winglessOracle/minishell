@@ -1,11 +1,13 @@
 /* Segfaults or incorrect behaviour */
 ------------------------
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..  //met bonus
 
 / *test cases to compare with bash: */
 ---------------------------------------
 
 /* check Carien */
-check cd with CDPATH
+update shel level
+
 
 /* checks Carlo */
 empty redirect nodes should result in error 

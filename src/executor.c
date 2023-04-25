@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/25 08:53:12 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/25 20:06:07 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,9 +164,9 @@ void		executor(t_pipe *pipeline)
 	int		keep;
 	int		i;
 
-	i = 0;
 	if (!pipeline)
 		return ;
+	i = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);

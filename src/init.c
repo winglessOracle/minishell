@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:05:51 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/25 11:17:53 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/25 20:06:18 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_node	*init_env(void)
 
 	g_exit_status = 0;
 	env_list = environ_to_list();
-	add_variable(env_list, ft_strdup("PS1=\x1b[0;36m 💯 CC\e[?25h_\e\033[0m"), 1);
+	add_variable(env_list, ft_strdup("PS1=\x1b[0;36m 💯CC\e[?25h_\e\033[0m "), 1);
 	add_variable(env_list, ft_strdup("PS2=> "), 1);
 	add_variable(env_list, ft_strdup("IFS=' \t\n'"), 1);
 	temp = get_variable(env_list, "HOME");
