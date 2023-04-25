@@ -56,13 +56,16 @@ run_tests() {
 	## Minishell tests
 
 	while read -r line;
-	do 
-	eval "$line" > ./tester/output/minishell_output
-	exitcode_minishell=$?
+	do
+	# file_out="./tester/output/minishell_output";
+	"$line" >> ./tester/output/minishell_output
+	# $line;
+	exitcode_minishell=$?;
 	## bash tests
-	bash -c "$line" > ./tester/output/bash_output
-	exitcode_bash=$?
-	compare_output
+	# file_out="./tester/output/bash_output";
+	bash -c "$line" >> ./tester/output/bash_output;
+	exitcode_bash=$?;
+	compare_output;
 	done < $file_name
 }
 
@@ -87,7 +90,7 @@ elif [ "$1" == "h" ]; then
 elif [ "$1" == "sig" ]; then
 	file_name="tester/tests/signal_tests";		run_tests;
 elif [ "$1" == "c" ]; then
-	file_name="tester/tests/signal_tests";		run_tests;
+	file_name="tester/tests/cond_pipe_tests";	run_tests;
 elif [ "$1" == "w" ]; then
 	file_name="tester/tests/wildcard_tests";	run_tests;
 else
@@ -106,4 +109,4 @@ else
 	file_name="tester/tests/wildcard_tests";	run_tests
 	exit 0
 fi
-rm -rf ./tester/output
+# rm -rf ./tester/output

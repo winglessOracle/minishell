@@ -1,11 +1,19 @@
 /* Segfaults or incorrect behaviour */
 ------------------------
+---
+(echo 1 || echo 2) && (echo 3 && echo 4)
+---
+ $LESS$VAR
+ ---
+ exit code syntax error  --> gaat nu wel goed, maar niet in de tester?
 
 / *test cases to compare with bash: */
 ---------------------------------------
 
 /* check Carien */
 check cd with CDPATH
+update shel level
+
 
 /* checks Carlo */
 empty redirect nodes should result in error 

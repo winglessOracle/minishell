@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 19:23:10 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/24 19:41:44 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,6 @@ int	execute_export(char **cmd_vector, t_node *env_list)
 			i++;
 		}
 	}
+	ft_free_array(cmd_vector);
 	return (0);
 }

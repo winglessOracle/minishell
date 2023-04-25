@@ -1,1 +1,1 @@
-echo assign
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe

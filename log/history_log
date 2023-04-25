@@ -1613,7 +1613,555 @@ tester/tester.sh r
 tester/tester.sh r
 tester/tester.sh r
 tester/tester.sh r
-
 tester/tester.sh r
 tester/tester.sh r
+exit
+ cd
+ pwd
+echo $PWD
+ unset PWD
+echo $PWD
+exit
+unset HOME
+echo $HOME
+exit
+echo $HOME
+unset HOME
+exit
+unset HOME
+exit
+unset HOME
+exit
+unset HOME
+exit
+unset HOME
+exit
+unset HOME
+exit
+unset HOME
+unset HOME
+exit
+exit
+unset HOME
+exit
+unset HOME
+exit
+unset HOME
+echo $HOME
+exit
+./tester/tester.sh 
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+ (ls)
+(ls)
+./tester/tester.sh w
+./tester/tester.sh a
+./tester/tester.sh a
+./tester/tester.sh a
+./tester/tester.sh a
+pwd
+./tester/tester.sh b
+./tester/tester.sh b
+exit
+ sleep 10
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+$LESS$VAR
+$LESS$VARexit
+$LESS$VARexit
+$LESS$VARexit
+$LESS$VARexit
+exit
+$LESS$VARexit
+$LESS$VARexit
+$LESS$VAR
+./tester/tester.sh s
+exit
+./tester/tester.sh s
+exit
+./tester/tester.sh s
+|
+exit
+|
+exit
+|
+exit
+./tester/tester.sh s
+exit
+|
+echo $?
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+bash
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+bash
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+./tester/tester.sh 
+./tester/tester.sh c
+./tester/tester.sh c
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+./tester/tester.sh 
+./tester/tester.sh 
+./tester/tester.sh c
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+bash
+(echo 1 || echo 2) || (echo 3 || echo 4)
+./tester/tester.sh 
+./tester/tester.sh c
+(echo 1 || echo 2) || (echo 3 || echo 4)
+./tester/tester.sh 
+./tester/tester.sh c
+./minishell 
+./tester/tester.sh c
+exit
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+make fclean
+make bonus
+exit
+./tester/tester.sh c
+./tester/tester.sh c
+(echo 1 || echo 2) || (echo 3 || echo 4)  >> ./tester/output/minishell_output
+(echo 1 || echo 2) || (echo 3 || echo 4)  >> ./tester/output/minishell_output
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) >> /tester/output/minishell_output
+ut
+ls >> /tester/output/minishell_output
+exit
+ls >> /tester/output/minishell_output
+ls >> /tester/output/minishell_output.txt
+ls >> minishell_output
+bash
+exit
+tester/tester.sh c
+tester/tester.sh c
+tester/tester.sh c
+tester/tester.sh c
+tester/tester.sh c
+exit
+tester/tester.sh c
+tester/tester.sh c
+exit
+tester/tester.sh c
+tester/tester.sh c
+tester/tester.sh c
+tester/tester.sh c
+tester/tester.sh c
+tester/tester.sh c
+tester/tester.sh c
+bash
+exit
+minishell
+exit
+bash
+exit
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+eixt
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2)|| (echo 3 || echo 4)
+exit
+(echo 1 || echo 2)|| (echo 3 || echo 4)
+exit
+(echo 1 || echo 2)|| (echo 3 || echo 4)
+exit
+(echo 1 || echo 2)|| (echo 3 || echo 4)
+exit
+(echo 1 || echo 2)|| (echo 3 || echo 4)
+exit
+(echo 1 || echo 2)|| (echo 3 || echo 4)
+eixt
+exit
+(echo 1 || echo 2)|| (echo 3 || echo 4)
+(echo 1 || echo 2)|| (echo 3 || echo 4)
+exit
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+./tester/tester.sh c
+exit
+./tester/tester.sh s
+./tester/tester.sh s
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+exit
+((echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4) 
+(echo 1 && echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4) 
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4) 
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+((echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+ $LESS$VAR
+echo  $LESS$VAR
+exit
+ $LESS$VAR
+echo  $LESS$VAR
+(echo 1 || echo 2) && (echo 3 && echo 4)
+exit
+(echo 1 || echo 2) && (echo 3 && echo 4)
+echo  $LESS$VAR
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+exit
+(echo 1 || echo 2) && (echo 3 && echo 4)
+exit
+(echo 1 || echo 2) && (echo 3 && echo 4)
+exit
+(echo 1 || echo 2) && (echo 3 && echo 4)
+exit
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+exit
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
 exit
