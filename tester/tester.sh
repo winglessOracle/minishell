@@ -25,14 +25,15 @@ echo -e "\n\033[1m\033[38;5;202mTesting Minishell vs Bash...\033[0m\n"
 
 compare_output() {
 ## Compare outputs and exit codes
-	printf "\t\e[34mComparing output...\e[0m"
-	diff ./tester/output/bash_output ./tester/output/minishell_output >> ./tester/trace/traces
+	printf "\t\e[34mComparing output...\e[0m\n"
+    printf "\n\n\t\tcommand=> $command\n" >> ./tester/trace/traces_$test_name
+	diff ./tester/output/bash_output ./tester/output/minishell_output >> ./tester/trace/traces_$test_name
 	if [ "$?" -eq "0" ]; then
     	printf "\t\e[32mOutput OK!\e[0m\n"
 	else
     	printf "\t\e[31mOutput KO!\e[0m\n"
-		printf "\tDelta:\n" 
-		cat ./tester/trace/traces
+		printf "\tDelta:\n"
+		cat ./tester/trace/traces_$test_name
 	fi
 }
 
@@ -52,8 +53,7 @@ EOF
 
 run_tests() {
 	test_name=$(basename "$file_name")
-    printf "\n\e[1;36mRunning %s...\e[0m\n" "$test_name"
-    printf "\n\n\t\tRunning %s...$test_name" >> ./tester/trace/traces
+    printf "\n\e[1;36mRunning "$test_name"...\e[0m\n"
 
 	## Minishell tests
 	while read -r line; do
@@ -62,9 +62,17 @@ run_tests() {
 	fi
 	execute_command "./minishell" "$line"
 	execute_command "bash" "$line"
-	sed -i '' '/0;36m/d' ./tester/output/minishell_output
-	# sed -i '' '/^$/d' ./tester/output/minishell_output
-	sed -i '' '/^$/d' ./tester/output/bash_output
+	
+	##MacOs
+	# sed -i '' '/0;36m/d' ./tester/output/minishell_output
+	# # sed -i '' '/^$/d' ./tester/output/minishell_output
+	# sed -i '' '/^$/d' ./tester/output/bash_output
+	
+	##linux
+	sed -i '/0;36m/d' ./tester/output/minishell_output
+	# sed -i '/^$/d' ./tester/output/minishell_output
+	sed -i '/^$/d' ./tester/output/bash_output
+	
 	compare_output
 	done < $file_name
 }

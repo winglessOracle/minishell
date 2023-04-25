@@ -1,0 +1,124 @@
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
