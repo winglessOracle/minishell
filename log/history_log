@@ -2165,3 +2165,79 @@ exit
 (gre 1 && echo 2) || (echo 3 || echo 4)
 (gre 1 && echo 2) && (echo 3 || echo 4)
 exit
+(gre 1 && echo 2) && (echo 3 || echo 4)
+exit
+(gre 1 && echo 2) && (echo 3 || echo 4)
+exit
+(gre 1 && echo 2) && (echo 3 || echo 4)
+exit
+(gre 1 && echo 2) && (echo 3 || echo 4)
+make bonus
+(gre 1 && echo 2) && (echo 3 || echo 4)
+exit
+(gre 1 && echo 2) && (echo 3 || echo 4)
+exit
+(gre 1 && echo 2) && (echo 3 || echo 4)
+exit
+(gre 1 && echo 2) && (echo 3 || echo 4)
+exit
+(gre 1 && echo 2) && (echo 3 || echo 4)
+exit
+(gre 1 && echo 2) && (echo 3 || echo 4))
+(gre 1 && echo 2) && (echo 3 || echo 4))
+(gre 1 && echo 2) && (echo 3 || echo 4))
+(gre 1 && echo 2) && (echo 3 || echo 4))
+(gre 1 && echo 2) && (echo 3 || echo 4))
+(gre 1 && echo 2) && (echo 3 || echo 4))
+(gre 1 && echo 2) && (echo 3 || echo 4))
+(gre 1 && echo 2) && (echo 3 || echo 4))
+(gre 1 && echo 2) && (echo 3 || echo 4))
+exit
+(gre 1 && echo 2) && (echo 3 || echo 4))
+(gre 1 && echo 2) && (echo 3 || echo 4)
+((gre 1 && echo 2) && (echo 3 || echo 4)
+exit
+((gre 1 && echo 2) && (echo 3 || echo 4)
+exit
+((gre 1 && echo 2) && (echo 3 || echo 4)
+exit
+((gre 1 && echo 2) && (echo 3 || echo 4)
+exit
+((gre 1 && echo 2) && (echo 3 || echo 4)
+exit
+((echo 1 ||  echo 2) && (echo 3 || echo 4)
+exit
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+(echo 1 ||  echo 2) && (echo 3 || echo 4)
+exit
+(echo 1 ||  echo 2) && (echo 3 || echo 4) || ls
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+exit
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+exit
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+exit
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+exit
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+exit
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+exit
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+exit
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+exit
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+exit
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+exit
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+exit
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+exit
+(echo 1 ||  echo 2) && (echo 3 || echo 4) && ls
+exit

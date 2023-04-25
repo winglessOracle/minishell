@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/24 11:49:51 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/25 12:07:40 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct s_list
 {
 	int				type;
 	int				state;
+	t_pipe			*list_argv;
 }	t_list;
 
 // utils
@@ -100,6 +101,13 @@ void		lstclear_cmdlst(t_smpl_cmd **lst, void (*del)(void *));
 void		lstdelone_cmd(t_smpl_cmd *lst, void (*del)(void *));
 int			remove_cmd_node(t_smpl_cmd **cmds);
 
+// pipelist_utils
+t_pipe		*lstlast_pipe(t_pipe *lst);
+void		lstadd_back_pipe(t_pipe **lst, t_pipe *new);
+void		lstclear_pipelst(t_pipe **lst, void (*del)(void *));
+void		lstdelone_pipe(t_pipe *lst, void (*del)(void *));
+int			remove_pipe_node(t_pipe **cmds);
+
 //lexer
 t_node		*lexer(char *str, char *delim);
 t_node		*split_to_list(char *str, char *delim);
@@ -113,6 +121,7 @@ t_pipe		*init_pipeline(void);
 t_list		*init_list(void);
 
 // parser
+void		parse_and_execute(t_node *tokens, t_node *env_list);
 t_pipe		*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list);
 char		*parse_heredoc(t_node *token, t_node *here_redirect);
 int			check_token_content(t_node *token, int type);
