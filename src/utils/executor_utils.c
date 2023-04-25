@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/25 20:07:37 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 21:36:33 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	set_exit_st(int argc, pid_t *pid)
 	}
 }
 
-char	**get_env(t_node *env_list) //alleen type 2
+char	**get_env(t_node *env_list)
 {
 	t_node	*curr;
 	char	**str;

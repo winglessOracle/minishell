@@ -1,0 +1,6 @@
+
+
+		command=> env ls
+
+
+		command=> env -a ls

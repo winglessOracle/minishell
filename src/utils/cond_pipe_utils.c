@@ -6,13 +6,13 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/25 11:38:19 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/25 17:33:15 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 21:33:36 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int		set_brace(t_node **token, t_smpl_cmd *cmd, t_list *list)
+int	set_brace(t_node **token, t_smpl_cmd *cmd, t_list *list)
 {
 	if ((*token)->type == BRACE_O)
 	{

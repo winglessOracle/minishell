@@ -1,0 +1,145 @@
+
+
+		command=> echo built-in
+
+
+		command=> cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+
+
+		command=> mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+3c3
+< Exit code: 0
+---
+> Exit code: 1
+
+
+		command=> cd ../../../../../; pwd
+3c3
+< /
+---
+> /Users/cariencaljouw/Documents/codamcore/minishell
+
+
+		command=> cd ~; pwd
+
+
+		command=> cd; pwd
+
+
+		command=> unset HOME; cd;
+
+
+		command=> export HOME=/Users/user42; cd ~
+3c3
+< Exit code: 1
+---
+> Exit code: 0
+
+
+		command=> cd ..lalala; pwd
+
+
+		command=> cd .; echo $OLDPWD
+
+
+		command=> cd -; pwd
+
+
+		command=> cd -; pwd
+
+
+		command=> echo
+
+
+		command=> echo -n
+
+
+		command=> echo $IDONOTEXIST
+
+
+		command=> echo $PATH
+
+
+		command=> echo ~
+
+
+		command=> echo -n-n-nnnn-nnnnnnn
+
+
+		command=> echo -n -nnnn hello world -n
+3d2
+< hello world -n
+
+
+		command=> echo "" hello world
+3c3
+<  hello world
+---
+> Makefile README.md builtin en.subject.pdf include libft log minishell obj obj_buitin segfault.txt src tester hello world
+
+
+		command=> env | head -n 2
+3,4c3,4
+< SHELL=/bin/zsh
+< USER_ZDOTDIR=/Users/cariencaljouw
+---
+> MANPATH=/opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/opt/homebrew/share/man:
+> TERM_PROGRAM=vscode
+
+
+		command=> env lalala
+
+
+		command=> env | grep OLDPWD
+
+
+		command=> aaa111=hello aaa222=world; env |head -2
+3,4c3,4
+< SHELL=/bin/zsh
+< USER_ZDOTDIR=/Users/cariencaljouw
+---
+> MANPATH=/opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/opt/homebrew/share/man:
+> TERM_PROGRAM=vscode
+
+
+		command=> export aaa1=cat aaa2=dog
+
+
+		command=> env | grep aaa
+
+
+		command=> export | grep aaa
+
+
+		command=> export aaaa
+
+
+		command=> export aaaa=hamster
+
+
+		command=> export | grep aaaa
+
+
+		command=> export 1var;
+
+
+		command=> export "" test1=dog
+3c3
+< Exit code: 1
+---
+> Exit code: 0
+
+
+		command=> export test2=$HOME
+
+
+		command=> echo $test2
+
+
+		command=> export ls="ls -l"
+
+
+		command=> $ls
+
+
+		command=> echo hello world

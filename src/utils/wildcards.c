@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/24 11:36:40 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/25 21:34:58 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	match(char *str, char *pattern)
 				s_indx++;
 		}
 		if (str[s_indx] != pattern[p_indx])
-			return(0);
+			return (0);
 	}
 	return (1);
 }
@@ -82,8 +82,8 @@ t_node	*sort_argv(t_node *argv)
 t_node	*expand_wildcard(t_node *token)
 {
 	char			buf[PATH_MAX];
-	DIR 			*curr_dir;
-	struct dirent 	*file;
+	DIR				*curr_dir;
+	struct dirent	*file;
 	char			*pattern;
 	t_node			*temp;
 
@@ -94,12 +94,12 @@ t_node	*expand_wildcard(t_node *token)
 	curr_dir = opendir(buf);
 	if (curr_dir != NULL)
 	{
-		file = readdir(curr_dir) ;
+		file = readdir(curr_dir);
 		while (file != NULL)
 		{
 			if (match(file->d_name, pattern) && file->d_name[0] != '.')
-				lstadd_back(&temp, new_node(WORD,ft_strdup(file->d_name)));
-			file = readdir(curr_dir) ;
+				lstadd_back(&temp, new_node(WORD, ft_strdup(file->d_name)));
+			file = readdir(curr_dir);
 		}
 		closedir(curr_dir);
 		sort_argv(temp);
@@ -109,10 +109,10 @@ t_node	*expand_wildcard(t_node *token)
 
 int	check_wildcars(t_node **cmd_args)
 {
-	t_node 	*temp;
+	t_node	*temp;
 	t_node	*new_args;
 	int		i;
-	
+
 	new_args = NULL;
 	while (*cmd_args)
 	{
