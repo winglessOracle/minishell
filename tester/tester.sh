@@ -1,36 +1,5 @@
 #!/bin/bash
 
-### Run tester.sh in zsh, bash or minishell. 
-### Run from folder where minishell executable is
-### traces are stored per test scrip in the folder traces
-### outut files are stored in the output folder
-### before each execution of the code the output and traces folders are removed
-
-
-##### PARAMETERS #######
-
-### pass any or non of the following parameters seperated by a space
-## s >> simple tests
-## e >> env tests
-## x >> expander tests
-## q >> quote tests
-## b >> built-in tests
-## a >> assign tests
-## r >> redirect tests
-## h >> here_doc tests
-## z >> signal tests
-## c >> conditional pipe tests
-## w >> wildcard tests
-
-##### FLAGS ######
-
-## -v to show traces in the terminal. 
-## -c to cleanup all output files
-
-#####################################################
-#####################################################
-
-
 ### make tmp dit and ensure that the temporary directory is always cleaned up.
 rm -rf ./tester/output; rm -rf ./tester/trace
 mkdir -p ./tester/output; mkdir -p ./tester/trace
@@ -64,7 +33,6 @@ compare_output() {
 		if [ "$segfault" = "1" ]; then
 			printf "\t\033[1m\033[31mSegfault!!!\e[0m\n"
 		fi
-
 	fi
 }
 
@@ -109,7 +77,6 @@ run_tests() {
 		sed -i '/^$/d' ./tester/output/minishell_output
 		sed -i '/^$/d' ./tester/output/bash_output
 	fi
-	
 	compare_output
 	done < $file_name
 }
