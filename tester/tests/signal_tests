@@ -1,0 +1,8 @@
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+
+kill -INT
+kill -INT
+kill -STP

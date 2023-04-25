@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/21 11:21:19 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/24 14:54:28 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,12 @@ int	temp_assign(t_node **token, t_smpl_cmd *cmd)
 	return (0);
 }
 
-int	expander(t_node **token, t_smpl_cmd *cmd)
+int	expander(t_node **token, t_smpl_cmd *cmd, t_list *list)
 {
 	int					state;
-	static t_function	*parse[12];
+	static t_function	*parse[16];
 
+	(void)list;
 	parse[WORD] = add_word_to_cmd;
 	parse[COMMENT] = remove_comment;
 	parse[SQUOTE] = remove_quotes;

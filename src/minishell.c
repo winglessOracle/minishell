@@ -6,11 +6,12 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/22 17:02:43 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/25 14:57:48 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "parser.h"
 #include "builtin.h" //test
 
 void	leaks(void)
@@ -26,9 +27,10 @@ int	main(void)
 	t_node		*env_list;
 	t_node		*tokens;
 	t_pipe		*pipeline;
+	t_list		*list;
 
 	//add max buffer?
-	// atexit(leaks);
+	atexit(leaks);
 	env_list = init_env();
 	read_history("log/history_log"); //remove
 	set_signals();
@@ -38,13 +40,17 @@ int	main(void)
 		if (line_read == NULL)
 			exit_sig(env_list);
 		write_history("log/history_log"); //remove
-		tokens = lexer(line_read, "|<> \t\n");
+		tokens = lexer(line_read, LEXER_SPLIT);
+		list = init_list();
 		while (tokens)
 		{
-			pipeline = parse_pipeline(&tokens, env_list);
+			pipeline = parse_pipeline(&tokens, env_list, list);
 			executor(pipeline);
+			if (tokens)
+				check_list(&tokens, list);
 		}
 	}
 	rl_clear_history();
 	execute_exit(NULL, env_list);
+	return (0);
 }

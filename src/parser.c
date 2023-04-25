@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/21 14:02:31 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/24 16:34:47 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,25 +59,29 @@ int	check_token_content(t_node *token, int type) // refactor when tester availab
 	return (check_assign(str, type));
 }
 
-int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd)
+int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd, t_list *list)
 {	
 	int					state;
-	static t_function	*parse[5];
+	static t_parser		*parse[9];
 
 	parse[WORD] = expander;
-	parse[BLANK] = remove_node;
+	parse[BLANK] = remove_node_parser;
 	parse[REDIRECT] = redirect_tokens;
 	parse[PIPE] = set_cmd_end;
-	parse[NEW_LINE] = set_cmd_end;
+	parse[AND] = check_and;
+	parse[OR] = check_or;
+	parse[BRACE_O] = set_brace;
+	parse[BRACE_C] = set_brace;
+	parse[PIPE_END] = set_cmd_end;
 	state = 0;
 	while (*tokens && !state)
-		state = parse[(*tokens)->type](tokens, *cmd);
-	state = set_cmd_end(tokens, *cmd);
+		state = parse[(*tokens)->type](tokens, *cmd, list);
+	state = set_cmd_end(tokens, *cmd, list);
 	check_env(*cmd);
 	return (state);
 }
 
-t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list)
+t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list)
 {	
 	t_pipe		*pipeline;
 	t_smpl_cmd	*cmd;
@@ -88,20 +92,23 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list)
 	while (*tokens && state != -1)
 	{
 		cmd = init_smpl_cmd(env_list);
-		state = parse_cmd(tokens, &cmd);
+		state = parse_cmd(tokens, &cmd, list);
 		if (cmd)
 		{
 			lstadd_back_cmd(&pipeline->pipe_argv, cmd);
 			pipeline->pipe_argc++;
 		}
 		if (state == -1)
-			lstclear_cmdlst(&pipeline->pipe_argv, delete_cmd);
-		if (*tokens && (*tokens)->type == NEW_LINE)
 		{
-			state = remove_node(tokens, NULL);
-			break ;
+			lstclear_cmdlst(&pipeline->pipe_argv, delete_cmd);
+			free (pipeline);
+			return (NULL);
 		}
+		if (*tokens && (*tokens)->type == PIPE_END)
+			break;
 	}
+	// printf("Pipeline:\n");
+	// print_pipeline(pipeline);
 	return (pipeline);
 }
 
