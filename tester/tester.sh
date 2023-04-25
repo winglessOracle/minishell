@@ -51,7 +51,6 @@ fi
 
 ### Compare output files
 compare_output() {
-	#printf "\t\e[34mComparing output...\e[0m\n"
     printf "\n\n\t\tcommand=> $command\n" >> ./tester/trace/traces_$test_name
 	diff ./tester/output/bash_output ./tester/output/minishell_output >> ./tester/trace/traces_$test_name
 	if [ "$?" -eq "0" ]; then
@@ -99,19 +98,19 @@ run_tests() {
 	execute_command "./minishell" "$line" >& ./tester/output/error
 	execute_command "bash" "$line" >& ./tester/output/error
 	
-	##MacOs
-	# sed -i '' '/0;36m/d' ./tester/output/minishell_output
-	# sed -i '' '/^$/d' ./tester/output/minishell_output
-	# sed -i '' '/^$/d' ./tester/output/bash_output
-	
-	##Linux
-	sed -i '/0;36m/d' ./tester/output/minishell_output
-	sed -i '/^$/d' ./tester/output/minishell_output
-	sed -i '/^$/d' ./tester/output/bash_output
+	##check if os is MacOs if not assume Linux / Gnu
+	os=$(uname -s)
+	if [ "$os" = "Darwin" ]; then
+		sed -i '' '/0;36m/d' ./tester/output/minishell_output
+		sed -i '' '/^$/d' ./tester/output/minishell_output
+		sed -i '' '/^$/d' ./tester/output/bash_output
+	else
+		sed -i '/0;36m/d' ./tester/output/minishell_output
+		sed -i '/^$/d' ./tester/output/minishell_output
+		sed -i '/^$/d' ./tester/output/bash_output
+	fi
 	
 	compare_output
-	rm ./tester/output/bash_output
-	rm ./tester/output/minishell_output
 	done < $file_name
 }
 
@@ -164,5 +163,5 @@ if [ "$clean" == true ]; then
 	rm -rf ./tester/output
 	rm -rf ./tester/trace
 fi
-###turn on to remove output folder after each test run
+### optional turn on to remove output folder after each test run
 # rm -rf ./tester/output
