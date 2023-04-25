@@ -122,3 +122,1053 @@ ls | ls
 ls
 ls | ls
 ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+ls | ls
+ls
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+ls | ls
+ls
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+ls | ls
+ls
+$SHVL
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+..
+<idonotexist | echo moretext >./tester/output/TMP2
+<./tester/output/TMP2 | cat
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+echo con_pipe
+echo wildcard
