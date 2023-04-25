@@ -157,5 +157,5 @@ if [ "$clean" == true ]; then
 	rm -rf ./tester/output
 	rm -rf ./tester/trace
 fi
-###turn on to remove output folder after each testrun
+###turn on to remove output folder after each test run
 # rm -rf ./tester/output
