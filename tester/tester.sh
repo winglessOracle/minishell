@@ -34,16 +34,6 @@ compare_output() {
 		printf "\tDelta:\n" 
 		cat ./tester/trace/traces
 	fi
-
-	# ## Compare exit codes
-	# printf "\t\e[34mComparing exit codes...\e[0m"
-	# if [ "$exitcode_minishell" -eq "$exitcode_bash" ]; then
-    # 	printf "\t\e[32mExit code OK!\e[0m\n"
-	# else
-    # 	printf "\t\e[31mExit code KO!\e[0m\n"
-    # 	printf "\tExpected exit_code: $exitcode_bash\n"
-    # 	printf "\tFound exit_code: $exitcode_minishell\n"
-	# fi
 }
 
 execute_command (){
