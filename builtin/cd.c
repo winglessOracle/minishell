@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 19:25:26 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 18:23:53 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,6 @@ int	execute_cd(char **cmd_vector, t_node *env_list)
 	i = cd_relative_cdpath(env_list, cmd_vector[1]);
 	if (i == 0)
 		update_env(env_list, cmd_vector[1]);
+	ft_free_array(cmd_vector);
 	return (i);
 }

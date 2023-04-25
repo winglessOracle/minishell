@@ -1,0 +1,8 @@
+ls
+pwd
+$LESS$VAR
+|
+ls |
+| ls
+
+

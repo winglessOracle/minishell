@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 22:18:01 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 17:18:54 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,15 @@
 # include <readline/history.h>
 # include <errno.h>
 
-# define TMP_FILE "log/here_doc_tmp"
+# ifndef BONUS
+#  define  BONUS 0
+# endif
+
+# if BONUS
+#  define  LEXER_SPLIT ";()&|<> \t\n"
+# else
+#	define  LEXER_SPLIT ";|<> \t\n"
+# endif
 
 extern int	g_exit_status;
 
@@ -48,11 +56,17 @@ typedef struct s_smpl_cmd
 
 typedef struct s_pipe
 {
-	int				type;
 	int				pipe_argc;
 	t_smpl_cmd		*pipe_argv;
 	struct s_pipe	*next;
 }	t_pipe;
+
+typedef struct s_list
+{
+	int				state;
+	int				type;
+	t_pipe			*list_argv;
+}	t_list;
 
 // utils
 int			return_perror(char *str, int err);
@@ -65,6 +79,7 @@ int			syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err);
 t_node		*lstpop(t_node **lst);
 t_node		*new_node(int type, char *content);
 int			remove_node(t_node **token, t_smpl_cmd *cmd);
+int			remove_node_parser(t_node **token, t_smpl_cmd *cmd, t_list *list);
 
 // delete_utils
 void		delete_content(void *content);
@@ -85,6 +100,13 @@ void		lstclear_cmdlst(t_smpl_cmd **lst, void (*del)(void *));
 void		lstdelone_cmd(t_smpl_cmd *lst, void (*del)(void *));
 int			remove_cmd_node(t_smpl_cmd **cmds);
 
+// pipelist_utils
+t_pipe		*lstlast_pipe(t_pipe *lst);
+void		lstadd_back_pipe(t_pipe **lst, t_pipe *new);
+void		lstclear_pipelst(t_pipe **lst, void (*del)(void *));
+void		lstdelone_pipe(t_pipe *lst, void (*del)(void *));
+int			remove_pipe_node(t_pipe **cmds);
+
 //lexer
 t_node		*lexer(char *str, char *delim);
 t_node		*split_to_list(char *str, char *delim);
@@ -95,9 +117,11 @@ void		merge_tokens(t_node *token, int type);
 t_node		*init_env(void);
 t_smpl_cmd	*init_smpl_cmd(t_node *env_list);
 t_pipe		*init_pipeline(void);
+t_list		*init_list(void);
 
 // parser
-t_pipe		*parse_pipeline(t_node **tokens, t_node *env_list);
+void		parse_and_execute(t_node *tokens, t_node *env_list);
+t_pipe		*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list);
 char		*parse_heredoc(t_node *token, t_node *here_redirect);
 int			check_token_content(t_node *token, int type);
 
@@ -128,5 +152,8 @@ void		print_pipeline(t_pipe *pipe);
 
 //signals
 void		exit_sig(t_node *env_list);
+
+// pattern match
+int			check_wildcars(t_node **cmd_args);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/21 11:14:01 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/25 15:55:24 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	add_word_to_cmd(t_node **token, t_smpl_cmd *cmd)
 
 int	remove_comment(t_node **token, t_smpl_cmd *cmd)
 {
-	while (*token && (*token)->type != NEW_LINE)
+	while (*token && ft_strcmp((*token)->content, "\n"))
 		remove_node(token, cmd);
 	return (0);
 }
@@ -44,11 +44,12 @@ int	parser_assign(t_node **token, t_smpl_cmd *cmd)
 	return (0);
 }
 
-int	set_cmd_end(t_node **token, t_smpl_cmd *cmd)
+int	set_cmd_end(t_node **token, t_smpl_cmd *cmd, t_list *list)
 {
+	(void)list;
 	if (*token && (*token)->type == PIPE)
 	{
-		if (!(*token)->next || (*token)->next->type == NEW_LINE)
+		if (!(*token)->next || (*token)->next->type == PIPE_END || (*token)->next->type == PIPE)
 			return (syntax_error(token, cmd, "no command after '|'\n", -1));
 		remove_node(token, cmd);
 	}

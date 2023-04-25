@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/21 22:18:12 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 20:06:07 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,18 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 	exit_error("unknown command", 127);
 }
 
+void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
+{
+	if (pid == 0)
+	{
+		while (pipe_argv->assign)
+		{
+			add_variable(pipe_argv->env_list, \
+						ft_strdup(pipe_argv->assign->content), 1); //moet dit niet twee zijn?
+			remove_node(&pipe_argv->assign, NULL);
+		}
+	}
+}
 
 int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 {
@@ -89,19 +101,6 @@ int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 		remove_node(&smpl_cmd->redirect, NULL);
 	}
 	return (count);
-}
-
-void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
-{
-	if (pid == 0)
-	{
-		while (pipe_argv->assign)
-		{
-			add_variable(pipe_argv->env_list, \
-						ft_strdup(pipe_argv->assign->content), 1);
-			remove_node(&pipe_argv->assign, NULL);
-		}
-	}
 }
 
 void	redirect(t_pipe *pipeline, pid_t pid, int keep, int *fd_pipe)
@@ -165,6 +164,8 @@ void		executor(t_pipe *pipeline)
 	int		keep;
 	int		i;
 
+	if (!pipeline)
+		return ;
 	i = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)

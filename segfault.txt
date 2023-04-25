@@ -1,18 +1,17 @@
 /* Segfaults or incorrect behaviour */
 ------------------------
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..  //met bonus
 
 / *test cases to compare with bash: */
 ---------------------------------------
 
 /* check Carien */
-check cd with CDPATH
+update shel level
+
 
 /* checks Carlo */
 empty redirect nodes should result in error 
 readline keeps first characters (solve if persistent history removed)
-double here_doc 
+redirect out single cmd not functioning.
 
-ctrl-C should display a new line with a new prompt (check that previous text does not get executed)
-ctrl-D in prompt with text should do nothing.
-try ctrls with blocking command (eg cat with no arguments) (ctrl-C prints ^C on a new line and exits child, 
-ctrl-D exits child and prints nothing, ctrl-/ does nothing)
+try ctrls with blocking command (eg cat with no arguments) 

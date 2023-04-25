@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/21 20:51:09 by cariencaljo   ########   odam.nl          #
+#    Updated: 2023/04/25 12:33:20 by cariencaljo   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,14 +17,18 @@ BLUE	:= \033[34;1m
 RESET	:= \033[0m
 
 #//= Variables = //#
-NAME		= minishell
-CC			= clang
-CFLAGS		= -Wall -Wextra -Werror
+NAME		 = minishell
+NAME_BONUS	 = minishell_bonus
+CC			 = clang
+CFLAGS		 = -Wall -Wextra -Werror
 
-# RL_INC		= /Users/$(USER)/.brew/opt/readline/include
-# RL_LIB		= /Users/$(USER)/.brew/opt/readline/lib
-RL_INC			= /opt/homebrew/opt/readline/include
-RL_LIB			= /opt/homebrew/opt/readline/lib
+ifeq ($(USER), cariencaljouw)
+	RL_INC			= /opt/homebrew/opt/readline/include
+	RL_LIB			= /opt/homebrew/opt/readline/lib
+else
+	RL_INC		= /Users/$(USER)/.brew/opt/readline/include
+	RL_LIB		= /Users/$(USER)/.brew/opt/readline/lib
+endif
 
 #//= Locations =//#
 INCLUDE		= ./include
@@ -34,18 +38,22 @@ HEADERS		= -I $(LIBFT) -I$(INCLUDE) -I$(RL_INC)
 OBJ_FILES	= $(addprefix obj/, minishell.o lst_utils/t_node.o parser.o utils/utils.o lst_utils/t_smpl_cmd.o \
 				lexer.o utils/env_utils.o init.o print.o lst_utils/node.o utils/parser_utils.o \
 				utils/redirect_utils.o utils/quote_utils.o expander.o signals.o termios.o \
-				lst_utils/delete.o executor.o utils/executor_utils.o)
+				lst_utils/delete.o executor.o utils/executor_utils.o utils/wildcards.o cond_pipe.o \
+				utils/cond_pipe_utils.o utils/check_syntax_utils.o lst_utils/t_pipe.o)
 
 OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o cd.o cd_utils.o pwd.o unset.o export.o env.o exit.o)
 
 #//= Modifiable =//#
 all: libft $(NAME)
+	
+$(NAME): libft $(OBJ_FILES) $(OBJ_BUILTIN)
+	@$(CC) $(OBJ_FILES) $(OBJ_BUILTIN) $(LIBS) $(HEADERS) -o $(NAME) $(CFLAGS) -lreadline
+
+bonus: CFLAGS = -Wall -Wextra -Werror -DBONUS=1
+bonus: fclean all	
 
 libft:
 	@$(MAKE) -C $(LIBFT)
-	
-$(NAME): $(OBJ_FILES) $(OBJ_BUILTIN)
-	@$(CC) $(OBJ_FILES) $(OBJ_BUILTIN) $(LIBS) $(HEADERS) -o $(NAME) $(CFLAGS) -lreadline
 
 $(OBJ_FILES): obj/%.o: src/%.c 
 	@mkdir -p $(dir $@)
@@ -57,24 +65,20 @@ $(OBJ_BUILTIN): obj_buitin/%.o: builtin/%.c
 	@echo "$(GREEN)$(BOLD)Compiling minishell builtins:$(RESET) $(notdir $<)"
 	@$(CC) -c $(CFLAGS) $(HEADERS) -o $@ $< 
 
-debug: CFLAGS = -Wall -Wextra
-debug: all
-
 clean:
 	@echo "$(BLUE)Cleaning minishell$(RESET)"
 	@rm -rf obj/
 	@rm -rf obj_buitin/
 	@$(MAKE) -C $(LIBFT) clean
-	
+
 fclean: clean
 	@rm -rf $(NAME)
+	@rm -rf $(NAME_BONUS)
 	@$(MAKE) -C $(LIBFT) fclean
 
 debug: CFLAGS = -Wall -Wextra
 debug: all
 
-re:
-	@$(MAKE) fclean
-	@$(MAKE) all
-	
-.PHONY:	all clean fclean re libft debug
+re: fclean all
+
+.PHONY:	all bonus clean fclean re libft debug

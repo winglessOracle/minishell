@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.42.fr>                  +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 09:28:59 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 09:32:13 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/23 17:42:07 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ int		ft_isdigit(int c);
 int		ft_isspace(int c);
 char	*ft_itoa(int n);
 int		ft_toupper(int c);
+int		ft_tolower(int c);
 
 #endif
