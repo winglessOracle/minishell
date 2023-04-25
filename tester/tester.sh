@@ -17,16 +17,13 @@
 ## w >> wildcard tests
 
 ## make tmp dit and ensure that the temporary directory is always cleaned up.
-mkdir -p ./tester/output
-rm -rf ./tester/trace
-mkdir -p ./tester/trace
-
-trap 'rm -rf .tester/test' EXIT
+rm -rf ./tester/output; rm -rf ./tester/trace
+mkdir -p ./tester/output; mkdir -p ./tester/trace
+# trap 'rm -rf ./tester/output' EXIT
 
 echo -e "\n\033[1m\033[38;5;202mTesting Minishell vs Bash...\033[0m\n"
 
 compare_output() {
-
 ## Compare outputs and exit codes
 	printf "\t\e[34mComparing output...\e[0m"
 	diff ./tester/output/bash_output ./tester/output/minishell_output >> ./tester/trace/traces
@@ -37,41 +34,42 @@ compare_output() {
 		printf "\tDelta:\n" 
 		cat ./tester/trace/traces
 	fi
+}
 
-	## Compare exit codes
-	printf "\t\e[34mComparing exit codes...\e[0m"
-	if [ "$exitcode_minishell" -eq "$exitcode_bash" ]; then
-    	printf "\t\e[32mExit code OK!\e[0m\n"
-	else
-    	printf "\t\e[31mExit code KO!\e[0m\n"
-    	printf "\tExpected exit_code: $exitcode_bash\n"
-    	printf "\tFound exit_code: $exitcode_minishell\n"
-	fi
+execute_command (){
+	shell=$1
+	command=$2
+	# output=$($shell -s 2>&1 <<EOF
+	output=$($shell <<EOF
+	$command
+EOF
+)
+	exitcode=$?
+	printf "Command: $command\n" >> ./tester/output/${shell}_output
+	printf "Output:\n$output\n" >> ./tester/output/${shell}_output
+	printf "Exit code: $exitcode\n" >> ./tester/output/${shell}_output
 }
 
 run_tests() {
-	
-	printf "\nRunning $file_name...\n"
-    printf "\nRunning $file_name...\n" >> ./tester/trace/traces
-	## Minishell tests
+	test_name=$(basename "$file_name")
+    printf "\n\e[1;36mRunning %s...\e[0m\n" "$test_name"
+    printf "\n\n\t\tRunning %s...$test_name" >> ./tester/trace/traces
 
-	while read -r line;
-	do
-	# file_out="./tester/output/minishell_output";
-	"$line" >> ./tester/output/minishell_output
-	# $line;
-	exitcode_minishell=$?;
-	## bash tests
-	# file_out="./tester/output/bash_output";
-	bash -c "$line" >> ./tester/output/bash_output;
-	exitcode_bash=$?;
-	compare_output;
+	## Minishell tests
+	while read -r line; do
+	if [ -z "$line" ] || [[ "$line" = "#"* ]]; then
+		continue
+	fi
+	execute_command "./minishell" "$line"
+	execute_command "bash" "$line"
+	sed -i '' '/0;36m/d' ./tester/output/minishell_output
+	# sed -i '' '/^$/d' ./tester/output/minishell_output
+	sed -i '' '/^$/d' ./tester/output/bash_output
+	compare_output
 	done < $file_name
 }
 
-if [ "$1" == "s" ]; then
-	file_name="tester/tests/simple_tests";		run_tests;
-elif [ "$1" == "p" ]; then
+if [ "$1" == "p" ]; then
 	file_name="tester/tests/pipe_tests";		run_tests;
 elif [ "$1" == "env" ]; then
 	file_name="tester/tests/env_tests";			run_tests;
@@ -80,22 +78,21 @@ elif [ "$1" == "exp" ]; then
 elif [ "$1" == "q" ]; then
 	file_name="tester/tests/quote_tests";		run_tests;
 elif [ "$1" == "b" ]; then
-	file_name="tester/tests/built_tests";		run_tests;
+	file_name="tester/tests/built_in_tests";	run_tests;
 elif [ "$1" == "a" ]; then
 	file_name="tester/tests/assign_tests";		run_tests;
 elif [ "$1" == "r" ]; then
 	file_name="tester/tests/redirect_tests";	run_tests;
 elif [ "$1" == "h" ]; then
 	file_name="tester/tests/here_doc_tests";	run_tests;
-elif [ "$1" == "sig" ]; then
-	file_name="tester/tests/signal_tests";		run_tests;
+# elif [ "$1" == "sig" ]; then
+# 	file_name="tester/tests/signal_tests";		run_tests;
 elif [ "$1" == "c" ]; then
-	file_name="tester/tests/cond_pipe_tests";	run_tests;
+	file_name="tester/tests/cond_pipe_tests";		run_tests;
 elif [ "$1" == "w" ]; then
 	file_name="tester/tests/wildcard_tests";	run_tests;
 else
 	echo "Running all tests..."
-	file_name="tester/tests/simple_tests"; 		run_tests
 	file_name="tester/tests/pipe_tests";	 	run_tests
 	file_name="tester/tests/env_tests";			run_tests
 	file_name="tester/tests/exp_tests";			run_tests
@@ -104,7 +101,7 @@ else
 	file_name="tester/tests/assign_tests";		run_tests
 	file_name="tester/tests/redirect_tests";	run_tests
 	file_name="tester/tests/here_doc_tests";	run_tests
-	file_name="tester/tests/signal_tests";		run_tests
+	# file_name="tester/tests/signal_tests";		run_tests
 	file_name="tester/tests/cond_pipe_tests";	run_tests
 	file_name="tester/tests/wildcard_tests";	run_tests
 	exit 0

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/25 11:38:19 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/25 11:38:55 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 15:29:35 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,8 @@ int		set_brace(t_node **token, t_smpl_cmd *cmd, t_list *list)
 	if ((*token)->type == BRACE_C)
 	{
 		if (list->state == 0)
-			syntax_error(token, cmd, "set_cond_pipe\n", 1);
-		list->state += 1;
-		remove_node(token, cmd);
-		return (0);
+			list->state += 1;
+		return (1);
 	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/24 20:04:54 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 14:06:19 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,5 +199,4 @@ void		executor(t_pipe *pipeline)
 		i++;
 	}
 	set_exit_st(pipeline->pipe_argc, pid);
-	free(pipeline);
 }

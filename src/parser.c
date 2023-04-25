@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/25 12:07:25 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 15:30:24 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list)
 
 	state = 0;
 	pipeline = init_pipeline();
+	check_pipe_type(tokens, pipeline);
 	while (*tokens && state != -1)
 	{
 		cmd = init_smpl_cmd(env_list);
@@ -88,7 +89,7 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list)
 			free (pipeline);
 			return (NULL);
 		}
-		if (*tokens && (*tokens)->type == PIPE_END)
+		if (*tokens && ((*tokens)->type == PIPE_END || (*tokens)->type == BRACE_C))
 			break;
 	}
 	return (pipeline);
@@ -104,22 +105,25 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 	{
 		pipeline = parse_pipeline(&tokens, env_list, list);
 		if (pipeline)
+		{
+			pipeline->state = list->state;
 			lstadd_back_pipe(&list->list_argv, pipeline);
-		check_list(&tokens, list);
-		list->type = 0;
+			list->argc ++;
+		}
+		if (tokens && tokens->type == BRACE_C)
+		{
+			list->state += 1;
+			remove_node(&tokens, NULL);
+		}
+		while (tokens && tokens->type == BLANK)
+			remove_node(&tokens, NULL);
 	}
-	if (list->state < 0)
+	if (list->state != 0)
 	{
 		syntax_error(&tokens, NULL, "unclosed braces\n", 1);
-		lstclear_pipelst(&list->list_argv, delete_pipe);
-		free(list);
+		// lstclear_pipelst(&list->list_argv, delete_pipe);
+		// free(list);
+		return ;
 	}
-	else
-	{
-		while (list->list_argv)
-		{
-			executor(list->list_argv);
-			list->list_argv = list->list_argv->next;
-		}
-	}
+	check_execute_pipe(list);
 }
