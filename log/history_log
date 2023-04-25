@@ -1863,3 +1863,6 @@ tester/tester.sh p
 tester/tester.sh p
 tester/tester.sh p
 make fclean
+make
+tester/tester.sh p
+exit

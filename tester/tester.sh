@@ -55,11 +55,11 @@ execute_bashcommand (){
 }
 
 execute_minicommand (){
-    output=$(my_eval "$1" 2>&1)
-    exitcode_minishell=$?
-    printf "Command: $1\n" >> ./tester/output/minishell_output
-    printf "Output: $output\n" >> ./tester/output/minishell_output
-    printf "Exit code: $exitcode_minishell\n" >> ./tester/output/minishell_output
+	output=$("$1" 2>&1)
+	exitcode_minishell=$?
+	printf "Command: $1\n" >> ./tester/output/minishell_output
+	printf "Output: $output\n" >> ./tester/output/minishell_output
+	printf "Exit code: $exitcode_minishell\n" >> ./tester/output/minishell_output
 }
 
 run_tests() {
@@ -69,12 +69,12 @@ run_tests() {
 
 	## Minishell tests
 	while read -r line; do
-		if [ -z "$line" ]; then
-			continue
-		fi
-		execute_minicommand "$line";
-		execute_bashcommand "$line"
-		compare_output
+	if [ -z "$line" ]; then
+		continue
+	fi
+	execute_minicommand "$line";
+	execute_bashcommand "$line"
+	compare_output
 	done < $file_name
 }
 

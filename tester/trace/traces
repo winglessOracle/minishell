@@ -15,4 +15,4 @@
 < src
 < tester
 ---
-> Output: tester/tester.sh: line 58: my_eval: command not found
+> Output: tester/tester.sh: line 58: ls | ls: command not found
