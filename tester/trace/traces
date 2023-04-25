@@ -1,18 +1,10 @@
 
 
-		Running ...pipe_tests2,14c2
+		Running ...pipe_tests1,2c1,4
+< Command: bash
 < Output: Makefile
-< README.md
-< builtin
-< en.subject.pdf
-< include
-< libft
-< log
-< minishell
-< obj
-< obj_buitin
-< segfault.txt
-< src
-< tester
 ---
-> Output: tester/tester.sh: line 58: ls | ls: command not found
+> Command: ./minishell
+> Output: [0;36m 💯 CC[?25h_[0mls | ls | grep Mak 
+> Makefile
+> [0;36m 💯 CC[?25h_[0m[0;36m 💯 CC[?25h_[0m exit

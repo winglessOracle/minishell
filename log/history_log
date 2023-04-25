@@ -1866,3 +1866,66 @@ make fclean
 make
 tester/tester.sh p
 exit
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+exit
+ls
+ls | ls
+ls | grep Make 
+$SHVL 
+echo quote 
+"" 
+echo "test | test ; moretest>!<" 
+$ 
+$LESS$VAR 
+.. 
+# exit > hoi 
+<idonotexist | echo moretext >./tester/output/TMP2 
+<./tester/output/TMP2 | cat 
+echo here_doc 
+echo con_pipe 
+echo wildcard 
+ls | grep Make 
+ls | grep Make 
+ls | grep Make 
+ls | grep Make 
+ls | grep Make |ls 
+ls | grep Make |ls 
+ls | grep Make |ls 
+ls | ls 
+ls | ls 
+ls | ls | grep Mak 
+ls | ls | grep Mak 
+ls | ls | grep Mak 
+ls | ls | grep Mak 

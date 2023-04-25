@@ -46,20 +46,18 @@ compare_output() {
 	# fi
 }
 
-execute_bashcommand (){
-	output=$(bash -c "$1" 2>&1)
-	exitcode_bash=$?
-	printf "Command: $1\n" >> ./tester/output/bash_output
-	printf "Output: $output\n" >> ./tester/output/bash_output
-	printf "Exit code: $exitcode_minishell\n" >> ./tester/output/bash_output
-}
-
-execute_minicommand (){
-	output=$("$1" 2>&1)
-	exitcode_minishell=$?
-	printf "Command: $1\n" >> ./tester/output/minishell_output
-	printf "Output: $output\n" >> ./tester/output/minishell_output
-	printf "Exit code: $exitcode_minishell\n" >> ./tester/output/minishell_output
+execute_command (){
+	shell=$1
+	command=$2
+	# output=$($shell -s 2>&1 <<EOF
+	output=$($shell -s <<EOF
+	$command 
+EOF
+)
+	exitcode=$?
+	echo "Command: $1" >> ./tester/output/${shell}_output
+	echo "Output: $output" >> ./tester/output/${shell}_output
+	echo "Exit code: $exitcode" >> ./tester/output/${shell}_output
 }
 
 run_tests() {
@@ -68,12 +66,13 @@ run_tests() {
     printf "\n\n\t\tRunning %s...$test_name" >> ./tester/trace/traces
 
 	## Minishell tests
+	IFS=
 	while read -r line; do
 	if [ -z "$line" ]; then
 		continue
 	fi
-	execute_minicommand "$line";
-	execute_bashcommand "$line"
+	execute_command "./minishell" "$line"
+	execute_command "bash" "$line"
 	compare_output
 	done < $file_name
 }

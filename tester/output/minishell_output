@@ -1,3 +1,5 @@
-Command: ls | ls
-Output: tester/tester.sh: line 58: ls | ls: command not found
-Exit code: 127
+Command: ./minishell
+Output: [0;36m 💯 CC[?25h_[0mls | ls | grep Mak 
+Makefile
+[0;36m 💯 CC[?25h_[0m[0;36m 💯 CC[?25h_[0m exit
+Exit code: 0

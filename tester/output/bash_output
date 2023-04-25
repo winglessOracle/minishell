@@ -1,15 +1,3 @@
-Command: ls | ls
+Command: bash
 Output: Makefile
-README.md
-builtin
-en.subject.pdf
-include
-libft
-log
-minishell
-obj
-obj_buitin
-segfault.txt
-src
-tester
-Exit code: 127
+Exit code: 0
