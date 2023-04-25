@@ -4,5 +4,4 @@ $LESS$VAR
 |
 ls |
 | ls
-
-
+ls | ls

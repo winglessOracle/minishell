@@ -10,8 +10,7 @@
 ##### PARAMETERS #######
 
 ### pass any or non of the following parameters seperated by a space
-## s >> single command tests
-## p >> multi command tests
+## s >> simple tests
 ## e >> env tests
 ## x >> expander tests
 ## q >> quote tests
@@ -19,7 +18,7 @@
 ## a >> assign tests
 ## r >> redirect tests
 ## h >> here_doc tests
-## s >> signal tests
+## z >> signal tests
 ## c >> conditional pipe tests
 ## w >> wildcard tests
 
@@ -43,16 +42,16 @@ echo -e "\n\033[1m\033[38;5;202mTesting Minishell vs Bash...\033[0m\n"
 
 trace=false
 clean=false
-if [[ "$*" == *"-v" ]]; then
+if [[ "$*" == *" -v" ]]; then
 	trace=true
 fi
-if [[ "$*" == *"-c" ]]; then
+if [[ "$*" == *" -c" ]]; then
 	clean=true
 fi
 
 ### Compare output files
 compare_output() {
-	printf "\t\e[34mComparing output...\e[0m\n"
+	#printf "\t\e[34mComparing output...\e[0m\n"
     printf "\n\n\t\tcommand=> $command\n" >> ./tester/trace/traces_$test_name
 	diff ./tester/output/bash_output ./tester/output/minishell_output >> ./tester/trace/traces_$test_name
 	if [ "$?" -eq "0" ]; then
@@ -61,7 +60,7 @@ compare_output() {
 		printf "\t\e[31mOutput KO! \e[1;36m$command\e[0m\n"
 		if [ "$trace" == true ]; then
 			printf "\tDelta:\n"
-			cat ./tester/trace/traces
+			cat ./tester/trace/traces_$test_name
 		fi
 		if [ "$segfault" = "1" ]; then
 			printf "\t\033[1m\033[31mSegfault!!!\e[0m\n"
@@ -101,14 +100,14 @@ run_tests() {
 	execute_command "bash" "$line" >& ./tester/output/error
 	
 	##MacOs
-	sed -i '' '/0;36m/d' ./tester/output/minishell_output
-	sed -i '' '/^$/d' ./tester/output/minishell_output
-	sed -i '' '/^$/d' ./tester/output/bash_output
+	# sed -i '' '/0;36m/d' ./tester/output/minishell_output
+	# sed -i '' '/^$/d' ./tester/output/minishell_output
+	# sed -i '' '/^$/d' ./tester/output/bash_output
 	
-	##linux
-	# sed -i '/0;36m/d' ./tester/output/minishell_output
-	# sed -i '/^$/d' ./tester/output/minishell_output
-	# sed -i '/^$/d' ./tester/output/bash_output
+	##Linux
+	sed -i '/0;36m/d' ./tester/output/minishell_output
+	sed -i '/^$/d' ./tester/output/minishell_output
+	sed -i '/^$/d' ./tester/output/bash_output
 	
 	compare_output
 	rm ./tester/output/bash_output
@@ -126,17 +125,16 @@ if [ $# -eq 0 ]; then
 	file_name="tester/tests/assign_tests";		run_tests
 	file_name="tester/tests/redirect_tests";	run_tests
 	file_name="tester/tests/here_doc_tests";	run_tests
-	# file_name="tester/tests/signal_tests";		run_tests
+	file_name="tester/tests/signal_tests";		run_tests
 	file_name="tester/tests/cond_pipe_tests";	run_tests
 	file_name="tester/tests/wildcard_tests";	run_tests
-	exit 0
 fi
 
 for arg in "$@"; do
 	if [ "$arg" == "-v" ] || [ "$arg" == "-c" ]; then
 		continue
-	elif [ "$arg" == "p" ]; then
-		file_name="tester/tests/pipe_tests";		run_tests;
+	elif [ "$arg" == "s" ]; then
+		file_name="tester/tests/simple_tests";		run_tests;
 	elif [ "$arg" == "e" ]; then
 		file_name="tester/tests/env_tests";			run_tests;
 	elif [ "$arg" == "x" ]; then
@@ -151,10 +149,10 @@ for arg in "$@"; do
 		file_name="tester/tests/redirect_tests";	run_tests;
 	elif [ "$arg" == "h" ]; then
 		file_name="tester/tests/here_doc_tests";	run_tests;
-	elif [ "$arg" == "s" ]; then
+	elif [ "$arg" == "z" ]; then
 		file_name="tester/tests/signal_tests";		run_tests;
 	elif [ "$arg" == "c" ]; then
-		file_name="tester/tests/signal_tests";		run_tests;
+		file_name="tester/tests/cond_pipe_tests";	run_tests;
 	elif [ "$arg" == "w" ]; then
 		file_name="tester/tests/wildcard_tests";	run_tests;
 	else
