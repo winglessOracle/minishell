@@ -40,14 +40,14 @@ execute_command (){
 	shell=$1
 	command=$2
 	# output=$($shell 2>&1 <<EOF
-	output=$($shell -s <<EOF
-	$command 
+	output=$($shell <<EOF
+	$command
 EOF
 )
 	exitcode=$?
-	printf "Command: $command\n" >> ./tester/output/${shell}_output
+	printf "Command:\n$command\n" >> ./tester/output/${shell}_output
 	printf "Output:\n$output\n" >> ./tester/output/${shell}_output
-	printf "Exit code: $exitcode\n" >> ./tester/output/${shell}_output
+	printf "Exit code:$exitcode\n" >> ./tester/output/${shell}_output
 }
 
 run_tests() {
@@ -63,7 +63,7 @@ run_tests() {
 	execute_command "./minishell" "$line"
 	execute_command "bash" "$line"
 	sed -i '' '/0;36m/d' ./tester/output/minishell_output
-	sed -i '' '/^$/d' ./tester/output/minishell_output
+	# sed -i '' '/^$/d' ./tester/output/minishell_output
 	sed -i '' '/^$/d' ./tester/output/bash_output
 	compare_output
 	done < $file_name
@@ -85,8 +85,8 @@ elif [ "$1" == "r" ]; then
 	file_name="tester/tests/redirect_tests";	run_tests;
 elif [ "$1" == "h" ]; then
 	file_name="tester/tests/here_doc_tests";	run_tests;
-# elif [ "$1" == "sig" ]; then
-# 	file_name="tester/tests/signal_tests";		run_tests;
+elif [ "$1" == "sig" ]; then
+	file_name="tester/tests/signal_tests";		run_tests;
 elif [ "$1" == "c" ]; then
 	file_name="tester/tests/signal_tests";		run_tests;
 elif [ "$1" == "w" ]; then
@@ -101,7 +101,7 @@ else
 	file_name="tester/tests/assign_tests";		run_tests
 	file_name="tester/tests/redirect_tests";	run_tests
 	file_name="tester/tests/here_doc_tests";	run_tests
-	# file_name="tester/tests/signal_tests";		run_tests
+	file_name="tester/tests/signal_tests";		run_tests
 	file_name="tester/tests/cond_pipe_tests";	run_tests
 	file_name="tester/tests/wildcard_tests";	run_tests
 	exit 0

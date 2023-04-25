@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/24 20:02:56 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/25 14:09:44 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,6 @@ void	set_sig_term(void)
 	//set_termios();
 	set_signals();
 }
-// void	handle_sigquit(int signal_number)
-// {
-// 	(void) signal_number;
-// 	rl_on_new_line();
-// 	rl_redisplay();
-// 	printf("exit\n");
-// 	exit(g_exit_status);
-// }
 
 void	exit_sig(t_node *env_list)
 {

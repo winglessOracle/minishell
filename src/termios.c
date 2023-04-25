@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/03 15:52:32 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/21 17:21:14 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/25 14:17:10 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 // VINTR: Interrupt character (usually ^C).
 // VKILL: Kill line character (usually ^U).
 // VSUSP: Suspend character (usually ^Z). (ignored)
-//sigauit ctrl_\
+// sigquit ctrl_\
 
 // void	set_termios(void)
 // {
