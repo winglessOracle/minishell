@@ -19,13 +19,18 @@
 # env lalala
 # env | grep OLDPWD
 # aaa111=hello aaa222=world; env |head -2
-# export aaa1=cat aaa2=dog; env | grep aaa
-# export | grep aaa
-# export aaaa; export aaaa=hamster; export | grep aaaa; 
-# export 1var;
-# export "" test1=dog
-# export test2=$HOME; echo $test2
-# export ls="ls -l"; $ls
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
 # exit 42 lalala
 # exit lalala 42
 # exit 256

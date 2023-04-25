@@ -39,7 +39,7 @@ compare_output() {
 execute_command (){
 	shell=$1
 	command=$2
-	# output=$($shell -s 2>&1 <<EOF
+	# output=$($shell 2>&1 <<EOF
 	output=$($shell -s <<EOF
 	$command 
 EOF
@@ -63,6 +63,7 @@ run_tests() {
 	execute_command "./minishell" "$line"
 	execute_command "bash" "$line"
 	sed -i '' '/0;36m/d' ./tester/output/minishell_output
+	sed -i '' '/^$/d' ./tester/output/minishell_output
 	sed -i '' '/^$/d' ./tester/output/bash_output
 	compare_output
 	done < $file_name

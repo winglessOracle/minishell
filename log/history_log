@@ -2222,3 +2222,96 @@ echo hello world
 echo hello world 
 ls | ls 
 ls 
+export aaa1=cat aaa2=dog; env | grep aaa 
+export | grep aaa 
+export aaaa; export aaaa=hamster; export | grep aaaa; 
+export 1var; 
+export "" test1=dog 
+export test2=$HOME; echo $test2 
+export ls="ls -l"; $ls 
+echo hello world 
+export aaa=eend
+echo $?
+env
+echo $?
+env | grep aa
+echo $?
+export aaa1=cat aaa2=dog 
+env | grep aaa 
+export | grep aaa 
+export aaaa; export aaaa=hamster 
+export | grep aaaa 
+export 1var; 
+export "" test1=dog 
+export test2=$HOME 
+echo $test2 
+export ls="ls -l"; $ls 
+echo hello world 
+export aaa1=cat aaa2=dog 
+env | grep aaa 
+export | grep aaa 
+export aaaa 
+export aaaa=hamster 
+export | grep aaaa 
+export 1var; 
+export "" test1=dog 
+export test2=$HOME 
+echo $test2 
+export ls="ls -l" 
+$ls 
+echo hello world 
+export aaa1=cat aaa2=dog 
+env | grep aaa 
+export | grep aaa 
+export aaaa 
+export aaaa=hamster 
+export | grep aaaa 
+export 1var; 
+export "" test1=dog 
+export test2=$HOME 
+echo $test2 
+export ls="ls -l" 
+$ls 
+echo hello world 
+export 1var
+export 1var
+exit
+export aaa1=cat aaa2=dog 
+env | grep aaa 
+export | grep aaa 
+export aaaa 
+export aaaa=hamster 
+export | grep aaaa 
+export 1var; 
+export "" test1=dog 
+export test2=$HOME 
+echo $test2 
+export ls="ls -l" 
+$ls 
+echo hello world 
+export aaa1=cat aaa2=dog 
+env | grep aaa 
+export | grep aaa 
+export aaaa 
+export aaaa=hamster 
+export | grep aaaa 
+export 1var; 
+export "" test1=dog 
+export test2=$HOME 
+echo $test2 
+export ls="ls -l" 
+$ls 
+echo hello world 
+export aaa1=cat aaa2=dog 
+env | grep aaa 
+export | grep aaa 
+export aaaa 
+export aaaa=hamster 
+export | grep aaaa 
+export 1var; 
+export "" test1=dog 
+export test2=$HOME 
+echo $test2 
+export ls="ls -l" 
+$ls 
+echo hello world 
