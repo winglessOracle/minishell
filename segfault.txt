@@ -1,11 +1,6 @@
 /* Segfaults or incorrect behaviour */
 ------------------------
----
-(echo 1 || echo 2) && (echo 3 && echo 4)
----
- $LESS$VAR
- ---
- exit code syntax error  --> gaat nu wel goed, maar niet in de tester?
+cd print pad niet als vanuit CDPATH
 
 / *test cases to compare with bash: */
 ---------------------------------------

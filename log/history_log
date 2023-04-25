@@ -3924,3 +3924,25 @@ echo "hello $PWD world"
 echo 'hello $PWD world'
 echo built-in
 echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+cd src
+pwd
+cd ..
+cd src ; CDPATH=/Usecd src 
+CDPATH=/Usecd src 
+CDPATH=/Usecs src 
+car=aap
+CDPATH=/Users/cariencaljouw
+cd Documents
+unset CDPATH
+cd codamcore/minishell/
+cd Documents/codamcore/minishell
+echo $?
+exit
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+exit
+pwd
+ $LESS$VAR
+echo  $LESS$VAR
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+exit

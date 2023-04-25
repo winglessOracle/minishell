@@ -1,5 +1,5 @@
 echo built-in
-# cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
 # mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
 
 

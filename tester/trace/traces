@@ -1,6 +1,20 @@
 
 
-		Running ...assign_tests2a3
+		Running ...built_in_tests3,4c3,4
+< built-in
+< Exit code: 0
+---
 > 
-3a5
+> Exit code: 127
+3,4c3,4
+< built-in
+< Exit code: 0
+---
 > 
+> Exit code: 127
+7,8c7,8
+< /Users/cariencaljouw/Documents
+< Exit code: 1
+---
+> 
+> Exit code: 127
