@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 11:03:39 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 19:15:36 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 18:25:02 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int	change_dir(char	*str, char *arg)
 	if (arg)
 		str = ft_strjoin_free_s1(str, arg);
 	ret = chdir(str);
+	if (!ret)
+		printf("%s\n", str);
 	free(str);
 	return (ret);
 }

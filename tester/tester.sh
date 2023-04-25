@@ -32,7 +32,7 @@ compare_output() {
 	else
     	printf "\t\e[31mOutput KO!\e[0m\n"
 		printf "\tDelta:\n" 
-		cat ./tester/trace/traces
+		# cat ./tester/trace/traces
 	fi
 }
 
