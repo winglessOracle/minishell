@@ -1,7 +1,7 @@
 echo *
-cat *
+# cat *
 echo *ke*
 cat *ke*
-cat *ke* tester
+# cat *ke* tester
 
 

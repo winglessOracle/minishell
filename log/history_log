@@ -3328,3 +3328,599 @@ exit
 (gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
 (echo 1 || echo 2) || (echo 3 || echo 4))
 ((echo 1 || echo 2) || (echo 3 || echo 4)
+ls | ls
+env ls
+env -a ls
+echo expand
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+echo *
+cat *
+echo *ke*
+cat *ke*
+cat *ke* tester
+ls | ls
+env ls
+env -a ls
+echo expand
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+echo *
+cat *
+echo *ke*
+cat *ke*
+cat *ke* tester
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+ls | ls
+env ls
+env -a ls
+echo expand
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+echo *
+cat *
+echo *ke*
+cat *ke*
+cat *ke* tester
+ls
+ls | ls
+exit
+ls | ls
+exit
+ls | ls
+exit
+ls | ls
+exit
+ls | ls
+env ls
+env -a ls
+echo expand
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+echo $var
+var=aap
+echo $var
+echo $koe
+koe=schaap
+echo &var$koe
+echo $var$koe
+echo $var$aap$koe
+echo test
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ;
+exit
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe
+ echo $var$aap$koe
+var=aap
+koe=schaap
+echo test$var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+exit
+var=aap
+koe=schaap
+echo $var$aap$koe
+exit
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+koe=schaap
+echo $var$aap$koe
+var=aap
+exit
+var=aap
+koe=schaap
+echo $var$aap$koe
+exit
+var=aap
+koe=schaap
+echo $var$aap$koe
+exit
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+echo test$var$aap$koe
+exit
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+exit
+var=aap
+koe= schaap
+koe=schaap
+echo test$var$aap$koe
+exit
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+exut
+exit
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 && echo 2) || (echo 3 || echo 4)
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+exit
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+exit
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+((echo 1 || echo 2) || (echo 3 || echo 4)
+exit
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+exit
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+exit
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+exit
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+ls | ls
+env ls
+env -a ls
+echo expand
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+echo built-in
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+echo built-in
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+echo *
+cat *
+echo *ke*
+cat *ke*
+cat *ke* tester
+echo *
+echo *ke*
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+env ls
+env -a ls
+echo expand
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo built-in
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe

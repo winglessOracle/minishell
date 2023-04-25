@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/24 14:54:28 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/04/25 16:32:07 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,14 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 	remove_node(token, cmd);
 	while (words && words->next)
 	{
-		if (!words->content)
-			remove_node(&words, cmd);
-		if (words->content[0] == '$')
+		if (words->content && words->content[0] == '$')
 			expand_var(&words, cmd);
-		else if (words->next->content[0] == '$')
+		else if (words->next->content && words->next->content[0] == '$')
 			expand_var(&words->next, cmd);
+		else if (!words->content)
+			remove_node(&words, cmd);
+		else if (!words->next->content)
+			remove_node(&words->next, cmd);
 		else if (words && words->next)
 			merge_tokens(words, WORD);
 	}

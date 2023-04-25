@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/25 13:47:10 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 17:10:45 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,9 @@ int		set_brace(t_node **token, t_smpl_cmd *cmd, t_list *list);
 int		check_and(t_node **token, t_smpl_cmd *cmd, t_list *list);
 int		check_or(t_node **token, t_smpl_cmd *cmd, t_list *list);
 void	check_pipe_type(t_node **tokens, t_pipe *pipeline);
-void	check_execute_pipe(t_list *list);
+void	check_execute_pipe(t_pipe *pipe);
+int		count_braces(t_node **tokens);
+int 	check_list(t_node **tokens, t_list *list);
 
 /* -------------------------------------------------------
    The grammar symbols

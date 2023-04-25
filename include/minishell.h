@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/25 14:21:53 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 17:18:54 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ typedef struct s_smpl_cmd
 
 typedef struct s_pipe
 {
-	int				type;
-	int				state;
 	int				pipe_argc;
 	t_smpl_cmd		*pipe_argv;
 	struct s_pipe	*next;
@@ -65,9 +63,8 @@ typedef struct s_pipe
 
 typedef struct s_list
 {
-	int				type; //remove
-	int				argc;
 	int				state;
+	int				type;
 	t_pipe			*list_argv;
 }	t_list;
 

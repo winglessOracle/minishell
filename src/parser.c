@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/25 15:30:24 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 17:33:51 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list)
 
 	state = 0;
 	pipeline = init_pipeline();
-	check_pipe_type(tokens, pipeline);
 	while (*tokens && state != -1)
 	{
 		cmd = init_smpl_cmd(env_list);
@@ -89,7 +88,13 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list)
 			free (pipeline);
 			return (NULL);
 		}
-		if (*tokens && ((*tokens)->type == PIPE_END || (*tokens)->type == BRACE_C))
+		if (state == -1)
+		{
+			lstclear_cmdlst(&pipeline->pipe_argv, delete_cmd);
+			free (pipeline);
+			return (NULL);
+		}
+		if (*tokens && (*tokens)->type == PIPE_END)
 			break;
 	}
 	return (pipeline);
@@ -100,30 +105,20 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 	t_list	*list;
 	t_pipe	*pipeline;
 	
-	list = init_list();
-	while (tokens)
-	{
-		pipeline = parse_pipeline(&tokens, env_list, list);
-		if (pipeline)
-		{
-			pipeline->state = list->state;
-			lstadd_back_pipe(&list->list_argv, pipeline);
-			list->argc ++;
-		}
-		if (tokens && tokens->type == BRACE_C)
-		{
-			list->state += 1;
-			remove_node(&tokens, NULL);
-		}
-		while (tokens && tokens->type == BLANK)
-			remove_node(&tokens, NULL);
-	}
-	if (list->state != 0)
+	if (tokens && count_braces(&tokens))
 	{
 		syntax_error(&tokens, NULL, "unclosed braces\n", 1);
 		// lstclear_pipelst(&list->list_argv, delete_pipe);
 		// free(list);
 		return ;
 	}
-	check_execute_pipe(list);
+	list = init_list();
+	while (tokens)
+	{
+		pipeline = parse_pipeline(&tokens, env_list, list);
+		if (pipeline)
+			executor(pipeline);
+		if (tokens)
+			check_list(&tokens, list);
+	}
 }
