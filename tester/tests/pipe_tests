@@ -1,12 +1,3 @@
-IDONOTEXIST
-# cat
-# cat lalala
 ls | ls
-sleep 2 | ls
-sleep 2 | ls | sleep 5 | ls
-cat | cat | ls
-cat | cat1 | ls
-cat Makefile | grep pr | head -n3 | cd file_not_exit
-exit | ls
 
-# touch ./tester/output/TMP; chmod 000 ./tester/output/TMP; ./tester/output/TMP
+

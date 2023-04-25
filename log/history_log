@@ -1757,3 +1757,109 @@ tester/tester.sh s
 tester/tester.sh p
 tester/tester.sh p
 exit
+tester/tester.sh s
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+make
+make re
+tester/tester.sh p
+tester/tester.sh b
+tester/tester.sh a
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+make
+make
+make
+make
+tester/tester.sh b
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+exit
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh b
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+ls | ls
+ls | ls
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh
+tester/tester.sh p
+"ls | ls"
+tester/tester.sh p
+'ls | ls'
+'ls | ls'
+tester/tester.sh p
+tester/tester.sh p
+exit
+./minishell ls | ls
+exit
+./minishell -c ls | ls
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+tester/tester.sh p
+make fclean

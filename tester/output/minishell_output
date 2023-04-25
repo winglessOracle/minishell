@@ -1,0 +1,3 @@
+Command: ls | ls
+Output: tester/tester.sh: line 58: my_eval: command not found
+Exit code: 127

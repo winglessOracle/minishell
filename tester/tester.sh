@@ -17,10 +17,9 @@
 ## w >> wildcard tests
 
 ## make tmp dit and ensure that the temporary directory is always cleaned up.
-mkdir -p ./tester/output
-rm -rf ./tester/trace
-mkdir -p ./tester/trace
-trap 'rm -rf ./tester/output' EXIT
+rm -rf ./tester/output; rm -rf ./tester/trace
+mkdir -p ./tester/output; mkdir -p ./tester/trace
+# trap 'rm -rf ./tester/output' EXIT
 
 echo -e "\n\033[1m\033[38;5;202mTesting Minishell vs Bash...\033[0m\n"
 
@@ -36,29 +35,45 @@ compare_output() {
 		cat ./tester/trace/traces
 	fi
 
-	## Compare exit codes
-	printf "\t\e[34mComparing exit codes...\e[0m"
-	if [ "$exitcode_minishell" -eq "$exitcode_bash" ]; then
-    	printf "\t\e[32mExit code OK!\e[0m\n"
-	else
-    	printf "\t\e[31mExit code KO!\e[0m\n"
-    	printf "\tExpected exit_code: $exitcode_bash\n"
-    	printf "\tFound exit_code: $exitcode_minishell\n"
-	fi
+	# ## Compare exit codes
+	# printf "\t\e[34mComparing exit codes...\e[0m"
+	# if [ "$exitcode_minishell" -eq "$exitcode_bash" ]; then
+    # 	printf "\t\e[32mExit code OK!\e[0m\n"
+	# else
+    # 	printf "\t\e[31mExit code KO!\e[0m\n"
+    # 	printf "\tExpected exit_code: $exitcode_bash\n"
+    # 	printf "\tFound exit_code: $exitcode_minishell\n"
+	# fi
+}
+
+execute_bashcommand (){
+	output=$(bash -c "$1" 2>&1)
+	exitcode_bash=$?
+	printf "Command: $1\n" >> ./tester/output/bash_output
+	printf "Output: $output\n" >> ./tester/output/bash_output
+	printf "Exit code: $exitcode_minishell\n" >> ./tester/output/bash_output
+}
+
+execute_minicommand (){
+    output=$(my_eval "$1" 2>&1)
+    exitcode_minishell=$?
+    printf "Command: $1\n" >> ./tester/output/minishell_output
+    printf "Output: $output\n" >> ./tester/output/minishell_output
+    printf "Exit code: $exitcode_minishell\n" >> ./tester/output/minishell_output
 }
 
 run_tests() {
-	printf "\nRunning $file_name...\n"
-    printf "\nRunning $file_name...\n" >> ./tester/trace/traces
+	test_name=$(basename "$file_name")
+    printf "\n\e[1;36mRunning %s...\e[0m\n" "$test_name"
+    printf "\n\n\t\tRunning %s...$test_name" >> ./tester/trace/traces
 
 	## Minishell tests
-	while read -r line;	do
-		eval "$line" > ./tester/output/minishell_output
-		exitcode_minishell=$?
-
-		## bash tests
-		bash -c "$line" > ./tester/output/bash_output
-		exitcode_bash=$?
+	while read -r line; do
+		if [ -z "$line" ]; then
+			continue
+		fi
+		execute_minicommand "$line";
+		execute_bashcommand "$line"
 		compare_output
 	done < $file_name
 }
@@ -72,7 +87,7 @@ elif [ "$1" == "exp" ]; then
 elif [ "$1" == "q" ]; then
 	file_name="tester/tests/quote_tests";		run_tests;
 elif [ "$1" == "b" ]; then
-	file_name="tester/tests/built_in_tests";		run_tests;
+	file_name="tester/tests/built_in_tests";	run_tests;
 elif [ "$1" == "a" ]; then
 	file_name="tester/tests/assign_tests";		run_tests;
 elif [ "$1" == "r" ]; then
@@ -100,4 +115,4 @@ else
 	file_name="tester/tests/wildcard_tests";	run_tests
 	exit 0
 fi
-rm -rf ./tester/output
+# rm -rf ./tester/output

@@ -1,0 +1,18 @@
+
+
+		Running ...pipe_tests2,14c2
+< Output: Makefile
+< README.md
+< builtin
+< en.subject.pdf
+< include
+< libft
+< log
+< minishell
+< obj
+< obj_buitin
+< segfault.txt
+< src
+< tester
+---
+> Output: tester/tester.sh: line 58: my_eval: command not found
