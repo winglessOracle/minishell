@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/25 17:33:51 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 19:07:56 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,14 +88,8 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list)
 			free (pipeline);
 			return (NULL);
 		}
-		if (state == -1)
-		{
-			lstclear_cmdlst(&pipeline->pipe_argv, delete_cmd);
-			free (pipeline);
-			return (NULL);
-		}
 		if (*tokens && (*tokens)->type == PIPE_END)
-			break;
+			break ;
 	}
 	return (pipeline);
 }
@@ -104,12 +98,10 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 {
 	t_list	*list;
 	t_pipe	*pipeline;
-	
+
 	if (tokens && count_braces(&tokens))
 	{
 		syntax_error(&tokens, NULL, "unclosed braces\n", 1);
-		// lstclear_pipelst(&list->list_argv, delete_pipe);
-		// free(list);
 		return ;
 	}
 	list = init_list();
@@ -118,7 +110,9 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 		pipeline = parse_pipeline(&tokens, env_list, list);
 		if (pipeline)
 			executor(pipeline);
+		delete_pipe(pipeline);
 		if (tokens)
 			check_list(&tokens, list);
 	}
+	free(list);
 }

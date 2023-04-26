@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/25 22:26:45 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 18:29:13 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	leaks(void)
 	system("leaks minishell -q");
 }
 
-int g_exit_status;
+int	g_exit_status;
 
 int	main(void)
 {

@@ -1,6 +1,7 @@
 /* Segfaults or incorrect behaviour */
 ------------------------
-cd does not always print error
+cd has leaks
+echo ~ does not work
 
 / *test cases to compare with bash: */
 ---------------------------------------
