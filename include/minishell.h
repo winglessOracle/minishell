@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/25 17:18:54 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 21:45:28 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 # if BONUS
 #  define  LEXER_SPLIT ";()&|<> \t\n"
 # else
-#	define  LEXER_SPLIT ";|<> \t\n"
+#  define  LEXER_SPLIT ";|<> \t\n"
 # endif
 
 extern int	g_exit_status;
@@ -70,7 +70,7 @@ typedef struct s_list
 
 // utils
 int			return_perror(char *str, int err);
-int	 		return_error(const char *str, int err);
+int			return_error(const char *str, int err);
 void		exit_error(char	*str, int num);
 char		*get_input(t_node *env_list, char *var, int history);
 int			syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err);

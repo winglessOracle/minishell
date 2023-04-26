@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/25 11:11:44 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 11:58:25 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	return_perror(char *str, int err)
 {
-	perror(str);
+	if (err)
+		perror(str);
 	return (err);
 }
 

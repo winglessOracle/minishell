@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/25 14:52:51 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/04/26 09:53:46 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,21 @@ t_node	*search_var(t_node *env_list, char *name)
 	}
 	return (NULL);
 }
+void	replace_var(t_node *temp, char *var, char *name, int type)
+{
+	free(temp->content);
+	temp->content = ft_strdup(var);
+	if (temp->content[ft_strlen(name)] == '\0')
+		temp->type = 1;
+	else
+		temp->type = type;
+}
 
 void	add_variable(t_node *env_list, char *var, int type)
 {
 	int		i;
 	char	*name;
+	char	*content;
 	t_node	*temp;
 
 	i = 0;
@@ -71,16 +81,15 @@ void	add_variable(t_node *env_list, char *var, int type)
 		exit_error("add_variable\n", 1);
 	temp = search_var(env_list, name);
 	if (temp)
-	{
-		free(temp->content);
-		temp->content = ft_strdup(var);
-		if (temp->content[ft_strlen(name)] == '\0')
-			temp->type = 1;
-		else
-			temp->type = type;
-	}
+		replace_var(temp, var, name, type);
 	else
 		lstadd_back(&env_list, new_node(type, ft_strdup(var)));
+	if (!ft_strcmp(name, "HOME"))
+	{
+		content = ft_substr(var, i + 1, ft_strlen(var) - i - 1);
+		add_variable(env_list, ft_strjoin("~=", content), 1);
+		free(content);
+	}
 	free(name);
 	free(var);
 }

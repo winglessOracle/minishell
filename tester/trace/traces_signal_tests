@@ -1,0 +1,54 @@
+
+
+		command=> kill -SUSP
+298c298
+< Exit code: 1
+---
+> Exit code: 2
+
+
+		command=> kill -SIGQUIT
+298c298
+< Exit code: 1
+---
+> Exit code: 2
+
+
+		command=> kill -SIGKILL
+298c298
+< Exit code: 1
+---
+> Exit code: 2
+
+
+		command=> kill _SIGTERM
+298c298
+< Exit code: 1
+---
+> Exit code: 2
+307c307
+< Exit code: 1
+---
+> Exit code: 2
+
+
+		command=> kill -INT
+298c298
+< Exit code: 1
+---
+> Exit code: 2
+307c307
+< Exit code: 1
+---
+> Exit code: 2
+
+
+		command=> kill -INT
+298c298
+< Exit code: 1
+---
+> Exit code: 2
+307c307
+< Exit code: 1
+---
+> Exit code: 2
