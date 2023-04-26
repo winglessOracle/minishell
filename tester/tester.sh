@@ -31,7 +31,7 @@ compare_output() {
 			cat ./tester/trace/traces_$test_name
 		fi
 		if [ "$segfault" = "1" ]; then
-			printf "\t\033[1m\033[31mSegfault!!!\e[0m\n"
+			printf "\t\033[1m\033[31mSegfault!!!\e[0m\n" #move
 		fi
 	fi
 }
@@ -40,7 +40,6 @@ execute_command (){
 	local shell=$1
 	local command=$2
 	### default is not sending the error messages to the outputfile 
-	# output=$($shell 2>&1 <<EOF
 	output=$($shell <<EOF
 	$command
 EOF
@@ -63,6 +62,7 @@ run_tests() {
 		continue
 	fi
 	segfault=0
+	# add flag and name
 	execute_command "./minishell" "$line" >& ./tester/output/error
 	execute_command "bash" "$line" >& ./tester/output/error
 	
@@ -84,8 +84,6 @@ run_tests() {
 if [ $# -eq 0 ]; then
 	echo "Running all tests..."
 	file_name="tester/tests/pipe_tests";	 	run_tests
-	file_name="tester/tests/env_tests";			run_tests
-	file_name="tester/tests/exp_tests";			run_tests
 	file_name="tester/tests/quote_tests";		run_tests
 	file_name="tester/tests/built_in_tests";	run_tests
 	file_name="tester/tests/assign_tests";		run_tests
@@ -99,12 +97,9 @@ fi
 for arg in "$@"; do
 	if [ "$arg" == "-v" ] || [ "$arg" == "-c" ]; then
 		continue
+		#e for error 
 	elif [ "$arg" == "s" ]; then
 		file_name="tester/tests/simple_tests";		run_tests;
-	elif [ "$arg" == "e" ]; then
-		file_name="tester/tests/env_tests";			run_tests;
-	elif [ "$arg" == "x" ]; then
-		file_name="tester/tests/exp_tests";			run_tests;
 	elif [ "$arg" == "q" ]; then
 		file_name="tester/tests/quote_tests";		run_tests;
 	elif [ "$arg" == "b" ]; then

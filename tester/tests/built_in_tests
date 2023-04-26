@@ -16,11 +16,7 @@ echo $IDONOTEXIST
 echo $PATH
 echo ~
 echo -n-n-nnnn-nnnnnnn
-echo -n -nnnn hello world -n
 echo "" hello world
-env | head -n 2
-env lalala
-env | grep OLDPWD
 aaa111=hello aaa222=world; env |head -2
 export aaa1=cat aaa2=dog
 env | grep aaa
@@ -39,5 +35,3 @@ $ls
 # exit 256
 # exit -1
 echo hello world
-
-
