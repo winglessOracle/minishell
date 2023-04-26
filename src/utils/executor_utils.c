@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/26 16:14:54 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 18:02:13 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void	check_built(t_smpl_cmd *cmd)
 			if (!cmd_args)
 				exit_error("building commands", 1);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
+			ft_free_array(cmd_args);
 			exit(g_exit_status);
 		}
 		i++;
@@ -165,6 +166,7 @@ int	check_builtins_curr_env(t_smpl_cmd *cmd)
 			if (!cmd_args)
 				exit_error("building commands", 1);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
+			ft_free_array(cmd_args);
 			return (1);
 		}
 		i++;

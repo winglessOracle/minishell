@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 15:21:32 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 17:55:51 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,10 @@ int	go_to_var(t_node *env_list, char *arg, char *var)
 	{
 		if (!ft_strcmp(var, "OLDPWD"))
 			printf("%s\n", value);
+		free(value);
 		return (0);
 	}
+	free(value);
 	return (1);
 }
 
@@ -98,6 +100,7 @@ int	relative_curr_dir(char *cmd_arg, t_node *env_list)
 			exit_error("cd: strjoin", 1);
 	}
 	ret = chdir(new_dir);
+	free(new_dir);
 	if (ret == -1)
 		ret = 1;
 	if (!(ret == 1 && cmd_arg[0] != '.'))
