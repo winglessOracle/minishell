@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/26 15:28:55 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 15:38:31 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ char	**build_cmd_args(t_node **argv, int argc)
 	int		i;
 
 	i = 0;
-	temp = *argv;
 	if (!argv || !argc)
 		return (NULL);
 	if (BONUS)
 		argc = check_wildcars(argv);
+	temp = *argv;
 	cmd_args = malloc(sizeof(char *) * (argc + 1));
 	while (i < argc)
 	{
@@ -133,11 +133,11 @@ void	check_built(t_smpl_cmd *cmd)
 		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0)
 		{
 			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
-			lstclear_cmdlst(&cmd, delete_cmd);
 			if (!cmd_args)
 				exit_error("building commands", 1);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
 			lstclear(&cmd->env_list, delete_content);
+			lstclear_cmdlst(&cmd, delete_cmd);
 			ft_free_array(cmd_args);
 			exit(g_exit_status);
 		}
