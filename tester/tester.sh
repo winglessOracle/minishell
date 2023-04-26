@@ -36,14 +36,11 @@ compare_output() {
 execute_command (){
 	shell=$1
 	command=$2
-	# if [ "$signal" == true ]; then 
-	# 	output=
-	# else
 	output=$($shell <<EOF
     $command
 EOF
 	)
-	# fi
+
 	exitcode=$?
 	printf "Command: $command\n" >> ./tester/output/${shell}_output
 	printf "Output:\n$output\n" >> ./tester/output/${shell}_output
@@ -84,8 +81,8 @@ run_tests() {
 			sed -i '/^$/d' ./tester/output/bash_output
 		fi
 		compare_output
-		# rm -rf ./tester/output/bash_output
-		# rm -rf ./tester/output/minishell_output
+		rm -rf ./tester/output/bash_output
+		rm -rf ./tester/output/minishell_output
 	done < $file_name
 }
 

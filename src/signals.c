@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/25 20:06:39 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 21:13:35 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	exit_sig(t_node *env_list)
 	printf("%s exit\n", str);
 	free(str);
 	lstclear(&env_list, delete_content);
+	// g_exit_status=2;
 	exit(g_exit_status);
 }
 

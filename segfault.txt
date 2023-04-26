@@ -16,3 +16,5 @@ readline keeps first characters (solve if persistent history removed)
 redirect out single cmd not functioning.
 
 try ctrls with blocking command (eg cat with no arguments) 
+
+sigint from sleep displays extra prompt
