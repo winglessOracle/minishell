@@ -1,9 +1,33 @@
 
 
 		command=> echo *
+298c298
+< Exit code: 1
+---
+> Exit code: 2
+307c307
+< Exit code: 1
+---
+> Exit code: 2
 
 
 		command=> echo *ke*
+298c298
+< Exit code: 1
+---
+> Exit code: 2
+307c307
+< Exit code: 1
+---
+> Exit code: 2
 
 
 		command=> cat *ke*
+298c298
+< Exit code: 1
+---
+> Exit code: 2
+307c307
+< Exit code: 1
+---
+> Exit code: 2

@@ -12296,3 +12296,2906 @@ echo here_doc
 echo *
 echo *ke*
 cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+env ls
+env -a ls
+echo expand
+$SHVL
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+env ls
+env -a ls
+echo expand
+$SHVL
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+env ls
+env -a ls
+echo expand
+$SHVL
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+env ls
+env -a ls
+echo expand
+$SHVL
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+env ls
+env -a ls
+echo expand
+$SHVL
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+env ls
+env -a ls
+echo expand
+$SHVL
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+env ls
+env -a ls
+echo expand
+$SHVL
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+env ls
+env -a ls
+echo expand
+$SHVL
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+env ls
+env -a ls
+echo expand
+$SHVL
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+env ls
+env -a ls
+echo expand
+$SHVL
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+env ls
+env -a ls
+echo expand
+$SHVL
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+ls | ls
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo -n -nnnn hello world -n
+echo "" hello world
+env | head -n 2
+env lalala
+env | grep OLDPWD
+aaa111=hello aaa222=world; env |head -2
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo "" hello world
+env lalala
+env | grep OLDPWD
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo "" hello world
+env lalala
+env | grep OLDPWD
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo "" hello world
+env lalala
+env | grep OLDPWD
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo "" hello world
+env lalala
+env | grep OLDPWD
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*
+ls | ls
+ls
+echo hello
+echo "hello world"
+echo "hello 'world"
+echo 'hello world'
+echo 'hello "world'
+echo "'hello world'"
+echo '"hello world"'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo "hello $PWD world"
+echo 'hello $PWD world'
+echo quote
+""
+echo "test | test ; moretest>!<"
+$
+$LESS$VAR
+echo built-in
+cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+cd ../../../../../; pwd
+cd ~; pwd
+cd; pwd
+unset HOME; cd;
+export HOME=/Users/user42; cd ~
+cd ..lalala; pwd
+cd .; echo $OLDPWD
+cd -; pwd
+cd -; pwd
+echo
+echo -n
+echo $IDONOTEXIST
+echo $PATH
+echo ~
+echo -n-n-nnnn-nnnnnnn
+echo "" hello world
+env lalala
+env | grep OLDPWD
+export aaa1=cat aaa2=dog
+env | grep aaa
+export | grep aaa
+export aaaa
+export aaaa=hamster
+export | grep aaaa
+export 1var;
+export "" test1=dog
+export test2=$HOME
+echo $test2
+export ls="ls -l"
+$ls
+echo hello world
+echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+<idonotexist | echo moretext >./tester/output/TMP2
+echo here_doc
+kill -SUSP
+kill -SIGQUIT
+kill -SIGKILL
+kill _SIGTERM
+kill -INT
+kill -INT
+(echo 1 || echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre || echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+(echo 1 || echo 2) || (echo 3 || echo 4))
+((echo 1 || echo 2) || (echo 3 || echo 4)
+((echo 1 ||  echo 2) && (echo 3 || echo 4))
+"(echo 1 || echo 2) || (echo 3 || echo 4)"
+"(echo 1 || echo 2)" || (echo 3 || echo 4)
+echo *
+echo *ke*
+cat *ke*

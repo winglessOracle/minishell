@@ -54,36 +54,13 @@
 		command=> echo -n-n-nnnn-nnnnnnn
 
 
-		command=> echo -n -nnnn hello world -n
-3d2
-< hello world -n
-
-
 		command=> echo "" hello world
-
-
-		command=> env | head -n 2
-3,4c3,4
-< SHELL=/bin/zsh
-< USER_ZDOTDIR=/Users/cariencaljouw
----
-> MANPATH=/opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/opt/homebrew/share/man:
-> TERM_PROGRAM=vscode
 
 
 		command=> env lalala
 
 
 		command=> env | grep OLDPWD
-
-
-		command=> aaa111=hello aaa222=world; env |head -2
-3,4c3,4
-< SHELL=/bin/zsh
-< USER_ZDOTDIR=/Users/cariencaljouw
----
-> MANPATH=/opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/opt/homebrew/share/man:
-> TERM_PROGRAM=vscode
 
 
 		command=> export aaa1=cat aaa2=dog
