@@ -7,12 +7,10 @@ This script is used to test the functionality of a minishell program by comparin
 
 The test files are located in the "tests" folder.
 
-To run specific types of tests, pass the corresponding letters as arguments (e.g., "s e x" to run simple, env, and expansion tests).
+To run specific types of tests, pass the corresponding letters as arguments (e.g., "s q x" to run simple, env, and expansion tests).
 
 The corresponding letters are:
 - s: simple_tests: tests simple commands
-- e: env_tests: tests environment variables
-- x: exp_tests: tests expansion
 - q: quote_tests: tests quotes and escape characters
 - b: built_in_tests: tests built-in commands
 - a: assign_tests: tests variable assignments
@@ -28,8 +26,9 @@ The corresponding letters are:
 1. Run the script in the folder where the minishell executable is located.
 2. To run specific types of tests, pass the corresponding letters as arguments (e.g., "s e x" to run simple, env, and expansion tests).
 3. If no arguments are provided, all tests are run by default.
-4. If the "-v" flag is passed, it displays traces in the terminal for each test.
-5. If the "-c" flag is passed, it cleans up all output files.
+4. "-v" flag, displays traces in the terminal for each test.
+5. "-c" flag, cleans up all output files.
+6. "-e" flag, shows errormessages on terminal.
 
 ## Output
 
@@ -46,5 +45,3 @@ The script automatically detects the operating system and adjusts the sed comman
 The script cleans up the output and trace folders before each execution of the code. The `-c` flag can be passed to clean up all output files.
 
 The script also includes a commented-out `trap` command that can be used to ensure that the temporary directory is always cleaned up if the script crashes.
-
-Similarly, there is a commented-out option to remove the output folder after each test run.
