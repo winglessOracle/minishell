@@ -36,5 +36,7 @@ $ls
 # exit 256
 # exit -1
 echo hello world
-
+env ls
+env -a ls
+$SHVL
 
