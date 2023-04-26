@@ -9,7 +9,6 @@ export HOME=/Users/user42; cd ~
 cd ..lalala; pwd
 cd .; echo $OLDPWD
 cd -; pwd
-cd -; pwd
 echo
 echo -n
 echo $IDONOTEXIST

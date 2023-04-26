@@ -1,7 +1,7 @@
 #!/bin/bash
 echo -e "\n\033[1m\033[38;5;202mTesting Minishell vs Bash...\033[0m\n"
 
-### make tmp dit and ensure that the temporary directory is always cleaned up.
+### make tmp dir and ensure that the temporary directory is always cleaned up.
 rm -rf ./tester/output; rm -rf ./tester/trace
 mkdir -p ./tester/output; mkdir -p ./tester/trace
 
@@ -14,6 +14,7 @@ error=true
 
 ### Compare output files
 compare_output() {
+	printf "  \e[34mTest %.2d  \e[0m" $counter
 	printf "  \e[34mTest %.2d  \e[0m" $counter
     printf "\n\n\t\tcommand=> $command\n" >> ./tester/trace/traces_$test_name
 	diff ./tester/output/bash_output ./tester/output/minishell_output >> ./tester/trace/traces_$test_name

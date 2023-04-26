@@ -1,22 +1,29 @@
-SIGNAL	cat - [ PRESS CTRL + C ]	Should exit cat prompt				130
-SIGNAL	cat - [ PRESS CTRL + \ ]	Should exit cat prompt				131
-SIGNAL	cat - [ PRESS CTRL + D ]	Should exit cat prompt				0
-SIGNAL	cat | cat | ls [ PRESS CTRL + C ]	Should exit cat prompt		0
-SIGNAL	cat | cat | ls [ PRESS CTRL + D ]	Should exit cat prompt		0
-SIGNAL	cat | cat | ls [ PRESS CTRL + \ ]	Should exit cat prompt		0
+SIGNAL	cat - [ PRESS CTRL + C ]	Should exit cat prompt					130
+SIGNAL	cat - [ PRESS CTRL + \ ]	Should exit cat prompt					131
+SIGNAL	cat - [ PRESS CTRL + D ]	Should exit cat prompt					0
+SIGNAL	cat | cat | ls [ PRESS CTRL + C ]	Should exit cat prompt			0
+SIGNAL	cat | cat | ls [ PRESS CTRL + D ]	Should exit cat prompt			0
+SIGNAL	cat | cat | ls [ PRESS CTRL + \ ]	Should exit cat prompt			0
 
 BUILTIN/EXIT	exit 22 blabla	"Displays exit in terminal 
 								bash: exit: too many arguments
-								Does not exit shell"					1
+								Does not exit shell"						1
 BUILTIN/EXIT	exit blabla 22	"Displays exit in terminal
 								bash: exit: blabla: numeric argument required
-								Does exit shell"						255
-BUILTIN/EXIT	exit 256		Exits shell								0
-BUILTIN/EXIT	exit -1			Exits shell								255
+								Does exit shell"							255
+BUILTIN/EXIT	exit 256		Exits shell									0
+BUILTIN/EXIT	exit -1			Exits shell									255
 
-PIPE	ls | exit				Execute ls but does not exit the shell	0
-env
-export
+PIPE	ls | exit				Execute ls but does not exit the shell		0
 echo -n -nnnn hello world -n
-env | head -n 2
 aaa111=hello aaa222=world; env |head -2
+env ls
+env -a ls
+env | head -n 2
+env lalala
+env | grep OLDPWD
+
+export
+
+echo expand
+$SHVL
