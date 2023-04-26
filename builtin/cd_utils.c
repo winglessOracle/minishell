@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 11:03:39 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 17:51:58 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 18:12:28 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,13 @@ char	*get_back(char *cmd_arg, char *pwd)
 
 	i = 0;
 	j = ft_strlen(pwd);
-	while (cmd_arg[i] == '.' && cmd_arg[i + 1] == '.' && i < (int)ft_strlen(cmd_arg))
+	while (cmd_arg[i] == '.' && cmd_arg[i + 1] == '.' \
+								&& i < (int)ft_strlen(cmd_arg))
 	{
 		j--;
 		while (pwd[j] != '/' && j > 0)
 			j--;
-		i += 3;	
+		i += 3;
 	}
 	if (cmd_arg[i - 1] == '/')
 		i++;

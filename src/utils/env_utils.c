@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 09:53:46 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 18:16:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ t_node	*search_var(t_node *env_list, char *name)
 	}
 	return (NULL);
 }
+
 void	replace_var(t_node *temp, char *var, char *name, int type)
 {
 	free(temp->content);

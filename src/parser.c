@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/26 14:58:54 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 18:15:28 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list)
 			return (NULL);
 		}
 		if (*tokens && (*tokens)->type == PIPE_END)
-			break;
+			break ;
 	}
 	return (pipeline);
 }
@@ -104,7 +104,7 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 {
 	t_list	*list;
 	t_pipe	*pipeline;
-	
+
 	if (tokens && count_braces(&tokens))
 	{
 		syntax_error(&tokens, NULL, "unclosed braces\n", 1);

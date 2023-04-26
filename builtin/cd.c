@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 17:55:51 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 18:13:27 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	go_to_var(t_node *env_list, char *arg, char *var)
 int	cd_absolute(int i, char *cmd_arg, t_node *env_list)
 {
 	int	ret;
-	
+
 	ret = 2;
 	if (!cmd_arg)
 		return (0);
@@ -67,7 +67,7 @@ int	cd_absolute(int i, char *cmd_arg, t_node *env_list)
 	if (cmd_arg[0] == '/')
 		ret = chdir(cmd_arg);
 	if (ret == -1)
-		return(return_perror("minishell: cd", 1));
+		return (return_perror("minishell: cd", 1));
 	return (ret);
 }
 
