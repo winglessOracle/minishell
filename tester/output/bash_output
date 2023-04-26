@@ -1,11 +1,15 @@
 Command: ls
 Output:
+&
 builtin
 en.subject.pdf
 include
 libft
 log
 Makefile
+minishell
+obj
+obj_buitin
 README.md
 segfault.txt
 src
@@ -29,12 +33,16 @@ Output:
 Exit code: 2
 Command: ls | ls
 Output:
+&
 builtin
 en.subject.pdf
 include
 libft
 log
 Makefile
+minishell
+obj
+obj_buitin
 README.md
 segfault.txt
 src

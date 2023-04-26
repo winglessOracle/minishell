@@ -11,15 +11,6 @@ mkdir -p ./tester/output; mkdir -p ./tester/trace
 trace=false
 clean=false
 error=true
-if [[ "$*" == *" -v" ]]; then
-	trace=true
-fi
-if [[ "$*" == *" -c" ]]; then
-	clean=true
-fi
-if [[ "$*" == *" -e" ]]; then
-	error=false
-fi
 
 ### Compare output files
 compare_output() {
@@ -44,17 +35,10 @@ compare_output() {
 execute_command (){
 	shell=$1
 	command=$2
-# 	if [ "$error" = true ]; then
-# 		output=$($shell <<EOF
-#         $command 1>> ./tester/output/${shell}_error
-# EOF
-# 	)
-	# else
-		output=$($shell <<EOF
-		$command
+	output=$($shell <<EOF
+        $command
 EOF
 	)
-	# fi
 	exitcode=$?
 	printf "Command: $command\n" >> ./tester/output/${shell}_output
 	printf "Output:\n$output\n" >> ./tester/output/${shell}_output
@@ -75,8 +59,13 @@ run_tests() {
 		fi
 		segfault=0
 		counter=$((counter+1))
-		execute_command "./minishell" "$line" >& ./tester/output/error
-		execute_command "bash" "$line" >& ./tester/output/error
+		if [ "$error" = true ]; then
+			execute_command "./minishell" "$line" >& ./tester/output/error
+			execute_command "bash" "$line" >& ./tester/output/error
+		else 
+			execute_command "./minishell" "$line"
+			execute_command "bash" "$line"
+		fi
 		
 		##check if os is MacOs if not assume Linux / Gnu
 		os=$(uname -s)
@@ -95,23 +84,34 @@ run_tests() {
 	done < $file_name
 }
 
-if [ $# -eq 0 ]; then
-	echo "Running all tests..."
-	file_name="tester/tests/pipe_tests";	 	run_tests
-	file_name="tester/tests/quote_tests";		run_tests
-	file_name="tester/tests/built_in_tests";	run_tests
-	file_name="tester/tests/assign_tests";		run_tests
-	file_name="tester/tests/redirect_tests";	run_tests
-	file_name="tester/tests/here_doc_tests";	run_tests
-	file_name="tester/tests/signal_tests";		run_tests
-	file_name="tester/tests/cond_pipe_tests";	run_tests
-	file_name="tester/tests/wildcard_tests";	run_tests
+for arg in "$@"; do
+	if [ "$arg" == "-v" ]; then
+		trace=true
+	elif [ "$arg" == "-c" ]; then
+		clean=true
+	elif [ "$arg" == "-e" ]; then
+		error=false
+	fi
+	done
+
+if [ $# -eq 0 ] || ( [ $# -ge 1 ] && [ $# -le 3 ] && \
+	[[ "$1" == "-v" || "$1" == "-c" || "$1" == "-e" || "$2" == "-v" || "$2" == "-c" \
+	|| "$2" == "-e" || "$3" == "-v" || "$3" == "-c" || "$3" == "-e" ]] ); then
+    echo "Running all tests..."
+    file_name="tester/tests/simple_tests";    run_tests
+    file_name="tester/tests/quote_tests";     run_tests
+    file_name="tester/tests/built_in_tests";  run_tests
+    file_name="tester/tests/assign_tests";    run_tests
+    file_name="tester/tests/redirect_tests";  run_tests
+    file_name="tester/tests/here_doc_tests";  run_tests
+    file_name="tester/tests/signal_tests";    run_tests
+    file_name="tester/tests/cond_pipe_tests"; run_tests
+    file_name="tester/tests/wildcard_tests";  run_tests
 fi
 
 for arg in "$@"; do
-	if [ "$arg" == "-v" ] || [ "$arg" == "-c" ] | [ "$arg" == "-e" ]; then
+	if [ "$arg" == "-v" ] || [ "$arg" == "-c" ] || [ "$arg" == "-e" ]; then
 		continue
-		#e for error 
 	elif [ "$arg" == "s" ]; then
 		file_name="tester/tests/simple_tests";		run_tests;
 	elif [ "$arg" == "q" ]; then
@@ -132,6 +132,7 @@ for arg in "$@"; do
 		file_name="tester/tests/wildcard_tests";	run_tests;
 	else
         echo "Invalid argument: $arg"
+		exit 1
 	fi
 	done
 
