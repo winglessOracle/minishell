@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 09:24:19 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 11:55:58 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,27 @@ int	go_to_var(t_node *env_list, char *arg, char *var)
 
 int	cd_absolute(int i, char *cmd_arg, t_node *env_list)
 {
+	int	ret;
+	
+	ret = 2;
 	if (!cmd_arg)
 		return (0);
 	if (i == 1)
-		return (go_to_var(env_list, cmd_arg, "HOME"));
-	if (cmd_arg[0] == '-')
-		return (go_to_var(env_list, cmd_arg, "OLDPWD"));
+		ret = go_to_var(env_list, cmd_arg, "HOME");
+	else if (cmd_arg[0] == '-')
+		ret = go_to_var(env_list, cmd_arg, "OLDPWD");
 	if (cmd_arg[0] == '/')
-		return (chdir(cmd_arg));
-	return (2);
+		ret = chdir(cmd_arg);
+	if (ret == -1)
+		return(return_perror("minishell: cd", 1));
+	return (ret);
 }
 
 int	relative_curr_dir(char *cmd_arg, t_node *env_list)
 {
 	char	*cur_dir;
 	char	*new_dir;
+	int		ret;
 
 	cur_dir = get_curr_dir(cmd_arg, env_list);
 	if (!cur_dir)
@@ -85,11 +91,18 @@ int	relative_curr_dir(char *cmd_arg, t_node *env_list)
 	{
 		if (cur_dir[ft_strlen(cur_dir) - 1] != '/')
 			cur_dir = ft_strjoin_free_s1(cur_dir, "/");
+		if (!cur_dir)
+			exit_error("cd: strjoin", 1);
 		new_dir = ft_strjoin_free_s1(cur_dir, cmd_arg);
+		if (!new_dir)
+			exit_error("cd: strjoin", 1);
 	}
-	if (!cur_dir)
-		exit_error("cd: strjoin", 1);
-	return (chdir(new_dir));
+	ret = chdir(new_dir);
+	if (ret == -1)
+		ret = 1;
+	if (!(ret == 1 && cmd_arg[0] != '.'))
+		return (return_perror("minishell: cd", ret));
+	return (2);
 }
 
 int	cd_relative_cdpath(t_node *env_list, char *cmd_arg)
@@ -133,14 +146,12 @@ int	execute_cd(char **cmd_vector, t_node *env_list)
 	i = cd_absolute(i, cmd_vector[i - 1], env_list);
 	if (i == 0)
 		update_env(env_list, cmd_vector[i - 1]);
-	if (i == -1)
-		return (return_perror("minishell: cd", 1));
 	if (i < 2)
 		return (i);
 	i = relative_curr_dir(cmd_vector[1], env_list);
 	if (i == 0)
 		update_env(env_list, cmd_vector[1]);
-	if (!(i == -1 && cmd_vector[1][0] != '.'))
+	if (i < 2)
 		return (i);
 	i = cd_relative_cdpath(env_list, cmd_vector[1]);
 	if (i == 0)

@@ -1,6 +1,6 @@
 /* Segfaults or incorrect behaviour */
 ------------------------
-mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..  //met bonus
+cd does not always print error
 
 / *test cases to compare with bash: */
 ---------------------------------------
