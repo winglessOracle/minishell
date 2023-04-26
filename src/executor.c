@@ -6,17 +6,18 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/26 14:41:29 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 15:23:18 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "executor.h"
 
-void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
+void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 {
 	char	**my_directories;
 	char	**cmd_args;
+	char	**env;
 	char	*path;
 	int		i;
 
@@ -25,10 +26,15 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 	cmd_args = build_cmd_args(&pipe_argv->cmd_argv, pipe_argv->cmd_argc);
 	if (!cmd_args)
 		exit_error("building commands", 1);
-	path = get_variable(pipe_argv->env_list, "PATH");
+	env = get_env(env_list);
+	// check for env = NULL?
+	path = get_variable(env_list, "PATH");
 	if (!path)
 		path = ft_strdup(cmd_args[0]);
 	my_directories = ft_split(path, ':');
+	// check on fail for split?
+	lstclear(&env_list, delete_content);
+	delete_cmd(pipe_argv);
 	ft_free(path);
 	while (my_directories[i])
 	{
@@ -162,7 +168,6 @@ void	read_heredocs(t_pipe *pipeline)
 
 void		executor(t_pipe *pipeline)
 {
-	char		**env;
 	pid_t		pid[pipeline->pipe_argc];
 	int			fd_pipe[2];
 	int			keep;
@@ -188,7 +193,6 @@ void		executor(t_pipe *pipeline)
 		}
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
-		env = get_env(cmd->env_list);
 		pid[i] = fork();
 		if (pid[i] == -1)
 			exit_error("fork fail", errno);
@@ -197,7 +201,7 @@ void		executor(t_pipe *pipeline)
 		if (pid[i] == 0)
 		{
 			if (cmd->cmd_argc > 0)
-				exec_cmd(cmd, env);
+				exec_cmd(cmd, cmd->env_list);
 			else
 				execute_exit(NULL, cmd->env_list);
 		}

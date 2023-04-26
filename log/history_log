@@ -24376,3 +24376,83 @@ exit
 ls | ls | ls
 ls | ls | ls ; ls
 exit
+ls
+exit
+ls
+exit
+ls
+ls
+ls
+ls
+ls
+exit
+ls | ls | ls
+exit
+ls | ls | ls ; ls | ls
+exit
+export aaaa=hamster
+exit
+echo $IDONOTEXIST
+echo $IDONOTEXIST
+exit
+ls | ls | ls ; ls | ls
+exit
+echo $IDONOTEXIST
+echo $IDONOTEXIST
+exit
+echo $IDONOTEXIST
+exit
+cd
+export var=aap
+exit
+ls | ls | ls ; ls | ls
+exit
+echo $IDONOTEXIST
+echo $IDONOTEXIST
+exit
+ls | ls | ls ; ls | ls
+ls | ls | ls ; ls | ls
+ls | ls | ls ; ls | ls
+exit
+echo $IDONOTEXIST
+echo $IDONOTEXIST
+exit
+ls | ls | ls ; ls | ls
+ls | ls | ls ; ls | ls
+exit
+echo $IDONOTEXIST
+echo $IDONOTEXIST
+exit
+echo $IDONOTEXIST
+echo $IDONOTEXIST
+exit
+echo aap
+b
+ls
+exit
+ls
+echo aap
+exit
+echo aap
+exit
+echo aap
+echo aap
+exit
+echo aap
+echo aap
+exit
+echo aap
+echo aap
+make
+echo aap
+echo aap
+echo aap
+exit
+echo aap
+echo aap
+exit
+echo aap
+exit
+var=aap
+echo $var
+exit

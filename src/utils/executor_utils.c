@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/26 14:22:29 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 15:28:55 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	set_exit_st(int argc, pid_t *pid)
 char	**get_env(t_node *env_list)
 {
 	t_node	*curr;
-	char	**str;
+	char	**arr;
 	int		i;
 
 	curr = env_list;
@@ -97,28 +97,28 @@ char	**get_env(t_node *env_list)
 			i++;
 		curr = curr->next;
 	}
-	str = malloc(sizeof(char *) * i);
+	arr = malloc(sizeof(char *) * (i + 1));
 	i = 0;
 	curr = env_list;
 	while (curr)
 	{
 		if (curr->type == 2)
-			str[i] = ft_strdup(curr->content);
+			arr[i] = ft_strdup(curr->content);
 		if (curr->type == 2)
 			i++;
 		curr = curr->next;
 	}
-	str[i] = NULL;
-	return (str);
+	arr[i] = NULL;
+	return (arr);
 }
 
 void	check_built(t_smpl_cmd *cmd)
 {
+	int		i;
 	t_built	*built[7];
 	char	**cmd_args;
 	char	*builtins[7] =	{"echo", "cd", "pwd", "export", \
 										"unset", "exit", "env"};
-	int		i;
 
 	built[0] = execute_echo;
 	built[1] = execute_cd;
@@ -133,13 +133,14 @@ void	check_built(t_smpl_cmd *cmd)
 		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0)
 		{
 			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
+			lstclear_cmdlst(&cmd, delete_cmd);
 			if (!cmd_args)
 				exit_error("building commands", 1);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
+			lstclear(&cmd->env_list, delete_content);
+			ft_free_array(cmd_args);
 			exit(g_exit_status);
 		}
-		else
-			g_exit_status = 0;
 		i++;
 	}
 }
