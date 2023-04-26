@@ -10,10 +10,6 @@
 
 
 		command=> cd ../../../../../; pwd
-3c3
-< /
----
-> /Users/cariencaljouw/Documents/codamcore/minishell
 
 
 		command=> cd ~; pwd

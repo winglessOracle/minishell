@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 11:03:39 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 08:43:29 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 09:36:27 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,15 +69,27 @@ char	*get_curr_dir(char *cmd_arg, t_node *env_list)
 	return (cur_dir);
 }
 
-char	*get_back(char *pwd)
+char	*get_back(char *cmd_arg, char *pwd)
 {
 	int		i;
+	int		j;
 	char	*back;
 
-	i = ft_strlen(pwd) - 2;
-	while (pwd[i] != '/' && i > 0)
-		i--;
-	back = ft_substr(pwd, 0, i);
+	i = 0;
+	j = ft_strlen(pwd);
+	while (cmd_arg[i] == '.' && cmd_arg[i + 1] == '.' && i < (int)ft_strlen(cmd_arg))
+	{
+		j--;
+		while (pwd[j] != '/' && j > 0)
+			j--;
+		i += 3;	
+	}
+	if (cmd_arg[i - 1] == '/')
+		i++;
+	if (j > 0)
+		back = ft_strjoin_free_s1(ft_substr(pwd, 0, j + 1), &cmd_arg[i - 1]);
+	else
+		back = ft_strjoin("/", &cmd_arg[i - 1]);
 	free(pwd);
 	return (back);
 }

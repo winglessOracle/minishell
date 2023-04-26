@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 08:40:33 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 09:24:19 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,11 @@ int	relative_curr_dir(char *cmd_arg, t_node *env_list)
 	cur_dir = get_curr_dir(cmd_arg, env_list);
 	if (!cur_dir)
 		return (1);
-	if (!ft_strcmp(cmd_arg, ".."))
-		new_dir = get_back(cur_dir);
 	else if (cmd_arg[0] == '.')
 	{
-		if (ft_strlen(cmd_arg) > 1)
+		if (cmd_arg[1] == '.')
+			new_dir = get_back(cmd_arg, cur_dir);
+		else if (ft_strlen(cmd_arg) > 1)
 			new_dir = ft_strjoin_free_s1(cur_dir, &cmd_arg[1]);
 		else
 			new_dir = cur_dir;
