@@ -44,17 +44,17 @@ compare_output() {
 execute_command (){
 	shell=$1
 	command=$2
-	if [ "$error" = true ]; then
-		output=$($shell <<EOF
-        $command 1>> ./tester/output/${shell}_error
-EOF
-	)
-	else
+# 	if [ "$error" = true ]; then
+# 		output=$($shell <<EOF
+#         $command 1>> ./tester/output/${shell}_error
+# EOF
+# 	)
+	# else
 		output=$($shell <<EOF
 		$command
 EOF
 	)
-	fi
+	# fi
 	exitcode=$?
 	printf "Command: $command\n" >> ./tester/output/${shell}_output
 	printf "Output:\n$output\n" >> ./tester/output/${shell}_output
@@ -75,8 +75,8 @@ run_tests() {
 		fi
 		segfault=0
 		counter=$((counter+1))
-		execute_command "./minishell" "$line"
-		execute_command "bash" "$line"
+		execute_command "./minishell" "$line" >& ./tester/output/error
+		execute_command "bash" "$line" >& ./tester/output/error
 		
 		##check if os is MacOs if not assume Linux / Gnu
 		os=$(uname -s)
