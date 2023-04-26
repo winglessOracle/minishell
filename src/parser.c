@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/25 17:33:51 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 14:43:11 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,9 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 		pipeline = parse_pipeline(&tokens, env_list, list);
 		if (pipeline)
 			executor(pipeline);
+		delete_pipe(pipeline);
 		if (tokens)
 			check_list(&tokens, list);
 	}
+	free(list);
 }

@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/26 08:49:46 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 14:22:29 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,27 @@ int	here_doc(t_pipe *pipeline, t_node *here_redirect)
 	return (here_pipe[0]);
 }
 
-char	**build_cmd_args(t_node *argv, int argc)
+char	**build_cmd_args(t_node **argv, int argc)
 {
+	t_node 	*temp;
 	char	**cmd_args;
 	int		i;
 
 	i = 0;
+	temp = *argv;
 	if (!argv || !argc)
 		return (NULL);
 	if (BONUS)
-		argc = check_wildcars(&argv);
+		argc = check_wildcars(argv);
 	cmd_args = malloc(sizeof(char *) * (argc + 1));
 	while (i < argc)
 	{
-		cmd_args[i] = ft_strdup(argv->content);
-		remove_node(&argv, NULL);
+		cmd_args[i] = ft_strdup((*argv)->content);
+		*argv = (*argv)->next;
 		i++;
 	}
 	cmd_args[i] = NULL;
+	*argv = temp;
 	return (cmd_args);
 }
 
@@ -129,7 +132,7 @@ void	check_built(t_smpl_cmd *cmd)
 	{
 		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0)
 		{
-			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);
+			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
 			if (!cmd_args)
 				exit_error("building commands", 1);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
@@ -160,7 +163,7 @@ int	check_builtins_curr_env(t_smpl_cmd *cmd)
 		{
 			if (!ft_strcmp(cmd->cmd_argv->content, "export") && cmd->cmd_argc == 1)
 				return (0);
-			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);
+			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
 			if (!cmd_args)
 				exit_error("building commands", 1);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));

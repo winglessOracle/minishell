@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/25 20:06:07 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 14:41:29 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 
 	i = 0;
 	check_built(pipe_argv);
-	cmd_args = build_cmd_args(pipe_argv->cmd_argv, pipe_argv->cmd_argc);
+	cmd_args = build_cmd_args(&pipe_argv->cmd_argv, pipe_argv->cmd_argc);
 	if (!cmd_args)
 		exit_error("building commands", 1);
 	path = get_variable(pipe_argv->env_list, "PATH");
@@ -45,52 +45,56 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, char **env)
 
 void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
 {
+	t_node *temp;
+
+	temp = pipe_argv->assign;
 	if (pid == 0)
 	{
-		while (pipe_argv->assign)
+		while (temp)
 		{
 			add_variable(pipe_argv->env_list, \
-						ft_strdup(pipe_argv->assign->content), 1); //moet dit niet twee zijn?
-			remove_node(&pipe_argv->assign, NULL);
+						ft_strdup(temp->content), 1); //moet dit niet 2 zijn?
+			temp = temp->next;
 		}
 	}
 }
 
-int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
+int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 {
-	int	count;
+	int		count;
+	t_node	*temp;
 
 	count = 0;
+	temp = smpl_cmd->redirect;
 	while (smpl_cmd->redirect)
 	{
-		if (smpl_cmd->redirect->type == OUTPUT)
+		if (temp->type == OUTPUT)
 		{
-			if (access(smpl_cmd->redirect->content, F_OK) == 0)
+			if (access(temp->content, F_OK) == 0)
 				return (return_error("not allowed to overwrite file\n", -1));
-			fd_pipe[1] = open(smpl_cmd->redirect->content, \
+			fd_pipe[1] = open(temp->content, \
 								O_CREAT | O_WRONLY | O_TRUNC, 0644);
 			if (fd_pipe[1] < 0)
 				return (return_perror("opening outfile", -1));
 			count = 1;
 		}
-		else if (smpl_cmd->redirect->type == INPUT)
+		else if (temp->type == INPUT)
 		{
 			close(*keep);
-			*keep = open(smpl_cmd->redirect->content, O_RDONLY);
+			*keep = open(temp->content, O_RDONLY);
 			if (*keep < 0)
 				return (return_perror("opening keep", -1));
 		}
-		else if (smpl_cmd->redirect->type == APPEND)
+		else if (temp->type == APPEND)
 		{
 			close(fd_pipe[1]);
-			fd_pipe[1] = open(pipeline->pipe_argv->redirect->content, \
+			fd_pipe[1] = open(temp->content, \
 						O_CREAT | O_WRONLY | O_APPEND, 0644);
 			if (fd_pipe[1] < 0)
 				return (return_perror("opening outfile", -1));
 			count = 1;
 		}
-		else if (smpl_cmd->redirect->type == HEREDOC || \
-							smpl_cmd->redirect->type == HEREDOCQ)
+		else if (temp->type == HEREDOC || temp->type == HEREDOCQ)
 		{
 			dup2(smpl_cmd->here_doc, *keep);
 			if (!smpl_cmd->here_doc)
@@ -98,25 +102,25 @@ int	set_fd(t_pipe *pipeline, t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 		}
 		if (*keep == -1 || fd_pipe[0] == -1 || fd_pipe[1] == -1)
 			return (return_perror("fd:", -1));
-		remove_node(&smpl_cmd->redirect, NULL);
+		temp = temp->next;
 	}
 	return (count);
 }
 
-void	redirect(t_pipe *pipeline, pid_t pid, int keep, int *fd_pipe)
+void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 {
 	int		set_out;
 
 	if (pid == 0)
 	{
 		close(fd_pipe[0]);
-		set_out = set_fd(pipeline, pipeline->pipe_argv, &keep, fd_pipe);
+		set_out = set_fd(cmd, &keep, fd_pipe);
 		if (set_out == -1)
 			exit_error("ccs: redirect\n", 12); //change
 		dup2(keep, STDIN_FILENO);
 		if (!keep)
 			exit_error("dup fail", 1); //change
-		if (!(!pipeline->pipe_argv->next && !set_out))
+		if (!(!cmd->next && !set_out))
 			dup2(fd_pipe[1], STDOUT_FILENO);
 		if (!fd_pipe[1])
 			exit_error("dup fail", 1);
@@ -124,12 +128,12 @@ void	redirect(t_pipe *pipeline, pid_t pid, int keep, int *fd_pipe)
 	else
 	{	
 		close(keep);
-		if (pipeline->pipe_argv->next)
+		if (cmd->next)
 			keep = dup(fd_pipe[0]);
 		close(fd_pipe[0]);
 		close(fd_pipe[1]);
-		if (pipeline->pipe_argv->here_doc)
-			close(pipeline->pipe_argv->here_doc);
+		if (cmd->here_doc)
+			close(cmd->here_doc);
 	}
 }
 
@@ -158,12 +162,14 @@ void	read_heredocs(t_pipe *pipeline)
 
 void		executor(t_pipe *pipeline)
 {
-	char	**env;
-	pid_t	pid[pipeline->pipe_argc];
-	int		fd_pipe[2];
-	int		keep;
-	int		i;
-
+	char		**env;
+	pid_t		pid[pipeline->pipe_argc];
+	int			fd_pipe[2];
+	int			keep;
+	int			i;
+	t_smpl_cmd	*cmd;
+	
+	cmd = pipeline->pipe_argv;
 	if (!pipeline)
 		return ;
 	i = 0;
@@ -171,31 +177,31 @@ void		executor(t_pipe *pipeline)
 	if (!keep)
 		exit_error("dup fail", 1);
 	read_heredocs(pipeline);
-	while (pipeline && pipeline->pipe_argv)
+	while (pipeline && cmd)
 	{
 		if (pipeline->pipe_argc == 1)
 		{
-			if (pipeline->pipe_argv->cmd_argc == 0)
-				assignments(pipeline->pipe_argv, 0);
-			if (check_builtins_curr_env(pipeline->pipe_argv))
+			if (cmd->cmd_argc == 0)
+				assignments(cmd, 0);
+			if (check_builtins_curr_env(cmd))
 				break ;
 		}
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
-		env = get_env(pipeline->pipe_argv->env_list);
+		env = get_env(cmd->env_list);
 		pid[i] = fork();
 		if (pid[i] == -1)
 			exit_error("fork fail", errno);
-		redirect(pipeline, pid[i], keep, fd_pipe);
-		assignments(pipeline->pipe_argv, pid[i]);
+		redirect(cmd, pid[i], keep, fd_pipe);
+		assignments(cmd, pid[i]);
 		if (pid[i] == 0)
 		{
-			if (pipeline->pipe_argv->cmd_argc > 0)
-				exec_cmd(pipeline->pipe_argv, env);
+			if (cmd->cmd_argc > 0)
+				exec_cmd(cmd, env);
 			else
-				execute_exit(NULL, pipeline->pipe_argv->env_list);
+				execute_exit(NULL, cmd->env_list);
 		}
-		remove_cmd_node(&pipeline->pipe_argv);
+		cmd = cmd->next;
 		i++;
 	}
 	set_exit_st(pipeline->pipe_argc, pid);
