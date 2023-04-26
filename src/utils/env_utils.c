@@ -6,28 +6,11 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 18:16:23 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 18:20:25 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-t_node	*environ_to_list(void)
-{
-	extern char	**environ;
-	t_node		*env_list;
-	int			i;
-
-	env_list = NULL;
-	i = 0;
-	env_list = NULL;
-	while (environ[i])
-	{
-		lstadd_back(&env_list, new_node(2, ft_strdup(environ[i])));
-		i++;
-	}
-	return (env_list);
-}
 
 int	check_env_content(char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 20:02:30 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 18:09:46 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 18:26:56 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,16 @@ void	move_to_next(t_node **temp, t_node **prev)
 	*temp = (*temp)->next;
 }
 
-void	remove_var(t_node *temp, t_node *prev)
+int	remove_var(t_node *temp, t_node *prev, char *name)
 {
-	prev->next = temp->next;
-	remove_node(&temp, NULL);
+	if (ft_isalpha(name[0]) || name[0] == '_')
+	{
+		prev->next = temp->next;
+		remove_node(&temp, NULL);
+		free(name);
+		return (1);
+	}
+	return (0);
 }
 
 int	execute_unset(char **cmd_vector, t_node *env_list)
@@ -57,10 +63,8 @@ int	execute_unset(char **cmd_vector, t_node *env_list)
 			name = get_name(temp->content);
 			if (!ft_strcmp(cmd_vector[i], name))
 			{
-				if (ft_isalpha(name[0]) || name[0] == '_')
-					remove_var(temp, prev);
-				free(name);
-				break ;
+				if (remove_var(temp, prev, name))
+					break ;
 			}
 			else
 				move_to_next(&temp, &prev);

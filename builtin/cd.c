@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 18:13:27 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 19:24:01 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,25 +80,7 @@ int	relative_curr_dir(char *cmd_arg, t_node *env_list)
 	cur_dir = get_curr_dir(cmd_arg, env_list);
 	if (!cur_dir)
 		return (1);
-	else if (cmd_arg[0] == '.')
-	{
-		if (cmd_arg[1] == '.')
-			new_dir = get_back(cmd_arg, cur_dir);
-		else if (ft_strlen(cmd_arg) > 1)
-			new_dir = ft_strjoin_free_s1(cur_dir, &cmd_arg[1]);
-		else
-			new_dir = cur_dir;
-	}
-	else
-	{
-		if (cur_dir[ft_strlen(cur_dir) - 1] != '/')
-			cur_dir = ft_strjoin_free_s1(cur_dir, "/");
-		if (!cur_dir)
-			exit_error("cd: strjoin", 1);
-		new_dir = ft_strjoin_free_s1(cur_dir, cmd_arg);
-		if (!new_dir)
-			exit_error("cd: strjoin", 1);
-	}
+	new_dir = new_directory(cmd_arg, cur_dir);
 	ret = chdir(new_dir);
 	free(new_dir);
 	if (ret == -1)
@@ -137,6 +119,7 @@ int	cd_relative_cdpath(t_node *env_list, char *cmd_arg)
 	return (return_perror("minishell: cd", 1));
 }
 
+// update_env function ien builtin/env.c
 int	execute_cd(char **cmd_vector, t_node *env_list)
 {
 	int		i;

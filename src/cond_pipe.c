@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/23 20:56:59 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 18:15:02 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 19:05:13 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,33 @@ int	cleanup_to_next_pipe(t_node **tokens, t_list *list)
 	return (1);
 }
 
+int	check_condition(t_node **tokens, t_list *list)
+{
+	if (list->type == OR)
+	{
+		if (g_exit_status != 0)
+			return (1);
+		if (!*tokens)
+		{
+			syntax_error(tokens, NULL, "check list\n", 1);
+			return (1);
+		}
+		cleanup_to_next_pipe(tokens, list);
+	}
+	if (list->type == AND)
+	{
+		if (g_exit_status == 0)
+			return (1);
+		if (!*tokens)
+		{
+			syntax_error(tokens, NULL, "check list\n", 1);
+			return (1);
+		}
+		cleanup_to_next_pipe(tokens, list);
+	}
+	return (0);
+}
+
 int	check_list(t_node **tokens, t_list *list)
 {
 	while (*tokens)
@@ -54,28 +81,8 @@ int	check_list(t_node **tokens, t_list *list)
 			remove_node(tokens, NULL);
 		if (!list->type)
 			return (1);
-		if (list->type == AND)
-		{
-			if (g_exit_status == 0)
-				return (1);
-			if (!*tokens)
-			{
-				syntax_error(tokens, NULL, "check list\n", 1);
-				return (1);
-			}
-			cleanup_to_next_pipe(tokens, list);
-		}
-		if (list->type == OR)
-		{
-			if (g_exit_status != 0)
-				return (1);
-			if (!*tokens)
-			{
-				syntax_error(tokens, NULL, "check list\n", 1);
-				return (1);
-			}
-			cleanup_to_next_pipe(tokens, list);
-		}
+		if (check_condition(tokens, list))
+			return (1);
 	}
 	return (0);
 }
