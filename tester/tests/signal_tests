@@ -1,8 +1,17 @@
-kill -SUSP
-kill -SIGQUIT
-kill -SIGKILL
-kill _SIGTERM
+#SUSP ^Z
+#QUIT ^\
+#INTR ^C
+#KILL ^U
+#ERASE ^H
+#EOF ^D
 
-kill -INT
-kill -INT
-kill -STP
+kill -SIGSTOP 
+kill -SIGCONT
+kill -SIGQUIT 
+KILL -SIGINT
+KILL -EOF
+KILL -SIPIPE 
+cat - 
+KILL -SIGINT
+cat -
+kill -SIGQUIT 

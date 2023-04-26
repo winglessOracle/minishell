@@ -11,10 +11,10 @@ mkdir -p ./tester/output; mkdir -p ./tester/trace
 trace=false
 clean=false
 error=true
+signal=false
 
 ### Compare output files
 compare_output() {
-	printf "  \e[34mTest %.2d  \e[0m" $counter
 	printf "  \e[34mTest %.2d  \e[0m" $counter
     printf "\n\n\t\tcommand=> $command\n" >> ./tester/trace/traces_$test_name
 	diff ./tester/output/bash_output ./tester/output/minishell_output >> ./tester/trace/traces_$test_name
@@ -36,10 +36,14 @@ compare_output() {
 execute_command (){
 	shell=$1
 	command=$2
+	# if [ "$signal" == true ]; then 
+	# 	output=
+	# else
 	output=$($shell <<EOF
-        $command
+    $command
 EOF
 	)
+	# fi
 	exitcode=$?
 	printf "Command: $command\n" >> ./tester/output/${shell}_output
 	printf "Output:\n$output\n" >> ./tester/output/${shell}_output
@@ -80,8 +84,8 @@ run_tests() {
 			sed -i '/^$/d' ./tester/output/bash_output
 		fi
 		compare_output
-		rm -rf ./tester/output/bash_output
-		rm -rf ./tester/output/minishell_output
+		# rm -rf ./tester/output/bash_output
+		# rm -rf ./tester/output/minishell_output
 	done < $file_name
 }
 
@@ -126,7 +130,9 @@ for arg in "$@"; do
 	elif [ "$arg" == "h" ]; then
 		file_name="tester/tests/here_doc_tests";	run_tests;
 	elif [ "$arg" == "z" ]; then
-		file_name="tester/tests/signal_tests";		run_tests;
+		file_name="tester/tests/signal_tests";
+		signal=true; 								run_tests;
+		signal=false
 	elif [ "$arg" == "c" ]; then
 		file_name="tester/tests/cond_pipe_tests";	run_tests;
 	elif [ "$arg" == "w" ]; then
