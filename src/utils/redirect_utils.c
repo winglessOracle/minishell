@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/24 09:45:09 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 21:36:11 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
 	parse[SQUOTE] = remove_quotes;
 	parse[DQUOTE] = remove_quotes;
 	parse[EXPAND] = expand;
-	parse[TILDE] = expand_tilde; //make
+	parse[TILDE] = expand_tilde;
 	state = get_redirect_type(tokens, cmd);
 	if (state == -1)
 		return (syntax_error(tokens, cmd, "Redirect\n", -1));
@@ -69,6 +69,5 @@ int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
 	if (type != WORD && type != ASSIGN && !(state == HEREDOC && type == EXPAND))
 		type = parse[type](tokens, cmd);
 	lstadd_back(&cmd->redirect, lstpop(tokens));
-// print_tokens(cmd->redirect, "REDIRECT"); //remove
 	return (syntax_error(tokens, cmd, "Redirect\n", type));
 }

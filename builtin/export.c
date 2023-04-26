@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/24 19:41:44 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 10:06:05 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,10 @@ void	print_export(t_node *env_list)
 int	execute_export(char **cmd_vector, t_node *env_list)
 {
 	int	i;
+	int	ret;
 
 	i = 1;
+	ret = 0;
 	if (!cmd_vector[i])
 	{
 		sort_env(env_list);
@@ -85,12 +87,12 @@ int	execute_export(char **cmd_vector, t_node *env_list)
 		while (cmd_vector[i])
 		{
 			if (!ft_isalpha(cmd_vector[i][0]) && cmd_vector[i][0] != '_')
-				return (return_error("minishell: export: \
-											not a valid identifier\n", 1));
-			add_variable(env_list, ft_strdup(cmd_vector[i]), 2);
+				ret = return_error("minishell: export: not a valid identifier\n", 1);
+			else
+				add_variable(env_list, ft_strdup(cmd_vector[i]), 2);
 			i++;
 		}
 	}
 	ft_free_array(cmd_vector);
-	return (0);
+	return (ret);
 }
