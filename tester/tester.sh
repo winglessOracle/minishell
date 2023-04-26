@@ -20,17 +20,7 @@ compare_output() {
 	diff ./tester/output/bash_output ./tester/output/minishell_output >> ./tester/trace/traces_$test_name
 	if [ "$?" -eq "0" ]; then
     	printf "\t\e[32m OK!\e[0m\n"
-    	printf "\t\e[32m OK!\e[0m\n"
 	else
-		if [ "$segfault" = "1" ]; then
-			printf "\t\033[1m\033[31m Segfault!!! \e[1;36m$command\e[0m\n"
-		else
-			printf "\t\e[31m KO! \e[1;36m$command\e[0m\n"
-		fi
-		if [ "$trace" == true ]; then
-			printf "\tDelta:\n"
-			cat ./tester/trace/traces_$test_name
-		fi
 		if [ "$segfault" = "1" ]; then
 			printf "\t\033[1m\033[31m Segfault!!! \e[1;36m$command\e[0m\n"
 		else
@@ -62,8 +52,6 @@ EOF
 run_tests() {
 	test_name=$(basename "$file_name")
     printf "\n\e[1;36mRunning "$test_name"...\e[0m\n"
-	
-	counter=0
 	
 	counter=0
 	while read -r line; do
