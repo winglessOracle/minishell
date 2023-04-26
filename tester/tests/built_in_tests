@@ -9,7 +9,6 @@ export HOME=/Users/user42; cd ~
 cd ..lalala; pwd
 cd .; echo $OLDPWD
 cd -; pwd
-cd -; pwd
 echo
 echo -n
 echo $IDONOTEXIST
@@ -19,7 +18,6 @@ echo -n-n-nnnn-nnnnnnn
 echo "" hello world
 env lalala
 env | grep OLDPWD
-aaa111=hello aaa222=world; env |head -2
 export aaa1=cat aaa2=dog
 env | grep aaa
 export | grep aaa
@@ -37,3 +35,7 @@ $ls
 # exit 256
 # exit -1
 echo hello world
+env ls
+env -a ls
+$SHVL
+

@@ -6,32 +6,11 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 11:03:39 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 09:36:27 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 19:25:21 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
-
-void	update_env(t_node *env_list, char *cmd_arg)
-{
-	char	buf[PATH_MAX];
-	char	*cur_dir;
-	char	*pwd;
-
-	pwd = get_variable(env_list, "PWD");
-	add_variable(env_list, ft_strjoin("OLDPWD=", pwd), 2);
-	cur_dir = ft_strdup(getcwd(buf, PATH_MAX));
-	if (!cur_dir)
-	{
-		if (pwd[ft_strlen(pwd) - 1] != '/')
-			pwd = ft_strjoin_free_s1(pwd, "/");
-		cur_dir = ft_strjoin(pwd, cmd_arg);
-	}
-	add_variable(env_list, ft_strjoin("PWD=", cur_dir), 2);
-	free(cur_dir);
-	if (pwd)
-		free(pwd);
-}
 
 int	change_dir(char	*str, char *arg)
 {
@@ -77,12 +56,13 @@ char	*get_back(char *cmd_arg, char *pwd)
 
 	i = 0;
 	j = ft_strlen(pwd);
-	while (cmd_arg[i] == '.' && cmd_arg[i + 1] == '.' && i < (int)ft_strlen(cmd_arg))
+	while (cmd_arg[i] == '.' && cmd_arg[i + 1] == '.' \
+								&& i < (int)ft_strlen(cmd_arg))
 	{
 		j--;
 		while (pwd[j] != '/' && j > 0)
 			j--;
-		i += 3;	
+		i += 3;
 	}
 	if (cmd_arg[i - 1] == '/')
 		i++;
@@ -110,4 +90,31 @@ char	**get_path_arr(t_node *env_list, char *pwd)
 	path_arr = ft_split(path, ':');
 	free(path);
 	return (path_arr);
+}
+
+char	*new_directory(char *cmd_arg, char *cur_dir)
+{
+	char	*new_dir;
+
+	new_dir = NULL;
+	if (cmd_arg[0] == '.')
+	{
+		if (cmd_arg[1] == '.')
+			new_dir = get_back(cmd_arg, cur_dir);
+		else if (ft_strlen(cmd_arg) > 1)
+			new_dir = ft_strjoin_free_s1(cur_dir, &cmd_arg[1]);
+		else
+			new_dir = cur_dir;
+	}
+	else
+	{
+		if (cur_dir[ft_strlen(cur_dir) - 1] != '/')
+			cur_dir = ft_strjoin_free_s1(cur_dir, "/");
+		if (!cur_dir)
+			exit_error("cd: strjoin", 1);
+		new_dir = ft_strjoin_free_s1(cur_dir, cmd_arg);
+		if (!new_dir)
+			exit_error("cd: strjoin", 1);
+	}
+	return (new_dir);
 }

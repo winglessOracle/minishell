@@ -11,6 +11,6 @@ echo "hello $PWD world"
 echo 'hello $PWD world'
 echo quote
 ""
-echo "test | test ; moretest>!<"
+echo "test | test ; moretest><"
 $
 $LESS$VAR

@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:05:51 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/25 20:06:18 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 18:20:41 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,21 @@ t_list	*init_list(void)
 		exit_error("init pipeline", errno);
 	ft_memset(list, 0, sizeof(t_list));
 	return (list);
+}
+
+t_node	*environ_to_list(void)
+{
+	extern char	**environ;
+	t_node		*env_list;
+	int			i;
+
+	env_list = NULL;
+	i = 0;
+	env_list = NULL;
+	while (environ[i])
+	{
+		lstadd_back(&env_list, new_node(2, ft_strdup(environ[i])));
+		i++;
+	}
+	return (env_list);
 }

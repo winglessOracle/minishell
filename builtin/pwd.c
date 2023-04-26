@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/13 14:01:03 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/24 19:41:51 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 18:03:44 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,5 @@ int	execute_pwd(char **cmd_vector, t_node *env_list)
 		return (return_perror("getcwd", 1));
 	printf("%s\n", pwd);
 	free(pwd);
-	ft_free_array(cmd_vector);
 	return (0);
 }

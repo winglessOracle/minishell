@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/26 08:49:46 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 18:02:13 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ int	here_doc(t_pipe *pipeline, t_node *here_redirect)
 	return (here_pipe[0]);
 }
 
-char	**build_cmd_args(t_node *argv, int argc)
+char	**build_cmd_args(t_node **argv, int argc)
 {
+	t_node 	*temp;
 	char	**cmd_args;
 	int		i;
 
@@ -46,15 +47,17 @@ char	**build_cmd_args(t_node *argv, int argc)
 	if (!argv || !argc)
 		return (NULL);
 	if (BONUS)
-		argc = check_wildcars(&argv);
+		argc = check_wildcars(argv);
+	temp = *argv;
 	cmd_args = malloc(sizeof(char *) * (argc + 1));
 	while (i < argc)
 	{
-		cmd_args[i] = ft_strdup(argv->content);
-		remove_node(&argv, NULL);
+		cmd_args[i] = ft_strdup((*argv)->content);
+		*argv = (*argv)->next;
 		i++;
 	}
 	cmd_args[i] = NULL;
+	*argv = temp;
 	return (cmd_args);
 }
 
@@ -81,7 +84,7 @@ void	set_exit_st(int argc, pid_t *pid)
 char	**get_env(t_node *env_list)
 {
 	t_node	*curr;
-	char	**str;
+	char	**arr;
 	int		i;
 
 	curr = env_list;
@@ -94,28 +97,28 @@ char	**get_env(t_node *env_list)
 			i++;
 		curr = curr->next;
 	}
-	str = malloc(sizeof(char *) * i);
+	arr = malloc(sizeof(char *) * (i + 1));
 	i = 0;
 	curr = env_list;
 	while (curr)
 	{
 		if (curr->type == 2)
-			str[i] = ft_strdup(curr->content);
+			arr[i] = ft_strdup(curr->content);
 		if (curr->type == 2)
 			i++;
 		curr = curr->next;
 	}
-	str[i] = NULL;
-	return (str);
+	arr[i] = NULL;
+	return (arr);
 }
 
 void	check_built(t_smpl_cmd *cmd)
 {
+	int		i;
 	t_built	*built[7];
 	char	**cmd_args;
 	char	*builtins[7] =	{"echo", "cd", "pwd", "export", \
 										"unset", "exit", "env"};
-	int		i;
 
 	built[0] = execute_echo;
 	built[1] = execute_cd;
@@ -129,14 +132,13 @@ void	check_built(t_smpl_cmd *cmd)
 	{
 		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0)
 		{
-			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);
+			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
 			if (!cmd_args)
 				exit_error("building commands", 1);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
+			ft_free_array(cmd_args);
 			exit(g_exit_status);
 		}
-		else
-			g_exit_status = 0;
 		i++;
 	}
 }
@@ -160,10 +162,11 @@ int	check_builtins_curr_env(t_smpl_cmd *cmd)
 		{
 			if (!ft_strcmp(cmd->cmd_argv->content, "export") && cmd->cmd_argc == 1)
 				return (0);
-			cmd_args = build_cmd_args(cmd->cmd_argv, cmd->cmd_argc);
+			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
 			if (!cmd_args)
 				exit_error("building commands", 1);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
+			ft_free_array(cmd_args);
 			return (1);
 		}
 		i++;
