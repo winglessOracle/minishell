@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/25 21:34:58 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 08:44:46 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_node	*expand_wildcard(t_node *token)
 	t_node			*temp;
 
 	if (!getcwd(buf, PATH_MAX))
-		exit_error("expand wildcard", 1);
+		return (NULL);
 	pattern = token->content;
 	temp = NULL;
 	curr_dir = opendir(buf);

@@ -1,90 +1,271 @@
 
 
 		command=> (echo 1 || echo 2) || (echo 3 || echo 4)
+3c3
+< 1
+---
+> 4)
 
 
 		command=> (echo 1 && echo 2) || (echo 3 || echo 4)
+3,4c3
+< 1
+< 2
+---
+> 4)
 
 
 		command=> (echo 1 && echo 2) && (echo 3 || echo 4)
+3,5c3
+< 1
+< 2
+< 3
+---
+> 4)
 
 
 		command=> (echo 1 && echo 2) && (echo 3 && echo 4)
+3,7c3
+< 1
+< 2
+< 3
+< 4
+< Exit code: 0
+---
+> Exit code: 127
 
 
 		command=> (echo 1 || echo 2) && (echo 3 && echo 4)
+3,5c3
+< 1
+< 3
+< 4
+---
+> 2) && (echo 3 && echo 4)
 
 
 		command=> (echo 1 || echo 2) || (echo 3 && echo 4)
+3,4c3
+< 1
+< Exit code: 0
+---
+> Exit code: 127
 
 
 		command=> (echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+3,5c3
+< 1
+< 1
+< 2
+---
+> 4)
 
 
 		command=> (echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+3c3
+< 1
+---
+> 4)
 
 
 		command=> (echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+3,9c3
+< 1
+< 2
+< 3
+< 1
+< 2
+< 3
+< 4
+---
+> 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
 
 
 		command=> (echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+3,8c3
+< 1
+< 2
+< 3
+< 3
+< 4
+< Exit code: 0
+---
+> Exit code: 127
 
 
 		command=> (echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+3,7c3
+< 1
+< 3
+< 4
+< 1
+< Exit code: 0
+---
+> Exit code: 127
 
 
 		command=> (echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+3,6c3
+< 1
+< 3
+< 4
+< Exit code: 0
+---
+> Exit code: 127
 
 
 		command=> (echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+3,7c3
+< 1
+< 2
+< 3
+< 4
+< Exit code: 0
+---
+> Exit code: 127
 
 
 		command=> (echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+3,6c3,4
+< 1
+< 3
+< 4
+< Exit code: 0
+---
+> 2)
+> Exit code: 127
 
 
 		command=> (gre || echo 2) || (echo 3 || echo 4)
+3c3
+< 2
+---
+> 4)
 
 
 		command=> (gre 1 && echo 2) || (echo 3 || echo 4)
+3c3
+< 3
+---
+> 4)
 
 
 		command=> (gre 1 && echo 2) && (echo 3 || echo 4)
+3c3,4
+< Exit code: 127
+---
+> 4)
+> Exit code: 0
 
 
 		command=> (gre 1 && echo 2) && (echo 3 && echo 4)
 
 
 		command=> (gre 1 || echo 2) && (echo 3 && echo 4)
+3,5c3
+< 2
+< 3
+< 4
+---
+> 2) && (echo 3 && echo 4)
 
 
 		command=> (gre 1 || echo 2) || (echo 3 && echo 4)
+3,4c3
+< 2
+< Exit code: 0
+---
+> Exit code: 127
 
 
 		command=> (gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+3,5c3
+< 2
+< 1
+< 2
+---
+> 4)
 
 
 		command=> (gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+3c3
+< 2
+---
+> 4)
 
 
 		command=> (gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+3c3,4
+< Exit code: 127
+---
+> 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+> Exit code: 0
 
 
 		command=> (gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+3,7c3
+< 1
+< 2
+< 3
+< 4
+< Exit code: 0
+---
+> Exit code: 127
 
 
 		command=> (gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+3,7c3
+< 2
+< 3
+< 4
+< 1
+< Exit code: 0
+---
+> Exit code: 127
 
 
 		command=> (gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+3,6c3
+< 2
+< 3
+< 4
+< Exit code: 0
+---
+> Exit code: 127
 
 
 		command=> (gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+3,6c3
+< 2
+< 3
+< 4
+< Exit code: 0
+---
+> Exit code: 127
 
 
 		command=> (gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+3,6c3,4
+< 2
+< 3
+< 4
+< Exit code: 0
+---
+> 2)
+> Exit code: 127
 
 
 		command=> (echo 1 || echo 2) || (echo 3 || echo 4))
+3c3,4
+< Exit code: 2
+---
+> 4))
+> Exit code: 0
 
 
 		command=> ((echo 1 || echo 2) || (echo 3 || echo 4)
+3c3,4
+< Exit code: 2
+---
+> 4)
+> Exit code: 0

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/25 18:23:53 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 08:40:33 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ int	cd_relative_cdpath(t_node *env_list, char *cmd_arg)
 	int		i;
 
 	pwd = get_curr_dir(cmd_arg, env_list);
+	if (!pwd)
+		return (1);
 	path_arr = get_path_arr(env_list, pwd);
 	if (!path_arr)
 		exit_error("cd", 1);

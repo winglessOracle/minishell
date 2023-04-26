@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 11:03:39 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/25 18:25:02 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 08:43:29 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ char	*get_curr_dir(char *cmd_arg, t_node *env_list)
 		if (!ft_strcmp(cmd_arg, "."))
 		{
 			ft_putstr_fd("minishell: cd: error retrieving current dir\n", 2);
-			update_env(env_list, cmd_arg);
 			return (NULL);
 		}
 	}
