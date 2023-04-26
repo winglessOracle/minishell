@@ -1,0 +1,48 @@
+
+
+		command=> echo hello
+
+
+		command=> echo "hello world"
+
+
+		command=> echo "hello 'world"
+
+
+		command=> echo 'hello world'
+
+
+		command=> echo 'hello "world'
+
+
+		command=> echo "'hello world'"
+
+
+		command=> echo '"hello world"'
+
+
+		command=> echo "hello '$PWD' world"
+
+
+		command=> echo 'hello "$PWD" world'
+
+
+		command=> echo "hello $PWD world"
+
+
+		command=> echo 'hello $PWD world'
+
+
+		command=> echo quote
+
+
+		command=> ""
+
+
+		command=> echo "test | test ; moretest>!<"
+
+
+		command=> $
+
+
+		command=> $LESS$VAR

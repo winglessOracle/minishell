@@ -15,3 +15,8 @@ BUILTIN/EXIT	exit 256		Exits shell								0
 BUILTIN/EXIT	exit -1			Exits shell								255
 
 PIPE	ls | exit				Execute ls but does not exit the shell	0
+env
+export
+echo -n -nnnn hello world -n
+env | head -n 2
+aaa111=hello aaa222=world; env |head -2

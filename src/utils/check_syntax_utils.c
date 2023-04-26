@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/25 11:40:47 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/25 11:42:11 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 21:32:43 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	check_assign(char *str, int type)
 	return (WORD);
 }
 
-int	check_token_content(t_node *token, int type) // refactor when tester available
+int	check_token_content(t_node *token, int type)
 {
 	char	*str;
 	int		i;
@@ -38,8 +38,7 @@ int	check_token_content(t_node *token, int type) // refactor when tester availab
 	str = token->content;
 	if (str[0] == '#' && type != DQUOTE && type != SQUOTE)
 		return (COMMENT);
-	if (str[0] == '~' && (str[1] == '/' || str[1] == '\0') \
-								&& type != DQUOTE && type != SQUOTE) // can remove DQUOTE and SQUOTE?
+	if (str[0] == '~' && (str[1] == '/' || str[1] == '\0'))
 		return (TILDE);
 	while (str[i])
 	{
@@ -47,11 +46,9 @@ int	check_token_content(t_node *token, int type) // refactor when tester availab
 			return (DQUOTE);
 		else if (str[i] == '\'' && type != DQUOTE)
 			return (SQUOTE);
-		else if (str[i] == '$' && str[i + 1] != ' ' && \
-					str[i + 1] != '\0' && type != SQUOTE && type != DQUOTE)
+		else if (str[i] == '$' && str[i + 1] != ' ' && str[i + 1] != '\0')
 			return (EXPAND);
-		if (str[i] == '=' && type != DQUOTE && type != SQUOTE \
-												&& token->type != ASSIGN_T)  //// can remove DQUOTE and SQUOTE?
+		if (str[i] == '=' && token->type != ASSIGN_T)
 			return (ASSIGN_T);
 		i++;
 	}

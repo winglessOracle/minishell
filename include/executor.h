@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:31 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/19 09:20:39 by carlo         ########   odam.nl         */
+/*   Updated: 2023/04/25 21:45:52 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include <sys/wait.h>
 # include <unistd.h>
 # include <fcntl.h>
-#include "parser.h"
-#include "builtin.h"
+# include "parser.h"
+# include "builtin.h"
 
-typedef int t_built(char **, t_node *);
+typedef int	t_built(char **, t_node *);
 
 #endif

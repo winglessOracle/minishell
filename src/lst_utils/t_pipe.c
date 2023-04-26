@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:49:55 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/25 11:59:48 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/25 21:38:07 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	remove_pipe_node(t_pipe **pipes)
 	t_pipe	*temp;
 
 	if (!*pipes)
-		return (-1); //check
+		return (-1);
 	temp = *pipes;
 	*pipes = (*pipes)->next;
 	temp->next = NULL;
