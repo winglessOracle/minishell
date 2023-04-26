@@ -67,8 +67,8 @@ run_tests() {
 	fi
 	segfault=0
 	counter=$((counter+1))
-	execute_command "./minishell" "$line" #>& ./tester/output/error
-	execute_command "bash" "$line" #>& ./tester/output/error
+	execute_command "./minishell" "$line" >& ./tester/output/error
+	execute_command "bash" "$line" >& ./tester/output/error
 	
 	##MacOs
 	sed -i '' '/0;36m/d' ./tester/output/minishell_output

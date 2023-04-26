@@ -22,10 +22,6 @@
 
 
 		command=> export HOME=/Users/user42; cd ~
-3c3
-< Exit code: 1
----
-> Exit code: 0
 
 
 		command=> cd ..lalala; pwd
@@ -64,6 +60,10 @@
 
 
 		command=> echo "" hello world
+3c3
+<  hello world
+---
+> Makefile README.md builtin en.subject.pdf include libft log minishell obj obj_buitin segfault.txt src tester hello world
 
 
 		command=> env | head -n 2
@@ -112,6 +112,10 @@
 
 
 		command=> export "" test1=dog
+3c3
+< Exit code: 1
+---
+> Exit code: 0
 
 
 		command=> export test2=$HOME
