@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/26 15:34:15 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 19:27:33 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 
 	count = 0;
 	temp = smpl_cmd->redirect;
-	while (smpl_cmd->redirect)
+	while (temp)
 	{
 		if (temp->type == OUTPUT)
 		{
