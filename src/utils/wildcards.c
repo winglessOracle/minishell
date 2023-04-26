@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 08:44:46 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/26 10:08:58 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	check_wildcars(t_node **cmd_args)
 	{
 		i = 0;
 		temp = expand_wildcard(*cmd_args);
-		if (temp)
+		if (temp && ft_strcmp((*cmd_args)->content, ""))
 			lstadd_back(&new_args, temp);
 		else
 			lstadd_back(&new_args, \
