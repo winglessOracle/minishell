@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/27 13:57:17 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/27 14:22:35 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,9 @@ int	execute_export(char **cmd_vector, t_node *env_list)
 		while (cmd_vector[i])
 		{
 			j = 0;
-			while (cmd_vector[i][j] && !ft_isalpha(cmd_vector[i][j]) && cmd_vector[i][j] != '_')
+			while (cmd_vector[i][j] && (cmd_vector[i][j] != '=' && (ft_isalpha(cmd_vector[i][j]) || cmd_vector[i][j] == '_')))
 				j++;
-			if (!ft_isalpha(cmd_vector[i][j - 1]) && cmd_vector[i][j - 1] != '_')
+			if (cmd_vector[i][j] && cmd_vector[i][j] != '=' && !(ft_isalpha(cmd_vector[i][j]) || cmd_vector[i][j] == '_'))
 			{
 				return_error("minishell: export: not a valid identifier\n", 1);
 				ret = 1;
