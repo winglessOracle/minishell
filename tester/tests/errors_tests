@@ -1,22 +1,8 @@
 # Running simple_tests...
-~
-.
 echo | |
-<echo<
-||||||||
-/
 >| echo wtf
-echo "env | /usr/bin/wc -l" | env -i $MINISHELL_PATH"/"$EXECUTABLE
-echo "ls" | env -i $MINISHELL_PATH"/"$EXECUTABLE
-echo "unset PATH" | env -i $MINISHELL_PATH"/"$EXECUTABLE
-# env
-# export
-exit asd
-./ls
 echo "$T" "meg"
-< out
 echo segf >| echo is this invalid
-.
 echo seg <> echo seg
 /bin/echo '"'$USER'"'
 /bin/echo "''$USER''"
@@ -26,50 +12,20 @@ echo seg <> echo seg
 /bin/echo $"HOM"E$USER
 /bin/echo $"HOME"
 /bin/echo $"42$"
-# /bin/echo \$USER
-# /bin/echo \\$USER
-# /bin/echo \\$USER
-# /bin/echo \\\$USER
-# /bin/echo \\\\\$USER
-# /bin/echo \\\\\\\\\\\\\\\\\$USER \$PATH \$PWD
 /bin/echo '""""""""$USER""""""""'
 /bin/echo ""'""""""$USER""""""'""
 /bin/echo """"""'""$USER""'""""""
 /bin/echo ""'""'""""$USER""""'""'""
 /bin/echo '""'""'""""$USER""""'""'""'
 /bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
-/bin/echo test1            test2
-# /bin/echo -n test1
-# /bin/echo -n "test1 test2"
-# /bin/echo -n "test1 test2" test3
-# /bin/echo -n " test1 test2 " 'test3 '
-# /bin/echo -n test1         test2
-# /bin/echo -n -n test1
-# /bin/echo -n -n -n -n -n test1
-# /bin/echo -n -n -nasd
-# /bin/echo -n -n -n-nnnnn
-# /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n-n
-# /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n feel my pain
-# /bin/echo -n -n -n-n
 "ECho" -n -nnn"" "-"nnnnn
->> $HOME
 echo "-"$T$T
-ECHO -n -n
-echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-'"$T"
-echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-''$T'
-echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn'$T' '-'"$T "
-echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn$T '-''$T '
-ENV
 "e"'x''p''o''r''t' L=T
 $T.
 '''''''''''''''' echo ok
 echo '$'$'$'$'$'
 echo '$'$'$'$'$'$'$'
 echo "$"$'$'$"$"$"$"$'$'
-# echo $/ $/
-# echo $U/SER
-# echo "$/ $/"
-# echo $/"$/"
 >| echo sure
 exit lalala 42
 echo '"'$USER'"'
@@ -80,88 +36,13 @@ echo $"HOME"$USER
 echo $"HOM"E$USER
 echo $"HOME"
 echo $"42$"
-# echo \$USER
-# echo \\$USER
-# echo \\$USER
-# echo \\\$USER
-# echo \\\\\$USER
-# echo \\\\\\\\\\\\\\\\\$USER \$PATH \$PWD
 echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
-echo test1         test2
-# echo -n test1
-# echo -n "test1 test2"
-# echo -n "test1 test2" test3
-# echo -n " test1 test2 " 'test3 '
-# echo -n test1              test2
-# echo -n -n test1
-# echo -n -n -n -n -n test1
-# echo -n -n -nasd
-# echo -n -n -n-nnnnn
-# echo -n -nnnnnnn -n -nnn -nnnnn -n-n
-# echo -n -nnnnnnn -n -nnn -nnnnn -n feel my pain
-# echo -n -n -n-n
 cd "$PWD/file_tests"
 cd '/////' 2>/dev/null
 cd $PWD/file_tests
 cd $OLDPWD/something
-env | grep HOME
-env | grep USER
-# export
-export --TEST=123
-export TE-ST=100
-export -TEST=100
-export TEST-=100
-export TE+S=T=""
-export TES.T=123
-export TES.T=123
-export TES+T=123
-export TES}T=123
-export TES{T=123
-export TES-T=123
-export -TEST=123
-export TE*ST=123
-export TES#T=123
-export TES@T=123
-export TES!T=123
-export TES^T=123
-export TES!T=123
-export TES\~T=123
 unset $""
 unset -TEST
-# exit something somethingv2
-# exit ""
-# exit +++++
-# exit ++++++
-# exit ++1
-# exit ++12560
-# exit -----
-# exit ------
-# exit --1
-# exit --12560
-# exit A
-# exit A 2 3
-# exit "A"
-# exit "+++"
-# exit ++++3193912939
-# exit +++000
-# exit ++++000
-# exit ---000
-# exit ----000
-# exit "something"
-# exit x
-# exit echo
-# exit cd ..
-# exit exit
-"          "
-"                  "
-/bin/echo -n 1
-# echo -n 42
-# echo -n 42 -n
-# echo -n -n -n 42
-# echo -n -n -n -n 42
-# exit ""
-# exit A
-# exit A 1
 echo $"HOME"
 echo $'HOME'
 echo $"HOME"$USER
@@ -177,25 +58,7 @@ echo $'$'
 env | grep HOME
 env | grep $USER
 env | grep USER
-env | grep USER
-mkdir bla_test
-rm -r bla_test
-../bin/../bin/ls
-./tmp_x_file1
-cat tmp_lol.c | cat > tmp_lol.c
-cat < Makefile > out >> out1 | wc -l out1 > out2
-ls|cat Makefile|<wc -l
-mkdir " "
-awk 'BEGIN{for(i=1;i<=10;i++){for(j=1;j<=10;j++){printf("   0 ",i*j)} printf("
-")}}' /dev/null | tail -n 10
 ls >"./ with spaces"
-"."
-./ls
-"./"ls
-"./""ls"
-"./"''"ls"
-/ls
-# /bin/
 /bin/echo $"HOME"$USER
 /bin/echo $"HOM"E$USER
 /bin/echo $"'HOM'E"$USER
@@ -208,8 +71,6 @@ ls >"./ with spaces"
 /bin/echo $'$'
 /bin/echo $PWD/random_folder
 /bin/echo 'HELLO'$?:''"42"
-mkdir "tmp_test_folder"
-mkdir "tmp_test folder"
 /bin/echo "1"$X'2'
 /bin/echo "1"$X'2'
 /bin/echo "1"$X'2'

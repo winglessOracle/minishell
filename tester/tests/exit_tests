@@ -1,0 +1,29 @@
+exit something somethingv2
+exit ""
+exit +++++
+exit ++++++
+exit ++1
+exit ++12560
+exit -----
+exit ------
+exit --1
+exit --12560
+exit A
+exit A 2 3
+exit "A"
+exit "+++"
+exit ++++3193912939
+exit +++000
+exit ++++000
+exit ---000
+exit ----000
+exit "something"
+exit x
+exit echo
+exit cd ..
+exit exit
+exit ""
+exit A
+exit A 1
+exit asd
+exit lalala 42
