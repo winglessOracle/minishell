@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 19:10:51 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/27 12:07:06 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,38 @@ char	get_quote_char(int type)
 	return (quote);
 }
 
+void	remove_double_quotes(t_node *token)
+{
+	t_node	*words;
+	char	*content;
+
+	content = ft_strdup("");
+	words = split_to_list(token->content, "\'\"");
+	while (words)
+	{
+		if (words->next && !ft_strcmp(words->content, words->next->content) \
+			&& (!ft_strcmp(words->content, "\'") || !ft_strcmp(words->content, "\"")))
+		{
+			remove_node(&words, NULL);
+			remove_node(&words, NULL);
+		}
+		else if (words)
+		{
+			content = ft_strjoin_free_s1(content, words->content);
+			remove_node(&words, NULL);
+		}
+	}
+	free(token->content);
+	token->content = content;
+}
+
 int	split_quoted_exp(int nr_q, t_node *token, char **content, t_smpl_cmd *cmd)
 {
 	int		state;
 	char	quote;
 	t_node	*words;
 
+	remove_double_quotes(token);
 	quote = get_quote_char(token->type);
 	words = split_to_list(token->content, "\'\"");
 	while (words)
@@ -58,6 +84,7 @@ int	split_quoted(int nr_quotes, t_node *token, char **content, t_smpl_cmd *cmd)
 	char	quote;
 	t_node	*words;
 
+	remove_double_quotes(token);
 	quote = get_quote_char(token->type);
 	words = split_to_list(token->content, "\'\"");
 	while (words)
@@ -110,8 +137,11 @@ int	remove_quotes(t_node **token, t_smpl_cmd *cmd)
 		(*token)->content = ft_strdup("");
 		return (add_word_to_cmd(token, cmd));
 	}
+	remove_double_quotes(*token);
 	type = check_token_content(*token, state);
 	type = get_content(token, cmd, type, state);
+	if (type == -1)
+		return (type);
 	if (type != -1 && (state == INPUT || state == OUTPUT \
 				|| state == APPEND || state == HEREDOC))
 	{

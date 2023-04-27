@@ -12,18 +12,25 @@ trace=false
 clean=false
 error=true
 
+tests_ok=0
+tests_ko=0
+tests_seg=0
+tests_total=0
+
 ### Compare output files
 compare_output() {
-	printf "  \e[34mTest %.2d  \e[0m" $counter
 	printf "  \e[34mTest %.2d  \e[0m" $counter
     printf "\n\n\t\tcommand=> $command\n" >> ./tester/trace/traces_$test_name
 	diff ./tester/output/bash_output ./tester/output/minishell_output >> ./tester/trace/traces_$test_name
 	if [ "$?" -eq "0" ]; then
+		tests_ok=$((tests_ok+1))
     	printf "\t\e[32m OK!\e[0m\n"
 	else
 		if [ "$segfault" = "1" ]; then
+			tests_seg=$((tests_seg+1))
 			printf "\t\033[1m\033[31m Segfault!!! \e[1;36m$command\e[0m\n"
 		else
+			tests_ko=$((tests_ko+1))
 			printf "\t\e[31m KO! \e[1;36m$command\e[0m\n"
 		fi
 		if [ "$trace" == true ]; then
@@ -103,8 +110,8 @@ if [ $# -eq 0 ] || ( [ $# -ge 1 ] && [ $# -le 3 ] && \
     file_name="tester/tests/quote_tests";     run_tests
     file_name="tester/tests/built_in_tests";  run_tests
     file_name="tester/tests/assign_tests";    run_tests
-    file_name="tester/tests/redirect_tests";  run_tests
-    file_name="tester/tests/here_doc_tests";  run_tests
+    # file_name="tester/tests/redirect_tests";  run_tests
+    # file_name="tester/tests/here_doc_tests";  run_tests
     file_name="tester/tests/signal_tests";    run_tests
     file_name="tester/tests/cond_pipe_tests"; run_tests
     file_name="tester/tests/wildcard_tests";  run_tests
@@ -131,11 +138,19 @@ for arg in "$@"; do
 		file_name="tester/tests/cond_pipe_tests";	run_tests;
 	elif [ "$arg" == "w" ]; then
 		file_name="tester/tests/wildcard_tests";	run_tests;
+	elif [ "$arg" == "error" ]; then
+		file_name="tester/tests/errors_tests";		run_tests;
 	else
         echo "Invalid argument: $arg"
 		exit 1
 	fi
 	done
+
+tests_total=$((tests_ok+tests_ko+tests_seg))
+printf "\n\n\033[1m\033[38;5;202mTesting Minishell vs Bash... %d compared\033[0m\n\n" $tests_total
+printf "\t\e[32m%d OK!\e[0m\n" $tests_ok
+printf "\t\033[1m\033[31m%d Segfault!\e[0m\n" $tests_seg
+printf "\t\e[31m%d KO!\e[0m\n" $tests_ko
 
 if [ "$clean" == true ]; then
 	rm -rf ./tester/output

@@ -1,0 +1,23 @@
+# Running simple_tests...
+touch "
+"
+/bin/rm -f "
+"
+	
+/bin/echo $HOME$NOTHING$USER$
+/bin/echo $TESTNOTFOUND$HOME$
+
+# Running built_in_tests...
+echo $USER$TESTNOTFOUND$HOME$
+echo ""'totally logical'""
+
+# Running assign_tests...
+echo $HOME$NOTHING$USER$
+echo $HOME$NOTHING$USER$
+/bin/echo $USER$TESTNOTFOUND$HOME$
+/bin/echo ""'totally logical'""
+echo $T"o "
+echo $T"o -n"
+echo $T"o -n"
+echo $T'o '
+echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn'$T' '-'"$T "
