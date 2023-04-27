@@ -365,11 +365,6 @@ USER
 'pwd '
 p""''''w''''''""""""''''''''''''''''''''''''''''''''d
 '''''''''''''''' echo ok
-           ''echo ok
-           ""echo ok
-           ""echo"" ok
-           ""'echo'"" ok
-echo "         |       "  | echo maybe
 echo "|"  | echo maybe
 echo '|'  | echo maybe
 echo -nnnnnnnnnnnn

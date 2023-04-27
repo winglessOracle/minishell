@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 18:16:05 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/27 13:26:48 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int	parser_assign(t_node **token, t_smpl_cmd *cmd)
 int	set_cmd_end(t_node **token, t_smpl_cmd *cmd, t_list *list)
 {
 	(void)list;
-	if (*token && (*token)->type == PIPE)
+	if (*token && ((*token)->type == PIPE || (*token)->type == AND \
+					|| (*token)->type == OR || (*token)->type == PIPE_END))
 	{
 		remove_node(token, cmd);
 		if (!(*token) || (*token)->type == PIPE_END \

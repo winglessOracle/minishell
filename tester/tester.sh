@@ -147,7 +147,7 @@ for arg in "$@"; do
 	done
 
 tests_total=$((tests_ok+tests_ko+tests_seg))
-printf "\n\n\033[1m\033[38;5;202mTesting Minishell vs Bash... %d compared\033[0m\n\n" $tests_total
+printf "\n\n\033[1m\033[38;5;202mTested Minishell vs Bash... %d compared\033[0m\n\n" $tests_total
 printf "\t\e[32m%d OK!\e[0m\n" $tests_ok
 printf "\t\033[1m\033[31m%d Segfault!\e[0m\n" $tests_seg
 printf "\t\e[31m%d KO!\e[0m\n" $tests_ko
