@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/26 19:07:56 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/28 10:20:49 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd, t_list *list)
 	state = 0;
 	while (*tokens && !state)
 		state = parse[(*tokens)->type](tokens, *cmd, list);
-	state = set_cmd_end(tokens, *cmd, list);
+	if (state != -1)
+		state = set_cmd_end(tokens, *cmd, list);
 	check_env(*cmd);
 	return (state);
 }
@@ -109,8 +110,10 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 	{
 		pipeline = parse_pipeline(&tokens, env_list, list);
 		if (pipeline)
+		{
 			executor(pipeline);
-		delete_pipe(pipeline);
+			delete_pipe(pipeline);
+		}
 		if (tokens)
 			check_list(&tokens, list);
 	}

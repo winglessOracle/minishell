@@ -1,5 +1,4 @@
 # Running simple_tests...
-echo | |
 >| echo wtf
 echo "$T" "meg"
 echo segf >| echo is this invalid
