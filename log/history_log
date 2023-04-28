@@ -18479,3 +18479,93 @@ exit
         echo *
         echo *ke*
         cat *ke*
+        >| echo wtf
+        echo "$T" "meg"
+        echo segf >| echo is this invalid
+        echo seg <> echo seg
+        /bin/echo '"'$USER'"'
+        /bin/echo "''$USER''"
+        /bin/echo "'"'$USER'"'"
+        /bin/echo '"'"$USER"'"'
+        /bin/echo $"HOME"$USER
+        /bin/echo $"HOM"E$USER
+        /bin/echo $"HOME"
+        /bin/echo $"42$"
+        /bin/echo '""""""""$USER""""""""'
+        /bin/echo ""'""""""$USER""""""'""
+        /bin/echo """"""'""$USER""'""""""
+        /bin/echo ""'""'""""$USER""""'""'""
+        /bin/echo '""'""'""""$USER""""'""'""'
+        /bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+        "ECho" -n -nnn"" "-"nnnnn
+        echo "-"$T$T
+        "e"'x''p''o''r''t' L=T
+        $T.
+        '''''''''''''''' echo ok
+        echo '$'$'$'$'$'
+        echo '$'$'$'$'$'$'$'
+        echo "$"$'$'$"$"$"$"$'$'
+        >| echo sure
+        exit lalala 42
+        echo '"'$USER'"'
+        echo "''$USER''"
+        echo "'"'$USER'"'"
+        echo '"'"$USER"'"'
+        echo $"HOME"$USER
+        echo $"HOM"E$USER
+        echo $"HOME"
+        echo $"42$"
+        echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+        cd '/////' 2>/dev/null
+        unset $""
+        unset -TEST
+        echo $"HOME"
+        echo $'HOME'
+        echo $"HOME"$USER
+        echo $"HOM"E$USER
+        echo $"'HOM'E"$USER
+        echo $'HOM'E$USER
+        echo $"HOME"
+        echo $'HOME'
+        echo "$""$"
+        echo $"$"
+        echo $"42$"
+        echo $'$'
+        ls >"./ with spaces"
+        /bin/echo $"HOME"$USER
+        /bin/echo $"HOM"E$USER
+        /bin/echo $"'HOM'E"$USER
+        /bin/echo $'HOM'E$USER
+        /bin/echo $"HOME"
+        /bin/echo $'HOME'
+        /bin/echo "$""$"
+        /bin/echo $"$"
+        /bin/echo $"42$"
+        /bin/echo $'$'
+        /bin/echo 'HELLO'$?:''"42"
+        /bin/echo "1"$X'2'
+        /bin/echo "1"$X'2'
+        /bin/echo "1"$X'2'
+        /bin/echo "1"$X'2'
+        /bin/echo "1"$X'2'
+        /bin/echo "1"$X'2'
+        /bin/echo "1"$X'2'
+        /bin/echo "1"$X'2'
+        /bin/echo "1"$X'2'
+        /bin/echo "1"$X'2'
+echo "$T" "meg"
+exit
+echo "$T" "meg"
+echo "$T" "meg"
+eixt
+exit
+echo "$T" "meg"
+exit
+echo "$T" "meg"
+exit
+echo "$T" "meg"
+exit
+echo "$T" "meg"
+exit
+echo "$T" "meg"
+exit

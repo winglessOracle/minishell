@@ -1,7 +1,5 @@
 # Running simple_tests...
->| echo wtf
 echo "$T" "meg"
-echo segf >| echo is this invalid
 echo seg <> echo seg
 /bin/echo '"'$USER'"'
 /bin/echo "''$USER''"
@@ -25,7 +23,6 @@ $T.
 echo '$'$'$'$'$'
 echo '$'$'$'$'$'$'$'
 echo "$"$'$'$"$"$"$"$'$'
->| echo sure
 exit lalala 42
 echo '"'$USER'"'
 echo "''$USER''"

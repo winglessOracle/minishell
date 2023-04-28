@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/27 12:58:12 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/28 10:45:34 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	split_quoted_exp(int nr_q, t_node *token, char **content, t_smpl_cmd *cmd)
 	char	quote;
 	t_node	*words;
 
-	remove_double_quotes(token);
 	quote = get_quote_char(token->type);
 	words = split_to_list(token->content, "\'\"");
 	while (words)
@@ -67,7 +66,10 @@ int	split_quoted_exp(int nr_q, t_node *token, char **content, t_smpl_cmd *cmd)
 			if (words->content)
 				state = check_token_content(words, WORD);
 			else
+			{
+				words->content = ft_strdup("");
 				state = WORD;
+			}
 		}
 		if (state == DQUOTE && get_quote_char(token->type) == quote)
 			nr_q += 1;
@@ -84,7 +86,6 @@ int	split_quoted(int nr_quotes, t_node *token, char **content, t_smpl_cmd *cmd)
 	char	quote;
 	t_node	*words;
 
-	remove_double_quotes(token);
 	quote = get_quote_char(token->type);
 	words = split_to_list(token->content, "\'\"");
 	while (words)
@@ -137,7 +138,6 @@ int	remove_quotes(t_node **token, t_smpl_cmd *cmd)
 		(*token)->content = ft_strdup("");
 		return (add_word_to_cmd(token, cmd));
 	}
-	remove_double_quotes(*token);
 	type = check_token_content(*token, state);
 	type = get_content(token, cmd, type, state);
 	if (type == -1)
