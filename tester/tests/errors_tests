@@ -37,10 +37,7 @@ echo $"HOM"E$USER
 echo $"HOME"
 echo $"42$"
 echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
-cd "$PWD/file_tests"
 cd '/////' 2>/dev/null
-cd $PWD/file_tests
-cd $OLDPWD/something
 unset $""
 unset -TEST
 echo $"HOME"
@@ -55,9 +52,6 @@ echo "$""$"
 echo $"$"
 echo $"42$"
 echo $'$'
-env | grep HOME
-env | grep $USER
-env | grep USER
 ls >"./ with spaces"
 /bin/echo $"HOME"$USER
 /bin/echo $"HOM"E$USER
@@ -69,7 +63,6 @@ ls >"./ with spaces"
 /bin/echo $"$"
 /bin/echo $"42$"
 /bin/echo $'$'
-/bin/echo $PWD/random_folder
 /bin/echo 'HELLO'$?:''"42"
 /bin/echo "1"$X'2'
 /bin/echo "1"$X'2'

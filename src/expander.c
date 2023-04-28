@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/27 12:53:20 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/28 09:54:17 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 	t_node	*words;
 	t_node	*temp;
 
-	words = split_to_list((*token)->content, "$=?\"\'");
+	words = split_to_list((*token)->content, "$=?\"\'/");
 	remove_node(token, cmd);
 	while (words && words->next)
 	{
