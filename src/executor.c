@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/26 19:27:33 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/28 10:28:44 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 	{
 		if (temp->type == OUTPUT)
 		{
-			if (access(temp->content, F_OK) == 0)
-				return (return_error("not allowed to overwrite file\n", -1));
+			// if (access(temp->content, F_OK) == 0)
+			// 	return (return_error("not allowed to overwrite file\n", -1));
 			fd_pipe[1] = open(temp->content, \
 								O_CREAT | O_WRONLY | O_TRUNC, 0644);
 			if (fd_pipe[1] < 0)
