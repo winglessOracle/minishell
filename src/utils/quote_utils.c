@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/29 22:14:52 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/29 22:29:34 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,9 +168,9 @@ int	merge_quoted(t_node **token, t_smpl_cmd *cmd)
 	quote = get_quote_char((*token)->type);
 	// printf("1. before split and remove quotes: %s\n", (*token)->content);
 	quotes = count_quotes((*token)->content, quote);
-	while (quotes != -1 && count_quotes((*token)->content, quote) % 2)
+	while (*token && (*token)->next && quotes != -1 && count_quotes((*token)->content, quote) % 2)
 		merge_tokens(*token, type);
-	if (!*token)
+	if (!*token || ((count_quotes((*token)->content, quote) % 2) && quotes != -1))
 		return(syntax_error(token, cmd, "unclosed quotes\n", 1));
 	// printf("2. before split and remove quotes: %s\n", (*token)->content);
 	remove_double_quotes(token);
