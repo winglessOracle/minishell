@@ -21,3 +21,261 @@ cat | cat | ls
 echo $?
 bash
 echo $?
+    ls
+    pwd
+    $LESS$VAR
+    |
+    ls |
+    | ls
+    ls | ls
+    ls
+    pwd
+    $LESS$VAR
+    |
+    ls |
+    | ls
+    ls | ls
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    ls
+    pwd
+    $LESS$VAR
+    |
+    ls |
+    | ls
+    ls | ls
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+exit 1 1
+exit 1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit ++1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit ++1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit ++1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit ++1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit ++1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit ++1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit ++1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit ++1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit ++1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit ++1
+exit 42 lalala
+exit lala 42
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit ++1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit ++1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit ++1
+    exit 42 lalala
+    exit lalala 42
+    exit 256
+    exit 300
+    exit -1
+    exit ++1
+    exit --1

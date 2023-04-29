@@ -30,10 +30,6 @@ export test2=$HOME
 echo $test2
 export ls="ls -l"
 $ls
-# exit 42 lalala
-# exit lalala 42
-# exit 256
-# exit -1
 echo hello world
 env ls
 env -a ls

@@ -1,0 +1,21 @@
+
+
+		command=> exit 42 lalala
+
+
+		command=> exit lalala 42
+
+
+		command=> exit 256
+
+
+		command=> exit 300
+
+
+		command=> exit -1
+
+
+		command=> exit ++1
+
+
+		command=> exit --1
