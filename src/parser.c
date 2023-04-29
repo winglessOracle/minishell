@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/28 10:20:49 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/29 11:19:28 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,34 @@
 #include "parser.h"
 #include "builtin.h"
 
-char	*parse_heredoc(t_node *token, t_node *here_redirect)
-{
-	int					type;
-	int					state;
-	char				*input;
+// char	*parse_heredoc(t_node *token, t_node *here_redirect)
+// {
+// 	int					type;
+// 	int					state;
+// 	char				*input;
 
-	type = here_redirect->type;
-	if (type == HEREDOC)
-		type = INPUT;
-	if (type == HEREDOCQ)
-		type = HEREDOC;
-	input = ft_strdup("");
-	while (token)
-	{
-		token->type = type;
-		state = check_token_content(token, token->type);
-		if ((state == SQUOTE || state == DQUOTE) && type != HEREDOC)
-			state = remove_quotes(&token, NULL);
-		else if (state == EXPAND && type != HEREDOC)
-			state = expand(&token, NULL);
-		state = check_token_content(token, token->type);
-		if (token->content)
-			input = ft_strjoin_free_s1(input, token->content);
-		remove_node(&token, NULL);
-	}
-	input = ft_strjoin_free_s1(input, "\n");
-	return (input);
-}
+// 	type = here_redirect->type;
+// 	if (type == HEREDOC)
+// 		type = INPUT;
+// 	if (type == HEREDOCQ)
+// 		type = HEREDOC;
+// 	input = ft_strdup("");
+// 	while (token)
+// 	{
+// 		token->type = type;
+// 		state = check_token_content(token, token->type);
+// 		if ((state == SQUOTE || state == DQUOTE) && type != HEREDOC)
+// 			state = remove_quotes(&token, NULL);
+// 		else if (state == EXPAND && type != HEREDOC)
+// 			state = expand(&token, NULL);
+// 		state = check_token_content(token, token->type);
+// 		if (token->content)
+// 			input = ft_strjoin_free_s1(input, token->content);
+// 		remove_node(&token, NULL);
+// 	}
+// 	input = ft_strjoin_free_s1(input, "\n");
+// 	return (input);
+// }
 
 int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd, t_list *list)
 {	

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/29 11:10:51 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/29 11:24:03 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,33 +81,37 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 	return (0);
 }
 
-int	temp_assign(t_node **token, t_smpl_cmd *cmd)
+int	expand_sub(t_node **token, t_smpl_cmd *cmd)
 {
-	(void)cmd;
-	(*token)->type = ASSIGN_T;
-	return (0);
+	static t_function	*parse[13];
+
+	parse[SQUOTE] = merge_quoted;
+	parse[DQUOTE] = merge_quoted;
+	parse[EXPAND] = expand;
+	(*token)->type = parse[(*token)->type](token, cmd);
+	return ((*token)->type);
 }
 
-// int	expander(t_node **token, t_smpl_cmd *cmd, t_list *list)
-// {
-// 	int					state;
-// 	static t_function	*parse[16];
+int	expander(t_node **token, t_smpl_cmd *cmd, t_list *list)  //expand word (make separate expander for redirects)
+{
+	static t_function	*parse[16];
+	int					state;
 
-// 	(void)list;
-// 	parse[WORD] = add_word_to_cmd;
-// 	parse[COMMENT] = remove_comment;
-// 	parse[SQUOTE] = remove_quotes;
-// 	parse[DQUOTE] = remove_quotes;
-// 	parse[EXPAND] = expand;
-// 	parse[ASSIGN] = parser_assign;
-// 	parse[ASSIGN_T] = temp_assign;
-// 	parse[TILDE] = expand_tilde;
-// 	while (*token && ((*token)->type == WORD || (*token)->type == ASSIGN_T))
-// 	{
-// 		state = check_token_content(*token, (*token)->type);
-// 		state = parse[state](token, cmd);
-// 		if (state == -1)
-// 			break ;
-// 	}
-// 	return (state);
-// }
+	(void)list;
+	state = 0;
+	parse[WORD] = add_word_to_cmd;
+	parse[COMMENT] = remove_comment;
+	parse[SQUOTE] = merge_quoted;
+	parse[DQUOTE] = merge_quoted;
+	parse[EXPAND] = expand;
+	parse[ASSIGN] = parser_assign;
+	parse[TILDE] = expand_tilde;
+	while (*token && (*token)->type == WORD && !state)
+	{
+		(*token)->type = check_token_content(*token, (*token)->type);
+		state = parse[(*token)->type](token, cmd);
+		if (*token && (*token)->type == WORD)
+			add_word_to_cmd(token, cmd);
+	}
+	return (state);
+}

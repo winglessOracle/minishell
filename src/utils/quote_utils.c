@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/28 10:45:34 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/29 11:18:31 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,134 +24,73 @@ char	get_quote_char(int type)
 	return (quote);
 }
 
-void	remove_double_quotes(t_node *token)
+int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 {
 	t_node	*words;
 	char	*content;
-
+	char	quote;
+	char	quote_open;
+	
+	quote = get_quote_char((*tokens)->type);
 	content = ft_strdup("");
-	words = split_to_list(token->content, "\'\"");
+	words = split_to_list((*tokens)->content, "\'\" ");
 	while (words)
 	{
-		if (words->next && !ft_strcmp(words->content, words->next->content) \
-			&& (!ft_strcmp(words->content, "\'") || !ft_strcmp(words->content, "\"")))
+		quote_open = 0;
+		if (words->content[0] == quote)
 		{
-			remove_node(&words, NULL);
-			remove_node(&words, NULL);
+			quote_open = 1;
+			remove_node(&words, cmd);
 		}
-		else if (words)
+		while (words->content[0] != quote)
 		{
-			content = ft_strjoin_free_s1(content, words->content);
-			remove_node(&words, NULL);
-		}
-	}
-	free(token->content);
-	token->content = content;
-}
-
-int	split_quoted_exp(int nr_q, t_node *token, char **content, t_smpl_cmd *cmd)
-{
-	int		state;
-	char	quote;
-	t_node	*words;
-
-	quote = get_quote_char(token->type);
-	words = split_to_list(token->content, "\'\"");
-	while (words)
-	{
-		state = check_token_content(words, WORD);
-		while (state == EXPAND && token->type != HEREDOC)
-		{
-			expand(&words, cmd);
-			if (words->content)
-				state = check_token_content(words, WORD);
-			else
-			{
+			words->type = check_sub_content(words->content, quote, quote_open);
+			if (words->type)
+				expand_sub(&words, cmd);
+			if (!words->content)
 				words->content = ft_strdup("");
-				state = WORD;
-			}
+			content = ft_strjoin_free_s1(content, words->content);
+			remove_node(&words, cmd);
 		}
-		if (state == DQUOTE && get_quote_char(token->type) == quote)
-			nr_q += 1;
-		else if (words->content)
-			*content = ft_strjoin_free_s1(*content, words->content);
-		remove_node(&words, cmd);
+		if (words->content[0] == quote && quote_open)
+			remove_node(&words, cmd);
+		else if (quote_open)
+			return(syntax_error(tokens, cmd, "unclosed quotes\n", 1));
 	}
-	return (nr_q);
+	free((*tokens)->content);
+	(*tokens)->content = content;
+	(*tokens)->type = WORD;
+	return (0);
 }
 
-int	split_quoted(int nr_quotes, t_node *token, char **content, t_smpl_cmd *cmd)
+int	count_quotes(char *str, char quote)
 {
-	int		type;
-	char	quote;
-	t_node	*words;
+	int	i;
+	int	nr_quotes;
 
-	quote = get_quote_char(token->type);
-	words = split_to_list(token->content, "\'\"");
-	while (words)
+	nr_quotes = 0;
+	i = 0;
+	while (str[i])
 	{
-		type = check_token_content(words, token->type);
-		if (type != SQUOTE && type != DQUOTE)
-			*content = ft_strjoin_free_s1(*content, words->content);
-		else if (get_quote_char(token->type) == quote)
-			nr_quotes += 1;
-		remove_node(&words, cmd);
+		if (str[i] == quote)
+			nr_quotes++;
+		i++;
 	}
 	return (nr_quotes);
 }
 
-int	get_content(t_node **token, t_smpl_cmd *cmd, int type, int state)
+int	merge_quoted(t_node **token, t_smpl_cmd *cmd)
 {
-	int		nr_quotes;
-	char	*content;
+	int		type;
+	char	quote;
 
-	nr_quotes = 0;
-	content = NULL;
-	while (*token)
-	{
-		(*token)->type = type;
-		if (state == HEREDOC || type == SQUOTE)
-			nr_quotes = split_quoted(nr_quotes, *token, &content, cmd);
-		else
-			nr_quotes = split_quoted_exp(nr_quotes, *token, &content, cmd);
-		if ((nr_quotes % 2) == 0)
-			break ;
-		remove_node(token, cmd);
-	}
-	if (syntax_error(token, cmd, "unclosed quotes\n", (nr_quotes % 2)))
-		return (-1);
-	free((*token)->content);
-	(*token)->content = content;
+	type = (*token)->type;
+	quote = get_quote_char((*token)->type);
+	while (count_quotes((*token)->content, quote) % 2)
+		merge_tokens(*token, type);
+	if (!*token)
+		return(syntax_error(token, cmd, "unclosed quotes\n", 1));
+	split_and_remove_quotes(token, cmd);
+	(*token)->type = WORD;
 	return (0);
-}
-
-int	remove_quotes(t_node **token, t_smpl_cmd *cmd)
-{
-	int					state;
-	int					type;
-
-	state = (*token)->type;
-	if (!ft_strcmp((*token)->content, "\"\"") || \
-					!ft_strcmp((*token)->content, "\'\'"))
-	{
-		free((*token)->content);
-		(*token)->content = ft_strdup("");
-		return (add_word_to_cmd(token, cmd));
-	}
-	type = check_token_content(*token, state);
-	type = get_content(token, cmd, type, state);
-	if (type == -1)
-		return (type);
-	if (type != -1 && (state == INPUT || state == OUTPUT \
-				|| state == APPEND || state == HEREDOC))
-	{
-		if (state == HEREDOC)
-			(*token)->type = HEREDOCQ;
-		return (type);
-	}
-	else if (type != -1 && state != ASSIGN_T)
-		add_word_to_cmd(token, cmd);
-	else
-		(*token)->type = ASSIGN_T;
-	return (type);
 }
