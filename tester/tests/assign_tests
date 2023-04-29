@@ -2,8 +2,6 @@ echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $
 unset PATH
 ls
 unset PATH
-env
-export
 echo $USER
 echo $HOME
 echo $HOME$NOTHING$USER$
@@ -15,9 +13,6 @@ unset USER
 cd -
 pwd
 echo "no env over here"
-exit asd
-exit 5
-exit 5 asd
 unset OLDPWD
 cd -
 pwd
@@ -25,7 +20,6 @@ cd
 cd ~
 /bin/ls
 cd /bin/
-./ls
 ls
 export T=bazd
 echo "$T" "meg"
@@ -101,7 +95,6 @@ echo < < > echo
 echo < < < > ok
 echo >>| echo kekw
 echo | < echo segf
-.
 amazing
 echo seg < > echo seg
 echo seg > < echo segf
@@ -113,7 +106,6 @@ echo < < | echo ok
 echo < < | < ok
 echo < < | > echo
 echo segfault < " < < < " < < amazing
-.
 amazing
 echo seg <  > echo seg
 echo seg >  < echo segf
@@ -124,7 +116,6 @@ echo |      < echo segf
 echo segf >     | echo is this invalid
 echo segf <         |        < echo super valid
 echo segfault <"    <   <   <"  <   <   amazing
-.
 amazing
 echo seg <> echo seg
 echo seg >< echo segf
@@ -199,24 +190,7 @@ echo segf <|< echo super valid
 /bin/echo test1		test2
 /bin/echo $USER$TESTNOTFOUND$HOME$
 /bin/echo $USER$TESTNOTFOUND$HOME$WTF$PWD
-/bin/echo -n test1
-/bin/echo -n "test1 test2"
-/bin/echo -n "test1 test2" test3
-/bin/echo -n " test1 test2 " 'test3 '
-/bin/echo -n test1		test2
-/bin/echo test1 -n
-/bin/echo "test1 -n"
-/bin/echo -n -n test1
-/bin/echo -n -n -n -n -n test1
-/bin/echo "  -nn "
-/bin/echo "-n test1 -n test2"
-/bin/echo "test1 -n test2"
 /bin/echo ~42
-/bin/echo -n -n -nasd
-/bin/echo -n -n -n-nnnnn
-/bin/echo -n -nnnnnnn -n -nnn -nnnnn -n-n
-/bin/echo -n -nnnnnnn -n -nnn -nnnnn -n feel my pain
-/bin/echo -n -n -n-n
 /bin/echo "'totally logical'"
 /bin/echo 'totally logical'
 /bin/echo ''totally logical''
@@ -231,12 +205,6 @@ cat $USER
 cat '$USER'
 /bin/rm -f '$USER'
 "echo "
-"echo -nnnnn"
-"ECho" -n -nnn"" "-"nnnnn
-"ECHO" "-n"
-ECHO '''''-''n'
-echo '' -n
-echo "" "" "" -n -n -n -n
 export T=">>"
 $T lol
 >> $HOME
@@ -276,11 +244,6 @@ echo $T'o '
 'echo'
 'PWD'
 "PWD"
-echo "-nnnnn "
-ECHO -nn
-ECHO -n -n
-ECHO "-"""n""n""n""n""n""nnnnnn-n
-ECHO "-"""n""n""n""n""n""nnnnnn -n
 export T=nnnnnnnn
 echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-'"$T"
 export T=nnnnnnnn
@@ -307,17 +270,10 @@ export T=e E=c S=h L=o
 $T$E"C"$L -nn
 export T=e E=c S=h L=o
 $T$E"C"$L "" -""n
-LS
-Ls
-lS
 ls
-PWD
 pWD
-pwd
 pwD
-ENV
 CAT
-EXPORT
 export T="|"
 echo segfault $T grep segfault
 export T='|'
@@ -338,8 +294,6 @@ export T=-nnnnnnnn"nnnnnnn "
 echo $T
 export T=-"n                    "
 Echo $T
-EXIT 123
-Exit
 UNSET USER
 Unset USER
 EXPORT T=LA

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/29 21:47:39 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/29 22:14:52 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 	
 	quote = get_quote_char((*tokens)->type);
 	content = ft_strdup("");
-	split = ft_strjoin(&quote, " ");
+	if (quote == '\'')
+		split = ft_strdup("\' ");
+	else
+		split = ft_strdup("\" ");
 	words = split_to_list((*tokens)->content, split);
 	while (words)
 	{
