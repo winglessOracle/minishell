@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/28 10:38:39 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/29 11:10:51 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ int	expand_var(t_node **token, t_smpl_cmd *cmd)
 	remove_node(token, cmd);
 	if ((*token)->content[0] == '?')
 		str = ft_itoa(g_exit_status);
+	else if ((*token)->content[0] == '\'' || (*token)->content[0] == '\"')
+	{
+		// split_and_remove_quotes(token, cmd);
+		str = ft_strdup((*token)->content);		
+	}
 	else
 		str = get_variable(cmd->env_list, (*token)->content);
 	free((*token)->content);
@@ -52,7 +57,7 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 	t_node	*words;
 	t_node	*temp;
 
-	words = split_to_list((*token)->content, "$=?\"\'/");
+	words = split_to_list((*token)->content, "$=?/\"\'");
 	remove_node(token, cmd);
 	while (words && words->next)
 	{
@@ -83,26 +88,26 @@ int	temp_assign(t_node **token, t_smpl_cmd *cmd)
 	return (0);
 }
 
-int	expander(t_node **token, t_smpl_cmd *cmd, t_list *list)
-{
-	int					state;
-	static t_function	*parse[16];
+// int	expander(t_node **token, t_smpl_cmd *cmd, t_list *list)
+// {
+// 	int					state;
+// 	static t_function	*parse[16];
 
-	(void)list;
-	parse[WORD] = add_word_to_cmd;
-	parse[COMMENT] = remove_comment;
-	parse[SQUOTE] = remove_quotes;
-	parse[DQUOTE] = remove_quotes;
-	parse[EXPAND] = expand;
-	parse[ASSIGN] = parser_assign;
-	parse[ASSIGN_T] = temp_assign;
-	parse[TILDE] = expand_tilde;
-	while (*token && ((*token)->type == WORD || (*token)->type == ASSIGN_T))
-	{
-		state = check_token_content(*token, (*token)->type);
-		state = parse[state](token, cmd);
-		if (state == -1)
-			break ;
-	}
-	return (state);
-}
+// 	(void)list;
+// 	parse[WORD] = add_word_to_cmd;
+// 	parse[COMMENT] = remove_comment;
+// 	parse[SQUOTE] = remove_quotes;
+// 	parse[DQUOTE] = remove_quotes;
+// 	parse[EXPAND] = expand;
+// 	parse[ASSIGN] = parser_assign;
+// 	parse[ASSIGN_T] = temp_assign;
+// 	parse[TILDE] = expand_tilde;
+// 	while (*token && ((*token)->type == WORD || (*token)->type == ASSIGN_T))
+// 	{
+// 		state = check_token_content(*token, (*token)->type);
+// 		state = parse[state](token, cmd);
+// 		if (state == -1)
+// 			break ;
+// 	}
+// 	return (state);
+// }

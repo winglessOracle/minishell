@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/25 21:44:24 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/29 11:08:31 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ int		expand_tilde(t_node **token, t_smpl_cmd *cmd);
 // expand_utils
 int		expander(t_node **token, t_smpl_cmd *cmd, t_list *list);
 int		expand(t_node **token, t_smpl_cmd *cmd);
+int		expand_sub(t_node **token, t_smpl_cmd *cmd);
+int		check_sub_content(char *str, char quote, int open);
+char	get_quote_char(int type);
+int		split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd);
+
+// export
+int		check_valid_identifier(char *str);
 
 // content_utils
 int		remove_quotes(t_node **token, t_smpl_cmd *cmd);

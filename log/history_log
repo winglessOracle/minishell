@@ -18569,3 +18569,699 @@ echo "$T" "meg"
 exit
 echo "$T" "meg"
 exit
+export var=aap
+export v1ar=aap
+echo $?
+export 1var=aap
+export var1=aap
+export varaap
+exit
+export -
+echo $?
+exit
+aap
+aap
+aap
+aap
+aap
+aap
+aap
+aap
+aap
+make
+aap
+"aap"
+"aap"
+"aap"
+"aap"
+"aap"
+"aap"
+"aap"
+"hello world"
+"hello ' world"
+"hello"" world"
+aap
+"aap"
+exit
+"aap"
+"aap"
+"aap"
+"aap"
+"aap"
+"aap hallo"
+"aap "hallo" en nog een keer hallo"
+exit
+"aap"
+exit
+"aap"
+"aap"
+"aap"
+exit
+"aap"
+exit
+"aap"
+"aap"
+exit
+"hell world"
+"hello world"
+"hello "world" there"
+exit
+"hello "world" there"
+exit
+"hello "world" there"
+exit
+"hello "world" there"
+exit
+"hello "world" there"
+exit
+"hello "world" there"
+exit
+"hello "world" there"
+exit
+"hello "world" there"
+"hello "world" there"
+"hello "world" there"
+exit
+"hello "world" there"
+exit
+"hello "world" there"
+exit
+echo aap
+echo ""aap
+echo "hello"aap
+echo "hello" aap
+exit
+echo "hello" aap
+echo 'hello' aap
+echo 'hello' aap
+exit
+echo 'hello' aap
+echo 'hello' aap
+echo "hello" aap
+exit
+echo "hello" aap
+exit
+echo "hello" aap
+echo 'hello' aap
+exit
+echo "hello" aap
+echo 'hello' aap
+exit
+echo 'hello' aap
+echo 'hello"there"' aap
+echo "hello"there"" aap
+echo "hello"there" aap"
+echo "hello"the"re" aap
+exit
+""
+""
+""
+""
+""
+""
+""
+""
+""
+""
+exit
+echo "aap "and"word"""
+echo "and"word"""
+exit
+app"quoted"
+app"quoted"
+exit
+app"quoted"
+app"q"
+app""
+aap""
+exit
+echo aap
+echo "aap"
+"aap"
+exit
+"aap"
+exit
+"aap"
+exit
+"aap"
+"aap and aap"
+"aap and "aap"
+"aap and" "aap"
+"aap and""aap"
+"aap and""aap"""
+exit
+echo "aap and""aap"""
+echo "aap and""aap"""'and aap'
+echo "aap and""aap"''""
+echo "aap and""aap"'and'""
+exit
+echo "aap and""aap"'and'""
+echo "aap and""$PWD"'and'""
+echo "aap and""$PWD"'$PWD'""
+exit
+echo "hello $PWD world"
+exit
+"hello $PWD world"
+"hello$PWDworld"
+"hello $PWD world"
+exit
+"hello $PWD world"
+"hello "$PWD" world"
+exit
+$PWD
+echo $PWD
+echo "$PWD"
+echo '$PWD'
+echo '$PWD hello'
+echo "$PWD hello"
+echo '$PWD hello'
+echo '$PWD hello'aap
+echo "'$PWD hello'aap"
+aap
+"aap"
+exit
+"aap"
+exit
+"aap"
+exit
+"aap"
+"aap'""'aap"
+exit
+"aap'""'aap"
+"aap'koe'""'aap"
+exit
+"aap"
+"aap"test
+echo "aap"test
+exit
+echo "aap"
+exit
+echo "aap"
+exit
+exit
+echo "aap"
+exit
+"aap"
+exit
+"aap"
+exit
+"aap"
+exit
+"aap"
+exit
+"aap hello"
+exit
+"aap hello"
+exit
+"aap hello"
+exit
+"aap hello"
+exit
+"aap hello"
+exit
+"aap hello"
+exit
+"aap hello"
+"aap hello"
+echo "aap hello"
+echo "aap 'hello"
+echo "aap '"hello""
+echo "aap '"hello""
+echo "aap '"hello""
+echo "aap '"hello""
+echo "aap '"hello""
+echo "aap '"hello""
+echo "aap" $PWD
+echo "aap" $PWD
+echo "aap" $PWD
+exit
+echo "aap" $PWD
+echo "aap" $PWD
+echo "aap" $PWD
+echo "aap" $PWD
+echo "aap" $PWD
+echo "aap" $PWD
+echo "aap" $PWD
+echo "aap" $PWD
+echo "aap" $PWD
+echo "aap" $PWD
+echo "aap" $PWD
+exit
+echo "aap" $PWD
+echo "aap" '$PWD'
+exit
+echo "aap" '$PWD'
+echo "aap" $PWD
+exit
+/bin/echo '"'$USER'"'
+/bin/echo "''$USER''"
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "''$USER''"
+/bin/echo '"'$USER'"'
+exit
+/bin/echo '"'$USER'"'
+exit
+/bin/echo '"'$USER'"'
+exit
+/bin/echo '"'$USER'"'
+'"'$USER'"'
+exit
+'"'$USER'"'
+echo '"'$USER'"'
+exit
+echo '"'$USER'"'
+exit
+echo '"'$USER'"'
+exit
+echo '"'$USER'"'
+exi
+exit
+echo '"'$USER'"'
+exit
+echo '"'$USER'"'
+/bin/echo '"'$USER'"'
+/bin/echo "''$USER''"
+/bin/echo "'"'$USER'"'"
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo $USER
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo $USER'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"
+/bin/echo '"'$USER
+/bin/echo $USER
+exit
+/bin/echo $USER
+/bin/echo '"'"$USER"'"'
+/bin/echo $USER
+exit
+/bin/echo '"'"$USER"'"'
+/bin/echo $USER
+exit
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+exit
+/bin/echo '"'"$USER"'"'
+echo "$T" "meg"
+/bin/echo '"'$USER'"'
+/bin/echo "''$USER''"
+/bin/echo "'"'$USER'"'"
+/bin/echo '"'"$USER"'"'
+/bin/echo $"HOME"$USER
+echo $"HOME"
+exit
+echo $"HOME"
+/bin/echo $"HOME"$USER
+exit
+echo "$T" "meg"
+echo "$T" "meg"
+echo "$T" "meg"
+echo "$T" "meg"
+exit
+echo "$T" "meg" 
+/bin/echo '"'$USER'"'
+/bin/echo "''$USER''"
+exit
+/bin/echo "''$USER''"
+exit
+/bin/echo "''$USER''"
+exit
+/bin/echo "''$USER''"
+make
+/bin/echo "''$USER''"
+exit
+/bin/echo "''$USER''"
+exit
+/bin/echo "''$USER''"
+exit
+/bin/echo "''$USER''"
+exit
+/bin/echo "''$USER''"
+exit
+/bin/echo "''$USER''"
+exit
+/bin/echo "''$USER''"
+exit
+/bin/echo "''$USER''"
+exit
+/bin/echo "''$USER''"
+exit
+/bin/echo "''$USER''"
+exit\
+exit
+/bin/echo "''$USER''"
+clear
+echo "$T" "meg"
+/bin/echo '"'$USER'"'
+/bin/echo "''$USER''"
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+make
+/bin/echo "'"'$USER'"'"
+make
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+exit
+exit
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+clear
+echo "$T" "meg"
+/bin/echo '"'$USER'"'
+exit
+/bin/echo '"'$USER'"'
+clear
+echo "$T" "meg"
+/bin/echo '"'$USER'"'
+/bin/echo "''$USER''"
+exit
+/bin/echo "''$USER''"
+exit
+/bin/echo "''$USER''"
+exit
+clear
+echo "$T" "meg"
+/bin/echo '"'$USER'"'
+/bin/echo "''$USER''"
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+/bin/echo "'"'$USER'"'"
+exit
+/bin/echo "'"'$USER'"'"
+exit
+clear
+echo "$T" "meg"
+/bin/echo '"'$USER'"'
+/bin/echo "''$USER''"
+/bin/echo "'"'$USER'"'"
+/bin/echo '"'"$USER"'"'
+/bin/echo $"HOME"$USER
+exit
+/bin/echo $"HOME"$USER
+exit
+/bin/echo $"HOME"$USER
+/bin/echo $"HOME"$USER
+/bin/echo $"HOME"$USER
+/bin/echo $"HOME"$USER
+clear
+exit
+exit
+/bin/echo $"HOME"$USER
+/bin/echo $"HOME"$USER
+clear
+/bin/echo $"HOM"E$USER
+/bin/echo $"42$"
+/bin/echo '""""""""$USER""""""""'
+/bin/echo ""'""""""$USER""""""'""
+/bin/echo """"""'""$USER""'""""""
+/bin/echo ""'""'""""$USER""""'""'""
+/bin/echo '""'""'""""$USER""""'""'""'
+/bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+exit
+        echo hello
+        echo "hello world"
+        echo "hello 'world"
+        echo 'hello world'
+        echo 'hello "world'
+        echo "'hello world'"
+        echo '"hello world"'
+        echo "hello '$PWD' world"
+        echo 'hello "$PWD" world'
+        echo "hello $PWD world"
+        echo 'hello $PWD world'
+        echo quote
+        ""
+        echo "test | test ; moretest><"
+        $
+        $LESS$VAR
+        --
+        >
+        <
+        > > > > >
+        >> >> >> >>
+        >>>>>>>>>
+        <<<<<<<<<
+        ~
+        < < < < < <
+        /bin/cat ><
+        /bin/cat <Makefile >
+        cat 42 42
+        echo >
+        echo > <
+        .
+        ..
+        echo | |
+        EechoE
+        .echo.
+        >echo>
+        /bin/rm -f echo
+        <echo<
+        /bin/rm -f echo
+        >>echo>>
+        /bin/rm -f echo
+        |echo|
+        trying to destroy your minishell
+        |
+        | test
+        | | |
+        | | | | test
+        | test
+        echo > <
+        hello world
+        ||||||||
+        cat wouaf wouaf
+        >
+        > > > >
+        >> >> >> >>
+        /
+        \\\
+        rm -f something
+        | echo -n oui
+        trying to destroy your minishell
+        trying something again echo if you see this message thats not a good new
+        qewew
+        wtf
+        hi im zsolt
+        nice to meet you if these tests are green
+        your minishell is perfect
+        >>| echo wtf
+        >| echo wtf
+        /bin/rm -rf echo
+        <| echo wtf
+        echo "<<| echo wtf"
+        echo ">>| echo wtf"
+        echo ">| echo wtf"
+        echo "<| echo wtf"
+        ls | wc -l | xargs echo
+        yes "no" | head -n 10
+        /bin/echo -e "\033[33mHello, world!\033[0m"
+        /bin/echo '\1$42' > tmp_redir_out
+        ls -la | grep tmp_redir_out | awk '{print $1 $2}'
+        cat -e tmp_redir_out
+        rm tmp_redir_out
+        sleep 0 | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+        >tmp_out | echo 1
+        cat tmp_out
+        rm -f tmp_out
+        echo 1 | >tmp_out
+        cat tmp_out
+        rm -f tmp_out
+        grep 1 < filedoesnotexist | echo 1 | grep 1 | head -1 | cat | ls
+        /usr/bin/env -i bash -c "env" | wc -l
+        export test="arg1arg2"
+        echo 'echo $1' > tmp_test_sh
+        bash tmp_test_sh $test
+        echo 'echo $2' > tmp_test_sh
+        bash tmp_test_sh $test
+        rm -f tmp_test_sh
+        export pipe_var=1 | echo $pipe_var
+        echo $pipe_var
+        echo $PATH
+        echo $HOME
+        unset PATH HOME
+        echo $PATH
+        echo $HOME
+        echo "env | /usr/bin/wc -l" | env -i $MINISHELL_PATH"/"$EXECUTABLE
+        echo $?
+        echo "ls" | env -i $MINISHELL_PATH"/"$EXECUTABLE
+        echo $?
+        echo "unset PATH" | env -i $MINISHELL_PATH"/"$EXECUTABLE
+        echo $?
+        echo Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        ls
+        pwd
+        $LESS$VAR
+        |
+        ls |
+        | ls
+        ls | ls
+        ls
+        ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls
+        ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls
+        env | sort | grep -v SHLVL | grep -v ^_
+        cat ./test_files/infile_big | grep oi
+        export GHOST=123 | env | grep GHOST
+        /bin/echo 1 | grep 1
+        /bin/echo 1 | grep 2
+        ifconfig | grep ":"
+        ifconfig | grep nothing
+        cd .. | echo "42"
+        echo 42 | cat -e
+        echo 42 | echo no | echo smth | grep 42
+        echo 42 | echo no | echo smth | grep no
+        echo 42 | echo no | echo smth | grep smth
+        /bin/env | grep "_="
+        /bin/env | grep "SHLVL"
+        /bin/echo 1 | kaka
+        echo test | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e
+        /bin/echo test | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e
+        ls -la ../ | grep "."
+        unset TEST | cat -e
+        cat tmp_lol.c | cat > tmp_lol.c
+        rm -rf tmp_lol.c
+        /bin/echo 1 > tmp_lol.c
+        cat tmp_lol.c | cat > tmp_lol.c
+        rm -rf tmp_lol.c
+        ls | cat asd
+        ls > out >> out1 >out3 | cat out1
+        ls > out >> out1 >out3 | cat out1
+        /bin/rm -f out
+        /bin/rm -f out1
+        /bin/rm -f out3
+        cat < Makefile > out >> out1 | wc -l out1 > out2
+        cat < Makefile > out >> out1 | wc -l out1 > out2
+        /bin/rm -f out
+        /bin/rm -f out1
+        /bin/rm -f out2
+        |ls | ls
+        ls|cat Makefile|ls
+        ls|cat Makefile|<wc -l
+        ls|cat Makefile|> out
+        /bin/rm -f out
+        ls|cat Makefile|>> out
+        /bin/rm -f out
+        $USER
+        asd
+        /bin/rm -f out
+        pwd
+        ls|cat Makefile|>> out|cd ..
+        /bin/rm -f out
+        pwd
+        pwd
+        cd .. |ls|cat Makefile|>> out
+        pwd
+        /bin/rm -f out
+        ls -l | awk '$1 ~ /^d/ {print $9}'
+        ls
+        cat cmds.sh
+        /bin/echo test1
+        ""
+        touch ""
+        touch "  "
+        /bin/rm -f "  "
+        touch "
