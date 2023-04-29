@@ -22,14 +22,12 @@ $LESS$VAR
 >> >> >> >>
 >>>>>>>>>
 <<<<<<<<<
-~
 < < < < < <
 /bin/cat ><
 /bin/cat <Makefile >
 cat 42 42
 echo >
 echo > <
-.
 ..
 echo | |
 EechoE
@@ -55,8 +53,6 @@ cat wouaf wouaf
 >
 > > > >
 >> >> >> >>
-# <<
-/
 \\\
 rm -f something
 | echo -n oui

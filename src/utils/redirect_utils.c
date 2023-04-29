@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/29 12:09:18 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/29 22:05:59 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,21 @@ int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
 	if (state == -1)
 		return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
 	(*tokens)->type = check_token_content(*tokens, WORD);
-	// printf("1. content: %s, type: %d, redirect type: %d\n", (*tokens)->content, (*tokens)->type, state);
+	// print_tokens(*tokens, "in redirect\n");
 	if ((*tokens)->type == COMMENT)
 		(*tokens)->type = parse[(*tokens)->type](tokens, cmd);
 	while (*tokens && (*tokens)->type == BLANK)
 		remove_node(tokens, cmd);
 	(*tokens)->type = check_token_content(*tokens, WORD);
+	if (((*tokens)->content[0] == '|' || (*tokens)->content[0] == '&') && state != OUTPUT)
+		return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
+	if (((*tokens)->content[0] == '|' || (*tokens)->content[0] == '&') && state == OUTPUT)
+	{
+		remove_node(tokens, cmd);
+		while ((*tokens)->type != WORD)
+			remove_node(tokens, cmd);
+		// print_tokens(*tokens, "after remove pipe\n");
+	}
 	if ((*tokens)->type != WORD)
 		(*tokens)->type = parse[(*tokens)->type](tokens, cmd);
 	// printf("2. content: %s, type: %d, redirect type: %d\n", (*tokens)->content, (*tokens)->type, state);
