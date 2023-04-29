@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/28 14:38:41 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/29 11:36:15 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ int	expand_tilde(t_node **token, t_smpl_cmd *cmd)
 		(*token)->content = ft_strdup(home);
 	else
 		(*token)->content = ft_strjoin(home, &temp[1]);
+	(*token)->type = WORD;
 	free(temp);
 	free(home);
+	expander(token, cmd, NULL);
 	return (0);
 }
