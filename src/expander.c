@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/29 13:21:51 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/29 19:49:34 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ int	expand_var(t_node **token, t_smpl_cmd *cmd)
 	remove_node(token, cmd);
 	if ((*token)->content[0] == '?')
 		str = ft_itoa(g_exit_status);
-	else if ((*token)->content[0] == '\'' || (*token)->content[0] == '\"')
-	{
-		// split_and_remove_quotes(token, cmd);
-		str = ft_strdup((*token)->content);		
-	}
+	// else if ((*token)->content[0] == '\'' || (*token)->content[0] == '\"')
+	// {
+	// 	split_and_remove_quotes(token, cmd);
+	// 	str = ft_strdup((*token)->content);		
+	// }
 	else
 		str = get_variable(cmd->env_list, (*token)->content);
 	free((*token)->content);
@@ -57,10 +57,12 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 	t_node	*words;
 	t_node	*temp;
 
+	// printf("content: %s\n", (*token)->content);
 	words = split_to_list((*token)->content, "$=?/\"\'");
 	remove_node(token, cmd);
 	while (words && words->next)
 	{
+		// print_tokens(words, "in expand\n");
 		if (words->content && words->content[0] == '$')
 			expand_var(&words, cmd);
 		else if (words->next->next && words->next->content \
@@ -108,9 +110,12 @@ int	expander(t_node **token, t_smpl_cmd *cmd, t_list *list)  //expand word (make
 	parse[TILDE] = expand_tilde;
 	while (*token && (*token)->type == WORD && !state)
 	{
+		// printf ("1. in expander, content: %s, type: %d\n", (*token)->content, (*token)->type);
+		remove_double_quotes(token);
 		(*token)->type = check_token_content(*token, (*token)->type);
-		// printf ("in expander, content: %s, type: %d\n", (*token)->content, (*token)->type);
+		// printf ("2. in expander, content: %s, type: %d\n", (*token)->content, (*token)->type);
 		state = parse[(*token)->type](token, cmd);
+		// printf ("3. in expander, content: %s, type: %d\n", (*token)->content, (*token)->type);
 		if (*token && (*token)->type == WORD)
 			add_word_to_cmd(token, cmd);
 	}
