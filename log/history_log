@@ -27397,3 +27397,3416 @@ exit
         echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-''$T'
         export T=nnnnnnnn
         echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn'$T' '-'"$T "
+        echo hello
+        echo "hello world"
+        echo "hello 'world"
+        echo 'hello world'
+        echo 'hello "world'
+        echo "'hello world'"
+        echo '"hello world"'
+        echo "hello '$PWD' world"
+        echo 'hello "$PWD" world'
+        echo "hello $PWD world"
+        echo 'hello $PWD world'
+        echo quote
+        ""
+        echo "test | test ; moretest><"
+        $
+        $LESS$VAR
+        --
+        >
+        <
+        > > > > >
+        >> >> >> >>
+        >>>>>>>>>
+        <<<<<<<<<
+        ~
+        < < < < < <
+        /bin/cat ><
+        /bin/cat <Makefile >
+        cat 42 42
+        echo >
+        echo > <
+        .
+        ..
+        echo | |
+        EechoE
+        .echo.
+        >echo>
+        /bin/rm -f echo
+        <echo<
+        /bin/rm -f echo
+        >>echo>>
+        /bin/rm -f echo
+        |echo|
+        trying to destroy your minishell
+        |
+        | test
+        | | |
+        | | | | test
+        | test
+        echo > <
+        hello world
+        ||||||||
+        cat wouaf wouaf
+        >
+        > > > >
+        >> >> >> >>
+        /
+        \\\
+        rm -f something
+        | echo -n oui
+        trying to destroy your minishell
+        trying something again echo if you see this message thats not a good new
+        qewew
+        wtf
+        hi im zsolt
+        nice to meet you if these tests are green
+        your minishell is perfect
+        >>| echo wtf
+        >| echo wtf
+        /bin/rm -rf echo
+        <| echo wtf
+        echo "<<| echo wtf"
+        echo ">>| echo wtf"
+        echo ">| echo wtf"
+        echo "<| echo wtf"
+        ls | wc -l | xargs echo
+        yes "no" | head -n 10
+        /bin/echo -e "\033[33mHello, world!\033[0m"
+        /bin/echo '\1$42' > tmp_redir_out
+        ls -la | grep tmp_redir_out | awk '{print $1 $2}'
+        cat -e tmp_redir_out
+        rm tmp_redir_out
+        sleep 0 | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+        >tmp_out | echo 1
+        cat tmp_out
+        rm -f tmp_out
+        echo 1 | >tmp_out
+        cat tmp_out
+        rm -f tmp_out
+        grep 1 < filedoesnotexist | echo 1 | grep 1 | head -1 | cat | ls
+        /usr/bin/env -i bash -c "env" | wc -l
+        export test="arg1arg2"
+        echo 'echo $1' > tmp_test_sh
+        bash tmp_test_sh $test
+        echo 'echo $2' > tmp_test_sh
+        bash tmp_test_sh $test
+        rm -f tmp_test_sh
+        export pipe_var=1 | echo $pipe_var
+        echo $pipe_var
+        echo $PATH
+        echo $HOME
+        unset PATH HOME
+        echo $PATH
+        echo $HOME
+        echo $?
+        echo $?
+        echo $?
+        echo Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+        unset PATH
+        ls
+        unset PATH
+        env
+        export
+        echo $USER
+        echo $HOME
+        echo $HOME$NOTHING$USER$
+        pwd
+        unset PATH
+        echo $HOME$NOTHING$USER$
+        unset PATH
+        unset USER
+        cd -
+        pwd
+        echo "no env over here"
+        exit asd
+        exit 5
+        exit 5 asd
+        unset OLDPWD
+        cd -
+        pwd
+        cd
+        cd ~
+        /bin/ls
+        cd /bin/
+        ./ls
+        ls
+        export T=bazd
+        echo "$T" "meg"
+        cd /bin/
+        ls
+        export a="asd" b="de" o= c="hellomi" X
+        unset o
+        export a="asd" b="de" o= c="hellomi" X
+        unset X
+        export a="asd" b="de" o= c="hellomi" X
+        unset o a X b c
+        export a="asd" b="de" o= c="hellomi" X
+        unset o asd B x X wqd c
+        unset PATH
+        cd ..
+        unset PATH
+        pwd
+        cd
+        pwd
+        unset PATH
+        pwd
+        cd -
+        pwd
+        exit
+        unset PATH
+        pwd
+        cd ~
+        pwd
+        unset PATH
+        pwd
+        cd ~
+        pwd
+        cd -
+        pwd
+        /bin/cat Makefile > out >>out1 >out2
+        /bin/cat Makefile > out >>out1 >out2
+        /bin/rm -rf out
+        /bin/rm -rf out1
+        /bin/rm -rf out2
+        /bin/cat Makefile > out >>out1 >out2 > out3 >> out4
+        /bin/cat Makefile > out >>out1 >out2 > out3 >> out4
+        /bin/rm -rf out
+        /bin/rm -rf out1
+        /bin/rm -rf out2
+        /bin/rm -rf out3
+        /bin/rm -rf out4
+        > out
+        /bin/rm -rf out
+        < out
+        /bin/rm -rf out
+        |
+        ""
+        ''
+        >> out
+        /bin/rm -rf out
+        echo |< echo segf
+        echo segf >| echo is this invalid
+        echo >          >           < "echo"
+        echo >          >         | echo kekw
+        echo >          >         | echo super valid
+        echo <          <         > echo
+        echo <  < <         > ok
+        echo <  < | echo ok
+        echo <  < |    < ok
+        echo <      < |    > echo
+        echo >>| echo super valid
+        echo >>< "echo"
+        echo < < < echo seegf
+        echo > > < "echo"
+        echo > > | echo kekw
+        echo > > | echo super valid
+        echo < < > echo
+        echo < < < > ok
+        echo >>| echo kekw
+        echo | < echo segf
+        .
+        amazing
+        echo seg < > echo seg
+        echo seg > < echo segf
+        echo seg < < > echo segf
+        echo seg < < < > echo segf
+        echo segf > | echo is this invalid
+        echo segf < | < echo super valid
+        echo < < | echo ok
+        echo < < | < ok
+        echo < < | > echo
+        echo segfault < " < < < " < < amazing
+        .
+        amazing
+        echo seg <  > echo seg
+        echo seg >  < echo segf
+        echo seg <      < > echo segf
+        echo seg <      < <    > echo segf
+        echo <      <     < echo seegf
+        echo |      < echo segf
+        echo segf >     | echo is this invalid
+        echo segf <         |        < echo super valid
+        echo segfault <"    <   <   <"  <   <   amazing
+        .
+        amazing
+        echo seg <> echo seg
+        echo seg >< echo segf
+        echo seg <<> echo segf
+        echo seg <<<> echo segf
+        echo <<< echo seegf
+        echo segf <|< echo super valid
+        /bin/echo ""$?""
+        /bin/echo $?"42"
+        /bin/echo ''$?''"42"
+        /bin/echo '"$USER"'
+        /bin/echo "'$USER'"
+        /bin/echo ""'$USER'""
+        /bin/echo '"'$USER'"'
+        /bin/echo "''$USER''"
+        /bin/echo "'"'$USER'"'"
+        /bin/echo '"'"$USER"'"'
+        /bin/echo $"HOME"$USER
+        /bin/echo $"HOM"E$USER
+        /bin/echo "exit_code ->$? user ->$USER home -> $HOME"
+        /bin/echo $"HOME"
+        /bin/echo $"42$"
+        /bin/echo "$ "
+        /bin/echo hi >./outfiles/outfile01 | /bin/echo bye
+        /bin/echo <123 <456 hi | /bin/echo 42
+        /bin/echo '$='
+        /bin/echo '$ '
+        /bin/echo "$?"
+        /bin/echo '$?'
+        /bin/echo "'$?'"
+        /bin/echo \$USER
+        /bin/echo \\$USER
+        /bin/echo \\\$USER
+        /bin/echo \\\\$USER
+        /bin/echo \\\\\$USER
+        /bin/echo \\\\\\\\\$USER
+        /bin/echo \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\$USER \$PATH \\$PWD
+        /bin/echo "cat lol.c | cat > lol.c"
+        /bin/echo "cat lol.c '|' cat > lol.c"
+        /bin/echo '$USER' "$USER" "text  ' text"
+        /bin/echo $USER =intergalaktikus miaf*szomez
+        /bin/echo -n"-n" bonjour
+        /bin/echo "'$USER'"
+        /bin/echo " '$USER' "
+        /bin/echo text"$USER"
+        /bin/echo text"'$USER'" ' $USER '
+        /bin/echo "text"   "$USER"    "$USER"
+        /bin/echo '              $USER          '
+        /bin/echo ''''''''''$USER''''''''''
+        /bin/echo """"""""$USER""""""""
+        /bin/echo '""""""""$USER""""""""'
+        /bin/echo ""'""""""$USER""""""'""
+        /bin/echo """"""""'$USER'""""""""
+        /bin/echo """""""'"$USER"'"""""""
+        /bin/echo """"""'""$USER""'""""""
+        /bin/echo ""'""'""""$USER""""'""'""
+        /bin/echo '""'""'""""$USER""""'""'""'
+        /bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+        /bin/echo "text" "text$USER" ... "$USER"
+        /bin/echo
+        /bin/echo ''
+        /bin/echo ""
+        /bin/echo '' ""
+        /bin/echo /bin/echo
+        /bin/echo test1
+        /bin/echo 'test1'
+        /bin/echo "/bin/echo hallo"
+        /bin/echo /bin/echo"1"
+        /bin/echo "test1 test2"
+        /bin/echo "test1  test2" test3
+        /bin/echo " test1 test2 " 'test3 '
+        /bin/echo test1test2
+        /bin/echo $USER$TESTNOTFOUND$HOME$
+        /bin/echo $USER$TESTNOTFOUND$HOME$WTF$PWD
+        /bin/echo -n test1
+        /bin/echo -n "test1 test2"
+        /bin/echo -n "test1 test2" test3
+        /bin/echo -n " test1 test2 " 'test3 '
+        /bin/echo -n test1test2
+        /bin/echo test1 -n
+        /bin/echo "test1 -n"
+        /bin/echo -n -n test1
+        /bin/echo -n -n -n -n -n test1
+        /bin/echo "  -nn "
+        /bin/echo "-n test1 -n test2"
+        /bin/echo "test1 -n test2"
+        /bin/echo ~42
+        /bin/echo -n -n -nasd
+        /bin/echo -n -n -n-nnnnn
+        /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n-n
+        /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n feel my pain
+        /bin/echo -n -n -n-n
+        /bin/echo "'totally logical'"
+        /bin/echo 'totally logical'
+        /bin/echo ''totally logical''
+        /bin/echo ""'totally logical'""
+        ">>" asd
+        >">" asd
+        /bin/rm -f ">"
+        >> '$USER'
+        cat $USER
+        /bin/rm -f '$USER'
+        >> '$USER'
+        cat '$USER'
+        /bin/rm -f '$USER'
+        "echo "
+        "echo -nnnnn"
+        "ECho" -n -nnn"" "-"nnnnn
+        "ECHO" "-n"
+        ECHO '''''-''n'
+        echo '' -n
+        echo "" "" "" -n -n -n -n
+        export T=">>"
+        $T lol
+        >> $HOME
+        >> "$H"OM"E"
+        cat OME
+        /bin/rm -f OME
+        >> "$USER'$USER'"
+        cat "$USER'$USER'"
+        /bin/rm -f "$USER'$USER'"
+        >> "$USER"
+        cat $USER
+        /bin/rm -f $USER
+        cd /Users/$USER/Desktop/
+        pwd
+        cd /Users/"$USER"/Desktop/
+        pwd
+        cd /Users/"$U"S"ER"/Desktop/
+        export T=n
+        echo "-"$T$T
+        export T=ech
+        echo $To
+        export T=ech
+        echo $T"o"
+        export T=ech
+        echo $T"o "
+        export T=ech
+        echo $T"o -n"
+        export T=ech
+        echo $T"o -n"
+        export T=ech
+        echo $T'o'
+        export T="-n test1 -n test 2"
+        echo $T
+        export T=ech
+        echo $T'o '
+        "ECHO"
+        'echo'
+        'PWD'
+        "PWD"
+        echo "-nnnnn "
+        ECHO -nn
+        ECHO -n -n
+        ECHO "-"""n""n""n""n""n""nnnnnn-n
+        ECHO "-"""n""n""n""n""n""nnnnnn -n
+        export T=nnnnnnnn
+        echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-'"$T"
+        export T=nnnnnnnn
+        echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-''$T'
+        export T=nnnnnnnn
+        echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn'$T' '-'"$T "
+        export T=nnnnnnnn
+        echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn$T '-''$T '
+        export T=e E=c S=h L=o
+        $T$E$S$L
+        export T=e E=c S=h L=o L=ok
+        $T$E$S$L
+        export T=e E=c S=h L=o
+        $T$E$S$L -n
+        export T=E E=c S=h L=o
+        $T$E$S$L -n
+        export T=E E=c S=h L=o
+        $T$E$S$L -nn
+        export T=e E=c S=h L=o
+        $T$E$S$L -nn
+        export T=e E=c S=h L=o
+        $T$E"c"$L -nn
+        export T=e E=c S=h L=o
+        $T$E"C"$L -nn
+        export T=e E=c S=h L=o
+        $T$E"C"$L "" -""n
+        LS
+        Ls
+        lS
+        ls
+        PWD
+        pWD
+        pwd
+        pwD
+        ENV
+        CAT
+        EXPORT
+        export T="|"
+        echo segfault $T grep segfault
+        export T='|'
+        echo segfault $T grep segfault
+        export T=">"
+        echo segfault $T grep segfault
+        export T='<'
+        echo segfault $T grep segfault
+        export T="<<"
+        echo segfault $T grep segfault
+        export T='<<'
+        echo segfault $T grep segfault
+        export T="|"
+        $T$T$T$T$T$T$T
+        export T="echo segfault | grep segfault"
+        $T
+        export T=-nnnnnnnn"nnnnnnn "
+        echo $T
+        export T=-"n                    "
+        Echo $T
+        EXIT 123
+        Exit
+        UNSET USER
+        Unset USER
+        EXPORT T=LA
+        echo $T
+        Export T=LA
+        echo $T
+        "e"'x''p''o''r''t' L=T
+        echo $T
+        e""""""""""""cho
+        export T='|'
+        echo $T echo lala $T echo $T echo ?
+        export T="<<"
+        $T.
+        OLDPWD
+        USER
+        " ls"
+        " cat"
+        " echo"
+        " PWD"
+        " pwd"
+        "PWD "
+        "pwd "
+        'pwd '
+        p""''''w''''''""""""''''''''''''''''''''''''''''''''d
+        '''''''''''''''' echo ok
+        echo "|"  | echo maybe
+        echo '|'  | echo maybe
+        echo -nnnnnnnnnnnn
+        export L=amazing L=ok L=cool
+        echo $L
+        export L=amazing L=ok L=cool
+        export L=ok
+        echo $L
+        echo '$'$'$'$'$'
+        echo '$'$'$'$'$'$'$'
+        echo "$"$'$'$"$"$"$"$'$'
+        echo $/ $/
+        echo $U/SER
+        echo "$/ $/"
+        echo $/"$/"
+        echo '$/'
+        exit 9223372036854775805
+        exit 123"123"
+        <| echo ok
+        >| echo sure
+        echo hello
+        echo "hello world"
+        echo "hello 'world"
+        echo 'hello world'
+        echo 'hello "world'
+        echo "'hello world'"
+        echo '"hello world"'
+        echo "hello '$PWD' world"
+        echo 'hello "$PWD" world'
+        echo "hello $PWD world"
+        echo 'hello $PWD world'
+        echo quote
+        ""
+        echo "test | test ; moretest><"
+        $
+        $LESS$VAR
+        --
+        >
+        <
+        > > > > >
+        >> >> >> >>
+        >>>>>>>>>
+        <<<<<<<<<
+        ~
+        < < < < < <
+        /bin/cat ><
+        /bin/cat <Makefile >
+        cat 42 42
+        echo >
+        echo > <
+        .
+        ..
+        echo | |
+        EechoE
+        .echo.
+        >echo>
+        /bin/rm -f echo
+        <echo<
+        /bin/rm -f echo
+        >>echo>>
+        /bin/rm -f echo
+        |echo|
+        trying to destroy your minishell
+        |
+        | test
+        | | |
+        | | | | test
+        | test
+        echo > <
+        hello world
+        ||||||||
+        cat wouaf wouaf
+        >
+        > > > >
+        >> >> >> >>
+        /
+        \\\
+        rm -f something
+        | echo -n oui
+        trying to destroy your minishell
+        trying something again echo if you see this message thats not a good new
+        qewew
+        wtf
+        hi im zsolt
+        nice to meet you if these tests are green
+        your minishell is perfect
+        >>| echo wtf
+        >| echo wtf
+        /bin/rm -rf echo
+        <| echo wtf
+        echo "<<| echo wtf"
+        echo ">>| echo wtf"
+        echo ">| echo wtf"
+        echo "<| echo wtf"
+        ls | wc -l | xargs echo
+        yes "no" | head -n 10
+        /bin/echo -e "\033[33mHello, world!\033[0m"
+        /bin/echo '\1$42' > tmp_redir_out
+        ls -la | grep tmp_redir_out | awk '{print $1 $2}'
+        cat -e tmp_redir_out
+        rm tmp_redir_out
+        sleep 0 | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+        >tmp_out | echo 1
+        cat tmp_out
+        rm -f tmp_out
+        echo 1 | >tmp_out
+        cat tmp_out
+        rm -f tmp_out
+        grep 1 < filedoesnotexist | echo 1 | grep 1 | head -1 | cat | ls
+        /usr/bin/env -i bash -c "env" | wc -l
+        export test="arg1arg2"
+        echo 'echo $1' > tmp_test_sh
+        bash tmp_test_sh $test
+        echo 'echo $2' > tmp_test_sh
+        bash tmp_test_sh $test
+        rm -f tmp_test_sh
+        export pipe_var=1 | echo $pipe_var
+        echo $pipe_var
+        echo $PATH
+        echo $HOME
+        unset PATH HOME
+        echo $PATH
+        echo $HOME
+        echo $?
+        echo $?
+        echo $?
+        echo Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+        unset PATH
+        ls
+        unset PATH
+        env
+        export
+        echo $USER
+        echo $HOME
+        echo $HOME$NOTHING$USER$
+        pwd
+        unset PATH
+        echo $HOME$NOTHING$USER$
+        unset PATH
+        unset USER
+        cd -
+        pwd
+        echo "no env over here"
+        exit asd
+        exit 5
+        exit 5 asd
+        unset OLDPWD
+        cd -
+        pwd
+        cd
+        cd ~
+        /bin/ls
+        cd /bin/
+        ./ls
+        ls
+        export T=bazd
+        echo "$T" "meg"
+        cd /bin/
+        ls
+        export a="asd" b="de" o= c="hellomi" X
+        unset o
+        export a="asd" b="de" o= c="hellomi" X
+        unset X
+        export a="asd" b="de" o= c="hellomi" X
+        unset o a X b c
+        export a="asd" b="de" o= c="hellomi" X
+        unset o asd B x X wqd c
+        unset PATH
+        cd ..
+        unset PATH
+        pwd
+        cd
+        pwd
+        unset PATH
+        pwd
+        cd -
+        pwd
+        exit
+        unset PATH
+        pwd
+        cd ~
+        pwd
+        unset PATH
+        pwd
+        cd ~
+        pwd
+        cd -
+        pwd
+        /bin/cat Makefile > out >>out1 >out2
+        /bin/cat Makefile > out >>out1 >out2
+        /bin/rm -rf out
+        /bin/rm -rf out1
+        /bin/rm -rf out2
+        /bin/cat Makefile > out >>out1 >out2 > out3 >> out4
+        /bin/cat Makefile > out >>out1 >out2 > out3 >> out4
+        /bin/rm -rf out
+        /bin/rm -rf out1
+        /bin/rm -rf out2
+        /bin/rm -rf out3
+        /bin/rm -rf out4
+        > out
+        /bin/rm -rf out
+        < out
+        /bin/rm -rf out
+        |
+        ""
+        ''
+        >> out
+        /bin/rm -rf out
+        echo |< echo segf
+        echo segf >| echo is this invalid
+        echo >          >           < "echo"
+        echo >          >         | echo kekw
+        echo >          >         | echo super valid
+        echo <          <         > echo
+        echo <  < <         > ok
+        echo <  < | echo ok
+        echo <  < |    < ok
+        echo <      < |    > echo
+        echo >>| echo super valid
+        echo >>< "echo"
+        echo < < < echo seegf
+        echo > > < "echo"
+        echo > > | echo kekw
+        echo > > | echo super valid
+        echo < < > echo
+        echo < < < > ok
+        echo >>| echo kekw
+        echo | < echo segf
+        .
+        amazing
+        echo seg < > echo seg
+        echo seg > < echo segf
+        echo seg < < > echo segf
+        echo seg < < < > echo segf
+        echo segf > | echo is this invalid
+        echo segf < | < echo super valid
+        echo < < | echo ok
+        echo < < | < ok
+        echo < < | > echo
+        echo segfault < " < < < " < < amazing
+        .
+        amazing
+        echo seg <  > echo seg
+        echo seg >  < echo segf
+        echo seg <      < > echo segf
+        echo seg <      < <    > echo segf
+        echo <      <     < echo seegf
+        echo |      < echo segf
+        echo segf >     | echo is this invalid
+        echo segf <         |        < echo super valid
+        echo segfault <"    <   <   <"  <   <   amazing
+        .
+        amazing
+        echo seg <> echo seg
+        echo seg >< echo segf
+        echo seg <<> echo segf
+        echo seg <<<> echo segf
+        echo <<< echo seegf
+        echo segf <|< echo super valid
+        /bin/echo ""$?""
+        /bin/echo $?"42"
+        /bin/echo ''$?''"42"
+        /bin/echo '"$USER"'
+        /bin/echo "'$USER'"
+        /bin/echo ""'$USER'""
+        /bin/echo '"'$USER'"'
+        /bin/echo "''$USER''"
+        /bin/echo "'"'$USER'"'"
+        /bin/echo '"'"$USER"'"'
+        /bin/echo $"HOME"$USER
+        /bin/echo $"HOM"E$USER
+        /bin/echo "exit_code ->$? user ->$USER home -> $HOME"
+        /bin/echo $"HOME"
+        /bin/echo $"42$"
+        /bin/echo "$ "
+        /bin/echo hi >./outfiles/outfile01 | /bin/echo bye
+        /bin/echo <123 <456 hi | /bin/echo 42
+        /bin/echo '$='
+        /bin/echo '$ '
+        /bin/echo "$?"
+        /bin/echo '$?'
+        /bin/echo "'$?'"
+        /bin/echo \$USER
+        /bin/echo \\$USER
+        /bin/echo \\\$USER
+        /bin/echo \\\\$USER
+        /bin/echo \\\\\$USER
+        /bin/echo \\\\\\\\\$USER
+        /bin/echo \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\$USER \$PATH \\$PWD
+        /bin/echo "cat lol.c | cat > lol.c"
+        /bin/echo "cat lol.c '|' cat > lol.c"
+        /bin/echo '$USER' "$USER" "text  ' text"
+        /bin/echo $USER =intergalaktikus miaf*szomez
+        /bin/echo -n"-n" bonjour
+        /bin/echo "'$USER'"
+        /bin/echo " '$USER' "
+        /bin/echo text"$USER"
+        /bin/echo text"'$USER'" ' $USER '
+        /bin/echo "text"   "$USER"    "$USER"
+        /bin/echo '              $USER          '
+        /bin/echo ''''''''''$USER''''''''''
+        /bin/echo """"""""$USER""""""""
+        /bin/echo '""""""""$USER""""""""'
+        /bin/echo ""'""""""$USER""""""'""
+        /bin/echo """"""""'$USER'""""""""
+        /bin/echo """""""'"$USER"'"""""""
+        /bin/echo """"""'""$USER""'""""""
+        /bin/echo ""'""'""""$USER""""'""'""
+        /bin/echo '""'""'""""$USER""""'""'""'
+        /bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+        /bin/echo "text" "text$USER" ... "$USER"
+        /bin/echo
+        /bin/echo ''
+        /bin/echo ""
+        /bin/echo '' ""
+        /bin/echo /bin/echo
+        /bin/echo test1
+        /bin/echo 'test1'
+        /bin/echo "/bin/echo hallo"
+        /bin/echo /bin/echo"1"
+        /bin/echo "test1 test2"
+        /bin/echo "test1  test2" test3
+        /bin/echo " test1 test2 " 'test3 '
+        /bin/echo test1test2
+        /bin/echo $USER$TESTNOTFOUND$HOME$
+        /bin/echo $USER$TESTNOTFOUND$HOME$WTF$PWD
+        /bin/echo -n test1
+        /bin/echo -n "test1 test2"
+        /bin/echo -n "test1 test2" test3
+        /bin/echo -n " test1 test2 " 'test3 '
+        /bin/echo -n test1test2
+        /bin/echo test1 -n
+        /bin/echo "test1 -n"
+        /bin/echo -n -n test1
+        /bin/echo -n -n -n -n -n test1
+        /bin/echo "  -nn "
+        /bin/echo "-n test1 -n test2"
+        /bin/echo "test1 -n test2"
+        /bin/echo ~42
+        /bin/echo -n -n -nasd
+        /bin/echo -n -n -n-nnnnn
+        /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n-n
+        /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n feel my pain
+        /bin/echo -n -n -n-n
+        /bin/echo "'totally logical'"
+        /bin/echo 'totally logical'
+        /bin/echo ''totally logical''
+        /bin/echo ""'totally logical'""
+        ">>" asd
+        >">" asd
+        /bin/rm -f ">"
+        >> '$USER'
+        cat $USER
+        /bin/rm -f '$USER'
+        >> '$USER'
+        cat '$USER'
+        /bin/rm -f '$USER'
+        "echo "
+        "echo -nnnnn"
+        "ECho" -n -nnn"" "-"nnnnn
+        "ECHO" "-n"
+        ECHO '''''-''n'
+        echo '' -n
+        echo "" "" "" -n -n -n -n
+        export T=">>"
+        $T lol
+        >> $HOME
+        >> "$H"OM"E"
+        cat OME
+        /bin/rm -f OME
+        >> "$USER'$USER'"
+        cat "$USER'$USER'"
+        /bin/rm -f "$USER'$USER'"
+        >> "$USER"
+        cat $USER
+        /bin/rm -f $USER
+        cd /Users/$USER/Desktop/
+        pwd
+        cd /Users/"$USER"/Desktop/
+        pwd
+        cd /Users/"$U"S"ER"/Desktop/
+        export T=n
+        echo "-"$T$T
+        export T=ech
+        echo $To
+        export T=ech
+        echo $T"o"
+        export T=ech
+        echo $T"o "
+        export T=ech
+        echo $T"o -n"
+        export T=ech
+        echo $T"o -n"
+        export T=ech
+        echo $T'o'
+        export T="-n test1 -n test 2"
+        echo $T
+        export T=ech
+        echo $T'o '
+        "ECHO"
+        'echo'
+        'PWD'
+        "PWD"
+        echo "-nnnnn "
+        ECHO -nn
+        ECHO -n -n
+        ECHO "-"""n""n""n""n""n""nnnnnn-n
+        ECHO "-"""n""n""n""n""n""nnnnnn -n
+        export T=nnnnnnnn
+        echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-'"$T"
+        export T=nnnnnnnn
+        echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-''$T'
+        export T=nnnnnnnn
+        echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn'$T' '-'"$T "
+        echo hello
+        echo "hello world"
+        echo "hello 'world"
+        echo 'hello world'
+        echo 'hello "world'
+        echo "'hello world'"
+        echo '"hello world"'
+        echo "hello '$PWD' world"
+        echo 'hello "$PWD" world'
+        echo "hello $PWD world"
+        echo 'hello $PWD world'
+        echo quote
+        ""
+        echo "test | test ; moretest><"
+        $
+        $LESS$VAR
+        --
+        >
+        <
+        > > > > >
+        >> >> >> >>
+        >>>>>>>>>
+        <<<<<<<<<
+        ~
+        < < < < < <
+        /bin/cat ><
+        /bin/cat <Makefile >
+        cat 42 42
+        echo >
+        echo > <
+        .
+        ..
+        echo | |
+        EechoE
+        .echo.
+        >echo>
+        /bin/rm -f echo
+        <echo<
+        /bin/rm -f echo
+        >>echo>>
+        /bin/rm -f echo
+        |echo|
+        trying to destroy your minishell
+        |
+        | test
+        | | |
+        | | | | test
+        | test
+        echo > <
+        hello world
+        ||||||||
+        cat wouaf wouaf
+        >
+        > > > >
+        >> >> >> >>
+        /
+        \\\
+        rm -f something
+        | echo -n oui
+        trying to destroy your minishell
+        trying something again echo if you see this message thats not a good new
+        qewew
+        wtf
+        hi im zsolt
+        nice to meet you if these tests are green
+        your minishell is perfect
+        >>| echo wtf
+        >| echo wtf
+        /bin/rm -rf echo
+        <| echo wtf
+        echo "<<| echo wtf"
+        echo ">>| echo wtf"
+        echo ">| echo wtf"
+        echo "<| echo wtf"
+        ls | wc -l | xargs echo
+        yes "no" | head -n 10
+        /bin/echo -e "\033[33mHello, world!\033[0m"
+        /bin/echo '\1$42' > tmp_redir_out
+        ls -la | grep tmp_redir_out | awk '{print $1 $2}'
+        cat -e tmp_redir_out
+        rm tmp_redir_out
+        sleep 0 | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+        >tmp_out | echo 1
+        cat tmp_out
+        rm -f tmp_out
+        echo 1 | >tmp_out
+        cat tmp_out
+        rm -f tmp_out
+        grep 1 < filedoesnotexist | echo 1 | grep 1 | head -1 | cat | ls
+        /usr/bin/env -i bash -c "env" | wc -l
+        export test="arg1arg2"
+        echo 'echo $1' > tmp_test_sh
+        bash tmp_test_sh $test
+        echo 'echo $2' > tmp_test_sh
+        bash tmp_test_sh $test
+        rm -f tmp_test_sh
+        export pipe_var=1 | echo $pipe_var
+        echo $pipe_var
+        echo $PATH
+        echo $HOME
+        unset PATH HOME
+        echo $PATH
+        echo $HOME
+        echo $?
+        echo $?
+        echo $?
+        echo Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+        unset PATH
+        ls
+        unset PATH
+        env
+        export
+        echo $USER
+        echo $HOME
+        echo $HOME$NOTHING$USER$
+        pwd
+        unset PATH
+        echo $HOME$NOTHING$USER$
+        unset PATH
+        unset USER
+        cd -
+        pwd
+        echo "no env over here"
+        exit asd
+        exit 5
+        exit 5 asd
+        unset OLDPWD
+        cd -
+        pwd
+        cd
+        cd ~
+        /bin/ls
+        cd /bin/
+        ./ls
+        ls
+        export T=bazd
+        echo "$T" "meg"
+        cd /bin/
+        ls
+        export a="asd" b="de" o= c="hellomi" X
+        unset o
+        export a="asd" b="de" o= c="hellomi" X
+        unset X
+        export a="asd" b="de" o= c="hellomi" X
+        unset o a X b c
+        export a="asd" b="de" o= c="hellomi" X
+        unset o asd B x X wqd c
+        unset PATH
+        cd ..
+        unset PATH
+        pwd
+        cd
+        pwd
+        unset PATH
+        pwd
+        cd -
+        pwd
+        exit
+        unset PATH
+        pwd
+        cd ~
+        pwd
+        unset PATH
+        pwd
+        cd ~
+        pwd
+        cd -
+        pwd
+        /bin/cat Makefile > out >>out1 >out2
+        /bin/cat Makefile > out >>out1 >out2
+        /bin/rm -rf out
+        /bin/rm -rf out1
+        /bin/rm -rf out2
+        /bin/cat Makefile > out >>out1 >out2 > out3 >> out4
+        /bin/cat Makefile > out >>out1 >out2 > out3 >> out4
+        /bin/rm -rf out
+        /bin/rm -rf out1
+        /bin/rm -rf out2
+        /bin/rm -rf out3
+        /bin/rm -rf out4
+        > out
+        /bin/rm -rf out
+        < out
+        /bin/rm -rf out
+        |
+        ""
+        ''
+        >> out
+        /bin/rm -rf out
+        echo |< echo segf
+        echo segf >| echo is this invalid
+        echo >          >           < "echo"
+        echo >          >         | echo kekw
+        echo >          >         | echo super valid
+        echo <          <         > echo
+        echo <  < <         > ok
+        echo <  < | echo ok
+        echo <  < |    < ok
+        echo <      < |    > echo
+        echo >>| echo super valid
+        echo >>< "echo"
+        echo < < < echo seegf
+        echo > > < "echo"
+        echo > > | echo kekw
+        echo > > | echo super valid
+        echo < < > echo
+        echo < < < > ok
+        echo >>| echo kekw
+        echo | < echo segf
+        .
+        amazing
+        echo seg < > echo seg
+        echo seg > < echo segf
+        echo seg < < > echo segf
+        echo seg < < < > echo segf
+        echo segf > | echo is this invalid
+        echo segf < | < echo super valid
+        echo < < | echo ok
+        echo < < | < ok
+        echo < < | > echo
+        echo segfault < " < < < " < < amazing
+        .
+        amazing
+        echo seg <  > echo seg
+        echo seg >  < echo segf
+        echo seg <      < > echo segf
+        echo seg <      < <    > echo segf
+        echo <      <     < echo seegf
+        echo |      < echo segf
+        echo segf >     | echo is this invalid
+        echo segf <         |        < echo super valid
+        echo segfault <"    <   <   <"  <   <   amazing
+        .
+        amazing
+        echo seg <> echo seg
+        echo seg >< echo segf
+        echo seg <<> echo segf
+        echo seg <<<> echo segf
+        echo <<< echo seegf
+        echo segf <|< echo super valid
+        /bin/echo ""$?""
+        /bin/echo $?"42"
+        /bin/echo ''$?''"42"
+        /bin/echo '"$USER"'
+        /bin/echo "'$USER'"
+        /bin/echo ""'$USER'""
+        /bin/echo '"'$USER'"'
+        /bin/echo "''$USER''"
+        /bin/echo "'"'$USER'"'"
+        /bin/echo '"'"$USER"'"'
+        /bin/echo $"HOME"$USER
+        /bin/echo $"HOM"E$USER
+        /bin/echo "exit_code ->$? user ->$USER home -> $HOME"
+        /bin/echo $"HOME"
+        /bin/echo $"42$"
+        /bin/echo "$ "
+        /bin/echo hi >./outfiles/outfile01 | /bin/echo bye
+        /bin/echo <123 <456 hi | /bin/echo 42
+        /bin/echo '$='
+        /bin/echo '$ '
+        /bin/echo "$?"
+        /bin/echo '$?'
+        /bin/echo "'$?'"
+        /bin/echo \$USER
+        /bin/echo \\$USER
+        /bin/echo \\\$USER
+        /bin/echo \\\\$USER
+        /bin/echo \\\\\$USER
+        /bin/echo \\\\\\\\\$USER
+        /bin/echo \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\$USER \$PATH \\$PWD
+        /bin/echo "cat lol.c | cat > lol.c"
+        /bin/echo "cat lol.c '|' cat > lol.c"
+        /bin/echo '$USER' "$USER" "text  ' text"
+        /bin/echo $USER =intergalaktikus miaf*szomez
+        /bin/echo -n"-n" bonjour
+        /bin/echo "'$USER'"
+        /bin/echo " '$USER' "
+        /bin/echo text"$USER"
+        /bin/echo text"'$USER'" ' $USER '
+        /bin/echo "text"   "$USER"    "$USER"
+        /bin/echo '              $USER          '
+        /bin/echo ''''''''''$USER''''''''''
+        /bin/echo """"""""$USER""""""""
+        /bin/echo '""""""""$USER""""""""'
+        /bin/echo ""'""""""$USER""""""'""
+        /bin/echo """"""""'$USER'""""""""
+        /bin/echo """""""'"$USER"'"""""""
+        /bin/echo """"""'""$USER""'""""""
+        /bin/echo ""'""'""""$USER""""'""'""
+        /bin/echo '""'""'""""$USER""""'""'""'
+        /bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+        /bin/echo "text" "text$USER" ... "$USER"
+        /bin/echo
+        /bin/echo ''
+        /bin/echo ""
+        /bin/echo '' ""
+        /bin/echo /bin/echo
+        /bin/echo test1
+        /bin/echo 'test1'
+        /bin/echo "/bin/echo hallo"
+        /bin/echo /bin/echo"1"
+        /bin/echo "test1 test2"
+        /bin/echo "test1  test2" test3
+        /bin/echo " test1 test2 " 'test3 '
+        /bin/echo test1test2
+        /bin/echo $USER$TESTNOTFOUND$HOME$
+        /bin/echo $USER$TESTNOTFOUND$HOME$WTF$PWD
+        /bin/echo -n test1
+        /bin/echo -n "test1 test2"
+        /bin/echo -n "test1 test2" test3
+        /bin/echo -n " test1 test2 " 'test3 '
+        /bin/echo -n test1test2
+        /bin/echo test1 -n
+        /bin/echo "test1 -n"
+        /bin/echo -n -n test1
+        /bin/echo -n -n -n -n -n test1
+        /bin/echo "  -nn "
+        /bin/echo "-n test1 -n test2"
+        /bin/echo "test1 -n test2"
+        /bin/echo ~42
+        /bin/echo -n -n -nasd
+        /bin/echo -n -n -n-nnnnn
+        /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n-n
+        /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n feel my pain
+        /bin/echo -n -n -n-n
+        /bin/echo "'totally logical'"
+        /bin/echo 'totally logical'
+        /bin/echo ''totally logical''
+        /bin/echo ""'totally logical'""
+        ">>" asd
+        >">" asd
+        /bin/rm -f ">"
+        >> '$USER'
+        cat $USER
+        /bin/rm -f '$USER'
+        >> '$USER'
+        cat '$USER'
+        /bin/rm -f '$USER'
+        "echo "
+        "echo -nnnnn"
+        "ECho" -n -nnn"" "-"nnnnn
+        "ECHO" "-n"
+        ECHO '''''-''n'
+        echo '' -n
+        echo "" "" "" -n -n -n -n
+        export T=">>"
+        $T lol
+        >> $HOME
+        >> "$H"OM"E"
+        cat OME
+        /bin/rm -f OME
+        >> "$USER'$USER'"
+        cat "$USER'$USER'"
+        /bin/rm -f "$USER'$USER'"
+        >> "$USER"
+        cat $USER
+        /bin/rm -f $USER
+        cd /Users/$USER/Desktop/
+        pwd
+        cd /Users/"$USER"/Desktop/
+        pwd
+        cd /Users/"$U"S"ER"/Desktop/
+        export T=n
+        echo "-"$T$T
+        export T=ech
+        echo $To
+        export T=ech
+        echo $T"o"
+        export T=ech
+        echo $T"o "
+        export T=ech
+        echo $T"o -n"
+        export T=ech
+        echo $T"o -n"
+        export T=ech
+        echo $T'o'
+        export T="-n test1 -n test 2"
+        echo $T
+        export T=ech
+        echo $T'o '
+        "ECHO"
+        'echo'
+        'PWD'
+        "PWD"
+        echo "-nnnnn "
+        ECHO -nn
+        ECHO -n -n
+        ECHO "-"""n""n""n""n""n""nnnnnn-n
+        ECHO "-"""n""n""n""n""n""nnnnnn -n
+        export T=nnnnnnnn
+        echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-'"$T"
+        export T=nnnnnnnn
+        echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-''$T'
+        export T=nnnnnnnn
+        echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn'$T' '-'"$T "
+        echo hello
+        echo "hello world"
+        echo "hello 'world"
+        echo hello
+        echo "hello world"
+        echo "hello 'world"
+        echo 'hello world'
+        echo 'hello "world'
+        echo "'hello world'"
+        echo '"hello world"'
+        echo "hello '$PWD' world"
+        echo 'hello "$PWD" world'
+        echo "hello $PWD world"
+        echo 'hello $PWD world'
+        echo quote
+        ""
+        echo "test | test ; moretest><"
+        $
+        $LESS$VAR
+        --
+        >
+        <
+        > > > > >
+        >> >> >> >>
+        >>>>>>>>>
+        <<<<<<<<<
+        ~
+        < < < < < <
+        /bin/cat ><
+        /bin/cat <Makefile >
+        cat 42 42
+        echo >
+        echo > <
+        .
+        ..
+        echo | |
+        EechoE
+        .echo.
+        >echo>
+        /bin/rm -f echo
+        <echo<
+        /bin/rm -f echo
+        >>echo>>
+        /bin/rm -f echo
+        |echo|
+        trying to destroy your minishell
+        |
+        | test
+        | | |
+        | | | | test
+        | test
+        echo > <
+        hello world
+        ||||||||
+        cat wouaf wouaf
+        >
+        > > > >
+        >> >> >> >>
+        /
+        \\\
+        rm -f something
+        | echo -n oui
+        trying to destroy your minishell
+        trying something again echo if you see this message thats not a good new
+        qewew
+        wtf
+        hi im zsolt
+        nice to meet you if these tests are green
+        your minishell is perfect
+        >>| echo wtf
+        >| echo wtf
+        /bin/rm -rf echo
+        <| echo wtf
+        echo "<<| echo wtf"
+        echo ">>| echo wtf"
+        echo ">| echo wtf"
+        echo "<| echo wtf"
+        ls | wc -l | xargs echo
+        yes "no" | head -n 10
+        /bin/echo -e "\033[33mHello, world!\033[0m"
+        /bin/echo '\1$42' > tmp_redir_out
+exit
+        echo hello
+        echo "hello world"
+        echo "hello 'world"
+        echo 'hello world'
+        echo 'hello "world'
+        echo "'hello world'"
+        echo '"hello world"'
+        echo "hello '$PWD' world"
+        echo 'hello "$PWD" world'
+        echo "hello $PWD world"
+        echo 'hello $PWD world'
+        echo quote
+        ""
+        echo "test | test ; moretest><"
+        $
+        $LESS$VAR
+        --
+        >
+        <
+        > > > > >
+        >> >> >> >>
+        >>>>>>>>>
+        <<<<<<<<<
+        ~
+        < < < < < <
+        /bin/cat ><
+        /bin/cat <Makefile >
+        cat 42 42
+        echo >
+        echo > <
+        .
+        ..
+        echo | |
+        EechoE
+        .echo.
+        >echo>
+        /bin/rm -f echo
+        <echo<
+        /bin/rm -f echo
+        >>echo>>
+        /bin/rm -f echo
+        |echo|
+        trying to destroy your minishell
+        |
+        | test
+        | | |
+        | | | | test
+        | test
+        echo > <
+        hello world
+        ||||||||
+        cat wouaf wouaf
+        >
+        > > > >
+        >> >> >> >>
+        /
+        \\\
+        rm -f something
+        | echo -n oui
+        trying to destroy your minishell
+        trying something again echo if you see this message thats not a good new
+        qewew
+        wtf
+        hi im zsolt
+        nice to meet you if these tests are green
+        your minishell is perfect
+        >>| echo wtf
+        >| echo wtf
+        /bin/rm -rf echo
+        <| echo wtf
+        echo "<<| echo wtf"
+        echo ">>| echo wtf"
+        echo ">| echo wtf"
+        echo "<| echo wtf"
+        ls | wc -l | xargs echo
+        yes "no" | head -n 10
+        /bin/echo -e "\033[33mHello, world!\033[0m"
+        /bin/echo '\1$42' > tmp_redir_out
+        echo hello
+        echo "hello world"
+        echo "hello 'world"
+        echo 'hello world'
+        echo 'hello "world'
+        echo "'hello world'"
+        echo '"hello world"'
+        echo "hello '$PWD' world"
+        echo 'hello "$PWD" world'
+        echo "hello $PWD world"
+        echo 'hello $PWD world'
+        echo quote
+        ""
+        echo "test | test ; moretest><"
+        $
+        $LESS$VAR
+        --
+        >
+        <
+        > > > > >
+        >> >> >> >>
+        >>>>>>>>>
+        <<<<<<<<<
+        ~
+        < < < < < <
+        /bin/cat ><
+        /bin/cat <Makefile >
+        cat 42 42
+        echo >
+        echo > <
+        .
+        ..
+        echo | |
+        EechoE
+        .echo.
+        >echo>
+        /bin/rm -f echo
+        <echo<
+        /bin/rm -f echo
+        >>echo>>
+        /bin/rm -f echo
+        |echo|
+        trying to destroy your minishell
+        |
+        | test
+        | | |
+        | | | | test
+        | test
+        echo > <
+        hello world
+        ||||||||
+        cat wouaf wouaf
+        >
+        > > > >
+        >> >> >> >>
+        /
+        \\\
+        rm -f something
+        | echo -n oui
+        trying to destroy your minishell
+        trying something again echo if you see this message thats not a good new
+        qewew
+        wtf
+        hi im zsolt
+        nice to meet you if these tests are green
+        your minishell is perfect
+        >>| echo wtf
+        >| echo wtf
+        /bin/rm -rf echo
+        <| echo wtf
+        echo "<<| echo wtf"
+        echo ">>| echo wtf"
+        echo ">| echo wtf"
+        echo "<| echo wtf"
+        ls | wc -l | xargs echo
+        yes "no" | head -n 10
+        /bin/echo -e "\033[33mHello, world!\033[0m"
+        /bin/echo '\1$42' > tmp_redir_out
+        echo hello
+        echo "hello world"
+        echo "hello 'world"
+        echo 'hello world'
+        echo 'hello "world'
+        echo "'hello world'"
+        echo '"hello world"'
+        echo "hello '$PWD' world"
+        echo 'hello "$PWD" world'
+        echo "hello $PWD world"
+        echo 'hello $PWD world'
+        echo quote
+        ""
+        echo "test | test ; moretest><"
+        $
+        $LESS$VAR
+        --
+        >
+        <
+        > > > > >
+        >> >> >> >>
+        >>>>>>>>>
+        <<<<<<<<<
+        ~
+        < < < < < <
+        /bin/cat ><
+        /bin/cat <Makefile >
+        cat 42 42
+        echo >
+        echo > <
+        .
+        ..
+        echo | |
+        EechoE
+        .echo.
+        >echo>
+        /bin/rm -f echo
+        <echo<
+        /bin/rm -f echo
+        >>echo>>
+        /bin/rm -f echo
+        |echo|
+        trying to destroy your minishell
+        |
+        | test
+        | | |
+        | | | | test
+        | test
+        echo > <
+        hello world
+        ||||||||
+        cat wouaf wouaf
+        >
+        > > > >
+        >> >> >> >>
+        /
+        \\\
+        rm -f something
+        | echo -n oui
+        trying to destroy your minishell
+        trying something again echo if you see this message thats not a good new
+        qewew
+        wtf
+        hi im zsolt
+        nice to meet you if these tests are green
+        your minishell is perfect
+        >>| echo wtf
+        >| echo wtf
+        /bin/rm -rf echo
+        <| echo wtf
+        echo "<<| echo wtf"
+        echo ">>| echo wtf"
+        echo ">| echo wtf"
+        echo "<| echo wtf"
+        ls | wc -l | xargs echo
+        yes "no" | head -n 10
+        /bin/echo -e "\033[33mHello, world!\033[0m"
+        /bin/echo '\1$42' > tmp_redir_out
+        ls -la | grep tmp_redir_out | awk '{print $1 $2}'
+        cat -e tmp_redir_out
+        rm tmp_redir_out
+        sleep 0 | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+        >tmp_out | echo 1
+        cat tmp_out
+        rm -f tmp_out
+        echo 1 | >tmp_out
+        cat tmp_out
+        rm -f tmp_out
+        grep 1 < filedoesnotexist | echo 1 | grep 1 | head -1 | cat | ls
+        /usr/bin/env -i bash -c "env" | wc -l
+        export test="arg1arg2"
+        echo 'echo $1' > tmp_test_sh
+        bash tmp_test_sh $test
+        echo 'echo $2' > tmp_test_sh
+        bash tmp_test_sh $test
+        rm -f tmp_test_sh
+        export pipe_var=1 | echo $pipe_var
+        echo $pipe_var
+        echo $PATH
+        echo $HOME
+        unset PATH HOME
+        echo $PATH
+        echo $HOME
+        echo $?
+        echo $?
+        echo $?
+        echo Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+        unset PATH
+        ls
+        unset PATH
+        env
+        export
+        echo $USER
+        echo $HOME
+        echo $HOME$NOTHING$USER$
+        pwd
+        unset PATH
+        echo $HOME$NOTHING$USER$
+        unset PATH
+        unset USER
+        cd -
+        pwd
+        echo "no env over here"
+        exit asd
+        exit 5
+        exit 5 asd
+        unset OLDPWD
+        cd -
+        pwd
+        cd
+        cd ~
+        /bin/ls
+        cd /bin/
+        ./ls
+        ls
+        export T=bazd
+        echo "$T" "meg"
+        cd /bin/
+        ls
+        export a="asd" b="de" o= c="hellomi" X
+        unset o
+        export a="asd" b="de" o= c="hellomi" X
+        unset X
+        export a="asd" b="de" o= c="hellomi" X
+        unset o a X b c
+        export a="asd" b="de" o= c="hellomi" X
+        unset o asd B x X wqd c
+        unset PATH
+        cd ..
+        unset PATH
+        pwd
+        cd
+        pwd
+        unset PATH
+        pwd
+        cd -
+        pwd
+        exit
+        unset PATH
+        pwd
+        cd ~
+        pwd
+        unset PATH
+        pwd
+        cd ~
+        pwd
+        cd -
+        pwd
+        /bin/cat Makefile > out >>out1 >out2
+        /bin/cat Makefile > out >>out1 >out2
+        /bin/rm -rf out
+        /bin/rm -rf out1
+        /bin/rm -rf out2
+        /bin/cat Makefile > out >>out1 >out2 > out3 >> out4
+        /bin/cat Makefile > out >>out1 >out2 > out3 >> out4
+        /bin/rm -rf out
+        /bin/rm -rf out1
+        /bin/rm -rf out2
+        /bin/rm -rf out3
+        /bin/rm -rf out4
+        > out
+        /bin/rm -rf out
+        < out
+        /bin/rm -rf out
+        |
+        ""
+        ''
+        >> out
+        /bin/rm -rf out
+        echo |< echo segf
+        echo segf >| echo is this invalid
+        echo >          >           < "echo"
+        echo >          >         | echo kekw
+        echo >          >         | echo super valid
+        echo <          <         > echo
+        echo <  < <         > ok
+        echo <  < | echo ok
+        echo <  < |    < ok
+        echo <      < |    > echo
+        echo >>| echo super valid
+        echo >>< "echo"
+        echo < < < echo seegf
+        echo > > < "echo"
+        echo > > | echo kekw
+        echo > > | echo super valid
+        echo < < > echo
+        echo < < < > ok
+        echo >>| echo kekw
+        echo | < echo segf
+        .
+        amazing
+        echo seg < > echo seg
+        echo seg > < echo segf
+        echo seg < < > echo segf
+        echo seg < < < > echo segf
+        echo segf > | echo is this invalid
+        echo segf < | < echo super valid
+        echo < < | echo ok
+        echo < < | < ok
+        echo < < | > echo
+        echo segfault < " < < < " < < amazing
+        .
+        amazing
+        echo seg <  > echo seg
+        echo seg >  < echo segf
+        echo seg <      < > echo segf
+        echo seg <      < <    > echo segf
+        echo <      <     < echo seegf
+        echo |      < echo segf
+        echo segf >     | echo is this invalid
+        echo segf <         |        < echo super valid
+        echo segfault <"    <   <   <"  <   <   amazing
+        .
+        amazing
+        echo seg <> echo seg
+        echo seg >< echo segf
+        echo seg <<> echo segf
+        echo seg <<<> echo segf
+        echo <<< echo seegf
+        echo segf <|< echo super valid
+        /bin/echo ""$?""
+        /bin/echo $?"42"
+        /bin/echo ''$?''"42"
+        /bin/echo '"$USER"'
+        /bin/echo "'$USER'"
+        /bin/echo ""'$USER'""
+        /bin/echo '"'$USER'"'
+        /bin/echo "''$USER''"
+        /bin/echo "'"'$USER'"'"
+        /bin/echo '"'"$USER"'"'
+        /bin/echo $"HOME"$USER
+        /bin/echo $"HOM"E$USER
+        /bin/echo "exit_code ->$? user ->$USER home -> $HOME"
+        /bin/echo $"HOME"
+        /bin/echo $"42$"
+        /bin/echo "$ "
+        /bin/echo hi >./outfiles/outfile01 | /bin/echo bye
+        /bin/echo <123 <456 hi | /bin/echo 42
+        /bin/echo '$='
+        /bin/echo '$ '
+        /bin/echo "$?"
+        /bin/echo '$?'
+        /bin/echo "'$?'"
+        /bin/echo \$USER
+        /bin/echo \\$USER
+        /bin/echo \\\$USER
+        /bin/echo \\\\$USER
+        /bin/echo \\\\\$USER
+        /bin/echo \\\\\\\\\$USER
+        /bin/echo \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\$USER \$PATH \\$PWD
+        /bin/echo "cat lol.c | cat > lol.c"
+        /bin/echo "cat lol.c '|' cat > lol.c"
+        /bin/echo '$USER' "$USER" "text  ' text"
+        /bin/echo $USER =intergalaktikus miaf*szomez
+        /bin/echo -n"-n" bonjour
+        /bin/echo "'$USER'"
+        /bin/echo " '$USER' "
+        /bin/echo text"$USER"
+        /bin/echo text"'$USER'" ' $USER '
+        /bin/echo "text"   "$USER"    "$USER"
+        /bin/echo '              $USER          '
+        /bin/echo ''''''''''$USER''''''''''
+        /bin/echo """"""""$USER""""""""
+        /bin/echo '""""""""$USER""""""""'
+        /bin/echo ""'""""""$USER""""""'""
+        /bin/echo """"""""'$USER'""""""""
+        /bin/echo """""""'"$USER"'"""""""
+        /bin/echo """"""'""$USER""'""""""
+        /bin/echo ""'""'""""$USER""""'""'""
+        /bin/echo '""'""'""""$USER""""'""'""'
+        /bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+        /bin/echo "text" "text$USER" ... "$USER"
+        /bin/echo
+        /bin/echo ''
+        /bin/echo ""
+        /bin/echo '' ""
+        /bin/echo /bin/echo
+        /bin/echo test1
+        /bin/echo 'test1'
+        /bin/echo "/bin/echo hallo"
+        /bin/echo /bin/echo"1"
+        /bin/echo "test1 test2"
+        /bin/echo "test1  test2" test3
+        /bin/echo " test1 test2 " 'test3 '
+        /bin/echo test1test2
+        /bin/echo $USER$TESTNOTFOUND$HOME$
+        /bin/echo $USER$TESTNOTFOUND$HOME$WTF$PWD
+        /bin/echo -n test1
+        /bin/echo -n "test1 test2"
+        /bin/echo -n "test1 test2" test3
+        /bin/echo -n " test1 test2 " 'test3 '
+        /bin/echo -n test1test2
+        /bin/echo test1 -n
+        /bin/echo "test1 -n"
+        /bin/echo -n -n test1
+        /bin/echo -n -n -n -n -n test1
+        /bin/echo "  -nn "
+        /bin/echo "-n test1 -n test2"
+        /bin/echo "test1 -n test2"
+        /bin/echo ~42
+        /bin/echo -n -n -nasd
+        /bin/echo -n -n -n-nnnnn
+        /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n-n
+        /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n feel my pain
+        /bin/echo -n -n -n-n
+        /bin/echo "'totally logical'"
+        /bin/echo 'totally logical'
+        /bin/echo ''totally logical''
+        /bin/echo ""'totally logical'""
+        ">>" asd
+        >">" asd
+        /bin/rm -f ">"
+        >> '$USER'
+        cat $USER
+        /bin/rm -f '$USER'
+        >> '$USER'
+        cat '$USER'
+        /bin/rm -f '$USER'
+        "echo "
+        "echo -nnnnn"
+        "ECho" -n -nnn"" "-"nnnnn
+        "ECHO" "-n"
+        ECHO '''''-''n'
+        echo '' -n
+        echo "" "" "" -n -n -n -n
+        export T=">>"
+        $T lol
+        >> $HOME
+        >> "$H"OM"E"
+        cat OME
+        /bin/rm -f OME
+        >> "$USER'$USER'"
+        cat "$USER'$USER'"
+        /bin/rm -f "$USER'$USER'"
+        >> "$USER"
+        cat $USER
+        /bin/rm -f $USER
+        cd /Users/$USER/Desktop/
+        pwd
+        cd /Users/"$USER"/Desktop/
+        pwd
+        cd /Users/"$U"S"ER"/Desktop/
+        export T=n
+        echo "-"$T$T
+        export T=ech
+        echo $To
+        export T=ech
+        echo $T"o"
+        export T=ech
+        echo $T"o "
+        export T=ech
+        echo $T"o -n"
+        export T=ech
+        echo $T"o -n"
+        export T=ech
+        echo $T'o'
+        export T="-n test1 -n test 2"
+        echo $T
+        export T=ech
+        echo $T'o '
+        "ECHO"
+        'echo'
+        'PWD'
+        "PWD"
+        echo "-nnnnn "
+        ECHO -nn
+        ECHO -n -n
+        ECHO "-"""n""n""n""n""n""nnnnnn-n
+        ECHO "-"""n""n""n""n""n""nnnnnn -n
+        export T=nnnnnnnn
+        echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-'"$T"
+        export T=nnnnnnnn
+        echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-''$T'
+        export T=nnnnnnnn
+        echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn'$T' '-'"$T "
+        echo hello
+        echo "hello world"
+        echo "hello 'world"
+        echo 'hello world'
+        echo 'hello "world'
+        echo "'hello world'"
+        echo '"hello world"'
+        echo "hello '$PWD' world"
+        echo 'hello "$PWD" world'
+        echo "hello $PWD world"
+        echo 'hello $PWD world'
+        echo quote
+        ""
+        echo "test | test ; moretest><"
+        $
+        $LESS$VAR
+        --
+        >
+        <
+        > > > > >
+        >> >> >> >>
+        >>>>>>>>>
+        <<<<<<<<<
+        ~
+        < < < < < <
+        /bin/cat ><
+        /bin/cat <Makefile >
+        cat 42 42
+        echo >
+        echo > <
+        .
+        ..
+        echo | |
+        EechoE
+        .echo.
+        >echo>
+        /bin/rm -f echo
+        <echo<
+        /bin/rm -f echo
+        >>echo>>
+        /bin/rm -f echo
+        |echo|
+        trying to destroy your minishell
+        |
+        | test
+        | | |
+        | | | | test
+        | test
+        echo > <
+        hello world
+        ||||||||
+        cat wouaf wouaf
+        >
+        > > > >
+        >> >> >> >>
+        /
+        \\\
+        rm -f something
+        | echo -n oui
+        trying to destroy your minishell
+        trying something again echo if you see this message thats not a good new
+        qewew
+        wtf
+        hi im zsolt
+        nice to meet you if these tests are green
+        your minishell is perfect
+        >>| echo wtf
+        >| echo wtf
+        /bin/rm -rf echo
+        <| echo wtf
+        echo "<<| echo wtf"
+        echo ">>| echo wtf"
+        echo ">| echo wtf"
+        echo "<| echo wtf"
+        ls | wc -l | xargs echo
+        yes "no" | head -n 10
+        /bin/echo -e "\033[33mHello, world!\033[0m"
+        /bin/echo '\1$42' > tmp_redir_out
+        ls -la | grep tmp_redir_out | awk '{print $1 $2}'
+        cat -e tmp_redir_out
+        rm tmp_redir_out
+        sleep 0 | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+        >tmp_out | echo 1
+        cat tmp_out
+        rm -f tmp_out
+        echo 1 | >tmp_out
+        cat tmp_out
+        rm -f tmp_out
+        grep 1 < filedoesnotexist | echo 1 | grep 1 | head -1 | cat | ls
+        /usr/bin/env -i bash -c "env" | wc -l
+        export test="arg1arg2"
+        echo 'echo $1' > tmp_test_sh
+        bash tmp_test_sh $test
+        echo 'echo $2' > tmp_test_sh
+        bash tmp_test_sh $test
+        rm -f tmp_test_sh
+        export pipe_var=1 | echo $pipe_var
+        echo $pipe_var
+        echo $PATH
+        echo $HOME
+        unset PATH HOME
+        echo $PATH
+        echo $HOME
+        echo $?
+        echo $?
+        echo $?
+        echo Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+        unset PATH
+        ls
+        unset PATH
+        env
+        export
+        echo $USER
+        echo $HOME
+        echo $HOME$NOTHING$USER$
+        pwd
+        unset PATH
+        echo $HOME$NOTHING$USER$
+        unset PATH
+        unset USER
+        cd -
+        pwd
+        echo "no env over here"
+        exit asd
+        exit 5
+        exit 5 asd
+        unset OLDPWD
+        cd -
+        pwd
+        cd
+        cd ~
+        /bin/ls
+        cd /bin/
+        ./ls
+        ls
+        export T=bazd
+        echo "$T" "meg"
+        cd /bin/
+        ls
+        export a="asd" b="de" o= c="hellomi" X
+        unset o
+        export a="asd" b="de" o= c="hellomi" X
+        unset X
+        export a="asd" b="de" o= c="hellomi" X
+        unset o a X b c
+        export a="asd" b="de" o= c="hellomi" X
+        unset o asd B x X wqd c
+        unset PATH
+        cd ..
+        unset PATH
+        pwd
+        cd
+        pwd
+        unset PATH
+        pwd
+        cd -
+        pwd
+        exit
+        unset PATH
+        pwd
+        cd ~
+        pwd
+        unset PATH
+        pwd
+        cd ~
+        pwd
+        cd -
+        pwd
+        /bin/cat Makefile > out >>out1 >out2
+        /bin/cat Makefile > out >>out1 >out2
+        /bin/rm -rf out
+        /bin/rm -rf out1
+        /bin/rm -rf out2
+        /bin/cat Makefile > out >>out1 >out2 > out3 >> out4
+        /bin/cat Makefile > out >>out1 >out2 > out3 >> out4
+        /bin/rm -rf out
+        /bin/rm -rf out1
+        /bin/rm -rf out2
+        /bin/rm -rf out3
+        /bin/rm -rf out4
+        > out
+        /bin/rm -rf out
+        < out
+        /bin/rm -rf out
+        |
+        ""
+        ''
+        >> out
+        /bin/rm -rf out
+        echo |< echo segf
+        echo segf >| echo is this invalid
+        echo >          >           < "echo"
+        echo >          >         | echo kekw
+        echo >          >         | echo super valid
+        echo <          <         > echo
+        echo <  < <         > ok
+        echo <  < | echo ok
+        echo <  < |    < ok
+        echo <      < |    > echo
+        echo >>| echo super valid
+        echo >>< "echo"
+        echo < < < echo seegf
+        echo > > < "echo"
+        echo > > | echo kekw
+        echo > > | echo super valid
+        echo < < > echo
+        echo < < < > ok
+        echo >>| echo kekw
+        echo | < echo segf
+        .
+        amazing
+        echo seg < > echo seg
+        echo seg > < echo segf
+        echo seg < < > echo segf
+        echo seg < < < > echo segf
+        echo segf > | echo is this invalid
+        echo segf < | < echo super valid
+        echo < < | echo ok
+        echo < < | < ok
+        echo < < | > echo
+        echo segfault < " < < < " < < amazing
+        .
+        amazing
+        echo seg <  > echo seg
+        echo seg >  < echo segf
+        echo seg <      < > echo segf
+        echo seg <      < <    > echo segf
+        echo <      <     < echo seegf
+        echo |      < echo segf
+        echo segf >     | echo is this invalid
+        echo segf <         |        < echo super valid
+        echo segfault <"    <   <   <"  <   <   amazing
+        .
+        amazing
+        echo seg <> echo seg
+        echo seg >< echo segf
+        echo seg <<> echo segf
+        echo seg <<<> echo segf
+        echo <<< echo seegf
+        echo segf <|< echo super valid
+        /bin/echo ""$?""
+        /bin/echo $?"42"
+        /bin/echo ''$?''"42"
+        /bin/echo '"$USER"'
+        /bin/echo "'$USER'"
+        /bin/echo ""'$USER'""
+        /bin/echo '"'$USER'"'
+        /bin/echo "''$USER''"
+        /bin/echo "'"'$USER'"'"
+        /bin/echo '"'"$USER"'"'
+        /bin/echo $"HOME"$USER
+        /bin/echo $"HOM"E$USER
+        /bin/echo "exit_code ->$? user ->$USER home -> $HOME"
+        /bin/echo $"HOME"
+        /bin/echo $"42$"
+        /bin/echo "$ "
+        /bin/echo hi >./outfiles/outfile01 | /bin/echo bye
+        /bin/echo <123 <456 hi | /bin/echo 42
+        /bin/echo '$='
+        /bin/echo '$ '
+        /bin/echo "$?"
+        /bin/echo '$?'
+        /bin/echo "'$?'"
+        /bin/echo \$USER
+        /bin/echo \\$USER
+        /bin/echo \\\$USER
+        /bin/echo \\\\$USER
+        /bin/echo \\\\\$USER
+        /bin/echo \\\\\\\\\$USER
+        /bin/echo \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\$USER \$PATH \\$PWD
+        /bin/echo "cat lol.c | cat > lol.c"
+        /bin/echo "cat lol.c '|' cat > lol.c"
+        /bin/echo '$USER' "$USER" "text  ' text"
+        /bin/echo $USER =intergalaktikus miaf*szomez
+        /bin/echo -n"-n" bonjour
+        /bin/echo "'$USER'"
+        /bin/echo " '$USER' "
+        /bin/echo text"$USER"
+        /bin/echo text"'$USER'" ' $USER '
+        /bin/echo "text"   "$USER"    "$USER"
+        /bin/echo '              $USER          '
+        /bin/echo ''''''''''$USER''''''''''
+        /bin/echo """"""""$USER""""""""
+        /bin/echo '""""""""$USER""""""""'
+        /bin/echo ""'""""""$USER""""""'""
+        /bin/echo """"""""'$USER'""""""""
+        /bin/echo """""""'"$USER"'"""""""
+        /bin/echo """"""'""$USER""'""""""
+        /bin/echo ""'""'""""$USER""""'""'""
+        /bin/echo '""'""'""""$USER""""'""'""'
+        /bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+        /bin/echo "text" "text$USER" ... "$USER"
+        /bin/echo
+        /bin/echo ''
+        /bin/echo ""
+        /bin/echo '' ""
+        /bin/echo /bin/echo
+        /bin/echo test1
+        /bin/echo 'test1'
+        /bin/echo "/bin/echo hallo"
+        /bin/echo /bin/echo"1"
+        /bin/echo "test1 test2"
+        /bin/echo "test1  test2" test3
+        /bin/echo " test1 test2 " 'test3 '
+        /bin/echo test1test2
+        /bin/echo $USER$TESTNOTFOUND$HOME$
+        /bin/echo $USER$TESTNOTFOUND$HOME$WTF$PWD
+        /bin/echo -n test1
+        /bin/echo -n "test1 test2"
+        /bin/echo -n "test1 test2" test3
+        /bin/echo -n " test1 test2 " 'test3 '
+        /bin/echo -n test1test2
+        /bin/echo test1 -n
+        /bin/echo "test1 -n"
+        /bin/echo -n -n test1
+        /bin/echo -n -n -n -n -n test1
+        /bin/echo "  -nn "
+        /bin/echo "-n test1 -n test2"
+        /bin/echo "test1 -n test2"
+        /bin/echo ~42
+        /bin/echo -n -n -nasd
+        /bin/echo -n -n -n-nnnnn
+        /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n-n
+        /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n feel my pain
+        /bin/echo -n -n -n-n
+        /bin/echo "'totally logical'"
+        /bin/echo 'totally logical'
+        /bin/echo ''totally logical''
+        /bin/echo ""'totally logical'""
+        ">>" asd
+        >">" asd
+        /bin/rm -f ">"
+        >> '$USER'
+        cat $USER
+        /bin/rm -f '$USER'
+        >> '$USER'
+        cat '$USER'
+        /bin/rm -f '$USER'
+        "echo "
+        "echo -nnnnn"
+        "ECho" -n -nnn"" "-"nnnnn
+        "ECHO" "-n"
+        ECHO '''''-''n'
+        echo '' -n
+        echo "" "" "" -n -n -n -n
+        export T=">>"
+        $T lol
+        >> $HOME
+        >> "$H"OM"E"
+        cat OME
+        /bin/rm -f OME
+        >> "$USER'$USER'"
+        cat "$USER'$USER'"
+        /bin/rm -f "$USER'$USER'"
+        >> "$USER"
+        cat $USER
+        /bin/rm -f $USER
+        cd /Users/$USER/Desktop/
+        pwd
+        cd /Users/"$USER"/Desktop/
+        pwd
+        cd /Users/"$U"S"ER"/Desktop/
+        export T=n
+        echo "-"$T$T
+        export T=ech
+        echo $To
+        export T=ech
+        echo $T"o"
+        export T=ech
+        echo $T"o "
+        export T=ech
+        echo $T"o -n"
+        export T=ech
+        echo $T"o -n"
+        export T=ech
+        echo $T'o'
+        export T="-n test1 -n test 2"
+        echo $T
+        export T=ech
+        echo $T'o '
+        "ECHO"
+        'echo'
+        'PWD'
+        "PWD"
+        echo "-nnnnn "
+        ECHO -nn
+        ECHO -n -n
+        ECHO "-"""n""n""n""n""n""nnnnnn-n
+        ECHO "-"""n""n""n""n""n""nnnnnn -n
+        export T=nnnnnnnn
+        echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-'"$T"
+        export T=nnnnnnnn
+        echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-''$T'
+        export T=nnnnnnnn
+        echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn'$T' '-'"$T "
+        echo hello
+        echo "hello world"
+        echo "hello 'world"
+        echo 'hello world'
+        echo 'hello "world'
+        echo "'hello world'"
+        echo '"hello world"'
+        echo "hello '$PWD' world"
+        echo 'hello "$PWD" world'
+        echo "hello $PWD world"
+        echo 'hello $PWD world'
+        echo quote
+        ""
+        echo "test | test ; moretest><"
+        $
+        $LESS$VAR
+        --
+        >
+        <
+        > > > > >
+        >> >> >> >>
+        >>>>>>>>>
+        <<<<<<<<<
+        ~
+        < < < < < <
+        /bin/cat ><
+        /bin/cat <Makefile >
+        cat 42 42
+        echo >
+        echo > <
+        .
+        ..
+        echo | |
+        EechoE
+        .echo.
+        >echo>
+        /bin/rm -f echo
+        <echo<
+        /bin/rm -f echo
+        >>echo>>
+        /bin/rm -f echo
+        |echo|
+        trying to destroy your minishell
+        |
+        | test
+        | | |
+        | | | | test
+        | test
+        echo > <
+        hello world
+        ||||||||
+        cat wouaf wouaf
+        >
+        > > > >
+        >> >> >> >>
+        /
+        \\\
+        rm -f something
+        | echo -n oui
+        trying to destroy your minishell
+        trying something again echo if you see this message thats not a good new
+        qewew
+        wtf
+        hi im zsolt
+        nice to meet you if these tests are green
+        your minishell is perfect
+        >>| echo wtf
+        >| echo wtf
+        /bin/rm -rf echo
+        <| echo wtf
+        echo "<<| echo wtf"
+        echo ">>| echo wtf"
+        echo ">| echo wtf"
+        echo "<| echo wtf"
+        ls | wc -l | xargs echo
+        yes "no" | head -n 10
+        /bin/echo -e "\033[33mHello, world!\033[0m"
+        /bin/echo '\1$42' > tmp_redir_out
+        echo hello
+        echo "hello world"
+        echo "hello 'world"
+        echo 'hello world'
+        echo 'hello "world'
+        echo "'hello world'"
+        echo '"hello world"'
+        echo "hello '$PWD' world"
+        echo 'hello "$PWD" world'
+        echo "hello $PWD world"
+        echo 'hello $PWD world'
+        echo quote
+        ""
+        echo "test | test ; moretest><"
+        $
+        $LESS$VAR
+        --
+        >
+        <
+        > > > > >
+        >> >> >> >>
+        >>>>>>>>>
+        <<<<<<<<<
+        ~
+        < < < < < <
+        /bin/cat ><
+        /bin/cat <Makefile >
+        cat 42 42
+        echo >
+        echo > <
+        .
+        ..
+        echo | |
+        EechoE
+        .echo.
+        >echo>
+        /bin/rm -f echo
+        <echo<
+        /bin/rm -f echo
+        >>echo>>
+        /bin/rm -f echo
+        |echo|
+        trying to destroy your minishell
+        |
+        | test
+        | | |
+        | | | | test
+        | test
+        echo > <
+        hello world
+        ||||||||
+        cat wouaf wouaf
+        >
+        > > > >
+        >> >> >> >>
+        /
+        \\\
+        rm -f something
+        | echo -n oui
+        trying to destroy your minishell
+        trying something again echo if you see this message thats not a good new
+        qewew
+        wtf
+        hi im zsolt
+        nice to meet you if these tests are green
+        your minishell is perfect
+        >>| echo wtf
+        >| echo wtf
+        /bin/rm -rf echo
+        <| echo wtf
+        echo "<<| echo wtf"
+        echo ">>| echo wtf"
+        echo ">| echo wtf"
+        echo "<| echo wtf"
+        ls | wc -l | xargs echo
+        yes "no" | head -n 10
+        /bin/echo -e "\033[33mHello, world!\033[0m"
+        /bin/echo '\1$42' > tmp_redir_out
+        ls -la | grep tmp_redir_out | awk '{print $1 $2}'
+        cat -e tmp_redir_out
+        rm tmp_redir_out
+        sleep 0 | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+        >tmp_out | echo 1
+        cat tmp_out
+        rm -f tmp_out
+        echo 1 | >tmp_out
+        cat tmp_out
+        rm -f tmp_out
+        grep 1 < filedoesnotexist | echo 1 | grep 1 | head -1 | cat | ls
+        /usr/bin/env -i bash -c "env" | wc -l
+        export test="arg1arg2"
+        echo 'echo $1' > tmp_test_sh
+        bash tmp_test_sh $test
+        echo 'echo $2' > tmp_test_sh
+        bash tmp_test_sh $test
+        rm -f tmp_test_sh
+        export pipe_var=1 | echo $pipe_var
+        echo $pipe_var
+        echo $PATH
+        echo $HOME
+        unset PATH HOME
+        echo $PATH
+        echo $HOME
+        echo $?
+        echo $?
+        echo $?
+        echo Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+        unset PATH
+        ls
+        unset PATH
+        env
+        export
+        echo $USER
+        echo $HOME
+        echo $HOME$NOTHING$USER$
+        pwd
+        unset PATH
+        echo $HOME$NOTHING$USER$
+        unset PATH
+        unset USER
+        cd -
+        pwd
+        echo "no env over here"
+        exit asd
+        exit 5
+        exit 5 asd
+        unset OLDPWD
+        cd -
+        pwd
+        cd
+        cd ~
+        /bin/ls
+        cd /bin/
+        ./ls
+        ls
+        export T=bazd
+        echo "$T" "meg"
+        cd /bin/
+        ls
+        export a="asd" b="de" o= c="hellomi" X
+        unset o
+        export a="asd" b="de" o= c="hellomi" X
+        unset X
+        export a="asd" b="de" o= c="hellomi" X
+        unset o a X b c
+        export a="asd" b="de" o= c="hellomi" X
+        unset o asd B x X wqd c
+        unset PATH
+        cd ..
+        unset PATH
+        pwd
+        cd
+        pwd
+        unset PATH
+        pwd
+        cd -
+        pwd
+        exit
+        unset PATH
+        pwd
+        cd ~
+        pwd
+        unset PATH
+        pwd
+        cd ~
+        pwd
+        cd -
+        pwd
+        /bin/cat Makefile > out >>out1 >out2
+        /bin/cat Makefile > out >>out1 >out2
+        /bin/rm -rf out
+        /bin/rm -rf out1
+        /bin/rm -rf out2
+        /bin/cat Makefile > out >>out1 >out2 > out3 >> out4
+        /bin/cat Makefile > out >>out1 >out2 > out3 >> out4
+        /bin/rm -rf out
+        /bin/rm -rf out1
+        /bin/rm -rf out2
+        /bin/rm -rf out3
+        /bin/rm -rf out4
+        > out
+        /bin/rm -rf out
+        < out
+        /bin/rm -rf out
+        |
+        ""
+        ''
+        >> out
+        /bin/rm -rf out
+        echo |< echo segf
+        echo segf >| echo is this invalid
+        echo >          >           < "echo"
+        echo >          >         | echo kekw
+        echo >          >         | echo super valid
+        echo <          <         > echo
+        echo <  < <         > ok
+        echo <  < | echo ok
+        echo <  < |    < ok
+        echo <      < |    > echo
+        echo >>| echo super valid
+        echo >>< "echo"
+        echo < < < echo seegf
+        echo > > < "echo"
+        echo > > | echo kekw
+        echo > > | echo super valid
+        echo < < > echo
+        echo < < < > ok
+        echo >>| echo kekw
+        echo | < echo segf
+        .
+        amazing
+        echo seg < > echo seg
+        echo seg > < echo segf
+        echo seg < < > echo segf
+        echo seg < < < > echo segf
+        echo segf > | echo is this invalid
+        echo segf < | < echo super valid
+        echo < < | echo ok
+        echo < < | < ok
+        echo < < | > echo
+        echo segfault < " < < < " < < amazing
+        .
+        amazing
+        echo seg <  > echo seg
+        echo seg >  < echo segf
+        echo seg <      < > echo segf
+        echo seg <      < <    > echo segf
+        echo <      <     < echo seegf
+        echo |      < echo segf
+        echo segf >     | echo is this invalid
+        echo segf <         |        < echo super valid
+        echo segfault <"    <   <   <"  <   <   amazing
+        .
+        amazing
+        echo seg <> echo seg
+        echo seg >< echo segf
+        echo seg <<> echo segf
+        echo seg <<<> echo segf
+        echo <<< echo seegf
+        echo segf <|< echo super valid
+        /bin/echo ""$?""
+        /bin/echo $?"42"
+        /bin/echo ''$?''"42"
+        /bin/echo '"$USER"'
+        /bin/echo "'$USER'"
+        /bin/echo ""'$USER'""
+        /bin/echo '"'$USER'"'
+        /bin/echo "''$USER''"
+        /bin/echo "'"'$USER'"'"
+        /bin/echo '"'"$USER"'"'
+        /bin/echo $"HOME"$USER
+        /bin/echo $"HOM"E$USER
+        /bin/echo "exit_code ->$? user ->$USER home -> $HOME"
+        /bin/echo $"HOME"
+        /bin/echo $"42$"
+        /bin/echo "$ "
+        /bin/echo hi >./outfiles/outfile01 | /bin/echo bye
+        /bin/echo <123 <456 hi | /bin/echo 42
+        /bin/echo '$='
+        /bin/echo '$ '
+        /bin/echo "$?"
+        /bin/echo '$?'
+        /bin/echo "'$?'"
+        /bin/echo \$USER
+        /bin/echo \\$USER
+        /bin/echo \\\$USER
+        /bin/echo \\\\$USER
+        /bin/echo \\\\\$USER
+        /bin/echo \\\\\\\\\$USER
+        /bin/echo \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\$USER \$PATH \\$PWD
+        /bin/echo "cat lol.c | cat > lol.c"
+        /bin/echo "cat lol.c '|' cat > lol.c"
+        /bin/echo '$USER' "$USER" "text  ' text"
+        /bin/echo $USER =intergalaktikus miaf*szomez
+        /bin/echo -n"-n" bonjour
+        /bin/echo "'$USER'"
+        /bin/echo " '$USER' "
+        /bin/echo text"$USER"
+        /bin/echo text"'$USER'" ' $USER '
+        /bin/echo "text"   "$USER"    "$USER"
+        /bin/echo '              $USER          '
+        /bin/echo ''''''''''$USER''''''''''
+        /bin/echo """"""""$USER""""""""
+        /bin/echo '""""""""$USER""""""""'
+        /bin/echo ""'""""""$USER""""""'""
+        /bin/echo """"""""'$USER'""""""""
+        /bin/echo """""""'"$USER"'"""""""
+        /bin/echo """"""'""$USER""'""""""
+        /bin/echo ""'""'""""$USER""""'""'""
+        /bin/echo '""'""'""""$USER""""'""'""'
+        /bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+        /bin/echo "text" "text$USER" ... "$USER"
+        /bin/echo
+        /bin/echo ''
+        /bin/echo ""
+        /bin/echo '' ""
+        /bin/echo /bin/echo
+        /bin/echo test1
+        /bin/echo 'test1'
+        /bin/echo "/bin/echo hallo"
+        /bin/echo /bin/echo"1"
+        /bin/echo "test1 test2"
+        /bin/echo "test1  test2" test3
+        /bin/echo " test1 test2 " 'test3 '
+        /bin/echo test1test2
+        /bin/echo $USER$TESTNOTFOUND$HOME$
+        /bin/echo $USER$TESTNOTFOUND$HOME$WTF$PWD
+        /bin/echo -n test1
+        /bin/echo -n "test1 test2"
+        /bin/echo -n "test1 test2" test3
+        /bin/echo -n " test1 test2 " 'test3 '
+        /bin/echo -n test1test2
+        /bin/echo test1 -n
+        /bin/echo "test1 -n"
+        /bin/echo -n -n test1
+        /bin/echo -n -n -n -n -n test1
+        /bin/echo "  -nn "
+        /bin/echo "-n test1 -n test2"
+        /bin/echo "test1 -n test2"
+        /bin/echo ~42
+        /bin/echo -n -n -nasd
+        /bin/echo -n -n -n-nnnnn
+        /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n-n
+        /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n feel my pain
+        /bin/echo -n -n -n-n
+        /bin/echo "'totally logical'"
+        /bin/echo 'totally logical'
+        /bin/echo ''totally logical''
+        /bin/echo ""'totally logical'""
+        ">>" asd
+        >">" asd
+        /bin/rm -f ">"
+        >> '$USER'
+        cat $USER
+        /bin/rm -f '$USER'
+        >> '$USER'
+        cat '$USER'
+        /bin/rm -f '$USER'
+        "echo "
+        "echo -nnnnn"
+        "ECho" -n -nnn"" "-"nnnnn
+        "ECHO" "-n"
+        ECHO '''''-''n'
+        echo '' -n
+        echo "" "" "" -n -n -n -n
+        export T=">>"
+        $T lol
+        >> $HOME
+        >> "$H"OM"E"
+        cat OME
+        /bin/rm -f OME
+        >> "$USER'$USER'"
+        cat "$USER'$USER'"
+        /bin/rm -f "$USER'$USER'"
+        >> "$USER"
+        cat $USER
+        /bin/rm -f $USER
+        cd /Users/$USER/Desktop/
+        pwd
+        cd /Users/"$USER"/Desktop/
+        pwd
+        cd /Users/"$U"S"ER"/Desktop/
+        export T=n
+        echo "-"$T$T
+        export T=ech
+        echo $To
+        export T=ech
+        echo $T"o"
+        export T=ech
+        echo $T"o "
+        export T=ech
+        echo $T"o -n"
+        export T=ech
+        echo $T"o -n"
+        export T=ech
+        echo $T'o'
+        export T="-n test1 -n test 2"
+        echo $T
+        export T=ech
+        echo $T'o '
+        "ECHO"
+        'echo'
+        'PWD'
+        "PWD"
+        echo "-nnnnn "
+        ECHO -nn
+        ECHO -n -n
+        ECHO "-"""n""n""n""n""n""nnnnnn-n
+        ECHO "-"""n""n""n""n""n""nnnnnn -n
+        export T=nnnnnnnn
+        echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-'"$T"
+        export T=nnnnnnnn
+        echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-''$T'
+        export T=nnnnnnnn
+        echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn'$T' '-'"$T "
+        echo hello
+        echo "hello world"
+        echo "hello 'world"
+        echo 'hello world'
+        echo 'hello "world'
+        echo "'hello world'"
+        echo '"hello world"'
+        echo "hello '$PWD' world"
+        echo 'hello "$PWD" world'
+        echo "hello $PWD world"
+        echo 'hello $PWD world'
+        echo quote
+        ""
+        echo "test | test ; moretest><"
+        $
+        $LESS$VAR
+        --
+        >
+        <
+        > > > > >
+        >> >> >> >>
+        >>>>>>>>>
+        <<<<<<<<<
+        ~
+        < < < < < <
+        /bin/cat ><
+        /bin/cat <Makefile >
+        cat 42 42
+        echo >
+        echo > <
+        .
+        ..
+        echo | |
+        EechoE
+        .echo.
+        >echo>
+        /bin/rm -f echo
+        <echo<
+        /bin/rm -f echo
+        >>echo>>
+        /bin/rm -f echo
+        |echo|
+        trying to destroy your minishell
+        |
+        | test
+        | | |
+        | | | | test
+        | test
+        echo > <
+        hello world
+        ||||||||
+        cat wouaf wouaf
+        >
+        > > > >
+        >> >> >> >>
+        /
+        \\\
+        rm -f something
+        | echo -n oui
+        trying to destroy your minishell
+        trying something again echo if you see this message thats not a good new
+        qewew
+        wtf
+        hi im zsolt
+        nice to meet you if these tests are green
+        your minishell is perfect
+        >>| echo wtf
+        >| echo wtf
+        /bin/rm -rf echo
+        <| echo wtf
+        echo "<<| echo wtf"
+        echo ">>| echo wtf"
+        echo ">| echo wtf"
+        echo "<| echo wtf"
+        ls | wc -l | xargs echo
+        yes "no" | head -n 10
+        /bin/echo -e "\033[33mHello, world!\033[0m"
+        /bin/echo '\1$42' > tmp_redir_out
+        ls -la | grep tmp_redir_out | awk '{print $1 $2}'
+        cat -e tmp_redir_out
+        rm tmp_redir_out
+        sleep 0 | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+        >tmp_out | echo 1
+        cat tmp_out
+        rm -f tmp_out
+        echo 1 | >tmp_out
+        cat tmp_out
+        rm -f tmp_out
+        grep 1 < filedoesnotexist | echo 1 | grep 1 | head -1 | cat | ls
+        /usr/bin/env -i bash -c "env" | wc -l
+        export test="arg1arg2"
+        echo 'echo $1' > tmp_test_sh
+        bash tmp_test_sh $test
+        echo 'echo $2' > tmp_test_sh
+        bash tmp_test_sh $test
+        rm -f tmp_test_sh
+        export pipe_var=1 | echo $pipe_var
+        echo $pipe_var
+        echo $PATH
+        echo $HOME
+        unset PATH HOME
+        echo $PATH
+        echo $HOME
+        echo $?
+        echo $?
+        echo $?
+        echo Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+echo "hello '$PWD' world"
+exit
+echo "hello '$PWD' world"
+exit
+echo "hello '$PWD' world"
+exit
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+echo 'hello $PWD world'
+exit
+echo 'hello $PWD world'
+echo "hello '$PWD' world"
+echo 'hello "$PWD" world'
+exit
+        echo hello
+        echo "hello world"
+        echo "hello 'world"
+        echo 'hello world'
+        echo 'hello "world'
+        echo "'hello world'"
+        echo '"hello world"'
+        echo "hello '$PWD' world"
+        echo 'hello "$PWD" world'
+        echo "hello $PWD world"
+        echo 'hello $PWD world'
+        echo quote
+        ""
+        echo "test | test ; moretest><"
+        $
+        $LESS$VAR
+        --
+        >
+        <
+        > > > > >
+        >> >> >> >>
+        >>>>>>>>>
+        <<<<<<<<<
+        ~
+        < < < < < <
+        /bin/cat ><
+        /bin/cat <Makefile >
+        cat 42 42
+        echo >
+        echo > <
+        .
+        ..
+        echo | |
+        EechoE
+        .echo.
+        >echo>
+        /bin/rm -f echo
+        <echo<
+        /bin/rm -f echo
+        >>echo>>
+        /bin/rm -f echo
+        |echo|
+        trying to destroy your minishell
+        |
+        | test
+        | | |
+        | | | | test
+        | test
+        echo > <
+        hello world
+        ||||||||
+        cat wouaf wouaf
+        >
+        > > > >
+        >> >> >> >>
+        /
+        \\\
+        rm -f something
+        | echo -n oui
+        trying to destroy your minishell
+        trying something again echo if you see this message thats not a good new
+        qewew
+        wtf
+        hi im zsolt
+        nice to meet you if these tests are green
+        your minishell is perfect
+        >>| echo wtf
+        >| echo wtf
+        /bin/rm -rf echo
+        <| echo wtf
+        echo "<<| echo wtf"
+        echo ">>| echo wtf"
+        echo ">| echo wtf"
+        echo "<| echo wtf"
+        ls | wc -l | xargs echo
+        yes "no" | head -n 10
+        /bin/echo -e "\033[33mHello, world!\033[0m"
+        /bin/echo '\1$42' > tmp_redir_out
+        ls -la | grep tmp_redir_out | awk '{print $1 $2}'
+        cat -e tmp_redir_out
+        rm tmp_redir_out
+        sleep 0 | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
+        >tmp_out | echo 1
+        cat tmp_out
+        rm -f tmp_out
+        echo 1 | >tmp_out
+        cat tmp_out
+        rm -f tmp_out
+        grep 1 < filedoesnotexist | echo 1 | grep 1 | head -1 | cat | ls
+        /usr/bin/env -i bash -c "env" | wc -l
+        export test="arg1arg2"
+        echo 'echo $1' > tmp_test_sh
+        bash tmp_test_sh $test
+        echo 'echo $2' > tmp_test_sh
+        bash tmp_test_sh $test
+        rm -f tmp_test_sh
+        export pipe_var=1 | echo $pipe_var
+        echo $pipe_var
+        echo $PATH
+        echo $HOME
+        unset PATH HOME
+        echo $PATH
+        echo $HOME
+        echo $?
+        echo $?
+        echo $?
+        echo Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
+        echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+        unset PATH
+        ls
+        unset PATH
+        env
+        export
+        echo $USER
+        echo $HOME
+        echo $HOME$NOTHING$USER$
+        pwd
+        unset PATH
+        echo $HOME$NOTHING$USER$
+        unset PATH
+        unset USER
+        cd -
+        pwd
+        echo "no env over here"
+        exit asd
+        exit 5
+        exit 5 asd
+        unset OLDPWD
+        cd -
+        pwd
+        cd
+        cd ~
+        /bin/ls
+        cd /bin/
+        ./ls
+        ls
+        export T=bazd
+        echo "$T" "meg"
+        cd /bin/
+        ls
+        export a="asd" b="de" o= c="hellomi" X
+        unset o
+        export a="asd" b="de" o= c="hellomi" X
+        unset X
+        export a="asd" b="de" o= c="hellomi" X
+        unset o a X b c
+        export a="asd" b="de" o= c="hellomi" X
+        unset o asd B x X wqd c
+        unset PATH
+        cd ..
+        unset PATH
+        pwd
+        cd
+        pwd
+        unset PATH
+        pwd
+        cd -
+        pwd
+        exit
+        unset PATH
+        pwd
+        cd ~
+        pwd
+        unset PATH
+        pwd
+        cd ~
+        pwd
+        cd -
+        pwd
+        /bin/cat Makefile > out >>out1 >out2
+        /bin/cat Makefile > out >>out1 >out2
+        /bin/rm -rf out
+        /bin/rm -rf out1
+        /bin/rm -rf out2
+        /bin/cat Makefile > out >>out1 >out2 > out3 >> out4
+        /bin/cat Makefile > out >>out1 >out2 > out3 >> out4
+        /bin/rm -rf out
+        /bin/rm -rf out1
+        /bin/rm -rf out2
+        /bin/rm -rf out3
+        /bin/rm -rf out4
+        > out
+        /bin/rm -rf out
+        < out
+        /bin/rm -rf out
+        |
+        ""
+        ''
+        >> out
+        /bin/rm -rf out
+        echo |< echo segf
+        echo segf >| echo is this invalid
+        echo >          >           < "echo"
+        echo >          >         | echo kekw
+        echo >          >         | echo super valid
+        echo <          <         > echo
+        echo <  < <         > ok
+        echo <  < | echo ok
+        echo <  < |    < ok
+        echo <      < |    > echo
+        echo >>| echo super valid
+        echo >>< "echo"
+        echo < < < echo seegf
+        echo > > < "echo"
+        echo > > | echo kekw
+        echo > > | echo super valid
+        echo < < > echo
+        echo < < < > ok
+        echo >>| echo kekw
+        echo | < echo segf
+        .
+        amazing
+        echo seg < > echo seg
+        echo seg > < echo segf
+        echo seg < < > echo segf
+        echo seg < < < > echo segf
+        echo segf > | echo is this invalid
+        echo segf < | < echo super valid
+        echo < < | echo ok
+        echo < < | < ok
+        echo < < | > echo
+        echo segfault < " < < < " < < amazing
+        .
+        amazing
+        echo seg <  > echo seg
+        echo seg >  < echo segf
+        echo seg <      < > echo segf
+        echo seg <      < <    > echo segf
+        echo <      <     < echo seegf
+        echo |      < echo segf
+        echo segf >     | echo is this invalid
+        echo segf <         |        < echo super valid
+        echo segfault <"    <   <   <"  <   <   amazing
+        .
+        amazing
+        echo seg <> echo seg
+        echo seg >< echo segf
+        echo seg <<> echo segf
+        echo seg <<<> echo segf
+        echo <<< echo seegf
+        echo segf <|< echo super valid
+        /bin/echo ""$?""
+        /bin/echo $?"42"
+        /bin/echo ''$?''"42"
+        /bin/echo '"$USER"'
+        /bin/echo "'$USER'"
+        /bin/echo ""'$USER'""
+        /bin/echo '"'$USER'"'
+        /bin/echo "''$USER''"
+        /bin/echo "'"'$USER'"'"
+        /bin/echo '"'"$USER"'"'
+        /bin/echo $"HOME"$USER
+        /bin/echo $"HOM"E$USER
+        /bin/echo "exit_code ->$? user ->$USER home -> $HOME"
+        /bin/echo $"HOME"
+        /bin/echo $"42$"
+        /bin/echo "$ "
+        /bin/echo hi >./outfiles/outfile01 | /bin/echo bye
+        /bin/echo <123 <456 hi | /bin/echo 42
+        /bin/echo '$='
+        /bin/echo '$ '
+        /bin/echo "$?"
+        /bin/echo '$?'
+        /bin/echo "'$?'"
+        /bin/echo \$USER
+        /bin/echo \\$USER
+        /bin/echo \\\$USER
+        /bin/echo \\\\$USER
+        /bin/echo \\\\\$USER
+        /bin/echo \\\\\\\\\$USER
+        /bin/echo \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\$USER \$PATH \\$PWD
+        /bin/echo "cat lol.c | cat > lol.c"
+        /bin/echo "cat lol.c '|' cat > lol.c"
+        /bin/echo '$USER' "$USER" "text  ' text"
+        /bin/echo $USER =intergalaktikus miaf*szomez
+        /bin/echo -n"-n" bonjour
+        /bin/echo "'$USER'"
+        /bin/echo " '$USER' "
+        /bin/echo text"$USER"
+        /bin/echo text"'$USER'" ' $USER '
+        /bin/echo "text"   "$USER"    "$USER"
+        /bin/echo '              $USER          '
+        /bin/echo ''''''''''$USER''''''''''
+        /bin/echo """"""""$USER""""""""
+        /bin/echo '""""""""$USER""""""""'
+        /bin/echo ""'""""""$USER""""""'""
+        /bin/echo """"""""'$USER'""""""""
+        /bin/echo """""""'"$USER"'"""""""
+        /bin/echo """"""'""$USER""'""""""
+        /bin/echo ""'""'""""$USER""""'""'""
+        /bin/echo '""'""'""""$USER""""'""'""'
+        /bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+        /bin/echo "text" "text$USER" ... "$USER"
+        /bin/echo
+        /bin/echo ''
+        /bin/echo ""
+        /bin/echo '' ""
+        /bin/echo /bin/echo
+        /bin/echo test1
+        /bin/echo 'test1'
+        /bin/echo "/bin/echo hallo"
+        /bin/echo /bin/echo"1"
+        /bin/echo "test1 test2"
+        /bin/echo "test1  test2" test3
+        /bin/echo " test1 test2 " 'test3 '
+        /bin/echo test1test2
+        /bin/echo $USER$TESTNOTFOUND$HOME$
+        /bin/echo $USER$TESTNOTFOUND$HOME$WTF$PWD
+        /bin/echo -n test1
+        /bin/echo -n "test1 test2"
+        /bin/echo -n "test1 test2" test3
+        /bin/echo -n " test1 test2 " 'test3 '
+        /bin/echo -n test1test2
+        /bin/echo test1 -n
+        /bin/echo "test1 -n"
+        /bin/echo -n -n test1
+        /bin/echo -n -n -n -n -n test1
+        /bin/echo "  -nn "
+        /bin/echo "-n test1 -n test2"
+        /bin/echo "test1 -n test2"
+        /bin/echo ~42
+        /bin/echo -n -n -nasd
+        /bin/echo -n -n -n-nnnnn
+        /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n-n
+        /bin/echo -n -nnnnnnn -n -nnn -nnnnn -n feel my pain
+        /bin/echo -n -n -n-n
+        /bin/echo "'totally logical'"
+        /bin/echo 'totally logical'
+        /bin/echo ''totally logical''
+        /bin/echo ""'totally logical'""
+        ">>" asd
+        >">" asd
+        /bin/rm -f ">"
+        >> '$USER'
+        cat $USER
+        /bin/rm -f '$USER'
+        >> '$USER'
+        cat '$USER'
+        /bin/rm -f '$USER'
+        "echo "
+        "echo -nnnnn"
+        "ECho" -n -nnn"" "-"nnnnn
+        "ECHO" "-n"
+        ECHO '''''-''n'
+        echo '' -n
+        echo "" "" "" -n -n -n -n
+        export T=">>"
+        $T lol
+        >> $HOME
+        >> "$H"OM"E"
+        cat OME
+        /bin/rm -f OME
+        >> "$USER'$USER'"
+        cat "$USER'$USER'"
+        /bin/rm -f "$USER'$USER'"
+        >> "$USER"
+        cat $USER
+        /bin/rm -f $USER
+        cd /Users/$USER/Desktop/
+        pwd
+        cd /Users/"$USER"/Desktop/
+        pwd
+        cd /Users/"$U"S"ER"/Desktop/
+        export T=n
+        echo "-"$T$T
+        export T=ech
+        echo $To
+        export T=ech
+        echo $T"o"
+        export T=ech
+        echo $T"o "
+        export T=ech
+        echo $T"o -n"
+        export T=ech
+        echo $T"o -n"
+        export T=ech
+        echo $T'o'
+        export T="-n test1 -n test 2"
+        echo $T
+        export T=ech
+        echo $T'o '
+        "ECHO"
+        'echo'
+        'PWD'
+        "PWD"
+        echo "-nnnnn "
+        ECHO -nn
+        ECHO -n -n
+        ECHO "-"""n""n""n""n""n""nnnnnn-n
+        ECHO "-"""n""n""n""n""n""nnnnnn -n
+        export T=nnnnnnnn
+        echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-'"$T"
+        export T=nnnnnnnn
+        echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-''$T'
+        export T=nnnnnnnn
+        echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn'$T' '-'"$T "
+        export T=nnnnnnnn
+        echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn$T '-''$T '
+        export T=e E=c S=h L=o
+        $T$E$S$L
+        export T=e E=c S=h L=o L=ok
+        $T$E$S$L
+        export T=e E=c S=h L=o
+        $T$E$S$L -n
+        export T=E E=c S=h L=o
+        $T$E$S$L -n
+        export T=E E=c S=h L=o
+        $T$E$S$L -nn
+        export T=e E=c S=h L=o
+        $T$E$S$L -nn
+        export T=e E=c S=h L=o
+        $T$E"c"$L -nn
+        export T=e E=c S=h L=o
+        $T$E"C"$L -nn
+        export T=e E=c S=h L=o
+        $T$E"C"$L "" -""n
+        LS
+        Ls
+        lS
+        ls
+        PWD
+        pWD
+        pwd
+        pwD
+        ENV
+        CAT
+        EXPORT
+        export T="|"
+        echo segfault $T grep segfault
+        export T='|'
+        echo segfault $T grep segfault
+        export T=">"
+        echo segfault $T grep segfault
+        export T='<'
+        echo segfault $T grep segfault
+        export T="<<"
+        echo segfault $T grep segfault
+        export T='<<'
+        echo segfault $T grep segfault
+        export T="|"
+        $T$T$T$T$T$T$T
+        export T="echo segfault | grep segfault"
+        $T
+        export T=-nnnnnnnn"nnnnnnn "
+        echo $T
+        export T=-"n                    "
+        Echo $T
+        EXIT 123
+        Exit
+        UNSET USER
+        Unset USER
+        EXPORT T=LA
+        echo $T
+        Export T=LA
+        echo $T
+        "e"'x''p''o''r''t' L=T
+        echo $T
+        e""""""""""""cho
+        export T='|'
+        echo $T echo lala $T echo $T echo ?
+        export T="<<"
+        $T.
+        OLDPWD
+        USER
+        " ls"
+        " cat"
+        " echo"
+        " PWD"
+        " pwd"
+        "PWD "
+        "pwd "
+        'pwd '
+        p""''''w''''''""""""''''''''''''''''''''''''''''''''d
+        '''''''''''''''' echo ok
+        echo "|"  | echo maybe
+        echo '|'  | echo maybe
+        echo -nnnnnnnnnnnn
+        export L=amazing L=ok L=cool
+        echo $L
+        export L=amazing L=ok L=cool
+        export L=ok
+        echo $L
+        echo '$'$'$'$'$'
+        echo '$'$'$'$'$'$'$'
+        echo "$"$'$'$"$"$"$"$'$'
+        echo $/ $/
+        echo $U/SER
+        echo "$/ $/"
+        echo $/"$/"
+        echo '$/'
+        exit 9223372036854775805
+        exit 123"123"
+        <| echo ok
+        >| echo sure

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/25 11:40:47 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/29 19:49:16 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/29 20:44:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,13 @@ int	check_sub_content(t_node *token, char quote, int open)
 {
 	int		i;
 	int		type;
+	int		dquote;
+	int		squote;
 	char	*str;
 
 	i = 0;
+	dquote = 0;
+	squote = 0;
 	str = token->content;
 	// printf("type in ceck sub content, content: %s, quote: %c, open: %d\n", str, quote, open);
 	if (!open)
@@ -76,15 +80,22 @@ int	check_sub_content(t_node *token, char quote, int open)
 		type = DQUOTE;
 	else
 		type = SQUOTE;
+	if (!type)
+		remove_double_quotes(&token);
 	while (str[i])
 	{
-		if (str[i] == '\"' && type != SQUOTE)
+		if (str[i] == '\"')
+		{
+			dquote++;
+			if (dquote == 2)
 			return (DQUOTE);
-		if (str[i] == '\'' && type != DQUOTE)
-			return (SQUOTE);
-		if (str[i] == '$' && str[i + 1] != ' ' && str[i + 1] != '\0' \
-			&& !(quote == '\'' && type != SQUOTE))
-			return (EXPAND);
+		}
+		if (str[i] == '\'')
+		{
+			squote++;
+			if (squote == 2)	
+				return (SQUOTE);
+		}
 		i++;
 	}
 	i = 0;

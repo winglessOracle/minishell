@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/29 19:44:57 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/29 20:46:11 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,9 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 			if (words->type)
 			{
 				// printf("content: %s, expand type: %d\n", words->content, words->type);
+				// free(words->content);
+				// words->content = content;
+				// content = ft_strdup("");
 				expand_sub(&words, cmd);
 			}
 			if (!words->content)
@@ -71,11 +74,17 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 				words->content = ft_strdup("");
 			}
 			content = ft_strjoin_free_s1(content, words->content);
-			// (*tokens)->type = words->type;
+			(*tokens)->type = words->type;
 			remove_node(&words, cmd);
 		}
 		if (words && words->content[0] == quote && quote_open)
+		{
 			remove_node(&words, cmd);
+			if (quote == '\'')
+				(*tokens)->type = SQUOTE;
+			else
+				(*tokens)->type = DQUOTE;
+		}
 		else if (words && quote_open)
 			return(syntax_error(tokens, cmd, "unclosed quotes\n", 1));
 		// printf("content: %s\n", content);
