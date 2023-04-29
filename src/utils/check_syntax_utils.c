@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/25 11:40:47 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/29 20:44:23 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/29 21:52:10 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ int	check_sub_content(t_node *token, char quote, int open)
 		remove_double_quotes(&token);
 	while (str[i])
 	{
-		if (str[i] == '\"')
+		if (str[i] == '\"' && type != SQUOTE)
 		{
 			dquote++;
 			if (dquote == 2)
 			return (DQUOTE);
 		}
-		if (str[i] == '\'')
+		if (str[i] == '\'' && type != DQUOTE)
 		{
 			squote++;
 			if (squote == 2)	
@@ -99,10 +99,11 @@ int	check_sub_content(t_node *token, char quote, int open)
 		i++;
 	}
 	i = 0;
-	while (str[i])
+	// printf("type: %d, squote: %d, dquote: %d\n", type, squote, dquote);
+	while (str[i] && type != SQUOTE && !squote)
 	{
 		if (str[i] == '$' && str[i + 1] != ' ' && str[i + 1] != '\0' \
-			&& !(quote == '\'' && type != SQUOTE))
+			&& !(quote == '\''))
 			return (EXPAND);
 		i++;
 	}
