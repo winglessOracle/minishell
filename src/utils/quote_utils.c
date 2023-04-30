@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/30 19:00:05 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/30 19:26:58 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,11 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 		while (words && words->content[0] != quote)
 		{
 			// printf("1. str content: %s\n", content);
-			// printf("1. content: %s, type: %d\n", words->content, words->type);
+			// printf("1. content: %s, type: %d, quote open: %d\n", words->content, words->type, quote_open);
 			words->type = check_sub_content(words, quote, quote_open);
-			// printf("2. content: %s, type: %d\n", words->content, words->type);
+			// printf("2. str content: %s, type: %d\n", content, words->type);
 			if (words->type)
-			{
-				// free(words->content);
-				// words->content = content;
-				// content = ft_strdup("");
 				expand_sub(&words, cmd);
-			}
 			if (words->content)
 				content = ft_strjoin_free_s1(content, words->content);
 			(*tokens)->type = words->type;
