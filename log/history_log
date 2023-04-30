@@ -1788,4 +1788,15 @@ exit lala 42
     exit "+++"
     exit "---"
     exit echo
-    exit cd ..
+se
+../ls
+/ls
+../ls
+./ls
+..//ls
+/ls
+////ls
+./ls
+~./ls
+~/ls
+/ls

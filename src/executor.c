@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/26 19:27:33 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/30 18:46:21 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 	if (!cmd_args)
 		exit_error("building commands", 1);
 	env = get_env(env_list);
+	// if absolute or raltive path in cmd then dont chek opath else check path
 	// check for env = NULL?
 	path = get_variable(env_list, "PATH");
 	if (!path)

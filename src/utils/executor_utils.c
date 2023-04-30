@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/26 18:02:13 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/30 17:33:13 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ char	**build_cmd_args(t_node **argv, int argc)
 	i = 0;
 	if (!argv || !argc)
 		return (NULL);
+	
 	if (BONUS)
 		argc = check_wildcars(argv);
 	temp = *argv;
