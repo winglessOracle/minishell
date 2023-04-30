@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/30 18:45:44 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/30 19:00:05 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 		}
 		while (words && words->content[0] != quote)
 		{
+			// printf("1. str content: %s\n", content);
 			// printf("1. content: %s, type: %d\n", words->content, words->type);
 			words->type = check_sub_content(words, quote, quote_open);
 			// printf("2. content: %s, type: %d\n", words->content, words->type);
@@ -72,14 +73,11 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 				// content = ft_strdup("");
 				expand_sub(&words, cmd);
 			}
-			if (!words->content)
-			{
-				// printf("no content\n");
-				words->content = ft_strdup("");
-			}
-			content = ft_strjoin_free_s1(content, words->content);
+			if (words->content)
+				content = ft_strjoin_free_s1(content, words->content);
 			(*tokens)->type = words->type;
 			remove_node(&words, cmd);
+			// printf("2. str content: %s\n", content);
 		}
 		if (words && words->content[0] == quote && quote_open)
 		{
@@ -96,6 +94,7 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 	}
 	free((*tokens)->content);
 	(*tokens)->content = content;
+	// printf("end of split quotes, content: %s, type: %d\n", (*tokens)->content, (*tokens)->type);
 	// (*tokens)->type = WORD;
 	return (0);
 }
@@ -179,7 +178,7 @@ int	merge_quoted(t_node **token, t_smpl_cmd *cmd)
 	// remove_double_quotes(token);
 	// printf("2. before split and remove quotes: %s\n", (*token)->content);
 	split_and_remove_quotes(token, cmd);
-	// printf("3. after split and remove quotes: %s, token type: %d, type: %d, quotes: %d\n", (*token)->content, (*token)->type, type, quotes);
 	(*token)->type = WORD;
+	// printf("3. after split and remove quotes: %s, token type: %d, type: %d, quotes: %d\n", (*token)->content, (*token)->type, type, quotes);
 	return (0);
 }
