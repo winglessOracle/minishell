@@ -78,7 +78,11 @@ exit ""
 exit "something"
 exit something somethingv2
 exit +++++
-exit ------
+exit -----
+exit -42-
+exit +42+
+exit +
+exit -
 exit "+++"
 exit "---"
 exit echo
