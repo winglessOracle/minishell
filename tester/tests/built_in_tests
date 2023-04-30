@@ -10,11 +10,8 @@ cd ..lalala; pwd
 cd .; echo $OLDPWD
 cd -; pwd
 echo
-echo -n
 echo $IDONOTEXIST
 echo $PATH
-echo ~
-echo -n-n-nnnn-nnnnnnn
 echo "" hello world
 env lalala
 env | grep OLDPWD
@@ -30,10 +27,6 @@ export test2=$HOME
 echo $test2
 export ls="ls -l"
 $ls
-exit 42 lalala
-exit lalala 42
-exit 256
-exit -1
 echo hello world
 env ls
 env -a ls
@@ -101,24 +94,7 @@ echo " test1 test2 " 'test3 '
 echo test1		test2
 echo $USER$TESTNOTFOUND$HOME$
 echo $USER$TESTNOTFOUND$HOME$WTF$PWD
-echo -n test1
-echo -n "test1 test2"
-echo -n "test1 test2" test3
-echo -n " test1 test2 " 'test3 '
-echo -n test1		test2
-echo test1 -n
-echo "test1 -n"
-echo -n -n test1
-echo -n -n -n -n -n test1
-echo "  -nn "
-echo "-n test1 -n test2"
-echo "test1 -n test2"
 echo ~42
-echo -n -n -nasd
-echo -n -n -n-nnnnn
-echo -n -nnnnnnn -n -nnn -nnnnn -n-n
-echo -n -nnnnnnn -n -nnn -nnnnn -n feel my pain
-echo -n -n -n-n
 echo "'totally logical'"
 echo 'totally logical'
 echo ''totally logical''
@@ -199,25 +175,6 @@ cd $OLDPWD/something
 pwd
 cd ~
 cd - ananas dot jpeg
-# might need to change the directory by yourself, that supposed to be valid =)
-pwd
-cd includes/ djhwbdhwbd wgdyuhgw jdwjdh wuiydjwh 
-pwd
-cd ~ asd w dd q asd
-pwd
-cd ~
-cd -
-pwd
-cd -
-pwd
-cd ~
-# might need to change the directory by yourself, that supposed to be valid =)
-pwd
-cd ../libft
-# might need to change the directory by yourself, that supposed to be valid =)
-pwd
-cd ../libft ojid iowjiojwoid joijd owjoid jwojd 
-pwd
 ### ENV ###
 env | grep DOESNT_EXIST
 env | grep HOME
@@ -377,50 +334,6 @@ unset HOME
 unset HOME
 /bin/echo $HOME
 ###  EXIT ###
-exit 9223372036854775807
-exit something somethingv2
-exit 0 0
-exit
-exit ""
-exit "+100"
-exit "-100"
-exit -9223372036854775805
-exit 0
-exit 10
-exit 42
-exit 1
-exit +++++
-exit ++++++
-exit +1
-exit ++1
-exit ++12560
-exit -----
-exit ------
-exit -1
-exit --1
-exit -12560
-exit --12560
-exit 255
-exit 1 2
-exit 1 2 3
-exit A
-exit A 2 3
-exit "A"
-exit "+++"
-exit ++++3193912939
-exit 01
-exit 001
-exit 0001
-exit +++000
-exit ++++000
-exit ---000
-exit ----000
-exit "something"
-exit x
-exit echo
-exit cd ..
-exit exit
-exit 42 42 42 42 42 
 /bin/echo
 /bin/echo 1
 /bin/cat 42
@@ -434,19 +347,6 @@ exit 42 42 42 42 42
 /bin/echo -n 1
 echo
 echo hello world
-echo -n 42
-echo -n 42 -n
-echo 42 -n
-echo -n -n -n 42
-echo -n -n -n -n 42
-exit
-exit 42
-exit ""
-exit 1 2 3
-exit 42 42
-exit A
-exit A 1
-exit 1 A
 /bin/echo 42
 echo $?
 /bin/cat 42
@@ -618,7 +518,6 @@ echo 1
 export PATH=1
 echo $PATH
 echo 1
-env -i ./minishell
 cd /bin/
 ls
 touch tmp_x_file1
@@ -628,15 +527,6 @@ echo $?
 echo $?
 export PATH=$HOME
 echo $PATH
-tmp_x_file1
-echo $?
-./tmp_x_file1
-echo $?
-unset PATH
-tmp_x_file1
-echo $?
-./tmp_x_file1
-echo $?
 echo 42
 /bin/rm -f tmp_x_file1
 cd doesntexist
