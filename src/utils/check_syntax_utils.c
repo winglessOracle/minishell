@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/25 11:40:47 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/29 21:52:10 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/30 18:35:00 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,13 @@ int	check_token_content(t_node *token, int type)
 	if (!token->content)
 		return (WORD);
 	str = token->content;
+	// printf("in check token content: %s, type: %d\n", token->content, type);
+	// printf("1. hier\n");
 	if (str[0] == '#' && type != DQUOTE && type != SQUOTE)
 		return (COMMENT);
 	if (str[0] == '~' && (str[1] == '/' || str[1] == '\0'))
 		return (TILDE);
+	// printf("2. hier\n");
 	while (str[i])
 	{
 		if (str[i] == '\"' && type != SQUOTE)
@@ -49,13 +52,18 @@ int	check_token_content(t_node *token, int type)
 		i++;
 	}
 	i = 0;
+	// printf("3. hier\n");
 	while (str[i])
 	{
 		if (str[i] == '$' && str[i + 1] != ' ' && str[i + 1] != '\0' \
 				&& type != SQUOTE)
+		{
+			// printf("return EXPAND\n");
 			return (EXPAND);
+		}
 		i++;
 	}
+	// printf("4. hier\n");
 	if (check_assign(token->content, WORD))
 		return (ASSIGN);
 	return (WORD);
@@ -75,11 +83,17 @@ int	check_sub_content(t_node *token, char quote, int open)
 	str = token->content;
 	// printf("type in ceck sub content, content: %s, quote: %c, open: %d\n", str, quote, open);
 	if (!open)
-		type = check_token_content(token, WORD);
+	{
+		i = check_token_content(token, WORD);
+		if ( i == COMMENT || i == ASSIGN || i == TILDE)
+			i = WORD;
+		return (i);
+	}
 	else if  (quote == '\"')
 		type = DQUOTE;
 	else
 		type = SQUOTE;
+	// printf ("type now: %d\n", type);
 	if (!type)
 		remove_double_quotes(&token);
 	while (str[i])

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/29 19:49:34 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/30 18:17:02 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 	t_node	*words;
 	t_node	*temp;
 
-	// printf("content: %s\n", (*token)->content);
+	// printf("in expand content: %s\n", (*token)->content);
 	words = split_to_list((*token)->content, "$=?/\"\'");
 	remove_node(token, cmd);
 	while (words && words->next)

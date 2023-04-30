@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/29 22:29:34 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/30 18:45:44 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 	char 	*split;
 	
 	quote = get_quote_char((*tokens)->type);
+	// printf("quote now: %c\n", quote);
 	content = ft_strdup("");
 	if (quote == '\'')
 		split = ft_strdup("\' ");
@@ -61,11 +62,11 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 		}
 		while (words && words->content[0] != quote)
 		{
+			// printf("1. content: %s, type: %d\n", words->content, words->type);
 			words->type = check_sub_content(words, quote, quote_open);
-			// printf("content: %s, type: %d\n", words->content, words->type);
+			// printf("2. content: %s, type: %d\n", words->content, words->type);
 			if (words->type)
 			{
-				// printf("content: %s, expand type: %d\n", words->content, words->type);
 				// free(words->content);
 				// words->content = content;
 				// content = ft_strdup("");
@@ -82,6 +83,7 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 		}
 		if (words && words->content[0] == quote && quote_open)
 		{
+			// printf("remove quote: %c\n", quote);
 			remove_node(&words, cmd);
 			if (quote == '\'')
 				(*tokens)->type = SQUOTE;
@@ -168,22 +170,16 @@ int	merge_quoted(t_node **token, t_smpl_cmd *cmd)
 	quote = get_quote_char((*token)->type);
 	// printf("1. before split and remove quotes: %s\n", (*token)->content);
 	quotes = count_quotes((*token)->content, quote);
+	// print_tokens(*token, "before merge quotes\n");
 	while (*token && (*token)->next && quotes != -1 && count_quotes((*token)->content, quote) % 2)
 		merge_tokens(*token, type);
+	// print_tokens(*token, "after merge quotes\n");
 	if (!*token || ((count_quotes((*token)->content, quote) % 2) && quotes != -1))
 		return(syntax_error(token, cmd, "unclosed quotes\n", 1));
+	// remove_double_quotes(token);
 	// printf("2. before split and remove quotes: %s\n", (*token)->content);
-	remove_double_quotes(token);
 	split_and_remove_quotes(token, cmd);
 	// printf("3. after split and remove quotes: %s, token type: %d, type: %d, quotes: %d\n", (*token)->content, (*token)->type, type, quotes);
-	if (quotes == -1)
-		(*token)->type = WORD;
-	(*token)->type = check_token_content(*token, (*token)->type);
-	// printf("4. after split and remove quotes: %s, token type: %d, type: %d\n", (*token)->content, (*token)->type, type);
-	if ((*token)->type == DQUOTE || (*token)->type == SQUOTE)
-		merge_quoted(token, cmd);
-	remove_double_quotes(token);
-	// printf("4. after split and remove quotes: %s, token type: %d, type: %d\n", (*token)->content, (*token)->type, type);
 	(*token)->type = WORD;
 	return (0);
 }
