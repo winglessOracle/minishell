@@ -1,0 +1,138 @@
+
+
+		command=> exit
+
+
+		command=> exit 0
+
+
+		command=> exit 1
+
+
+		command=> exit 42
+
+
+		command=> exit 256
+
+
+		command=> exit 300
+
+
+		command=> exit 9223372036854775805
+
+
+		command=> exit -0
+
+
+		command=> exit -1
+
+
+		command=> exit -42
+
+
+		command=> exit -256
+
+
+		command=> exit -300
+
+
+		command=> exit -9223372036854775805
+
+
+		command=> exit +1
+
+
+		command=> exit ++1
+
+
+		command=> exit ++12560
+
+
+		command=> exit --1
+
+
+		command=> exit --12560
+
+
+		command=> exit 0 0
+
+
+		command=> exit 1 2
+
+
+		command=> exit 1 2 3
+
+
+		command=> exit 01
+
+
+		command=> exit 001
+
+
+		command=> exit 0001
+
+
+		command=> exit +++000
+
+
+		command=> exit ++++000
+
+
+		command=> exit ++++42424242
+
+
+		command=> exit ---000
+
+
+		command=> exit ----000
+
+
+		command=> exit 42 42 42 42 42
+
+
+		command=> exit something
+
+
+		command=> exit  2 3
+
+
+		command=> exit 42 A
+
+
+		command=> exit 42-A
+
+
+		command=> exit 42 something
+
+
+		command=> exit "+100"
+
+
+		command=> exit "-100"
+
+
+		command=> exit ""
+
+
+		command=> exit "something"
+
+
+		command=> exit something somethingv2
+
+
+		command=> exit +++++
+
+
+		command=> exit ------
+
+
+		command=> exit "+++"
+
+
+		command=> exit "---"
+
+
+		command=> exit echo
+
+
+		command=> exit cd ..

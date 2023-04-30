@@ -279,3 +279,1463 @@ exit lala 42
     exit -1
     exit ++1
     exit --1
+    echo built-in
+    cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+    mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+    cd ../../../../../; pwd
+    cd ~; pwd
+    cd; pwd
+    unset HOME; cd;
+    export HOME=/Users/user42; cd ~
+    cd ..lalala; pwd
+    cd .; echo $OLDPWD
+    cd -; pwd
+    echo
+    echo -n
+    echo $IDONOTEXIST
+    echo $PATH
+    echo ~
+    echo -n-n-nnnn-nnnnnnn
+    echo "" hello world
+    env lalala
+    env | grep OLDPWD
+    export aaa1=cat aaa2=dog
+    env | grep aaa
+    export | grep aaa
+    export aaaa
+    export aaaa=hamster
+    export | grep aaaa
+    export 1var;
+    export "" test1=dog
+    export test2=$HOME
+    echo $test2
+    export ls="ls -l"
+    $ls
+    echo hello world
+    env ls
+    env -a ls
+    $SHVL
+    echo built-in
+    cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+    mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+    cd ../../../../../; pwd
+    cd ~; pwd
+    cd; pwd
+    unset HOME; cd;
+    export HOME=/Users/user42; cd ~
+    cd ..lalala; pwd
+    cd .; echo $OLDPWD
+    cd -; pwd
+    echo
+    echo -n
+    echo $IDONOTEXIST
+    echo $PATH
+    echo ~
+    echo -n-n-nnnn-nnnnnnn
+    echo "" hello world
+    env lalala
+    env | grep OLDPWD
+    export aaa1=cat aaa2=dog
+    env | grep aaa
+    export | grep aaa
+    export aaaa
+    export aaaa=hamster
+    export | grep aaaa
+    export 1var;
+    export "" test1=dog
+    export test2=$HOME
+    echo $test2
+    export ls="ls -l"
+    $ls
+    echo hello world
+    env ls
+    env -a ls
+    $SHVL
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    echo built-in
+    cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+    mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+    cd ../../../../../; pwd
+    cd ~; pwd
+    cd; pwd
+    unset HOME; cd;
+    export HOME=/Users/user42; cd ~
+    cd ..lalala; pwd
+    cd .; echo $OLDPWD
+    cd -; pwd
+    echo
+    echo -n
+    echo $IDONOTEXIST
+    echo $PATH
+    echo ~
+    echo -n-n-nnnn-nnnnnnn
+    echo "" hello world
+    env lalala
+    env | grep OLDPWD
+    export aaa1=cat aaa2=dog
+    env | grep aaa
+    export | grep aaa
+    export aaaa
+    export aaaa=hamster
+    export | grep aaaa
+    export 1var;
+    export "" test1=dog
+    export test2=$HOME
+    echo $test2
+    export ls="ls -l"
+    $ls
+    echo hello world
+    env ls
+    env -a ls
+    $SHVL
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    echo built-in
+    cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+    mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+    cd ../../../../../; pwd
+    cd ~; pwd
+    cd; pwd
+    unset HOME; cd;
+    export HOME=/Users/user42; cd ~
+    cd ..lalala; pwd
+    cd .; echo $OLDPWD
+    cd -; pwd
+    echo
+    echo -n
+    echo $IDONOTEXIST
+    echo $PATH
+    echo ~
+    echo -n-n-nnnn-nnnnnnn
+    echo "" hello world
+    env lalala
+    env | grep OLDPWD
+    export aaa1=cat aaa2=dog
+    env | grep aaa
+    export | grep aaa
+    export aaaa
+    export aaaa=hamster
+    export | grep aaaa
+    export 1var;
+    export "" test1=dog
+    export test2=$HOME
+    echo $test2
+    export ls="ls -l"
+    $ls
+    echo hello world
+    env ls
+    env -a ls
+    $SHVL
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    echo built-in
+    cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+    mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+    cd ../../../../../; pwd
+    cd ~; pwd
+    cd; pwd
+    unset HOME; cd;
+    export HOME=/Users/user42; cd ~
+    cd ..lalala; pwd
+    cd .; echo $OLDPWD
+    cd -; pwd
+    echo
+    echo -n
+    echo $IDONOTEXIST
+    echo $PATH
+    echo ~
+    echo -n-n-nnnn-nnnnnnn
+    echo "" hello world
+    env lalala
+    env | grep OLDPWD
+    export aaa1=cat aaa2=dog
+    env | grep aaa
+    export | grep aaa
+    export aaaa
+    export aaaa=hamster
+    export | grep aaaa
+    export 1var;
+    export "" test1=dog
+    export test2=$HOME
+    echo $test2
+    export ls="ls -l"
+    $ls
+    echo hello world
+    env ls
+    env -a ls
+    $SHVL
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    echo built-in
+    cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+    mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+    cd ../../../../../; pwd
+    cd ~; pwd
+    cd; pwd
+    unset HOME; cd;
+    export HOME=/Users/user42; cd ~
+    cd ..lalala; pwd
+    cd .; echo $OLDPWD
+    cd -; pwd
+    echo
+    echo -n
+    echo $IDONOTEXIST
+    echo $PATH
+    echo ~
+    echo -n-n-nnnn-nnnnnnn
+    echo "" hello world
+    env lalala
+    env | grep OLDPWD
+    export aaa1=cat aaa2=dog
+    env | grep aaa
+    export | grep aaa
+    export aaaa
+    export aaaa=hamster
+    export | grep aaaa
+    export 1var;
+    export "" test1=dog
+    export test2=$HOME
+    echo $test2
+    export ls="ls -l"
+    $ls
+    echo hello world
+    env ls
+    env -a ls
+    $SHVL
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    echo built-in
+    cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+    mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+    cd ../../../../../; pwd
+    cd ~; pwd
+    cd; pwd
+    unset HOME; cd;
+    export HOME=/Users/user42; cd ~
+    cd ..lalala; pwd
+    cd .; echo $OLDPWD
+    cd -; pwd
+    echo
+    echo -n
+    echo $IDONOTEXIST
+    echo $PATH
+    echo ~
+    echo -n-n-nnnn-nnnnnnn
+    echo "" hello world
+    env lalala
+    env | grep OLDPWD
+    export aaa1=cat aaa2=dog
+    env | grep aaa
+    export | grep aaa
+    export aaaa
+    export aaaa=hamster
+    export | grep aaaa
+    export 1var;
+    export "" test1=dog
+    export test2=$HOME
+    echo $test2
+    export ls="ls -l"
+    $ls
+    echo hello world
+    env ls
+    env -a ls
+    $SHVL
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    echo built-in
+    cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
+    mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
+    cd ../../../../../; pwd
+    cd ~; pwd
+    cd; pwd
+    unset HOME; cd;
+    export HOME=/Users/user42; cd ~
+    cd ..lalala; pwd
+    cd .; echo $OLDPWD
+    cd -; pwd
+    echo
+    echo -n
+    echo $IDONOTEXIST
+    echo $PATH
+    echo ~
+    echo -n-n-nnnn-nnnnnnn
+    echo "" hello world
+    env lalala
+    env | grep OLDPWD
+    export aaa1=cat aaa2=dog
+    env | grep aaa
+    export | grep aaa
+    export aaaa
+    export aaaa=hamster
+    export | grep aaaa
+    export 1var;
+    export "" test1=dog
+    export test2=$HOME
+    echo $test2
+    export ls="ls -l"
+    $ls
+    echo hello world
+    env ls
+    env -a ls
+    $SHVL
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit 42 something
+    exit --1
+    exit 9223372036854775807
+    exit something somethingv2
+    exit 0 0
+    exit
+    exit ""
+    exit "+100"
+    exit "-100"
+    exit -9223372036854775805
+    exit 0
+    exit 10
+    exit 42
+    exit 1
+    exit +++++
+    exit +1
+    exit ++1
+    exit ++12560
+    exit ------
+    exit -1
+    exit --1
+    exit -12560
+    exit --12560
+    exit 255
+    exit 256
+    exit 300
+    exit 1 2
+    exit 1 2 3
+    exit A
+    exit A 2 3
+    exit "A"
+    exit "+++"
+    exit ++++3193912939
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ---000
+    exit ----000
+    exit "something"
+    exit x
+    exit echo
+    exit cd ..
+    exit exit
+    exit
+    exit 0
+    exit 1
+    exit 42
+    exit 256
+    exit 300
+    exit 9223372036854775805
+    exit -0
+    exit -1
+    exit -42
+    exit -256
+    exit -300
+    exit -9223372036854775805
+    exit +1
+    exit ++1
+    exit ++12560
+    exit --1
+    exit --12560
+    exit 0 0
+    exit 1 2
+    exit 1 2 3
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ++++42424242
+    exit ---000
+    exit ----000
+    exit 42 42 42 42 42
+    exit something
+    exit  2 3
+    exit 42 -something
+    exit "+100"
+    exit "-100"
+    exit ""
+    exit "something"
+    exit something somethingv2
+    exit +++++
+    exit ------
+    exit "+++"
+    exit "---"
+    exit echo
+    exit cd ..
+    exit
+    exit 0
+    exit 1
+    exit 42
+    exit 256
+    exit 300
+    exit 9223372036854775805
+    exit -0
+    exit -1
+    exit -42
+    exit -256
+    exit -300
+    exit -9223372036854775805
+    exit +1
+    exit ++1
+    exit ++12560
+    exit --1
+    exit --12560
+    exit 0 0
+    exit 1 2
+    exit 1 2 3
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ++++42424242
+    exit ---000
+    exit ----000
+    exit 42 42 42 42 42
+    exit something
+    exit  2 3
+    exit 42 A
+    exit 42-A
+    exit 42 something
+    exit "+100"
+    exit "-100"
+    exit ""
+    exit "something"
+    exit something somethingv2
+    exit +++++
+    exit ------
+    exit "+++"
+    exit "---"
+    exit echo
+    exit cd ..
+    exit
+    exit 0
+    exit 1
+    exit 42
+    exit 256
+    exit 300
+    exit 9223372036854775805
+    exit -0
+    exit -1
+    exit -42
+    exit -256
+    exit -300
+    exit -9223372036854775805
+    exit +1
+    exit ++1
+    exit ++12560
+    exit --1
+    exit --12560
+    exit 0 0
+    exit 1 2
+    exit 1 2 3
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ++++42424242
+    exit ---000
+    exit ----000
+    exit 42 42 42 42 42
+    exit something
+    exit  2 3
+    exit 42 A
+    exit 42-A
+    exit 42 something
+    exit "+100"
+    exit "-100"
+    exit ""
+    exit "something"
+    exit something somethingv2
+    exit +++++
+    exit ------
+    exit "+++"
+    exit "---"
+    exit echo
+    exit cd ..
+    exit
+    exit 0
+    exit 1
+    exit 42
+    exit 256
+    exit 300
+    exit 9223372036854775805
+    exit -0
+    exit -1
+    exit -42
+    exit -256
+    exit -300
+    exit -9223372036854775805
+    exit +1
+    exit ++1
+    exit ++12560
+    exit --1
+    exit --12560
+    exit 0 0
+    exit 1 2
+    exit 1 2 3
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ++++42424242
+    exit ---000
+    exit ----000
+    exit 42 42 42 42 42
+    exit something
+    exit  2 3
+    exit 42 A
+    exit 42-A
+    exit 42 something
+    exit "+100"
+    exit "-100"
+    exit ""
+    exit "something"
+    exit something somethingv2
+    exit +++++
+    exit ------
+    exit "+++"
+    exit "---"
+    exit echo
+    exit cd ..
