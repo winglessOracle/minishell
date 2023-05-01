@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 09:26:11 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/30 10:02:56 by carlo         ########   odam.nl         */
+/*   Updated: 2023/05/01 09:42:59 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ long	ft_atoi_long(const char *str)
 	}
 	while (str[i])
 	{
-		if (ft_isdigit(str[i]) == 0) //addewd this line
-			return (2);
+		if (ft_isdigit(str[i]) == 0) //added this line
+			return (255);
 		output = output * 10 + (str[i] - '0');
 		i++;
 	}
