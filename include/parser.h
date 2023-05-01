@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/29 19:47:55 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/01 16:54:16 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd);
 int		merge_quoted(t_node **token, t_smpl_cmd *cmd);
 int		count_quotes(char *str, char quote);
 void	remove_double_quotes(t_node  **token);
+int		expand_var(t_node **token, t_smpl_cmd *cmd);
 
 // export
 int		check_valid_identifier(char *str);

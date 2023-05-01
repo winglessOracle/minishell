@@ -106,15 +106,15 @@ if [ $# -eq 0 ] || ( [ $# -ge 1 ] && [ $# -le 3 ] && \
 	[[ "$1" == "-v" || "$1" == "-c" || "$1" == "-e" || "$2" == "-v" || "$2" == "-c" \
 	|| "$2" == "-e" || "$3" == "-v" || "$3" == "-c" || "$3" == "-e" ]] ); then
     echo "Running all tests..."
-    # file_name="tester/tests/simple_tests";    run_tests
+    file_name="tester/tests/simple_tests";    run_tests
     file_name="tester/tests/quote_tests";     run_tests
-    # file_name="tester/tests/built_in_tests";  run_tests
-    # file_name="tester/tests/assign_tests";    run_tests
+    file_name="tester/tests/built_in_tests";  run_tests
+    file_name="tester/tests/assign_tests";    run_tests
     # file_name="tester/tests/redirect_tests";  run_tests
     # file_name="tester/tests/here_doc_tests";  run_tests
     # file_name="tester/tests/signal_tests";    run_tests
     # file_name="tester/tests/cond_pipe_tests"; run_tests
-    # file_name="tester/tests/wildcard_tests";  run_tests
+    file_name="tester/tests/wildcard_tests";  run_tests
 fi
 
 for arg in "$@"; do

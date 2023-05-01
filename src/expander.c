@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/01 16:16:05 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/01 17:00:00 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	expand_var(t_node **token, t_smpl_cmd *cmd)
 {
 	char	*str;
 
+	// print_tokens(*token, " in expand var\n");
 	remove_node(token, cmd);
 	if ((*token)->content[0] == '?')
 		str = ft_itoa(g_exit_status);
@@ -29,6 +30,7 @@ int	expand_var(t_node **token, t_smpl_cmd *cmd)
 	else
 	{
 		str = get_variable(cmd->env_list, (*token)->content);
+		// print_tokens(*token, " 2. in expand var\n");
 	}
 	if (*token)
 	{
@@ -61,7 +63,7 @@ t_node	*split_expanded(t_node *words, t_smpl_cmd *cmd)
 int	expand(t_node **token, t_smpl_cmd *cmd)
 {
 	t_node	*words;
-	// t_node	*temp;
+	t_node	*temp;
 	char	*content;
 
 	content = NULL;
@@ -109,11 +111,12 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 		return ((*token)->type);
 	}
 	// printf("en hier\n");
-	// if (words && words->content)
-	// 	temp = split_expanded(words, cmd);
-	// else
-	// 	temp = words;
-	// lstinsert_lst(token, temp);
+	words = *token;
+	if (words && words->content)
+		temp = split_expanded(words, cmd);
+	else
+		temp = words;
+	lstinsert_lst(token, temp);
 	// printf("in expand content: %s\n", (*token)->content);
 	return (0);
 }

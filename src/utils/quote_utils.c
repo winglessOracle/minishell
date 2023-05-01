@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/01 16:18:23 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/01 16:54:39 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,12 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 				words->type = WORD;
 			else
 				words->type = (*tokens)->type;
+			// printf("1. proces quoted parts. content: %s, type: %d, quote open: %d\n", words->content, words->type, quote_open);
 			words->type = check_token_content(words, words->type);
-			// printf("proces quoted parts. content: %s, type: %d, quote open: %d\n", words->content, words->type, quote_open);
+			// printf("2. proces quoted parts. content: %s, type: %d, quote open: %d\n", words->content, words->type, quote_open);
 			// printf("2. str content: %s, type: %d\n", content, words->type);
+			if (!ft_strcmp(words->content, "$") && words->next && !quote_open)
+				expand_var(&words, cmd);
 			while (words->type && words->type < 13)
 			{
 				// printf("expand sub: %d\n", words->type);
