@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/01 12:28:39 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/01 14:28:40 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,12 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 	char	*content;
 	char	quote;
 	char	quote_open;
-	char 	*split;
 	
-	// printf("in split and remove quotes, content: %s, type: %d\n", (*tokens)->content, (*tokens)->type);
+	// printf("in split a nd remove quotes, content: %s, type: %d\n", (*tokens)->content, (*tokens)->type);
 	quote = get_quote_char((*tokens)->type);
 	// printf("quote now: %c\n", quote);
 	content = ft_strdup("");
-	if (quote == '\'')
-		split = ft_strdup("\' ");
-	else
-		split = ft_strdup("\" ");
-	words = split_to_list((*tokens)->content, split);
+	words = split_to_list((*tokens)->content, "\'\" ");
 	while (words)
 	{
 		// print_tokens(words, "in split quotes\n");
@@ -67,10 +62,10 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 				words->type = WORD;
 			else
 				words->type = (*tokens)->type;
-			// printf("1. content: %s, type: %d, quote open: %d\n", words->content, words->type, quote_open);
-			words->type = check_token_content(words, words->type);
+			words->type = check_token_content(words, (*tokens)->type);
+			// printf("proces quoted parts. content: %s, type: %d, quote open: %d\n", words->content, words->type, quote_open);
 			// printf("2. str content: %s, type: %d\n", content, words->type);
-			if (words->type && words->type < 13)
+			if (words->type && words->type < 13 && words->type)
 				expand_sub(&words, cmd);
 			if (words->content)
 				content = ft_strjoin_free_s1(content, words->content);
@@ -83,8 +78,9 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 			quote_open = 0;
 			remove_node(&words, cmd);
 		}
-		else if (words && quote_open)
-			return(syntax_error(tokens, cmd, "unclosed quotes\n", 1));
+		// print_tokens(words, "2. in split quotes\n");
+		// else if (words && quote_open)
+		// 	return(syntax_error(tokens, cmd, "unclosed quotes\n", 1));
 		// printf("content: %s\n", content);
 	}
 	free((*tokens)->content);
@@ -171,9 +167,9 @@ int	merge_quoted(t_node **token, t_smpl_cmd *cmd)
 	if (!*token || ((count_quotes((*token)->content, quote) % 2) && quotes != -1))
 		return(syntax_error(token, cmd, "unclosed quotes\n", 1));
 	// remove_double_quotes(token);
-	// printf("2. before split and remove quotes: %s\n", (*token)->content);
+	// printf("merge quotes: before split and remove quotes: %s\n", (*token)->content);
 	split_and_remove_quotes(token, cmd);
-	(*token)->type = WORD;
-	// printf("3. after split and remove quotes: %s, token type: %d, type: %d, quotes: %d\n", (*token)->content, (*token)->type, type, quotes);
+	(*token)->type = type;
+	// printf("merge quotes: after split and remove quotes: %s, token type: %d, type: %d, quotes: %d\n", (*token)->content, (*token)->type, type, quotes);
 	return (0);
 }

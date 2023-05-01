@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/01 12:08:37 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/01 14:01:57 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,12 @@ int	expand_var(t_node **token, t_smpl_cmd *cmd)
 	remove_node(token, cmd);
 	if ((*token)->content[0] == '?')
 		str = ft_itoa(g_exit_status);
-	// else if ((*token)->content[0] == '\'' || (*token)->content[0] == '\"')
-	// {
-	// 	split_and_remove_quotes(token, cmd);
-	// 	str = ft_strdup((*token)->content);		
-	// }
+	else if ((*token)->content[0] == '\'' || (*token)->content[0] == '\"')
+	{
+		merge_quoted(token, cmd);
+		str = ft_strdup((*token)->content);
+		printf("string: %s\n", str);	
+	}
 	else
 		str = get_variable(cmd->env_list, (*token)->content);
 	free((*token)->content);
@@ -55,31 +56,45 @@ t_node	*split_expanded(t_node *words, t_smpl_cmd *cmd)
 int	expand(t_node **token, t_smpl_cmd *cmd)
 {
 	t_node	*words;
-	t_node	*temp;
+	// t_node	*temp;
+	char	*content;
 
-	// printf("in expand content: %s\n", (*token)->content);
-	words = split_to_list((*token)->content, "$=?/\"\'");
-	remove_node(token, cmd);
-	while (words && words->next)
+	content = NULL;
+	words = split_to_list((*token)->content, "$=?/\'\"");
+	while (words)
 	{
 		// print_tokens(words, "in expand\n");
+		// printf("in expand content: %s, next: %s\n", words->content, words->next->content); 
 		if (words->content && words->content[0] == '$')
+		{
+			// printf("words type: %d\n", words->type);
 			expand_var(&words, cmd);
-		else if (words->next->next && words->next->content \
-							&& words->next->content[0] == '$')
-			expand_var(&words->next, cmd);
-		else if (!words->content)
+			if (words->content)
+				content = ft_strdup(words->content);
 			remove_node(&words, cmd);
-		else if (words->next && !words->next->content)
-			remove_node(&words->next, cmd);
-		else if (words && words->next)
-			merge_tokens(words, WORD);
+			// printf("1. content: %s\n", content);
+		}
+		else
+		{
+			words->type = check_token_content(words, (*token)->type);
+			// printf("expand: words content: %s, content: %s, type: %d, token type: %d\n", words->content, content, words->type, (*token)->type);
+			if (words->type == SQUOTE || words->type == DQUOTE)
+				expand_sub(&words, cmd);
+			// printf("expand: words content: %s, content: %s, type: %d, token type: %d\n", words->content, content, words->type, (*token)->type);	
+			if (words->content)
+				content = ft_strjoin_free_s1(content, words->content);
+			remove_node(&words, cmd);
+			// printf("1. content: %s\n", content);
+		}
 	}
-	if (words && words->content)
-		temp = split_expanded(words, cmd);
-	else
-		temp = words;
-	lstinsert_lst(token, temp);
+	free((*token)->content);
+	(*token)->content = content;
+	// if (words && words->content)
+	// 	temp = split_expanded(words, cmd);
+	// else
+	// 	temp = words;
+	// lstinsert_lst(token, temp);
+	// printf("in expand content: %s\n", (*token)->content);
 	return (0);
 }
 

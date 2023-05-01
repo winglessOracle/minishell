@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/01 12:19:20 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/01 13:44:35 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	expander(t_node **token, t_smpl_cmd *cmd, t_list *list)  //expand word (make
 	while (*token && ((*token)->type == WORD || (*token)->type > 8))
 	{
 		// printf ("1. in expander, content: %s, type: %d\n", (*token)->content, (*token)->type);
-		remove_double_quotes(token);
+		// remove_double_quotes(token);
 		(*token)->type = check_token_content(*token, (*token)->type);
 		// printf ("2. in expander, content: %s, type: %d\n", (*token)->content, (*token)->type);
 		if ((*token)->type && (*token)->type > 8)
 			(*token)->type = parse[(*token)->type](token, cmd);
-		// printf ("3. in expander, content: %s, type: %d\n", (*token)->content, (*token)->type);
+		// printf ("3. after expander content: %s, type: %d\n", (*token)->content, (*token)->type);
 		if (*token && (*token)->type == WORD)
 		{
 			// printf("add to cmd: %s\n", (*token)->content);
