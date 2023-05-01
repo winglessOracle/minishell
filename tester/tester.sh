@@ -96,9 +96,8 @@ for arg in "$@"; do
 	fi
 	done
 
-if [ $# -eq 0 ] || ( [ $# -ge 1 ] && [ $# -le 3 ] && \
-	[[ "$1" == "-v" || "$1" == "-c" || "$1" == "-e" || "$2" == "-v" || "$2" == "-c" \
-	|| "$2" == "-e" || "$3" == "-v" || "$3" == "-c" || "$3" == "-e" ]] ); then
+if [ $# -eq 0 ] || \
+	( [ $# -eq 1 ] && [[ "$1" == "-v" || "$1" == "-c" || "$1" == "-e" ]] ); then
     echo "Running all tests..."
     file_name="tester/tests/simple_tests";    run_tests
     file_name="tester/tests/quote_tests";     run_tests

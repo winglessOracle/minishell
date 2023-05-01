@@ -1,0 +1,33 @@
+
+
+		command=> ls
+
+
+		command=> pwd
+
+
+		command=> $LESS$VAR
+
+
+		command=> |
+
+
+		command=> ls |
+
+
+		command=> | ls
+
+
+		command=> ls | ls
+
+
+		command=> ls
+
+
+		command=> ../ls
+
+
+		command=> ./ls
+
+
+		command=> /ls

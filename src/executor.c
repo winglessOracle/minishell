@@ -6,34 +6,52 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/30 18:46:21 by carlo         ########   odam.nl         */
+/*   Updated: 2023/05/01 16:41:13 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "executor.h"
 
-void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
+void	check_cmd(char *cmd)
 {
-	char	**my_directories;
-	char	**cmd_args;
-	char	**env;
+	if (access(cmd, F_OK) == -1)
+		exit_error("ccs: No such file or directory\n", 127);
+	else if (access(cmd, X_OK) == -1)
+		exit_error("ccs: Permission denied\n", 126);
+	return ;
+}
+
+int	exec_relative(char *cmd_args, t_node *env_list, char **env)
+{
+	char	*pwd;
+	char	buf[PATH_MAX];
+	char	*new_dir;
+
+	pwd = get_variable(env_list, "PWD");
+	if (!pwd)
+	{
+		getcwd(buf, PATH_MAX);
+		pwd = ft_strdup(buf);
+	}
+	if (!pwd)
+		return (-1);
+	new_dir = new_directory(cmd_args, pwd);
+	check_cmd(new_dir);
+	return (execve(new_dir, &cmd_args, env));
+}
+
+int	exec_default(char **cmd_args, t_smpl_cmd *pipe_argv, t_node *env_list, char **env)
+{
 	char	*path;
+	char	**my_directories;
 	int		i;
 
 	i = 0;
-	check_built(pipe_argv);
-	cmd_args = build_cmd_args(&pipe_argv->cmd_argv, pipe_argv->cmd_argc);
-	if (!cmd_args)
-		exit_error("building commands", 1);
-	env = get_env(env_list);
-	// if absolute or raltive path in cmd then dont chek opath else check path
-	// check for env = NULL?
 	path = get_variable(env_list, "PATH");
 	if (!path)
 		path = ft_strdup(cmd_args[0]);
 	my_directories = ft_split(path, ':');
-	// check on fail for split?
 	lstclear(&env_list, delete_content);
 	delete_cmd(pipe_argv);
 	ft_free(path);
@@ -46,13 +64,34 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 		i++;
 	}
 	ft_free_array(my_directories);
-	execve(cmd_args[0], cmd_args, env);
-	exit_error("unknown command", 127);
+	return (execve(cmd_args[0], cmd_args, env));
+}
+
+void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
+{
+	char	**cmd_args;
+	char	**env;
+
+	check_built(pipe_argv);
+	cmd_args = build_cmd_args(&pipe_argv->cmd_argv, pipe_argv->cmd_argc);
+	if (!cmd_args)
+		exit_error("ccs: building commands", 1);
+	env = get_env(env_list);
+	if (cmd_args[0][0] == '/')
+	{
+		check_cmd(cmd_args[0]);
+		execve(cmd_args[0], cmd_args, env);
+	}
+	else if (cmd_args[0][0] == '.')
+		exec_relative(cmd_args[0], env_list, env);
+	else
+		exec_default(cmd_args, pipe_argv, env_list, env);
+	exit_error("ccs: command not found\n", 127);
 }
 
 void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	temp = pipe_argv->assign;
 	if (pid == 0)
@@ -66,6 +105,27 @@ void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
 	}
 }
 
+int		set_out(int *fd_pipe, t_node *temp)
+{
+	if (temp->type == OUTPUT)
+		fd_pipe[1] = open(temp->content, O_CREAT | O_WRONLY | O_TRUNC, 0644);
+	if (temp->type == APPEND)
+		fd_pipe[1] = open(temp->content, O_CREAT | O_WRONLY | O_APPEND, 0644);	
+	return (1);
+}
+
+void	set_in(int keep, t_node *temp)
+{
+	close (keep);
+	keep = open(temp->content, O_RDONLY);
+}
+
+/*
+Redirects to exisiting files in MacOs are not allowed default. 
+In other Linus systems this is not the case. We choose to take
+the Linux approach and allow overwriting existing files.
+To modify the behaviour in bash to meet our version change the
+noclobber setting: 'set +o noclobber'.*/
 int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 {
 	int		count;
@@ -75,32 +135,10 @@ int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 	temp = smpl_cmd->redirect;
 	while (temp)
 	{
-		if (temp->type == OUTPUT)
-		{
-			if (access(temp->content, F_OK) == 0)
-				return (return_error("not allowed to overwrite file\n", -1));
-			fd_pipe[1] = open(temp->content, \
-								O_CREAT | O_WRONLY | O_TRUNC, 0644);
-			if (fd_pipe[1] < 0)
-				return (return_perror("opening outfile", -1));
-			count = 1;
-		}
+		if (temp->type == OUTPUT || temp->type == APPEND)
+			count = set_out(fd_pipe, temp);
 		else if (temp->type == INPUT)
-		{
-			close(*keep);
-			*keep = open(temp->content, O_RDONLY);
-			if (*keep < 0)
-				return (return_perror("opening keep", -1));
-		}
-		else if (temp->type == APPEND)
-		{
-			close(fd_pipe[1]);
-			fd_pipe[1] = open(temp->content, \
-						O_CREAT | O_WRONLY | O_APPEND, 0644);
-			if (fd_pipe[1] < 0)
-				return (return_perror("opening outfile", -1));
-			count = 1;
-		}
+			set_in(*keep, temp);
 		else if (temp->type == HEREDOC || temp->type == HEREDOCQ)
 		{
 			dup2(smpl_cmd->here_doc, *keep);
@@ -108,7 +146,7 @@ int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 				exit_error("dup fail", -1);
 		}
 		if (*keep == -1 || fd_pipe[0] == -1 || fd_pipe[1] == -1)
-			return (return_perror("fd:", -1));
+			return (return_perror("setting file descriptor", -1));
 		temp = temp->next;
 	}
 	return (count);
@@ -116,18 +154,15 @@ int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 
 void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 {
-	int		set_out;
-
 	if (pid == 0)
 	{
 		close(fd_pipe[0]);
-		set_out = set_fd(cmd, &keep, fd_pipe);
-		if (set_out == -1)
+		if (set_fd(cmd, &keep, fd_pipe) == -1)
 			exit_error("ccs: redirect\n", 12); //change
 		dup2(keep, STDIN_FILENO);
 		if (!keep)
 			exit_error("dup fail", 1); //change
-		if (!(!cmd->next && !set_out))
+		if (!(!cmd->next && !set_fd(cmd, &keep, fd_pipe)))
 			dup2(fd_pipe[1], STDOUT_FILENO);
 		if (!fd_pipe[1])
 			exit_error("dup fail", 1);
@@ -174,7 +209,7 @@ void		executor(t_pipe *pipeline)
 	int			keep;
 	int			i;
 	t_smpl_cmd	*cmd;
-	
+
 	cmd = pipeline->pipe_argv;
 	if (!pipeline)
 		return ;

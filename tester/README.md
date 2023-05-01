@@ -43,3 +43,8 @@ The script automatically detects the operating system and adjusts the sed comman
 
 The script cleans up the output and trace folders before each execution of the code. The `-c` flag can be passed to clean up all output files.
 The script also includes a commented-out `trap` command that can be used to ensure that the temporary directory is always cleaned up if the script crashes.
+
+## CODAM notes for eval
+Redirects to exisiting files in MacOs are not allowed default. In other Linus systems this is not the case. 
+we choose to take the Linux approach and allow overwriting existing files. To modify the behaviour in bash to meet our version
+change the noclobber setting: 'set +o noclobber'.
