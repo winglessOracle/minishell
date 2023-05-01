@@ -133,3 +133,9 @@ echo $/"$/"
 /bin/echo $"HOM"E$USER
 /bin/echo $"HOME"
 /bin/echo $"42$"
+/bin/echo "'totally logical'"
+/bin/echo 'totally logical'
+/bin/echo ''totally logical''
+/bin/echo ""'totally logical'""
+echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn'$T' '-'"$T "
+$T.
