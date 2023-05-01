@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/30 19:26:58 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/01 12:28:39 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 	char	quote_open;
 	char 	*split;
 	
+	// printf("in split and remove quotes, content: %s, type: %d\n", (*tokens)->content, (*tokens)->type);
 	quote = get_quote_char((*tokens)->type);
 	// printf("quote now: %c\n", quote);
 	content = ft_strdup("");
@@ -54,7 +55,6 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 	while (words)
 	{
 		// print_tokens(words, "in split quotes\n");
-		quote_open = 0;
 		if (words->content[0] == quote)
 		{
 			quote_open = 1;
@@ -63,25 +63,25 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 		while (words && words->content[0] != quote)
 		{
 			// printf("1. str content: %s\n", content);
+			if (!quote_open)
+				words->type = WORD;
+			else
+				words->type = (*tokens)->type;
 			// printf("1. content: %s, type: %d, quote open: %d\n", words->content, words->type, quote_open);
-			words->type = check_sub_content(words, quote, quote_open);
+			words->type = check_token_content(words, words->type);
 			// printf("2. str content: %s, type: %d\n", content, words->type);
-			if (words->type)
+			if (words->type && words->type < 13)
 				expand_sub(&words, cmd);
 			if (words->content)
 				content = ft_strjoin_free_s1(content, words->content);
-			(*tokens)->type = words->type;
 			remove_node(&words, cmd);
-			// printf("2. str content: %s\n", content);
+			// printf("3. str content: %s\n\n", content);
 		}
 		if (words && words->content[0] == quote && quote_open)
 		{
 			// printf("remove quote: %c\n", quote);
+			quote_open = 0;
 			remove_node(&words, cmd);
-			if (quote == '\'')
-				(*tokens)->type = SQUOTE;
-			else
-				(*tokens)->type = DQUOTE;
 		}
 		else if (words && quote_open)
 			return(syntax_error(tokens, cmd, "unclosed quotes\n", 1));

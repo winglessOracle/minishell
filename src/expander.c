@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/30 19:00:19 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/01 12:08:37 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,34 +94,34 @@ int	expand_sub(t_node **token, t_smpl_cmd *cmd)
 	return ((*token)->type);
 }
 
-int	expander(t_node **token, t_smpl_cmd *cmd, t_list *list)  //expand word (make separate expander for redirects)
-{
-	static t_function	*parse[16];
-	int					state;
+// int	expander(t_node **token, t_smpl_cmd *cmd, t_list *list)  //expand word (make separate expander for redirects)
+// {
+// 	static t_function	*parse[16];
+// 	int					state;
 
-	(void)list;
-	state = 0;
-	parse[WORD] = add_word_to_cmd;
-	parse[COMMENT] = remove_comment;
-	parse[SQUOTE] = merge_quoted;
-	parse[DQUOTE] = merge_quoted;
-	parse[EXPAND] = expand;
-	parse[ASSIGN] = parser_assign;
-	parse[TILDE] = expand_tilde;
-	while (*token && (*token)->type == WORD && !state)
-	{
-		// printf ("1. in expander, content: %s, type: %d\n", (*token)->content, (*token)->type);
-		remove_double_quotes(token);
-		(*token)->type = check_token_content(*token, (*token)->type);
-		// printf ("2. in expander, content: %s, type: %d\n", (*token)->content, (*token)->type);
-		state = parse[(*token)->type](token, cmd);
-		// printf ("3. in expander, content: %s, type: %d\n", (*token)->content, (*token)->type);
-		if (*token && (*token)->type == WORD)
-		{
-			// printf("add to cmd: %s\n", (*token)->content);
-			add_word_to_cmd(token, cmd);
-			// print_cmd(cmd);
-		}
-	}
-	return (state);
-}
+// 	(void)list;
+// 	state = 0;
+// 	parse[WORD] = add_word_to_cmd;
+// 	parse[COMMENT] = remove_comment;
+// 	parse[SQUOTE] = merge_quoted;
+// 	parse[DQUOTE] = merge_quoted;
+// 	parse[EXPAND] = expand;
+// 	parse[ASSIGN] = parser_assign;
+// 	parse[TILDE] = expand_tilde;
+// 	while (*token && (*token)->type == WORD && !state)
+// 	{
+// 		// printf ("1. in expander, content: %s, type: %d\n", (*token)->content, (*token)->type);
+// 		remove_double_quotes(token);
+// 		(*token)->type = check_token_content(*token, (*token)->type);
+// 		// printf ("2. in expander, content: %s, type: %d\n", (*token)->content, (*token)->type);
+// 		state = parse[(*token)->type](token, cmd);
+// 		// printf ("3. in expander, content: %s, type: %d\n", (*token)->content, (*token)->type);
+// 		if (*token && (*token)->type == WORD)
+// 		{
+// 			// printf("add to cmd: %s\n", (*token)->content);
+// 			add_word_to_cmd(token, cmd);
+// 			// print_cmd(cmd);
+// 		}
+// 	}
+// 	return (state);
+// }
