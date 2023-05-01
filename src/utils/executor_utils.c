@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/01 18:00:31 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/01 18:48:31 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,10 +166,10 @@ int	check_builtins_curr_env(t_smpl_cmd *cmd)
 
 	while (i < 4 && cmd->cmd_argc > 0)
 	{
+		if (!ft_strcmp(cmd->cmd_argv->content, "export") && cmd->cmd_argc == 1)
+			return (0);
 		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0)
 		{
-			if (!ft_strcmp(cmd->cmd_argv->content, "export") && cmd->cmd_argc == 1)
-				return (0);
 			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
 			ft_free_array(cmd_args);

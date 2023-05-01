@@ -2752,3 +2752,6 @@ exit
 exit
 < Makefile cat | > mmmm
 make fclean
+eit
+export
+exit
