@@ -10,3 +10,4 @@ ls
 ./ls
 /ls
 ../../../../../../../../../../../bin/ls
+< Makefile cat | > mmmm

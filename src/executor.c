@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/01 16:41:13 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/01 18:44:02 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 
 	check_built(pipe_argv);
 	cmd_args = build_cmd_args(&pipe_argv->cmd_argv, pipe_argv->cmd_argc);
-	if (!cmd_args)
-		exit_error("ccs: building commands", 1);
 	env = get_env(env_list);
 	if (cmd_args[0][0] == '/')
 	{
@@ -209,6 +207,7 @@ void		executor(t_pipe *pipeline)
 	int			keep;
 	int			i;
 	t_smpl_cmd	*cmd;
+	char		buffer[128];
 
 	cmd = pipeline->pipe_argv;
 	if (!pipeline)
@@ -239,7 +238,13 @@ void		executor(t_pipe *pipeline)
 			if (cmd->cmd_argc > 0)
 				exec_cmd(cmd, cmd->env_list);
 			else
+			{
+				while (read(keep, buffer, 128 ))
+					printf("%.128s", buffer);
+				close (keep);
+				close (fd_pipe[1]);
 				execute_exit(NULL, cmd->env_list);
+			}
 		}
 		cmd = cmd->next;
 		i++;
