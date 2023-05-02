@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/30 18:23:46 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/02 13:39:29 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,26 @@ int	parser_assign(t_node **token, t_smpl_cmd *cmd)
 int	set_cmd_end(t_node **token, t_smpl_cmd *cmd, t_list *list)
 {
 	(void)list;
-	if (*token && ((*token)->type == PIPE || (*token)->type == PIPE_END))
+	// printf("in set cmd end, token: %s, type: %d\n", (*token)->content, (*token)->type);
+	if (*token && ((*token)->type == PIPE))
 	{
+		// printf("niet hier\n");
 		remove_node(token, cmd);
-		if (!(*token) || (*token)->type == PIPE_END \
-											|| (*token)->type == PIPE)
+		if (!(*token) || (*token)->type == PIPE)
 			return (syntax_error(token, cmd, "no command after '|'\n", -1));
 		if (cmd->cmd_argv == NULL && cmd->redirect == NULL \
 													&& cmd->assign == NULL)
 			return (syntax_error(token, cmd, "syntax error\n", -1));
 	}
+	// if ((*token)->type == PIPE_END)
+	// {
+	// 	printf("hier\n");
+	// 	if (!(*token) || (*token)->type == PIPE_END)
+	// 		return (syntax_error(token, cmd, "no command after '|'\n", -1));
+	// 	if (cmd->cmd_argv == NULL && cmd->redirect == NULL \
+	// 												&& cmd->assign == NULL)
+	// 		return (syntax_error(token, cmd, "syntax error\n", -1));	
+	// }
 	return (1);
 }
 
@@ -83,6 +93,7 @@ int	expand_tilde(t_node **token, t_smpl_cmd *cmd)
 	(*token)->type = WORD;
 	free(temp);
 	free(home);
-	expander(token, cmd, NULL);
+	// printf("content: %s\n", (*token)->content);
+	// expander(token, cmd, NULL);
 	return (0);
 }

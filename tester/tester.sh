@@ -111,11 +111,15 @@ if [ $# -eq 0 ] || \
     file_name="tester/tests/quote_tests";     run_tests
     file_name="tester/tests/built_in_tests";  run_tests
     file_name="tester/tests/assign_tests";    run_tests
-    # file_name="tester/tests/redirect_tests";  run_tests
-    # file_name="tester/tests/here_doc_tests";  run_tests
-    # file_name="tester/tests/signal_tests";    run_tests
-    # file_name="tester/tests/cond_pipe_tests"; run_tests
+    file_name="tester/tests/redirect_tests";  run_tests
+    file_name="tester/tests/here_doc_tests";  run_tests
+    file_name="tester/tests/signal_tests";    run_tests
+    file_name="tester/tests/cond_pipe_tests"; run_tests
     file_name="tester/tests/wildcard_tests";  run_tests
+	file_name="tester/tests/cd_tests";			run_tests;
+	file_name="tester/tests/export_tests";		run_tests;
+	file_name="tester/tests/unset_tests";		run_tests;
+	file_name="tester/tests/exit_tests";		run_tests;
 fi
 
 for arg in "$@"; do
@@ -141,8 +145,15 @@ for arg in "$@"; do
 		file_name="tester/tests/cond_pipe_tests";	run_tests;
 	elif [ "$arg" == "w" ]; then
 		file_name="tester/tests/wildcard_tests";	run_tests;
-	elif [ "$arg" == "error" ]; then
-		file_name="tester/tests/errors_tests";		run_tests;
+	elif [ "$arg" == "cd" ]; then
+		file_name="tester/tests/cd_tests";			run_tests;
+	elif [ "$arg" == "exp" ]; then
+		file_name="tester/tests/export_tests";		run_tests;
+	elif [ "$arg" == "uns" ]; then
+		file_name="tester/tests/unset_tests";		run_tests;
+	elif [ "$arg" == "exit" ]; then
+		file_name="tester/tests/exit_tests";		run_tests;
+
 	else
         echo "Invalid argument: $arg"
 		exit 1

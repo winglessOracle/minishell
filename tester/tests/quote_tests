@@ -143,3 +143,4 @@ echo $"'HOM'E"$USER
 "          "
 "                  "
 export var='s -la' ; l$var
+echo $USER$TESTNOTFOUND$HOME$

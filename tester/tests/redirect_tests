@@ -4,7 +4,6 @@
 
 <./tester/output/TMP2 | cat
 
-<<<<<<< HEAD
 --
 
 grep hi <./test_files/infile
@@ -253,5 +252,3 @@ lim
 /bin/rm -f out
 >> out
 /bin/rm -f out
-=======
->>>>>>> carlo2

@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 11:57:20 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/02 13:21:55 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,7 +171,7 @@ int	check_builtins_curr_env(t_smpl_cmd *cmd)
 		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0)
 		{
 			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
-			g_exit_status = (built[i](cmd_args, cmd->env_list));
+			g_exit_status = built[i](cmd_args, cmd->env_list);
 			ft_free_array(cmd_args);
 			return (1);
 		}

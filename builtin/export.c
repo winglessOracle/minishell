@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/30 09:10:35 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/02 13:18:42 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int	check_valid_identifier(char *str)
 	while (str[i] && (str[i] != '=' && (ft_isalpha(str[i]) || str[i] == '_')))
 		i++;
 	if (str[i] && str[i] != '=' && !(ft_isalpha(str[i]) || str[i] == '_'))
-		return (return_error("minishell: export: not a valid identifier\n", 1));
+		return (return_error("minishell: not a valid identifier\n", 1));
 	return (0);
 }
 

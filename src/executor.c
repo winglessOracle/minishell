@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 11:58:15 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/02 13:28:41 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,8 +227,10 @@ void		executor(t_pipe *pipeline)
 	int			keep;
 	int			i;
 	char		buffer[128];
+	int			check;
 
 	i = 0;
+	check = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);
@@ -241,7 +243,10 @@ void		executor(t_pipe *pipeline)
 			if (pipeline->pipe_argv->cmd_argc == 0)
 				assignments(pipeline->pipe_argv, 0);
 			if (check_builtins_curr_env(pipeline->pipe_argv))
+			{
+				check = 1;
 				break ;
+			}
 		}
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
@@ -267,6 +272,11 @@ void		executor(t_pipe *pipeline)
 		pipeline->pipe_argv = pipeline->pipe_argv->next;
 		i++;
 	}
-	free(pid);
-	set_exit_st(pipeline->pipe_argc, pid);
+	if (check == 0)
+	{
+		free(pid);
+		// printf("1. exit status executor: %d\n", g_exit_status);
+		set_exit_st(pipeline->pipe_argc, pid);
+		// printf("2. exit status executor: %d\n", g_exit_status);
+	}
 }

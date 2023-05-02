@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/01 14:44:35 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/02 13:40:07 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,11 @@ int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd, t_list *list)
 	parse[PIPE_END] = set_cmd_end;
 	state = 0;
 	while (*tokens && !state)
+	{
+		// printf("token: %s, type %d\n", (*tokens)->content, (*tokens)->type);
 		state = parse[(*tokens)->type](tokens, *cmd, list);
+		// printf("state: %d\n", state);
+	}
 	if (state != -1)
 		state = set_cmd_end(tokens, *cmd, list);
 	check_env(*cmd);
@@ -78,6 +82,7 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list)
 	{
 		cmd = init_smpl_cmd(env_list);
 		state = parse_cmd(tokens, &cmd, list);
+		// printf("state in parse command: %d\n", state);
 		if (cmd)
 		{
 			lstadd_back_cmd(&pipeline->pipe_argv, cmd);
@@ -113,6 +118,7 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 		{
 			// print_pipeline(pipeline);
 			executor(pipeline);
+			// printf("exit status: %d\n", g_exit_status);
 			delete_pipe(pipeline);
 		}
 		if (tokens)
