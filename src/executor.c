@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 15:17:14 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 16:05:56 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,7 +183,11 @@ pid_t	ft_fork(pid_t pid)
 {
 	pid = fork();
 	if (pid == -1)
-		exit_error("fork fail", errno);
+	{
+		return_perror("minishell", -1);
+		return (-1);
+	}
+		// exit_error("fork fail", errno);
 	return (pid);
 }
 
@@ -222,6 +226,8 @@ void		executor(t_pipe *pipeline)
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
 		pid[i] = ft_fork(pid[i]);
+		if (pid[i] == -1)
+			break ;
 		redirect(pipeline->pipe_argv, pid[i], keep, fd_pipe);
 		assignments(pipeline->pipe_argv, pid[i]);
 		if (pid[i] == 0)
