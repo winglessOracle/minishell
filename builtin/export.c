@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/02 15:09:29 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/02 15:26:45 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_sorted(t_node *env_list)
 	temp = env_list;
 	while (temp && temp->next)
 	{
-		if (ft_strcmp_case(temp->content, temp->next->content, toupper) > 0)
+		if (ft_strcmp_case(temp->content, temp->next->content, ft_toupper) > 0)
 			return (0);
 		temp = temp->next;
 	}
@@ -43,7 +43,7 @@ t_node	*sort_env(t_node *env_list)
 	{
 		while (temp && temp->next)
 		{
-			if (ft_strcmp_case(temp->content, temp->next->content, toupper) > 0)
+			if (ft_strcmp_case(temp->content, temp->next->content, ft_toupper) > 0)
 			{
 				temp_content = temp->content;
 				temp->content = temp->next->content;
@@ -76,7 +76,7 @@ int	check_valid_identifier(char *str)
 	
 	i = 0;
 	if (!str[i] || str[0] == '=' || (!ft_isalpha(str[i]) && str[i] != '_'))
-		return (return_error("minishell: not a valid identifier\n", 1));
+		return (1);
 	else
 	{
 		while (str[i])

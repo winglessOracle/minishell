@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/02 13:39:29 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/02 15:34:35 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ int	remove_comment(t_node **token, t_smpl_cmd *cmd)
 
 int	parser_assign(t_node **token, t_smpl_cmd *cmd)
 {
-	// (*token)->type = check_sub_content(*token, 0, 0);
-	// printf("content: %s, type: %d\n", (*token)->content, (*token)->type);
-	// if ((*token)->type)
-	// 	expand_sub(token, cmd);
-	if (!check_valid_identifier((*token)->content) && !cmd->cmd_argc)
+	int	check;
+
+	check = 0;
+	if (!cmd->cmd_argc)
+		check = check_valid_identifier((*token)->content);
+	if (check)
+		return (0);
+	if (!cmd->cmd_argc)
 	{
 		lstadd_back(&cmd->assign, lstpop(token));
 		remove_node(token, cmd);
