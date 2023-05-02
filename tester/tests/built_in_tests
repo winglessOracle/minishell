@@ -34,7 +34,7 @@
 # env ls
 # env -a ls
 # $SHVL
-
+cd idonotexist
 
 #exit tests
 exit

@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 11:43:12 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 13:41:28 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 void	check_cmd(char *cmd)
 {
 	if (access(cmd, F_OK) == -1)
-		exit_error("ccs: No such file or directory\n", 127);
+		exit_error("minishell: No such file or directory", 127);
 	else if (access(cmd, X_OK) == -1)
-		exit_error("ccs: Permission denied\n", 126);
+		exit_error("minishell: Permission denied", 126);
 	return ;
 }
 
@@ -84,7 +84,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 		exec_relative(cmd_args[0], env_list, env);
 	else
 		exec_default(cmd_args, pipe_argv, env_list, env);
-	exit_error("ccs: command not found\n", 127);
+	exit_error("minishell: command not found", 127);
 }
 
 void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
@@ -200,25 +200,22 @@ void	read_heredocs(t_pipe *pipeline)
 	}
 }
 
-// void	exec_child(pid_t pid, t_smpl_cmd *cmd, int keep, int fd_pipe[2])
-// {
-// 	char	buffer[128];
+pid_t	ft_fork(pid_t pid)
+{
+	pid = fork();
+	if (pid == -1)
+		exit_error("fork fail", errno);
+	return (pid);
+}
 
-// 	if (pid == 0)
-// 	{
-// 		if (cmd->cmd_argc > 0)
-// 			exec_cmd(cmd, cmd->env_list);
-// 		else
-// 		{
-// 			while (read(keep, buffer, 128 ))
-// 				printf("%.128s", buffer);
-// 			close (keep);
-// 			close (fd_pipe[1]);
-// 			execute_exit(NULL, cmd->env_list);
-// 		}
-// 	}
-// 	return ;
-// }
+int	assign_one(t_pipe *pipeline)
+{
+	if (pipeline->pipe_argv->cmd_argc == 0)
+		assignments(pipeline->pipe_argv, 0);
+	if (check_builtins_curr_env(pipeline->pipe_argv))
+		return (1);
+	return (0);
+}
 
 void		executor(t_pipe *pipeline)
 {
@@ -227,7 +224,9 @@ void		executor(t_pipe *pipeline)
 	int			keep;
 	int			i;
 	char		buffer[128];
+	int			check_built;
 
+	check_built = 0;
 	i = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)
@@ -237,20 +236,14 @@ void		executor(t_pipe *pipeline)
 	while (pipeline && pipeline->pipe_argv)
 	{
 		if (pipeline->pipe_argc == 1)
-		{
-			if (pipeline->pipe_argv->cmd_argc == 0)
-				assignments(pipeline->pipe_argv, 0);
-			if (check_builtins_curr_env(pipeline->pipe_argv))
-				break ;
-		}
+			check_built = assign_one(pipeline);
+		if (check_built == 1)
+			break ;
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
-		pid[i] = fork();
-		if (pid[i] == -1)
-			exit_error("fork fail", errno);
+		pid[i] = ft_fork(pid[i]);
 		redirect(pipeline->pipe_argv, pid[i], keep, fd_pipe);
 		assignments(pipeline->pipe_argv, pid[i]);
-		// exec_child(pid[i], pipeline->pipe_argv, keep, fd_pipe);
 		if (pid[i] == 0)
 		{
 			if (pipeline->pipe_argv->cmd_argc > 0)
@@ -267,6 +260,6 @@ void		executor(t_pipe *pipeline)
 		pipeline->pipe_argv = pipeline->pipe_argv->next;
 		i++;
 	}
-	free(pid);
-	set_exit_st(pipeline->pipe_argc, pid);
+	if (check_built == 0)
+		set_exit_st(pipeline->pipe_argc, pid);
 }

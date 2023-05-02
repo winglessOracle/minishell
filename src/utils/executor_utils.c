@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/01 18:48:31 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 13:39:37 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void	set_exit_st(int argc, pid_t *pid)
 			g_exit_status = WEXITSTATUS(waitstatus);
 		i++;
 	}
+	free(pid);
 }
 
 int		get_num_type(t_node *env_list)

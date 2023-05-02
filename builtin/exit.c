@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 19:37:37 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/01 10:45:38 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 13:11:28 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ int	execute_exit(char **cmd_vector, t_node *env_list)
 	if (cmd_vector[1][j] == '-' || cmd_vector[1][j] == '+')
 		j++;
 	if (ft_isdigit(cmd_vector[1][j]) == 0)
-		exit_error("numeric argument required\n", -1);
+		exit_error("minishell: numeric argument required", -1);
 	if (i > 2)
-		exit_error("ccs: too many arguments\n", 1);
+		exit_error("minishell: too many arguments", 1);
 	if (cmd_vector[1])
 		exit_code = ft_atoi_long(cmd_vector[1]);
 	else
