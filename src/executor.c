@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 09:48:49 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 10:06:02 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,28 +200,25 @@ void	read_heredocs(t_pipe *pipeline)
 	}
 }
 
-// void	exec_child(pid_t pid, t_smpl_cmd *cmd, int keep, int fd_pipe[2])
+// void	exec_child(t_smpl_cmd *cmd, int keep, int fd_pipe[2])
 // {
 // 	char	buffer[128];
 
-// 	if (pid == 0)
+// 	if (cmd->cmd_argc > 0)
+// 		exec_cmd(cmd, cmd->env_list);
+// 	else
 // 	{
-// 		if (cmd->cmd_argc > 0)
-// 			exec_cmd(cmd, cmd->env_list);
-// 		else
-// 		{
-// 			while (read(keep, buffer, 128 ))
-// 				printf("%.128s", buffer);
-// 			close (keep);
-// 			close (fd_pipe[1]);
-// 			execute_exit(NULL, cmd->env_list);
-// 		}
+// 		while (read(keep, buffer, 128 ))
+// 			printf("%.128s", buffer);
+// 		close (keep);
+// 		close (fd_pipe[1]);
+// 		execute_exit(NULL, cmd->env_list);
 // 	}
 // }
 
 void		executor(t_pipe *pipeline)
 {
-	pid_t		pid[pipeline->pipe_argc];
+	pid_t		*pid;
 	int			fd_pipe[2];
 	int			keep;
 	int			i;
@@ -236,6 +233,7 @@ void		executor(t_pipe *pipeline)
 	if (!keep)
 		exit_error("dup fail", 1);
 	read_heredocs(pipeline);
+	pid = malloc(sizeof(pid_t) * (pipeline->pipe_argc + 1));
 	while (pipeline && cmd)
 	{
 		if (pipeline->pipe_argc == 1)
@@ -252,8 +250,8 @@ void		executor(t_pipe *pipeline)
 			exit_error("fork fail", errno);
 		redirect(cmd, pid[i], keep, fd_pipe);
 		assignments(cmd, pid[i]);
-		// exec_child(pid[i], cmd, keep, fd_pipe);
 		if (pid[i] == 0)
+			// exec_child(cmd, keep, fd_pipe);
 		{
 			if (cmd->cmd_argc > 0)
 				exec_cmd(cmd, cmd->env_list);
@@ -269,6 +267,7 @@ void		executor(t_pipe *pipeline)
 		cmd = cmd->next;
 		i++;
 	}
+	free(pid);
 	set_exit_st(pipeline->pipe_argc, pid);
 }
 

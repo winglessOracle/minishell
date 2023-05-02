@@ -3072,3 +3072,519 @@ exit
     echo *
     echo *ke*
     cat *ke*
+    ls
+    pwd
+    $LESS$VAR
+    |
+    ls |
+    | ls
+    ls | ls
+    ls
+    ../ls
+    ./ls
+    /ls
+    ../../../../../../../../../../../bin/ls
+    echo hello
+    echo "hello world"
+    echo "hello 'world"
+    echo 'hello world'
+    echo 'hello "world'
+    echo "'hello world'"
+    echo '"hello world"'
+    echo "hello '$PWD' world"
+    echo 'hello "$PWD" world'
+    echo "hello $PWD world"
+    echo 'hello $PWD world'
+    echo quote
+    ""
+    echo "test | test ; moretest><"
+    $
+    $LESS$VAR
+    exit
+    exit 0
+    exit 1
+    exit 42
+    exit 256
+    exit 300
+    exit 9223372036854775805
+    exit -0
+    exit -1
+    exit -42
+    exit -256
+    exit -300
+    exit -9223372036854775805
+    exit +1
+    exit ++1
+    exit ++12560
+    exit --1
+    exit --12560
+    exit 0 0
+    exit 1 2
+    exit 1 2 3
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ++++42424242
+    exit ---000
+    exit ----000
+    exit 42 42 42 42 42
+    exit something
+    exit  2 3
+    exit 42 A
+    exit 42-A
+    exit 42 something
+    exit "+100"
+    exit "-100"
+    exit ""
+    exit "something"
+    exit something somethingv2
+    exit +++++
+    exit -----
+    exit -42-
+    exit +42+
+    exit +
+    exit -
+    exit "+++"
+    exit "---"
+    exit echo
+    exit cd ..
+    echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+    < Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+    <idonotexist | echo moretext >./tester/output/TMP2
+    ls
+    pwd
+    $LESS$VAR
+    |
+    ls |
+    | ls
+    ls | ls
+    ls
+    ../ls
+    ./ls
+    /ls
+    ../../../../../../../../../../../bin/ls
+    echo hello
+    echo "hello world"
+    echo "hello 'world"
+    echo 'hello world'
+    echo 'hello "world'
+    echo "'hello world'"
+    echo '"hello world"'
+    echo "hello '$PWD' world"
+    echo 'hello "$PWD" world'
+    echo "hello $PWD world"
+    echo 'hello $PWD world'
+    echo quote
+    ""
+    echo "test | test ; moretest><"
+    $
+    $LESS$VAR
+    exit
+    exit 0
+    exit 1
+    exit 42
+    exit 256
+    exit 300
+    exit 9223372036854775805
+    exit -0
+    exit -1
+    exit -42
+    exit -256
+    exit -300
+    exit -9223372036854775805
+    exit +1
+    exit ++1
+    exit ++12560
+    exit --1
+    exit --12560
+    exit 0 0
+    exit 1 2
+    exit 1 2 3
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ++++42424242
+    exit ---000
+    exit ----000
+    exit 42 42 42 42 42
+    exit something
+    exit  2 3
+    exit 42 A
+    exit 42-A
+    exit 42 something
+    exit "+100"
+    exit "-100"
+    exit ""
+    exit "something"
+    exit something somethingv2
+    exit +++++
+    exit -----
+    exit -42-
+    exit +42+
+    exit +
+    exit -
+    exit "+++"
+    exit "---"
+    exit echo
+    exit cd ..
+    echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+    < Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+    <idonotexist | echo moretext >./tester/output/TMP2
+    echo here_doc
+    (echo 1 || echo 2) || (echo 3 || echo 4)
+    (echo 1 && echo 2) || (echo 3 || echo 4)
+    (echo 1 && echo 2) && (echo 3 || echo 4)
+    (echo 1 && echo 2) && (echo 3 && echo 4)
+    (echo 1 || echo 2) && (echo 3 && echo 4)
+    (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+    (echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+    (echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+    (echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+    (echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (gre || echo 2) || (echo 3 || echo 4)
+    (gre 1 && echo 2) || (echo 3 || echo 4)
+    (gre 1 && echo 2) && (echo 3 || echo 4)
+    (gre 1 && echo 2) && (echo 3 && echo 4)
+    (gre 1 || echo 2) && (echo 3 && echo 4)
+    (gre 1 || echo 2) || (echo 3 && echo 4)
+    (gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+    (gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+    (gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+    (gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+    (gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+    (gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 || echo 2) || (echo 3 || echo 4))
+    ((echo 1 || echo 2) || (echo 3 || echo 4)
+    ((echo 1 ||  echo 2) && (echo 3 || echo 4))
+    "(echo 1 || echo 2) || (echo 3 || echo 4)"
+    "(echo 1 || echo 2)" || (echo 3 || echo 4)
+    echo *
+    echo *ke*
+    cat *ke*
+    ls
+    pwd
+    $LESS$VAR
+    |
+    ls |
+    | ls
+    ls | ls
+    ls
+    ../ls
+    ./ls
+    /ls
+    ../../../../../../../../../../../bin/ls
+    echo hello
+    echo "hello world"
+    echo "hello 'world"
+    echo 'hello world'
+    echo 'hello "world'
+    echo "'hello world'"
+    echo '"hello world"'
+    echo "hello '$PWD' world"
+    echo 'hello "$PWD" world'
+    echo "hello $PWD world"
+    echo 'hello $PWD world'
+    echo quote
+    ""
+    echo "test | test ; moretest><"
+    $
+    $LESS$VAR
+    exit
+    exit 0
+    exit 1
+    exit 42
+    exit 256
+    exit 300
+    exit 9223372036854775805
+    exit -0
+    exit -1
+    exit -42
+    exit -256
+    exit -300
+    exit -9223372036854775805
+    exit +1
+    exit ++1
+    exit ++12560
+    exit --1
+    exit --12560
+    exit 0 0
+    exit 1 2
+    exit 1 2 3
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ++++42424242
+    exit ---000
+    exit ----000
+    exit 42 42 42 42 42
+    exit something
+    exit  2 3
+    exit 42 A
+    exit 42-A
+    exit 42 something
+    exit "+100"
+    exit "-100"
+    exit ""
+    exit "something"
+    exit something somethingv2
+    exit +++++
+    exit -----
+    exit -42-
+    exit +42+
+    exit +
+    exit -
+    exit "+++"
+    exit "---"
+    exit echo
+    exit cd ..
+    echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+    < Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+    <idonotexist | echo moretext >./tester/output/TMP2
+    echo here_doc
+    (echo 1 || echo 2) || (echo 3 || echo 4)
+    (echo 1 && echo 2) || (echo 3 || echo 4)
+    (echo 1 && echo 2) && (echo 3 || echo 4)
+    (echo 1 && echo 2) && (echo 3 && echo 4)
+    (echo 1 || echo 2) && (echo 3 && echo 4)
+    (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+    (echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+    (echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+    (echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+    (echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (gre || echo 2) || (echo 3 || echo 4)
+    (gre 1 && echo 2) || (echo 3 || echo 4)
+    (gre 1 && echo 2) && (echo 3 || echo 4)
+    (gre 1 && echo 2) && (echo 3 && echo 4)
+    (gre 1 || echo 2) && (echo 3 && echo 4)
+    (gre 1 || echo 2) || (echo 3 && echo 4)
+    (gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+    (gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+    (gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+    (gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+    (gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+    (gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 || echo 2) || (echo 3 || echo 4))
+    ((echo 1 || echo 2) || (echo 3 || echo 4)
+    ((echo 1 ||  echo 2) && (echo 3 || echo 4))
+    "(echo 1 || echo 2) || (echo 3 || echo 4)"
+    "(echo 1 || echo 2)" || (echo 3 || echo 4)
+    echo *
+    echo *ke*
+    cat *ke*
+    ls
+    pwd
+    $LESS$VAR
+    |
+    ls |
+    | ls
+    ls | ls
+    ls
+    ../ls
+    ./ls
+    /ls
+    ../../../../../../../../../../../bin/ls
+    echo hello
+    echo "hello world"
+    echo "hello 'world"
+    echo 'hello world'
+    echo 'hello "world'
+    echo "'hello world'"
+    echo '"hello world"'
+    echo "hello '$PWD' world"
+    echo 'hello "$PWD" world'
+    echo "hello $PWD world"
+    echo 'hello $PWD world'
+    echo quote
+    ""
+    echo "test | test ; moretest><"
+    $
+    $LESS$VAR
+    exit
+    exit 0
+    exit 1
+    exit 42
+    exit 256
+    exit 300
+    exit 9223372036854775805
+    exit -0
+    exit -1
+    exit -42
+    exit -256
+    exit -300
+    exit -9223372036854775805
+    exit +1
+    exit ++1
+    exit ++12560
+    exit --1
+    exit --12560
+    exit 0 0
+    exit 1 2
+    exit 1 2 3
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ++++42424242
+    exit ---000
+    exit ----000
+    exit 42 42 42 42 42
+    exit something
+    exit  2 3
+    exit 42 A
+    exit 42-A
+    exit 42 something
+    exit "+100"
+    exit "-100"
+    exit ""
+    exit "something"
+    exit something somethingv2
+    exit +++++
+    exit -----
+    exit -42-
+    exit +42+
+    exit +
+    exit -
+    exit "+++"
+    exit "---"
+    exit echo
+    exit cd ..
+    echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+    < Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+    <idonotexist | echo moretext >./tester/output/TMP2
+    ls
+    pwd
+    $LESS$VAR
+    |
+    ls |
+    | ls
+    ls | ls
+    ls
+    ../ls
+    ./ls
+    /ls
+    ../../../../../../../../../../../bin/ls
+    echo hello
+    echo "hello world"
+    echo "hello 'world"
+    echo 'hello world'
+    echo 'hello "world'
+    echo "'hello world'"
+    echo '"hello world"'
+    echo "hello '$PWD' world"
+    echo 'hello "$PWD" world'
+    echo "hello $PWD world"
+    echo 'hello $PWD world'
+    echo quote
+    ""
+    echo "test | test ; moretest><"
+    $
+    $LESS$VAR
+    exit
+    exit 0
+    exit 1
+    exit 42
+    exit 256
+    exit 300
+    exit 9223372036854775805
+    exit -0
+    exit -1
+    exit -42
+    exit -256
+    exit -300
+    exit -9223372036854775805
+    exit +1
+    exit ++1
+    exit ++12560
+    exit --1
+    exit --12560
+    exit 0 0
+    exit 1 2
+    exit 1 2 3
+    exit 01
+    exit 001
+    exit 0001
+    exit +++000
+    exit ++++000
+    exit ++++42424242
+    exit ---000
+    exit ----000
+    exit 42 42 42 42 42
+    exit something
+    exit  2 3
+    exit 42 A
+    exit 42-A
+    exit 42 something
+    exit "+100"
+    exit "-100"
+    exit ""
+    exit "something"
+    exit something somethingv2
+    exit +++++
+    exit -----
+    exit -42-
+    exit +42+
+    exit +
+    exit -
+    exit "+++"
+    exit "---"
+    exit echo
+    exit cd ..
+    echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+    < Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+    <idonotexist | echo moretext >./tester/output/TMP2
+    echo here_doc
+    (echo 1 || echo 2) || (echo 3 || echo 4)
+    (echo 1 && echo 2) || (echo 3 || echo 4)
+    (echo 1 && echo 2) && (echo 3 || echo 4)
+    (echo 1 && echo 2) && (echo 3 && echo 4)
+    (echo 1 || echo 2) && (echo 3 && echo 4)
+    (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+    (echo 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+    (echo 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+    (echo 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+    (echo 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (gre || echo 2) || (echo 3 || echo 4)
+    (gre 1 && echo 2) || (echo 3 || echo 4)
+    (gre 1 && echo 2) && (echo 3 || echo 4)
+    (gre 1 && echo 2) && (echo 3 && echo 4)
+    (gre 1 || echo 2) && (echo 3 && echo 4)
+    (gre 1 || echo 2) || (echo 3 && echo 4)
+    (gre 1 || echo 2) || (echo 3 || echo 4) && (echo 1 && echo 2) || (echo 3 || echo 4)
+    (gre 1 || echo 2) || (echo 3 || echo 4) || (echo 1 && echo 2) || (echo 3 || echo 4)
+    (gre 1 && echo 2) && (echo 3 || echo 4) && (echo 1 && echo 2) && (echo 3 && echo 4)
+    (gre 1 && echo 2) && (echo 3 || echo 4) || (echo 1 && echo 2) && (echo 3 && echo 4)
+    (gre 1 || echo 2) && (echo 3 && echo 4) && (echo 1 || echo 2) || (echo 3 && echo 4)
+    (gre 1 || echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (gre 1 ; echo 2) && (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (gre 1 || echo 2) ; (echo 3 && echo 4) || (echo 1 || echo 2) || (echo 3 && echo 4)
+    (echo 1 || echo 2) || (echo 3 || echo 4))
+    ((echo 1 || echo 2) || (echo 3 || echo 4)
+    ((echo 1 ||  echo 2) && (echo 3 || echo 4))
+    "(echo 1 || echo 2) || (echo 3 || echo 4)"
+    "(echo 1 || echo 2)" || (echo 3 || echo 4)
+    echo *
+    echo *ke*
+    cat *ke*
