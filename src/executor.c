@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 11:42:27 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 11:43:12 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -259,8 +259,8 @@ void		executor(t_pipe *pipeline)
 			{
 				while (read(keep, buffer, 128 ))
 					printf("%.128s", buffer);
-				close (keep);
-				close (fd_pipe[1]);
+				close (keep); //need this?
+				close (fd_pipe[1]); //need this?
 				execute_exit(NULL, pipeline->pipe_argv->env_list);
 			}
 		}
