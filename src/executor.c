@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 10:47:48 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 11:41:31 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,22 +200,25 @@ void	read_heredocs(t_pipe *pipeline)
 	}
 }
 
-// void	exec_child(t_smpl_cmd *cmd, int keep, int fd_pipe[2])
-// {
-// 	char	buffer[128];
+void	exec_child(pid_t pid, t_smpl_cmd *cmd, int keep, int fd_pipe[2])
+{
+	char	buffer[128];
 
-// 	if (cmd->cmd_argc > 0)
-// 		exec_cmd(cmd, cmd->env_list);
-// 	else
-// 	{
-// 		while (read(keep, buffer, 128 ))
-// 			printf("%.128s", buffer);
-// 		close (keep);
-// 		close (fd_pipe[1]);
-// 		execute_exit(NULL, cmd->env_list);
-// 	}
-// 	return ;
-// }
+	if (pid == 0)
+	{
+		if (cmd->cmd_argc > 0)
+			exec_cmd(cmd, cmd->env_list);
+		else
+		{
+			while (read(keep, buffer, 128 ))
+				printf("%.128s", buffer);
+			close (keep);
+			close (fd_pipe[1]);
+			execute_exit(NULL, cmd->env_list);
+		}
+	}
+	return ;
+}
 
 
 void		executor(t_pipe *pipeline)
@@ -224,23 +227,21 @@ void		executor(t_pipe *pipeline)
 	int			fd_pipe[2];
 	int			keep;
 	int			i;
-	t_smpl_cmd	*cmd;
 	char		buffer[128];
 
-	cmd = pipeline->pipe_argv;
 	i = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);
 	read_heredocs(pipeline);
 	pid = malloc(sizeof(pid_t) * (pipeline->pipe_argc + 1));
-	while (pipeline && cmd)
+	while (pipeline && pipeline->pipe_argv)
 	{
 		if (pipeline->pipe_argc == 1)
 		{
-			if (cmd->cmd_argc == 0)
-				assignments(cmd, 0);
-			if (check_builtins_curr_env(cmd))
+			if (pipeline->pipe_argv->cmd_argc == 0)
+				assignments(pipeline->pipe_argv, 0);
+			if (check_builtins_curr_env(pipeline->pipe_argv))
 				break ;
 		}
 		if (pipe(fd_pipe) == -1)
@@ -248,23 +249,23 @@ void		executor(t_pipe *pipeline)
 		pid[i] = fork();
 		if (pid[i] == -1)
 			exit_error("fork fail", errno);
-		redirect(cmd, pid[i], keep, fd_pipe);
-		assignments(cmd, pid[i]);
+		redirect(pipeline->pipe_argv, pid[i], keep, fd_pipe);
+		assignments(pipeline->pipe_argv, pid[i]);
+		// exec_child(pid[i], pipeline->pipe_argv, keep, fd_pipe);
 		if (pid[i] == 0)
-			// exec_child(cmd, keep, fd_pipe);
 		{
-			if (cmd->cmd_argc > 0)
-				exec_cmd(cmd, cmd->env_list);
+			if (pipeline->pipe_argv->cmd_argc > 0)
+				exec_cmd(pipeline->pipe_argv, pipeline->pipe_argv->env_list);
 			else
 			{
 				while (read(keep, buffer, 128 ))
 					printf("%.128s", buffer);
 				close (keep);
 				close (fd_pipe[1]);
-				execute_exit(NULL, cmd->env_list);
+				execute_exit(NULL, pipeline->pipe_argv->env_list);
 			}
 		}
-		cmd = cmd->next;
+		pipeline->pipe_argv = pipeline->pipe_argv->next;
 		i++;
 	}
 	free(pid);

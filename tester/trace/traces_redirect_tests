@@ -4,3 +4,6 @@
 
 
 		command=> <idonotexist | echo moretext >./tester/output/TMP2
+
+
+		command=> <./tester/output/TMP2 | cat
