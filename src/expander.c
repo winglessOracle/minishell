@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/02 08:36:47 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/02 10:26:07 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,54 +64,59 @@ t_node	*split_expanded(t_node *words, t_smpl_cmd *cmd)
 int	expand(t_node **token, t_smpl_cmd *cmd)
 {
 	t_node	*words;
-	t_node	*temp;
-	char	*content;
+	// t_node	*temp;
 
-	content = NULL;
+	if (count_quotes((*token)->content, '\'') % 2 || count_quotes((*token)->content, '\'') % 2)
+		merge_quoted(token, cmd);
 	// printf("content in expand: %s\n", (*token)->content);
 	words = split_to_list((*token)->content, "$=?/\'\".");
+	free((*token)->content);
+	(*token)->content = NULL;
 	while (words)
 	{
 		// print_tokens(words, "in expand\n");
 		if (words && words->content && words->content[0] == '$')
 		{
-			// printf("words type: %d\n", words->type);
 			// printf("1. in expand content: %s, next: %s\n", words->content, words->next->content); 
 			expand_var(&words, cmd);
 			// print_tokens(words, "after expand var in expander\n");
-			while (words)
-			{
-				if (words->content)
-					content = ft_strjoin_free_s1(content, words->content);
-				remove_node(&words, cmd);
-			}
+	
+			if (words->content)
+				(*token)->content = ft_strjoin_free_s1((*token)->content, words->content);
+			remove_node(&words, cmd);
 			// printf("1. content: %s\n", content);
 		}
 		else if (words)
 		{
-			// printf("2. expand: words content: %s, content: %s, type: %d, token type: %d\n", words->content, content, words->type, (*token)->type);
-			content = ft_strjoin_free_s1(content, words->content);
+			// printf("2. expand: words content: %s, type: %d, token type: %d\n", words->content, words->type, (*token)->type);
+			if (words->content[0] == '\'' || words->content[0] == '\"')
+			{
+				words->type = check_token_content(words, (*token)->type);
+				// print_tokens(*token, " in expand var quoted\n");
+				merge_quoted(&words, cmd);
+			}
+			(*token)->content = ft_strjoin_free_s1((*token)->content, words->content);
 			remove_node(&words, cmd);
 		}
 	}
 	// printf("hier\n");
-	if (*token)
-	{
-		free((*token)->content);
-		// printf("1. expand: token content: %s, token type: %d\n", (*token)->content, (*token)->type);
-		(*token)->content = content;
-		(*token)->type = check_token_content(*token, (*token)->type);
-		// print_tokens(*token, "end of expand var\n");
-		// printf("2. expand: token content: %s, token type: %d\n", (*token)->content, (*token)->type);
-		return ((*token)->type);
-	}
+	// if (*token)
+	// {
+	// 	// free((*token)->content);
+	// 	// printf("1. expand: token content: %s, token type: %d\n", (*token)->content, (*token)->type);
+	// 	(*token)->content = content;
+	// 	(*token)->type = check_token_content(*token, (*token)->type);
+	// 	// print_tokens(*token, "end of expand var\n");
+	// 	// printf("2. expand: token content: %s, token type: %d\n", (*token)->content, (*token)->type);
+	// 	return (0);
+	// }
 	// printf("en hier\n");
-	words = *token;
-	if (words && words->content)
-		temp = split_expanded(words, cmd);
-	else
-		temp = words;
-	lstinsert_lst(token, temp);
+	// words = *token;
+	// if (words && words->content)
+	// 	temp = split_expanded(words, cmd);
+	// else
+	// 	temp = words;
+	// lstinsert_lst(token, temp);
 	// (*token)->type = check_token_content(*token, (*token)->type);
 	// printf("in expand content: %s, type %d\n", (*token)->content, (*token)->type);
 	// return ((*token)->type);
