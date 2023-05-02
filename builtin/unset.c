@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 20:02:30 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/02 15:10:35 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/02 15:18:20 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,33 +48,41 @@ int	remove_var(t_node *temp, t_node *prev, char *name)
 	return (0);
 }
 
+int	check_valid_unset(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '-' && str[1])
+		return (return_error("minishell: unset: invallid option\n", 2));
+	if (check_valid_identifier(str))
+		return (1);
+	while (str[i])
+	{
+		if (str[i] == '=')
+			return (return_error("minishell: not a valid identifier\n", 1));
+		i++;
+	}
+	return (0);
+}
+
 int	execute_unset(char **cmd_vector, t_node *env_list)
 {
 	int		i;
-	int		j;
 	char	*name;
 	t_node	*temp;
 	t_node	*prev;
 
 	i = 1;
-	j = 0;
-	while (cmd_vector[i])
+	while (cmd_vector[i++])
 	{
 		temp = env_list;
-		if (cmd_vector[i][0] == '-' && cmd_vector[i][1])
-			return (return_error("minishell: unset: invallid option\n", 2));
-		if (check_valid_identifier(cmd_vector[i]))
-			return (1);
-		while (cmd_vector[i][j])
-		{
-			if (cmd_vector[i][j] == '=')
-				return (return_error("minishell: not a valid identifier\n", 1));
-			j++;
-		}
+		if (check_valid_unset(cmd_vector[i - 1]))
+			return (check_valid_unset(cmd_vector[i - 1]));
 		while (temp && temp->content)
 		{
 			name = get_name(temp->content);
-			if (!ft_strcmp(cmd_vector[i], name))
+			if (!ft_strcmp(cmd_vector[i - 1], name))
 			{
 				if (remove_var(temp, prev, name))
 					break ;
@@ -83,7 +91,6 @@ int	execute_unset(char **cmd_vector, t_node *env_list)
 				move_to_next(&temp, &prev);
 			free(name);
 		}
-		i++;
 	}
 	return (0);
 }
