@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/05/02 10:53:13 by ccaljouw      ########   odam.nl          #
+#    Updated: 2023/05/02 14:52:58 by cwesseli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,9 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
+	@echo "$(BLUE)Cleaning tester $(RESET)"
+	@rm -rf tester/output
+	@rm -rf tester/trace
 	@rm -rf $(NAME_BONUS)
 	@$(MAKE) -C $(LIBFT) fclean
 

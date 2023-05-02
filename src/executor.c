@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 14:33:01 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 15:17:14 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,6 @@ void	check_cmd(char *cmd)
 	else if (access(cmd, X_OK) == -1)
 		exit_error("minishell: Permission denied", 126);
 	return ;
-}
-
-int	exec_relative(char *cmd_args, t_node *env_list, char **env)
-{
-	char	*pwd;
-	char	buf[PATH_MAX];
-	char	*new_dir;
-
-	pwd = get_variable(env_list, "PWD");
-	if (!pwd)
-	{
-		getcwd(buf, PATH_MAX);
-		pwd = ft_strdup(buf);
-	}
-	if (!pwd)
-		return (-1);
-	new_dir = new_directory(cmd_args, pwd);
-	check_cmd(new_dir);
-	return (execve(new_dir, &cmd_args, env));
 }
 
 int	exec_default(char **cmd_args, t_smpl_cmd *pipe_argv, t_node *env_list, char **env)
@@ -75,13 +56,11 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 	check_built(pipe_argv);
 	cmd_args = build_cmd_args(&pipe_argv->cmd_argv, pipe_argv->cmd_argc);
 	env = get_env(env_list);
-	if (cmd_args[0][0] == '/')
+	if (cmd_args[0][0] == '/' || cmd_args[0][0] == '.')
 	{
 		check_cmd(cmd_args[0]);
 		execve(cmd_args[0], cmd_args, env);
 	}
-	else if (cmd_args[0][0] == '.')
-		exec_relative(cmd_args[0], env_list, env);
 	else
 		exec_default(cmd_args, pipe_argv, env_list, env);
 	exit_error("minishell: command not found", 127);
@@ -126,15 +105,15 @@ To modify the behaviour in bash to meet our version change the
 noclobber setting: 'set +o noclobber'.*/
 int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 {
-	int		count;
+	int		trigger;
 	t_node	*temp;
 
-	count = 0;
+	trigger = 0;
 	temp = smpl_cmd->redirect;
 	while (temp)
 	{
 		if (temp->type == OUTPUT || temp->type == APPEND)
-			count = set_out(fd_pipe, temp);
+			trigger = set_out(fd_pipe, temp);
 		else if (temp->type == INPUT)
 			set_in(*keep, temp);
 		else if (temp->type == HEREDOC || temp->type == HEREDOCQ)
@@ -147,7 +126,7 @@ int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 			return (return_perror("setting file descriptor", -1));
 		temp = temp->next;
 	}
-	return (count);
+	return (trigger);
 }
 
 void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
@@ -156,7 +135,7 @@ void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 	{
 		close(fd_pipe[0]);
 		if (set_fd(cmd, &keep, fd_pipe) == -1)
-			exit_error("ccs: redirect\n", 12); //change
+			exit_error("minishell: redirect", errno);
 		dup2(keep, STDIN_FILENO);
 		if (!keep)
 			exit_error("dup fail", 1); //change
@@ -177,28 +156,29 @@ void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 	}
 }
 
-void	read_heredocs(t_pipe *pipeline)
-{
-	t_smpl_cmd	*tcmd;
-	t_node		*tredirect;
+// void	read_heredocs(t_pipe *pipeline)
+// {
+// 	t_smpl_cmd	*tcmd;
+// 	t_node		*tredirect;
 
-	tcmd = pipeline->pipe_argv;
-	while (tcmd)
-	{
-		tredirect = tcmd->redirect;
-		while (tredirect)
-		{
-			if (tredirect->type == HEREDOC || tredirect->type == HEREDOC)
-			{
-				if (tcmd->here_doc)
-					close(tcmd->here_doc);
-				tcmd->here_doc = here_doc(pipeline, tredirect);
-			}
-			tredirect = tredirect->next;
-		}
-		tcmd = tcmd->next;
-	}
-}
+// 	tcmd = pipeline->pipe_argv;
+// 	while (tcmd)
+// 	{
+// 		tredirect = tcmd->redirect;
+// 		while (tredirect)
+// 		{
+// 			if (tredirect->type == HEREDOC || tredirect->type == HEREDOC)
+// 			{
+// 				if (tcmd->here_doc)
+// 					close(tcmd->here_doc);
+// 				tcmd->here_doc = here_doc(pipeline, tredirect);
+// 			}
+// 			tredirect = tredirect->next;
+// 		}
+// 		tcmd = tcmd->next;
+// 	}
+// }
+
 pid_t	ft_fork(pid_t pid)
 {
 	pid = fork();
@@ -227,7 +207,7 @@ void		executor(t_pipe *pipeline)
 
 	check_built = 0;
 	i = 0;
-	check = 0;
+	check_built = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);
