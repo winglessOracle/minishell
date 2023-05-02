@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 13:41:28 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 14:33:01 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -199,7 +199,6 @@ void	read_heredocs(t_pipe *pipeline)
 		tcmd = tcmd->next;
 	}
 }
-
 pid_t	ft_fork(pid_t pid)
 {
 	pid = fork();
@@ -228,10 +227,11 @@ void		executor(t_pipe *pipeline)
 
 	check_built = 0;
 	i = 0;
+	check = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);
-	read_heredocs(pipeline);
+	// read_heredocs(pipeline);
 	pid = malloc(sizeof(pid_t) * (pipeline->pipe_argc + 1));
 	while (pipeline && pipeline->pipe_argv)
 	{

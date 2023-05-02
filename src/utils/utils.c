@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 13:10:52 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 14:33:33 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ char	*get_input(t_node *env_list, char *var, int history)
 	if (line_read && ft_strlen(line_read) > MAX_INPUT_LEN)
 	{
 		printf("Input exceeds max length of %d characters\n", MAX_INPUT_LEN);
-		line_read = NULL;
+		line_read = ft_strdup("");
 	}
 	if (line_read && history)
 		add_history(line_read);

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/25 21:36:11 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/02 11:51:07 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,30 +44,69 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 	return (type);
 }
 
+// int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
+// {
+// 	int					state;
+// 	int					type;
+// 	static t_function	*parse[16];
+
+// 	(void)list;
+// 	parse[COMMENT] = remove_comment;
+// 	parse[SQUOTE] = merge_quoted;
+// 	parse[DQUOTE] = merge_quoted;
+// 	parse[EXPAND] = expand;
+// 	parse[TILDE] = expand_tilde;
+// 	state = get_redirect_type(tokens, cmd);
+// 	if (state == -1)
+// 		return (syntax_error(tokens, cmd, "Redirect\n", -1));
+// 	type = check_token_content(*tokens, WORD);
+// 	if (type == COMMENT)
+// 		type = parse[type](tokens, cmd);
+// 	if (!*tokens || (*tokens)->type == PIPE_END)
+// 		return (syntax_error(tokens, cmd, "Redirect\n", -1));
+// 	type = check_token_content(*tokens, WORD);
+// 	(*tokens)->type = state;
+// 	if (type != WORD && type != ASSIGN && !(state == HEREDOC && type == EXPAND))
+// 		type = parse[type](tokens, cmd);
+// 	lstadd_back(&cmd->redirect, lstpop(tokens));
+// 	return (syntax_error(tokens, cmd, "Redirect\n", type));
+// }
+
 int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
 {
 	int					state;
-	int					type;
+	// int					type;
 	static t_function	*parse[16];
 
 	(void)list;
 	parse[COMMENT] = remove_comment;
-	parse[SQUOTE] = remove_quotes;
-	parse[DQUOTE] = remove_quotes;
+	parse[SQUOTE] = merge_quoted;
+	parse[DQUOTE] = merge_quoted;
 	parse[EXPAND] = expand;
 	parse[TILDE] = expand_tilde;
 	state = get_redirect_type(tokens, cmd);
 	if (state == -1)
-		return (syntax_error(tokens, cmd, "Redirect\n", -1));
-	type = check_token_content(*tokens, WORD);
-	if (type == COMMENT)
-		type = parse[type](tokens, cmd);
-	if (!*tokens || (*tokens)->type == PIPE_END)
-		return (syntax_error(tokens, cmd, "Redirect\n", -1));
-	type = check_token_content(*tokens, WORD);
+		return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
+	(*tokens)->type = check_token_content(*tokens, WORD);
+	// print_tokens(*tokens, "in redirect\n");
+	if ((*tokens)->type == COMMENT)
+		(*tokens)->type = parse[(*tokens)->type](tokens, cmd);
+	while (*tokens && (*tokens)->type == BLANK)
+		remove_node(tokens, cmd);
+	(*tokens)->type = check_token_content(*tokens, WORD);
+	if (((*tokens)->content[0] == '|' || (*tokens)->content[0] == '&') && state != OUTPUT)
+		return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
+	if (((*tokens)->content[0] == '|' || (*tokens)->content[0] == '&') && state == OUTPUT)
+	{
+		remove_node(tokens, cmd);
+		while ((*tokens)->type != WORD)
+			remove_node(tokens, cmd);
+		// print_tokens(*tokens, "after remove pipe\n");
+	}
+	if ((*tokens)->type != WORD)
+		(*tokens)->type = parse[(*tokens)->type](tokens, cmd);
+	// printf("2. content: %s, type: %d, redirect type: %d\n", (*tokens)->content, (*tokens)->type, state);
 	(*tokens)->type = state;
-	if (type != WORD && type != ASSIGN && !(state == HEREDOC && type == EXPAND))
-		type = parse[type](tokens, cmd);
 	lstadd_back(&cmd->redirect, lstpop(tokens));
-	return (syntax_error(tokens, cmd, "Redirect\n", type));
+	return (0);
 }

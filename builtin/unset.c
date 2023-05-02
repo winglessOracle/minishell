@@ -6,11 +6,12 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 20:02:30 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 18:26:56 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/02 13:28:53 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "builtin.h"
 
 // unset []
 // For each name, remove the corresponding variable or function. 
@@ -61,6 +62,11 @@ int	execute_unset(char **cmd_vector, t_node *env_list)
 		while (temp && temp->content)
 		{
 			name = get_name(temp->content);
+			if (check_valid_identifier(name))
+			{
+				// printf("invallid arg\n");
+				return (1);
+			}
 			if (!ft_strcmp(cmd_vector[i], name))
 			{
 				if (remove_var(temp, prev, name))

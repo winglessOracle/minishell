@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 11:03:39 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 19:25:21 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/02 12:51:42 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ char	*get_back(char *cmd_arg, char *pwd)
 		back = ft_strjoin_free_s1(ft_substr(pwd, 0, j + 1), &cmd_arg[i - 1]);
 	else
 		back = ft_strjoin("/", &cmd_arg[i - 1]);
+	// printf("back: %s\n", back);
 	free(pwd);
 	return (back);
 }

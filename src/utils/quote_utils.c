@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/20 19:10:51 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/02 08:31:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,104 +24,170 @@ char	get_quote_char(int type)
 	return (quote);
 }
 
-int	split_quoted_exp(int nr_q, t_node *token, char **content, t_smpl_cmd *cmd)
+char	get_other_quote(char quote)
 {
-	int		state;
-	char	quote;
-	t_node	*words;
+	char	new_quote;
 
-	quote = get_quote_char(token->type);
-	words = split_to_list(token->content, "\'\"");
-	while (words)
-	{
-		state = check_token_content(words, WORD);
-		while (state == EXPAND && token->type != HEREDOC)
-		{
-			expand(&words, cmd);
-			if (words->content)
-				state = check_token_content(words, WORD);
-			else
-				state = WORD;
-		}
-		if (state == DQUOTE && get_quote_char(token->type) == quote)
-			nr_q += 1;
-		else if (words->content)
-			*content = ft_strjoin_free_s1(*content, words->content);
-		remove_node(&words, cmd);
-	}
-	return (nr_q);
+	if (quote == '\'')
+		new_quote = '\"';
+	else
+		new_quote = '\'';
+	return (new_quote);
 }
 
-int	split_quoted(int nr_quotes, t_node *token, char **content, t_smpl_cmd *cmd)
+int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 {
-	int		type;
-	char	quote;
 	t_node	*words;
-
-	quote = get_quote_char(token->type);
-	words = split_to_list(token->content, "\'\"");
-	while (words)
-	{
-		type = check_token_content(words, token->type);
-		if (type != SQUOTE && type != DQUOTE)
-			*content = ft_strjoin_free_s1(*content, words->content);
-		else if (get_quote_char(token->type) == quote)
-			nr_quotes += 1;
-		remove_node(&words, cmd);
-	}
-	return (nr_quotes);
-}
-
-int	get_content(t_node **token, t_smpl_cmd *cmd, int type, int state)
-{
-	int		nr_quotes;
 	char	*content;
-
-	nr_quotes = 0;
-	content = NULL;
-	while (*token)
+	char	quote;
+	char	quote_open;
+	
+	// printf("in split a nd remove quotes, content: %s, type: %d\n", (*tokens)->content, (*tokens)->type);
+	quote = get_quote_char((*tokens)->type);
+	// printf("quote now: %c\n", quote);
+	content = ft_strdup("");
+	words = split_to_list((*tokens)->content, "\'\" ");
+	while (words)
 	{
-		(*token)->type = type;
-		if (state == HEREDOC || type == SQUOTE)
-			nr_quotes = split_quoted(nr_quotes, *token, &content, cmd);
-		else
-			nr_quotes = split_quoted_exp(nr_quotes, *token, &content, cmd);
-		if ((nr_quotes % 2) == 0)
-			break ;
-		remove_node(token, cmd);
+		// print_tokens(words, "in split quoted\n");
+		if (words->content[0] == quote)
+		{
+			// printf("quote: %c\n", quote);
+			quote_open = 1;
+			remove_node(&words, cmd);
+		}
+		while (words && words->content[0] != quote)
+		{
+			// printf("1. str content: %s, quote open: %d\n", content, quote_open);
+			if (!quote_open)
+				words->type = WORD;
+			else
+				words->type = (*tokens)->type;
+			// printf("1. proces quoted parts. content: %s, type: %d, quote open: %d\n", words->content, words->type, quote_open);
+			words->type = check_token_content(words, words->type);
+			// printf("2. proces quoted parts. content: %s, type: %d, quote open: %d\n", words->content, words->type, quote_open);
+			// printf("2. str content: %s, type: %d\n", content, words->type);
+			if (!ft_strcmp(words->content, "$") && words->next && !quote_open)
+				expand_var(&words, cmd);
+			if (words->type && words->type < 13)
+			{
+				// printf("expand sub: %d\n", words->type);
+				words->type = expand_sub(&words, cmd);
+				// print_tokens(words, "after expander in split quotes\n");
+			}
+			if (words->content)
+				content = ft_strjoin_free_s1(content, words->content);
+			remove_node(&words, cmd);
+			// printf("3. str content: %s\n\n", content);
+		}
+		if (words && words->content[0] == quote && quote_open)
+		{
+			// printf("remove quote: %c\n", quote);
+			quote_open = 0;
+			remove_node(&words, cmd);
+		}
+		// print_tokens(words, "2. in split quotes\n");
+		// else if (words && quote_open)
+		// 	return(syntax_error(tokens, cmd, "unclosed quotes\n", 1));
+		// printf("content: %s\n", content);
 	}
-	if (syntax_error(token, cmd, "unclosed quotes\n", (nr_quotes % 2)))
-		return (-1);
-	free((*token)->content);
-	(*token)->content = content;
+	free((*tokens)->content);
+	(*tokens)->content = content;
+	// printf("end of split quotes, content: %s, type: %d\n", (*tokens)->content, (*tokens)->type);
+	// (*tokens)->type = WORD;
 	return (0);
 }
 
-int	remove_quotes(t_node **token, t_smpl_cmd *cmd)
+int	count_quotes(char *str, char quote1)
 {
-	int					state;
-	int					type;
+	int		i;
+	int		nr_1;
+	int		nr_2;
+	int		quotes;
+	char	quote2;
+	
+	nr_1 = 0;
+	nr_2 = 0;
+	// printf("quote 1 is: %c\n", quote1);
+	// printf("str in count quotes: %s\n", str);
+	if (quote1 == '\'')
+		quote2 = '\"';
+	else
+		quote2 = '\'';
+	i = 0;
+	while (str[i])
+	{
+		// printf("str[i]: %c\n", str[i]);
+		if (str[i] == quote1 && !((nr_2 % 2)))
+		{
+			// printf("quote 1\n");
+			nr_1++;
+		}
+		if (str[i] == quote2 && !(nr_1 % 2))
+		{
+			// printf("quote 2\n");
+			nr_2++;
+		}
+		i++;
+	}
+	quotes = (nr_1 + nr_2) % 2;
+	// printf ("nr_quotes returned: %d\n", quotes);
+	return (quotes);
+}
 
-	state = (*token)->type;
-	if (!ft_strcmp((*token)->content, "\"\"") || \
-					!ft_strcmp((*token)->content, "\'\'"))
+void	remove_double_quotes(t_node  **token, char quote)
+{
+	int	i;
+	char *str;
+	char *temp;
+
+	str = (*token)->content;
+	i = ft_strlen(str);
+	temp = ft_strdup(str);
+	while (1)
+	{
+		if (str[0] == quote && str[1] == quote)
+			temp = ft_substr(str, 2, i - 2);
+		else if (str[i - 1] == quote && str[i - 2] == quote)
+			temp = ft_substr(str, 0, i - 2);
+		else
+			break;
+		str = temp;
+	}
+	if (temp)
 	{
 		free((*token)->content);
-		(*token)->content = ft_strdup("");
-		return (add_word_to_cmd(token, cmd));
+		(*token)->content = temp;
 	}
-	type = check_token_content(*token, state);
-	type = get_content(token, cmd, type, state);
-	if (type != -1 && (state == INPUT || state == OUTPUT \
-				|| state == APPEND || state == HEREDOC))
+}
+
+int	merge_quoted(t_node **token, t_smpl_cmd *cmd)
+{
+	int		type;
+	char	quote;
+	// int		quotes;
+
+	type = (*token)->type;
+	quote = get_quote_char((*token)->type);
+	// printf("1. before split and remove quotes: %s\n", (*token)->content);
+	// print_tokens(*token, "before merge quotes\n");
+	while (*token && (*token)->next)
 	{
-		if (state == HEREDOC)
-			(*token)->type = HEREDOCQ;
-		return (type);
+		// remove_double_quotes(token, quote);
+		if (!(count_quotes((*token)->content, quote) % 2))
+			break ;
+		merge_tokens(*token, type);
+		// printf("token content in merge tokens: %s\n", (*token)->content);
 	}
-	else if (type != -1 && state != ASSIGN_T)
-		add_word_to_cmd(token, cmd);
-	else
-		(*token)->type = ASSIGN_T;
-	return (type);
+	if (*token && count_quotes((*token)->content, quote) % 2)
+		return(syntax_error(token, cmd, "unclosed quotes\n", 1));
+	// type = check_token_content(*token, WORD);
+	// if (type != (*token)->type)
+	// 	return (type);
+	// print_tokens(*token, "after merge quotes\n");
+	// printf("merge quotes: before split and remove quotes: %s\n", (*token)->content);
+	split_and_remove_quotes(token, cmd);
+	(*token)->type = type;
+	// printf("merge quotes: after split and remove quotes: %s, token type: %d, type: %d, quotes: %d\n", (*token)->content, (*token)->type, type, quotes);
+	return (0);
 }

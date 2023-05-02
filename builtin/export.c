@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 18:13:00 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/02 13:18:42 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,31 +70,40 @@ void	print_export(t_node *env_list)
 	}
 }
 
+int	check_valid_identifier(char *str)
+{
+	int	i;
+	
+	i = 0;
+	while (str[i] && (str[i] != '=' && (ft_isalpha(str[i]) || str[i] == '_')))
+		i++;
+	if (str[i] && str[i] != '=' && !(ft_isalpha(str[i]) || str[i] == '_'))
+		return (return_error("minishell: not a valid identifier\n", 1));
+	return (0);
+}
+
 int	execute_export(char **cmd_vector, t_node *env_list)
 {
 	int	i;
-	int	ret;
 
 	i = 1;
-	ret = 0;
 	if (!cmd_vector[i])
 	{
 		sort_env(env_list);
 		print_export(env_list);
 	}
+	else if (cmd_vector[i][0] == '-')
+		return(return_error("minishell: export: no options supported\n", 2));
 	else
 	{
 		while (cmd_vector[i])
 		{
-			if (!ft_isalpha(cmd_vector[i][0]) && cmd_vector[i][0] != '_')
-			{
-				return_error("minishell: export: not a valid identifier\n", 1);
-				ret = 1;
-			}
+			if (check_valid_identifier(cmd_vector[i]))
+				return (1);
 			else
 				add_variable(env_list, ft_strdup(cmd_vector[i]), 2);
 			i++;
 		}
 	}
-	return (ret);
+	return (0);
 }

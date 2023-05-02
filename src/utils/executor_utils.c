@@ -6,36 +6,36 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 13:39:37 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 14:33:18 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "executor.h"
 
-int	here_doc(t_pipe *pipeline, t_node *here_redirect)
-{
-	int		here_pipe[2];
-	char	*line_read;
-	char	*line;
-	t_node	*tokens;
+// int	here_doc(t_pipe *pipeline, t_node *here_redirect)
+// {
+// 	int		here_pipe[2];
+// 	char	*line_read;
+// 	char	*line;
+// 	t_node	*tokens;
 
-	line = NULL;
-	if (pipe(here_pipe) == -1)
-		exit_error("here_pipe fail", errno);
-	while (1)
-	{
-		line_read = get_input(pipeline->pipe_argv->env_list, "PS2", 0);
-		if (!ft_strcmp(line_read, here_redirect->content))
-			break ;
-		tokens = lexer(line_read, " \n");
-		line = parse_heredoc(tokens, here_redirect);
-		ft_putstr_fd(line, here_pipe[1]);
-		free(line);
-	}
-	close(here_pipe[1]);
-	return (here_pipe[0]);
-}
+// 	line = NULL;
+// 	if (pipe(here_pipe) == -1)
+// 		exit_error("here_pipe fail", errno);
+// 	while (1)
+// 	{
+// 		line_read = get_input(pipeline->pipe_argv->env_list, "PS2", 0);
+// 		if (!ft_strcmp(line_read, here_redirect->content))
+// 			break ;
+// 		tokens = lexer(line_read, " \n");
+// 		line = parse_heredoc(tokens, here_redirect);
+// 		ft_putstr_fd(line, here_pipe[1]);
+// 		free(line);
+// 	}
+// 	close(here_pipe[1]);
+// 	return (here_pipe[0]);
+// }
 
 char	**build_cmd_args(t_node **argv, int argc)
 {
@@ -172,7 +172,7 @@ int	check_builtins_curr_env(t_smpl_cmd *cmd)
 		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0)
 		{
 			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
-			g_exit_status = (built[i](cmd_args, cmd->env_list));
+			g_exit_status = built[i](cmd_args, cmd->env_list);
 			ft_free_array(cmd_args);
 			return (1);
 		}
