@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 16:51:48 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 17:58:52 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ pid_t	ft_fork(pid_t pid)
 	pid = fork();
 	if (pid == -1)
 	{
-		exit_error("minishell: fork", 1); //keep inminishell?
+		exit_error("minishell: fork", 128); //keep inminishell?
 		return (-1);
 	}
 	return (pid);
