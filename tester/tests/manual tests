@@ -32,3 +32,6 @@ $SHVL
 
 printf '#include <unistd.h>\nint main(){write(1, \"1\\n\", 2);}' > tester/output/test.c
 gcc tester/output/test.c -o tester/output/a.out && ./tester/output/a.out
+
+rm -rf "tmp_test_folder"
+mkdir "tmp_test folder"

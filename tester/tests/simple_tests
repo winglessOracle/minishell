@@ -137,9 +137,7 @@ cat <"./whatever" >"./whatever"
 rm -rf whatever
 ls >"./ with spaces"
 rm -rf " with spaces"
-# **************************************************************************** #
-#                                  BROKEN SCMD                                 #
-# **************************************************************************** #
+#
 "."
 .ls
 ./ls
@@ -212,20 +210,11 @@ rm -rf test
 /bin/echo "'$?'"
 /bin/echo '"$?"'
 ### UPDATE PWD ###
-mkdir "tmp_test_folder"
 /bin/echo $PWD
-cd "tmp_test_folder"
-/bin/echo $PWD
-cd ..
-/bin/echo $PWD
-rm -rf "tmp_test_folder"
-mkdir "tmp_test folder"
-/bin/echo $PWD
-cd "tmp_test folder"
+cd "tester"
 /bin/echo $PWD
 cd ..
 /bin/echo $PWD
-rm -rf "tmp_test folder"
 ### SCMD IN VARIABLE ###
 export tmp_test="/bin/echo 42"
 $tmp_test

@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 16:05:56 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 16:51:48 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 	}
 	else
 		exec_default(cmd_args, pipe_argv, env_list, env);
-	exit_error("minishell: command not found", 127);
+	exit_error("minishell", 127);
 }
 
 void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
@@ -184,10 +184,9 @@ pid_t	ft_fork(pid_t pid)
 	pid = fork();
 	if (pid == -1)
 	{
-		return_perror("minishell", -1);
+		exit_error("minishell: fork", 1); //keep inminishell?
 		return (-1);
 	}
-		// exit_error("fork fail", errno);
 	return (pid);
 }
 
@@ -207,11 +206,10 @@ void		executor(t_pipe *pipeline)
 	int			keep;
 	int			i;
 	char		buffer[128];
-	int			check_built;
+	int			exit_set;
 
-	check_built = 0;
+	exit_set = 0;
 	i = 0;
-	check_built = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);
@@ -220,14 +218,12 @@ void		executor(t_pipe *pipeline)
 	while (pipeline && pipeline->pipe_argv)
 	{
 		if (pipeline->pipe_argc == 1)
-			check_built = assign_one(pipeline);
-		if (check_built == 1)
+			exit_set = assign_one(pipeline);
+		if (exit_set == 1)
 			break ;
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
 		pid[i] = ft_fork(pid[i]);
-		if (pid[i] == -1)
-			break ;
 		redirect(pipeline->pipe_argv, pid[i], keep, fd_pipe);
 		assignments(pipeline->pipe_argv, pid[i]);
 		if (pid[i] == 0)
@@ -246,6 +242,6 @@ void		executor(t_pipe *pipeline)
 		pipeline->pipe_argv = pipeline->pipe_argv->next;
 		i++;
 	}
-	if (check_built == 0)
+	if (exit_set == 0)
 		set_exit_st(pipeline->pipe_argc, pid);
 }
