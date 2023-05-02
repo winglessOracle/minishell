@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/02 16:26:41 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/02 17:57:48 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	expand_var(t_node **token, t_smpl_cmd *cmd)
 int	expand(t_node **token, t_smpl_cmd *cmd)
 {
 	t_node	*words;
+	char	*str;
 
 	if (count_quotes((*token)->content, '\'') % 2 || count_quotes((*token)->content, '\'') % 2)
 		merge_quoted(token, cmd);
@@ -83,6 +84,17 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 			}
 			(*token)->content = ft_strjoin_free_s1((*token)->content, words->content);
 			remove_node(&words, cmd);
+		}
+	}
+	if ((*token)->content && (*token)->type == EXPAND)
+	{
+		str = get_variable(cmd->env_list, "IFS");
+		if (str)
+		{
+			words = split_to_list((*token)->content, str);
+			remove_node(token, cmd);
+			lstinsert_lst(token, words);
+			free(str);
 		}
 	}
 	return (0);
