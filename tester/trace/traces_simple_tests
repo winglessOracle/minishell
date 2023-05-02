@@ -34,3 +34,15 @@
 
 
 		command=> ../../../../../../../../../../../bin/ls
+
+
+		command=> < Makefile cat | > tester/output/thisfile
+
+
+		command=> cat tester/output/thisfile
+
+
+		command=> < Makefile | cat >  tester/output/thisfile2
+
+
+		command=> cat tester/output/thisfile2

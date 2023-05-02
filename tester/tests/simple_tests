@@ -1,13 +1,32 @@
 ls
+
 pwd
+
 $LESS$VAR
+
 |
+
 ls |
+
 | ls
+
 ls | ls
+
 ls
+
 ../ls
+
 ./ls
+
 /ls
+
 ../../../../../../../../../../../bin/ls
-< Makefile cat | > mmmm
+
+< Makefile cat | > tester/output/thisfile
+
+cat tester/output/thisfile
+
+< Makefile | cat >  tester/output/thisfile2
+
+cat tester/output/thisfile2
+

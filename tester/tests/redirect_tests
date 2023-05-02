@@ -1,5 +1,4 @@
 < Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
-# exit > hoi
 
 <idonotexist | echo moretext >./tester/output/TMP2
 

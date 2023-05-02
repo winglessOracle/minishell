@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 10:06:02 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 10:37:33 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,6 +214,7 @@ void	read_heredocs(t_pipe *pipeline)
 // 		close (fd_pipe[1]);
 // 		execute_exit(NULL, cmd->env_list);
 // 	}
+// 	return ;
 // }
 
 void		executor(t_pipe *pipeline)
@@ -226,8 +227,6 @@ void		executor(t_pipe *pipeline)
 	char		buffer[128];
 
 	cmd = pipeline->pipe_argv;
-	if (!pipeline)
-		return ;
 	i = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)
