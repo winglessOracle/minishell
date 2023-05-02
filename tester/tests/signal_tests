@@ -1,8 +1,21 @@
-kill -SUSP
-kill -SIGQUIT
-kill -SIGKILL
-kill _SIGTERM
+#SUSP ^Z
+#QUIT ^\
+#INTR ^C
+#KILL ^U
+#ERASE ^H
+#EOF ^D
 
-kill -INT
-kill -INT
-kill -STP
+# trap 'echo SIGINT detected' SIGINT
+# sleep 10
+# kill -SIGSTOP 
+# kill -SIGCONT
+# kill -SIGQUIT 
+# KILL -EOF
+# KILL -SIPIPE 
+# cat - 
+# KILL -SIGINT
+# cat -
+# kill -SIGQUIT 
+
+
+# exit tests

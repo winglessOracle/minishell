@@ -33,7 +33,6 @@ The corresponding letters are:
 ## Output
 
 The script generates two output files for each test: "bash_output" and "minishell_output". The output of each command is written to these files, along with the exit code and the command itself. If the output of the minishell and Bash differ, the script writes the command and the delta to a trace file.
-
 The trace files are located in the "trace" folder and are named "traces_[test_name]".
 
 ## OS Checker
@@ -43,5 +42,9 @@ The script automatically detects the operating system and adjusts the sed comman
 ## Cleanup and Error Handling
 
 The script cleans up the output and trace folders before each execution of the code. The `-c` flag can be passed to clean up all output files.
-
 The script also includes a commented-out `trap` command that can be used to ensure that the temporary directory is always cleaned up if the script crashes.
+
+## CODAM notes for eval
+Redirects to exisiting files in MacOs are not allowed default. In other Linus systems this is not the case. 
+we choose to take the Linux approach and allow overwriting existing files. To modify the behaviour in bash to meet our version
+change the noclobber setting: 'set +o noclobber'.

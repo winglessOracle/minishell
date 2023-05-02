@@ -11,6 +11,7 @@ mkdir -p ./tester/output; mkdir -p ./tester/trace
 trace=false
 clean=false
 error=true
+signal=false
 
 tests_ok=0
 tests_ko=0
@@ -44,9 +45,10 @@ execute_command (){
 	shell=$1
 	command=$2
 	output=$($shell <<EOF
-        $command
+    $command
 EOF
 	)
+
 	exitcode=$?
 	printf "Command: $command\n" >> ./tester/output/${shell}_output
 	printf "Output:\n$output\n" >> ./tester/output/${shell}_output
@@ -102,9 +104,8 @@ for arg in "$@"; do
 	fi
 	done
 
-if [ $# -eq 0 ] || ( [ $# -ge 1 ] && [ $# -le 3 ] && \
-	[[ "$1" == "-v" || "$1" == "-c" || "$1" == "-e" || "$2" == "-v" || "$2" == "-c" \
-	|| "$2" == "-e" || "$3" == "-v" || "$3" == "-c" || "$3" == "-e" ]] ); then
+if [ $# -eq 0 ] || \
+	( [ $# -eq 1 ] && [[ "$1" == "-v" || "$1" == "-c" || "$1" == "-e" ]] ); then
     echo "Running all tests..."
     file_name="tester/tests/simple_tests";    run_tests
     file_name="tester/tests/quote_tests";     run_tests
@@ -133,7 +134,9 @@ for arg in "$@"; do
 	elif [ "$arg" == "h" ]; then
 		file_name="tester/tests/here_doc_tests";	run_tests;
 	elif [ "$arg" == "z" ]; then
-		file_name="tester/tests/signal_tests";		run_tests;
+		file_name="tester/tests/signal_tests";
+		signal=true; 								run_tests;
+		signal=false
 	elif [ "$arg" == "c" ]; then
 		file_name="tester/tests/cond_pipe_tests";	run_tests;
 	elif [ "$arg" == "w" ]; then

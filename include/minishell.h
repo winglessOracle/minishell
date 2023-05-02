@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/26 14:20:58 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/02 12:00:46 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # else
 #  define  LEXER_SPLIT ";|<> \t\n"
 # endif
+
+# define MAX_INPUT_LEN 2056
 
 extern int	g_exit_status;
 

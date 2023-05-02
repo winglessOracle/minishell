@@ -1,9 +1,9 @@
 SIGNAL	cat - [ PRESS CTRL + C ]	Should exit cat prompt					130
-SIGNAL	cat - [ PRESS CTRL + \ ]	Should exit cat prompt					131
+SIGNAL	cat - [ PRESS CTRL + \ ]	do nothing but give a new promt line?	0
 SIGNAL	cat - [ PRESS CTRL + D ]	Should exit cat prompt					0
 SIGNAL	cat | cat | ls [ PRESS CTRL + C ]	Should exit cat prompt			0
 SIGNAL	cat | cat | ls [ PRESS CTRL + D ]	Should exit cat prompt			0
-SIGNAL	cat | cat | ls [ PRESS CTRL + \ ]	Should exit cat prompt			0
+SIGNAL	cat | cat | ls [ PRESS CTRL + \ ]	do nothing except a new promt	0 
 
 BUILTIN/EXIT	exit 22 blabla	"Displays exit in terminal 
 								bash: exit: too many arguments
