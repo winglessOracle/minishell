@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/02 13:18:42 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/02 15:09:29 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,17 @@ int	check_valid_identifier(char *str)
 	int	i;
 	
 	i = 0;
-	while (str[i] && (str[i] != '=' && (ft_isalpha(str[i]) || str[i] == '_')))
-		i++;
-	if (str[i] && str[i] != '=' && !(ft_isalpha(str[i]) || str[i] == '_'))
+	if (!str[i] || str[0] == '=' || (!ft_isalpha(str[i]) && str[i] != '_'))
 		return (return_error("minishell: not a valid identifier\n", 1));
+	else
+	{
+		while (str[i])
+		{
+			if (!ft_isalpha(str[i]) && !ft_isdigit(str[i]) && str[i] != '_' && str[i] != '=')
+				return (return_error("minishell: not a valid identifier\n", 1));
+			i++;
+		}
+	}
 	return (0);
 }
 

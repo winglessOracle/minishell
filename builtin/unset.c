@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 20:02:30 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/02 13:28:53 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/02 15:10:35 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,22 +51,29 @@ int	remove_var(t_node *temp, t_node *prev, char *name)
 int	execute_unset(char **cmd_vector, t_node *env_list)
 {
 	int		i;
+	int		j;
 	char	*name;
 	t_node	*temp;
 	t_node	*prev;
 
 	i = 1;
+	j = 0;
 	while (cmd_vector[i])
 	{
 		temp = env_list;
+		if (cmd_vector[i][0] == '-' && cmd_vector[i][1])
+			return (return_error("minishell: unset: invallid option\n", 2));
+		if (check_valid_identifier(cmd_vector[i]))
+			return (1);
+		while (cmd_vector[i][j])
+		{
+			if (cmd_vector[i][j] == '=')
+				return (return_error("minishell: not a valid identifier\n", 1));
+			j++;
+		}
 		while (temp && temp->content)
 		{
 			name = get_name(temp->content);
-			if (check_valid_identifier(name))
-			{
-				// printf("invallid arg\n");
-				return (1);
-			}
 			if (!ft_strcmp(cmd_vector[i], name))
 			{
 				if (remove_var(temp, prev, name))
