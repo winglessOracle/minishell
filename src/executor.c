@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/01 18:44:02 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/02 09:48:49 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,6 +200,25 @@ void	read_heredocs(t_pipe *pipeline)
 	}
 }
 
+// void	exec_child(pid_t pid, t_smpl_cmd *cmd, int keep, int fd_pipe[2])
+// {
+// 	char	buffer[128];
+
+// 	if (pid == 0)
+// 	{
+// 		if (cmd->cmd_argc > 0)
+// 			exec_cmd(cmd, cmd->env_list);
+// 		else
+// 		{
+// 			while (read(keep, buffer, 128 ))
+// 				printf("%.128s", buffer);
+// 			close (keep);
+// 			close (fd_pipe[1]);
+// 			execute_exit(NULL, cmd->env_list);
+// 		}
+// 	}
+// }
+
 void		executor(t_pipe *pipeline)
 {
 	pid_t		pid[pipeline->pipe_argc];
@@ -233,6 +252,7 @@ void		executor(t_pipe *pipeline)
 			exit_error("fork fail", errno);
 		redirect(cmd, pid[i], keep, fd_pipe);
 		assignments(cmd, pid[i]);
+		// exec_child(pid[i], cmd, keep, fd_pipe);
 		if (pid[i] == 0)
 		{
 			if (cmd->cmd_argc > 0)
@@ -251,3 +271,4 @@ void		executor(t_pipe *pipeline)
 	}
 	set_exit_st(pipeline->pipe_argc, pid);
 }
+

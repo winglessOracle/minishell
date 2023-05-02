@@ -1,0 +1,9 @@
+
+
+		command=> echo *
+
+
+		command=> echo *ke*
+
+
+		command=> cat *ke*
