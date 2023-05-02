@@ -169,4 +169,5 @@ printf "\t\e[31m%d KO!\e[0m\n" $tests_ko
 if [ "$clean" == true ]; then
 	rm -rf ./tester/output
 	rm -rf ./tester/trace
+	echo "" > log/history_log
 fi
