@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/01 18:17:34 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/02 08:31:23 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,16 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 	words = split_to_list((*tokens)->content, "\'\" ");
 	while (words)
 	{
-		// print_tokens(words, "in split quotes\n");
+		// print_tokens(words, "in split quoted\n");
 		if (words->content[0] == quote)
 		{
+			// printf("quote: %c\n", quote);
 			quote_open = 1;
 			remove_node(&words, cmd);
 		}
 		while (words && words->content[0] != quote)
 		{
-			// printf("1. str content: %s\n", content);
+			// printf("1. str content: %s, quote open: %d\n", content, quote_open);
 			if (!quote_open)
 				words->type = WORD;
 			else
@@ -68,7 +69,7 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 			// printf("2. str content: %s, type: %d\n", content, words->type);
 			if (!ft_strcmp(words->content, "$") && words->next && !quote_open)
 				expand_var(&words, cmd);
-			while (words->type && words->type < 13)
+			if (words->type && words->type < 13)
 			{
 				// printf("expand sub: %d\n", words->type);
 				words->type = expand_sub(&words, cmd);
@@ -97,22 +98,43 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 	return (0);
 }
 
-int	count_quotes(char *str, char quote)
+int	count_quotes(char *str, char quote1)
 {
-	int	i;
-	int	nr_quotes;
-
-	nr_quotes = 0;
+	int		i;
+	int		nr_1;
+	int		nr_2;
+	int		quotes;
+	char	quote2;
+	
+	nr_1 = 0;
+	nr_2 = 0;
+	// printf("quote 1 is: %c\n", quote1);
+	// printf("str in count quotes: %s\n", str);
+	if (quote1 == '\'')
+		quote2 = '\"';
+	else
+		quote2 = '\'';
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] == quote)
-			nr_quotes++;
+		// printf("str[i]: %c\n", str[i]);
+		if (str[i] == quote1 && !((nr_2 % 2)))
+		{
+			// printf("quote 1\n");
+			nr_1++;
+		}
+		if (str[i] == quote2 && !(nr_1 % 2))
+		{
+			// printf("quote 2\n");
+			nr_2++;
+		}
 		i++;
 	}
-	// printf ("nr_quotes returned: %d\n", nr_quotes);
-	return (nr_quotes);
+	quotes = (nr_1 + nr_2) % 2;
+	// printf ("nr_quotes returned: %d\n", quotes);
+	return (quotes);
 }
+
 void	remove_double_quotes(t_node  **token, char quote)
 {
 	int	i;
@@ -151,18 +173,18 @@ int	merge_quoted(t_node **token, t_smpl_cmd *cmd)
 	// print_tokens(*token, "before merge quotes\n");
 	while (*token && (*token)->next)
 	{
-		remove_double_quotes(token, quote);
+		// remove_double_quotes(token, quote);
 		if (!(count_quotes((*token)->content, quote) % 2))
 			break ;
 		merge_tokens(*token, type);
 		// printf("token content in merge tokens: %s\n", (*token)->content);
 	}
-	type = check_token_content(*token, WORD);
-	if (type != (*token)->type)
-		return (type);
-	// print_tokens(*token, "after merge quotes\n");
-	if (!*token || ((count_quotes((*token)->content, quote) % 2)))
+	if (*token && count_quotes((*token)->content, quote) % 2)
 		return(syntax_error(token, cmd, "unclosed quotes\n", 1));
+	// type = check_token_content(*token, WORD);
+	// if (type != (*token)->type)
+	// 	return (type);
+	// print_tokens(*token, "after merge quotes\n");
 	// printf("merge quotes: before split and remove quotes: %s\n", (*token)->content);
 	split_and_remove_quotes(token, cmd);
 	(*token)->type = type;

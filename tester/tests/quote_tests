@@ -118,7 +118,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci ne
 /bin/echo '""'""'""""$USER""""'""'""'
 /bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
 /bin/echo test1            test2
-echo "-"$T$T
+echo "-"$A$T
 echo $T'o'
 echo $T'o '
 echo '$'$'$'$'$'
@@ -139,3 +139,6 @@ echo $/"$/"
 /bin/echo ""'totally logical'""
 echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn'$T' '-'"$T "
 $T.
+echo $"'HOM'E"$USER
+"          "
+"                  "
