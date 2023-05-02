@@ -68,7 +68,6 @@ pwd
 /bin/rm -rf out2
 /bin/rm -rf out3
 /bin/rm -rf out4
-> out
 /bin/rm -rf out
 < out
 /bin/rm -rf out
