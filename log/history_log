@@ -3578,3 +3578,7 @@ exit
 exit
 << |
 exit
+env
+./minishell 
+env
+exit

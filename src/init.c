@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:05:51 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/02 11:55:12 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/03 10:22:42 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ t_node	*init_env(void)
 {
 	t_node	*env_list;
 	char	*temp;
+	int		level;
 
 	g_exit_status = 0;
 	env_list = environ_to_list();
@@ -25,6 +26,15 @@ t_node	*init_env(void)
 	temp = get_variable(env_list, "HOME");
 	add_variable(env_list, ft_strjoin("~=", temp), 1);
 	free(temp);
+	temp = get_variable(env_list, "SHLVL");
+	if (temp)
+	{
+		level = ft_atoi_long(temp);
+		free(temp);
+		temp = ft_itoa(level + 1);
+		add_variable(env_list, ft_strjoin("SHLVL=", temp), 2);
+		free(temp);
+	}
 	return (env_list);
 }
 
