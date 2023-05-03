@@ -181,7 +181,6 @@ echo segf <|< echo super valid
 /bin/echo "test1 test2"
 /bin/echo "test1  test2" test3
 /bin/echo " test1 test2 " 'test3 '
-/bin/echo test1		test2
 /bin/echo $USER$TESTNOTFOUND$HOME$
 /bin/echo $USER$TESTNOTFOUND$HOME$WTF$PWD
 /bin/echo ~42

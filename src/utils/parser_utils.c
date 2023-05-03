@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/02 16:20:08 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/03 11:56:12 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,12 @@ int	set_cmd_end(t_node **token, t_smpl_cmd *cmd, t_list *list)
 		remove_node(token, cmd);
 		if (!(*token) || !ft_strncmp((*token)->content, "|", 1))
 			return (syntax_error(token, cmd, "no command after '|'\n", -1));
+		if (cmd->cmd_argv == NULL && cmd->redirect == NULL \
+													&& cmd->assign == NULL)
+			return (syntax_error(token, cmd, "syntax error\n", -1));
+	}
+	if (*token && (!ft_strcmp((*token)->content, ";") || !ft_strcmp((*token)->content, "&") || !ft_strcmp((*token)->content, "&&")))
+	{
 		if (cmd->cmd_argv == NULL && cmd->redirect == NULL \
 													&& cmd->assign == NULL)
 			return (syntax_error(token, cmd, "syntax error\n", -1));
