@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/01 11:53:27 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/03 13:56:57 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,29 @@ int	go_to_var(t_node *env_list, char *arg, char *var)
 	char	*value;
 	char	*str;
 
+	value = NULL;
 	if (arg[0] == '-' && ft_strcmp(arg, "-"))
 	{
-		ft_putstr_fd("minishell: cd: invalid option\n", 2);
-		return (1);
+		if (!ft_strcmp(arg, "--"))
+		{
+			value = get_variable(env_list, "HOME");
+			var = NULL;
+		}
+		else
+		{
+			ft_putstr_fd("minishell: cd: invalid option\n", 2);
+			return (1);
+		}
 	}
-	value = get_variable(env_list, var);
+	if (!value)
+		value = get_variable(env_list, var);
 	if (!value)
 	{
 		str = ft_strjoin(var, " not set\n");
-		ft_putstr_fd(ft_strjoin("minishell: cd: ", str), 2);
+		if (ft_strcmp(var, "OLDPWD"))
+			ft_putstr_fd(ft_strjoin("minishell: cd: ", str), 2);
+		else
+			printf("\n");
 		free(str);
 		return (1);
 	}

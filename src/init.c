@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:05:51 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/03 10:22:42 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/03 13:55:20 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_node	*init_env(void)
 		add_variable(env_list, ft_strjoin("SHLVL=", temp), 2);
 		free(temp);
 	}
+	add_variable(env_list, ft_strjoin("OLDPWD", ""), 2);
 	return (env_list);
 }
 
