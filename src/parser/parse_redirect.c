@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   redirect_utils.c                                   :+:    :+:            */
+/*   parse_redirect.c                                   :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/03 10:15:51 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/03 16:28:21 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,14 @@ int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
 	state = get_redirect_type(tokens, cmd);
 	if (state == -1)
 		return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
-	if ((*tokens)->type == PIPE_END || (*tokens)->type == AND || (*tokens)->type == OR)
+	if (((*tokens)->type == PIPE_END || (*tokens)->type == AND || (*tokens)->type == OR) \
+			&& state != OUTPUT)
 			return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
+	if (((*tokens)->type == PIPE_END || (*tokens)->type == AND || (*tokens)->type == OR) \
+			&& state == OUTPUT)
+		remove_node(tokens, cmd);
+	while (*tokens && (*tokens)->type == BLANK)
+		remove_node(tokens, cmd);
 	(*tokens)->type = check_token_content(*tokens, WORD);
 	if (state == HEREDOC && ((*tokens)->type == SQUOTE || (*tokens)->type == DQUOTE))
 		state = HEREDOCQ;
