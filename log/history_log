@@ -3570,3 +3570,11 @@ exit
 exit
  << 'here' cat
 exit
+<<
+<< |
+exit
+exit
+<< |
+exit
+<< |
+exit
