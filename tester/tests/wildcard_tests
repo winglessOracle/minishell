@@ -1,29 +1,29 @@
 echo *
-# cat *
+cat *
 echo *ke*
 cat *ke*
-# cat *ke* tester
-/usr/bin/printf "%s\n" "Mak"'e'*'*' | sort
-/usr/bin/printf "%s\n" "Mak"'e'** | sort
-/usr/bin/printf "%s\n" ***"Mak"'e'** | sort
-/usr/bin/printf "%s\n" "."* | sort
-/usr/bin/printf "%s\n" *"." | sort
-/usr/bin/printf "%s\n" *"."* | sort
-/usr/bin/printf "%s\n" "*" | sort
-/usr/bin/printf "%s\n" '*' | sort
-/usr/bin/printf "%s\n" Minishe*l | sort
-/usr/bin/printf "%s\n" minishe*l | sort
-touch minishelxxxl ; /usr/bin/printf "%s\n" minishe*l | sort ; /usr/bin/printf "%s\n" minishel*l | sort ; /usr/bin/printf "%s\n" minishelxxx*l | sort ; /usr/bin/printf "%s\n" minishel*xxx*l | sort ; rm minishelxxxl
+cat *ke* tester
+echo "Mak"'e'*'*' | sort
+echo "Mak"'e'** | sort
+echo ***"Mak"'e'** | sort
+echo "."* | sort
+echo *"." | sort
+echo *"."* | sort
+echo "*" | sort
+echo '*' | sort
+echo Minishe*l | sort
+echo minishe*l | sort
+touch minishelxxxl ; /echo minishe*l | sort ; echo minishel*l | sort ; echo minishelxxx*l | sort ; echo minishel*xxx*l | sort ; rm minishelxxxl
 touch tmp_out ; /bin/echo 42 >tmp_o*t* ; rm -f "tmp_out*" 
 touch tmp_out1 ; touch tmp_out2 ; /bin/echo 42 >tmp_out* ; rm -f "tmp_out*"
-/usr/bin/printf "%s\n" * | sort
+echo * | sort
 export ARG="*"
-/usr/bin/printf "%s\n" $ARG | sort
+echo $ARG | sort
 ls *
 ls 'test'*
 ls "test"*
-touch "*1" ; /usr/bin/printf "%s\n" "*"* | sort ; rm "*1"
+touch "*1" ; echo "*"* | sort ; rm "*1"
 touch "   " ; ls * | grep "   " ; rm "   "
-touch "a" "aa" ; /usr/bin/printf "%s\n" *a | sort ; rm "a" "aa"
-touch "a" "aa" "aaa" ; /usr/bin/printf "%s\n" *a*a | sort ; rm "a" "aa" "aaa"
+touch "a" "aa" ; echo *a | sort ; rm "a" "aa"
+touch "a" "aa" "aaa" ; echo *a*a | sort ; rm "a" "aa" "aaa"
 
