@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 17:58:52 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/03 08:56:51 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,16 +179,6 @@ void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 // 	}
 // }
 
-pid_t	ft_fork(pid_t pid)
-{
-	pid = fork();
-	if (pid == -1)
-	{
-		exit_error("minishell: fork", 128); //keep inminishell?
-		return (-1);
-	}
-	return (pid);
-}
 
 int	assign_one(t_pipe *pipeline)
 {
@@ -205,7 +195,6 @@ void		executor(t_pipe *pipeline)
 	int			fd_pipe[2];
 	int			keep;
 	int			i;
-	char		buffer[128];
 	int			exit_set;
 
 	exit_set = 0;
@@ -223,7 +212,9 @@ void		executor(t_pipe *pipeline)
 			break ;
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
-		pid[i] = ft_fork(pid[i]);
+		pid[i] = fork();
+		if (pid[i] == -1)
+			exit_error("fork fail", errno);
 		redirect(pipeline->pipe_argv, pid[i], keep, fd_pipe);
 		assignments(pipeline->pipe_argv, pid[i]);
 		if (pid[i] == 0)
@@ -231,13 +222,7 @@ void		executor(t_pipe *pipeline)
 			if (pipeline->pipe_argv->cmd_argc > 0)
 				exec_cmd(pipeline->pipe_argv, pipeline->pipe_argv->env_list);
 			else
-			{
-				while (read(keep, buffer, 128 ))
-					printf("%.128s", buffer);
-				close (keep); //need this?
-				close (fd_pipe[1]); //need this?
 				execute_exit(NULL, pipeline->pipe_argv->env_list);
-			}
 		}
 		pipeline->pipe_argv = pipeline->pipe_argv->next;
 		i++;
