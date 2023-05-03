@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 19:37:37 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/02 14:01:04 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/03 14:32:27 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@ int	execute_exit(char **cmd_vector, t_node *env_list)
 {
 	int		exit_code;
 	int		i;
-	int j	= 0;
+	int		j;
 
 	i = 0;
+	j = 0;
 	exit_code = 0;
 	while (cmd_vector[i])
 		i++;
