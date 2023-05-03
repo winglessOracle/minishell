@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/05/03 14:54:20 by ccaljouw      ########   odam.nl          #
+#    Updated: 2023/05/03 15:26:25 by ccaljouw      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,11 +35,12 @@ INCLUDE		= ./include
 LIBFT		= ./libft
 LIBS		= $(LIBFT)/libft.a -L$(RL_LIB)
 HEADERS		= -I $(LIBFT) -I$(INCLUDE) -I$(RL_INC)
-OBJ_FILES	= $(addprefix obj/, minishell.o lst_utils/t_node.o parser.o utils/utils.o lst_utils/t_smpl_cmd.o \
-				lexer.o utils/env_utils.o init.o print.o lst_utils/node.o utils/parser_utils.o \
-				utils/redirect_utils.o utils/quote_utils.o expander.o signals.o termios.o \
-				lst_utils/delete.o executor.o utils/executor_utils.o utils/wildcards.o utils/cond_pipe.o \
-				utils/cond_pipe_utils.o utils/check_syntax_utils.o lst_utils/t_pipe.o utils/expand_var_utils.o)
+OBJ_FILES	=  $(addprefix obj/src/, minishell.o lst_utils/t_node.o utils/utils.o lst_utils/t_smpl_cmd.o \
+				lexer.o utils/env_utils.o init.o print.o lst_utils/node.o signals.o termios.o \
+				lst_utils/delete.o lst_utils/t_pipe.o ) \
+				$(addprefix obj/src/parser/, parser.o parser_utils.o parse_redirect.o quotes.o cond_pipe.o cond_pipe_utils.o check_syntax.o ) \
+				$(addprefix obj/src/expander/, expander.o expand_var_utils.o wildcards.o ) \
+				$(addprefix obj/src/executor/, executor.o executor_utils.o ) \
 
 OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o cd.o cd_utils.o cd_utils2.o pwd.o unset.o export.o env.o exit.o)
 
@@ -55,7 +56,7 @@ bonus: fclean all
 libft:
 	@$(MAKE) -C $(LIBFT)
 
-$(OBJ_FILES): obj/%.o: src/%.c 
+$(OBJ_FILES): obj/%.o: %.c 
 	@mkdir -p $(dir $@)
 	@echo "$(GREEN)$(BOLD)Compiling minishell:$(RESET) $(notdir $<)"
 	@$(CC) -c $(CFLAGS) $(HEADERS) -o $@ $< 
