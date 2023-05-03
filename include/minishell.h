@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/03 11:08:04 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/03 11:46:17 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "lexer.h"
 # include "sigterm.h"
+# include <sys/stat.h>
 # include <string.h>
 # include <stdio.h>
 # include <errno.h>
