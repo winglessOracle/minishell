@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/02 12:00:46 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/03 09:37:35 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ t_list		*init_list(void);
 // parser
 void		parse_and_execute(t_node *tokens, t_node *env_list);
 t_pipe		*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list);
-char		*parse_heredoc(t_node *token, t_node *here_redirect);
+char		*parse_heredoc(t_node *token, t_node *here_redirect, t_smpl_cmd *cmd);
 int			check_token_content(t_node *token, int type);
 
 // environment
@@ -142,7 +142,7 @@ void		set_exit_st(int argc, pid_t *pid);
 char		**get_env(t_node *env_list);
 void		check_built(t_smpl_cmd *cmd);
 int			check_builtins_curr_env(t_smpl_cmd *cmd);
-int			here_doc(t_pipe *pipeline, t_node *here_redirect);
+int			here_doc(t_pipe *pipeline, t_node *here_redirect, t_smpl_cmd *cmd);
 
 //tests
 void		leaks(void);

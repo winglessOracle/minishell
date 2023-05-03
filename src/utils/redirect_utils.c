@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/02 11:51:07 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/03 10:06:58 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
 {
 	int					state;
-	// int					type;
 	static t_function	*parse[16];
 
 	(void)list;
@@ -88,25 +87,19 @@ int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
 	if (state == -1)
 		return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
 	(*tokens)->type = check_token_content(*tokens, WORD);
-	// print_tokens(*tokens, "in redirect\n");
+	if (state == HEREDOC && ((*tokens)->type == SQUOTE || (*tokens)->type == DQUOTE))
+		state = HEREDOCQ;
 	if ((*tokens)->type == COMMENT)
 		(*tokens)->type = parse[(*tokens)->type](tokens, cmd);
 	while (*tokens && (*tokens)->type == BLANK)
 		remove_node(tokens, cmd);
-	(*tokens)->type = check_token_content(*tokens, WORD);
-	if (((*tokens)->content[0] == '|' || (*tokens)->content[0] == '&') && state != OUTPUT)
-		return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
-	if (((*tokens)->content[0] == '|' || (*tokens)->content[0] == '&') && state == OUTPUT)
+	if (*tokens)
 	{
-		remove_node(tokens, cmd);
-		while ((*tokens)->type != WORD)
-			remove_node(tokens, cmd);
-		// print_tokens(*tokens, "after remove pipe\n");
+		(*tokens)->type = check_token_content(*tokens, WORD);
+		if ((*tokens)->type != WORD)
+			(*tokens)->type = parse[(*tokens)->type](tokens, cmd);
+		(*tokens)->type = state;
+		lstadd_back(&cmd->redirect, lstpop(tokens));
 	}
-	if ((*tokens)->type != WORD)
-		(*tokens)->type = parse[(*tokens)->type](tokens, cmd);
-	// printf("2. content: %s, type: %d, redirect type: %d\n", (*tokens)->content, (*tokens)->type, state);
-	(*tokens)->type = state;
-	lstadd_back(&cmd->redirect, lstpop(tokens));
 	return (0);
 }

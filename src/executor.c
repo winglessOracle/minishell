@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 13:28:41 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/03 10:06:00 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,28 +177,28 @@ void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 	}
 }
 
-// void	read_heredocs(t_pipe *pipeline)
-// {
-// 	t_smpl_cmd	*tcmd;
-// 	t_node		*tredirect;
+void	read_heredocs(t_pipe *pipeline)
+{
+	t_smpl_cmd	*tcmd;
+	t_node		*tredirect;
 
-// 	tcmd = pipeline->pipe_argv;
-// 	while (tcmd)
-// 	{
-// 		tredirect = tcmd->redirect;
-// 		while (tredirect)
-// 		{
-// 			if (tredirect->type == HEREDOC || tredirect->type == HEREDOC)
-// 			{
-// 				if (tcmd->here_doc)
-// 					close(tcmd->here_doc);
-// 				tcmd->here_doc = here_doc(pipeline, tredirect);
-// 			}
-// 			tredirect = tredirect->next;
-// 		}
-// 		tcmd = tcmd->next;
-// 	}
-// }
+	tcmd = pipeline->pipe_argv;
+	while (tcmd)
+	{
+		tredirect = tcmd->redirect;
+		while (tredirect)
+		{
+			if (tredirect->type == HEREDOC || tredirect->type == HEREDOCQ)
+			{
+				if (tcmd->here_doc)
+					close(tcmd->here_doc);
+				tcmd->here_doc = here_doc(pipeline, tredirect, tcmd);
+			}
+			tredirect = tredirect->next;
+		}
+		tcmd = tcmd->next;
+	}
+}
 
 // void	exec_child(pid_t pid, t_smpl_cmd *cmd, int keep, int fd_pipe[2])
 // {
@@ -234,7 +234,7 @@ void		executor(t_pipe *pipeline)
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);
-	// read_heredocs(pipeline);
+	read_heredocs(pipeline);
 	pid = malloc(sizeof(pid_t) * (pipeline->pipe_argc + 1));
 	while (pipeline && pipeline->pipe_argv)
 	{

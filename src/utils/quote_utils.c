@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/02 08:31:23 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/03 09:56:02 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,29 +165,38 @@ int	merge_quoted(t_node **token, t_smpl_cmd *cmd)
 {
 	int		type;
 	char	quote;
-	// int		quotes;
 
 	type = (*token)->type;
 	quote = get_quote_char((*token)->type);
-	// printf("1. before split and remove quotes: %s\n", (*token)->content);
-	// print_tokens(*token, "before merge quotes\n");
 	while (*token && (*token)->next)
 	{
-		// remove_double_quotes(token, quote);
 		if (!(count_quotes((*token)->content, quote) % 2))
 			break ;
 		merge_tokens(*token, type);
-		// printf("token content in merge tokens: %s\n", (*token)->content);
 	}
 	if (*token && count_quotes((*token)->content, quote) % 2)
 		return(syntax_error(token, cmd, "unclosed quotes\n", 1));
-	// type = check_token_content(*token, WORD);
-	// if (type != (*token)->type)
-	// 	return (type);
-	// print_tokens(*token, "after merge quotes\n");
-	// printf("merge quotes: before split and remove quotes: %s\n", (*token)->content);
 	split_and_remove_quotes(token, cmd);
 	(*token)->type = type;
-	// printf("merge quotes: after split and remove quotes: %s, token type: %d, type: %d, quotes: %d\n", (*token)->content, (*token)->type, type, quotes);
+	return (0);
+}
+
+int	merge_quoted_heredoc(t_node **token, t_smpl_cmd *cmd)
+{
+	int		type;
+	char	quote;
+
+	type = (*token)->type;
+	quote = get_quote_char((*token)->type);
+	while (*token && (*token)->next)
+	{
+		if (!(count_quotes((*token)->content, quote) % 2))
+			break ;
+		merge_tokens(*token, type);
+	}
+	if (*token && count_quotes((*token)->content, quote) % 2)
+		return(0);
+	split_and_remove_quotes(token, cmd);
+	(*token)->type = type;
 	return (0);
 }

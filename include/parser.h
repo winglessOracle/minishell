@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/01 17:39:43 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/03 09:56:19 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int		remove_quotes(t_node **token, t_smpl_cmd *cmd);
 
 // redirect_utils
 int		redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list);
+int		merge_quoted_heredoc(t_node **token, t_smpl_cmd *cmd);
 
 // cond_pipe utils
 int		set_brace(t_node **token, t_smpl_cmd *cmd, t_list *list);
