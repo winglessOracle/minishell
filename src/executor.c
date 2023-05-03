@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/03 09:16:38 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/03 10:25:19 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 	}
 	else
 		exec_default(cmd_args, pipe_argv, env_list, env);
-	exit_error("minishell", 127);
+	exit_error("minishell: executer", 127);
 }
 
 void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
@@ -91,10 +91,10 @@ int		set_out(int *fd_pipe, t_node *temp)
 	return (1);
 }
 
-void	set_in(int keep, t_node *temp)
+void	set_in(int *keep, t_node *temp)
 {
-	close (keep);
-	keep = open(temp->content, O_RDONLY);
+	close (*keep);
+	*keep = open(temp->content, O_RDONLY);
 }
 
 /*
@@ -115,7 +115,7 @@ int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 		if (temp->type == OUTPUT || temp->type == APPEND)
 			trigger = set_out(fd_pipe, temp);
 		else if (temp->type == INPUT)
-			set_in(*keep, temp);
+			set_in(keep, temp);
 		else if (temp->type == HEREDOC || temp->type == HEREDOCQ)
 		{
 			dup2(smpl_cmd->here_doc, *keep);
@@ -123,7 +123,7 @@ int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 				exit_error("dup fail", -1);
 		}
 		if (*keep == -1 || fd_pipe[0] == -1 || fd_pipe[1] == -1)
-			return (return_perror("setting file descriptor", -1));
+			return (-1);
 		temp = temp->next;
 	}
 	return (trigger);
@@ -135,7 +135,7 @@ void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 	{
 		close(fd_pipe[0]);
 		if (set_fd(cmd, &keep, fd_pipe) == -1)
-			exit_error("minishell: redirect", errno);
+			exit_error("minishell: redirect", 1);
 		dup2(keep, STDIN_FILENO);
 		if (!keep)
 			exit_error("dup fail", 1); //change
