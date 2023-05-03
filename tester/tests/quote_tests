@@ -29,7 +29,6 @@ $LESS$VAR
 cat 42 42
 echo >
 echo > <
-..
 echo | |
 EechoE
 .echo.

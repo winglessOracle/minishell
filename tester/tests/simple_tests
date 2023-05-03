@@ -236,4 +236,5 @@ rm -rf "$USER * ?eHallo"
 ./ls
 ../bin/../bin/ls
 "."
+..
 
