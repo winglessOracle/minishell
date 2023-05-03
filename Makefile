@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/05/02 19:34:28 by cariencaljo   ########   odam.nl          #
+#    Updated: 2023/05/03 11:13:53 by ccaljouw      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,9 +73,12 @@ clean:
 
 fclean: clean
 	@rm -rf $(NAME)
+	@echo "$(BLUE)Cleaning tester $(RESET)"
+	@echo "$(BLUE)Cleaning history $(RESET)"
+	@rm -rf tester/output
+	@rm -rf tester/trace
 	@rm -rf $(NAME_BONUS)
-	@rm -rf ./tester/output
-	@rm -rf ./tester/trace
+	@echo "" > log/history_log
 	@$(MAKE) -C $(LIBFT) fclean
 
 debug: CFLAGS = -Wall -Wextra

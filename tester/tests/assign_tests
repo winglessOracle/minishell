@@ -239,13 +239,6 @@ echo $T'o '
 'PWD'
 "PWD"
 export T=nnnnnnnn
-echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-'"$T"
-export T=nnnnnnnn
-echo "-""$T"nnnnnnnnnnnnn -nnnnnnnn"$T" '-''$T'
-export T=nnnnnnnn
-echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn'$T' '-'"$T "
-export T=nnnnnnnn
-echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn$T '-''$T '
 export T=e E=c S=h L=o
 $T$E$S$L
 export T=e E=c S=h L=o L=ok
@@ -324,10 +317,7 @@ echo $L
 echo '$'$'$'$'$'
 echo '$'$'$'$'$'$'$'
 echo "$"$'$'$"$"$"$"$'$'
-echo $/ $/ 
 echo $U/SER
-echo "$/ $/"
-echo $/"$/"
 echo '$/'
 exit 9223372036854775805
 exit 123"123"

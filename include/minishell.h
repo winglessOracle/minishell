@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/03 09:37:35 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/03 11:08:04 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 #  define  LEXER_SPLIT ";|<> \t\n"
 # endif
 
-# define MAX_INPUT_LEN 2056
+# define MAX_INPUT_LEN 4096
 
 extern int	g_exit_status;
 
@@ -138,7 +138,7 @@ void		print_env(t_node *env_list, int flag);
 void		assignments(t_smpl_cmd *pipe_argv, pid_t pid);
 void		executor(t_pipe *pipeline);
 char		**build_cmd_args(t_node **argv, int argc);
-void		set_exit_st(int argc, pid_t *pid);
+void		set_exit_st(int argc, pid_t *pid, int exit_set);
 char		**get_env(t_node *env_list);
 void		check_built(t_smpl_cmd *cmd);
 int			check_builtins_curr_env(t_smpl_cmd *cmd);

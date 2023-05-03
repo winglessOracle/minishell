@@ -107,19 +107,19 @@ for arg in "$@"; do
 if [ $# -eq 0 ] || \
 	( [ $# -eq 1 ] && [[ "$1" == "-v" || "$1" == "-c" || "$1" == "-e" ]] ); then
     echo "Running all tests..."
-    file_name="tester/tests/simple_tests";    run_tests
-    file_name="tester/tests/quote_tests";     run_tests
-    file_name="tester/tests/built_in_tests";  run_tests
-    file_name="tester/tests/assign_tests";    run_tests
-    file_name="tester/tests/redirect_tests";  run_tests
-    file_name="tester/tests/here_doc_tests";  run_tests
-    file_name="tester/tests/signal_tests";    run_tests
-    file_name="tester/tests/cond_pipe_tests"; run_tests
-    file_name="tester/tests/wildcard_tests";  run_tests
-	file_name="tester/tests/cd_tests";			run_tests;
-	file_name="tester/tests/export_tests";		run_tests;
-	file_name="tester/tests/unset_tests";		run_tests;
-	file_name="tester/tests/exit_tests";		run_tests;
+    file_name="tester/tests/simple_tests";			run_tests;
+    file_name="tester/tests/quote_tests";     		run_tests;
+    file_name="tester/tests/built_in_tests";  		run_tests;
+    file_name="tester/tests/assign_tests";			run_tests;
+    file_name="tester/tests/redirect_tests";		run_tests;
+    file_name="tester/tests/here_doc_tests";		run_tests;
+    file_name="tester/tests/signal_tests";			run_tests;
+    file_name="tester/tests/cond_pipe_tests";		run_tests;
+    file_name="tester/tests/wildcard_tests";		run_tests;
+	file_name="tester/tests/cd_tests";				run_tests;
+	file_name="tester/tests/export_tests";			run_tests;
+	file_name="tester/tests/unset_tests";			run_tests;
+	file_name="tester/tests/exit_tests";			run_tests;
 fi
 
 for arg in "$@"; do
@@ -169,4 +169,5 @@ printf "\t\e[31m%d KO!\e[0m\n" $tests_ko
 if [ "$clean" == true ]; then
 	rm -rf ./tester/output
 	rm -rf ./tester/trace
+	echo "" > log/history_log
 fi

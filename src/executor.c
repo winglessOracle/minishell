@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/03 10:06:00 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/03 11:09:53 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,10 @@
 void	check_cmd(char *cmd)
 {
 	if (access(cmd, F_OK) == -1)
-		exit_error("ccs: No such file or directory\n", 127);
+		exit_error("minishell: No such file or directory", 127);
 	else if (access(cmd, X_OK) == -1)
-		exit_error("ccs: Permission denied\n", 126);
+		exit_error("minishell: Permission denied", 126);
 	return ;
-}
-
-int	exec_relative(char *cmd_args, t_node *env_list, char **env)
-{
-	char	*pwd;
-	char	buf[PATH_MAX];
-	char	*new_dir;
-
-	pwd = get_variable(env_list, "PWD");
-	if (!pwd)
-	{
-		getcwd(buf, PATH_MAX);
-		pwd = ft_strdup(buf);
-	}
-	if (!pwd)
-		return (-1);
-	new_dir = new_directory(cmd_args, pwd);
-	check_cmd(new_dir);
-	return (execve(new_dir, &cmd_args, env));
 }
 
 int	exec_default(char **cmd_args, t_smpl_cmd *pipe_argv, t_node *env_list, char **env)
@@ -75,16 +56,16 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 	check_built(pipe_argv);
 	cmd_args = build_cmd_args(&pipe_argv->cmd_argv, pipe_argv->cmd_argc);
 	env = get_env(env_list);
-	if (cmd_args[0][0] == '/')
+	if (cmd_args[0][0] == '.' && !cmd_args[0][1])
+		exit_error("minishell: filename argument required", 2);
+	if (cmd_args[0][0] == '/' || cmd_args[0][0] == '.')
 	{
 		check_cmd(cmd_args[0]);
 		execve(cmd_args[0], cmd_args, env);
 	}
-	else if (cmd_args[0][0] == '.')
-		exec_relative(cmd_args[0], env_list, env);
 	else
 		exec_default(cmd_args, pipe_argv, env_list, env);
-	exit_error("ccs: command not found\n", 127);
+	exit_error("minishell: executer", 127);
 }
 
 void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
@@ -112,10 +93,10 @@ int		set_out(int *fd_pipe, t_node *temp)
 	return (1);
 }
 
-void	set_in(int keep, t_node *temp)
+void	set_in(int *keep, t_node *temp)
 {
-	close (keep);
-	keep = open(temp->content, O_RDONLY);
+	close (*keep);
+	*keep = open(temp->content, O_RDONLY);
 }
 
 /*
@@ -126,17 +107,17 @@ To modify the behaviour in bash to meet our version change the
 noclobber setting: 'set +o noclobber'.*/
 int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 {
-	int		count;
+	int		trigger;
 	t_node	*temp;
 
-	count = 0;
+	trigger = 0;
 	temp = smpl_cmd->redirect;
 	while (temp)
 	{
 		if (temp->type == OUTPUT || temp->type == APPEND)
-			count = set_out(fd_pipe, temp);
+			trigger = set_out(fd_pipe, temp);
 		else if (temp->type == INPUT)
-			set_in(*keep, temp);
+			set_in(keep, temp);
 		else if (temp->type == HEREDOC || temp->type == HEREDOCQ)
 		{
 			dup2(smpl_cmd->here_doc, *keep);
@@ -144,10 +125,10 @@ int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 				exit_error("dup fail", -1);
 		}
 		if (*keep == -1 || fd_pipe[0] == -1 || fd_pipe[1] == -1)
-			return (return_perror("setting file descriptor", -1));
+			return (-1);
 		temp = temp->next;
 	}
-	return (count);
+	return (trigger);
 }
 
 void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
@@ -156,7 +137,7 @@ void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 	{
 		close(fd_pipe[0]);
 		if (set_fd(cmd, &keep, fd_pipe) == -1)
-			exit_error("ccs: redirect\n", 12); //change
+			exit_error("minishell: redirect", 1);
 		dup2(keep, STDIN_FILENO);
 		if (!keep)
 			exit_error("dup fail", 1); //change
@@ -200,25 +181,15 @@ void	read_heredocs(t_pipe *pipeline)
 	}
 }
 
-// void	exec_child(pid_t pid, t_smpl_cmd *cmd, int keep, int fd_pipe[2])
-// {
-// 	char	buffer[128];
 
-// 	if (pid == 0)
-// 	{
-// 		if (cmd->cmd_argc > 0)
-// 			exec_cmd(cmd, cmd->env_list);
-// 		else
-// 		{
-// 			while (read(keep, buffer, 128 ))
-// 				printf("%.128s", buffer);
-// 			close (keep);
-// 			close (fd_pipe[1]);
-// 			execute_exit(NULL, cmd->env_list);
-// 		}
-// 	}
-// 	return ;
-// }
+int	assign_one(t_pipe *pipeline)
+{
+	if (pipeline->pipe_argv->cmd_argc == 0)
+		assignments(pipeline->pipe_argv, 0);
+	if (check_builtins_curr_env(pipeline->pipe_argv))
+		return (1);
+	return (0);
+}
 
 void		executor(t_pipe *pipeline)
 {
@@ -226,11 +197,10 @@ void		executor(t_pipe *pipeline)
 	int			fd_pipe[2];
 	int			keep;
 	int			i;
-	char		buffer[128];
-	int			check;
+	int			exit_set;
 
+	exit_set = 0;
 	i = 0;
-	check = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);
@@ -239,44 +209,30 @@ void		executor(t_pipe *pipeline)
 	while (pipeline && pipeline->pipe_argv)
 	{
 		if (pipeline->pipe_argc == 1)
-		{
-			if (pipeline->pipe_argv->cmd_argc == 0)
-				assignments(pipeline->pipe_argv, 0);
-			if (check_builtins_curr_env(pipeline->pipe_argv))
-			{
-				check = 1;
-				break ;
-			}
-		}
+			exit_set = assign_one(pipeline);
+		if (exit_set == 1)
+			break ;
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
 		pid[i] = fork();
 		if (pid[i] == -1)
-			exit_error("fork fail", errno);
+		{
+			perror("minishell: fork");
+			g_exit_status = 128;
+			exit_set = 1;
+			break ;
+		}
 		redirect(pipeline->pipe_argv, pid[i], keep, fd_pipe);
 		assignments(pipeline->pipe_argv, pid[i]);
-		// exec_child(pid[i], pipeline->pipe_argv, keep, fd_pipe);
 		if (pid[i] == 0)
 		{
 			if (pipeline->pipe_argv->cmd_argc > 0)
 				exec_cmd(pipeline->pipe_argv, pipeline->pipe_argv->env_list);
 			else
-			{
-				while (read(keep, buffer, 128 ))
-					printf("%.128s", buffer);
-				close (keep);
-				close (fd_pipe[1]);
 				execute_exit(NULL, pipeline->pipe_argv->env_list);
-			}
 		}
 		pipeline->pipe_argv = pipeline->pipe_argv->next;
 		i++;
 	}
-	if (check == 0)
-	{
-		free(pid);
-		// printf("1. exit status executor: %d\n", g_exit_status);
-		set_exit_st(pipeline->pipe_argc, pid);
-		// printf("2. exit status executor: %d\n", g_exit_status);
-	}
+	set_exit_st(pipeline->pipe_argc, pid, exit_set);
 }
