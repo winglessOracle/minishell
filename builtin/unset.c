@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 20:02:30 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/02 17:02:39 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/03 12:42:17 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	check_valid_unset(char *str)
 	i = 0;
 	if (str[0] == '-' && str[1])
 		return (return_error("minishell: unset: invallid option\n", 2));
-	if (!str[i] || str[0] == '=' || (!ft_isalpha(str[i]) && str[i] != '_'))
+	if (!str || !ft_strcmp(str, "") || (!ft_isalpha(str[i]) && str[i] != '_'))
 		return (return_error("minishell: not a valid identifier\n", 1));
 	else
 	{
@@ -47,6 +47,8 @@ int	check_valid_unset(char *str)
 				return (return_error("minishell: not a valid identifier\n", 1));
 			i++;
 		}
+		if (str[i] == '=')
+			return (return_error("minishell: not a valid identifier\n", 1));
 	}
 	return (0);
 }
