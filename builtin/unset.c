@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 20:02:30 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/03 12:42:17 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/03 13:07:30 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	remove_var(t_node *temp, t_node *prev, char *name)
 int	check_and_remove(t_node **temp, char *str, t_node **prev)
 {
 	char	*name;
-	
+
 	name = get_name((*temp)->content);
 	if (!ft_strcmp(str, name))
 	{
@@ -100,7 +100,7 @@ int	execute_unset(char **cmd_vector, t_node *env_list)
 			return (check);
 		while (temp && temp->content)
 		{
-			if (check_and_remove(&temp,	cmd_vector[i], &prev))
+			if (check_and_remove(&temp, cmd_vector[i], &prev))
 				break ;
 		}
 		i++;

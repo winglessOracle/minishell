@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/02 16:36:58 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/03 13:06:44 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ int	check_sorted(t_node *env_list)
 	temp = env_list;
 	while (temp && temp->next)
 	{
-		if (ft_strcmp_case(temp->content, temp->next->content, ft_toupper) > 0)
+		if (ft_strcmp_case(temp->content, temp->next->content, \
+												ft_toupper) > 0)
 			return (0);
 		temp = temp->next;
 	}
@@ -43,7 +44,8 @@ t_node	*sort_env(t_node *env_list)
 	{
 		while (temp && temp->next)
 		{
-			if (ft_strcmp_case(temp->content, temp->next->content, ft_toupper) > 0)
+			if (ft_strcmp_case(temp->content, temp->next->content, \
+													ft_toupper) > 0)
 			{
 				temp_content = temp->content;
 				temp->content = temp->next->content;
@@ -73,7 +75,7 @@ void	print_export(t_node *env_list)
 int	check_valid_identifier(char *str)
 {
 	int	i;
-	
+
 	i = 0;
 	if (!str[i] || str[0] == '=' || (!ft_isalpha(str[i]) && str[i] != '_'))
 		return (1);
@@ -81,7 +83,8 @@ int	check_valid_identifier(char *str)
 	{
 		while (str[i] && str[i] != '=')
 		{
-			if (!ft_isalpha(str[i]) && !ft_isdigit(str[i]) && str[i] != '_' && str[i] != '=')
+			if (!ft_isalpha(str[i]) && !ft_isdigit(str[i]) && str[i] \
+												!= '_' && str[i] != '=')
 				return (1);
 			i++;
 		}
@@ -100,7 +103,7 @@ int	execute_export(char **cmd_vector, t_node *env_list)
 		print_export(env_list);
 	}
 	else if (cmd_vector[i][0] == '-')
-		return(return_error("minishell: export: no options supported\n", 2));
+		return (return_error("minishell: export: no options supported\n", 2));
 	else
 	{
 		while (cmd_vector[i])
