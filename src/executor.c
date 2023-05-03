@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/03 10:47:34 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/03 10:53:00 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 	check_built(pipe_argv);
 	cmd_args = build_cmd_args(&pipe_argv->cmd_argv, pipe_argv->cmd_argc);
 	env = get_env(env_list);
+	if (cmd_args[0][0] == '.' && !cmd_args[0][1])
+		exit_error("minishell: filename argument required", 2);
 	if (cmd_args[0][0] == '/' || cmd_args[0][0] == '.')
 	{
 		check_cmd(cmd_args[0]);
