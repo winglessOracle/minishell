@@ -1,4 +1,4 @@
-env lalala
+env sometext
 env | grep OLDPWD
 export aaa1=cat aaa2=dog
 env | grep aaa
