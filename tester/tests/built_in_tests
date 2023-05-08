@@ -130,7 +130,7 @@ tester/output/tmp_x_file1
 echo $? 
 export PATH=$HOME 
 echo $PATH && echo 42 
-# rm -f tester/output/tmp_x_file1
+rm -f tester/output/tmp_x_file1
 cd doesntexist
 export PATH=""
 ls

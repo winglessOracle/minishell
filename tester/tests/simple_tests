@@ -129,10 +129,10 @@ EechoE
 rm -f something
 | echo -n oui
 | | |
-/bin/echo $?
-/bin/echo $HOME
-/bin/echo $HOME$USER
-/bin/echo $HOME$NOTHING$USER$
+echo $?
+echo $HOME
+echo $HOME$USER
+echo $HOME$NOTHING$USER$
 export a="asd"
 export a="asd" b="de" o= c="hellomi" X
 export miert ne lehetne ezt is
@@ -147,45 +147,45 @@ unset o a X b c
 export a="asd" b="de" o= c="hellomi" X
 unset o asd B x X wqd c
 export miert ne lehetne ezt is
-/bin/echo $"HOME"$USER
-/bin/echo $"HOM"E$USER
-/bin/echo $"'HOM'E"$USER
-/bin/echo $'HOM'E$USER
-/bin/echo $"HOME"
-/bin/echo $'HOME'
-/bin/echo $
-/bin/echo "$"
-/bin/echo '$='
-/bin/echo "$""$"
-/bin/echo $"$"
-/bin/echo $"42$"
-/bin/echo "$"$
-/bin/echo $'$'
-/bin/echo '$'$
-/bin/echo "$ "
-/bin/echo '$ '
-/bin/echo $TESTNOTFOUND
-/bin/echo $HOME$TESTNOTFOUND
-/bin/echo $TESTNOTFOUND$HOME
-/bin/echo $TESTNOTFOUND$HOME$
+echo $"HOME"$USER
+echo $"HOM"E$USER
+echo $"'HOM'E"$USER
+echo $'HOM'E$USER
+echo $"HOME"
+echo $'HOME'
+echo $
+echo "$"
+echo '$='
+echo "$""$"
+echo $"$"
+echo $"42$"
+echo "$"$
+echo $'$'
+echo '$'$
+echo "$ "
+echo '$ '
+echo $TESTNOTFOUND
+echo $HOME$TESTNOTFOUND
+echo $TESTNOTFOUND$HOME
+echo $TESTNOTFOUND$HOME$
 cd ..$PWD
 cd..
-/bin/echo $PWD/random_folder
-/bin/echo ""$?""
-/bin/echo " "$?" "
-/bin/echo $?"42"
-/bin/echo ''$?''"42"
-/bin/echo 'HELLO'$?:''"42"
-/bin/echo "$?"
-/bin/echo '$?'
-/bin/echo "'$?'"
-/bin/echo '"$?"'
+echo $PWD/random_folder
+echo ""$?""
+echo " "$?" "
+echo $?"42"
+echo ''$?''"42"
+echo 'HELLO'$?:''"42"
+echo "$?"
+echo '$?'
+echo "'$?'"
+echo '"$?"'
 ### UPDATE PWD ###
-/bin/echo $PWD
+echo $PWD
 cd "tester"
-/bin/echo $PWD
+echo $PWD
 cd ..
-/bin/echo $PWD
+echo $PWD
 ### SCMD IN VARIABLE ###
 export tmp_test="/bin/echo 42"
 $tmp_test
@@ -196,38 +196,38 @@ export tmp_test="/bin/echo 42"
 "tmp_test"
 ### VARIABLE SPLITTING ###
 export X="  A  B  "
-/bin/echo "1"$X'2'
+echo "1"$X'2'
 export X=" A  B  "
-/bin/echo "1"$X'2'
+echo "1"$X'2'
 export X="A  B  "
-/bin/echo "1"$X'2'
+echo "1"$X'2'
 export X="  A  B "
-/bin/echo "1"$X'2'
+echo "1"$X'2'
 export X="  A  B"
-/bin/echo "1"$X'2'
+echo "1"$X'2'
 export X="  A B  "
-/bin/echo "1"$X'2'
+echo "1"$X'2'
 export X="  AB  "
-/bin/echo "1"$X'2'
+echo "1"$X'2'
 export X="  A  B  "
-/bin/echo $X'2'
+echo $X'2'
 export X="  A  B  "
-/bin/echo $X"1"
+echo $X"1"
 export X=""
-/bin/echo "1"$X'2'
+echo "1"$X'2'
 export X=" "
-/bin/echo "1"$X'2'
+echo "1"$X'2'
 export X="   "
-/bin/echo "1"$X'2'
+echo "1"$X'2'
 export X="  A  B  "
-/bin/echo ?$X'2'
+echo ?$X'2'
 export X="  A  B  "
-/bin/echo "1"$X?
+echo "1"$X?
 export X="  A  B  "
-/bin/echo "1"$X2?
+echo "1"$X2?
 export test=" * "
 touch "$USER * ?eHallo"
-/bin/echo "$USER "*" ?e"*
+echo "$USER "*" ?e"*
 rm -rf "$USER * ?eHallo"
 ~
 .

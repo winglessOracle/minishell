@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/03 12:08:04 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/08 14:48:32 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,6 @@ void	check_built(t_smpl_cmd *cmd)
 	char	**cmd_args;
 	char	*builtins[7] =	{"echo", "cd", "pwd", "export", \
 										"unset", "exit", "env"};
-
 	built[0] = execute_echo;
 	built[1] = execute_cd;
 	built[2] = execute_pwd;
@@ -141,7 +140,7 @@ void	check_built(t_smpl_cmd *cmd)
 	i = 0;
 	while (i < 7 && cmd->cmd_argc > 0)
 	{
-		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0)
+		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0 || ft_strcmp_case(cmd->cmd_argv->content, builtins[0], &ft_tolower) == 0)
 		{
 			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
