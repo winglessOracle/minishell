@@ -18,7 +18,5 @@ redirect test for several  out files still hase race issues. : < Makefile cat > 
 
 sigint from sleep or cat etc  displays extra prompt
 
-sigint and EOF should interup HEREDOC
-
 exit 42 bala should not exit shell (too many arguments)
 

@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/08 16:54:43 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/08 18:20:55 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	here_doc(t_pipe *pipeline, t_node *here_redirect, t_smpl_cmd *cmd)
 	line = NULL;
 	if (pipe(here_pipe) == -1)
 		exit_error("here_pipe fail", errno);
+	// set_sigint_here();
 	while (1)
 	{
 		line_read = get_input(pipeline->pipe_argv->env_list, "PS2", 0);
@@ -34,6 +35,7 @@ int	here_doc(t_pipe *pipeline, t_node *here_redirect, t_smpl_cmd *cmd)
 		free(line);
 	}
 	close(here_pipe[1]);
+	// set_signals();
 	return (here_pipe[0]);
 }
 

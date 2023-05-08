@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/08 11:44:12 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/08 18:21:05 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ void	handle_sigint(int signal_number)
 	rl_on_new_line();
 	rl_redisplay();
 }
+
+// void	handle_sigint_here(int signal_number)
+// {
+// 	(void) signal_number;
+// 	printf("\n");
+// 	// kill(getpid(), SIGHUP);
+// }
+
 
 void	set_signals(void)
 {
@@ -61,3 +69,16 @@ void	set_signals(void)
 	if (sigaction(SIGQUIT, &sa_stop, NULL) == -1)
 		exit(errno);
 }
+
+// void	set_sigint_here(void)
+// {
+// 	struct sigaction	sa_int;
+
+// 	sa_int.sa_handler = handle_sigint_here;
+// 	sigemptyset(&sa_int.sa_mask);
+// 	sigaddset(&sa_int.sa_mask, SIGINT);
+// 	sigaddset(&sa_int.sa_mask, SIGQUIT);
+// 	sigaddset(&sa_int.sa_mask, SIGTSTP);
+// 	if (sigaction(SIGINT, &sa_int, NULL) == -1)
+// 		exit(errno);
+// }
