@@ -17,6 +17,3 @@ readline keeps first characters (solve if persistent history removed)
 redirect test for several  out files still hase race issues. : < Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
 
 sigint from sleep or cat etc  displays extra prompt
-
-exit 42 bala should not exit shell (too many arguments)
-

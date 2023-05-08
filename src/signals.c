@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/08 18:21:05 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/08 19:17:26 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	set_signals(void)
 	sigaddset(&sa_quit.sa_mask, SIGTSTP);
 	if (sigaction(SIGQUIT, &sa_stop, NULL) == -1)
 		exit(errno);
+	// rl_catch_signals = 0;
 }
 
 // void	set_sigint_here(void)
