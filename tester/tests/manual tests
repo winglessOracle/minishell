@@ -1,37 +1,228 @@
+###########SIGNAL###############
 SIGNAL	cat - [ PRESS CTRL + C ]	Should exit cat prompt					130
 SIGNAL	cat - [ PRESS CTRL + \ ]	do nothing but give a new promt line?	0
 SIGNAL	cat - [ PRESS CTRL + D ]	Should exit cat prompt					0
 SIGNAL	cat | cat | ls [ PRESS CTRL + C ]	Should exit cat prompt			0
 SIGNAL	cat | cat | ls [ PRESS CTRL + D ]	Should exit cat prompt			0
 SIGNAL	cat | cat | ls [ PRESS CTRL + \ ]	do nothing except a new promt	0 
+SIGNAL EOF (ctrl+d) during HERE_DOC > exits here_doc						0
+SIGNAL sigint (ctrl+c) EOF during HERE_DOC > exits here_doc					1
 
+
+############EXIT################
 BUILTIN/EXIT	exit 22 blabla	"Displays exit in terminal 
 								bash: exit: too many arguments
 								Does not exit shell"						1
 BUILTIN/EXIT	exit blabla 22	"Displays exit in terminal
 								bash: exit: blabla: numeric argument required
 								Does exit shell"							255
-BUILTIN/EXIT	exit 256		Exits shell									0
-BUILTIN/EXIT	exit -1			Exits shell									255
-
 PIPE	ls | exit				Execute ls but does not exit the shell		0
-echo -n -nnnn hello world -n
-aaa111=hello aaa222=world; env |head -2
-env ls
-env -a ls
-env | head -n 2
-env lalala
-env | grep OLDPWD
-
-export
-
-echo expand
-$SHVL
 
 
+printf '#include <unistd.h>\nint main(){write(1, \"1\\n\", 2);}' > tester/output/test/test.c && gcc tester/output/test/test.c -o tester/output/test/a.out && ./tester/output/a.out && rm -rf 
 
-printf '#include <unistd.h>\nint main(){write(1, \"1\\n\", 2);}' > tester/output/test.c
-gcc tester/output/test.c -o tester/output/a.out && ./tester/output/a.out
 
-rm -rf "tmp_test_folder"
-mkdir "tmp_test folder"
+#########HERE_DOC##############
+
+<< lim cat
+ "lim"
+HELLO
+42
+ lim
+testing your minishell
+limm
+lim
+
+cat << EOF
+"EOF"
+!! HELLO
+@42 !!
+ EOF\t\b\n
+testing your minishell :)
+limm
+EOF
+
+
+cat << hello
+$USER
+$NOVAR
+$HOME
+hello
+
+
+cat << 'lim'
+$USER
+$NOVAR
+$HOME
+lim
+
+
+cat << lim''
+$USER
+$NOVAR
+$HOME
+lim
+
+
+cat << "lim"
+$USER
+$NOVAR
+$HOME
+lim
+
+
+ls | cat << stop | grep "asd"
+is this good
+stop
+
+ls | cat << stop | ls -la | cat << stop1
+12
+32232
+23
+stop
+awdaw
+daswd
+stop1
+
+
+ls | cat << stop | ls -la | cat << stop1 | ls | cat << stop2 | ls -la | cat << stop3
+$USER
+ad
+as $HOME
+stop
+awd
+wf$PWDdqwdwqd
+stop1
+das
+das
+stop2
+dsq
+wd
+wf$PWDdqwdwqd
+stop3
+
+#NO OK! returns an error no such file
+ls | cat << stop | ls -la | cat << stop1 | ls | cat << stop2 | ls -la > out | cat << 'stop3'
+$USER
+ad
+stop
+dsa
+stop1
+sad
+stop2
+as $HOME
+stop3
+rm -f out
+
+# NOT OK! should enter here_doc in spite of error
+ls | cat << stop | ls -la | cat << stop1 | ls | cat << stop2 | ls -la > > out | cat << stop3
+fe
+wf
+fwe
+f
+stop
+dw
+stop1
+dwasd
+stop2
+cat Makefile | ls > out
+cat out
+rm -f out
+
+
+ls | cat << stop | ls -la > out0| cat << stop1 | ls | cat << stop2 | ls -la >> out | cat << stop3
+fe
+wf
+fwe
+f
+stop
+dw
+stop1
+dw
+stop2
+e
+wf
+stop3
+rm -f out
+rm -f out0
+
+
+ls|cat Makefile|cat<<asd>out
+$USER
+asd
+rm -f out
+ls|cat Makefile|cat<<'asd'>out
+$USER
+asd
+rm -f out
+ls|cat Makefile|cat<<"asd">out
+
+#NOT OK: OVERWRITE vs NON OVERWRITE
+cat Makefile > out >>out1 >out2 | cat << stop > out3
+asdsada
+asd
+stop
+cat Makefile > out >>out1 >out2 | cat << stop > out3
+123
+123
+12
+stop
+rm -rf out
+rm -rf out1
+rm -rf out2
+rm -rf out3
+
+
+
+cat Makefile > out >>out1 >out2 | cat << stop > out3 | ls
+testinator
+stop
+rm -rf out
+rm -rf out1
+rm -rf out2
+rm -rf out3
+
+
+# bash does enter after syntax error
+cat Makefile > out >>out1 >out2 | cat << stop > out3 | ls >> | cat << file
+will make you cry
+stop
+rm -rf out
+rm -rf out1
+rm -rf out2
+rm -rf out3
+cd ..
+pwd
+
+
+
+<< out
+where
+is
+MY
+ENV?
+BRING IT BACK!
+out
+
+#syntax and error checks all ok
+echo <<| echo ok
+echo <<|< ok
+echo <<|> echo
+echo <<> echo
+echo <<<> ok
+echo segfault <"<<<"<< amazing
+
+
+# SHOULD NOT EXIT WITH USERNAME
+cat << $USER
+why
+not
+$USER
+
+#Nope
+cat << "$US"E"R"
+because
+we
+love
+bash
+$USER

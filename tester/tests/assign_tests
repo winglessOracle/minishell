@@ -59,15 +59,14 @@ pwd
 cat Makefile > tester/output/out >>tester/output/out1 >tester/output/out2 && rm -rf tester/output/out && rm -rf tester/output/out1 && rm -rf tester/output/out2
 cat Makefile > tester/output/out >>tester/output/out1 >tester/output/out2 > tester/output/out3 >> tester/output/out4 && rm -rf tester/output/out && rm -rf tester/output/out1 && rm -rf tester/output/out2 && rm -rf tester/output/out3 && rm -rf tester/output/out4
 rm -rf tester/output/out
-< tester/output/out
-rm -rf tester/output/out
+< tester/output/out && rm -rf tester/output/out
 |
 ""
 ''
 >> tester/output/out
 rm -rf tester/output/out
 echo |< echo segf
-echo segf >| echo is this invalid
+echo segf >| echo is this invalid && rm echo
 echo >          >           < "echo"
 echo >          >         | echo kekw
 echo >          >         | echo super valid
@@ -179,15 +178,13 @@ echo 'totally logical'
 echo ''totally logical''
 echo ""'totally logical'""
 ">>" asd
->">" asd && rm -f ">"
 >> '$USER' && cat $USER && rm -f '$USER'
 >> '$USER' && cat '$USER' && rm -f '$USER'
 "echo "
 export T=">>"
 $T lol
 >> $HOME
->> "$H"OME"E"
-cat OME && rm -f OME
+>> "$H"OME"E" && cat OMEE && rm -f OMEE
 >> "$USER'$USER'" && cat "$USER'$USER'" && rm -f "$USER'$USER'"
 >> "$USER" && cat $USER && rm -f $USER
 cd /Users/$USER/Desktop/

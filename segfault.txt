@@ -15,6 +15,13 @@ empty redirect nodes should result in error
 readline keeps first characters (solve if persistent history removed)
 redirect out single cmd not functioning.
 
+redirect test for more out files still hase race issues.
+
 try ctrls with blocking command (eg cat with no arguments) 
 
 sigint from sleep displays extra prompt
+
+sigint and EOF should interup HEREDOC
+
+exit 42 bala should not exit shell (too many arguments)
+
