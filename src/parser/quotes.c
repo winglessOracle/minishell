@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   quote_utils.c                                      :+:    :+:            */
+/*   quotes.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/03 09:56:02 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/08 16:22:04 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,5 @@ int	merge_quoted_heredoc(t_node **token, t_smpl_cmd *cmd)
 	if (*token && count_quotes((*token)->content, quote) % 2)
 		return(0);
 	split_and_remove_quotes(token, cmd);
-	(*token)->type = type;
 	return (0);
 }

@@ -6,11 +6,12 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/03 19:15:32 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/08 16:20:32 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "parser.h"
 #include <sys/types.h>
 #include <dirent.h>
 
@@ -119,7 +120,7 @@ int	check_wildcars(t_node **cmd_args)
 	{
 		i = 0;
 		temp = expand_wildcard(*cmd_args);
-		if (temp && ft_strcmp((*cmd_args)->content, ""))
+		if (temp && ft_strcmp((*cmd_args)->content, "") && (*cmd_args)->type != SQUOTE && (*cmd_args)->type != DQUOTE)
 			lstadd_back(&new_args, temp);
 		else
 			lstadd_back(&new_args, \
