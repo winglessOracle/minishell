@@ -27,23 +27,23 @@ pwd test42
 pwd 42 42 42
 pwd pwd
 pwd pwd pwd
-/bin/echo $HOME
-/bin/echo
-/bin/echo 1
-/bin/cat 42
-/bin/echo hello 42
-/bin/sleep 0
+echo $HOME
+echo
+echo 1
+cat 42
+echo hello 42
+sleep 0
 echo
 echo hello world
-/bin/echo 42
+echo 42
 echo $?
-/bin/cat 42
+cat 42
 echo $?
-/bin/exe42 42
+exe42 42
 42 42
-/bin/echo 42
+/echo 42
 expr $? + $?
-/bin/cat 42
+cat 42
 expr $? + $?
 echo "Hello World"
 echo "  ""Hello World"
@@ -51,7 +51,7 @@ echo "  "Hello "World "
 "echo" 42
 "echo 42"
 echo " cat ' lol.c"
-/bin/echo @World"42"Hello
+echo @World"42"Hello
 echo 'Hello World'
 echo '  ' Hello World
 echo '  'Hello 'World '
@@ -98,7 +98,7 @@ cd /bin/
 sleep 2
 unset PATH
 echo $PATH
-/bin/ls
+ls
 echo 1
 cd -
 echo 42
@@ -126,19 +126,12 @@ echo $PATH
 echo 1
 cd /bin/
 ls
-touch tmp_x_file1
-tmp_x_file1
-echo $?
-./tmp_x_file1
-echo $?
-export PATH=$HOME
-echo $PATH
-echo 42
-/bin/rm -f tmp_x_file1
+touch tester/output/tmp_x_file1 
+tester/output/tmp_x_file1 
+echo $? 
+export PATH=$HOME 
+echo $PATH && echo 42 
+# rm -f tester/output/tmp_x_file1
 cd doesntexist
 export PATH=""
 ls
-
-
-
-

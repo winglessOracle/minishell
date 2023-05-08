@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/03 12:03:25 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/08 13:50:38 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	check_cmd(char *cmd)
 		return ;
 	if (S_ISDIR(file_stat.st_mode))
 		exit_error("minishell: is a directory", 126);
-	else if (access(cmd, F_OK) == -1)
-		exit_error("minishell: No such file or directory", 127);
 	else if (access(cmd, X_OK) == -1)
 		exit_error("minishell: Permission denied", 126);
+	else if (access(cmd, F_OK) == -1)
+		exit_error("minishell: No such file or directory", 127);
 	return ;
 }
 
@@ -70,7 +70,10 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 		execve(cmd_args[0], cmd_args, env);
 	}
 	else
+	{
+		check_cmd(cmd_args[0]);
 		exec_default(cmd_args, pipe_argv, env_list, env);
+	}
 	exit_error("minishell: executer", 127);
 }
 
@@ -212,6 +215,8 @@ void		executor(t_pipe *pipeline)
 		exit_error("dup fail", 1);
 	read_heredocs(pipeline);
 	pid = malloc(sizeof(pid_t) * (pipeline->pipe_argc + 1));
+	if (!pid)
+		exit_error("minishell: malloc error", 2);
 	while (pipeline && pipeline->pipe_argv)
 	{
 		if (pipeline->pipe_argc == 1)
