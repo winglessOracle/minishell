@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/08 13:50:38 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/08 14:13:31 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	check_cmd(char *cmd)
 		return ;
 	if (S_ISDIR(file_stat.st_mode))
 		exit_error("minishell: is a directory", 126);
-	else if (access(cmd, X_OK) == -1)
-		exit_error("minishell: Permission denied", 126);
 	else if (access(cmd, F_OK) == -1)
-		exit_error("minishell: No such file or directory", 127);
+		exit_error("minishell: command not found", 127);
+	else if (access(cmd, X_OK) == -1)
+		exit_error("minishell: no executable or no permission", 126);
 	return ;
 }
 

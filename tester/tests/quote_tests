@@ -24,20 +24,17 @@ $LESS$VAR
 >>>>>>>>>
 <<<<<<<<<
 < < < < < <
-/bin/cat ><
-/bin/cat <Makefile >
+cat ><
+cat <Makefile >
 cat 42 42
 echo >
 echo > <
 echo | |
 EechoE
 .echo.
->echo>
-/bin/rm -f echo
-<echo<
-/bin/rm -f echo
->>echo>>
-/bin/rm -f echo
+>echo> && rm -f echo
+<echo< && rm -f echo
+>>echo>> && rm -f echo
 |echo|
 trying to destroy your minishell
 |
@@ -48,7 +45,6 @@ trying to destroy your minishell
 echo > <
 hello world
 ||||||||
-
 cat wouaf wouaf
 >
 > > > >
@@ -65,7 +61,7 @@ nice to meet you if these tests are green
 your minishell is perfect
 >>| echo wtf
 >| echo wtf
-/bin/rm -rf echo
+rm -rf echo
 <| echo wtf
 echo "<<| echo wtf"
 echo ">>| echo wtf"
@@ -75,26 +71,15 @@ echo "<| echo wtf"
 # **************************************************************************** #
 ls | wc -l | xargs echo
 yes "no" | head -n 10
-/bin/echo -e "\033[33mHello, world!\033[0m"
-/bin/echo '\1$42' > tmp_redir_out
-ls -la | grep tmp_redir_out | awk '{print $1 $2}'
-cat -e tmp_redir_out
-rm tmp_redir_out
+echo "\033[33mHello, world!\033[0m"
+echo '\1$42' > tmp_redir_out && ls -la | grep tmp_redir_out | awk '{print $1 $2}' && cat -e tmp_redir_out && rm tmp_redir_out
 sleep 0 | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat | cat
->tmp_out | echo 1
-cat tmp_out
-rm -f tmp_out
-echo 1 | >tmp_out
-cat tmp_out
-rm -f tmp_out
+>tmp_out | echo 1 && cat tmp_out && rm -f tmp_out
+echo 1 | >tmp_out && cat tmp_out && rm -f tmp_out
 grep 1 < filedoesnotexist | echo 1 | grep 1 | head -1 | cat | ls
 /usr/bin/env -i bash -c "env" | wc -l
 export test="arg1	arg2"
-echo 'echo $1' > tmp_test_sh
-bash tmp_test_sh $test
-echo 'echo $2' > tmp_test_sh
-bash tmp_test_sh $test
-rm -f tmp_test_sh
+echo 'echo $1' > tmp_test_sh && bash tmp_test_sh $test && echo 'echo $2' > tmp_test_sh && bash tmp_test_sh $test && rm -f tmp_test_sh
 export pipe_var=1 | echo $pipe_var
 echo $pipe_var
 echo $PATH
@@ -107,33 +92,33 @@ echo $?
 echo $?
 echo Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi imperdiet orci nec quam lobortis scelerisque. Morbi scelerisque leo molestie justo semper condimentum. Proin hendrerit ut nulla in mattis. Curabitur velit turpis, congue ut aliquam id, condimentum at dolor. Quisque ultricies neque in tellus pretium, vitae porta ipsum vestibulum. Vivamus cursus volutpat diam, at interdum erat fringilla ac. In nisl quam, ultrices vitae cursus ut, aliquam sed lacus. Suspendisse ac turpis fermentum, pulvinar risus quis, molestie elit. Mauris faucibus eget est vitae efficitur. Mauris feugiat enim in posuere auctor. Morbi lorem lorem, pellentesque et viverra vitae, ullamcorper a mauris. Cras blandit pulvinar accumsan. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean id hendrerit elit.
-/bin/echo ''$?''"42"
-/bin/echo '"'$USER'"'
-/bin/echo "''$USER''"
-/bin/echo ''''''''''$USER''''''''''
-/bin/echo '""""""""$USER""""""""'
-/bin/echo ""'""""""$USER""""""'""
-/bin/echo """"""'""$USER""'""""""
-/bin/echo ""'""'""""$USER""""'""'""
-/bin/echo '""'""'""""$USER""""'""'""'
-/bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
-/bin/echo test1            test2
+echo ''$?''"42"
+echo '"'$USER'"'
+echo "''$USER''"
+echo ''''''''''$USER''''''''''
+echo '""""""""$USER""""""""'
+echo ""'""""""$USER""""""'""
+echo """"""'""$USER""'""""""
+echo ""'""'""""$USER""""'""'""
+echo '""'""'""""$USER""""'""'""'
+echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+echo test1            test2
 echo "-"$A$T
 echo $T'o'
 echo $T'o '
 echo '$'$'$'$'$'
 echo '$'$'$'$'$'$'$'
 echo "$"$'$'$"$"$"$"$'$'
-/bin/echo '"'$USER'"'
-/bin/echo "''$USER''"
-/bin/echo $"HOME"$USER
-/bin/echo $"HOM"E$USER
-/bin/echo $"HOME"
-/bin/echo $"42$"
-/bin/echo "'totally logical'"
-/bin/echo 'totally logical'
-/bin/echo ''totally logical''
-/bin/echo ""'totally logical'""
+echo '"'$USER'"'
+echo "''$USER''"
+echo $"HOME"$USER
+echo $"HOM"E$USER
+echo $"HOME"
+echo $"42$"
+echo "'totally logical'"
+echo 'totally logical'
+echo ''totally logical''
+echo ""'totally logical'""
 echo "-"'$T'nnnnnnnnnnnnn -nnnnnnnn'$T' '-'"$T "
 $T.
 echo $"'HOM'E"$USER

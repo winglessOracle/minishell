@@ -106,7 +106,6 @@ unset PATH
 echo 42
 unset PATH
 unset PATH
-unset PATH
 echo $PATH
 echo 1
 echo 42
