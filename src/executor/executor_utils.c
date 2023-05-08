@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/08 14:48:32 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/08 16:54:43 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	here_doc(t_pipe *pipeline, t_node *here_redirect, t_smpl_cmd *cmd)
 	while (1)
 	{
 		line_read = get_input(pipeline->pipe_argv->env_list, "PS2", 0);
-		if (!ft_strcmp(line_read, here_redirect->content))
+		if (!ft_strcmp(line_read, here_redirect->content) || line_read == NULL)
 			break ;
 		tokens = lexer(line_read, " \n");
 		line = parse_heredoc(tokens, here_redirect, cmd);
