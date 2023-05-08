@@ -123,69 +123,45 @@ cat <minishell.h>./outfiles/outfile
 cat <minishell.h|ls
 
 ### SIMPLE ###
-/bin/echo 42 > tmp_redir_out 42
-cat tmp_redir_out
-rm tmp_redir_out
+echo 42 > tester/output/tmp_out 42 && cat tester/output/tmp_out && rm tester/output/tmp_out
 
-/bin/echo "cat this text\n" > tmp_redir_out
-cat <tmp_redir_out
-rm tmp_redir_out
+echo "cat this text\n" > tester/output/tmp_out2 && cat tester/output/tmp_out2 && rm tester/output/tmp_out2
 
 cat | cat | ls
 
 cat < /dev/null
 
-/bin/echo 42 > /dev/null
+echo 42 > /dev/null
 
-/bin/echo 42 >> /dev/null
+echo 42 >> /dev/null
 
 ### OVERWRITE ###
-/bin/echo 42 > /dev/null > /dev/null > /dev/null > /dev/null > tmp_redir_out
-cat tmp_redir_out
-rm tmp_redir_out
+echo 42 > /dev/null > /dev/null > /dev/null > /dev/null > tester/output/tmp_out3 && cat tester/output/tmp_out3 && rm tester/output/tmp_out3
 
-/bin/echo 42 > tmp_redir_out > tmp_redir_out1 > tmp_redir_out2 > tmp_redir_out3
-/bin/echo 0
-cat tmp_redir_out
-/bin/echo 1
-cat tmp_redir_out1
-/bin/echo 2
-cat tmp_redir_out2
-/bin/echo 3
-cat tmp_redir_out3
-rm tmp_redir_out tmp_redir_out1 tmp_redir_out2 tmp_redir_out3
+echo 42 > tester/output/tmp_out > tester/output/tmp_out2 > tester/output/tmp_out3 > tester/output/tmp_out4 && echo 0 && cat tester/output/tmp_out && echo 1 && cat tester/output/tmp_out2 && echo 2 && cat tester/output/tmp_out3 && echo 3 && cat tester/output/tmp_out2 && rm tester/output/tmp_out tester/output/tmp_out2 tester/output/tmp_out3 tester/output/tmp_out4
 
-/bin/echo 42 > /dev/null > tmp_redir_out
-/bin/echo 2 >> /dev/null >> tmp_redir_out
-cat tmp_redir_out
-rm tmp_redir_out
+echo 42 > /dev/null > tester/output/tmp_out && echo 2 >> /dev/null >> tester/output/tmp_out && cat tester/output/tmp_out && rm tester/output/tmp_out
 
 ### PERMISSION DENIED ###
-touch tmp_redir_out_file1
-chmod -r tmp_redir_out_file1
-/bin/echo 1 > tmp_redir_out tmp_redir_out_file1
+touch tester/output/tmp_redir_out_file1 && chmod 000 tester/output/tmp_redir_out_file1 && echo 1 > tester/output/tmp_redir_out tester/output/tmp_redir_out_file1 && chmod 777 tester/output/tmp_redir_out_file1 && rm -rf tester/output/tmp_redir_out_file1
 
-/bin/grep 1 < inputfile
+grep 1 < tester/inputfile
 
-/bin/grep 1 < NO_SUCH_FILE
+grep 1 < tester/NO_SUCH_FILE
 
-/bin/grep 1 < inputfile < inputfile
+grep 1 < tester/inputfile < tester/inputfile
 
-/bin/grep 1 < NO_SUCH_FILE < inputfile
+grep 1 < tester/NO_SUCH_FILE < tester/inputfile
 
-rm -f tmp_std_outfile
+rm -f tester/output/out && rm -f tester/output/out && rm -f tmp_std_outfile
 
-rm -f tmp_std_outfile
+echo 1 >/dev/null | /usr/bin/grep 1
 
-rm -f tmp_std_outfile
+echo 1 >/dev/null | echo 2
 
-/bin/echo 1 >/dev/null | /usr/bin/grep 1
+echo >/dev/null 1 | /usr/bin/grep 1
 
-/bin/echo 1 >/dev/null | /bin/echo 2
-
-/bin/echo >/dev/null 1 | /usr/bin/grep 1
-
-/bin/echo >/dev/null 1 | /bin/echo 2
+echo >/dev/null 1 | echo 2
 
 ### HERE_DOC ###
 # cat << lim
@@ -246,11 +222,8 @@ rm -f tmp_std_outfile
 # $NOVAR
 # $HOME
 # lim
-> out
-/bin/rm -f out
-< out
-/bin/rm -f out
->> out
-/bin/rm -f out
-> out
+> tester/output/out && rm -f tester/output/out
+< tester/output/out && rm -f tester/output/out
+>> tester/output/out && rm -f tester/output/out
+> tester/output/out
 
