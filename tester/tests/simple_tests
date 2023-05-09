@@ -6,3 +6,233 @@ ls |
 | ls
 ls | ls
 ls
+../ls
+./ls
+/ls
+../../../../../../../../../../../bin/ls
+< Makefile cat | > tester/output/thisfile
+cat tester/output/thisfile
+< Makefile | cat >  tester/output/thisfile2
+cat tester/output/thisfile2
+ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls
+ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls | ls
+env | sort | grep -v SHLVL | grep -v ^_ | grep -v HIST
+cat ./test_files/infile_big | grep oi
+export GHOST=123 | env | grep GHOST
+/bin/echo 1 | grep 1
+/bin/echo 1 | grep 2
+ifconfig | grep ":"
+ifconfig | grep nothing
+cd .. | echo "42"
+echo 42 | cat -e
+echo 42 | echo no | echo smth | grep 42
+echo 42 | echo no | echo smth | grep no
+echo 42 | echo no | echo smth | grep smth
+/bin/env | grep "_="
+/bin/env | grep "SHLVL"
+/bin/echo 1 | kaka
+echo test | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e
+/bin/echo test | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e | cat -e
+ls -la ../ | grep "."
+unset TEST | cat -e
+cat tmp_lol.c | cat > tmp_lol.c
+rm -rf tmp_lol.c
+/bin/echo 1 > tmp_lol.c
+cat tmp_lol.c | cat > tmp_lol.c
+rm -rf tmp_lol.c
+ls | cat asd
+ls > out >> out1 >out3 | cat out1
+ls > out >> out1 >out3 | cat out1
+/bin/rm -f out
+/bin/rm -f out1
+/bin/rm -f out3
+cat < Makefile > out >> out1 | wc -l out1 > out2
+cat < Makefile > out >> out1 | wc -l out1 > out2
+/bin/rm -f out
+/bin/rm -f out1
+/bin/rm -f out2
+|ls | ls
+ls|cat Makefile|ls
+ls|cat Makefile|<wc -l
+ls|cat Makefile|> out
+/bin/rm -f out
+ls|cat Makefile|>> out
+/bin/rm -f out
+$USER
+/bin/rm -f out
+pwd
+ls|cat Makefile|>> out|cd ..
+/bin/rm -f out
+pwd
+pwd
+cd .. |ls|cat Makefile|>> out
+pwd
+/bin/rm -f out
+ls -l | awk '$1 ~ /^d/ {print $9}'
+ls
+cat cmds.sh
+/bin/echo test1
+""
+touch ""
+touch "  "
+/bin/rm -f "  "
+touch "
+"
+/bin/rm -f "
+"
+mkdir " " && /bin/rm -rf " "
+expr $? + $?
+expr 21 + 21
+"ls"
+"cat cmds.sh"
+"/bin/echo" test1
+'/bin/echo test1'
+awk '$1 ~ /^d/ {print $9}'
+awk 'BEGIN{srand(42); for(i=1;i<=1000000;i++)print int(rand()*1000)}' | awk '{sum+=$1} END {print sum/NR}'
+echo asd
+echo $?
+pwd
+echo $?
+asd
+unset USER
+asd
+pwd
+asd
+pwd
+asd
+echo asd
+echo $?
+cd ..
+echo $?
+asd
+unset PATH
+echo $?
+touch whatever
+cat <"./whatever" >"./whatever"
+rm -rf whatever
+ls >"./ with spaces"
+rm -rf " with spaces"
+"."
+.ls
+./ls
+"./"ls
+"./""ls"
+"./"''"ls"
+3123
+lsa
+/ls
+EechoE
+/ls/
+/bin/
+/bin/cats
+./4242424242.sh
+rm -f something
+| echo -n oui
+| | |
+echo $?
+echo $HOME
+echo $HOME$USER
+echo $HOME$NOTHING$USER$
+export a="asd"
+export a="asd" b="de" o= c="hellomi" X
+export miert ne lehetne ezt is
+export a="asd"
+unset a
+export a="asd" b="de" o= c="hellomi" X
+unset o
+export a="asd" b="de" o= c="hellomi" X
+unset X
+export a="asd" b="de" o= c="hellomi" X
+unset o a X b c
+export a="asd" b="de" o= c="hellomi" X
+unset o asd B x X wqd c
+export miert ne lehetne ezt is
+echo $"HOME"$USER
+echo $"HOM"E$USER
+echo $"'HOM'E"$USER
+echo $'HOM'E$USER
+echo $"HOME"
+echo $'HOME'
+echo $
+echo "$"
+echo '$='
+echo "$""$"
+echo $"$"
+echo $"42$"
+echo "$"$
+echo $'$'
+echo '$'$
+echo "$ "
+echo '$ '
+echo $TESTNOTFOUND
+echo $HOME$TESTNOTFOUND
+echo $TESTNOTFOUND$HOME
+echo $TESTNOTFOUND$HOME$
+cd ..$PWD
+cd..
+echo $PWD/random_folder
+echo ""$?""
+echo " "$?" "
+echo $?"42"
+echo ''$?''"42"
+echo 'HELLO'$?:''"42"
+echo "$?"
+echo '$?'
+echo "'$?'"
+echo '"$?"'
+### UPDATE PWD ###
+echo $PWD
+cd "tester"
+echo $PWD
+cd ..
+echo $PWD
+### SCMD IN VARIABLE ###
+export tmp_test="/bin/echo 42"
+$tmp_test
+$tmp_test 42
+export tmp_test="/bin/echo"
+$tmp_test 42 42
+export tmp_test="/bin/echo 42"
+"tmp_test"
+### VARIABLE SPLITTING ###
+export X="  A  B  "
+echo "1"$X'2'
+export X=" A  B  "
+echo "1"$X'2'
+export X="A  B  "
+echo "1"$X'2'
+export X="  A  B "
+echo "1"$X'2'
+export X="  A  B"
+echo "1"$X'2'
+export X="  A B  "
+echo "1"$X'2'
+export X="  AB  "
+echo "1"$X'2'
+export X="  A  B  "
+echo $X'2'
+export X="  A  B  "
+echo $X"1"
+export X=""
+echo "1"$X'2'
+export X=" "
+echo "1"$X'2'
+export X="   "
+echo "1"$X'2'
+export X="  A  B  "
+echo ?$X'2'
+export X="  A  B  "
+echo "1"$X?
+export X="  A  B  "
+echo "1"$X2?
+export test=" * "
+touch "$USER * ?eHallo"
+echo "$USER "*" ?e"*
+rm -rf "$USER * ?eHallo"
+~
+.
+/
+./ls
+../bin/../bin/ls
+"."
+..

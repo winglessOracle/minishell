@@ -1,1 +1,303 @@
 echo $var ; var=aap ; echo $var; echo $koe ; koe=schaap ; echo $var$koe ; echo $var$aap$koe ;  echo test$var$aap$koe
+var=aap
+echo $var
+unset PATH
+ls
+unset PATH
+echo $USER
+echo $HOME
+echo $HOME$NOTHING$USER$
+pwd
+unset PATH
+echo $HOME$NOTHING$USER$
+unset PATH
+unset USER
+cd -
+pwd
+echo "no env over here"
+unset OLDPWD
+cd -
+pwd
+cd
+cd ~
+ls
+cd /bin/
+ls
+export T=bazd
+echo "$T" "meg"
+cd /bin/
+ls
+export a="asd" b="de" o= c="hellomi" X
+unset o
+export a="asd" b="de" o= c="hellomi" X
+unset X
+export a="asd" b="de" o= c="hellomi" X
+unset o a X b c
+export a="asd" b="de" o= c="hellomi" X
+unset o asd B x X wqd c
+unset PATH
+cd ..
+unset PATH
+pwd
+cd
+pwd
+unset PATH
+pwd
+cd -
+pwd
+exit
+unset PATH
+pwd
+cd ~
+pwd
+unset PATH
+pwd
+cd ~
+pwd
+cd -
+pwd
+cat Makefile > tester/output/out >>tester/output/out1 >tester/output/out2 && rm -rf tester/output/out && rm -rf tester/output/out1 && rm -rf tester/output/out2
+cat Makefile > tester/output/out >>tester/output/out1 >tester/output/out2 > tester/output/out3 >> tester/output/out4 && rm -rf tester/output/out && rm -rf tester/output/out1 && rm -rf tester/output/out2 && rm -rf tester/output/out3 && rm -rf tester/output/out4
+rm -rf tester/output/out
+< tester/output/out && rm -rf tester/output/out
+|
+""
+''
+>> tester/output/out
+rm -rf tester/output/out
+echo |< echo segf
+echo segf >| echo is this invalid && rm echo
+echo >          >           < "echo"
+echo >          >         | echo kekw
+echo >          >         | echo super valid
+echo <          <         > echo
+echo <  < <         > ok
+echo <  < | echo ok
+echo <  < |    < ok
+echo <      < |    > echo
+echo >>| echo super valid
+echo >>< "echo"
+echo < < < echo seegf
+echo > > < "echo"
+echo > > | echo kekw
+echo > > | echo super valid
+echo < < > echo
+echo < < < > ok
+echo >>| echo kekw
+echo | < echo segf
+amazing
+echo seg < > echo seg
+echo seg > < echo segf
+echo seg < < > echo segf
+echo seg < < < > echo segf
+echo segf > | echo is this invalid
+echo segf < | < echo super valid
+echo < < | echo ok
+echo < < | < ok
+echo < < | > echo
+echo segfault < " < < < " < < amazing
+amazing
+echo seg <  > echo seg
+echo seg >  < echo segf
+echo seg <      < > echo segf
+echo seg <      < <    > echo segf
+echo <      <     < echo seegf
+echo |      < echo segf
+echo segf >     | echo is this invalid
+echo segf <         |        < echo super valid
+echo segfault <"    <   <   <"  <   <   amazing
+amazing
+echo seg <> tester/output/echo seg && rm -rf tester/output/echo
+echo seg >< echo segf
+echo seg <<> echo segf
+echo seg <<<> echo segf
+echo <<< echo seegf
+echo segf <|< echo super valid
+echo ""$?""
+echo $?"42"
+echo ''$?''"42"
+echo '"$USER"'
+echo "'$USER'"
+echo ""'$USER'""
+echo '"'$USER'"'
+echo "''$USER''"
+echo "'"'$USER'"'"
+echo '"'"$USER"'"'
+echo $"HOME"$USER
+echo $"HOM"E$USER
+echo "exit_code ->$? user ->$USER home -> $HOME"
+echo $"HOME"
+echo $"42$"
+echo "$ "
+echo hi >./outfiles/outfile01 | /bin/echo bye
+echo <123 <456 hi | /bin/echo 42
+echo '$='
+echo '$ '
+echo "$?"
+echo '$?'
+echo "'$?'"
+echo "cat lol.c | cat > lol.c"
+echo "cat lol.c '|' cat > lol.c"
+echo '$USER' "$USER" "text  ' text"
+echo $USER =intergalaktikus miaf*szomez
+echo -n"-n" bonjour
+echo "'$USER'"
+echo " '$USER' "
+echo text"$USER"
+echo text"'$USER'" ' $USER '
+echo "text"   "$USER"    "$USER"
+echo '              $USER          '
+echo ''''''''''$USER''''''''''
+echo """"""""$USER""""""""
+echo '""""""""$USER""""""""'
+echo ""'""""""$USER""""""'""
+echo """"""""'$USER'""""""""
+echo """""""'"$USER"'"""""""
+echo """"""'""$USER""'""""""
+echo ""'""'""""$USER""""'""'""
+echo '""'""'""""$USER""""'""'""'
+echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+echo "text" "text$USER" ... "$USER"
+echo
+echo ''
+echo ""
+echo '' ""
+echo /bin/echo
+echo test1
+echo 'test1'
+echo "/bin/echo hallo"
+echo /bin/echo"1"
+echo "test1 test2"
+echo "test1  test2" test3
+echo " test1 test2 " 'test3 '
+echo $USER$TESTNOTFOUND$HOME$
+echo $USER$TESTNOTFOUND$HOME$WTF$PWD
+echo ~42
+echo "'totally logical'"
+echo 'totally logical'
+echo ''totally logical''
+echo ""'totally logical'""
+">>" asd
+>> '$USER' && cat $USER && rm -f '$USER'
+>> '$USER' && cat '$USER' && rm -f '$USER'
+"echo "
+export T=">>"
+$T lol
+>> $HOME
+>> "$H"OME"E" && cat OMEE && rm -f OMEE
+>> "$USER'$USER'" && cat "$USER'$USER'" && rm -f "$USER'$USER'"
+>> "$USER" && cat $USER && rm -f $USER
+cd /Users/$USER/Desktop/
+pwd
+cd /Users/"$USER"/Desktop/
+pwd
+cd /Users/"$U"S"ER"/Desktop/
+export T=n
+echo "-"$T$T
+export T=ech
+echo $To
+export T=ech
+echo $T"o"
+export T=ech
+echo $T"o "
+export T=ech
+echo $T"o -n"
+export T=ech
+echo $T"o -n"
+export T=ech
+echo $T'o'
+export T="-n test1 -n test 2"
+echo $T
+export T=ech
+echo $T'o '
+"ECHO"
+'echo'
+'PWD'
+"PWD"
+export T=nnnnnnnn
+export T=e E=c S=h L=o
+$T$E$S$L
+export T=e E=c S=h L=o L=ok
+$T$E$S$L
+export T=e E=c S=h L=o
+$T$E$S$L -n
+export T=E E=c S=h L=o
+$T$E$S$L -n
+export T=E E=c S=h L=o
+$T$E$S$L -nn
+export T=e E=c S=h L=o
+$T$E$S$L -nn
+export T=e E=c S=h L=o
+$T$E"c"$L -nn
+export T=e E=c S=h L=o
+$T$E"C"$L -nn
+export T=e E=c S=h L=o
+$T$E"C"$L "" -""n
+ls
+pWD
+pwD
+CAT
+export T="|"
+echo segfault $T grep segfault
+export T='|'
+echo segfault $T grep segfault
+export T=">"
+echo segfault $T grep segfault
+export T='<'
+echo segfault $T grep segfault
+export T="<<"
+echo segfault $T grep segfault
+export T='<<'
+echo segfault $T grep segfault
+export T="|"
+$T$T$T$T$T$T$T
+export T="echo segfault | grep segfault"
+$T
+export T=-nnnnnnnn"nnnnnnn "
+echo $T
+export T=-"n                    "
+Echo $T
+UNSET USER
+Unset USER
+EXPORT T=LA
+echo $T
+Export T=LA
+echo $T
+"e"'x''p''o''r''t' L=T
+echo $T
+e""""""""""""cho
+export T='|'
+echo $T echo lala $T echo $T echo ?
+export T="<<"
+$T.
+OLDPWD
+USER
+" ls"
+" cat"
+" echo"
+" PWD"
+" pwd"
+"PWD "
+"pwd "
+'pwd '
+p""''''w''''''""""""''''''''''''''''''''''''''''''''d
+'''''''''''''''' echo ok
+echo "|"  | echo maybe
+echo '|'  | echo maybe
+echo -nnnnnnnnnnnn
+export L=amazing L=ok L=cool
+echo $L
+export L=amazing L=ok L=cool
+export L=ok
+echo $L
+echo '$'$'$'$'$'
+echo '$'$'$'$'$'$'$'
+echo "$"$'$'$"$"$"$"$'$'
+echo $U/SER
+echo '$/'
+exit 9223372036854775805
+exit 123"123"
+<| echo ok
+>| echo sure
+cd --
+=======

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 21:43:08 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 15:21:37 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/04/30 18:59:30 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	check_newline(char *str)
 		i++;
 		while (str[i] == 'n')
 			i++;
-		if (str[i] != 'n' && str[i] != '\0')
+		if (str[i] != 'n' && (str[i] != '\0' || i == 1))
 			return (0);
 	}
 	return (i);

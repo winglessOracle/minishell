@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 18:16:05 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/03 11:56:12 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,34 @@ int	remove_comment(t_node **token, t_smpl_cmd *cmd)
 
 int	parser_assign(t_node **token, t_smpl_cmd *cmd)
 {
-	if (!(*token)->content)
+	int	check;
+
+	check = 0;
+	if (!cmd->cmd_argc)
+	{
+		check = check_valid_identifier((*token)->content);
+		if (check)
+			return (0);
+		lstadd_back(&cmd->assign, lstpop(token));
 		remove_node(token, cmd);
-	if ((*token && !ft_isalpha((*token)->content[0]) \
-		&& (*token)->content[0] != '_') || cmd->cmd_argc != 0)
-		return (add_word_to_cmd(token, cmd));
-	lstadd_back(&cmd->assign, lstpop(token));
-	remove_node(token, cmd);
+	}
 	return (0);
 }
 
 int	set_cmd_end(t_node **token, t_smpl_cmd *cmd, t_list *list)
 {
 	(void)list;
-	if (*token && (*token)->type == PIPE)
+	if (*token && !ft_strncmp((*token)->content, "|", 1))
 	{
 		remove_node(token, cmd);
-		if (!(*token) || (*token)->type == PIPE_END \
-											|| (*token)->type == PIPE)
+		if (!(*token) || !ft_strncmp((*token)->content, "|", 1))
 			return (syntax_error(token, cmd, "no command after '|'\n", -1));
+		if (cmd->cmd_argv == NULL && cmd->redirect == NULL \
+													&& cmd->assign == NULL)
+			return (syntax_error(token, cmd, "syntax error\n", -1));
+	}
+	if (*token && (!ft_strcmp((*token)->content, ";") || !ft_strcmp((*token)->content, "&") || !ft_strcmp((*token)->content, "&&")))
+	{
 		if (cmd->cmd_argv == NULL && cmd->redirect == NULL \
 													&& cmd->assign == NULL)
 			return (syntax_error(token, cmd, "syntax error\n", -1));
@@ -77,6 +86,7 @@ int	expand_tilde(t_node **token, t_smpl_cmd *cmd)
 		(*token)->content = ft_strdup(home);
 	else
 		(*token)->content = ft_strjoin(home, &temp[1]);
+	(*token)->type = WORD;
 	free(temp);
 	free(home);
 	return (0);

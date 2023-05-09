@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 19:24:01 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/03 14:53:43 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,7 @@
 // argument, and the directory change is successful, the absolute pathname of 
 // the new working directory is written to the standard output. 
 // An argument of - is equivalent to $OLDPWD.
-int	go_to_var(t_node *env_list, char *arg, char *var)
-{
-	char	*value;
-	char	*str;
-
-	if (arg[0] == '-' && ft_strcmp(arg, "-"))
-	{
-		ft_putstr_fd("minishell: cd: invalid option\n", 2);
-		return (1);
-	}
-	value = get_variable(env_list, var);
-	if (!value)
-	{
-		str = ft_strjoin(var, " not set\n");
-		ft_putstr_fd(ft_strjoin("minishell: cd: ", str), 2);
-		free(str);
-		return (1);
-	}
-	if (!chdir(value))
-	{
-		if (!ft_strcmp(var, "OLDPWD"))
-			printf("%s\n", value);
-		free(value);
-		return (0);
-	}
-	free(value);
-	return (1);
-}
-
+// An argument of -- is equivalent to $HOME.
 int	cd_absolute(int i, char *cmd_arg, t_node *env_list)
 {
 	int	ret;

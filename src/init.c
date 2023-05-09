@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:05:51 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/26 18:20:41 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/09 12:31:16 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,26 @@ t_node	*init_env(void)
 {
 	t_node	*env_list;
 	char	*temp;
+	int		level;
 
 	g_exit_status = 0;
 	env_list = environ_to_list();
-	add_variable(env_list, ft_strdup("PS1=\x1b[0;36m 💯CC\e[?25h_\e\033[0m "), 1);
+	add_variable(env_list, ft_strdup("PS1=\x1b[0;36m💯CC\e[?25h_ \e\033[0m"), 1);
 	add_variable(env_list, ft_strdup("PS2=> "), 1);
-	add_variable(env_list, ft_strdup("IFS=' \t\n'"), 1);
+	add_variable(env_list, ft_strdup("IFS= \t\n"), 1);
 	temp = get_variable(env_list, "HOME");
 	add_variable(env_list, ft_strjoin("~=", temp), 1);
 	free(temp);
+	temp = get_variable(env_list, "SHLVL");
+	if (temp)
+	{
+		level = ft_atoi_long(temp);
+		free(temp);
+		temp = ft_itoa(level + 1);
+		add_variable(env_list, ft_strjoin("SHLVL=", temp), 2);
+		free(temp);
+	}
+	add_variable(env_list, ft_strjoin("OLDPWD", ""), 2);
 	return (env_list);
 }
 

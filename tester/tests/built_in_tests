@@ -1,22 +1,4 @@
-echo built-in
-cd src ; CDPATH=/Users/cariencaljouw ; cd Documents ; unset CDPATH ; cd codamcore/minishell ; cd Documents/codamcore/minishell
-mkdir test ; cd test ; rmdir ../test ; cd . ; cd ..
-cd ../../../../../; pwd
-cd ~; pwd
-cd; pwd
-unset HOME; cd;
-export HOME=/Users/user42; cd ~
-cd ..lalala; pwd
-cd .; echo $OLDPWD
-cd -; pwd
-echo
-echo -n
-echo $IDONOTEXIST
-echo $PATH
-echo ~
-echo -n-n-nnnn-nnnnnnn
-echo "" hello world
-env lalala
+env sometext
 env | grep OLDPWD
 export aaa1=cat aaa2=dog
 env | grep aaa
@@ -30,12 +12,125 @@ export test2=$HOME
 echo $test2
 export ls="ls -l"
 $ls
-# exit 42 lalala
-# exit lalala 42
-# exit 256
-# exit -1
-echo hello world
 env ls
 env -a ls
 $SHVL
-
+eCho
+env | grep DOESNT_EXIST
+env | grep HOME
+env | grep USER
+env | grep SHLVL
+env what
+pwd
+"pwd"
+pwd test42
+pwd 42 42 42
+pwd pwd
+pwd pwd pwd
+echo $HOME
+echo
+echo 1
+cat 42
+echo hello 42
+sleep 0
+echo
+echo hello world
+echo 42
+echo $?
+cat 42
+echo $?
+exe42 42
+42 42
+/echo 42
+expr $? + $?
+cat 42
+expr $? + $?
+echo "Hello World"
+echo "  ""Hello World"
+echo "  "Hello "World "
+"echo" 42
+"echo 42"
+echo " cat ' lol.c"
+echo @World"42"Hello
+echo 'Hello World'
+echo '  ' Hello World
+echo '  'Hello 'World '
+'echo' 42
+'e'cho 42
+echo 'cat lol.c << cat > lol.c'
+echo @World'42'Hello
+echo "" ''
+echo """"''""''""
+echo " "" " ' ' " " ' ' " "
+echo 1 '|' echo 2
+echo 1 '&&' echo 2
+echo 1 '||' echo 2
+echo 1 '>' echo 2
+echo 1 '>>' file 2
+'<<' lim echo 1 >>/dev/null
+echo "$USER"
+echo "   $   "
+echo '$USER'
+echo '   $   '
+echo "$HO ME"
+echo '$HO ME'
+echo $"HOME"
+echo $'HOME'
+echo ""$PWD""
+echo ''$PWD''
+echo $USE"R"$HOME
+echo $"HOME"$USER
+echo $"HOM"E$USER
+echo $"'HOM'E"$USER
+echo $'HOM'E$USER
+echo $"HOME"
+echo $'HOME'
+echo $
+echo "$"
+echo '$='
+echo "$""$"
+echo $"$"
+echo $"42$"
+echo "$"$
+echo $'$'
+echo '$'$
+cd /bin/
+sleep 2
+unset PATH
+echo $PATH
+ls
+echo 1
+cd -
+echo 42
+unset PATH
+echo 42
+unset PATH
+unset PATH
+echo $PATH
+echo 1
+echo 42
+export PATH=""
+echo $PATH
+echo 1
+cd -
+cd .
+cd ~
+cd ~/Desktop/
+pwd
+export PATH=
+echo $PATH
+echo 1
+export PATH=1
+echo $PATH
+echo 1
+cd /bin/
+ls
+touch tester/output/tmp_x_file1 
+tester/output/tmp_x_file1 
+echo $? 
+export PATH=$HOME 
+echo $PATH && echo 42 
+rm -f tester/output/tmp_x_file1
+cd doesntexist
+export PATH=""
+ls

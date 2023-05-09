@@ -6,11 +6,12 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 20:02:30 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 18:26:56 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/03 14:28:30 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "builtin.h"
 
 // unset []
 // For each name, remove the corresponding variable or function. 
@@ -29,10 +30,27 @@ char	*get_name(char	*str)
 	return (name);
 }
 
-void	move_to_next(t_node **temp, t_node **prev)
+int	check_valid_unset(char *str)
 {
-	*prev = *temp;
-	*temp = (*temp)->next;
+	int	i;
+
+	i = 0;
+	if (str[0] == '-' && str[1])
+		return (return_error("minishell: unset: invallid option\n", 2));
+	if (!str || !ft_strcmp(str, "") || (!ft_isalpha(str[i]) && str[i] != '_'))
+		return (return_error("minishell: not a valid identifier\n", 1));
+	else
+	{
+		while (str[i] && str[i] != '=')
+		{
+			if (!ft_isalpha(str[i]) && !ft_isdigit(str[i]) && str[i] != '_')
+				return (return_error("minishell: not a valid identifier\n", 1));
+			i++;
+		}
+		if (str[i] == '=')
+			return (return_error("minishell: not a valid identifier\n", 1));
+	}
+	return (0);
 }
 
 int	remove_var(t_node *temp, t_node *prev, char *name)
@@ -47,10 +65,29 @@ int	remove_var(t_node *temp, t_node *prev, char *name)
 	return (0);
 }
 
+int	check_and_remove(t_node **temp, char *str, t_node **prev)
+{
+	char	*name;
+
+	name = get_name((*temp)->content);
+	if (!ft_strcmp(str, name))
+	{
+		if (remove_var(*temp, *prev, name))
+			return (1);
+	}
+	else
+	{
+		*prev = *temp;
+		*temp = (*temp)->next;
+	}
+	free(name);
+	return (0);
+}
+
 int	execute_unset(char **cmd_vector, t_node *env_list)
 {
 	int		i;
-	char	*name;
+	int		check;
 	t_node	*temp;
 	t_node	*prev;
 
@@ -58,17 +95,13 @@ int	execute_unset(char **cmd_vector, t_node *env_list)
 	while (cmd_vector[i])
 	{
 		temp = env_list;
+		check = check_valid_unset(cmd_vector[i]);
+		if (check)
+			return (check);
 		while (temp && temp->content)
 		{
-			name = get_name(temp->content);
-			if (!ft_strcmp(cmd_vector[i], name))
-			{
-				if (remove_var(temp, prev, name))
-					break ;
-			}
-			else
-				move_to_next(&temp, &prev);
-			free(name);
+			if (check_and_remove(&temp, cmd_vector[i], &prev))
+				break ;
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/25 11:40:47 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/25 21:32:43 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/02 16:05:53 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,12 @@ int	check_token_content(t_node *token, int type)
 			return (DQUOTE);
 		else if (str[i] == '\'' && type != DQUOTE)
 			return (SQUOTE);
-		else if (str[i] == '$' && str[i + 1] != ' ' && str[i + 1] != '\0')
+		if (str[i] == '$' && str[i + 1] != ' ' && str[i + 1] != '\0' \
+				&& type != SQUOTE)
 			return (EXPAND);
-		if (str[i] == '=' && token->type != ASSIGN_T)
-			return (ASSIGN_T);
 		i++;
 	}
-	return (check_assign(str, type));
+	if (check_assign(token->content, WORD))
+		return (ASSIGN);
+	return (WORD);
 }

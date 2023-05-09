@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/18 12:30:26 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/26 19:22:16 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/03 11:07:37 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	check_env(t_smpl_cmd *cmd)
 {
+	if (!cmd)
+		return ;
 	if (cmd->cmd_argc > 1 && !ft_strcmp(cmd->cmd_argv->content, "env") \
 		&& cmd->cmd_argv->next->content[0] != '-')
 	{

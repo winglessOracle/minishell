@@ -6,11 +6,12 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 09:26:11 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/03/20 20:29:57 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/09 09:35:47 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "stdio.h"
 
 long	ft_atoi_long(const char *str)
 {
@@ -29,8 +30,10 @@ long	ft_atoi_long(const char *str)
 			sign = -1;
 		i++;
 	}
-	while (ft_isdigit(str[i]))
+	while (str[i])
 	{
+		if (ft_isdigit(str[i]) == 0) //added this line
+			return (-1);
 		output = output * 10 + (str[i] - '0');
 		i++;
 	}

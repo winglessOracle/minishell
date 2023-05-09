@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/04/26 19:07:56 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/09 12:07:18 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 #include "parser.h"
 #include "builtin.h"
 
-char	*parse_heredoc(t_node *token, t_node *here_redirect)
+char	*parse_heredoc(t_node *token, t_node *here_redirect, t_smpl_cmd *cmd)
 {
-	int					type;
-	int					state;
-	char				*input;
+	int		type;
+	char	*input;
 
 	type = here_redirect->type;
 	if (type == HEREDOC)
@@ -28,13 +27,11 @@ char	*parse_heredoc(t_node *token, t_node *here_redirect)
 	input = ft_strdup("");
 	while (token)
 	{
-		token->type = type;
-		state = check_token_content(token, token->type);
-		if ((state == SQUOTE || state == DQUOTE) && type != HEREDOC)
-			state = remove_quotes(&token, NULL);
-		else if (state == EXPAND && type != HEREDOC)
-			state = expand(&token, NULL);
-		state = check_token_content(token, token->type);
+		token->type = check_token_content(token, token->type);
+		if ((token->type == SQUOTE || token->type == DQUOTE) && type != HEREDOC)
+			token->type = merge_quoted_heredoc(&token, cmd);
+		else if (token->type == EXPAND && type != HEREDOC)
+			token->type = expand(&token, cmd);
 		if (token->content)
 			input = ft_strjoin_free_s1(input, token->content);
 		remove_node(&token, NULL);
@@ -59,8 +56,12 @@ int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd, t_list *list)
 	parse[PIPE_END] = set_cmd_end;
 	state = 0;
 	while (*tokens && !state)
+	{
+		// print_tokens(*tokens, "1. in parse cmd\n");
 		state = parse[(*tokens)->type](tokens, *cmd, list);
-	state = set_cmd_end(tokens, *cmd, list);
+	}
+	if (state != -1)
+		state = set_cmd_end(tokens, *cmd, list);
 	check_env(*cmd);
 	return (state);
 }
@@ -109,8 +110,12 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 	{
 		pipeline = parse_pipeline(&tokens, env_list, list);
 		if (pipeline)
+		{
+			// print_pipeline(pipeline);
 			executor(pipeline);
-		delete_pipe(pipeline);
+			// printf("exit status: %d\n", g_exit_status);
+			delete_pipe(pipeline);
+		}
 		if (tokens)
 			check_list(&tokens, list);
 	}

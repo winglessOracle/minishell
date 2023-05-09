@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/04/26 18:29:13 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/08 11:43:39 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,10 @@ int	main(void)
 	t_node		*env_list;
 	t_node		*tokens;
 
-	//add max buffer?
 	// atexit(leaks);
 	env_list = init_env();
 	read_history("log/history_log"); //remove
-	// set_signals();
+	set_signals();
 	while (1)
 	{
 		line_read = get_input(env_list, "PS1", 1);
