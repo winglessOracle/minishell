@@ -27,7 +27,7 @@ cd /
 pwd
 cd '/////'
 pwd
-cd "$PWD/file_tests"
+cd "$PWD/tester"
 pwd
 cd '/etc' 
 cd '/var' 

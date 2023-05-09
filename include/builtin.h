@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/13 09:29:13 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/03 14:55:12 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/09 09:32:19 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ int		go_to_var(t_node *env_list, char *arg, char *var);
 void	check_env(t_smpl_cmd *cmd);
 t_node	*sort_env(t_node *env_list);
 
-int	check_valid_identifier(char *str);
+int		check_valid_identifier(char *str);
 
 #endif

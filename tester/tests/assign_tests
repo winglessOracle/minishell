@@ -20,7 +20,7 @@ cd -
 pwd
 cd
 cd ~
-/bin/ls
+ls
 cd /bin/
 ls
 export T=bazd
@@ -56,28 +56,17 @@ cd ~
 pwd
 cd -
 pwd
-/bin/cat Makefile > out >>out1 >out2
-/bin/cat Makefile > out >>out1 >out2
-/bin/rm -rf out
-/bin/rm -rf out1
-/bin/rm -rf out2
-/bin/cat Makefile > out >>out1 >out2 > out3 >> out4
-/bin/cat Makefile > out >>out1 >out2 > out3 >> out4
-/bin/rm -rf out
-/bin/rm -rf out1
-/bin/rm -rf out2
-/bin/rm -rf out3
-/bin/rm -rf out4
-/bin/rm -rf out
-< out
-/bin/rm -rf out
+cat Makefile > tester/output/out >>tester/output/out1 >tester/output/out2 && rm -rf tester/output/out && rm -rf tester/output/out1 && rm -rf tester/output/out2
+cat Makefile > tester/output/out >>tester/output/out1 >tester/output/out2 > tester/output/out3 >> tester/output/out4 && rm -rf tester/output/out && rm -rf tester/output/out1 && rm -rf tester/output/out2 && rm -rf tester/output/out3 && rm -rf tester/output/out4
+rm -rf tester/output/out
+< tester/output/out && rm -rf tester/output/out
 |
 ""
 ''
->> out
-/bin/rm -rf out
+>> tester/output/out
+rm -rf tester/output/out
 echo |< echo segf
-echo segf >| echo is this invalid
+echo segf >| echo is this invalid && rm echo
 echo >          >           < "echo"
 echo >          >         | echo kekw
 echo >          >         | echo super valid
@@ -118,98 +107,86 @@ echo segf >     | echo is this invalid
 echo segf <         |        < echo super valid
 echo segfault <"    <   <   <"  <   <   amazing
 amazing
-echo seg <> echo seg
+echo seg <> tester/output/echo seg && rm -rf tester/output/echo
 echo seg >< echo segf
 echo seg <<> echo segf
 echo seg <<<> echo segf
 echo <<< echo seegf
 echo segf <|< echo super valid
-/bin/echo ""$?""
-/bin/echo $?"42"
-/bin/echo ''$?''"42"
-/bin/echo '"$USER"'
-/bin/echo "'$USER'"
-/bin/echo ""'$USER'""
-/bin/echo '"'$USER'"'
-/bin/echo "''$USER''"
-/bin/echo "'"'$USER'"'"
-/bin/echo '"'"$USER"'"'
-/bin/echo $"HOME"$USER
-/bin/echo $"HOM"E$USER
-/bin/echo "exit_code ->$? user ->$USER home -> $HOME"
-/bin/echo $"HOME"
-/bin/echo $"42$"
-/bin/echo "$ "
-/bin/echo hi >./outfiles/outfile01 | /bin/echo bye
-/bin/echo <123 <456 hi | /bin/echo 42
-/bin/echo '$='
-/bin/echo '$ '
-/bin/echo "$?"
-/bin/echo '$?'
-/bin/echo "'$?'"
-/bin/echo "cat lol.c | cat > lol.c"
-/bin/echo "cat lol.c '|' cat > lol.c"
-/bin/echo '$USER' "$USER" "text  ' text"
-/bin/echo $USER =intergalaktikus miaf*szomez
-/bin/echo -n"-n" bonjour
-/bin/echo "'$USER'"
-/bin/echo " '$USER' "
-/bin/echo text"$USER"
-/bin/echo text"'$USER'" ' $USER '
-/bin/echo "text"   "$USER"    "$USER"
-/bin/echo '              $USER          '
-/bin/echo ''''''''''$USER''''''''''
-/bin/echo """"""""$USER""""""""
-/bin/echo '""""""""$USER""""""""'
-/bin/echo ""'""""""$USER""""""'""
-/bin/echo """"""""'$USER'""""""""
-/bin/echo """""""'"$USER"'"""""""
-/bin/echo """"""'""$USER""'""""""
-/bin/echo ""'""'""""$USER""""'""'""
-/bin/echo '""'""'""""$USER""""'""'""'
-/bin/echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
-/bin/echo "text" "text$USER" ... "$USER"
-/bin/echo
-/bin/echo ''
-/bin/echo ""
-/bin/echo '' ""
-/bin/echo /bin/echo
-/bin/echo test1
-/bin/echo 'test1'
-/bin/echo "/bin/echo hallo"
-/bin/echo /bin/echo"1"
-/bin/echo "test1 test2"
-/bin/echo "test1  test2" test3
-/bin/echo " test1 test2 " 'test3 '
-/bin/echo $USER$TESTNOTFOUND$HOME$
-/bin/echo $USER$TESTNOTFOUND$HOME$WTF$PWD
-/bin/echo ~42
-/bin/echo "'totally logical'"
-/bin/echo 'totally logical'
-/bin/echo ''totally logical''
-/bin/echo ""'totally logical'""
+echo ""$?""
+echo $?"42"
+echo ''$?''"42"
+echo '"$USER"'
+echo "'$USER'"
+echo ""'$USER'""
+echo '"'$USER'"'
+echo "''$USER''"
+echo "'"'$USER'"'"
+echo '"'"$USER"'"'
+echo $"HOME"$USER
+echo $"HOM"E$USER
+echo "exit_code ->$? user ->$USER home -> $HOME"
+echo $"HOME"
+echo $"42$"
+echo "$ "
+echo hi >./outfiles/outfile01 | /bin/echo bye
+echo <123 <456 hi | /bin/echo 42
+echo '$='
+echo '$ '
+echo "$?"
+echo '$?'
+echo "'$?'"
+echo "cat lol.c | cat > lol.c"
+echo "cat lol.c '|' cat > lol.c"
+echo '$USER' "$USER" "text  ' text"
+echo $USER =intergalaktikus miaf*szomez
+echo -n"-n" bonjour
+echo "'$USER'"
+echo " '$USER' "
+echo text"$USER"
+echo text"'$USER'" ' $USER '
+echo "text"   "$USER"    "$USER"
+echo '              $USER          '
+echo ''''''''''$USER''''''''''
+echo """"""""$USER""""""""
+echo '""""""""$USER""""""""'
+echo ""'""""""$USER""""""'""
+echo """"""""'$USER'""""""""
+echo """""""'"$USER"'"""""""
+echo """"""'""$USER""'""""""
+echo ""'""'""""$USER""""'""'""
+echo '""'""'""""$USER""""'""'""'
+echo $USER'$USER'text oui oui     oui  oui $USER oui      $USER ''
+echo "text" "text$USER" ... "$USER"
+echo
+echo ''
+echo ""
+echo '' ""
+echo /bin/echo
+echo test1
+echo 'test1'
+echo "/bin/echo hallo"
+echo /bin/echo"1"
+echo "test1 test2"
+echo "test1  test2" test3
+echo " test1 test2 " 'test3 '
+echo $USER$TESTNOTFOUND$HOME$
+echo $USER$TESTNOTFOUND$HOME$WTF$PWD
+echo ~42
+echo "'totally logical'"
+echo 'totally logical'
+echo ''totally logical''
+echo ""'totally logical'""
 ">>" asd
->">" asd
-/bin/rm -f ">"
->> '$USER'
-cat $USER
-/bin/rm -f '$USER'
->> '$USER'
-cat '$USER'
-/bin/rm -f '$USER'
+>> '$USER' && cat $USER && rm -f '$USER'
+>> '$USER' && cat '$USER' && rm -f '$USER'
 "echo "
 export T=">>"
 $T lol
 >> $HOME
->> "$H"OM"E"
-cat OME
-/bin/rm -f OME
->> "$USER'$USER'"
-cat "$USER'$USER'"
-/bin/rm -f "$USER'$USER'"
->> "$USER"
-cat $USER
-/bin/rm -f $USER
+>> "$H"OME"E" && cat OMEE && rm -f OMEE
+>> "$USER'$USER'" && cat "$USER'$USER'" && rm -f "$USER'$USER'"
+>> "$USER" && cat $USER && rm -f $USER
 cd /Users/$USER/Desktop/
 pwd
 cd /Users/"$USER"/Desktop/

@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/03 12:41:20 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/09 12:07:18 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 char	*parse_heredoc(t_node *token, t_node *here_redirect, t_smpl_cmd *cmd)
 {
-	int					type;
-	char				*input;
+	int		type;
+	char	*input;
 
 	type = here_redirect->type;
 	if (type == HEREDOC)
