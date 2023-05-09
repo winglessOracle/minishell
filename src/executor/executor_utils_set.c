@@ -35,7 +35,7 @@ int	set_out(int *fd_pipe, t_node *temp)
 	if (temp->type == OUTPUT)
 		fd_pipe[1] = open(temp->content, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 	if (temp->type == APPEND)
-		fd_pipe[1] = open(temp->content, O_CREAT | O_WRONLY | O_APPEND, 0644);	
+		fd_pipe[1] = open(temp->content, O_CREAT | O_WRONLY | O_APPEND, 0644);
 	return (1);
 }
 

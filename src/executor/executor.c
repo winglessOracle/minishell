@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/09 10:12:04 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/09 11:37:31 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 		execve(cmd_args[0], cmd_args, env);
 	}
 	else
-	{
-		check_cmd(cmd_args[0]);
 		exec_default(cmd_args, pipe_argv, env_list, env);
-	}
 	exit_error("minishell: executer", 127);
 }
 
@@ -67,9 +64,9 @@ void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 {
 	if (pid == 0)
 	{
-		close(fd_pipe[0]);
 		if (set_fd(cmd, &keep, fd_pipe) == -1)
 			exit_error("minishell: redirect", 1);
+		close(fd_pipe[0]);
 		dup2(keep, STDIN_FILENO);
 		if (!keep)
 			exit_error("dup fail", 1); //change
@@ -131,7 +128,6 @@ void		executor(t_pipe *pipeline)
 				exec_cmd(pipeline->pipe_argv, pipeline->pipe_argv->env_list);
 			else
 				execute_exit(NULL, pipeline->pipe_argv->env_list);
-			exit(EXIT_FAILURE);
 		}
 		pipeline->pipe_argv = pipeline->pipe_argv->next;
 		i++;

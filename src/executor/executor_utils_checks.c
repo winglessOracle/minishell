@@ -32,9 +32,7 @@ void	check_built(t_smpl_cmd *cmd)
 	i = 0;
 	while (i < 7 && cmd->cmd_argc > 0)
 	{
-		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0 ||
-			ft_strcmp_case(cmd->cmd_argv->content, builtins[0], \
-			&ft_tolower) == 0)
+		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0 || ft_strcmp_case(cmd->cmd_argv->content, builtins[0], ft_tolower) == 0)
 		{
 			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
@@ -78,8 +76,7 @@ void	check_cmd(char *cmd)
 {
 	struct stat	file_stat;
 
-	if (stat(cmd, &file_stat) == -1)
-		return ;
+	stat(cmd, &file_stat);
 	if (S_ISDIR(file_stat.st_mode))
 		exit_error("minishell: is a directory", 126);
 	else if (access(cmd, F_OK) == -1)

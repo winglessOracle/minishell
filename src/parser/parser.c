@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/03 12:41:20 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/09 11:53:19 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 		pipeline = parse_pipeline(&tokens, env_list, list);
 		if (pipeline)
 		{
+			print_tokens(pipeline->pipe_argv->redirect, "redirects\n");
 			// print_pipeline(pipeline);
 			executor(pipeline);
 			// printf("exit status: %d\n", g_exit_status);
