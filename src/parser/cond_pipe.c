@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/23 20:56:59 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/03 11:56:52 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/09 15:00:29 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	check_condition(t_node **tokens, t_list *list)
 			return (1);
 		if (!*tokens)
 		{
-			syntax_error(tokens, NULL, "check list\n", 1);
+			syntax_error(tokens, NULL, "syntax error list\n", 1);
 			return (1);
 		}
 		cleanup_to_next_pipe(tokens, list);
@@ -54,7 +54,7 @@ int	check_condition(t_node **tokens, t_list *list)
 			return (1);
 		if (!*tokens)
 		{
-			syntax_error(tokens, NULL, "check list\n", 1);
+			syntax_error(tokens, NULL, "syntax error list\n", 1);
 			return (1);
 		}
 		cleanup_to_next_pipe(tokens, list);
@@ -91,15 +91,23 @@ int	check_list(t_node **tokens, t_list *list)
 int	count_braces(t_node **tokens)
 {
 	t_node	*temp;
+	int		type;
+	int		quotes;
 	int		count;
 
 	temp = *tokens;
 	count = 0;
+	quotes = 0;
 	while (*tokens)
 	{
-		if ((*tokens)->type == BRACE_O)
+		type = check_token_content(*tokens, WORD);
+		if (type == SQUOTE)
+			quotes += count_quotes((*tokens)->content, '\'');
+		if (type == DQUOTE)
+			quotes += count_quotes((*tokens)->content, '\"');
+		if ((*tokens)->type == BRACE_O && !(quotes % 2))
 			count ++;
-		if ((*tokens)->type == BRACE_C)
+		if ((*tokens)->type == BRACE_C && !(quotes % 2))
 			count --;
 		if (count < 0)
 			return (1);
