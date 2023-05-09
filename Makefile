@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/05/09 09:45:07 by cwesseli      ########   odam.nl          #
+#    Updated: 2023/05/09 10:15:41 by cwesseli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ OBJ_FILES	=  $(addprefix obj/src/, minishell.o lst_utils/t_node.o utils/utils.o 
 				lst_utils/delete.o lst_utils/t_pipe.o ) \
 				$(addprefix obj/src/parser/, parser.o parser_utils.o parse_redirect.o quotes.o cond_pipe.o cond_pipe_utils.o check_syntax.o ) \
 				$(addprefix obj/src/expander/, expander.o expand_var_utils.o wildcards.o ) \
-				$(addprefix obj/src/executor/, executor.o executor_utils.o executor_utils2.o ) \
+				$(addprefix obj/src/executor/, executor.o executor_utils.o executor_utils_set.o executor_utils_checks.o ) \
 
 OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o cd.o cd_utils.o cd_utils2.o pwd.o unset.o export.o env.o exit.o)
 

@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:31 by carlo         #+#    #+#                 */
-/*   Updated: 2023/04/25 21:45:52 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/09 10:13:37 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,12 @@
 # include "builtin.h"
 
 typedef int	t_built(char **, t_node *);
+void	check_cmd(char *cmd);
+void	read_heredocs(t_pipe *pipeline);
+void	assignments(t_smpl_cmd *pipe_argv, pid_t pid);
+int		set_out(int *fd_pipe, t_node *temp);
+void	set_in(int *keep, t_node *temp);
+int		assign_one(t_pipe *pipeline);
+int		set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe);
 
 #endif
