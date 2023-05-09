@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/08 16:22:04 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/09 12:12:34 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,5 +197,58 @@ int	merge_quoted_heredoc(t_node **token, t_smpl_cmd *cmd)
 	if (*token && count_quotes((*token)->content, quote) % 2)
 		return(0);
 	split_and_remove_quotes(token, cmd);
+	return (0);
+}
+
+int	split_and_remove_quotes_delim(t_node **tokens, t_smpl_cmd *cmd)
+{
+	t_node	*words;
+	char	*content;
+	char	quote;
+	char	quote_open;
+	
+	quote = get_quote_char((*tokens)->type);
+	content = ft_strdup("");
+	words = split_to_list((*tokens)->content, "\'\" ");
+	while (words)
+	{
+		if (words->content[0] == quote)
+		{
+			quote_open = 1;
+			remove_node(&words, cmd);
+		}
+		while (words && words->content[0] != quote)
+		{
+			if (words->content)
+				content = ft_strjoin_free_s1(content, words->content);
+			remove_node(&words, cmd);
+		}
+		if (words && words->content[0] == quote && quote_open)
+		{
+			quote_open = 0;
+			remove_node(&words, cmd);
+		}
+	}
+	free((*tokens)->content);
+	(*tokens)->content = content;
+	return (0);
+}
+
+int	merge_quoted_heredocdelim(t_node **token, t_smpl_cmd *cmd)
+{
+	int		type;
+	char	quote;
+
+	type = (*token)->type;
+	quote = get_quote_char((*token)->type);
+	while (*token && (*token)->next)
+	{
+		if (!(count_quotes((*token)->content, quote) % 2))
+			break ;
+		merge_tokens(*token, type);
+	}
+	if (*token && count_quotes((*token)->content, quote) % 2)
+		return(0);
+	split_and_remove_quotes_delim(token, cmd);
 	return (0);
 }
