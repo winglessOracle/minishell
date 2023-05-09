@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/08 14:13:31 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/09 09:01:09 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -241,6 +241,7 @@ void		executor(t_pipe *pipeline)
 				exec_cmd(pipeline->pipe_argv, pipeline->pipe_argv->env_list);
 			else
 				execute_exit(NULL, pipeline->pipe_argv->env_list);
+			exit(EXIT_FAILURE);
 		}
 		pipeline->pipe_argv = pipeline->pipe_argv->next;
 		i++;

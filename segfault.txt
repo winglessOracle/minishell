@@ -15,5 +15,7 @@ empty redirect nodes should result in error
 readline keeps first characters (solve if persistent history removed)
 
 redirect test for several  out files still hase race issues. : < Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
+HAHA 
 
-sigint from sleep or cat etc  displays extra prompt
+
+sigint from sleep or cat etc  displays extra prompt. can resolve by removing redisplay or a global variable
