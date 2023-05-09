@@ -6,11 +6,11 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/08 19:17:26 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/09 09:37:16 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "sigterm.h"
+#include "sigterm.h"
 
 void	exit_sig(t_node *env_list)
 {
@@ -40,7 +40,6 @@ void	handle_sigint(int signal_number)
 // 	// kill(getpid(), SIGHUP);
 // }
 
-
 void	set_signals(void)
 {
 	struct sigaction	sa_quit;
@@ -68,18 +67,5 @@ void	set_signals(void)
 	sigaddset(&sa_quit.sa_mask, SIGTSTP);
 	if (sigaction(SIGQUIT, &sa_stop, NULL) == -1)
 		exit(errno);
-	// rl_catch_signals = 0;
 }
-
-// void	set_sigint_here(void)
-// {
-// 	struct sigaction	sa_int;
-
-// 	sa_int.sa_handler = handle_sigint_here;
-// 	sigemptyset(&sa_int.sa_mask);
-// 	sigaddset(&sa_int.sa_mask, SIGINT);
-// 	sigaddset(&sa_int.sa_mask, SIGQUIT);
-// 	sigaddset(&sa_int.sa_mask, SIGTSTP);
-// 	if (sigaction(SIGINT, &sa_int, NULL) == -1)
-// 		exit(errno);
-// }
+// rl_catch_signals = 0;

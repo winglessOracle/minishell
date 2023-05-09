@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   quote_utils.c                                      :+:    :+:            */
+/*   quotes.c                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/03 09:56:02 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/09 09:49:09 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd)
 	char	*content;
 	char	quote;
 	char	quote_open;
-	
+
 	// printf("in split a nd remove quotes, content: %s, type: %d\n", (*tokens)->content, (*tokens)->type);
 	quote = get_quote_char((*tokens)->type);
 	// printf("quote now: %c\n", quote);
@@ -105,7 +105,7 @@ int	count_quotes(char *str, char quote1)
 	int		nr_2;
 	int		quotes;
 	char	quote2;
-	
+
 	nr_1 = 0;
 	nr_2 = 0;
 	// printf("quote 1 is: %c\n", quote1);
@@ -135,11 +135,11 @@ int	count_quotes(char *str, char quote1)
 	return (quotes);
 }
 
-void	remove_double_quotes(t_node  **token, char quote)
+void	remove_double_quotes(t_node **token, char quote)
 {
-	int	i;
-	char *str;
-	char *temp;
+	int		i;
+	char	*str;
+	char	*temp;
 
 	str = (*token)->content;
 	i = ft_strlen(str);
@@ -151,7 +151,7 @@ void	remove_double_quotes(t_node  **token, char quote)
 		else if (str[i - 1] == quote && str[i - 2] == quote)
 			temp = ft_substr(str, 0, i - 2);
 		else
-			break;
+			break ;
 		str = temp;
 	}
 	if (temp)
@@ -175,7 +175,7 @@ int	merge_quoted(t_node **token, t_smpl_cmd *cmd)
 		merge_tokens(*token, type);
 	}
 	if (*token && count_quotes((*token)->content, quote) % 2)
-		return(syntax_error(token, cmd, "unclosed quotes\n", 1));
+		return (syntax_error(token, cmd, "unclosed quotes\n", 1));
 	split_and_remove_quotes(token, cmd);
 	(*token)->type = type;
 	return (0);
@@ -195,7 +195,7 @@ int	merge_quoted_heredoc(t_node **token, t_smpl_cmd *cmd)
 		merge_tokens(*token, type);
 	}
 	if (*token && count_quotes((*token)->content, quote) % 2)
-		return(0);
+		return (0);
 	split_and_remove_quotes(token, cmd);
 	(*token)->type = type;
 	return (0);
