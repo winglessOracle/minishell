@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/23 20:56:59 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/09 15:00:29 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/10 16:43:22 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,9 @@ int	count_braces(t_node **tokens)
 			count --;
 		if (count < 0)
 			return (1);
+		if (!(*tokens)->next && (!ft_strncmp((*tokens)->content, "|", 1) \
+				|| !ft_strncmp((*tokens)->content, "&", 1)))
+			return (-1);
 		*tokens = (*tokens)->next;
 	}
 	*tokens = temp;

@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/09 14:34:05 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/10 16:44:34 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,10 +99,15 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 {
 	t_list	*list;
 	t_pipe	*pipeline;
+	int		count;
 
-	if (tokens && count_braces(&tokens))
+	count = count_braces(&tokens);
+	if (tokens && count)
 	{
-		syntax_error(&tokens, NULL, "unclosed braces\n", 1);
+		if (count == -1)
+			syntax_error(&tokens, NULL, "syntax error\n", 1);
+		else
+			syntax_error(&tokens, NULL, "unclosed braces\n", 1);
 		return ;
 	}
 	list = init_list();
