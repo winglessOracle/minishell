@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/23 20:56:59 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/10 16:43:22 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/10 17:20:27 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 
 int	cleanup_to_next_pipe(t_node **tokens, t_list *list)
 {
+	int	state;
+
+	state = list->state;
 	while (*tokens)
 	{
 		if ((*tokens)->type == AND && list->type == 0)
 			check_and(tokens, NULL, list);
 		if ((*tokens)->type == OR && list->type == 0)
 			check_or(tokens, NULL, list);
+		if ((*tokens)->type == AND && list->state == state)
+			check_and(tokens, NULL, list);
 		if ((*tokens)->type == PIPE_END)
 			break ;
 		if (*tokens && (*tokens)->type == BRACE_O)
@@ -42,22 +47,14 @@ int	check_condition(t_node **tokens, t_list *list)
 		if (g_exit_status != 0)
 			return (1);
 		if (!*tokens)
-		{
-			syntax_error(tokens, NULL, "syntax error list\n", 1);
 			return (1);
-		}
-		cleanup_to_next_pipe(tokens, list);
 	}
 	if (list->type == AND)
 	{
 		if (g_exit_status == 0)
 			return (1);
 		if (!*tokens)
-		{
-			syntax_error(tokens, NULL, "syntax error list\n", 1);
 			return (1);
-		}
-		cleanup_to_next_pipe(tokens, list);
 	}
 	return (0);
 }
@@ -84,6 +81,8 @@ int	check_list(t_node **tokens, t_list *list)
 			return (1);
 		if (check_condition(tokens, list))
 			return (1);
+		else
+			cleanup_to_next_pipe(tokens, list);
 	}
 	return (0);
 }
