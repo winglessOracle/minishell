@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/09 14:28:21 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/10 20:11:15 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	set_cmd_end(t_node **token, t_smpl_cmd *cmd, t_list *list)
 	}
 	if (*token && cmd->cmd_argv == NULL && cmd->redirect == NULL \
 													&& cmd->assign == NULL)
-			return (syntax_error(token, cmd, "syntax error\n", -1));
+		return (syntax_error(token, cmd, "syntax error\n", -1));
 	return (1);
 }
 

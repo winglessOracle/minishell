@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/09 12:15:43 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/10 19:52:55 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,11 @@ int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
 	state = get_redirect_type(tokens, cmd);
 	if (state == -1)
 		return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
-	if (((*tokens)->type == PIPE_END || (*tokens)->type == AND || (*tokens)->type == OR) \
-			&& state != OUTPUT)
+	if (((*tokens)->type == PIPE_END || (*tokens)->type == AND || (*tokens)->type == OR))
 			return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
-	if (((*tokens)->type == PIPE_END || (*tokens)->type == AND || (*tokens)->type == OR) \
-			&& state == OUTPUT)
-		remove_node(tokens, cmd);
+	// if (((*tokens)->type == PIPE_END || (*tokens)->type == AND || (*tokens)->type == OR) 
+	// 		&& state == OUTPUT)
+	// 	remove_node(tokens, cmd);
 	while (*tokens && (*tokens)->type == BLANK)
 		remove_node(tokens, cmd);
 	(*tokens)->type = check_token_content(*tokens, WORD);

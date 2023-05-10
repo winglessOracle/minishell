@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/23 20:56:59 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/10 17:20:27 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/10 17:28:46 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ int	check_list(t_node **tokens, t_list *list)
 {
 	while (*tokens)
 	{
-		// print_tokens(*tokens, "in check list\n");
 		if (!ft_strcmp((*tokens)->content, "&&"))
 			list->type = AND;
 		if (!ft_strcmp((*tokens)->content, "||"))
