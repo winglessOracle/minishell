@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 15:16:57 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 16:26:20 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,21 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 	return (type);
 }
 
+int	add_to_redirect(t_node **tokens, t_smpl_cmd *cmd, int state)
+{
+	t_node				*temp;
+
+	temp = lstpop(tokens);
+	if (BONUS)
+	{
+		if (check_wildcars(&temp) > 1)
+			return (syntax_error(&temp, cmd, "ambiguous redirect\n", -1)); // should return 1 and not 2....
+		temp->type = state;
+	}
+	lstadd_back(&cmd->redirect, temp);
+	return (0);
+}
+
 int	get_redirect(t_node **tokens, t_smpl_cmd *cmd, int state)
 {
 	static t_function	*parse[16];
@@ -64,12 +79,7 @@ int	get_redirect(t_node **tokens, t_smpl_cmd *cmd, int state)
 										&& (*tokens)->type == EXPAND))
 			parse[(*tokens)->type](tokens, cmd);
 		if (*tokens)
-		{
-			(*tokens)->type = state;
-			replace_wildcards((*tokens)->content, 26, '*');
-			lstadd_back(&cmd->redirect, lstpop(tokens));
-			return (0);
-		}
+			return (add_to_redirect(tokens, cmd, state));
 	}
 	return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
 }
