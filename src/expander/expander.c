@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/03 12:49:02 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/11 08:48:44 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,7 @@ int	expander(t_node **token, t_smpl_cmd *cmd, t_list *list)
 			state = parse[(*token)->type](token, cmd);
 		if (state == -1)
 			return (-1);
-		else if (*token && (*token)->type > 8)
-			(*token)->type = state;
-		if (*token && (*token)->type == WORD)
+		if (*token && ((*token)->type == WORD || (state == WORD && (*token)->type > 8)))
 			add_word_to_cmd(token, cmd);
 	}
 	return (0);

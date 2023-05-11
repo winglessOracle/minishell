@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/03 11:56:12 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/10 20:11:15 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,16 @@ int	parser_assign(t_node **token, t_smpl_cmd *cmd)
 int	set_cmd_end(t_node **token, t_smpl_cmd *cmd, t_list *list)
 {
 	(void)list;
-	if (*token && !ft_strncmp((*token)->content, "|", 1))
+	if (*token && (!ft_strcmp((*token)->content, "|")))
 	{
-		remove_node(token, cmd);
-		if (!(*token) || !ft_strncmp((*token)->content, "|", 1))
+		if ((*token)->next && ft_strcmp((*token)->next->content, "|"))
+			remove_node(token, cmd);
+		if (!(*token) || !ft_strcmp((*token)->content, "|"))
 			return (syntax_error(token, cmd, "no command after '|'\n", -1));
-		if (cmd->cmd_argv == NULL && cmd->redirect == NULL \
-													&& cmd->assign == NULL)
-			return (syntax_error(token, cmd, "syntax error\n", -1));
 	}
-	if (*token && (!ft_strcmp((*token)->content, ";") || !ft_strcmp((*token)->content, "&") || !ft_strcmp((*token)->content, "&&")))
-	{
-		if (cmd->cmd_argv == NULL && cmd->redirect == NULL \
+	if (*token && cmd->cmd_argv == NULL && cmd->redirect == NULL \
 													&& cmd->assign == NULL)
-			return (syntax_error(token, cmd, "syntax error\n", -1));
-	}
+		return (syntax_error(token, cmd, "syntax error\n", -1));
 	return (1);
 }
 

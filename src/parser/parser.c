@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/09 12:07:18 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/10 20:09:55 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd, t_list *list)
 	parse[PIPE_END] = set_cmd_end;
 	state = 0;
 	while (*tokens && !state)
-	{
-		// print_tokens(*tokens, "1. in parse cmd\n");
 		state = parse[(*tokens)->type](tokens, *cmd, list);
-	}
 	if (state != -1)
 		state = set_cmd_end(tokens, *cmd, list);
 	check_env(*cmd);
@@ -99,11 +96,17 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 {
 	t_list	*list;
 	t_pipe	*pipeline;
+	int		count;
 
-	if (tokens && count_braces(&tokens))
+	if (tokens)
 	{
-		syntax_error(&tokens, NULL, "unclosed braces\n", 1);
-		return ;
+		count = count_braces(&tokens);
+		if (count == -1)
+			syntax_error(&tokens, NULL, "syntax error\n", 1);
+		else if (count)
+			syntax_error(&tokens, NULL, "unclosed braces\n", 1);
+		if (count)
+			return ;
 	}
 	list = init_list();
 	while (tokens)
