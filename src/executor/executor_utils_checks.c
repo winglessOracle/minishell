@@ -1,13 +1,12 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   executor_utils2.c                                  :+:    :+:            */
+/*   executor_utils_checks.c                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/09 09:58:01 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/11 18:30:11 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +15,13 @@
 
 void	check_built(t_smpl_cmd *cmd)
 {
-	int		i;
-	t_built	*built[7];
-	char	**cmd_args;
-	char	*builtins[7] = {"echo", "cd", "pwd", \
-		"export", "unset", "exit", "env"};
+	int			i;
+	t_built		*built[7];
+	char		**cmd_args;
+	static char	*b[7] = {"echo", "cd", "pwd", "export", "unset", "exit", "env"};
 
 	built[0] = execute_echo;
-	built[1] = execute_cd; 
+	built[1] = execute_cd;
 	built[2] = execute_pwd;
 	built[3] = execute_export;
 	built[4] = execute_unset;
@@ -32,7 +30,8 @@ void	check_built(t_smpl_cmd *cmd)
 	i = 0;
 	while (i < 7 && cmd->cmd_argc > 0)
 	{
-		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0 || ft_strcmp_case(cmd->cmd_argv->content, builtins[0], ft_tolower) == 0)
+		if (ft_strcmp(cmd->cmd_argv->content, b[i]) == 0 || \
+			ft_strcmp_case(cmd->cmd_argv->content, b[0], ft_tolower) == 0)
 		{
 			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
@@ -45,10 +44,10 @@ void	check_built(t_smpl_cmd *cmd)
 
 int	check_builtins_curr_env(t_smpl_cmd *cmd)
 {
-	t_built	*built[4];
-	char	**cmd_args;
-	char	*builtins[4] = {"cd", "exit", "export", "unset"};
-	int		i;
+	t_built		*built[4];
+	char		**cmd_args;
+	static char	*builtins[4] = {"cd", "exit", "export", "unset"};
+	int			i;
 
 	built[0] = execute_cd;
 	built[1] = execute_exit;
@@ -84,4 +83,3 @@ void	check_cmd(char *cmd)
 		exit_error("no executable or no permission", 126);
 	return ;
 }
-

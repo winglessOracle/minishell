@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/25 11:40:47 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 17:22:25 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 18:54:00 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 int	syntax_error(t_node **token, t_smpl_cmd *cmd)
 {
 	if (*token)
-		ft_fprintf(2, "cc: syntax error near unexpected token `%s'\n", (*token)->content);
+		ft_fprintf(2, "cc: syntax error near unexpected token `%s'\n", \
+														(*token)->content);
 	else
 		ft_fprintf(2, "cc: syntax error near unexpected token `newline'\n");
 	while (*token)

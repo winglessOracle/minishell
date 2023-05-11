@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 15:59:26 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 18:56:18 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 
 int	match(char *str, char *pattern)
 {
-	int s_i;
+	int	s_i;
 	int	p_i;
-	int s_last_match;
-	int p_last_astrix;
-	
+	int	s_last_match;
+	int	p_last_astrix;
+
 	s_i = 0;
 	p_i = 0;
 	s_last_match = 0;
@@ -44,9 +44,10 @@ int	match(char *str, char *pattern)
 			p_i = p_last_astrix + 1;
 			s_i = ++s_last_match;
 		}
-		else return (0);
+		else
+			return (0);
 	}
-	while (pattern[p_i] == 26) 
+	while (pattern[p_i] == 26)
 		p_i++;
 	return (pattern[p_i] == '\0');
 }
