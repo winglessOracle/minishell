@@ -6,12 +6,13 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 13:05:03 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 13:50:49 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
+#include <stdbool.h>
 
 char	get_quote_char(int type)
 {
@@ -48,7 +49,7 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd, int delim)
 {
 	t_node	*words;
 	char	quote;
-	char	quote_open;
+	bool	quote_open;
 
 	quote = get_quote_char((*tokens)->type);
 	words = split_to_list((*tokens)->content, "\'\" ");
@@ -58,15 +59,15 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd, int delim)
 	{
 		if (words->content[0] == quote)
 		{
-			if (quote_open)
-				quote_open = 0;
-			else
-				quote_open = 1;
+			quote_open = !quote_open;
+			if (delim == -1)
+				(*tokens)->content = ft_strjoin_free_s1((*tokens)->content, \
+														words->content);
 			remove_node(&words, cmd);
 		}
-		while (words && words->content[0] != quote && !delim)
+		while (words && words->content[0] != quote && delim != 1)
 			unquoted(&words, tokens, cmd, quote_open);
-		while (words && words->content[0] != quote && delim)
+		while (words && words->content[0] != quote && delim == 1)
 			unquoted(&words, tokens, cmd, -1);
 	}
 	return (0);

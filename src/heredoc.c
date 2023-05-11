@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/11 13:07:40 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 13:31:05 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ char	*parse_heredoc(t_node *token, t_node *here_redirect, t_smpl_cmd *cmd)
 	{
 		token->type = check_token_content(token, token->type);
 		if ((token->type == SQUOTE || token->type == DQUOTE) && type != HEREDOC)
-			token->type = merge_quoted_heredoc(&token, cmd, 0);
-		else if (token->type == EXPAND && type != HEREDOC)
+			token->type = merge_quoted_heredoc(&token, cmd, -1);
+		if (token->type == EXPAND && type != HEREDOC)
 			token->type = expand(&token, cmd);
 		if (token->content)
 			input = ft_strjoin_free_s1(input, token->content);
