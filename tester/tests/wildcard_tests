@@ -1,5 +1,45 @@
 echo *
-# cat *
+cat *
 echo *ke*
 cat *ke*
-# cat *ke* tester
+cat *ke* tester
+echo "Mak"'e'*'*' | sort
+echo "Mak"'e'** | sort
+echo ***"Mak"'e'** | sort
+echo "."* | sort
+echo *"." | sort
+echo *"."* | sort
+echo "*" | sort
+echo '*' | sort
+echo Minishe*l | sort
+echo minishe*l | sort
+touch minishelxxxl ; /echo minishe*l | sort ; echo minishel*l | sort ; echo minishelxxx*l | sort ; echo minishel*xxx*l | sort ; rm minishelxxxl
+touch tmp_out ; /bin/echo 42 >tmp_o*t* ; rm -f tmp_out* 
+touch tmp_out1 ; touch tmp_out2 ; /bin/echo 42 >tmp_out* ; rm -f tmp_out*
+echo * | sort
+export ARG="*"
+echo $ARG | sort
+ls *
+ls 'test'*
+ls "test"*
+touch "*1" ; echo "*"* | sort ; rm "*1"
+touch "   " ; ls * | grep "   " ; rm "   "
+touch "a" "aa" ; echo *a | sort ; rm "a" "aa"
+touch "a" "aa" "aaa" ; echo *a*a | sort ; rm "a" "aa" "aaa"
+echo This is a wildcard test file > Wildcard
+echo *car*
+cat *car*
+cat *Windcard
+cat *Windcard*
+cat Windcard*
+cat Wild*card
+cat Wild*ard
+cat Wild******card
+cat Wild******ard
+cat Wild***d
+cat Wild*d
+cat W*c*d
+cat *Wild
+cat *W*c*d*
+cat Wil*car********
+rm -f Wildcard
