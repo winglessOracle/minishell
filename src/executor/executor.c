@@ -101,7 +101,7 @@ void		executor(t_pipe *pipeline)
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);
-	read_heredocs(pipeline);
+	get_heredocs(pipeline);
 	pid = malloc(sizeof(pid_t) * (pipeline->pipe_argc + 1));
 	if (!pid)
 		exit_error("minishell: malloc error", 2);

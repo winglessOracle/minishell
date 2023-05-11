@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/11 11:31:50 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 13:04:41 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int		set_cmd_end(t_node **token, t_smpl_cmd *cmd, t_list *list);
 int		remove_comment(t_node **token, t_smpl_cmd *cmd);
 int		parser_assign(t_node **token, t_smpl_cmd *cmd);
 int		expand_tilde(t_node **token, t_smpl_cmd *cmd);
+void	unquoted(t_node **words, t_node **tokens, t_smpl_cmd *cmd, int open);
 
 // expand_utils
 int		expander(t_node **token, t_smpl_cmd *cmd, t_list *list);
@@ -48,7 +49,7 @@ int		expand(t_node **token, t_smpl_cmd *cmd);
 int		expand_sub(t_node **token, t_smpl_cmd *cmd);
 int		check_sub_content(t_node *token, char quote, int open);
 char	get_quote_char(int type);
-int		split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd);
+int		split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd, int delim);
 int		merge_quoted(t_node **token, t_smpl_cmd *cmd);
 int		count_quotes(char *str, char quote);
 void	remove_double_quotes(t_node **token, char quote);
@@ -62,8 +63,7 @@ int		remove_quotes(t_node **token, t_smpl_cmd *cmd);
 
 // redirect_utils
 int		redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list);
-int		merge_quoted_heredoc(t_node **token, t_smpl_cmd *cmd);
-int		merge_quoted_heredocdelim(t_node **token, t_smpl_cmd *cmd);
+int		merge_quoted_heredoc(t_node **token, t_smpl_cmd *cmd, int delim);
 
 // cond_pipe utils
 int		set_brace(t_node **token, t_smpl_cmd *cmd, t_list *list);

@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/10 16:56:37 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 12:56:50 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,7 +144,7 @@ void		set_exit_st(int argc, pid_t *pid, int exit_set);
 char		**get_env(t_node *env_list);
 void		check_built(t_smpl_cmd *cmd);
 int			check_builtins_curr_env(t_smpl_cmd *cmd);
-int			here_doc(t_pipe *pipeline, t_node *here_redirect, t_smpl_cmd *cmd);
+int			here_doc(t_node *env_list, t_node *here_redirect, t_smpl_cmd *cmd);
 
 //tests
 void		leaks(void);

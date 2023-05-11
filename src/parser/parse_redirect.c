@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 11:22:55 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 12:45:22 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	get_redirect(t_node **tokens, t_smpl_cmd *cmd, int state)
 	{
 		(*tokens)->type = check_token_content(*tokens, WORD);
 		if ((*tokens)->type == DQUOTE && state == HEREDOCQ)
-			merge_quoted_heredocdelim(tokens, cmd);
+			merge_quoted_heredoc(tokens, cmd, 1);
 		else if ((*tokens)->type != WORD && !(state == HEREDOC \
 										&& (*tokens)->type == EXPAND))
 			parse[(*tokens)->type](tokens, cmd);

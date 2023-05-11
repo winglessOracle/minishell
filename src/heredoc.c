@@ -6,49 +6,53 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/11 09:58:45 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 13:07:40 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
 
-int	here_doc(t_pipe *pipeline, t_node *here_redirect, t_smpl_cmd *cmd)
+void	read_heredoc(int *pipe, t_node *env_lst, t_node *input, t_smpl_cmd *cmd)
 {
-	int		here_pipe[2];
 	char	*line_read;
 	char	*line;
 	t_node	*tokens;
-	pid_t	pid;
 
 	line = NULL;
+	close(pipe[0]);
+	while (1)
+	{
+		line_read = get_input(env_lst, "PS2", 0);
+		if (!ft_strcmp(line_read, input->content) || line_read == NULL)
+			break ;
+		tokens = lexer(line_read, " \n");
+		line = parse_heredoc(tokens, input, cmd);
+		ft_putstr_fd(line, pipe[1]);
+		free(line);
+	}
+	close(pipe[1]);
+	exit(0);
+}
+
+int	here_doc(t_node *env_list, t_node *here_redirect, t_smpl_cmd *cmd)
+{
+	int		here_pipe[2];
+	pid_t	pid;
+
 	if (pipe(here_pipe) == -1)
 		exit_error("pipe fail", errno);
 	pid = fork();
 	if (pid == -1)
 		exit_error("fork fail", errno);
 	if (!pid)
-	{
-		close(here_pipe[0]);
-		while (1)
-		{
-			line_read = get_input(pipeline->pipe_argv->env_list, "PS2", 0);
-			if (!ft_strcmp(line_read, here_redirect->content) || line_read == NULL)
-				break ;
-			tokens = lexer(line_read, " \n");
-			line = parse_heredoc(tokens, here_redirect, cmd);
-			ft_putstr_fd(line, here_pipe[1]);
-			free(line);
-		}
-		close(here_pipe[1]);
-		exit(0);
-	}
+		read_heredoc(here_pipe, env_list, here_redirect, cmd);
 	wait(NULL);
 	close(here_pipe[1]);
 	return (here_pipe[0]);
 }
 
-void	read_heredocs(t_pipe *pipeline)
+void	get_heredocs(t_pipe *pipeline)
 {
 	t_smpl_cmd	*tcmd;
 	t_node		*tredirect;
@@ -63,7 +67,8 @@ void	read_heredocs(t_pipe *pipeline)
 			{
 				if (tcmd->here_doc)
 					close(tcmd->here_doc);
-				tcmd->here_doc = here_doc(pipeline, tredirect, tcmd);
+				tcmd->here_doc = \
+					here_doc(pipeline->pipe_argv->env_list, tredirect, tcmd);
 			}
 			tredirect = tredirect->next;
 		}
@@ -71,41 +76,7 @@ void	read_heredocs(t_pipe *pipeline)
 	}
 }
 
-int	split_and_remove_quotes_delim(t_node **tokens, t_smpl_cmd *cmd)
-{
-	t_node	*words;
-	char	*content;
-	char	quote;
-	char	quote_open;
-
-	quote = get_quote_char((*tokens)->type);
-	content = ft_strdup("");
-	words = split_to_list((*tokens)->content, "\'\" ");
-	while (words)
-	{
-		if (words->content[0] == quote)
-		{
-			quote_open = 1;
-			remove_node(&words, cmd);
-		}
-		while (words && words->content[0] != quote)
-		{
-			if (words->content)
-				content = ft_strjoin_free_s1(content, words->content);
-			remove_node(&words, cmd);
-		}
-		if (words && words->content[0] == quote && quote_open)
-		{
-			quote_open = 0;
-			remove_node(&words, cmd);
-		}
-	}
-	free((*tokens)->content);
-	(*tokens)->content = content;
-	return (0);
-}
-
-int	merge_quoted_heredocdelim(t_node **token, t_smpl_cmd *cmd)
+int	merge_quoted_heredoc(t_node **token, t_smpl_cmd *cmd, int delim)
 {
 	int		type;
 	char	quote;
@@ -120,25 +91,32 @@ int	merge_quoted_heredocdelim(t_node **token, t_smpl_cmd *cmd)
 	}
 	if (*token && count_quotes((*token)->content, quote) % 2)
 		return (0);
-	split_and_remove_quotes_delim(token, cmd);
+	split_and_remove_quotes(token, cmd, delim);
 	return (0);
 }
 
-int	merge_quoted_heredoc(t_node **token, t_smpl_cmd *cmd)
+char	*parse_heredoc(t_node *token, t_node *here_redirect, t_smpl_cmd *cmd)
 {
 	int		type;
-	char	quote;
+	char	*input;
 
-	type = (*token)->type;
-	quote = get_quote_char((*token)->type);
-	while (*token && (*token)->next)
+	type = here_redirect->type;
+	if (type == HEREDOC)
+		type = INPUT;
+	if (type == HEREDOCQ)
+		type = HEREDOC;
+	input = ft_strdup("");
+	while (token)
 	{
-		if (!(count_quotes((*token)->content, quote) % 2))
-			break ;
-		merge_tokens(*token, type);
+		token->type = check_token_content(token, token->type);
+		if ((token->type == SQUOTE || token->type == DQUOTE) && type != HEREDOC)
+			token->type = merge_quoted_heredoc(&token, cmd, 0);
+		else if (token->type == EXPAND && type != HEREDOC)
+			token->type = expand(&token, cmd);
+		if (token->content)
+			input = ft_strjoin_free_s1(input, token->content);
+		remove_node(&token, NULL);
 	}
-	if (*token && count_quotes((*token)->content, quote) % 2)
-		return (0);
-	split_and_remove_quotes(token, cmd);
-	return (0);
+	input = ft_strjoin_free_s1(input, "\n");
+	return (input);
 }

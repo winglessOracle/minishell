@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/11 11:47:46 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 13:07:33 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,28 +88,3 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 	free(list);
 }
 
-char	*parse_heredoc(t_node *token, t_node *here_redirect, t_smpl_cmd *cmd)
-{
-	int		type;
-	char	*input;
-
-	type = here_redirect->type;
-	if (type == HEREDOC)
-		type = INPUT;
-	if (type == HEREDOCQ)
-		type = HEREDOC;
-	input = ft_strdup("");
-	while (token)
-	{
-		token->type = check_token_content(token, token->type);
-		if ((token->type == SQUOTE || token->type == DQUOTE) && type != HEREDOC)
-			token->type = merge_quoted_heredoc(&token, cmd);
-		else if (token->type == EXPAND && type != HEREDOC)
-			token->type = expand(&token, cmd);
-		if (token->content)
-			input = ft_strjoin_free_s1(input, token->content);
-		remove_node(&token, NULL);
-	}
-	input = ft_strjoin_free_s1(input, "\n");
-	return (input);
-}
