@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 08:55:43 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 11:22:55 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,40 +46,49 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 	return (type);
 }
 
-int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
+int	get_redirect(t_node **tokens, t_smpl_cmd *cmd, int state)
 {
-	int					state;
 	static t_function	*parse[16];
 
-	(void)list;
 	parse[COMMENT] = remove_comment;
 	parse[SQUOTE] = merge_quoted;
 	parse[DQUOTE] = merge_quoted;
 	parse[EXPAND] = expand;
 	parse[TILDE] = expand_tilde;
-	state = get_redirect_type(tokens, cmd);
-	if (state == -1)
-		return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
-	if (((*tokens)->type == PIPE_END || (*tokens)->type == AND || (*tokens)->type == OR))
-			return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
-	while (*tokens && (*tokens)->type == BLANK)
-		remove_node(tokens, cmd);
-	(*tokens)->type = check_token_content(*tokens, WORD);
-	if (state == HEREDOC && ((*tokens)->type == SQUOTE || (*tokens)->type == DQUOTE))
-		state = HEREDOCQ;
-	if ((*tokens)->type == COMMENT)
-		(*tokens)->type = parse[(*tokens)->type](tokens, cmd);
-	while (*tokens && (*tokens)->type == BLANK)
-		remove_node(tokens, cmd);
 	if (*tokens)
 	{
 		(*tokens)->type = check_token_content(*tokens, WORD);
 		if ((*tokens)->type == DQUOTE && state == HEREDOCQ)
 			merge_quoted_heredocdelim(tokens, cmd);
-		else if ((*tokens)->type != WORD && !(state == HEREDOC && (*tokens)->type == EXPAND))
-			(*tokens)->type = parse[(*tokens)->type](tokens, cmd);
-		(*tokens)->type = state;
-		lstadd_back(&cmd->redirect, lstpop(tokens));
+		else if ((*tokens)->type != WORD && !(state == HEREDOC \
+										&& (*tokens)->type == EXPAND))
+			parse[(*tokens)->type](tokens, cmd);
+		if (*tokens)
+		{
+			(*tokens)->type = state;
+			lstadd_back(&cmd->redirect, lstpop(tokens));
+			return (0);
+		}
 	}
-	return (0);
+	return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
+}
+
+int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
+{
+	int					state;
+
+	(void)list;
+	state = get_redirect_type(tokens, cmd);
+	if (state == -1 || ((*tokens)->type == PIPE_END \
+						|| (*tokens)->type == AND || (*tokens)->type == OR))
+		return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
+	while (*tokens && (*tokens)->type == BLANK)
+		remove_node(tokens, cmd);
+	(*tokens)->type = check_token_content(*tokens, WORD);
+	if (state == HEREDOC && ((*tokens)->type == SQUOTE \
+									|| (*tokens)->type == DQUOTE))
+		state = HEREDOCQ;
+	while (*tokens && (*tokens)->type == BLANK)
+		remove_node(tokens, cmd);
+	return (get_redirect(tokens, cmd, state));
 }

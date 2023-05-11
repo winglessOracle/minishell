@@ -6,39 +6,13 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/10 20:09:55 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 11:47:46 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
 #include "builtin.h"
-
-char	*parse_heredoc(t_node *token, t_node *here_redirect, t_smpl_cmd *cmd)
-{
-	int		type;
-	char	*input;
-
-	type = here_redirect->type;
-	if (type == HEREDOC)
-		type = INPUT;
-	if (type == HEREDOCQ)
-		type = HEREDOC;
-	input = ft_strdup("");
-	while (token)
-	{
-		token->type = check_token_content(token, token->type);
-		if ((token->type == SQUOTE || token->type == DQUOTE) && type != HEREDOC)
-			token->type = merge_quoted_heredoc(&token, cmd);
-		else if (token->type == EXPAND && type != HEREDOC)
-			token->type = expand(&token, cmd);
-		if (token->content)
-			input = ft_strjoin_free_s1(input, token->content);
-		remove_node(&token, NULL);
-	}
-	input = ft_strjoin_free_s1(input, "\n");
-	return (input);
-}
 
 int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd, t_list *list)
 {	
@@ -96,31 +70,46 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 {
 	t_list	*list;
 	t_pipe	*pipeline;
-	int		count;
 
-	if (tokens)
-	{
-		count = count_braces(&tokens);
-		if (count == -1)
-			syntax_error(&tokens, NULL, "syntax error\n", 1);
-		else if (count)
-			syntax_error(&tokens, NULL, "unclosed braces\n", 1);
-		if (count)
-			return ;
-	}
+	if (check_braces(&tokens))
+		return ;
 	list = init_list();
 	while (tokens)
 	{
 		pipeline = parse_pipeline(&tokens, env_list, list);
 		if (pipeline)
 		{
-			// print_pipeline(pipeline);
 			executor(pipeline);
-			// printf("exit status: %d\n", g_exit_status);
 			delete_pipe(pipeline);
 		}
 		if (tokens)
 			check_list(&tokens, list);
 	}
 	free(list);
+}
+
+char	*parse_heredoc(t_node *token, t_node *here_redirect, t_smpl_cmd *cmd)
+{
+	int		type;
+	char	*input;
+
+	type = here_redirect->type;
+	if (type == HEREDOC)
+		type = INPUT;
+	if (type == HEREDOCQ)
+		type = HEREDOC;
+	input = ft_strdup("");
+	while (token)
+	{
+		token->type = check_token_content(token, token->type);
+		if ((token->type == SQUOTE || token->type == DQUOTE) && type != HEREDOC)
+			token->type = merge_quoted_heredoc(&token, cmd);
+		else if (token->type == EXPAND && type != HEREDOC)
+			token->type = expand(&token, cmd);
+		if (token->content)
+			input = ft_strjoin_free_s1(input, token->content);
+		remove_node(&token, NULL);
+	}
+	input = ft_strjoin_free_s1(input, "\n");
+	return (input);
 }

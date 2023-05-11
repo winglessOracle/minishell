@@ -107,11 +107,9 @@ echo segf >     | echo is this invalid
 echo segf <         |        < echo super valid
 echo segfault <"    <   <   <"  <   <   amazing
 amazing
-echo seg <> tester/output/echo seg && rm -rf tester/output/echo
 echo seg >< echo segf
 echo seg <<> echo segf
 echo seg <<<> echo segf
-echo <<< echo seegf
 echo segf <|< echo super valid
 echo ""$?""
 echo $?"42"

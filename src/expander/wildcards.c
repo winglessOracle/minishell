@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/10 21:12:32 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 10:18:18 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ t_node	*expand_wildcard(t_node *token)
 	char			*pattern;
 	t_node			*temp;
 
-	// print_tokens(token, "args in expand wildcard\n");
 	if (!getcwd(buf, PATH_MAX))
 		return (NULL);
 	pattern = token->content;
@@ -129,7 +128,8 @@ int	check_wildcars(t_node **cmd_args)
 	{
 		i = 0;
 		temp = expand_wildcard(*cmd_args);
-		if (temp && ft_strcmp((*cmd_args)->content, "") && (*cmd_args)->type != SQUOTE && (*cmd_args)->type != DQUOTE)
+		if (temp && ft_strcmp((*cmd_args)->content, "") && \
+			(*cmd_args)->type != SQUOTE && (*cmd_args)->type != DQUOTE)
 			lstadd_back(&new_args, temp);
 		else
 			lstadd_back(&new_args, \

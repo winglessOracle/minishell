@@ -85,25 +85,3 @@ void	check_cmd(char *cmd)
 	return ;
 }
 
-void	read_heredocs(t_pipe *pipeline)
-{
-	t_smpl_cmd	*tcmd;
-	t_node		*tredirect;
-
-	tcmd = pipeline->pipe_argv;
-	while (tcmd)
-	{
-		tredirect = tcmd->redirect;
-		while (tredirect)
-		{
-			if (tredirect->type == HEREDOC || tredirect->type == HEREDOCQ)
-			{
-				if (tcmd->here_doc)
-					close(tcmd->here_doc);
-				tcmd->here_doc = here_doc(pipeline, tredirect, tcmd);
-			}
-			tredirect = tredirect->next;
-		}
-		tcmd = tcmd->next;
-	}
-}
