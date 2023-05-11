@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/23 20:56:59 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 11:48:18 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 15:09:45 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ int	check_braces(t_node **tokens)
 	count = 0;
 	while (*tokens)
 	{
+		replace_wildcards((*tokens)->content, '*', 26);
 		count = count_braces(*tokens, count, &quotes);
 		if (count < 0)
 			return (syntax_error(tokens, NULL, "unclosed braces\n", 1));

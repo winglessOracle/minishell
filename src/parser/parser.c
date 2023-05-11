@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/11 13:07:33 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 14:00:44 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,3 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 	}
 	free(list);
 }
-

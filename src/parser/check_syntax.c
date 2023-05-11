@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/25 11:40:47 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 10:45:47 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 15:09:14 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,29 @@ int	check_assign(char *str, int type)
 		i++;
 	}
 	return (WORD);
+}
+
+void	replace_wildcards(char	*str, char replace, char with)
+{
+	int	i;
+	int	type;
+
+	i = 0;
+	type = 0;
+	while (str[i])
+	{
+		if (str[i] == '\'' && !type)
+			type = SQUOTE;
+		else if (str[i] == '\'' && type == SQUOTE)
+			type = 0;
+		else if (str[i] == '\"' && !type)
+			type = DQUOTE;
+		else if (str[i] == '\"' && type == DQUOTE)
+			type = 0;
+		else if (str[i] == replace && type != SQUOTE && type != DQUOTE)
+			str[i] = with;
+		i++;
+	}
 }
 
 int	check_token_content(t_node *token, int type)

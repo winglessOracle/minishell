@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/10 20:11:15 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 15:18:24 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	parser_assign(t_node **token, t_smpl_cmd *cmd)
 	check = 0;
 	if (!cmd->cmd_argc)
 	{
+		replace_wildcards((*token)->content, 26, '*');
 		check = check_valid_identifier((*token)->content);
 		if (check)
 			return (0);

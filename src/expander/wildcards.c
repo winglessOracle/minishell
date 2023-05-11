@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 10:18:18 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 15:30:25 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	match(char *str, char *pattern)
 	p_last_astrix = -1;
 	while (str[s_i])
 	{
-		if (pattern[p_i] == '*')
+		if (pattern[p_i] == 26)
 		{
 			s_last_match = s_i;
 			p_last_astrix = p_i;
@@ -46,7 +46,7 @@ int	match(char *str, char *pattern)
 		}
 		else return (0);
 	}
-	while (pattern[p_i] == '*') 
+	while (pattern[p_i] == 26) 
 		p_i++;
 	return (pattern[p_i] == '\0');
 }
@@ -94,12 +94,10 @@ t_node	*expand_wildcard(t_node *token)
 	char			buf[PATH_MAX];
 	DIR				*curr_dir;
 	struct dirent	*file;
-	char			*pattern;
 	t_node			*temp;
 
 	if (!getcwd(buf, PATH_MAX))
 		return (NULL);
-	pattern = token->content;
 	temp = NULL;
 	curr_dir = opendir(buf);
 	if (curr_dir != NULL)
@@ -107,7 +105,9 @@ t_node	*expand_wildcard(t_node *token)
 		file = readdir(curr_dir);
 		while (file != NULL)
 		{
-			if (match(file->d_name, pattern) && file->d_name[0] != '.')
+			if (match(file->d_name, token->content) && (file->d_name[0] != '.' \
+				|| token->content[0] == '.') && ft_strcmp(file->d_name, ".") \
+				&& ft_strcmp(file->d_name, ".."))
 				lstadd_back(&temp, new_node(WORD, ft_strdup(file->d_name)));
 			file = readdir(curr_dir);
 		}
@@ -117,26 +117,27 @@ t_node	*expand_wildcard(t_node *token)
 	return (temp);
 }
 
-int	check_wildcars(t_node **cmd_args)
+int	check_wildcars(t_node **args)
 {
 	t_node	*temp;
 	t_node	*new_args;
 	int		i;
 
 	new_args = NULL;
-	while (*cmd_args)
+	while (*args)
 	{
 		i = 0;
-		temp = expand_wildcard(*cmd_args);
-		if (temp && ft_strcmp((*cmd_args)->content, "") && \
-			(*cmd_args)->type != SQUOTE && (*cmd_args)->type != DQUOTE)
+		temp = expand_wildcard(*args);
+		if (temp && ft_strcmp((*args)->content, ""))
 			lstadd_back(&new_args, temp);
 		else
-			lstadd_back(&new_args, \
-				new_node(WORD, ft_strdup((*cmd_args)->content)));
-		remove_node(cmd_args, NULL);
+		{
+			replace_wildcards((*args)->content, 26, '*');
+			lstadd_back(&new_args, new_node(WORD, ft_strdup((*args)->content)));
+		}
+		remove_node(args, NULL);
 	}
-	*cmd_args = new_args;
+	*args = new_args;
 	while (new_args)
 	{
 		new_args = new_args->next;
