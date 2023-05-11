@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/09 13:26:43 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/10 21:42:29 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,31 @@ int	here_doc(t_pipe *pipeline, t_node *here_redirect, t_smpl_cmd *cmd)
 	char	*line_read;
 	char	*line;
 	t_node	*tokens;
+	pid_t	pid;
 
 	line = NULL;
 	if (pipe(here_pipe) == -1)
 		exit_error("here_pipe fail", errno);
-	while (1)
+	pid = fork();
+	if (pid == -1)
+		exit_error("fork fail", errno);
+	if (!pid)
 	{
-		line_read = get_input(pipeline->pipe_argv->env_list, "PS2", 0);
-		if (!ft_strcmp(line_read, here_redirect->content) || line_read == NULL)
-			break ;
-		tokens = lexer(line_read, " \n");
-		line = parse_heredoc(tokens, here_redirect, cmd);
-		ft_putstr_fd(line, here_pipe[1]);
-		free(line);
+		close(here_pipe[0]);
+		while (1)
+		{
+			line_read = get_input(pipeline->pipe_argv->env_list, "PS2", 0);
+			if (!ft_strcmp(line_read, here_redirect->content) || line_read == NULL)
+				break ;
+			tokens = lexer(line_read, " \n");
+			line = parse_heredoc(tokens, here_redirect, cmd);
+			ft_putstr_fd(line, here_pipe[1]);
+			free(line);
+		}
+		close(here_pipe[1]);
+		exit(0);
 	}
+	wait(NULL);
 	close(here_pipe[1]);
 	return (here_pipe[0]);
 }

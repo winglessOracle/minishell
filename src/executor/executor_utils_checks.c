@@ -45,18 +45,17 @@ void	check_built(t_smpl_cmd *cmd)
 
 int	check_builtins_curr_env(t_smpl_cmd *cmd)
 {
-	t_built	*built[5];
+	t_built	*built[4];
 	char	**cmd_args;
-	char	*builtins[5] = {"cd", "exit", "export", "unset", ".."};
+	char	*builtins[4] = {"cd", "exit", "export", "unset"};
 	int		i;
 
 	built[0] = execute_cd;
 	built[1] = execute_exit;
 	built[2] = execute_export;
 	built[3] = execute_unset;
-	built[4] = execute_cd;
 	i = 0;
-	while (i < 5 && cmd->cmd_argc > 0)
+	while (i < 4 && cmd->cmd_argc > 0)
 	{
 		if (!ft_strcmp(cmd->cmd_argv->content, "export") && cmd->cmd_argc == 1)
 			return (0);

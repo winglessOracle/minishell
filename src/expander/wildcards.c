@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/08 16:20:32 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/10 21:12:32 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,29 +17,38 @@
 
 int	match(char *str, char *pattern)
 {
-	int	s_indx;
-	int	p_indx;
-
-	s_indx = 0;
-	p_indx = 0;
-	while (str[s_indx] && pattern[p_indx])
+	int s_i;
+	int	p_i;
+	int s_last_match;
+	int p_last_astrix;
+	
+	s_i = 0;
+	p_i = 0;
+	s_last_match = 0;
+	p_last_astrix = -1;
+	while (str[s_i])
 	{
-		while (str[s_indx] && str[s_indx] == pattern[p_indx])
+		if (pattern[p_i] == '*')
 		{
-			s_indx++;
-			p_indx++;
+			s_last_match = s_i;
+			p_last_astrix = p_i;
+			p_i++;
 		}
-		if (pattern[p_indx] == '*')
+		else if (pattern[p_i] == str[s_i])
 		{
-			while (pattern[p_indx] == '*')
-				p_indx++;
-			while (str[s_indx] && str[s_indx] != pattern[p_indx])
-				s_indx++;
+			p_i++;
+			s_i++;
 		}
-		if (str[s_indx] != pattern[p_indx])
-			return (0);
+		else if (p_last_astrix != -1)
+		{
+			p_i = p_last_astrix + 1;
+			s_i = ++s_last_match;
+		}
+		else return (0);
 	}
-	return (1);
+	while (pattern[p_i] == '*') 
+		p_i++;
+	return (pattern[p_i] == '\0');
 }
 
 int	check_sorted_argv(t_node *argv)
