@@ -6,12 +6,29 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/25 11:40:47 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 15:39:06 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 17:22:25 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
+
+int	syntax_error(t_node **token, t_smpl_cmd *cmd)
+{
+	if (*token)
+		ft_fprintf(2, "cc: syntax error near unexpected token `%s'\n", (*token)->content);
+	else
+		ft_fprintf(2, "cc: syntax error near unexpected token `newline'\n");
+	while (*token)
+		remove_node(token, cmd);
+	if (cmd)
+	{
+		lstclear(&cmd->cmd_argv, delete_content);
+		cmd->cmd_argc = 0;
+	}
+	g_exit_status = 2;
+	return (-1);
+}
 
 int	check_assign(char *str, int type)
 {

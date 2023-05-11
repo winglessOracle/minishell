@@ -50,7 +50,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 	cmd_args = build_cmd_args(&pipe_argv->cmd_argv, pipe_argv->cmd_argc);
 	env = get_env(env_list);
 	if (cmd_args[0][0] == '.' && !cmd_args[0][1])
-		exit_error("minishell: filename argument required", 2);
+		exit_error("filename argument required", 2);
 	if (cmd_args[0][0] == '/' || cmd_args[0][0] == '.')
 	{
 		check_cmd(cmd_args[0]);
@@ -58,7 +58,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 	}
 	else
 		exec_default(cmd_args, pipe_argv, env_list, env);
-	exit_error("minishell: executer", 127);
+	exit_error("executer", 127);
 }
 
 void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
@@ -66,7 +66,7 @@ void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 	if (pid == 0)
 	{
 		if (set_fd(cmd, &keep, fd_pipe) == -1)
-			exit_error("minishell: redirect", 1);
+			exit_error("redirect", 1);
 		close(fd_pipe[0]);
 		dup2(keep, STDIN_FILENO);
 		if (!keep)
@@ -104,7 +104,7 @@ void		executor(t_pipe *pipeline)
 	get_heredocs(pipeline);
 	pid = malloc(sizeof(pid_t) * (pipeline->pipe_argc + 1));
 	if (!pid)
-		exit_error("minishell: malloc error", 2);
+		exit_error("malloc error", 2);
 	while (pipeline && pipeline->pipe_argv)
 	{
 		if (pipeline->pipe_argc == 1)
@@ -116,7 +116,7 @@ void		executor(t_pipe *pipeline)
 		pid[i] = fork();
 		if (pid[i] == -1)
 		{
-			perror("minishell: fork");
+			perror("fork");
 			g_exit_status = 128;
 			exit_set = 1;
 			break ;

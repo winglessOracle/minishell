@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 14:55:35 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 17:41:06 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ int	merge_quoted(t_node **token, t_smpl_cmd *cmd)
 		merge_tokens(*token, type);
 	}
 	if (*token && count_quotes((*token)->content, quote) % 2)
-		return (syntax_error(token, cmd, "unclosed quotes\n", 1));
+		return (return_error("unclosed quotes", -1, 2));
 	split_and_remove_quotes(token, cmd, 0);
 	return (0);
 }

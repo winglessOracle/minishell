@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/09 14:38:06 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/11 17:42:26 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,26 @@
 int	return_perror(char *str, int err)
 {
 	if (err)
+	{
+		ft_fprintf(2, "cc: ");
 		perror(str);
+	}
 	return (err);
 }
 
-int	return_error(const char *str, int err)
+int	return_error(const char *str, int ret, int exit)
 {
-	write(2, str, ft_strlen(str));
-	return (err);
+	ft_fprintf(2, "cc: %s\n", str);
+	if (exit)
+		g_exit_status = exit;
+	return (ret);
 }
 
 void	exit_error(char	*str, int num)
 {
+	ft_fprintf(2, "cc: ");
 	perror(str);
 	exit(num);
-}
-
-// prints error message and returns -1 if err != 0;
-int	syntax_error(t_node **token, t_smpl_cmd *cmd, char *msg, int err)
-{
-	if (err != 0)
-	{
-		write(2, msg, ft_strlen(msg));
-		while (*token)
-			remove_node(token, cmd);
-		if (cmd)
-		{
-			lstclear(&cmd->cmd_argv, delete_content);
-			cmd->cmd_argc = 0;
-		}
-		g_exit_status = 2;
-		return (-1);
-	}
-	else
-		return (0);
 }
 
 char	*get_input(t_node *env_list, char *var, int history)

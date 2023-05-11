@@ -77,11 +77,11 @@ void	check_cmd(char *cmd)
 
 	stat(cmd, &file_stat);
 	if (S_ISDIR(file_stat.st_mode))
-		exit_error("minishell: is a directory", 126);
+		exit_error("is a directory", 126);
 	else if (access(cmd, F_OK) == -1)
-		exit_error("minishell: command not found", 127);
+		exit_error("command not found", 127);
 	else if (access(cmd, X_OK) == -1)
-		exit_error("minishell: no executable or no permission", 126);
+		exit_error("no executable or no permission", 126);
 	return ;
 }
 

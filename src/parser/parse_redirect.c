@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 16:26:20 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 17:18:15 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,25 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 
 int	add_to_redirect(t_node **tokens, t_smpl_cmd *cmd, int state)
 {
-	t_node				*temp;
+	t_node	*temp;
+	char	*token_content;	
 
 	temp = lstpop(tokens);
+	token_content = ft_strdup(temp->content);
 	if (BONUS)
 	{
 		if (check_wildcars(&temp) > 1)
-			return (syntax_error(&temp, cmd, "ambiguous redirect\n", -1)); // should return 1 and not 2....
+		{
+			replace_wildcards(token_content, 26, '*');
+			ft_fprintf(2, "cc: %s: ambiguous redirect\n", token_content);
+			g_exit_status = 1;
+			free(token_content);
+			return (-1);
+		}
 		temp->type = state;
 	}
 	lstadd_back(&cmd->redirect, temp);
+	free(token_content);
 	return (0);
 }
 
@@ -81,7 +90,7 @@ int	get_redirect(t_node **tokens, t_smpl_cmd *cmd, int state)
 		if (*tokens)
 			return (add_to_redirect(tokens, cmd, state));
 	}
-	return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
+	return (syntax_error(tokens, cmd)); //redirects seperate error?
 }
 
 int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
@@ -92,7 +101,7 @@ int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
 	state = get_redirect_type(tokens, cmd);
 	if (state == -1 || ((*tokens)->type == PIPE_END \
 						|| (*tokens)->type == AND || (*tokens)->type == OR))
-		return (syntax_error(tokens, cmd, "Redirect syntax error\n", -1));
+		return (syntax_error(tokens, cmd)); //redirects seperate error?
 	while (*tokens && (*tokens)->type == BLANK)
 		remove_node(tokens, cmd);
 	(*tokens)->type = check_token_content(*tokens, WORD);
