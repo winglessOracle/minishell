@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/25 11:40:47 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 15:09:14 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 15:39:06 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	replace_wildcards(char	*str, char replace, char with)
 
 	i = 0;
 	type = 0;
+	if (!BONUS)
+		return ;
 	while (str[i])
 	{
 		if (str[i] == '\'' && !type)
