@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/11 18:30:11 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/12 11:29:06 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	check_built(t_smpl_cmd *cmd)
 	int			i;
 	t_built		*built[7];
 	char		**cmd_args;
-	static char	*b[7] = {"echo", "cd", "pwd", "export", "unset", "exit", "env"};
+	const char	*b[7] = {"echo", "cd", "pwd", "export", "unset", "exit", "env"};
 
 	built[0] = execute_echo;
 	built[1] = execute_cd;
@@ -46,7 +46,7 @@ int	check_builtins_curr_env(t_smpl_cmd *cmd)
 {
 	t_built		*built[4];
 	char		**cmd_args;
-	static char	*builtins[4] = {"cd", "exit", "export", "unset"};
+	const char	*builtins[4] = {"cd", "exit", "export", "unset"};
 	int			i;
 
 	built[0] = execute_cd;
