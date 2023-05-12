@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/12 19:40:16 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/03 14:53:43 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/11 17:36:44 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	cd_absolute(int i, char *cmd_arg, t_node *env_list)
 	if (cmd_arg[0] == '/')
 		ret = chdir(cmd_arg);
 	if (ret == -1)
-		return (return_perror("minishell: cd", 1));
+		return (return_perror("cd", 1));
 	return (ret);
 }
 
@@ -58,7 +58,7 @@ int	relative_curr_dir(char *cmd_arg, t_node *env_list)
 	if (ret == -1)
 		ret = 1;
 	if (!(ret == 1 && cmd_arg[0] != '.'))
-		return (return_perror("minishell: cd", ret));
+		return (return_perror("cd", ret));
 	return (2);
 }
 
@@ -88,7 +88,7 @@ int	cd_relative_cdpath(t_node *env_list, char *cmd_arg)
 	}
 	ft_free_array(path_arr);
 	free(pwd);
-	return (return_perror("minishell: cd", 1));
+	return (return_perror("cd", 1));
 }
 
 // update_env function ien builtin/env.c
@@ -100,7 +100,7 @@ int	execute_cd(char **cmd_vector, t_node *env_list)
 	while (cmd_vector[i])
 		i++;
 	if (i > 2)
-		return (return_error("minishell: cd: too many arguments\n", 1));
+		return (return_error("cd: too many arguments", 1, 1));
 	i = cd_absolute(i, cmd_vector[i - 1], env_list);
 	if (i == 0)
 		update_env(env_list, cmd_vector[i - 1]);

@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/05/09 10:15:41 by cwesseli      ########   odam.nl          #
+#    Updated: 2023/05/11 09:54:08 by cariencaljo   ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ LIBS		= $(LIBFT)/libft.a -L$(RL_LIB)
 HEADERS		= -I $(LIBFT) -I$(INCLUDE) -I$(RL_INC)
 OBJ_FILES	=  $(addprefix obj/src/, minishell.o lst_utils/t_node.o utils/utils.o lst_utils/t_smpl_cmd.o \
 				lexer.o utils/env_utils.o init.o print.o lst_utils/node.o signals.o \
-				lst_utils/delete.o lst_utils/t_pipe.o ) \
+				lst_utils/delete.o lst_utils/t_pipe.o heredoc.o) \
 				$(addprefix obj/src/parser/, parser.o parser_utils.o parse_redirect.o quotes.o cond_pipe.o cond_pipe_utils.o check_syntax.o ) \
 				$(addprefix obj/src/expander/, expander.o expand_var_utils.o wildcards.o ) \
 				$(addprefix obj/src/executor/, executor.o executor_utils.o executor_utils_set.o executor_utils_checks.o ) \

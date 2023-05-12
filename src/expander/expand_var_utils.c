@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/02 19:20:31 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/03 14:28:16 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/11 10:22:27 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,14 @@ int	expand_var(t_node **token, t_smpl_cmd *cmd)
 {
 	char	*str;
 
+	str = ft_strdup("");
 	remove_node(token, cmd);
 	if ((*token)->content[0] == '?')
 		str = ft_itoa(g_exit_status);
 	else if ((*token)->content[0] == '\'' || (*token)->content[0] == '\"')
 	{
 		if (!ft_strcmp((*token)->content, (*token)->next->content))
-		{
-			str = ft_strdup("");
 			remove_node(token, cmd);
-		}
 		else
 		{
 			(*token)->type = check_token_content(*token, (*token)->type);
