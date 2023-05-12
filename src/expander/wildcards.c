@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/12 12:19:31 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/12 12:20:13 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	handle_wildcard(int *counters)
 	counters[3] = counters[1];
 	counters[1]++;
 }
+
 // int *counters, 
 // [0]: string_indexer
 // [1]: pattern_indexer
