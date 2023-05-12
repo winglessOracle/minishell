@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/11 18:31:50 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/12 12:08:21 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 		close(fd_pipe[0]);
 		dup2(keep, STDIN_FILENO);
 		if (!keep)
-			exit_error("dup fail", 1); //change
+			exit_error("dup fail", 1);
 		if (!(!cmd->next && !set_fd(cmd, &keep, fd_pipe)))
 			dup2(fd_pipe[1], STDOUT_FILENO);
 		if (!fd_pipe[1])
@@ -93,9 +93,7 @@ void	executor(t_pipe *pipeline)
 	int			fd_pipe[2];
 	int			keep;
 	int			i;
-	int			exit_set;
 
-	exit_set = 0;
 	i = 0;
 	keep = dup(STDIN_FILENO);
 	if (!keep)
@@ -107,17 +105,15 @@ void	executor(t_pipe *pipeline)
 	while (pipeline && pipeline->pipe_argv)
 	{
 		if (pipeline->pipe_argc == 1)
-			exit_set = assign_one(pipeline);
-		if (exit_set == 1)
+			pid[0] = assign_one(pipeline);
+		if (pid[0] == -5)
 			break ;
 		if (pipe(fd_pipe) == -1)
 			exit_error("pipe fail", errno);
 		pid[i] = fork();
 		if (pid[i] == -1)
 		{
-			perror("fork");
-			g_exit_status = 128;
-			exit_set = 1;
+			perror("fork"); // set correct exit code;
 			break ;
 		}
 		redirect(pipeline->pipe_argv, pid[i], keep, fd_pipe);
@@ -132,5 +128,5 @@ void	executor(t_pipe *pipeline)
 		pipeline->pipe_argv = pipeline->pipe_argv->next;
 		i++;
 	}
-	set_exit_st(pipeline->pipe_argc, pid, exit_set);
+	set_exit_st(pipeline->pipe_argc, pid);
 }

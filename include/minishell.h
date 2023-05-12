@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/11 20:14:40 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/12 11:49:05 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ char		*get_input(t_node *env_list, char *var, int history);
 int			return_perror(char *str, int err);
 int			return_error(const char *str, int ret, int exit);
 void		exit_error(char	*str, int num);
+void		exit__error(char	*str, int num);
 int			syntax_error(t_node **token, t_smpl_cmd *cmd);
 
 // node_utils

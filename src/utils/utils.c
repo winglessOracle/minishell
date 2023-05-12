@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/11 17:42:26 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/12 11:49:39 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,12 @@ void	exit_error(char	*str, int num)
 {
 	ft_fprintf(2, "cc: ");
 	perror(str);
+	exit(num);
+}
+
+void	exit__error(char	*str, int num)
+{
+	ft_fprintf(2, "cc: %s\n", str);
 	exit(num);
 }
 

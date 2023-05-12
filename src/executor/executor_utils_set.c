@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/11 18:31:25 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/12 11:38:00 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ int	assign_one(t_pipe *pipeline)
 	if (pipeline->pipe_argv->cmd_argc == 0)
 		assignments(pipeline->pipe_argv, 0);
 	if (check_builtins_curr_env(pipeline->pipe_argv))
-		return (1);
+		return (-5);
 	return (0);
 }

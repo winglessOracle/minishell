@@ -126,7 +126,7 @@ echo 1
 cd /bin/
 ls
 touch tester/output/tmp_x_file1 
-tester/output/tmp_x_file1 
+tester/output/tmp_x_file1
 echo $? 
 export PATH=$HOME 
 echo $PATH && echo 42 

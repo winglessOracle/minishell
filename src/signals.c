@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/11 17:35:18 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/12 11:42:38 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,38 @@ void	exit_sig(t_node *env_list)
 	exit(g_exit_status);
 }
 
-void	handle_sigint(int signal_number)
+void	reset_terminal(void)
 {
-	(void) signal_number;
-	rl_replace_line("", 0);
-	printf("\n");
-	rl_on_new_line();
-	rl_redisplay();
+	struct termios	t;
+
+	tcgetattr(0, &t);
+	t.c_lflag |= ECHO;
+	tcsetattr(0, TCSANOW, &t);
 }
 
+void	handle_sigint_here(int signal_number)
+{
+	(void) signal_number;
+	signal(SIGINT, SIG_DFL);
+	kill(0, SIGINT);
+	exit(1);
+}
+
+void	handle_sigint(int signal_number)
+{
+	pid_t	pid;
+	int		status;
+
+	(void) signal_number;
+	pid = waitpid(-1, &status, WNOHANG);
+	rl_replace_line("", 0);
+	write(STDOUT_FILENO, "\n", 1);
+	rl_on_new_line();
+	if (pid == -1)
+		rl_redisplay();
+}
+
+// rl_catch_signals = 0;
 void	set_signals(void)
 {
 	struct sigaction	sa_quit;
@@ -61,4 +84,17 @@ void	set_signals(void)
 	if (sigaction(SIGQUIT, &sa_stop, NULL) == -1)
 		exit(errno);
 }
-// rl_catch_signals = 0;
+
+void	set_sigint_here(void)
+{
+	struct sigaction	sa_here;
+
+	sa_here.sa_handler = handle_sigint_here;
+	sa_here.sa_flags = 0;
+	sigemptyset(&sa_here.sa_mask);
+	sigaddset(&sa_here.sa_mask, SIGINT);
+	sigaddset(&sa_here.sa_mask, SIGQUIT);
+	sigaddset(&sa_here.sa_mask, SIGTSTP);
+	if (sigaction(SIGINT, &sa_here, NULL) == -1)
+		exit(errno);
+}

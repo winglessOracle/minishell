@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:31 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/11 20:14:30 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/12 11:45:56 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		set_out(int *fd_pipe, t_node *temp);
 void	set_in(int *keep, t_node *temp);
 int		assign_one(t_pipe *pipeline);
 int		set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe);
-void	set_exit_st(int argc, pid_t *pid, int exit_set);
+void	set_exit_st(int argc, pid_t *pid);
 void	check_built(t_smpl_cmd *cmd);
 int		check_builtins_curr_env(t_smpl_cmd *cmd);
 char	**get_env(t_node *env_list);

@@ -1,28 +1,26 @@
 /* Segfaults or incorrect behaviour */
 ------------------------
-cd has leaks
-echo ~ does not work
+cd echo ~ does not work
 
 / *test cases to compare with bash: */
 ---------------------------------------
 
 /* check Carien */
-update shel level
 
 
 /* checks Carlo */
 empty redirect nodes should result in error 
 readline keeps first characters (solve if persistent history removed)
 
-sigint from sleep or cat etc  displays extra prompt. can resolve by removing redisplay or a global variable
+
+signals heer_doc (and double prompt)
+Signal handling: Ensure that you are handling signals properly in your shell program. 
+If a child process is terminated with SIGTERM, the signal might be received by the parent process as well.
+Make sure you handle the SIGTERM signal in the parent process and perform any necessary cleanup or termination.
+
+File descriptor handling: If your child processes are manipulating file descriptors or opening files, there might be issues with how you handle them. Ensure that you are properly closing file descriptors and using them as intended.
+
+opschonen executor
 
 
-redirect test for several  out files still hase race issues. :
-< Makefile cat > tester/output/out1 > tester/output/out2 > tester/output/out3 | cat tester/output/out3
-HAHA Zsh doet dit ook 
 
-In bash, the shell first evaluates the entire pipeline and creates temporary files for each redirection operation before executing any of the commands in the pipeline. Therefore, there is no race condition because all the necessary files are created before any of the commands are executed.
-
-In zsh, on the other hand, the shell starts executing the commands as soon as possible, which means that the output redirection may occur before the input redirection, causing a race condition where the output redirection fails because the input redirection has not completed yet.
-
-To avoid the race condition in zsh, you can use parentheses to group the commands that redirect to the same file, like this:

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 18:56:18 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/12 11:45:33 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ int	match(char *str, char *pattern)
 			p_i = p_last_astrix + 1;
 			s_i = ++s_last_match;
 		}
-		else
+		else 
 			return (0);
 	}
-	while (pattern[p_i] == 26)
+	while (pattern[p_i] == 26) 
 		p_i++;
 	return (pattern[p_i] == '\0');
 }
