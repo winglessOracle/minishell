@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 19:37:37 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/11 17:38:22 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 20:41:19 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	execute_exit(char **cmd_vector, t_node *env_list)
 	if (cmd_vector[1][j] == '-' || cmd_vector[1][j] == '+')
 		j++;
 	if (ft_isdigit(cmd_vector[1][j]) == 0)
-		exit(return_error("exit: numeric argument required", -1, -1));
+		return (return_error("exit: numeric argument required", -1, -1));
 	if (i > 2)
 		return (return_error("exit: too many arguments", 1, 1));
 	if (cmd_vector[1])

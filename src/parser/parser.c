@@ -6,13 +6,14 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/11 14:00:44 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 20:03:05 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
 #include "builtin.h"
+#include "executor.h"
 
 int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd, t_list *list)
 {	

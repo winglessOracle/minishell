@@ -6,12 +6,13 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/29 20:18:41 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 17:40:08 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 19:59:12 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
+#include "builtin.h"
 
 int	add_word_to_cmd(t_node **token, t_smpl_cmd *cmd)
 {
