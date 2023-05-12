@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/12 11:45:33 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/12 12:19:31 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,43 @@
 #include <sys/types.h>
 #include <dirent.h>
 
+void	handle_wildcard(int *counters)
+{
+	counters[2] = counters[0];
+	counters[3] = counters[1];
+	counters[1]++;
+}
+// int *counters, 
+// [0]: string_indexer
+// [1]: pattern_indexer
+// [2]: string_last_match
+// [3]: pattern_last_wildcard;
 int	match(char *str, char *pattern)
 {
-	int	s_i;
-	int	p_i;
-	int	s_last_match;
-	int	p_last_astrix;
+	int counters[4];
 
-	s_i = 0;
-	p_i = 0;
-	s_last_match = 0;
-	p_last_astrix = -1;
-	while (str[s_i])
+	ft_memset(counters, 0, sizeof(counters));
+	counters[3] = -1;
+	while (str[counters[0]])
 	{
-		if (pattern[p_i] == 26)
+		if (pattern[counters[1]] == 26)
+			handle_wildcard(counters);
+		else if (pattern[counters[1]] == str[counters[0]])
 		{
-			s_last_match = s_i;
-			p_last_astrix = p_i;
-			p_i++;
+			counters[1]++;
+			counters[0]++;
 		}
-		else if (pattern[p_i] == str[s_i])
+		else if (counters[3] != -1)
 		{
-			p_i++;
-			s_i++;
-		}
-		else if (p_last_astrix != -1)
-		{
-			p_i = p_last_astrix + 1;
-			s_i = ++s_last_match;
+			counters[1] = counters[3] + 1;
+			counters[0] = ++counters[2];
 		}
 		else 
 			return (0);
 	}
-	while (pattern[p_i] == 26) 
-		p_i++;
-	return (pattern[p_i] == '\0');
+	while (pattern[counters[1]] == 26) 
+		counters[1]++;
+	return (pattern[counters[1]] == '\0');
 }
 
 int	check_sorted_argv(t_node *argv)
