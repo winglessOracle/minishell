@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/15 11:44:03 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/15 12:33:22 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,9 @@ void	executor(t_pipe *pipeline)
 		pid[i] = fork();
 		if (pid[i] == -1)
 		{
-			perror("fork"); // set correct exit code;
-			break ;
+			kill(getpid(), SIGINT);
+			return_error ("fork: resource temporarily unavailable", 1, 128);
+			return ;
 		}
 		redirect(pipeline->pipe_argv, pid[i], keep, fd_pipe);
 		assignments(pipeline->pipe_argv, pid[i]);

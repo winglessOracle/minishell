@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/15 11:42:50 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/15 12:22:47 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	exit_sig(t_node *env_list)
 void	handle_sigint_here(int signal_number)
 {
 	(void) signal_number;
-	printf("signal num in here_doc%d\n", signal_number);
 	signal(SIGINT, SIG_DFL);
 	kill(0, SIGINT);
 }
@@ -42,7 +41,6 @@ void	handle_sigint(int signal_number)
 	rl_replace_line("", 0);
 	write(STDOUT_FILENO, "\n", 1);
 	rl_on_new_line();
-	printf("signal num = %d\n", signal_number);
 	g_exit_status = 130;
 	if (pid == -1)
 		rl_redisplay();
