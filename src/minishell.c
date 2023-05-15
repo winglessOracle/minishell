@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/15 19:03:13 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/15 19:18:34 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int	main(void)
 	t_node		*env_list;
 	t_node		*tokens;
 
-	// atexit(leaks);
 	env_list = init_env();
 	set_signals();
 	while (1)
