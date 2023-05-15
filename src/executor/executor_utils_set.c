@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/12 11:38:00 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 14:36:40 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
 		while (temp)
 		{
 			add_variable(pipe_argv->env_list, \
-				ft_strdup(temp->content), 1); //moet dit niet 2 zijn?
+				ft_strdup(temp->content), 1);
 			temp = temp->next;
 		}
 	}

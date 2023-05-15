@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/15 12:22:47 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/15 14:36:06 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	handle_sigint_here(int signal_number)
 {
 	(void) signal_number;
 	signal(SIGINT, SIG_DFL);
-	kill(0, SIGINT);
+	_exit(1);
 }
 
 void	handle_sigint(int signal_number)

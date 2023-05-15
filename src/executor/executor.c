@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/15 14:20:30 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/15 14:36:21 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,9 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 	}
 	else
 		exec_default(cmd_args, pipe_argv, env_list, env);
-	exit_error("executer", 127);
+	ft_fprintf(2, "cc: ");
+	perror("executor");
+	_exit(127);
 }
 
 void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
@@ -100,7 +102,7 @@ void	executor(t_pipe *pipeline)
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);
-	if(get_heredocs(pipeline))
+	if (get_heredocs(pipeline))
 		return ;
 	pid = malloc(sizeof(pid_t) * (pipeline->pipe_argc + 1));
 	if (!pid)

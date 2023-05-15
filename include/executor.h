@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:31 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/12 11:45:56 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 14:39:29 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void	set_exit_st(int argc, pid_t *pid);
 void	check_built(t_smpl_cmd *cmd);
 int		check_builtins_curr_env(t_smpl_cmd *cmd);
 char	**get_env(t_node *env_list);
+t_node	*sort_argv(t_node *argv);
 
 #endif

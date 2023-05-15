@@ -6,12 +6,13 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/15 11:55:12 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/15 14:39:58 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
+#include "executor.h"
 #include <sys/types.h>
 #include <dirent.h>
 
@@ -29,7 +30,7 @@ void	handle_wildcard(int *counters)
 // [3]: pattern_last_wildcard;
 int	match(char *str, char *pattern)
 {
-	int counters[4];
+	int	counters[4];
 
 	ft_memset(counters, 0, sizeof(counters));
 	counters[3] = -1;
@@ -47,50 +48,12 @@ int	match(char *str, char *pattern)
 			counters[1] = counters[3] + 1;
 			counters[0] = ++counters[2];
 		}
-		else 
+		else
 			return (0);
 	}
-	while (pattern[counters[1]] == 26) 
+	while (pattern[counters[1]] == 26)
 		counters[1]++;
 	return (pattern[counters[1]] == '\0');
-}
-
-int	check_sorted_argv(t_node *argv)
-{
-	t_node	*temp;
-
-	temp = argv;
-	while (temp && temp->next)
-	{
-		if (ft_strcmp(temp->content, temp->next->content) > 0)
-			return (0);
-		temp = temp->next;
-	}
-	return (1);
-}
-
-t_node	*sort_argv(t_node *argv)
-{
-	t_node	*temp;
-	char	*temp_content;
-
-	temp = argv;
-	while (!check_sorted_argv(temp))
-	{
-		while (temp && temp->next)
-		{
-			if (ft_strcmp(temp->content, temp->next->content) > 0)
-			{
-				temp_content = temp->content;
-				temp->content = temp->next->content;
-				temp->next->content = temp_content;
-			}
-			else
-				temp = temp->next;
-		}
-		temp = argv;
-	}
-	return (temp);
 }
 
 t_node	*expand_wildcard(t_node *token)

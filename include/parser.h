@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/11 20:29:55 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/15 14:41:11 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,36 +39,38 @@ t_pipe		*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list);
 int			check_token_content(t_node *token, int type);
 
 // parser_utils
-int		add_word_to_cmd(t_node **token, t_smpl_cmd *cmd);
-int		set_cmd_end(t_node **token, t_smpl_cmd *cmd, t_list *list);
-int		remove_comment(t_node **token, t_smpl_cmd *cmd);
-int		parser_assign(t_node **token, t_smpl_cmd *cmd);
-int		expand_tilde(t_node **token, t_smpl_cmd *cmd);
+int			add_word_to_cmd(t_node **token, t_smpl_cmd *cmd);
+int			set_cmd_end(t_node **token, t_smpl_cmd *cmd, t_list *list);
+int			remove_comment(t_node **token, t_smpl_cmd *cmd);
+int			parser_assign(t_node **token, t_smpl_cmd *cmd);
+int			expand_tilde(t_node **token, t_smpl_cmd *cmd);
 
 // expand_utils
-int		expander(t_node **token, t_smpl_cmd *cmd, t_list *list);
-int		expand(t_node **token, t_smpl_cmd *cmd);
-int		expand_sub(t_node **token, t_smpl_cmd *cmd);
-int		expand_var(t_node **token, t_smpl_cmd *cmd);
-int		check_wildcars(t_node **cmd_args);
-void	replace_wildcards(char	*str, char replace, char with);
+int			expander(t_node **token, t_smpl_cmd *cmd, t_list *list);
+int			expand(t_node **token, t_smpl_cmd *cmd);
+int			expand_sub(t_node **token, t_smpl_cmd *cmd);
+int			expand_var(t_node **token, t_smpl_cmd *cmd);
+int			check_wildcars(t_node **cmd_args);
+void		replace_wildcards(char	*str, char replace, char with);
 
 // quotes
-char	get_quote_char(int type);
-int		count_quotes(char *str, char quote);
-int		merge_quoted(t_node **token, t_smpl_cmd *cmd);
-int		split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd, int delim);
-void	unquoted(t_node **words, t_node **tokens, t_smpl_cmd *cmd, int open);
+char		get_quote_char(int type);
+int			count_quotes(char *str, char quote);
+int			merge_quoted(t_node **token, t_smpl_cmd *cmd);
+int			split_and_remove_quotes(t_node **tokens, \
+			t_smpl_cmd *cmd, int delim);
+void		unquoted(t_node **words, t_node **tokens, \
+			t_smpl_cmd *cmd, int open);
 
 // redirect_utils
-int		redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list);
-int		merge_quoted_heredoc(t_node **token, t_smpl_cmd *cmd, int delim);
+int			redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list);
+int			merge_quoted_heredoc(t_node **token, t_smpl_cmd *cmd, int delim);
 
 // cond_pipe utils
-int		set_brace(t_node **token, t_smpl_cmd *cmd, t_list *list);
-int		check_and(t_node **token, t_smpl_cmd *cmd, t_list *list);
-int		check_or(t_node **token, t_smpl_cmd *cmd, t_list *list);
-int		check_braces(t_node **tokens);
-int		check_list(t_node **tokens, t_list *list);
+int			set_brace(t_node **token, t_smpl_cmd *cmd, t_list *list);
+int			check_and(t_node **token, t_smpl_cmd *cmd, t_list *list);
+int			check_or(t_node **token, t_smpl_cmd *cmd, t_list *list);
+int			check_braces(t_node **tokens);
+int			check_list(t_node **tokens, t_list *list);
 
 #endif

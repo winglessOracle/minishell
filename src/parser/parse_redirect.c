@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/15 11:07:40 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/15 14:41:47 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	get_redirect(t_node **tokens, t_smpl_cmd *cmd, int state)
 		if (*tokens)
 			return (add_to_redirect(tokens, cmd, state));
 	}
-	return (syntax_error(tokens, cmd)); //redirects seperate error?
+	return (syntax_error(tokens, cmd));
 }
 
 int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
@@ -101,7 +101,7 @@ int	redirect_tokens(t_node **tokens, t_smpl_cmd *cmd, t_list *list)
 	state = get_redirect_type(tokens, cmd);
 	if (state == -1 || ((*tokens)->type == PIPE_END \
 						|| (*tokens)->type == AND || (*tokens)->type == OR))
-		return (syntax_error(tokens, cmd)); //redirects seperate error?
+		return (syntax_error(tokens, cmd));
 	while (*tokens && (*tokens)->type == BLANK)
 		remove_node(tokens, cmd);
 	(*tokens)->type = check_token_content(*tokens, WORD);

@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/15 14:21:12 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/15 14:35:55 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	main(void)
 	set_signals();
 	while (1)
 	{
-		// reset_terminal();
 		line_read = get_input(env_list, "PS1", 1);
 		if (line_read == NULL)
 			exit_sig(env_list);

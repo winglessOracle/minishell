@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/12 11:46:34 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 14:39:02 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_built(t_smpl_cmd *cmd)
 			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
 			ft_free_array(cmd_args);
-			exit(g_exit_status);
+			_exit(55);
 		}
 		i++;
 	}
@@ -82,4 +82,42 @@ void	check_cmd(char *cmd)
 	else if (access(cmd, X_OK) == -1)
 		exit_error("no executable or no permission", 126);
 	return ;
+}
+
+int	check_sorted_argv(t_node *argv)
+{
+	t_node	*temp;
+
+	temp = argv;
+	while (temp && temp->next)
+	{
+		if (ft_strcmp(temp->content, temp->next->content) > 0)
+			return (0);
+		temp = temp->next;
+	}
+	return (1);
+}
+
+t_node	*sort_argv(t_node *argv)
+{
+	t_node	*temp;
+	char	*temp_content;
+
+	temp = argv;
+	while (!check_sorted_argv(temp))
+	{
+		while (temp && temp->next)
+		{
+			if (ft_strcmp(temp->content, temp->next->content) > 0)
+			{
+				temp_content = temp->content;
+				temp->content = temp->next->content;
+				temp->next->content = temp_content;
+			}
+			else
+				temp = temp->next;
+		}
+		temp = argv;
+	}
+	return (temp);
 }
