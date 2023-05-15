@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/15 14:41:47 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/15 18:05:08 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int	get_redirect_type(t_node **tokens, t_smpl_cmd *cmd)
 		type = type_current_remove_next(HEREDOC, tokens, cmd);
 	else if (type == OUTPUT && (*tokens)->content[0] == '>')
 		type = type_current_remove_next(APPEND, tokens, cmd);
-	if (type == OUTPUT && (*tokens)->content[0] == '|')
-		remove_node(tokens, cmd);
 	while (*tokens && (*tokens)->type == BLANK)
 		remove_node(tokens, cmd);
 	if (*tokens && (*tokens)->type == REDIRECT)

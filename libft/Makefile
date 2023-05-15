@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/04/23 17:42:20 by cariencaljo   ########   odam.nl          #
+#    Updated: 2023/05/15 17:30:41 by ccaljouw      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,10 @@ BLUE	:= \033[34;1m
 RESET	:= \033[0m
 
 NAME		= libft.a
-CC			= clang
+CC			?= clang
 AR			= ar -rsc
 RM			= rm -rf
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
 OBJ_FILES	=		$(addprefix obj/, ft_free.o ft_free_array.o ft_strchr.o ft_strdup.o\
 						ft_strlen.o ft_strlcpy.o ft_strcmp.o  ft_strcmp_case.o ft_substr.o ft_calloc.o \
 						ft_bzero.o ft_memset.o ft_memcpy.o ft_strjoin.o ft_strncmp.o ft_strjoin_free_s1.o \

@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/02 19:20:31 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 10:22:27 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/15 17:44:52 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ t_node	*split_expanded(t_node **token, t_smpl_cmd *cmd)
 	char	*str;
 
 	temp = NULL;
-	str = get_variable(cmd->env_list, "IFS");
+	str = get_variable(cmd->env_list, "IFS"); // keeps splitter
 	if (str)
 	{
-		temp = split_to_list((*token)->content, str);
+		temp = split_to_list((*token)->content, " \t");
 		last = lstlast(temp);
 		remove_node(token, cmd);
 		lstinsert_lst(token, temp);
@@ -102,7 +102,7 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 	while (words)
 	{
 		if (words && words->content && words->content[0] == '$' \
-													&& words->next)
+						&& words->next && words->next->content[0] != '=')
 			temp = exp_spl(&words, token, cmd, temp);
 		else if (words)
 			add_after_var(&words, token, cmd);
