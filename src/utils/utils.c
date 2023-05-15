@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/15 12:15:35 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/15 15:04:36 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,8 @@ void	exit__error(char	*str, int num)
 	exit(num);
 }
 
-char	*get_input(t_node *env_list, char *var, int history)
+void	warning_heredoc_end(int count, char *delim)
 {
-	char		*prompt;
-	char		*line_read;
-
-	line_read = NULL;
-	prompt = get_variable(env_list, var);
-	line_read = readline(prompt);
-	if (line_read && ft_strlen(line_read) > MAX_INPUT_LEN)
-	{
-		printf("Input exceeds max length of %d characters\n", MAX_INPUT_LEN);
-		line_read = ft_strdup("");
-	}
-	if (line_read && history)
-		add_history(line_read);
-	free(prompt);
-	return (line_read);
+	ft_fprintf(2, "cc: warning: here-document at line %d ", count);
+	ft_fprintf(2, "delimited by end-of-file (wanted '%s')\n", delim);
 }

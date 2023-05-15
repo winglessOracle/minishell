@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/15 11:43:51 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/15 15:02:59 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	read_heredoc(int *pipe, t_node *env_lst, t_node *input, t_smpl_cmd *cmd)
 		if (!ft_strcmp(line_read, input->content) || line_read == NULL)
 		{
 			if (line_read == NULL)
-				ft_fprintf(2, "minishell: warning: here-document at line %d delimited by end-of-file (wanted '%s')\n", count, input->content);
+				warning_heredoc_end(count, input->content);
 			break ;
 		}
 		tokens = lexer(line_read, " \n");

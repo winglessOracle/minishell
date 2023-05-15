@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/15 11:36:06 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/15 15:02:45 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ int			return_error(const char *str, int ret, int exit);
 void		exit_error(char	*str, int num);
 void		exit__error(char	*str, int num);
 int			syntax_error(t_node **token, t_smpl_cmd *cmd);
+void		warning_heredoc_end(int count, char *delim);
 
 // node_utils
 t_node		*lstpop(t_node **lst);
