@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/15 14:36:40 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/15 15:59:35 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,4 @@ int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 		temp = temp->next;
 	}
 	return (trigger);
-}
-
-int	assign_one(t_pipe *pipeline)
-{
-	if (pipeline->pipe_argv->cmd_argc == 0)
-		assignments(pipeline->pipe_argv, 0);
-	if (check_builtins_curr_env(pipeline->pipe_argv))
-		return (-5);
-	return (0);
 }

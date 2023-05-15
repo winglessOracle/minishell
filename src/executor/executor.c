@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/15 15:19:18 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 16:11:04 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,14 @@ void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 	}
 }
 
+void	execute_child(t_smpl_cmd *temp)
+{
+	if (temp->cmd_argc > 0)
+		exec_cmd(temp, temp->env_list);
+	else
+		execute_exit(NULL, temp->env_list);
+}
+
 void	executor(t_pipe *pipeline)
 {
 	pid_t		*pid;
@@ -99,38 +107,19 @@ void	executor(t_pipe *pipeline)
 
 	i = 0;
 	temp = pipeline->pipe_argv;
-	keep = dup(STDIN_FILENO);
-	if (!keep)
-		exit_error("dup fail", 1);
-	if (get_heredocs(pipeline))
-		return ;
-	pid = malloc(sizeof(pid_t) * (pipeline->pipe_argc + 1));
-	if (!pid)
-		exit_error("malloc error", 2);
+	keep = init_keep();
+	pid = init_pid(pipeline->pipe_argc);
 	while (pipeline && temp)
 	{
-		if (pipeline->pipe_argc == 1)
-			pid[0] = assign_one(pipeline);
-		if (pid[0] == -5)
+		if (check_and_pipe(pipeline, pid, fd_pipe))
 			break ;
-		if (pipe(fd_pipe) == -1)
-			exit_error("pipe fail", errno);
 		pid[i] = fork();
 		if (pid[i] == -1)
-		{
-			kill(getpid(), SIGINT);
-			return_error ("fork: resource temporarily unavailable", 1, 128);
-			return ;
-		}
+			return (fork_error());
 		redirect(temp, pid[i], keep, fd_pipe);
 		assignments(temp, pid[i]);
 		if (pid[i] == 0)
-		{
-			if (temp->cmd_argc > 0)
-				exec_cmd(temp, temp->env_list);
-			else
-				execute_exit(NULL, temp->env_list);
-		}
+			execute_child(temp);
 		temp = temp->next;
 		i++;
 	}

@@ -13,7 +13,6 @@ echo $test2
 export ls="ls -l"
 $ls
 env ls
-env -a ls
 $SHVL
 eCho
 env | grep DOESNT_EXIST

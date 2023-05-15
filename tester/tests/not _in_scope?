@@ -15,3 +15,4 @@ echo "ls" | env -i $MINISHELL_PATH"/"$EXECUTABLE
 echo "unset PATH" | env -i $MINISHELL_PATH"/"$EXECUTABLE
 echo seg <> echo seg
 cd ?
+env -a ls

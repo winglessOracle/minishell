@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   executor_utils_checks.c                            :+:    :+:            */
+/*   executor_checks.c                                  :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/15 15:18:00 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 16:10:43 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,26 +98,17 @@ int	check_sorted_argv(t_node *argv)
 	return (1);
 }
 
-t_node	*sort_argv(t_node *argv)
+int	check_and_pipe(t_pipe *pipeline, pid_t *pid, int *fd_pipe)
 {
-	t_node	*temp;
-	char	*temp_content;
-
-	temp = argv;
-	while (!check_sorted_argv(temp))
+	if (pipeline->pipe_argc == 1)
 	{
-		while (temp && temp->next)
-		{
-			if (ft_strcmp(temp->content, temp->next->content) > 0)
-			{
-				temp_content = temp->content;
-				temp->content = temp->next->content;
-				temp->next->content = temp_content;
-			}
-			else
-				temp = temp->next;
-		}
-		temp = argv;
+		if (pipeline->pipe_argv->cmd_argc == 0)
+			assignments(pipeline->pipe_argv, 0);
+		if (check_builtins_curr_env(pipeline->pipe_argv))
+			return (1);
+		pid[0] = 0;
 	}
-	return (temp);
+	if (pipe(fd_pipe) == -1)
+		exit_error("pipe fail", errno);
+	return (0);
 }

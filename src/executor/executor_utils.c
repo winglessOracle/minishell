@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/12 12:06:07 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 16:09:23 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,4 +97,28 @@ char	**get_env(t_node *env_list)
 	}
 	arr[i] = NULL;
 	return (arr);
+}
+
+t_node	*sort_argv(t_node *argv)
+{
+	t_node	*temp;
+	char	*temp_content;
+
+	temp = argv;
+	while (!check_sorted_argv(temp))
+	{
+		while (temp && temp->next)
+		{
+			if (ft_strcmp(temp->content, temp->next->content) > 0)
+			{
+				temp_content = temp->content;
+				temp->content = temp->next->content;
+				temp->next->content = temp_content;
+			}
+			else
+				temp = temp->next;
+		}
+		temp = argv;
+	}
+	return (temp);
 }

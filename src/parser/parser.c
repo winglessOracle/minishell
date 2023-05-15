@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/15 15:15:06 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 15:47:25 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 		pipeline = parse_pipeline(&tokens, env_list, list);
 		if (pipeline)
 		{
-			executor(pipeline);
+			if (!(get_heredocs(pipeline)))
+				executor(pipeline);
 			delete_pipe(pipeline);
 		}
 		if (tokens)
