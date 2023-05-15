@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/12 12:04:29 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 11:46:49 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list)
 		if (state == -1)
 		{
 			lstclear_cmdlst(&pipeline->pipe_argv, delete_cmd);
+			lstclear(tokens, delete_content);
 			free (pipeline);
 			return (NULL);
 		}

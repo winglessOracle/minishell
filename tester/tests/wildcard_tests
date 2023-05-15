@@ -15,7 +15,7 @@ echo Minishe*l | sort
 echo minishe*l | sort
 touch minishelxxxl ; /echo minishe*l | sort ; echo minishel*l | sort ; echo minishelxxx*l | sort ; echo minishel*xxx*l | sort ; rm minishelxxxl
 touch tmp_out ; /bin/echo 42 >tmp_o*t* ; rm -f tmp_out* 
-touch tmp_out1 ; touch tmp_out2 ; /bin/echo 42 >tmp_out* ; rm -f tmp_out*
+touch tmp_out1 && touch tmp_out2 && /bin/echo 42 >tmp_out* && rm -f tmp_out*
 echo * | sort
 export ARG="*"
 echo $ARG | sort

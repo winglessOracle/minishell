@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/12 12:08:21 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 11:44:03 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,8 @@ void	executor(t_pipe *pipeline)
 	keep = dup(STDIN_FILENO);
 	if (!keep)
 		exit_error("dup fail", 1);
-	get_heredocs(pipeline);
+	if(get_heredocs(pipeline))
+		return ;
 	pid = malloc(sizeof(pid_t) * (pipeline->pipe_argc + 1));
 	if (!pid)
 		exit_error("malloc error", 2);

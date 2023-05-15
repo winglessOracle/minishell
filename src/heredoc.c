@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/12 12:34:24 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 11:43:51 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,20 @@ int	here_doc(t_node *env_list, t_node *here_redirect, t_smpl_cmd *cmd)
 		exit_error("fork fail", errno);
 	if (!pid)
 	{
-		set_sigint_here();	
+		signal(SIGINT, handle_sigint_here);
 		read_heredoc(here_pipe, env_list, here_redirect, cmd);
 	}
 	wait(NULL);
 	close(here_pipe[1]);
+	if (g_exit_status != 0)
+	{
+		g_exit_status = 1;
+		return (-1);
+	}
 	return (here_pipe[0]);
 }
 
-void	get_heredocs(t_pipe *pipeline)
+int	get_heredocs(t_pipe *pipeline)
 {
 	t_smpl_cmd	*tcmd;
 	t_node		*tredirect;
@@ -79,11 +84,14 @@ void	get_heredocs(t_pipe *pipeline)
 					close(tcmd->here_doc);
 				tcmd->here_doc = \
 					here_doc(pipeline->pipe_argv->env_list, tredirect, tcmd);
+				if (tcmd->here_doc == -1)
+					return (1);
 			}
 			tredirect = tredirect->next;
 		}
 		tcmd = tcmd->next;
 	}
+	return (0);
 }
 
 int	merge_quoted_heredoc(t_node **token, t_smpl_cmd *cmd, int delim)

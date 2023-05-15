@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/12 12:20:13 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 11:55:12 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,7 @@ t_node	*expand_wildcard(t_node *token)
 		while (file != NULL)
 		{
 			if (match(file->d_name, token->content) && (file->d_name[0] != '.' \
-				|| token->content[0] == '.') && ft_strcmp(file->d_name, ".") \
-				&& ft_strcmp(file->d_name, ".."))
+				|| token->content[0] == '.'))
 				lstadd_back(&temp, new_node(WORD, ft_strdup(file->d_name)));
 			file = readdir(curr_dir);
 		}

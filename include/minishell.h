@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/12 11:49:05 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 11:36:06 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ int			check_env_content(char *str);
 
 // heredoc
 char		*parse_heredoc(t_node *token, t_node *here, t_smpl_cmd *cmd);
-void		get_heredocs(t_pipe *pipeline);
+int			get_heredocs(t_pipe *pipeline);
 int			here_doc(t_node *env_list, t_node *here_redirect, t_smpl_cmd *cmd);
 
 // print
