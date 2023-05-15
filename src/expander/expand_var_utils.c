@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/02 19:20:31 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/15 17:44:52 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 19:02:37 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ t_node	*split_expanded(t_node **token, t_smpl_cmd *cmd)
 	char	*str;
 
 	temp = NULL;
-	str = get_variable(cmd->env_list, "IFS"); // keeps splitter
+	str = get_variable(cmd->env_list, "IFS");
 	if (str)
 	{
-		temp = split_to_list((*token)->content, " \t");
+		temp = split_to_list_expand((*token)->content, str);
 		last = lstlast(temp);
 		remove_node(token, cmd);
 		lstinsert_lst(token, temp);

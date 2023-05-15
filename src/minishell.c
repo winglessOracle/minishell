@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/15 16:11:54 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/15 19:03:13 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "parser.h"
 #include "builtin.h"
 
-// void	leaks(void)
-// {
-// 	system("leaks minishell -q");
-// }
+void	leaks(void)
+{
+	system("leaks minishell -q");
+}
 
 int	g_exit_status;
 
@@ -46,6 +46,7 @@ int	main(void)
 	t_node		*env_list;
 	t_node		*tokens;
 
+	// atexit(leaks);
 	env_list = init_env();
 	set_signals();
 	while (1)

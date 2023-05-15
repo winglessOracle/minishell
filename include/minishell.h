@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/15 15:02:45 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 18:55:44 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,7 @@ int			remove_pipe_node(t_pipe **cmds);
 //lexer
 t_node		*lexer(char *str, char *delim);
 t_node		*split_to_list(char *str, char *delim);
+t_node		*split_to_list_expand(char *str, char *delim);
 int			getlexerenum(char token);
 void		merge_tokens(t_node *token, int type);
 
