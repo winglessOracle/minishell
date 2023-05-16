@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/05/15 17:48:12 by ccaljouw      ########   odam.nl          #
+#    Updated: 2023/05/16 09:37:04 by cwesseli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,11 +23,11 @@ CC			 ?= clang
 CFLAGS		 = -Wall -Wextra -Werror -g
 
 ifeq ($(USER), cariencaljouw)
-	RL_INC			?= /opt/homebrew/opt/readline/include
-	RL_LIB			?= /opt/homebrew/opt/readline/lib
+	RL_INC		= /opt/homebrew/opt/readline/include
+	RL_LIB		= /opt/homebrew/opt/readline/lib
 else
-	RL_INC		?= /Users/$(USER)/.brew/opt/readline/include
-	RL_LIB		?= /Users/$(USER)/.brew/opt/readline/lib
+	RL_INC		= /Users/$(USER)/.brew/opt/readline/include
+	RL_LIB		= /Users/$(USER)/.brew/opt/readline/lib
 endif
 
 #//= Locations =//#

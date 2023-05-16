@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/15 16:04:23 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/15 16:05:26 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/16 09:47:39 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ pid_t	*init_pid(int argc)
 	pid = malloc(sizeof(pid_t) * (argc + 1));
 	if (!pid)
 		exit_error("malloc error", 2);
+	ft_memset(pid, 0, sizeof(pid_t));
 	return (pid);
 }

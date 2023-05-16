@@ -1,6 +1,6 @@
 FROM debian:latest
 
-ENV CC="gcc" CFLAGS="-Wall -Wextra -Werror" RL_INC="" RL_LIB=""
+ENV CC="gcc" CFLAGS="-Wall -Wextra -Werror -g" RL_INC="" RL_LIB=""
 
 RUN apt-get -y update \
 && \

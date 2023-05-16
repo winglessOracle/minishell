@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/15 16:09:23 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/16 09:42:29 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	set_exit_st(int argc, pid_t *pid)
 	int	i;
 
 	i = 0;
+	waitstatus = 0;
 	while (i < argc && pid[0] != -5)
 	{
 		waitpid(pid[i], &waitstatus, 0);
