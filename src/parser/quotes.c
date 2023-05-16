@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/05 11:06:10 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 17:41:06 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/16 10:01:24 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	split_and_remove_quotes(t_node **tokens, t_smpl_cmd *cmd, int delim)
 	char	quote;
 	bool	quote_open;
 
+	quote_open = false;
 	quote = get_quote_char((*tokens)->type);
 	words = split_to_list((*tokens)->content, "\'\" ");
 	free((*tokens)->content);
