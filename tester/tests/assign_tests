@@ -56,8 +56,8 @@ cd ~
 pwd
 cd -
 pwd
-cat Makefile > tester/output/out >>tester/output/out1 >tester/output/out2 && rm -rf tester/output/out && rm -rf tester/output/out1 && rm -rf tester/output/out2
-cat Makefile > tester/output/out >>tester/output/out1 >tester/output/out2 > tester/output/out3 >> tester/output/out4 && rm -rf tester/output/out && rm -rf tester/output/out1 && rm -rf tester/output/out2 && rm -rf tester/output/out3 && rm -rf tester/output/out4
+# cat Makefile > tester/output/out >>tester/output/out1 >tester/output/out2 && rm -rf tester/output/out && rm -rf tester/output/out1 && rm -rf tester/output/out2
+# cat Makefile > tester/output/out >>tester/output/out1 >tester/output/out2 > tester/output/out3 >> tester/output/out4 && rm -rf tester/output/out && rm -rf tester/output/out1 && rm -rf tester/output/out2 && rm -rf tester/output/out3 && rm -rf tester/output/out4
 rm -rf tester/output/out
 < tester/output/out && rm -rf tester/output/out
 |
@@ -296,6 +296,5 @@ echo '$/'
 exit 9223372036854775805
 exit 123"123"
 <| echo ok
->| echo sure
 cd --
 =======

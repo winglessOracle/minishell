@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/16 09:13:53 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/16 10:23:07 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,6 @@ void		print_pipeline(t_pipe *pipe);
 void		print_env(t_node *env_list, int flag);
 
 //signals
-void	exit_sig(t_node *env_list);
+void		exit_sig(t_node *env_list);
 
 #endif
