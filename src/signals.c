@@ -6,11 +6,11 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/15 14:36:06 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/16 09:02:08 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sigterm.h"
+#include "signals.h"
 
 void	exit_sig(t_node *env_list)
 {

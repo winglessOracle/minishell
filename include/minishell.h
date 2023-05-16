@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/15 18:55:44 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/16 09:13:53 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 # include "libft.h"
 # include "lexer.h"
-# include "sigterm.h"
+# include "signals.h"
 # include <sys/stat.h>
-# include <string.h>
+# include <string.h> //?
 # include <stdio.h>
 # include <errno.h>
 # include <stdlib.h>
@@ -70,13 +70,14 @@ typedef struct s_list
 	int				type;
 }	t_list;
 
-// utils
 char		*get_input(t_node *env_list, char *var, int history);
+int			syntax_error(t_node **token, t_smpl_cmd *cmd);
+
+// utils
 int			return_perror(char *str, int err);
 int			return_error(const char *str, int ret, int exit);
 void		exit_error(char	*str, int num);
 void		exit__error(char	*str, int num);
-int			syntax_error(t_node **token, t_smpl_cmd *cmd);
 void		warning_heredoc_end(int count, char *delim);
 
 // node_utils
@@ -125,10 +126,10 @@ t_pipe		*init_pipeline(void);
 t_list		*init_list(void);
 
 // environment
-t_node		*environ_to_list(void);
+int			check_env_content(char *str);
 void		add_variable(t_node *env_list, char *content, int type);
 char		*get_variable(t_node *env_list, char *name);
-int			check_env_content(char *str);
+t_node		*environ_to_list(void);
 
 // heredoc
 char		*parse_heredoc(t_node *token, t_node *here, t_smpl_cmd *cmd);
@@ -136,12 +137,12 @@ int			get_heredocs(t_pipe *pipeline);
 int			here_doc(t_node *env_list, t_node *here_redirect, t_smpl_cmd *cmd);
 
 // print
-void		print_env(t_node *env_list, int flag);
 void		print_tokens(t_node *tokens, char *str);
 void		print_cmd(t_smpl_cmd *cmd);
 void		print_pipeline(t_pipe *pipe);
+void		print_env(t_node *env_list, int flag);
 
 //signals
-void		exit_sig(t_node *env_list);
+void	exit_sig(t_node *env_list);
 
 #endif
