@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/16 10:25:53 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/16 10:51:05 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 		exec_default(cmd_args, pipe_argv, env_list, env);
 	ft_fprintf(2, "cc: ");
 	perror("executor");
-	exit(127); //heer
+	_exit(127);
 }
 
 void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)

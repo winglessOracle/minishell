@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/15 19:18:34 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/16 10:52:39 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 #include "parser.h"
 #include "builtin.h"
 
-void	leaks(void)
-{
-	system("leaks minishell -q");
-}
+// void	leaks(void)
+// {
+// 	system("leaks minishell -q");
+// }
 
 int	g_exit_status;
 
