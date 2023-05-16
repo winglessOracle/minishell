@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/16 10:23:07 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/16 15:57:25 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include "lexer.h"
 # include "signals.h"
 # include <sys/stat.h>
-# include <string.h> //?
+# include <string.h>
 # include <stdio.h>
 # include <errno.h>
 # include <stdlib.h>

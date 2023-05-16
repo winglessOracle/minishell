@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 21:43:08 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/30 18:59:30 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/16 15:09:32 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ int	execute_echo(char **cmd_vector, t_node	*env_list)
 	}
 	while (cmd_vector[i])
 	{
-		printf("%s", cmd_vector[i]);
+		write(0, cmd_vector[i], ft_strlen(cmd_vector[i]));
 		if (cmd_vector[i + 1])
-			printf(" ");
+			write(0, " ", 1);
 		i++;
 	}
 	if (!n)
-		printf("\n");
+		write(0, "\n", 1);
 	return (0);
 }
