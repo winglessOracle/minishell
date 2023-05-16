@@ -1,9 +1,7 @@
 Carien:
  - cc: redirect: Permission denied check right _exit / exit call  
  - exit "leak" in process b after "/bin/ls -la", = cmd not found, normal exit in check_cmd function, should be _exit in child processes 
- - variable _= in environment 
  - env should show vars with = and no value (not just no value) 
- - seg fault with unset first variable!!! 
 
 Carlo:
  - wildcard aan het begin van woord
