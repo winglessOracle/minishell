@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/16 19:49:45 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/17 13:36:10 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	check_built(t_smpl_cmd *cmd)
 	built[1] = execute_cd;
 	built[2] = execute_pwd;
 	built[3] = execute_export;
-	// built[4] = execute_unset;
+	built[4] = execute_unset;
 	built[5] = execute_exit;
 	built[6] = execute_env;
 	i = 0;
@@ -34,12 +34,9 @@ void	check_built(t_smpl_cmd *cmd)
 			ft_strcmp_case(cmd->cmd_argv->content, b[0], ft_tolower) == 0)
 		{
 			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
-			if (!ft_strcmp(cmd->cmd_argv->content, "unset"))
-				g_exit_status = execute_unset(cmd_args, &cmd->env_list);
-			else
-				g_exit_status = (built[i](cmd_args, cmd->env_list));
+			g_exit_status = (built[i](cmd_args, cmd->env_list));
 			ft_free_array(cmd_args);
-			_exit(0);
+			exit(0);  // change back
 		}
 		i++;
 	}
@@ -55,7 +52,7 @@ int	check_builtins_curr_env(t_smpl_cmd *cmd)
 	built[0] = execute_cd;
 	built[1] = execute_exit;
 	built[2] = execute_export;
-	// built[3] = execute_unset;
+	built[3] = execute_unset;
 	i = 0;
 	while (i < 4 && cmd->cmd_argc > 0)
 	{
@@ -64,10 +61,7 @@ int	check_builtins_curr_env(t_smpl_cmd *cmd)
 		if (ft_strcmp(cmd->cmd_argv->content, builtins[i]) == 0)
 		{
 			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
-			if (!ft_strcmp(cmd->cmd_argv->content, "unset"))
-				g_exit_status = execute_unset(cmd_args, &cmd->env_list);
-			else
-				g_exit_status = built[i](cmd_args, cmd->env_list);
+			g_exit_status = built[i](cmd_args, cmd->env_list);
 			ft_free_array(cmd_args);
 			return (1);
 		}

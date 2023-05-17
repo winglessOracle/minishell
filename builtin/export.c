@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/16 19:59:07 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/17 13:33:00 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ void	print_export(t_node *env_list)
 	temp = env_list;
 	while (temp)
 	{
-		printf("declare -x %s\n", temp->content);
+		if (ft_strcmp(temp->content, ""))
+			printf("declare -x %s\n", temp->content);
 		temp = temp->next;
 	}
 }

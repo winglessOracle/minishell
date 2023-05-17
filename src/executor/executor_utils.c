@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/16 09:42:29 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/17 13:50:55 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ char	**build_cmd_args(t_node **argv, int argc)
 	cmd_args = malloc(sizeof(char *) * (argc + 1));
 	while (i < argc)
 	{
-		cmd_args[i] = ft_strdup((*argv)->content);
+		if (ft_strcmp((*argv)->content, ""))
+			cmd_args[i] = ft_strdup((*argv)->content);
 		*argv = (*argv)->next;
 		i++;
 	}
