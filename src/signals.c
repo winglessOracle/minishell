@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/16 09:02:08 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/17 10:04:04 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ void	exit_sig(t_node *env_list)
 		exit_error("exit_sig", 1);
 	printf("%s exit\n", str);
 	free(str);
+	if (g_exit_status)
+		g_exit_status = 1;
 	exit(g_exit_status);
 }
 
@@ -30,6 +32,15 @@ void	handle_sigint_here(int signal_number)
 	signal(SIGINT, SIG_DFL);
 	_exit(1);
 }
+
+void	handle_sigquit(int signal_number)
+{
+	(void) signal_number;
+	
+	printf("Quit (core dumped)\n");
+	kill(getpid(), SIGQUIT);
+	g_exit_status = 131;
+} 
 
 void	handle_sigint(int signal_number)
 {
@@ -46,10 +57,9 @@ void	handle_sigint(int signal_number)
 		rl_redisplay();
 }
 
-// rl_catch_signals = 0;
 void	set_signals(void)
 {
-	signal(SIGSTOP, SIG_IGN);
+	signal(SIGTSTP, SIG_IGN);
 	signal(SIGQUIT, SIG_IGN);
 	signal(SIGINT, handle_sigint);
 }
