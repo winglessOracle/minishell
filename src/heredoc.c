@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/17 09:36:51 by carlo         ########   odam.nl         */
+/*   Updated: 2023/05/17 18:29:45 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	read_heredoc(int *pipe, t_node *env_lst, t_node *input, t_smpl_cmd *cmd)
 		free(line);
 	}
 	close(pipe[1]);
-	exit(0);
+	_exit(0); //child exit (klopt 0 hier?)
 }
 
 int	here_doc(t_node *env_list, t_node *here_redirect, t_smpl_cmd *cmd)

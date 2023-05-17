@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/15 16:04:23 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/17 15:21:46 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/17 18:38:13 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,5 @@ void	exit_error_child(char	*str, int num)
 {
 	ft_fprintf(2, "cc: ");
 	perror(str);
-	exit(num); //change back
+	_exit(num); //change back
 }
