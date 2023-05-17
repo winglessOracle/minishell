@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/17 14:52:54 by carlo         ########   odam.nl         */
+/*   Updated: 2023/05/17 15:12:43 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,23 @@ waitpid: wait for the child process with the specified PID to complete.
 WIFEXITED macro: check if the child process exited normally
 WEXITSTATUS macro: get the exit status of the child process.
 */
+// void	set_exit_st(int argc, pid_t *pid)
+// {
+// 	int	waitstatus;
+// 	int	i;
+
+// 	i = 0;
+// 	waitstatus = 0;
+// 	while (i < argc && pid[0] != -5)
+// 	{
+// 		waitpid(pid[i], &waitstatus, 0);
+// 		if (WIFEXITED(waitstatus) && pid[i])
+// 			g_exit_status = WEXITSTATUS(waitstatus);
+// 		i++;
+// 	}
+// 	free(pid);
+// }
+
 void	set_exit_st(int argc, pid_t *pid)
 {
 	int	waitstatus;
@@ -55,6 +72,16 @@ void	set_exit_st(int argc, pid_t *pid)
 		waitpid(pid[i], &waitstatus, 0);
 		if (WIFEXITED(waitstatus) && pid[i])
 			g_exit_status = WEXITSTATUS(waitstatus);
+		if (WIFSIGNALED(waitstatus) && pid[i])
+		{
+			if (WTERMSIG(waitstatus) == 2)
+				g_exit_status = 130;
+			if (WTERMSIG(waitstatus) == 3)
+			{
+				g_exit_status = 131;
+				printf("Quit (core dumped)\n");
+			}
+		}
 		i++;
 	}
 	free(pid);
