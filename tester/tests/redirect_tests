@@ -86,3 +86,4 @@ echo >/dev/null 1 | echo 2
 < tester/output/out && rm -f tester/output/out
 >> tester/output/out && rm -f tester/output/out
 > tester/output/out
+echo redirect to comment > #hello comment

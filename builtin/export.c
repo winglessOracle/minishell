@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/03 13:06:44 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/16 19:59:07 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,13 +103,13 @@ int	execute_export(char **cmd_vector, t_node *env_list)
 		print_export(env_list);
 	}
 	else if (cmd_vector[i][0] == '-')
-		return (return_error("minishell: export: no options supported\n", 2));
+		return (return_error("export: no options supported\n", 2, 2));
 	else
 	{
 		while (cmd_vector[i])
 		{
 			if (check_valid_identifier(cmd_vector[i]))
-				return (return_error("minishell: not a valid identifier\n", 1));
+				return (return_error("not a valid identifier\n", 1, 1));
 			else
 				add_variable(env_list, ft_strdup(cmd_vector[i]), 2);
 			i++;

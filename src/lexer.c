@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:19:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/02 12:10:35 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 18:58:37 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,31 @@ t_node	*split_to_list(char *str, char *delim)
 				lstadd_back(&tokens, new_node(WORD, ft_substr(str, j, i - j)));
 			lstadd_back(&tokens, new_node(getlexerenum(str[i]), \
 														ft_substr(str, i, 1)));
+			j = i + 1;
+		}
+		i++;
+	}
+	if (j != i)
+		lstadd_back(&tokens, new_node(WORD, ft_substr(str, j, i - j)));
+	return (tokens);
+}
+
+t_node	*split_to_list_expand(char *str, char *delim)
+{
+	t_node	*tokens;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	tokens = NULL;
+	while (str && str[i] != '\0')
+	{
+		if (ft_strchr(delim, str[i]))
+		{
+			if (j != i)
+				lstadd_back(&tokens, new_node(WORD, ft_substr(str, j, i - j)));
+			lstadd_back(&tokens, new_node(BLANK, ft_substr(str, i, 1)));
 			j = i + 1;
 		}
 		i++;

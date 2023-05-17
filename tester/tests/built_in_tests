@@ -13,7 +13,6 @@ echo $test2
 export ls="ls -l"
 $ls
 env ls
-env -a ls
 $SHVL
 eCho
 env | grep DOESNT_EXIST
@@ -126,7 +125,7 @@ echo 1
 cd /bin/
 ls
 touch tester/output/tmp_x_file1 
-tester/output/tmp_x_file1 
+tester/output/tmp_x_file1
 echo $? 
 export PATH=$HOME 
 echo $PATH && echo 42 

@@ -6,11 +6,12 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 09:52:22 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/26 18:20:25 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/16 20:01:56 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+#include "parser.h"
 
 int	check_env_content(char *str)
 {
@@ -19,7 +20,7 @@ int	check_env_content(char *str)
 	i = 0;
 	while (str[i] && str[i] != '=')
 		i++;
-	if (str[i] && str[i + 1])
+	if (str[i])
 		return (1);
 	return (0);
 }
@@ -101,5 +102,7 @@ char	*get_variable(t_node *env_list, char *name)
 		}
 		temp = temp->next;
 	}
+	if (value)
+		replace_wildcards(value, '*', 26);
 	return (value);
 }

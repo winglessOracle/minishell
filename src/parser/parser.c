@@ -6,39 +6,14 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/10 20:09:55 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/15 17:48:42 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
 #include "builtin.h"
-
-char	*parse_heredoc(t_node *token, t_node *here_redirect, t_smpl_cmd *cmd)
-{
-	int		type;
-	char	*input;
-
-	type = here_redirect->type;
-	if (type == HEREDOC)
-		type = INPUT;
-	if (type == HEREDOCQ)
-		type = HEREDOC;
-	input = ft_strdup("");
-	while (token)
-	{
-		token->type = check_token_content(token, token->type);
-		if ((token->type == SQUOTE || token->type == DQUOTE) && type != HEREDOC)
-			token->type = merge_quoted_heredoc(&token, cmd);
-		else if (token->type == EXPAND && type != HEREDOC)
-			token->type = expand(&token, cmd);
-		if (token->content)
-			input = ft_strjoin_free_s1(input, token->content);
-		remove_node(&token, NULL);
-	}
-	input = ft_strjoin_free_s1(input, "\n");
-	return (input);
-}
+#include "executor.h"
 
 int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd, t_list *list)
 {	
@@ -63,6 +38,14 @@ int	parse_cmd(t_node **tokens, t_smpl_cmd **cmd, t_list *list)
 	return (state);
 }
 
+t_pipe	*clear_pipeline_at_error(t_pipe *pipeline, t_node **tokens)
+{
+	lstclear_cmdlst(&pipeline->pipe_argv, delete_cmd);
+	lstclear(tokens, delete_content);
+	free (pipeline);
+	return (NULL);
+}
+
 t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list)
 {	
 	t_pipe		*pipeline;
@@ -81,11 +64,7 @@ t_pipe	*parse_pipeline(t_node **tokens, t_node *env_list, t_list *list)
 			pipeline->pipe_argc++;
 		}
 		if (state == -1)
-		{
-			lstclear_cmdlst(&pipeline->pipe_argv, delete_cmd);
-			free (pipeline);
-			return (NULL);
-		}
+			return (clear_pipeline_at_error(pipeline, tokens));
 		if (*tokens && (*tokens)->type == PIPE_END)
 			break ;
 	}
@@ -96,27 +75,17 @@ void	parse_and_execute(t_node *tokens, t_node *env_list)
 {
 	t_list	*list;
 	t_pipe	*pipeline;
-	int		count;
 
-	if (tokens)
-	{
-		count = count_braces(&tokens);
-		if (count == -1)
-			syntax_error(&tokens, NULL, "syntax error\n", 1);
-		else if (count)
-			syntax_error(&tokens, NULL, "unclosed braces\n", 1);
-		if (count)
-			return ;
-	}
+	if (check_braces(&tokens))
+		return ;
 	list = init_list();
 	while (tokens)
 	{
 		pipeline = parse_pipeline(&tokens, env_list, list);
 		if (pipeline)
 		{
-			// print_pipeline(pipeline);
-			executor(pipeline);
-			// printf("exit status: %d\n", g_exit_status);
+			if (!(get_heredocs(pipeline)))
+				executor(pipeline);
 			delete_pipe(pipeline);
 		}
 		if (tokens)

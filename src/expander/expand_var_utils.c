@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/02 19:20:31 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/03 14:28:16 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/15 19:16:32 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_node	*split_expanded(t_node **token, t_smpl_cmd *cmd)
 	str = get_variable(cmd->env_list, "IFS");
 	if (str)
 	{
-		temp = split_to_list((*token)->content, str);
+		temp = split_to_list_expand((*token)->content, str);
 		last = lstlast(temp);
 		remove_node(token, cmd);
 		lstinsert_lst(token, temp);
@@ -44,10 +44,7 @@ int	expand_var(t_node **token, t_smpl_cmd *cmd)
 	else if ((*token)->content[0] == '\'' || (*token)->content[0] == '\"')
 	{
 		if (!ft_strcmp((*token)->content, (*token)->next->content))
-		{
-			str = ft_strdup("");
 			remove_node(token, cmd);
-		}
 		else
 		{
 			(*token)->type = check_token_content(*token, (*token)->type);
@@ -104,7 +101,7 @@ int	expand(t_node **token, t_smpl_cmd *cmd)
 	while (words)
 	{
 		if (words && words->content && words->content[0] == '$' \
-													&& words->next)
+						&& words->next && words->next->content[0] != '=')
 			temp = exp_spl(&words, token, cmd, temp);
 		else if (words)
 			add_after_var(&words, token, cmd);

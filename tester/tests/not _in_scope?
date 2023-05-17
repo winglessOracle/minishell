@@ -14,3 +14,6 @@ echo "env | /usr/bin/wc -l" | env -i $MINISHELL_PATH"/"$EXECUTABLE
 echo "ls" | env -i $MINISHELL_PATH"/"$EXECUTABLE
 echo "unset PATH" | env -i $MINISHELL_PATH"/"$EXECUTABLE
 echo seg <> echo seg
+cd ?
+env -a ls
+>| echo sure

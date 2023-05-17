@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/13 09:29:13 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/09 09:32:19 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/16 19:23:39 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 int		execute_echo(char **cmd_vector, t_node *env_list);
 int		execute_cd(char **cmd_vector, t_node *env_list);
 int		execute_pwd(char **cmd_vector, t_node *env_list);
-int		execute_unset(char **cmd_vector, t_node *env_list);
+int		execute_unset(char **cmd_vector, t_node **env_list);
 int		execute_export(char **cmd_vector, t_node *env_list);
 int		execute_exit(char **cmd_vector, t_node *env_list);
 int		execute_env(char **cmd_vector, t_node	*env_list);
@@ -38,6 +38,7 @@ int		go_to_var(t_node *env_list, char *arg, char *var);
 void	check_env(t_smpl_cmd *cmd);
 t_node	*sort_env(t_node *env_list);
 
+// export
 int		check_valid_identifier(char *str);
 
 #endif

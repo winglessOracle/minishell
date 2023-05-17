@@ -34,7 +34,6 @@ cd '/var'
 cd "doesntexist" 2>/dev/null 
 cd ../../..
 cd "wtf" 2>/dev/null 
-cd ?
 cd +
 cd _
 cd woof
@@ -50,7 +49,6 @@ pwd
 cd ..
 cd ..
 pwd
-cd ?
 pwd
 cd +
 pwd

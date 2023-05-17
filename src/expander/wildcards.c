@@ -6,87 +6,54 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/22 20:28:26 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/10 21:12:32 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/15 14:39:58 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
+#include "executor.h"
 #include <sys/types.h>
 #include <dirent.h>
 
+void	handle_wildcard(int *counters)
+{
+	counters[2] = counters[0];
+	counters[3] = counters[1];
+	counters[1]++;
+}
+
+// int *counters, 
+// [0]: string_indexer
+// [1]: pattern_indexer
+// [2]: string_last_match
+// [3]: pattern_last_wildcard;
 int	match(char *str, char *pattern)
 {
-	int s_i;
-	int	p_i;
-	int s_last_match;
-	int p_last_astrix;
-	
-	s_i = 0;
-	p_i = 0;
-	s_last_match = 0;
-	p_last_astrix = -1;
-	while (str[s_i])
-	{
-		if (pattern[p_i] == '*')
-		{
-			s_last_match = s_i;
-			p_last_astrix = p_i;
-			p_i++;
-		}
-		else if (pattern[p_i] == str[s_i])
-		{
-			p_i++;
-			s_i++;
-		}
-		else if (p_last_astrix != -1)
-		{
-			p_i = p_last_astrix + 1;
-			s_i = ++s_last_match;
-		}
-		else return (0);
-	}
-	while (pattern[p_i] == '*') 
-		p_i++;
-	return (pattern[p_i] == '\0');
-}
+	int	counters[4];
 
-int	check_sorted_argv(t_node *argv)
-{
-	t_node	*temp;
-
-	temp = argv;
-	while (temp && temp->next)
+	ft_memset(counters, 0, sizeof(counters));
+	counters[3] = -1;
+	while (str[counters[0]])
 	{
-		if (ft_strcmp(temp->content, temp->next->content) > 0)
+		if (pattern[counters[1]] == 26)
+			handle_wildcard(counters);
+		else if (pattern[counters[1]] == str[counters[0]])
+		{
+			counters[1]++;
+			counters[0]++;
+		}
+		else if (counters[3] != -1)
+		{
+			counters[1] = counters[3] + 1;
+			counters[0] = ++counters[2];
+		}
+		else
 			return (0);
-		temp = temp->next;
 	}
-	return (1);
-}
-
-t_node	*sort_argv(t_node *argv)
-{
-	t_node	*temp;
-	char	*temp_content;
-
-	temp = argv;
-	while (!check_sorted_argv(temp))
-	{
-		while (temp && temp->next)
-		{
-			if (ft_strcmp(temp->content, temp->next->content) > 0)
-			{
-				temp_content = temp->content;
-				temp->content = temp->next->content;
-				temp->next->content = temp_content;
-			}
-			else
-				temp = temp->next;
-		}
-		temp = argv;
-	}
-	return (temp);
+	while (pattern[counters[1]] == 26)
+		counters[1]++;
+	return (pattern[counters[1]] == '\0');
 }
 
 t_node	*expand_wildcard(t_node *token)
@@ -94,13 +61,10 @@ t_node	*expand_wildcard(t_node *token)
 	char			buf[PATH_MAX];
 	DIR				*curr_dir;
 	struct dirent	*file;
-	char			*pattern;
 	t_node			*temp;
 
-	// print_tokens(token, "args in expand wildcard\n");
 	if (!getcwd(buf, PATH_MAX))
 		return (NULL);
-	pattern = token->content;
 	temp = NULL;
 	curr_dir = opendir(buf);
 	if (curr_dir != NULL)
@@ -108,7 +72,8 @@ t_node	*expand_wildcard(t_node *token)
 		file = readdir(curr_dir);
 		while (file != NULL)
 		{
-			if (match(file->d_name, pattern) && file->d_name[0] != '.')
+			if (match(file->d_name, token->content) && (file->d_name[0] != '.' \
+				|| token->content[0] == '.'))
 				lstadd_back(&temp, new_node(WORD, ft_strdup(file->d_name)));
 			file = readdir(curr_dir);
 		}
@@ -118,25 +83,27 @@ t_node	*expand_wildcard(t_node *token)
 	return (temp);
 }
 
-int	check_wildcars(t_node **cmd_args)
+int	check_wildcars(t_node **args)
 {
 	t_node	*temp;
 	t_node	*new_args;
 	int		i;
 
 	new_args = NULL;
-	while (*cmd_args)
+	while (*args)
 	{
 		i = 0;
-		temp = expand_wildcard(*cmd_args);
-		if (temp && ft_strcmp((*cmd_args)->content, "") && (*cmd_args)->type != SQUOTE && (*cmd_args)->type != DQUOTE)
+		temp = expand_wildcard(*args);
+		if (temp && ft_strcmp((*args)->content, ""))
 			lstadd_back(&new_args, temp);
 		else
-			lstadd_back(&new_args, \
-				new_node(WORD, ft_strdup((*cmd_args)->content)));
-		remove_node(cmd_args, NULL);
+		{
+			replace_wildcards((*args)->content, 26, '*');
+			lstadd_back(&new_args, new_node(WORD, ft_strdup((*args)->content)));
+		}
+		remove_node(args, NULL);
 	}
-	*cmd_args = new_args;
+	*args = new_args;
 	while (new_args)
 	{
 		new_args = new_args->next;

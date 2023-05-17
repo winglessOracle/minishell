@@ -1,13 +1,12 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   executor_utils_assign.c                            :+:    :+:            */
+/*   executor_set.c                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/09 10:00:49 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/15 17:58:53 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +23,8 @@ void	assignments(t_smpl_cmd *pipe_argv, pid_t pid)
 		while (temp)
 		{
 			add_variable(pipe_argv->env_list, \
-				ft_strdup(temp->content), 1); //moet dit niet 2 zijn?
+				ft_strdup(temp->content), 1);
+			g_exit_status = 0;
 			temp = temp->next;
 		}
 	}
@@ -60,6 +60,7 @@ int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 	temp = smpl_cmd->redirect;
 	while (temp)
 	{
+		g_exit_status = 0;
 		if (temp->type == OUTPUT || temp->type == APPEND)
 			trigger = set_out(fd_pipe, temp);
 		else if (temp->type == INPUT)
@@ -75,13 +76,4 @@ int	set_fd(t_smpl_cmd *smpl_cmd, int *keep, int *fd_pipe)
 		temp = temp->next;
 	}
 	return (trigger);
-}
-
-int	assign_one(t_pipe *pipeline)
-{
-	if (pipeline->pipe_argv->cmd_argc == 0)
-		assignments(pipeline->pipe_argv, 0);
-	if (check_builtins_curr_env(pipeline->pipe_argv))
-		return (1);
-	return (0);
 }

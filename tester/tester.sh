@@ -11,7 +11,6 @@ mkdir -p ./tester/output; mkdir -p ./tester/trace
 trace=false
 clean=false
 error=true
-signal=false
 
 tests_ok=0
 tests_ko=0
@@ -112,7 +111,6 @@ if [ $# -eq 0 ] || \
     file_name="tester/tests/built_in_tests";  		run_tests;
     file_name="tester/tests/assign_tests";			run_tests;
     file_name="tester/tests/redirect_tests";		run_tests;
-    file_name="tester/tests/signal_tests";			run_tests;
     file_name="tester/tests/cond_pipe_tests";		run_tests;
     file_name="tester/tests/wildcard_tests";		run_tests;
 	file_name="tester/tests/cd_tests";				run_tests;
@@ -134,10 +132,6 @@ for arg in "$@"; do
 		file_name="tester/tests/assign_tests";		run_tests;
 	elif [ "$arg" == "r" ]; then
 		file_name="tester/tests/redirect_tests";	run_tests;
-	elif [ "$arg" == "z" ]; then
-		file_name="tester/tests/signal_tests";
-		signal=true; 								run_tests;
-		signal=false
 	elif [ "$arg" == "c" ]; then
 		file_name="tester/tests/cond_pipe_tests";	run_tests;
 	elif [ "$arg" == "w" ]; then

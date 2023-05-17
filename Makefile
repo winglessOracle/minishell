@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/05/09 10:15:41 by cwesseli      ########   odam.nl          #
+#    Updated: 2023/05/16 09:37:04 by cwesseli      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,12 +19,12 @@ RESET	:= \033[0m
 #//= Variables = //#
 NAME		 = minishell
 NAME_BONUS	 = minishell_bonus
-CC			 = clang
-CFLAGS		 = -Wall -Wextra -Werror
+CC			 ?= clang
+CFLAGS		 = -Wall -Wextra -Werror -g
 
 ifeq ($(USER), cariencaljouw)
-	RL_INC			= /opt/homebrew/opt/readline/include
-	RL_LIB			= /opt/homebrew/opt/readline/lib
+	RL_INC		= /opt/homebrew/opt/readline/include
+	RL_LIB		= /opt/homebrew/opt/readline/lib
 else
 	RL_INC		= /Users/$(USER)/.brew/opt/readline/include
 	RL_LIB		= /Users/$(USER)/.brew/opt/readline/lib
@@ -37,10 +37,10 @@ LIBS		= $(LIBFT)/libft.a -L$(RL_LIB)
 HEADERS		= -I $(LIBFT) -I$(INCLUDE) -I$(RL_INC)
 OBJ_FILES	=  $(addprefix obj/src/, minishell.o lst_utils/t_node.o utils/utils.o lst_utils/t_smpl_cmd.o \
 				lexer.o utils/env_utils.o init.o print.o lst_utils/node.o signals.o \
-				lst_utils/delete.o lst_utils/t_pipe.o ) \
+				lst_utils/delete.o lst_utils/t_pipe.o heredoc.o) \
 				$(addprefix obj/src/parser/, parser.o parser_utils.o parse_redirect.o quotes.o cond_pipe.o cond_pipe_utils.o check_syntax.o ) \
 				$(addprefix obj/src/expander/, expander.o expand_var_utils.o wildcards.o ) \
-				$(addprefix obj/src/executor/, executor.o executor_utils.o executor_utils_set.o executor_utils_checks.o ) \
+				$(addprefix obj/src/executor/, executor.o executor_utils.o executor_set.o executor_checks.o executor_init.o)
 
 OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o cd.o cd_utils.o cd_utils2.o pwd.o unset.o export.o env.o exit.o)
 

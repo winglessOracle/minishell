@@ -6,47 +6,12 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/10 21:42:29 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/16 09:42:29 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "executor.h"
-
-int	here_doc(t_pipe *pipeline, t_node *here_redirect, t_smpl_cmd *cmd)
-{
-	int		here_pipe[2];
-	char	*line_read;
-	char	*line;
-	t_node	*tokens;
-	pid_t	pid;
-
-	line = NULL;
-	if (pipe(here_pipe) == -1)
-		exit_error("here_pipe fail", errno);
-	pid = fork();
-	if (pid == -1)
-		exit_error("fork fail", errno);
-	if (!pid)
-	{
-		close(here_pipe[0]);
-		while (1)
-		{
-			line_read = get_input(pipeline->pipe_argv->env_list, "PS2", 0);
-			if (!ft_strcmp(line_read, here_redirect->content) || line_read == NULL)
-				break ;
-			tokens = lexer(line_read, " \n");
-			line = parse_heredoc(tokens, here_redirect, cmd);
-			ft_putstr_fd(line, here_pipe[1]);
-			free(line);
-		}
-		close(here_pipe[1]);
-		exit(0);
-	}
-	wait(NULL);
-	close(here_pipe[1]);
-	return (here_pipe[0]);
-}
 
 char	**build_cmd_args(t_node **argv, int argc)
 {
@@ -77,16 +42,17 @@ waitpid: wait for the child process with the specified PID to complete.
 WIFEXITED macro: check if the child process exited normally
 WEXITSTATUS macro: get the exit status of the child process.
 */
-void	set_exit_st(int argc, pid_t *pid, int exit_set)
+void	set_exit_st(int argc, pid_t *pid)
 {
 	int	waitstatus;
 	int	i;
 
 	i = 0;
-	while (i < argc)
+	waitstatus = 0;
+	while (i < argc && pid[0] != -5)
 	{
 		waitpid(pid[i], &waitstatus, 0);
-		if (WIFEXITED(waitstatus) && exit_set == 0)
+		if (WIFEXITED(waitstatus) && pid[i])
 			g_exit_status = WEXITSTATUS(waitstatus);
 		i++;
 	}
@@ -132,4 +98,28 @@ char	**get_env(t_node *env_list)
 	}
 	arr[i] = NULL;
 	return (arr);
+}
+
+t_node	*sort_argv(t_node *argv)
+{
+	t_node	*temp;
+	char	*temp_content;
+
+	temp = argv;
+	while (!check_sorted_argv(temp))
+	{
+		while (temp && temp->next)
+		{
+			if (ft_strcmp(temp->content, temp->next->content) > 0)
+			{
+				temp_content = temp->content;
+				temp->content = temp->next->content;
+				temp->next->content = temp_content;
+			}
+			else
+				temp = temp->next;
+		}
+		temp = argv;
+	}
+	return (temp);
 }

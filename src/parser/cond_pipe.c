@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/23 20:56:59 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/10 17:28:46 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/11 17:39:55 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,34 +86,43 @@ int	check_list(t_node **tokens, t_list *list)
 	return (0);
 }
 
-int	count_braces(t_node **tokens)
+int	count_braces(t_node *tokens, int count, int *quotes)
+{
+	int		type;
+
+	type = check_token_content(tokens, WORD);
+	if (type == SQUOTE)
+		*quotes += count_quotes(tokens->content, '\'');
+	if (type == DQUOTE)
+		*quotes += count_quotes(tokens->content, '\"');
+	if (tokens->type == BRACE_O && !(*quotes % 2))
+		count ++;
+	if (tokens->type == BRACE_C && !(*quotes % 2))
+		count --;
+	return (count);
+}
+
+int	check_braces(t_node **tokens)
 {
 	t_node	*temp;
-	int		type;
-	int		quotes;
 	int		count;
+	int		quotes;
 
 	temp = *tokens;
 	count = 0;
-	quotes = 0;
 	while (*tokens)
 	{
-		type = check_token_content(*tokens, WORD);
-		if (type == SQUOTE)
-			quotes += count_quotes((*tokens)->content, '\'');
-		if (type == DQUOTE)
-			quotes += count_quotes((*tokens)->content, '\"');
-		if ((*tokens)->type == BRACE_O && !(quotes % 2))
-			count ++;
-		if ((*tokens)->type == BRACE_C && !(quotes % 2))
-			count --;
+		replace_wildcards((*tokens)->content, '*', 26);
+		count = count_braces(*tokens, count, &quotes);
 		if (count < 0)
-			return (1);
+			return (return_error("unclosed braces", -1, 2));
 		if (!(*tokens)->next && (!ft_strncmp((*tokens)->content, "|", 1) \
 				|| !ft_strncmp((*tokens)->content, "&", 1)))
-			return (-1);
+			return (syntax_error(tokens, NULL));
 		*tokens = (*tokens)->next;
 	}
 	*tokens = temp;
-	return (count);
+	if (count)
+		return (return_error("unclosed braces", -1, 2));
+	return (0);
 }

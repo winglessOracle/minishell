@@ -6,11 +6,11 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/11 09:09:44 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/16 09:02:08 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sigterm.h"
+#include "signals.h"
 
 void	exit_sig(t_node *env_list)
 {
@@ -24,48 +24,32 @@ void	exit_sig(t_node *env_list)
 	exit(g_exit_status);
 }
 
-void	handle_sigint(int signal_number)
+void	handle_sigint_here(int signal_number)
 {
 	(void) signal_number;
-	rl_replace_line("", 0);
-	printf("\n");
-	rl_on_new_line();
-	rl_redisplay();
+	signal(SIGINT, SIG_DFL);
+	_exit(1);
 }
 
-// void	handle_sigint_here(int signal_number)
-// {
-// 	(void) signal_number;
-// 	printf("\n");
-// 	// kill(getpid(), SIGHUP);
-// }
+void	handle_sigint(int signal_number)
+{
+	pid_t	pid;
+	int		status;
 
+	(void) signal_number;
+	pid = waitpid(-1, &status, WNOHANG);
+	rl_replace_line("", 0);
+	write(STDOUT_FILENO, "\n", 1);
+	rl_on_new_line();
+	g_exit_status = 130;
+	if (pid == -1)
+		rl_redisplay();
+}
+
+// rl_catch_signals = 0;
 void	set_signals(void)
 {
-	struct sigaction	sa_quit;
-	struct sigaction	sa_stop;
-	struct sigaction	sa_int;
-
-	sa_int.sa_handler = handle_sigint;
-	sigemptyset(&sa_int.sa_mask);
-	sigaddset(&sa_int.sa_mask, SIGINT);
-	sigaddset(&sa_int.sa_mask, SIGQUIT);
-	sigaddset(&sa_int.sa_mask, SIGTSTP);
-	if (sigaction(SIGINT, &sa_int, NULL) == -1)
-		exit(errno);
-	sa_stop.sa_handler = SIG_IGN;
-	sigemptyset(&sa_stop.sa_mask);
-	sigaddset(&sa_stop.sa_mask, SIGINT);
-	sigaddset(&sa_stop.sa_mask, SIGQUIT);
-	sigaddset(&sa_stop.sa_mask, SIGTSTP);
-	if (sigaction(SIGTSTP, &sa_stop, NULL) == -1)
-		exit(errno);
-	sa_quit.sa_handler = SIG_IGN;
-	sigemptyset(&sa_quit.sa_mask);
-	sigaddset(&sa_quit.sa_mask, SIGINT);
-	sigaddset(&sa_quit.sa_mask, SIGQUIT);
-	sigaddset(&sa_quit.sa_mask, SIGTSTP);
-	if (sigaction(SIGQUIT, &sa_stop, NULL) == -1)
-		exit(errno);
+	signal(SIGSTOP, SIG_IGN);
+	signal(SIGQUIT, SIG_IGN);
+	signal(SIGINT, handle_sigint);
 }
-// rl_catch_signals = 0;
