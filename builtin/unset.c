@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 20:02:30 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/16 19:45:22 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/17 13:31:14 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,6 @@ int	check_valid_unset(char *str)
 	return (0);
 }
 
-void	remove_var(t_node **token, t_node *prev, char *name)
-{
-	t_node	*temp;
-	
-	temp = *token;
-	*token = (*token)->next;
-	if (prev && *token)
-		prev->next = *token;
-	lstdelone(temp, delete_content);
-	free(name);
-}
-
 int	check_and_remove(t_node **token, char *str)
 {
 	char	*name;
@@ -74,9 +62,11 @@ int	check_and_remove(t_node **token, char *str)
 	prev = NULL;
 	if (!ft_strcmp(str, name))
 	{
-		if ((ft_isalpha(name[0]) || name[0] == '_'))
+		free(name);
+		if ((ft_isalpha(str[0]) || str[0] == '_'))
 		{
-			remove_var(token, prev, name);
+			free((*token)->content);
+			(*token)->content = ft_strdup("");
 			return (1);
 		}
 		else
@@ -91,7 +81,7 @@ int	check_and_remove(t_node **token, char *str)
 	return (0);
 }
 
-int	execute_unset(char **cmd_vector, t_node **env_list)
+int	execute_unset(char **cmd_vector, t_node *env_list)
 {
 	int		i;
 	int		check;
@@ -100,7 +90,7 @@ int	execute_unset(char **cmd_vector, t_node **env_list)
 	i = 1;
 	while (cmd_vector[i])
 	{
-		temp = *env_list;
+		temp = env_list;
 		check = check_valid_unset(cmd_vector[i]);
 		if (check)
 			return (check);
