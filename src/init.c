@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/24 13:05:51 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/15 11:32:11 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/17 16:29:28 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ t_node	*init_env(void)
 	add_variable(env_list, ft_strdup("PS2=> "), 1);
 	add_variable(env_list, ft_strdup("IFS= \t\n"), 1);
 	temp = get_variable(env_list, "HOME");
-	add_variable(env_list, ft_strjoin("~=", temp), 1);
+	if (temp)
+		add_variable(env_list, ft_strjoin("~=", temp), 1);
 	free(temp);
 	temp = get_variable(env_list, "SHLVL");
 	if (temp)

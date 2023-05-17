@@ -1,11 +1,10 @@
-Carien:
- - cc: redirect: Permission denied check right _exit / exit call  
- - exit "leak" in process b after "/bin/ls -la", = cmd not found, normal exit in check_cmd function, should be _exit in child processes 
- - only assign no loger works...
 
-Carlo:
-- Exit code large numbers: nu met Mod opgelost.
-- wat willen we doen met ctrl+z (nu naar ignore gezet)
+Running wildcard_tests...
+echo *
+sed: RE error: illegal byte sequence
+sed: RE error: illegal byte sequence
+sed: RE error: illegal byte sequence
 
-- signal ctrl-\ gaat nu uit blokking command maar niet met juiste exit
-- signal ctrl-D exit code staat nu op 1. gaat nog mis met een exit uit here_doc.
+Running exit_tests...
+         KO! exit 9223372036854775805
+         KO! exit -9223372036854775805

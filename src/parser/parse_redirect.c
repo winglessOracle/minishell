@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/30 15:56:14 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/15 18:05:08 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/17 16:57:46 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ int	add_to_redirect(t_node **tokens, t_smpl_cmd *cmd, int state)
 	t_node	*temp;
 	char	*token_content;	
 
+	if (!*tokens || !(*tokens)->content)
+		return (return_error("ambiguous redirect", -1, 1));
 	temp = lstpop(tokens);
 	token_content = ft_strdup(temp->content);
 	if (BONUS)
