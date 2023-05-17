@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/17 15:23:05 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/17 18:37:27 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_built(t_smpl_cmd *cmd)
 			cmd_args = build_cmd_args(&cmd->cmd_argv, cmd->cmd_argc);
 			g_exit_status = (built[i](cmd_args, cmd->env_list));
 			ft_free_array(cmd_args);
-			exit(0);  // change back
+			_exit(0);  // change back
 		}
 		i++;
 	}

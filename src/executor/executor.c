@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/17 16:42:54 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/17 18:36:59 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 	cmd_args = build_cmd_args(&pipe_argv->cmd_argv, pipe_argv->cmd_argc);
 	env = get_env(env_list);
 	if (cmd_args[0][0] == '.' && !cmd_args[0][1])
-		exit_error("filename argument required", 2);
+		exit_error_child("filename argument required", 2);
 	if (cmd_args[0][0] == '/' || cmd_args[0][0] == '.')
 	{
 		check_cmd(cmd_args[0]);
@@ -59,7 +59,7 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 		exec_default(cmd_args, pipe_argv, env_list, env);
 	ft_fprintf(2, "cc: ");
 	perror("executor");
-	exit(127); // change back
+	_exit(127); // change back
 }
 
 void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)

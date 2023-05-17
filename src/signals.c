@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/17 16:13:12 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/17 18:32:21 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	handle_sigint_here(int signal_number)
 {
 	(void) signal_number;
 	signal(SIGINT, SIG_DFL);
-	exit(1);  //child exit
+	_exit(1);  //child exit
 }
 
 void	handle_sigquit(int signal_number)
@@ -51,7 +51,7 @@ void	handle_sigint(int signal_number)
 	rl_replace_line("", 0);
 	write(STDOUT_FILENO, "\n", 1);
 	rl_on_new_line();
-	g_exit_status = 130; //remove?
+	g_exit_status = 130; //remove? 
 	if (pid == -1)
 		rl_redisplay();
 }
