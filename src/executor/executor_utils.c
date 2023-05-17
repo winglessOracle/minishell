@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/17 15:12:43 by carlo         ########   odam.nl         */
+/*   Updated: 2023/05/17 15:33:46 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ char	**build_cmd_args(t_node **argv, int argc)
 	cmd_args = malloc(sizeof(char *) * (argc + 1));
 	while (i < argc)
 	{
-		if (ft_strcmp((*argv)->content, ""))
-			cmd_args[i] = ft_strdup((*argv)->content);
+		cmd_args[i] = ft_strdup((*argv)->content);
 		*argv = (*argv)->next;
 		i++;
 	}
@@ -118,9 +117,9 @@ char	**get_env(t_node *env_list)
 	curr = env_list;
 	while (curr)
 	{
-		if (curr->type == 2)
+		if (curr->type == 2 && ft_strcmp(curr->content, ""))
 			arr[i] = ft_strdup(curr->content);
-		if (curr->type == 2)
+		if (curr->type == 2 && ft_strcmp(curr->content, ""))
 			i++;
 		curr = curr->next;
 	}
