@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 19:37:37 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/17 14:00:57 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/17 15:43:12 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ void	exit_helper(char **cmd_vector)
 			exit__error("exit: numeric argument required", 2);
 		j++;
 	}
+	if (ft_atoi_long(cmd_vector[1]) > INT_MAX ||\
+					ft_atoi_long(cmd_vector[1]) < INT_MIN) 
+		exit__error("exit: numeric argument required", 2);
 }
 
 int	execute_exit(char **cmd_vector, t_node *env_list)

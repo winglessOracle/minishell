@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/17 15:22:48 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/17 15:42:20 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	handle_sigquit(int signal_number)
 	(void) signal_number;
 	printf("Quit (core dumped)\n");
 	kill(getpid(), SIGQUIT);
-	g_exit_status = 131;
+	g_exit_status = 131; //remove?
 }
 
 void	handle_sigint(int signal_number)
@@ -51,7 +51,7 @@ void	handle_sigint(int signal_number)
 	rl_replace_line("", 0);
 	write(STDOUT_FILENO, "\n", 1);
 	rl_on_new_line();
-	g_exit_status = 130;
+	g_exit_status = 130; //remove?
 	if (pid == -1)
 		rl_redisplay();
 }
