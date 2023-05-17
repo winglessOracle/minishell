@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 16:06:30 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/17 18:34:07 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/17 21:00:50 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,10 @@ void	exit__error(char	*str, int num)
 	exit(num);
 }
 
-void	warning_heredoc_end(int count, char *delim)
+void	warning_heredoc_end(int count, char *delim, int pipe_1)
 {
 	ft_fprintf(2, "cc: warning: here-document at line %d ", count); // shoud this be fd 1?
 	ft_fprintf(2, "delimited by end-of-file (wanted '%s')\n", delim); // shoud this be fd 1?
+	close(pipe_1);
+	_exit(1); // wat doen we??? 1 of 0
 }

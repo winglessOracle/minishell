@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/17 18:29:45 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/17 20:51:48 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,28 @@ void	read_heredoc(int *pipe, t_node *env_lst, t_node *input, t_smpl_cmd *cmd)
 	line = NULL;
 	close(pipe[0]);
 	count = 0;
+	signal(SIGINT, handle_sigint_here);
 	while (1)
 	{
 		line_read = get_input(env_lst, "PS2", 0);
 		count ++;
-		if (!ft_strcmp(line_read, input->content) || line_read == NULL)
-		{
-			if (line_read == NULL)
-				warning_heredoc_end(count, input->content);
+		if (line_read == NULL)
+			warning_heredoc_end(count, input->content, pipe[1]);
+		if (!ft_strcmp(line_read, input->content))
 			break ;
-		}
 		tokens = lexer(line_read, " \n");
 		line = parse_heredoc(tokens, input, cmd);
 		ft_putstr_fd(line, pipe[1]);
 		free(line);
 	}
 	close(pipe[1]);
-	_exit(0); //child exit (klopt 0 hier?)
+	_exit(0);
 }
 
 int	here_doc(t_node *env_list, t_node *here_redirect, t_smpl_cmd *cmd)
 {
 	int		here_pipe[2];
+	int		waitstatus;
 	pid_t	pid;
 
 	if (pipe(here_pipe) == -1)
@@ -53,17 +53,15 @@ int	here_doc(t_node *env_list, t_node *here_redirect, t_smpl_cmd *cmd)
 	if (pid == -1)
 		exit_error("fork fail", errno);
 	if (!pid)
-	{
-		signal(SIGINT, handle_sigint_here);
 		read_heredoc(here_pipe, env_list, here_redirect, cmd);
-	}
-	wait(NULL);
+	waitpid(pid, &waitstatus, 0);
+	if (WIFEXITED(waitstatus))
+		g_exit_status = WEXITSTATUS(waitstatus);
+	if (WIFSIGNALED(waitstatus))
+		g_exit_status = 128 + WTERMSIG(waitstatus);
 	close(here_pipe[1]);
 	if (g_exit_status != 0)
-	{
-		g_exit_status = 1;
 		return (-1);
-	}
 	return (here_pipe[0]);
 }
 
