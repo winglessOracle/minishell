@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/17 13:36:41 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/17 15:21:42 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,15 +67,15 @@ void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 	if (pid == 0)
 	{
 		if (set_fd(cmd, &keep, fd_pipe) == -1)
-			exit_error("redirect", 1);
+			exit_error_child("redirect", 1);
 		close(fd_pipe[0]);
 		dup2(keep, STDIN_FILENO);
 		if (!keep)
-			exit_error("dup fail", 1);
+			exit_error_child("dup fail", 1);
 		if (!(!cmd->next && !set_fd(cmd, &keep, fd_pipe)))
 			dup2(fd_pipe[1], STDOUT_FILENO);
 		if (!fd_pipe[1])
-			exit_error("dup fail", 1);
+			exit_error_child("dup fail", 1);
 	}
 	else
 	{	

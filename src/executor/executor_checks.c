@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 13:22:26 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/17 13:36:10 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/17 15:23:05 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,11 @@ void	check_cmd(char *cmd)
 
 	stat(cmd, &file_stat);
 	if (S_ISDIR(file_stat.st_mode))
-		exit_error("is a directory", 126);
+		exit_error_child("is a directory", 126);
 	else if (access(cmd, F_OK) == -1)
-		exit_error("command not found", 127);
+		exit_error_child("command not found", 127);
 	else if (access(cmd, X_OK) == -1)
-		exit_error("no executable or no permission", 126);
+		exit_error_child("no executable or no permission", 126);
 	return ;
 }
 
