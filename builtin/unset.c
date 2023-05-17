@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 20:02:30 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/17 13:31:14 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/17 14:49:06 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ int	check_and_remove(t_node **token, char *str)
 	char	*name;
 	t_node	*prev;
 
+	(void)prev;
 	name = get_name((*token)->content);
 	prev = NULL;
 	if (!ft_strcmp(str, name))
