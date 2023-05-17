@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:31 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/16 09:06:36 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/17 14:29:25 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ int		check_builtins_curr_env(t_smpl_cmd *cmd);
 void	check_cmd(char *cmd);
 int		check_sorted_argv(t_node *argv);
 int		check_and_pipe(t_pipe *pipeline, pid_t *pid, int *fd_pipe);
-// init
+// init_exit
 void	fork_error(void);
 int		init_keep(void);
 pid_t	*init_pid(int argc);
+void	exit_error_child(char	*str, int num);
 // set
 void	assignments(t_smpl_cmd *pipe_argv, pid_t pid);
 int		set_out(int *fd_pipe, t_node *temp);
