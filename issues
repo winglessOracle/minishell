@@ -1,15 +1,9 @@
 
-Running assign_tests...
-         Segfault!!! >> $HOME
-         KO! exit 9223372036854775805
-
 Running wildcard_tests...
+echo *
 sed: RE error: illegal byte sequence
 sed: RE error: illegal byte sequence
 sed: RE error: illegal byte sequence
-         KO! cat *
-         KO! echo "."* | sort
-         KO! touch tmp_out ; /bin/echo 42 >tmp_o*t* ; rm -f tmp_out*
 
 Running exit_tests...
          KO! exit 9223372036854775805
