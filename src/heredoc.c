@@ -6,12 +6,13 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/18 20:21:02 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/18 20:30:26 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
+#include "executor.h"
 
 void	read_heredoc(int *pipe, t_node *env_lst, t_node *input, t_smpl_cmd *cmd)
 {
@@ -138,5 +139,7 @@ char	*parse_heredoc(t_node *token, t_node *here_redirect, t_smpl_cmd *cmd)
 		remove_node(&token, NULL);
 	}
 	input = ft_strjoin_free_s1(input, "\n");
+	if (!input)
+		exit_error_child("memerror", 1);
 	return (input);
 }
