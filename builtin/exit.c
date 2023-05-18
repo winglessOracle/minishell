@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 19:37:37 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/17 16:57:22 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/18 09:45:28 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	execute_exit(char **cmd_vector, t_node *env_list)
 	(void)env_list;
 	if (!cmd_vector)
 		exit(g_exit_status);
-	exit_code = 0;
+	exit_code = g_exit_status; // aangepast (was = 0)
 	while (cmd_vector && cmd_vector[i])
 		i++;
 	if (i == 1)
@@ -52,11 +52,11 @@ int	execute_exit(char **cmd_vector, t_node *env_list)
 		return (return_error("exit: too many arguments", 1, 1));
 	if (cmd_vector[1])
 	{
-		exit_code = ft_atoi_long(cmd_vector[1]);
+		exit_code = ft_atoi_long(cmd_vector[1]);  // als toch naar long dan ook type van exit_code aanpassen
 		if (exit_code > 255)
 			exit_code = exit_code % 256;
 	}
-	else
-		exit_code = g_exit_status;
+	// else
+	// 	exit_code = g_exit_status;
 	exit(exit_code);
 }

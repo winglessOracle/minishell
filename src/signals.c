@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/17 21:16:28 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/18 09:43:22 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ void	exit_sig(t_node *env_list)
 void	handle_sigint_here(int signal_number)
 {
 	(void) signal_number;
-	signal(SIGINT, SIG_DFL);
-	kill(getpid(), SIGINT);  // moet dit zo? (afgekeken van sigquit)
-	// _exit(1);  //child exit
+	_exit(131);  //child exit
+	// signal(SIGINT, SIG_DFL);
+	// kill(getpid(), SIGINT);  // moet dit zo? (afgekeken van sigquit)
 }
 
-void	handle_sigquit(int signal_number)
-{
-	(void) signal_number;
-	printf("Quit (core dumped)\n");
-	kill(getpid(), SIGQUIT);
-	// g_exit_status = 131; //remove? ja kan er uit volgens mij :)
-}
+// void	handle_sigquit(int signal_number) // aangepast naar sig_dfl in executor
+// {
+// 	(void) signal_number;
+// 	// printf("Quit (core dumped)\n");
+// 	// kill(getpid(), SIGQUIT);
+// 	// g_exit_status = 131; //remove? ja kan er uit volgens mij :)
+// }
 
 void	handle_sigint(int signal_number)
 {

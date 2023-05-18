@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/17 21:17:11 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/18 09:12:08 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "executor.h"
 
 int	exec_default(char **cmd_args, t_smpl_cmd *pipe_argv, \
-	t_node *env_list, char **env)
+							t_node *env_list, char **env)
 {
 	char	*path;
 	char	**my_directories;
@@ -91,11 +91,9 @@ void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 
 void	execute_child(t_smpl_cmd *temp)
 {
+	signal(SIGQUIT, SIG_DFL); // aangepast
 	if (temp->cmd_argc > 0)
-	{
-		signal(SIGQUIT, handle_sigquit);
 		exec_cmd(temp, temp->env_list);
-	}
 	else
 		execute_exit(NULL, temp->env_list);
 }
