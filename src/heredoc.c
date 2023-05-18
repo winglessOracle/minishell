@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/17 20:51:48 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/18 13:47:47 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	read_heredoc(int *pipe, t_node *env_lst, t_node *input, t_smpl_cmd *cmd)
 	line = NULL;
 	close(pipe[0]);
 	count = 0;
-	signal(SIGINT, handle_sigint_here);
+	signal(SIGINT, SIG_DFL);
 	while (1)
 	{
 		line_read = get_input(env_lst, "PS2", 0);

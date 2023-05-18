@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/18 10:09:15 by carlo         ########   odam.nl         */
+/*   Updated: 2023/05/18 13:50:53 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@ void	exit_sig(t_node *env_list)
 	printf("%s exit\n", str);
 	free(str);
 	exit(g_exit_status);
-}
-
-void	handle_sigint_here(int signal_number)
-{
-	(void) signal_number;
-	_exit(131);
 }
 
 void	handle_sigint(int signal_number)
