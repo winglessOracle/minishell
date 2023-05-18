@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/18 14:12:18 by carlo         ########   odam.nl         */
+/*   Updated: 2023/05/18 14:36:45 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,18 @@ void	read_heredoc(int *pipe, t_node *env_lst, t_node *input, t_smpl_cmd *cmd)
 	int		count;
 
 	line = NULL;
-	close(pipe[0]);
 	count = 0;
-	signal(SIGINT, SIG_DFL);
+	close(pipe[0]);
 	while (1)
 	{
 		line_read = get_input(env_lst, "PS2", 0);
-		count ++;
-		if (line_read == NULL)
-			warning_heredoc_end(count, input->content, pipe[1]);
-		if (!ft_strcmp(line_read, input->content))
+		count++;
+		if (line_read == NULL || !ft_strcmp(line_read, input->content))
+		{
+			if (line_read == NULL)
+				warning_heredoc_end(count, input->content, pipe[1]);
 			break ;
+		}
 		tokens = lexer(line_read, " \n");
 		line = parse_heredoc(tokens, input, cmd);
 		ft_putstr_fd(line, pipe[1]);
@@ -53,7 +54,10 @@ int	here_doc(t_node *env_list, t_node *here_redirect, t_smpl_cmd *cmd)
 	if (pid == -1)
 		exit_error("fork fail", errno);
 	if (!pid)
+	{
+		signal(SIGINT, SIG_DFL);
 		read_heredoc(here_pipe, env_list, here_redirect, cmd);
+	}
 	waitpid(pid, &waitstatus, 0);
 	if (WIFEXITED(waitstatus))
 		g_exit_status = WEXITSTATUS(waitstatus);
