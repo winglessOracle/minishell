@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/18 14:08:04 by carlo         ########   odam.nl         */
+/*   Updated: 2023/05/18 20:17:09 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int			return_perror(char *str, int err);
 int			return_error(const char *str, int ret, int exit);
 void		exit_error(char	*str, int num);
 void		exit__error(char	*str, int num);
-void		warning_heredoc_end(int count, char *delim, int pipe_1);
+void		warning_heredoc_end(int count, char *delim);
 
 // node_utils
 t_node		*lstpop(t_node **lst);
