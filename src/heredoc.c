@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 14:22:25 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/18 20:17:42 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/18 20:21:02 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	read_heredoc(int *pipe, t_node *env_lst, t_node *input, t_smpl_cmd *cmd)
 		if (line_read == NULL || !ft_strcmp(line_read, input->content))
 		{
 			if (line_read == NULL)
-				warning_heredoc_end(count, input->contentm);
+				warning_heredoc_end(count, input->content);
 			break ;
 		}
 		tokens = lexer(line_read, " \n");
