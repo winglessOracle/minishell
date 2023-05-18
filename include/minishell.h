@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 10:03:07 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/17 21:00:13 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/18 14:08:04 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 # include "libft.h"
 # include "lexer.h"
-# include "signals.h"
+# include <signal.h>
 # include <sys/stat.h>
+# include <sys/wait.h>
 # include <string.h>
 # include <stdio.h>
 # include <errno.h>
@@ -144,5 +145,7 @@ void		print_env(t_node *env_list, int flag);
 
 //signals
 void		exit_sig(t_node *env_list);
+void		handle_sigint(int signal_number);
+void		set_signals(void);
 
 #endif

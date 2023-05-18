@@ -6,18 +6,18 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/10/10 09:26:11 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/11 18:53:16 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/18 12:27:49 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "stdio.h"
 
-long	ft_atoi_long(const char *str)
+long long	ft_atoi_long(const char *str)
 {
-	int			i;
-	long int	output;
-	long int	sign;
+	int				i;
+	long long int	output;
+	long long int	sign;
 
 	i = 0;
 	output = 0;

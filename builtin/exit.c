@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 19:37:37 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/18 10:03:03 by carlo         ########   odam.nl         */
+/*   Updated: 2023/05/18 14:07:07 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	exit_helper(char **cmd_vector)
 
 int	execute_exit(char **cmd_vector, t_node *env_list)
 {
-	int		exit_code;
-	int		i;
+	long long int		exit_code;
+	int					i;
 
 	i = 0;
 	(void)env_list;
