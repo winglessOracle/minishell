@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/18 09:12:08 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/18 10:04:54 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 
 void	execute_child(t_smpl_cmd *temp)
 {
-	signal(SIGQUIT, SIG_DFL); // aangepast
+	signal(SIGQUIT, SIG_DFL);
 	if (temp->cmd_argc > 0)
 		exec_cmd(temp, temp->env_list);
 	else

@@ -6,7 +6,7 @@
 #    By: carlo <carlo@student.42.fr>                  +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/10/10 09:28:26 by cwesseli      #+#    #+#                  #
-#    Updated: 2023/05/17 14:18:34 by ccaljouw      ########   odam.nl          #
+#    Updated: 2023/05/18 10:11:11 by carlo         ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ OBJ_FILES	=  $(addprefix obj/src/, minishell.o lst_utils/t_node.o utils/utils.o 
 				$(addprefix obj/src/expander/, expander.o expand_var_utils.o wildcards.o ) \
 				$(addprefix obj/src/executor/, executor.o executor_utils.o executor_set.o executor_checks.o executor_init_exit.o)
 
-OBJ_BUILTIN = $(addprefix obj_buitin/, echo.o cd.o cd_utils.o cd_utils2.o pwd.o unset.o export.o env.o exit.o)
+OBJ_BUILTIN = $(addprefix obj_builtin/, echo.o cd.o cd_utils.o cd_utils2.o pwd.o unset.o export.o env.o exit.o)
 
 #//= Modifiable =//#
 all: libft $(NAME)
@@ -61,7 +61,7 @@ $(OBJ_FILES): obj/%.o: %.c
 	@echo "$(GREEN)$(BOLD)Compiling minishell:$(RESET) $(notdir $<)"
 	@$(CC) -c $(CFLAGS) $(HEADERS) -o $@ $< 
 
-$(OBJ_BUILTIN): obj_buitin/%.o: builtin/%.c 
+$(OBJ_BUILTIN): obj_builtin/%.o: builtin/%.c 
 	@mkdir -p $(dir $@)
 	@echo "$(GREEN)$(BOLD)Compiling minishell builtins:$(RESET) $(notdir $<)"
 	@$(CC) -c $(CFLAGS) $(HEADERS) -o $@ $< 
@@ -69,7 +69,7 @@ $(OBJ_BUILTIN): obj_buitin/%.o: builtin/%.c
 clean:
 	@echo "$(BLUE)Cleaning minishell$(RESET)"
 	@rm -rf obj/
-	@rm -rf obj_buitin/
+	@rm -rf obj_builtin/
 	@$(MAKE) -C $(LIBFT) clean
 
 fclean: clean
