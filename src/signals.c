@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/31 12:30:55 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/18 14:11:57 by carlo         ########   odam.nl         */
+/*   Updated: 2023/05/19 16:04:30 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	handle_sigint(int signal_number)
 	rl_on_new_line();
 	if (pid == -1)
 		rl_redisplay();
+	g_exit_status = 130;
 }
 
 void	set_signals(void)

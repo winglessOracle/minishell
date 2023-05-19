@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/17 10:15:38 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/17 13:33:00 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/19 16:08:07 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,11 +109,14 @@ int	execute_export(char **cmd_vector, t_node *env_list)
 	{
 		while (cmd_vector[i])
 		{
-			if (check_valid_identifier(cmd_vector[i]))
-				return (return_error("not a valid identifier\n", 1, 1));
-			else
-				add_variable(env_list, ft_strdup(cmd_vector[i]), 2);
 			i++;
+			if (check_valid_identifier(cmd_vector[i - 1]))
+			{
+				return_error("not a valid identifier\n", 1, 1);
+				continue ;
+			}
+			else
+				add_variable(env_list, ft_strdup(cmd_vector[i - 1]), 2);
 		}
 	}
 	return (0);
