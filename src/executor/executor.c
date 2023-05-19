@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/19 09:34:08 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/19 09:48:39 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	execute_child(t_pipe *pipeline, t_smpl_cmd *temp)
 	{
 		lstclear(&temp->env_list, delete_content);
 		delete_pipe(pipeline);
-		execute_exit(NULL, temp->env_list);
+		execute_exit(NULL, NULL);
 	}
 }
 

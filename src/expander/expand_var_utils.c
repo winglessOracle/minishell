@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/02 19:20:31 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/15 19:16:32 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/19 10:40:27 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,32 @@ t_node	*split_expanded(t_node **token, t_smpl_cmd *cmd)
 	return (temp);
 }
 
+char	*quoted_expand(t_node **token, t_smpl_cmd *cmd, char *str)
+{
+	if (!ft_strcmp((*token)->content, (*token)->next->content))
+	{
+		remove_node(token, cmd);
+		str = ft_strdup("");
+	}
+	else
+	{
+		(*token)->type = check_token_content(*token, (*token)->type);
+		merge_quoted(token, cmd);
+		str = ft_strdup((*token)->content);
+	}
+	return (str);
+}
+
 int	expand_var(t_node **token, t_smpl_cmd *cmd)
 {
 	char	*str;
 
+	str = NULL;
 	remove_node(token, cmd);
 	if ((*token)->content[0] == '?')
 		str = ft_itoa(g_exit_status);
 	else if ((*token)->content[0] == '\'' || (*token)->content[0] == '\"')
-	{
-		if (!ft_strcmp((*token)->content, (*token)->next->content))
-			remove_node(token, cmd);
-		else
-		{
-			(*token)->type = check_token_content(*token, (*token)->type);
-			merge_quoted(token, cmd);
-			str = ft_strdup((*token)->content);
-		}
-	}
+		str = quoted_expand(token, cmd, str);
 	else
 		str = get_variable(cmd->env_list, (*token)->content);
 	if (*token)
@@ -84,28 +92,4 @@ void	add_after_var(t_node **words, t_node **token, t_smpl_cmd *cmd)
 	(*token)->content = ft_strjoin_free_s1((*token)->content, \
 													(*words)->content);
 	remove_node(words, cmd);
-}
-
-int	expand(t_node **token, t_smpl_cmd *cmd)
-{
-	t_node	*words;
-	t_node	*temp;
-
-	if (count_quotes((*token)->content, '\'') % 2 || \
-					count_quotes((*token)->content, '\'') % 2)
-		merge_quoted(token, cmd);
-	words = split_to_list((*token)->content, "$=?/\'\".");
-	temp = *token;
-	free((*token)->content);
-	(*token)->content = NULL;
-	while (words)
-	{
-		if (words && words->content && words->content[0] == '$' \
-						&& words->next && words->next->content[0] != '=')
-			temp = exp_spl(&words, token, cmd, temp);
-		else if (words)
-			add_after_var(&words, token, cmd);
-		*token = temp;
-	}
-	return (0);
 }
