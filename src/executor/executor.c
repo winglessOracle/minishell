@@ -6,15 +6,14 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/18 10:04:54 by carlo         ########   odam.nl         */
+/*   Updated: 2023/05/19 09:34:08 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "executor.h"
 
-int	exec_default(char **cmd_args, t_smpl_cmd *pipe_argv, \
-							t_node *env_list, char **env)
+int	exec_default(char **cmd_args, t_node *env_list, char **env)
 {
 	char	*path;
 	char	**my_directories;
@@ -25,8 +24,6 @@ int	exec_default(char **cmd_args, t_smpl_cmd *pipe_argv, \
 	if (!path)
 		path = ft_strdup(cmd_args[0]);
 	my_directories = ft_split(path, ':');
-	lstclear(&env_list, delete_content);
-	delete_cmd(pipe_argv);
 	ft_free(path);
 	while (my_directories[i])
 	{
@@ -40,14 +37,14 @@ int	exec_default(char **cmd_args, t_smpl_cmd *pipe_argv, \
 	return (execve(cmd_args[0], cmd_args, env));
 }
 
-void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
+void	exec_cmd(t_pipe *pipeline, t_smpl_cmd *pipe_argv)
 {
 	char	**cmd_args;
 	char	**env;
 
-	check_built(pipe_argv);
+	check_built(pipeline, pipe_argv);
 	cmd_args = build_cmd_args(&pipe_argv->cmd_argv, pipe_argv->cmd_argc);
-	env = get_env(env_list);
+	env = get_env(pipe_argv->env_list);
 	if (cmd_args[0][0] == '.' && !cmd_args[0][1])
 		exit_error_child("filename argument required", 2);
 	if (cmd_args[0][0] == '/' || cmd_args[0][0] == '.')
@@ -56,7 +53,9 @@ void	exec_cmd(t_smpl_cmd *pipe_argv, t_node *env_list)
 		execve(cmd_args[0], cmd_args, env);
 	}
 	else
-		exec_default(cmd_args, pipe_argv, env_list, env);
+		exec_default(cmd_args, pipe_argv->env_list, env);
+	lstclear(&pipe_argv->env_list, delete_content);
+	delete_pipe(pipeline);
 	ft_fprintf(2, "cc: ");
 	perror("executor");
 	_exit(127);
@@ -89,13 +88,17 @@ void	redirect(t_smpl_cmd *cmd, pid_t pid, int keep, int *fd_pipe)
 	}
 }
 
-void	execute_child(t_smpl_cmd *temp)
+void	execute_child(t_pipe *pipeline, t_smpl_cmd *temp)
 {
 	signal(SIGQUIT, SIG_DFL);
 	if (temp->cmd_argc > 0)
-		exec_cmd(temp, temp->env_list);
+		exec_cmd(pipeline, temp);
 	else
+	{
+		lstclear(&temp->env_list, delete_content);
+		delete_pipe(pipeline);
 		execute_exit(NULL, temp->env_list);
+	}
 }
 
 void	executor(t_pipe *pipeline)
@@ -120,7 +123,7 @@ void	executor(t_pipe *pipeline)
 		redirect(temp, pid[i], keep, fd_pipe);
 		assignments(temp, pid[i]);
 		if (pid[i] == 0 && pipeline->pipe_argc)
-			execute_child(temp);
+			execute_child(pipeline, temp);
 		temp = temp->next;
 		i++;
 	}

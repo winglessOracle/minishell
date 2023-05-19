@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/15 16:04:23 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/17 21:17:54 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/19 09:20:37 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,12 @@ void	exit_error_child(char	*str, int num)
 	ft_fprintf(2, "cc: ");
 	perror(str);
 	_exit(num);
+}
+
+void	free_exit_child(t_pipe *pipeline, t_smpl_cmd *cmd, char **cmd_args)
+{
+	ft_free_array(cmd_args);
+	lstclear(&cmd->env_list, delete_content);
+	delete_pipe(pipeline);
+	_exit(0);
 }
