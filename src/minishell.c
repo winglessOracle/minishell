@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/19 09:34:35 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/20 10:41:06 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int	main(void)
 	t_node		*tokens;
 
 	env_list = init_env();
-	set_signals();
 	while (1)
 	{
+		set_signals();
 		line_read = get_input(env_list, "PS1", 1);
 		if (line_read == NULL)
 			exit_sig(env_list);

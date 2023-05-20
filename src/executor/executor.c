@@ -6,7 +6,7 @@
 /*   By: carlo <carlo@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/06 15:16:07 by carlo         #+#    #+#                 */
-/*   Updated: 2023/05/19 09:48:39 by ccaljouw      ########   odam.nl         */
+/*   Updated: 2023/05/20 10:42:26 by carlo         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,8 @@ void	executor(t_pipe *pipeline)
 		pid[i] = fork();
 		if (pid[i] == -1)
 			return (fork_error());
+		if (!pid)
+			signal(SIGINT, SIG_IGN);
 		redirect(temp, pid[i], keep, fd_pipe);
 		assignments(temp, pid[i]);
 		if (pid[i] == 0 && pipeline->pipe_argc)
