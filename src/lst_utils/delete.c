@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/11 14:53:32 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/04/25 12:13:48 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/19 09:59:12 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	delete_content(void *content)
 {
 	char	*temp;
 
+	if (!content)
+		return ;
 	temp = (char *)content;
 	free(temp);
 }

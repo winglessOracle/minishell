@@ -6,12 +6,36 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/07 21:51:28 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/11 15:05:28 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/19 10:36:07 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
+
+int	expand(t_node **token, t_smpl_cmd *cmd)
+{
+	t_node	*words;
+	t_node	*temp;
+
+	if (count_quotes((*token)->content, '\'') % 2 || \
+					count_quotes((*token)->content, '\'') % 2)
+		merge_quoted(token, cmd);
+	words = split_to_list((*token)->content, "$=?/\'\".");
+	temp = *token;
+	free((*token)->content);
+	(*token)->content = NULL;
+	while (words)
+	{
+		if (words && words->content && words->content[0] == '$' \
+						&& words->next && words->next->content[0] != '=')
+			temp = exp_spl(&words, token, cmd, temp);
+		else if (words)
+			add_after_var(&words, token, cmd);
+		*token = temp;
+	}
+	return (0);
+}
 
 int	expand_sub(t_node **token, t_smpl_cmd *cmd)
 {

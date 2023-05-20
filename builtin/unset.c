@@ -6,7 +6,7 @@
 /*   By: cariencaljouw <cariencaljouw@student.co      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/04/16 20:02:30 by cariencaljo   #+#    #+#                 */
-/*   Updated: 2023/05/17 14:49:06 by carlo         ########   odam.nl         */
+/*   Updated: 2023/05/19 16:09:06 by cariencaljo   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ int	check_valid_unset(char *str)
 	int	i;
 
 	i = 0;
-	if (str[0] == '-' && str[1])
-		return (return_error("unset: invallid option", 2, 2));
 	if (!str || !ft_strcmp(str, "") || (!ft_isalpha(str[i]) && str[i] != '_'))
 		return (return_error("not a valid identifier", 1, 2));
+	if (str[0] == '-' && str[1])
+		return (return_error("unset: invallid option", 2, 2));
 	else
 	{
 		while (str[i] && str[i] != '=')
@@ -47,7 +47,7 @@ int	check_valid_unset(char *str)
 				return (return_error("not a valid identifier", 1, 2));
 			i++;
 		}
-		if (str[i] == '=')
+		if (str[i] && str[i] == '=')
 			return (return_error("not a valid identifier", 1, 2));
 	}
 	return (0);
@@ -91,16 +91,16 @@ int	execute_unset(char **cmd_vector, t_node *env_list)
 	i = 1;
 	while (cmd_vector[i])
 	{
+		i++;
 		temp = env_list;
-		check = check_valid_unset(cmd_vector[i]);
+		check = check_valid_unset(cmd_vector[i - 1]);
 		if (check)
-			return (check);
+			continue ;
 		while (temp && temp->content)
 		{
-			if (check_and_remove(&temp, cmd_vector[i]))
+			if (check_and_remove(&temp, cmd_vector[i - 1]))
 				break ;
 		}
-		i++;
 	}
 	return (0);
 }

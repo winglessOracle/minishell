@@ -6,7 +6,7 @@
 /*   By: ccaljouw <ccaljouw@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 13:43:40 by ccaljouw      #+#    #+#                 */
-/*   Updated: 2023/05/15 14:41:11 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/19 10:40:51 by ccaljouw      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ int			expand_sub(t_node **token, t_smpl_cmd *cmd);
 int			expand_var(t_node **token, t_smpl_cmd *cmd);
 int			check_wildcars(t_node **cmd_args);
 void		replace_wildcards(char	*str, char replace, char with);
+void		add_after_var(t_node **words, t_node **token, t_smpl_cmd *cmd);
+t_node		*exp_spl(t_node **words, t_node **token, t_smpl_cmd *cmd, \
+														t_node *temp);
 
 // quotes
 char		get_quote_char(int type);
