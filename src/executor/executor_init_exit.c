@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/05/15 16:04:23 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/19 16:13:23 by cariencaljo   ########   odam.nl         */
+/*   Updated: 2023/05/22 10:57:39 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	fork_error(void)
 {
-	kill(getpid(), SIGINT);
+	kill(0, SIGINT);
 	return_error ("fork: resource temporarily unavailable", 1, 128);
 	return ;
 }
