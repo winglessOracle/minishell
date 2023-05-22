@@ -6,7 +6,7 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/20 10:41:06 by carlo         ########   odam.nl         */
+/*   Updated: 2023/05/22 11:01:43 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,15 @@ int	main(void)
 	t_node		*tokens;
 
 	env_list = init_env();
+	read_history("log/history_log");
 	while (1)
 	{
 		set_signals();
 		line_read = get_input(env_list, "PS1", 1);
 		if (line_read == NULL)
 			exit_sig(env_list);
+		if (ft_strlen(line_read) > 0)
+			write_history("log/history_log");
 		tokens = lexer(line_read, LEXER_SPLIT);
 		parse_and_execute(tokens, env_list);
 	}
