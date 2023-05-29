@@ -6,18 +6,13 @@
 /*   By: cwesseli <cwesseli@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/03/21 09:48:38 by cwesseli      #+#    #+#                 */
-/*   Updated: 2023/05/22 11:01:43 by cwesseli      ########   odam.nl         */
+/*   Updated: 2023/05/29 13:12:59 by cwesseli      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 #include "parser.h"
 #include "builtin.h"
-
-// void	leaks(void)
-// {
-// 	system("leaks minishell -q");
-// }
 
 int	g_exit_status;
 
