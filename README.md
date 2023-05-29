@@ -1,4 +1,4 @@
-# minishell | CODAM Amsterdam
+# Minishell | CODAM Amsterdam
 
 ## Introduction
 Minishell is a simple shell written in C as a project for CODAM programming school. It allows you to run commands and manage files through a terminal interface similar to bash but with less features.
